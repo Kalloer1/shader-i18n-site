@@ -1,0 +1,83 @@
+# KnightShaders
+
+# ---- Shadows ----
+Shadows=阴影
+shadowMapResolution.shadowMapResolution=阴影贴图分辨率
+shadowDistance.shadowDistance=阴影距离
+sunPathRotation.sunPathRotation=太阳路径旋转
+
+# ---- Lighting ----
+Lighting=光照
+torchLightColor=火把光颜色
+ambientLightMultiplier.ambientMultiplier=环境光
+directLightMultiplier.directMultiplier=直接光
+minimumLight.minimumLight=最低光照
+
+# ---- Sky ----
+Sky=天空
+sunRender=渲染太阳
+moonRender=渲染月亮
+skyGradientToggle=天空渐变
+sunsetBandIntensity.sunsetIntensity=日落强度
+sunGlow.sunGlow=太阳光晕
+
+# ---- Clouds ----
+Clouds=云
+cloudToggle=启用云
+cloudCellSize.cloudCell=云单元大小
+cloudHeight.cloudHeight=云高度
+cloudThickness.cloudThickness=云厚度
+cloudWindSpeed.cloudWind=云风速
+cloudCoverage.cloudCoverage=云覆盖率
+
+# ---- Fog ----
+Fog=雾
+fogToggle=启用雾
+fogDensity.fogDensity=雾密度
+fogStart.fogStart=雾起始距离
+underwaterFog.underwaterFog=水下雾强度
+underwaterTintR.underwaterTintR=水下色调红
+underwaterTintG.underwaterTintG=水下色调绿
+underwaterTintB.underwaterTintB=水下色调蓝
+underwaterFogDensity.underwaterFogDensity=水下雾密度
+
+# ---- Volumetric Light ----
+Volumetric Light=Volumetric Light
+volumetricShaftsToggle=启用光束
+godRaysToggle=启用体积光
+godrayDensity.godrayDensity=体积光密度
+godrayDecay.godrayDecay=体积光衰减
+godrayStrength.godrayStrength=体积光强度
+godraySolid.godraySolid=体积光实体混合
+godraySamples.godraySamples=体积光采样
+
+# ---- Bloom ----
+Bloom=泛光
+bloomToggle=启用泛光
+bloomStrength.bloomStrength=泛光强度
+
+# ---- Color Grading ----
+Color Grading=色彩分级
+temperature.temperature=温度
+tint.tint=色调
+saturation.saturation=饱和度
+vibrance.vibrance=自然饱和度
+contrast.contrast=对比度
+brightness.brightness=亮度
+
+# ---- Effects ----
+Effects=效果
+vignetteToggle=启用暗角
+vignetteStrength.vignetteStrength=暗角强度
+
+# ---- Water ----
+Water=水
+waterReflection.waterReflection=水反射
+waterFresnel.waterFresnel=水菲涅尔
+waterSpecular.waterSpecular=水高光
+waterAlpha.waterAlpha=水不透明度
+
+# ---- High Haze ----
+High Haze=高雾
+highHazeToggle=启用高雾
+highHazeOpacity.highHazeOpacity=高雾不透明度

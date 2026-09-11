@@ -1,0 +1,172 @@
+// Set option names
+
+# Screens
+screen.Shadows =阴影
+screen.PostProcessing =后期处理
+screen.DOF =景深
+screen.SmoothstepFog =平滑阶梯雾
+screen.LinearFog =线性雾
+screen.ExpFog =指数雾
+screen.Exp2Fog =指数平方雾
+
+# DEBUG
+option.View =调试
+
+value.View.0 =无
+value.View.1 =透明度
+value.View.2 =深度缓冲
+value.View.3 =模糊颜色
+value.View.4 =亮度
+value.View.5 =方块光照
+value.View.6 =天光
+value.View.7 =所有光照
+value.View.8 =光照颜色
+value.View.9 =法线贴图
+value.View.10 =绝对法线
+value.View.11 =恶心效果（哦不）
+
+# Shadows
+option.ShadowsEnabled =启用阴影
+option.ColorShadowsEnabled =启用彩色阴影
+option.ShadowDistortionFactor =阴影扭曲因子
+option.ShadowBias =阴影偏移
+option.ShadowBrightness =阴影亮度
+option.shadowMapResolution =阴影分辨率
+option.DarknessPitchBlack =暗度纯黑
+option.BlackShadowsAtNight =夜间阴影为黑色
+option.sunPathRotation =太阳旋转
+
+option.ShadowsEnabled.comment =启用阴影。此选项卡中所有设置均需此项
+option.ColorShadowsEnabled.comment =启用阴影颜色
+option.ShadowDistortionFactor.comment =应用于阴影贴图的鱼眼畸变效果。不建议更改此值，数值过小会导致阴影波动，过大会导致阴影移动！
+option.ShadowBias.comment =若出现阴影痤疮请调高此值。若出现彼得潘现象请调低此值。
+option.ShadowBrightness.comment =阴影的亮度。
+option.shadowMapResolution.comment =阴影贴图分辨率。对性能影响显著！
+option.DarknessPitchBlack.comment =使暗部纯黑。轻微使所有物体变暗。
+option.BlackShadowsAtNight.comment =使夜间阴影纯黑。需开启暗度纯黑才能生效。
+option.sunPathRotation.comment =太阳的旋转偏移量。
+
+# Fog
+option.FogType =雾类型
+option.ClipFog =启用雾裁剪
+option.SmoothstepFogStartPercent =雾起点
+option.SmoothstepFogEndPercent =雾终点
+option.LinearFogStartPercent =雾起点
+option.LinearFogEndPercent =雾终点
+option.ExpDensity =密度
+option.Exp2Density =密度
+
+option.FogType.comment =使用的雾类型。
+option.ClipFog.comment =完全删除处于雾中的像素。
+option.SmoothstepFogStartPercent.comment =起始雾气百分比。
+option.SmoothstepFogEndPercent.comment =结束雾气百分比。超过此点的区域将处于雾中。
+option.LinearFogStartPercent.comment =起始雾气百分比。
+option.LinearFogEndPercent.comment =结束雾气百分比。超过此点的区域将处于雾中。
+option.ExpDensity.comment =雾气密度百分比。
+option.Exp2Density.comment =雾气密度百分比。
+
+value.FogType.0 =无
+value.FogType.1 =平滑阶梯
+value.FogType.2 =线性
+value.FogType.3 =指数
+value.FogType.4 =指数平方
+
+suffix.SmoothstepFogStartPercent = %
+suffix.SmoothstepFogEndPercent = %
+suffix.LinearFogStartPercent = %
+suffix.LinearFogEndPercent = %
+suffix.ExpDensity = %
+suffix.Exp2Density = %
+
+# Greyscale
+option.EnableGreyscale =启用灰度
+option.RemoveGreyscaleFromBlocklight =从方块光照中移除灰度
+option.RemoveGreyscaleFromSkylight =从天空光照中移除灰度
+option.RemoveGreyscaleAroundPlayer =移除玩家周围的灰度
+option.ReverseGreyscale =反转灰度
+option.GreyscaleDistance =灰度半径
+option.SkyAlwaysGreyscale =天空灰度
+option.UseGreyscaleInsteadOfLighting =灰度光照
+
+option.EnableGreyscale.comment =启用灰度后处理。
+option.RemoveGreyscaleFromBlocklight.comment =是否从方块光照中移除灰度。若天空或光源位于另一侧，则使染色玻璃和水不呈现灰度！
+option.RemoveGreyscaleFromSkylight.comment =是否从天空光照中移除灰度。效果非常怪异！
+option.RemoveGreyscaleAroundPlayer.comment =是否移除玩家半径范围内的灰度。
+option.ReverseGreyscale.comment =是否反转灰度效果。原本移除灰度的效果现在会添加灰度。
+option.GreyscaleDistance.comment =移除玩家周围灰度的半径范围。
+option.SkyAlwaysGreyscale.comment =是否使天空呈现灰度。
+option.UseGreyscaleInsteadOfLighting.comment =是否将灰度用作光照。禁用常规光照。建议关闭“移除玩家周围灰度”并开启“从天空光照中移除灰度”。
+
+# Depth of field
+option.DepthOfFieldEnabled =启用景深
+option.DofBlurRadius =景深模糊半径
+option.DofBlurOffset =景深模糊偏移
+option.DofBlurSmoothness =景深模糊平滑度
+option.centerDepthHalflife =景深调整速度
+
+option.DepthOfFieldEnabled.comment =启用景深
+option.DofBlurRadius.comment =盒状模糊半径。基本相当于模糊强度。可能对性能有影响！
+option.DofBlurOffset.comment =围绕光标可清晰视物的距离范围。随距离缩放。
+option.DofBlurSmoothness.comment =模糊的平滑程度。从光标到开始模糊的半径范围距离百分比。
+option.centerDepthHalflife.comment =景深调整速度。
+
+value.centerDepthHalflife.0.0 = 5.0
+value.centerDepthHalflife.0.1 = 4.9
+value.centerDepthHalflife.0.2 = 4.8
+value.centerDepthHalflife.0.3 = 4.7
+value.centerDepthHalflife.0.4 = 4.6
+value.centerDepthHalflife.0.5 = 4.5
+value.centerDepthHalflife.0.6 = 4.4
+value.centerDepthHalflife.0.7 = 4.3
+value.centerDepthHalflife.0.8 = 4.2
+value.centerDepthHalflife.0.9 = 4.1
+value.centerDepthHalflife.1.0 = 4.0
+value.centerDepthHalflife.1.1 = 3.9
+value.centerDepthHalflife.1.2 = 3.8
+value.centerDepthHalflife.1.3 = 3.7
+value.centerDepthHalflife.1.4 = 3.6
+value.centerDepthHalflife.1.5 = 3.5
+value.centerDepthHalflife.1.6 = 3.4
+value.centerDepthHalflife.1.7 = 3.3
+value.centerDepthHalflife.1.8 = 3.2
+value.centerDepthHalflife.1.9 = 3.1
+value.centerDepthHalflife.2.0 = 3.0
+value.centerDepthHalflife.2.1 = 2.9
+value.centerDepthHalflife.2.2 = 2.8
+value.centerDepthHalflife.2.3 = 2.7
+value.centerDepthHalflife.2.4 = 2.6
+value.centerDepthHalflife.2.5 = 2.5
+value.centerDepthHalflife.2.6 = 2.4
+value.centerDepthHalflife.2.7 = 2.3
+value.centerDepthHalflife.2.8 = 2.2
+value.centerDepthHalflife.2.9 = 2.1
+value.centerDepthHalflife.3.0 = 2.0
+value.centerDepthHalflife.3.1 = 1.9
+value.centerDepthHalflife.3.2 = 1.8
+value.centerDepthHalflife.3.3 = 1.7
+value.centerDepthHalflife.3.4 = 1.6
+value.centerDepthHalflife.3.5 = 1.5
+value.centerDepthHalflife.3.6 = 1.4
+value.centerDepthHalflife.3.7 = 1.3
+value.centerDepthHalflife.3.8 = 1.2
+value.centerDepthHalflife.3.9 = 1.1
+value.centerDepthHalflife.4.0 = 1.0
+value.centerDepthHalflife.4.1 = 0.9
+value.centerDepthHalflife.4.2 = 0.8
+value.centerDepthHalflife.4.3 = 0.7
+value.centerDepthHalflife.4.4 = 0.6
+value.centerDepthHalflife.4.5 = 0.5
+value.centerDepthHalflife.4.6 = 0.4
+value.centerDepthHalflife.4.7 = 0.3
+value.centerDepthHalflife.4.8 = 0.2
+value.centerDepthHalflife.4.9 = 0.1
+value.centerDepthHalflife.5.0 = 0.0
+
+# Bloom
+option.BloomEnabled =启用泛光效果
+option.BloomThreshold =泛光阈值
+option.BloomBlurRadius =泛光半径
+
+option.BloomEnabled.comment =启用泛光。使一切呈现梦幻般效果！
+option.BloomThreshold.comment =泛光的亮度阈值。
+option.BloomBlurRadius.comment =基本相当于模糊强度。可能对性能有影响！

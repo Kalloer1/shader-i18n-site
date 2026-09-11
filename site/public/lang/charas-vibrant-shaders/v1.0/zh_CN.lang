@@ -1,0 +1,14 @@
+# Chara's Vibrant Shaders v3.3
+
+screen.SHADOWS=§c☀ §l阴影
+screen.LIGHTING=§e☀ §l光照
+screen.SKY_NIGHT=§b☽ §l天空与夜晚
+screen.WATER=§3≋ §l水
+screen.POST_FX=§d✦ §l后期效果
+screen.COLOR_GRADE=§6§l色彩等级
+
+profile.POTATO=§8土豆
+profile.PERFORMANCE=§a性能
+profile.BALANCED=§e平衡
+profile.ULTRA=§b超极
+profile.CINEMATIC=§d电影

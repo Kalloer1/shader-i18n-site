@@ -1,0 +1,9 @@
+option.DEBUG_ALIGHNMENT.comment = 纹理读取。覆盖其他可视化
+option.VISUALIZED_DATA.comment = 0-平均颜色. 1-位置. 2-单个像素颜色. 3-光发射. 4-按ID的块类型
+option.VOXEL_POSITION_RECONSTRUCTION_METHOD.comment 1-passed from vertex shader. 2-reconstructed with foot position & face normals
+option.WHERE_TO_VOXELIZE.comment = 1-Gbuffers. 2-阴影通道
+screen.help= 帮助 (hover_mouse)
+screen.help.comment = 在 shader.zip 中有一个 README 文件，说明其中内容。 或者访问 patreon.com/timetravelbeard 观看免费视频系列，或在 Youtube 上观看。 在两者链接的 Discord 上提问。 玩得开心！
+
+value.RT_API.1 = 天真
+value.RT_API.2 = 双向滤波

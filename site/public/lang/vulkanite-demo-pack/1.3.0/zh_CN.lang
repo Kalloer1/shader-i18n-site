@@ -1,0 +1,7 @@
+option.ACCUMULATION_TYPE = 累积类型
+value.ACCUMULATION_TYPE.0 = 无限累积
+value.ACCUMULATION_TYPE.1 = 重投影
+
+option.RAY_BOUNCES = 反弹次数
+
+option.ACCUMULATION_LENGTH = 累积长度

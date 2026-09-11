@@ -1,0 +1,123 @@
+# B3-PvP Shader Settings
+
+# Screens
+screen.LIGHTING = 照明
+screen.POST_EFFECTS = 后期特效
+screen.CLOUDS = 云彩
+screen.FOG = 雾
+screen.WATER = 水
+screen.BLOCK_HIGHLIGHT = 方块高亮
+screen.ENTITY_HURT = 实体伤害颜色
+screen.ADJUST = 调整
+
+# Lighting
+option.FULLBRIGHT = 全亮
+option.FULLBRIGHT.comment = 启用全亮模式（移除阴影）
+
+# Post Effects
+option.MOTION_BLUR = 运动模糊
+option.MOTION_BLUR.comment = 启用相机运动模糊效果
+option.MOTION_BLUR_STRENGTH = 模糊强度
+suffix.MOTION_BLUR_STRENGTH = %
+option.MOTION_BLUR_STRENGTH.comment = 运动模糊的强度程度（50 = 低，200 = 高）
+option.MOTION_BLUR_STYLE = 模糊风格
+option.MOTION_BLUR_STYLE.comment = 选择运动模糊的风格
+option.FXAA = FXAA
+option.FXAA.comment = 启用快速近似抗锯齿
+
+# Clouds
+option.CLOUDS = 原版云彩
+option.CLOUDS.comment = 切换原版云彩渲染
+option.CLOUD_OPACITY = 云彩不透明度
+suffix.CLOUD_OPACITY = %
+option.CLOUD_OPACITY.comment = 调整云彩透明度
+
+# Fog
+option.NO_FOG = 无雾
+option.NO_FOG.comment = 禁用雾效果以获得清晰视野
+option.FOG_DENSITY = 雾密度
+suffix.FOG_DENSITY = %
+option.FOG_DENSITY.comment = 启用后雾的密度（数值越低雾越稀薄）
+
+# Water
+option.WATER_OPACITY = 水不透明度
+suffix.WATER_OPACITY = %%
+option.WATER_OPACITY.comment = 调整水的透明度（50 = 半透明，100 = 完全不透明）
+
+# Boolean Options
+value.MOTION_BLUR.0 = 关闭
+value.MOTION_BLUR.1 = 开启
+value.FXAA.0 = 关闭
+value.FXAA.1 = 开启
+value.CLOUDS.0 = 关闭
+value.CLOUDS.1 = 开启
+value.NO_FOG.0 = 关闭
+value.NO_FOG.1 = 开启
+value.FULLBRIGHT.0 = 关闭
+value.FULLBRIGHT.1 = 开启
+value.BLOCK_SELECTION_GRADIENT_SWIRL.0 = 关闭
+value.BLOCK_SELECTION_GRADIENT_SWIRL.1 = 开启
+value.CUSTOM_OUTLINE.0 = 关闭
+value.CUSTOM_OUTLINE.1 = 开启
+
+# Motion Blur Styles
+value.MOTION_BLUR_STYLE.0 = 月光（流畅）
+value.MOTION_BLUR_STYLE.1 = Badlion（强劲）
+value.MOTION_BLUR_STYLE.2 = 清爽（柔和）
+value.MOTION_BLUR_STYLE.3 = PvP（竞技）
+
+# Block Highlight
+option.BLOCK_SELECTION_MODE = 方块高亮模式
+option.BLOCK_SELECTION_MODE.comment = 选择查看方块时的高亮方式
+value.BLOCK_SELECTION_MODE.0 = 正常
+value.BLOCK_SELECTION_MODE.1 = RGB
+value.BLOCK_SELECTION_MODE.2 = 彩虹
+value.BLOCK_SELECTION_MODE.3 = 渐变
+option.BLOCK_SELECTION_OPACITY = 不透明度
+suffix.BLOCK_SELECTION_OPACITY = %
+option.BLOCK_SELECTION_OPACITY.comment = 方块高亮的不透明度
+option.BLOCK_SELECTION_GRADIENT_SWIRL = 渐变螺旋
+option.BLOCK_SELECTION_GRADIENT_SWIRL.comment = 动画化渐变角度
+option.BLOCK_SELECTION_COLOR_R = 颜色 1 红色
+option.BLOCK_SELECTION_COLOR_G = 颜色 1 绿色
+option.BLOCK_SELECTION_COLOR_B = 颜色 1 蓝色
+option.BLOCK_SELECTION_COLOR2_R = 颜色 2 红色（渐变）
+option.BLOCK_SELECTION_COLOR2_G = 颜色 2 绿色（渐变）
+option.BLOCK_SELECTION_COLOR2_B = 颜色 2 蓝色（渐变）
+option.CUSTOM_OUTLINE = 自定义轮廓
+option.CUSTOM_OUTLINE.comment = 启用可调节粗细的自定义方块轮廓（取代原版轮廓）
+option.OUTLINE_THICKNESS = 轮廓粗细
+option.OUTLINE_THICKNESS.comment = 自定义方块轮廓的粗细
+option.OUTLINE_COLOR_R = 轮廓红色
+option.OUTLINE_COLOR_G = 轮廓绿色
+option.OUTLINE_COLOR_B = 轮廓蓝色
+
+# Entity Hurt Color
+option.ENTITY_HURT_COLOR_R = 红色
+option.ENTITY_HURT_COLOR_G = 绿色
+option.ENTITY_HURT_COLOR_B = 蓝色
+option.ENTITY_HURT_COLOR_A = 透明度
+suffix.ENTITY_HURT_COLOR_A = %
+option.ENTITY_HURT_COLOR_R.comment = 实体受伤闪光颜色的红色通道
+option.ENTITY_HURT_COLOR_G.comment = 实体受伤闪光颜色的绿色通道
+option.ENTITY_HURT_COLOR_B.comment = 实体受伤闪光颜色的蓝色通道
+option.ENTITY_HURT_COLOR_A.comment = 实体受伤闪光的透明度（30 为原版默认值）
+
+# Adjust
+option.ADJUST = 启用调整
+option.ADJUST.comment = 启用后处理调整
+option.SATURATION = 饱和度
+suffix.SATURATION = %
+option.SATURATION.comment = 颜色饱和度水平（100 为默认值）
+option.CONTRAST = 对比度
+suffix.CONTRAST = %
+option.CONTRAST.comment = 图像对比度（100 为默认值）
+option.WHITE_BALANCE = 白平衡
+suffix.WHITE_BALANCE = %
+option.WHITE_BALANCE.comment = 色温（0 为冷蓝，50 为中性，100 为暖黄）
+option.GAMMA = 伽马
+suffix.GAMMA = %
+option.GAMMA.comment = 显示伽马校正（50 为默认值）
+
+value.ADJUST.0 = 关闭
+value.ADJUST.1 = 开启

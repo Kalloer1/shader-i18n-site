@@ -1,0 +1,12 @@
+screen.Settings=光影设置
+screen.About=关于
+
+option.PIXEL_SIZE=像素大小
+suffix.PIXEL_SIZE=x
+option.PIXEL_SIZE.comment=降低分辨率以呈现复古低分辨率效果。数值越大，像素越大。
+
+option.DITHER=抖动
+option.DITHER.comment=启用有序抖动以减少256色调色板中的色带。
+
+option.CREDIT1=Mew Chippa256 光影
+option.CREDIT2=v0.3

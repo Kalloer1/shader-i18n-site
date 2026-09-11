@@ -1,0 +1,440 @@
+#shaders/lang/en_us.lang
+
+profile.LOWEST=最低
+profile.LOW=低
+profile.NORMAL=普通
+profile.HIGH=高
+
+option.REFORGED_INFO=扎里亚
+option.REFORGED_INFO.comment=基于 minecraft-miniature-shader 的附加组件，名为扎里亚
+value.REFORGED_INFO.0=§eY轴抛出新错误
+value.REFORGED_INFO.1=§aY轴抛出新错误
+value.REFORGED_INFO.2=§bY轴抛出新错误
+value.REFORGED_INFO.3=§dY轴抛出新错误
+
+screen.WATER_SCREEN=水
+screen.WATER_WAVES_SCREEN=波浪
+screen.WATER_UNDER_SCREEN=水下
+option.WATER_BRIGHTNESS=水体亮度
+option.WATER_B=水体蓝度调节
+option.WATER_A=水不透明度
+option.WATER_MIN_GLINT=水体闪光强度 [?§e]
+option.WATER_MIN_GLINT.comment=决定水体保留多少纹理；流动的水仍保留所有纹理
+option.WATER_GLINT_BRIGHTNESS=水体闪光亮度
+option.WATER_GLINT_CUTOFF=水体闪光裁切
+option.WATER_WAVE_SIZE=波浪大小
+option.WATER_WAVE_SPEED=波浪速度 [§e?]
+option.WATER_WAVE_SPEED.comment=一个循环周期内包含多少个波纹周期
+option.WATER_WAVE_PERIOD=波浪循环周期 [§e?]
+option.WATER_WAVE_PERIOD.comment=直到水面完全重复（逐帧相同）所需的秒数。原版与远处地平线共享此时钟
+option.WATER_WAVE_DIR=波浪方向 [?§e]
+option.WATER_WAVE_DIR.comment=当前水流的指南针航向（度）。0 = +x方向，90 = +z方向。水流保持单向；循环周期仍逐帧匹配
+option.WATER_FOG=水下雾 [?§e]
+option.WATER_FOG.comment=当摄像机位于水下时的吸收与蓝绿色薄雾
+option.WATER_FOG_DENSITY=水下雾气密度
+option.WATER_FOG_EXPONENT=水下雾衰减 [?§e]
+option.WATER_FOG_EXPONENT.comment=值越负=雾随距离增加得越快
+
+screen.COLORS_SCREEN=火把颜色
+option.TORCH_INNER_R=内层火炬 红§c
+option.TORCH_INNER_G=内层火炬 绿§2
+option.TORCH_INNER_B=内层火炬 蓝§9
+option.TORCH_MIDDLE_R=中层火炬 红§c
+option.TORCH_MIDDLE_G=中层火炬 绿§2
+option.TORCH_MIDDLE_B=中层火炬 蓝§9
+option.TORCH_OUTER_R=外层火炬 红§c
+option.TORCH_OUTER_G=外层火炬 绿§2
+option.TORCH_OUTER_B=外层火把 B 通§9道
+option.MOON_R=月亮 R 通§c道
+option.MOON_G=月亮 G 通§2道
+option.MOON_B=月亮 B 通§9道
+
+screen.ATMOSPHERE_SCREEN=天空
+screen.AIR_FOG_SCREEN=雾
+screen.OVERWORLD_STARS_SCREEN=星星
+screen.END_SKY_SCREEN=末地天空
+screen.MOON_COLOR_SCREEN=月亮颜色
+screen.NETHER_WORLD_SCREEN=下界世界
+screen.CYCLES_SCREEN=循环
+screen.CYCLE_WATER_SCREEN=水体循环
+screen.CYCLE_WAVING_SCREEN=植被
+screen.CYCLE_STAR_SCREEN=星星
+screen.CYCLE_END_SCREEN=末地星空
+screen.CYCLE_CLOUD_SCREEN=云层风速
+screen.POST_SCREEN=后期处理
+screen.MATERIALS_SCREEN=材质
+option.ENABLE_FOG=启用雾效
+option.WEATHER_OPACITY=天气不透明度
+option.ENABLE_SKY=启用天空 [§e?]
+option.ENABLE_SKY.comment=若您使用天空资源包，请关闭此选项
+option.SHADER_STARS=着色器星空 [§e?]
+option.SHADER_STARS.comment=程序化星空替代原版点状星。关闭 = 原版星空
+option.STAR_BRIGHTNESS=星星亮度
+option.STAR_AMOUNT=星星数量
+option.STAR_SIZE=星体大小
+option.STAR_PERIOD=星空循环周期 [§e?]
+option.STAR_PERIOD.comment=星空与闪烁完全重合（逐帧对应）所需的秒数，无跳帧现象
+option.STAR_SPEED=星空速度 [§e?]
+option.STAR_SPEED.comment=单个周期内包含的星空扫过次数。0 = 静止，0.5 = 一次扫过，1.0 = 两次。循环流畅，原理类似水波
+option.STAR_PHASE=星空相位 [§e?]
+option.STAR_PHASE.comment=循环偏移量。0 = 时钟起点，0.5 = 循环中途
+option.VANILLA_LIKE_SUN=类原版太阳 [?§e]
+option.VANILLA_LIKE_SUN.comment=基于净化版原版太阳.png的硬边方形太阳（无光晕）。关闭 = 程序化圆形太阳
+option.VANILLA_LIKE_MOON=类原版月亮 [?§e]
+option.VANILLA_LIKE_MOON.comment=基于净化版原版月相.png的硬边方形月相（无光晕）
+screen.CLOUDS_SCREEN=云
+screen.CLOUD_LC_SCREEN=低层云
+screen.CLOUD_MC_SCREEN=中层云
+screen.CLOUD_UC_SCREEN=高层云
+option.SHADER_CLOUDS=着色器云层 [§e?]
+option.SHADER_CLOUDS.comment=开启 = 体积积云（3层）。关闭 = 原版方块云（需在视频设置中启用云层）
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=将所有着色器云层投射到地形表面
+option.CLOUD_RAIN_AMOUNT=雨云覆盖率 [§e?]
+option.CLOUD_RAIN_AMOUNT.comment=降雨时所有云层的覆盖率倍增系数。1.0 = 无变化
+
+option.CLOUD_LC_AMOUNT=覆盖范围
+option.CLOUD_LC_AMOUNT.comment=此云层覆盖的天空比例
+option.CLOUD_LC_HEIGHT=海拔
+option.CLOUD_LC_HEIGHT.comment=低层云基础高度（约120）
+option.CLOUD_LC_THICKNESS=厚度 [?§e]
+option.CLOUD_LC_THICKNESS.comment=云层板块的垂直深度
+option.CLOUD_LC_SCALE=比例 [§e?]
+option.CLOUD_LC_SCALE.comment=云团的水平尺寸
+option.CLOUD_LC_DENSITY=密度
+option.CLOUD_LC_DETAIL=细节
+option.CLOUD_LC_SPEED=低层·风 [§e?]
+option.CLOUD_LC_SPEED.comment=低层云在封闭风场循环中的移动距离。循环终点与起点匹配，无平铺重置
+option.CLOUD_LC_LOOP_SECONDS=低层·循环 [§e?]
+option.CLOUD_LC_LOOP_SECONDS.comment=低层云完全重合（逐帧对应）所需的秒数
+option.CLOUD_LC_OPACITY=不透明度
+option.CLOUD_LC_OPACITY.comment=此层的致密程度
+option.CLOUD_LC_SAMPLES=采样数 [§e?]
+option.CLOUD_LC_SAMPLES.comment=此层的光线步进精度
+option.CLOUD_LC_DISTANCE=渲染距离
+
+option.CLOUD_MC_AMOUNT=覆盖范围
+option.CLOUD_MC_AMOUNT.comment=此云层覆盖的天空比例
+option.CLOUD_MC_HEIGHT=海拔
+option.CLOUD_MC_HEIGHT.comment=中层云基础高度（约220）
+option.CLOUD_MC_THICKNESS=厚度 [?§e]
+option.CLOUD_MC_THICKNESS.comment=云层板块的垂直深度
+option.CLOUD_MC_SCALE=比例 [§e?]
+option.CLOUD_MC_SCALE.comment=云团的水平尺寸
+option.CLOUD_MC_DENSITY=密度
+option.CLOUD_MC_DETAIL=细节
+option.CLOUD_MC_SPEED=中层·风 [§e?]
+option.CLOUD_MC_SPEED.comment=中层云在封闭风场循环中的移动距离。无平铺重置
+option.CLOUD_MC_LOOP_SECONDS=中层·循环 [§e?]
+option.CLOUD_MC_LOOP_SECONDS.comment=中层云完全重合（逐帧对应）所需的秒数
+option.CLOUD_MC_OPACITY=不透明度
+option.CLOUD_MC_OPACITY.comment=此层的致密程度
+option.CLOUD_MC_SAMPLES=采样数 [§e?]
+option.CLOUD_MC_SAMPLES.comment=此层的光线步进精度
+option.CLOUD_MC_DISTANCE=渲染距离
+
+option.CLOUD_UC_AMOUNT=覆盖范围
+option.CLOUD_UC_AMOUNT.comment=此云层覆盖的天空比例
+option.CLOUD_UC_HEIGHT=海拔
+option.CLOUD_UC_HEIGHT.comment=高层云基础高度（约320）
+option.CLOUD_UC_THICKNESS=厚度 [?§e]
+option.CLOUD_UC_THICKNESS.comment=云层板块的垂直深度
+option.CLOUD_UC_SCALE=比例 [§e?]
+option.CLOUD_UC_SCALE.comment=云团的水平尺寸
+option.CLOUD_UC_DENSITY=密度
+option.CLOUD_UC_DETAIL=细节
+option.CLOUD_UC_SPEED=高层·风 [§e?]
+option.CLOUD_UC_SPEED.comment=高层云在封闭风场循环中的移动距离。无平铺重置
+option.CLOUD_UC_LOOP_SECONDS=高层·循环 [§e?]
+option.CLOUD_UC_LOOP_SECONDS.comment=高层云完全重合（逐帧对应）所需的秒数
+option.CLOUD_UC_OPACITY=不透明度
+option.CLOUD_UC_OPACITY.comment=此层的致密程度
+option.CLOUD_UC_SAMPLES=采样数 [§e?]
+option.CLOUD_UC_SAMPLES.comment=此层的光线步进精度
+option.CLOUD_UC_DISTANCE=渲染距离
+option.TAA=时间性抗锯齿§e [?]
+option.TAA.comment=基于历史混合的时间平滑技术（采用Catmull-Rom插值）。随时间减少颗粒感/锯齿。高速镜头移动可能产生拖影；在高分辨率下效果更佳。边缘抗锯齿采用FXAA
+option.TAA_STRENGTH=时间性抗锯齿强度 [§e?]
+option.TAA_STRENGTH.comment=0 = 关闭。历史帧混合强度。数值越高图像越平滑、颗粒感越少，但拖影/鬼影更明显
+option.FXAA=快速近似抗锯齿§e [?]
+option.FXAA.comment=边缘抗锯齿技术。计算成本低，无画面抖动，无拖影。此为主要抗锯齿手段
+option.SHARPEN_STRENGTH=锐化 [§e?]
+option.SHARPEN_STRENGTH.comment=在FXAA后恢复画面锐度。0为关闭。默认约0.3
+option.SUNSET_INTENSITY=日落/日出强度 [?§e]
+option.SUNSET_INTENSITY.comment=黎明与黄昏时地平线橙粉色光晕的强度
+option.STYLE_EXPOSURE=整体亮度 [?§e]
+option.STYLE_EXPOSURE.comment=数值越低画面越昏暗。高光区域比其他部分稍亮
+option.STYLE_SATURATION=饱和度
+option.STYLE_CONTRAST=对比度
+option.OVERWORLD_FOG_MAX_SLIDER=主世界过渡雾效 [?§e]
+option.OVERWORLD_FOG_MAX_SLIDER.comment=日出日落时的雾效强度
+option.OVERWORLD_FOG_MIN_SLIDER=主世界雾
+option.END_STARS_SPEED=末地流星速度 [§e?]
+option.END_STARS_SPEED.comment=每次循环的下落次数，取整使u=0与u=1状态匹配。0.05×20秒=1次
+option.END_STARS_PERIOD=末地流星循环周期 [?§e]
+option.END_STARS_PERIOD.comment=流星完全重现（逐帧对应）所需的秒数
+option.END_STARS_PHASE=末地流星相位 [§e?]
+option.END_STARS_PHASE.comment=循环偏移量。0 = 时钟起点，0.5 = 循环中途
+option.END_STARS_AMOUNT=末地星星数量
+option.END_STARS_OPACITY=末地星星不透明度
+option.END_STARS_OPACITY.comment=末地星空在天空中的可见程度。
+option.END_FOG=末地薄雾 [§e?]
+option.END_FOG.comment=柔和的紫色距离薄雾，减少末地干燥感。匹配远距离地平线细节层级
+option.END_FOG_STRENGTH=霾强度
+option.END_FOG_STRENGTH.comment=末地薄雾总量
+option.END_FOG_DENSITY=霾密度 [?§e]
+option.END_FOG_DENSITY.comment=远景融入紫色雾霭的速度
+option.END_FOG_SAMPLES=霾采样数
+option.END_FOG_SAMPLES.comment=更多步长 = 更柔和的层次
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE.comment=基于站立位置亮度（眼睛亮度），而非视野方向亮度。火把/太阳降低环境亮度值；洞穴提升该值
+option.AUTO_EXPOSURE_STRENGTH=自动曝光强度
+option.AUTO_EXPOSURE_SPEED=自动曝光速度 [?§e]
+option.AUTO_EXPOSURE_SPEED.comment=在明暗区域间移动时曝光适应的快慢
+option.VL=体积光 / 光柱
+option.VL.comment=透过树叶/窗户看向太阳。需开启阴影。直射阳光被抑制；穿透树冠的光柱保留。~0.3通常效果较好
+option.VL_STRENGTH=丁达尔效应强度
+option.VL_SAMPLES=神光采样数
+option.VL_SAMPLES.comment=采样数越多，光柱越干净。噪点通常来自抖动/树叶阴影，不仅仅是采样数；12–16通常足够
+
+screen.SHADOWS_SCREEN=光照
+screen.SHADOW_MAP_SCREEN=阴影贴图
+screen.AO_SCREEN=环境光遮蔽
+screen.VL_SCREEN=神圣光芒 
+screen.LIGHT_FX_SCREEN=补光
+option.SHADOW_BLUENESS=阴影蓝度
+option.shadowDistance=阴影距离
+option.shadowMapResolution=阴影分辨率
+option.shadowIntervalSize=阴影重聚焦速率 [?§e]
+option.shadowIntervalSize.comment=阴影在多少方块距离后重新聚焦于玩家
+option.entityShadowDistanceMul=实体阴影距离 [?§e]
+option.entityShadowDistanceMul.comment=作为阴影距离的百分比
+option.SHADOW_PIXEL=阴影像素化 [?§e]
+option.SHADOW_PIXEL.comment=将阴影对齐至方块网格。保持为0可获得几何精确的硬阴影
+option.SHADOW_FILTER=阴影滤波 [?§e]
+option.SHADOW_FILTER.comment=关 = 锐利边缘带双重采样抗锯齿（隐藏阴影贴图方块）。越高 = 半影越柔和
+value.SHADOW_FILTER.0=§e关（锐利）
+value.SHADOW_FILTER.1=§e低
+value.SHADOW_FILTER.2=§e中
+value.SHADOW_FILTER.3=§e高
+option.SHADOW_SHARPNESS=阴影锐度 [?§e]
+option.SHADOW_SHARPNESS.comment=10 = 紧密抗锯齿，0 = 略宽。保持关 + 10可获得无像素阶梯的清晰阴影
+option.LIGHT_BRIGHTNESS=太阳亮度
+option.sunPathRotation=太阳路径角度 [§e!]
+option.sunPathRotation.comment=迷你版设计时考虑了直线阴影，更改可能产生瑕疵
+option.SHADOW_DARKNESS=阴影暗度
+option.FLAT_LIGHTING=使用平面光照 [?§e]
+option.FLAT_LIGHTING.comment=不使用平面光照时，方块阴影将与太阳位置不匹配，如同原版
+option.ENABLE_SHADOWS=启用阴影
+option.SHADOW_ENTITY=实体阴影
+value.SHADOW_ENTITY.-1=§a关
+value.SHADOW_ENTITY.0=§e玩家
+value.SHADOW_ENTITY.1=§e全部
+option.SSAO=屏幕空间环境光遮蔽 / 游戏空间环境光遮蔽
+option.SSAO.comment=使缝隙与角落变暗（屏幕空间环境光遮蔽）
+option.AO_MODE=环境光遮蔽模式
+value.AO_MODE.0=§e屏幕空间环境光遮蔽
+value.AO_MODE.1=§e类似游戏空间环境光遮蔽
+option.AO_STRENGTH=环境光遮蔽强度
+option.AO_RADIUS=环境光遮蔽半径 
+option.AO_SAMPLES=环境光遮蔽采样数 
+
+screen.REFLECTIONS_SCREEN=反射
+option.REFLECTIONS=反射不透明度
+option.SUN_MOON_GLINT=太阳/月亮光斑 [§e?]
+option.SUN_MOON_GLINT.comment=太阳和月亮在水面、玻璃、冰面及其他反射表面上的镜面高光
+option.BLOCK_REFLECTIONS=方块反射不透明度 [?§e]
+option.BLOCK_REFLECTIONS.comment=ipbr/反射方块上的反射强度
+option.SSR_MAX_STEPS=最大步数
+option.SSR_BINARY_STEPS=最大细化步数
+option.SSR_STEP_SIZE=步长
+
+screen.IPBR_SCREEN=集成式基于物理的渲染
+option.GENERATED_SPECULAR=生成的镜面反射 [?§e]
+option.GENERATED_SPECULAR.comment=基于方块类型与纹理亮度的程序化平滑度和金属度（无需pbr资源包）
+option.GENERATED_EMISSION=生成的自发光 [?§e]
+option.GENERATED_EMISSION.comment=基于纹理颜色的矿石、荧光菌、幽匿感测体及光源的程序化辉光
+option.GENERATED_NORMALS=生成的法线 [?§e]
+option.GENERATED_NORMALS.comment=基于纹理亮度差异的伪凹凸映射
+option.GENERATED_SPECULAR_ON_ALL=所有方块启用镜面反射 [§e?]
+option.GENERATED_SPECULAR_ON_ALL.comment=为每个方块添加微小基础光泽
+option.EMISSION_STRENGTH=自发光强度
+option.IPBR_REFLECTION_STRENGTH=反射强度
+option.NORMAL_STRENGTH=法线强度
+option.NORMAL_RESOLUTION=正常分辨率
+option.NORMAL_THRESHOLD=正常阈值
+
+screen.OTHER_SCREEN=世界
+option.WAVING_LEAVES=摇摆树叶
+option.WAVING_PLANTS=植物摆动
+option.WAVING_CYCLE=摆动周期 [§e?]
+option.WAVING_CYCLE.comment=植被运动完全重复所需的秒数，帧对帧相同
+option.WAVING_WAVES=每周期摆动次数 [§e?]
+option.WAVING_WAVES.comment=晴朗天气下一个周期内的摆动次数。必须保持整数以确保循环精确
+option.WAVING_WAVES_RAIN=雨天每周期摆动次数 [§e?]
+option.WAVING_WAVES_RAIN.comment=满雨时的波浪计数。作为独立运动淡入，因此降雨开始/结束不会加速摆动
+option.WAVING_AMPLITUDE=波动强度
+option.WAVING_RAIN_MULT=雨天摆动增强 [?§e]
+option.WAVING_RAIN_MULT.comment=雨中植物和树叶摆动的强度提升。下雪时运动停止
+option.FOLIAGE_SSS=植被次表面散射
+option.FOLIAGE_SSS.comment=叶片逆光的次表面散射。0.4 = 中等，0.8 = 最大
+option.FOLIAGE_SSS_STRENGTH=植被次表面散射强度
+option.HIGHLIGHT_WAXED=高亮涂蜡方块 [?§e]
+option.HIGHLIGHT_WAXED.comment=手持蜂巢会高亮被蜡封的方块
+option.GLOWING_ORES=发光矿石
+option.NETHER_COLOR_GRADING=下界色彩分级 [?§e]
+option.NETHER_COLOR_GRADING.comment=微暖调与高光过渡，使岩浆保持橙色而非白色
+option.NETHER_AMBIENT=下界亮度 [?§e]
+option.NETHER_AMBIENT.comment=为洞穴提供微弱填充光。0.95 默认——类光子效果，略暗。若感觉太暗可提高
+option.NETHER_FOG=下界薄雾 [§e?]
+option.NETHER_FOG.comment=类光子效果：浓厚暗沉的昏暗。远处融入绯红阴影；岩浆保持明亮点缀。并非发辉光的橙色天空
+option.NETHER_FOG_STRENGTH=霾强度
+option.NETHER_FOG_DENSITY=霾密度 [?§e]
+option.NETHER_FOG_DENSITY.comment=洞穴变暗的速度。1.15 默认。越高 = 烟雾效果越浓重
+option.NETHER_FOG_GLOW=薄雾中的岩浆辉光 [§e?]
+option.NETHER_FOG_GLOW.comment=仅在岩浆海附近的温暖底光。保持较低以使空气保持黑暗
+option.NETHER_BLOOM=岩浆泛光 [§e?]
+option.NETHER_BLOOM.comment=岩浆/火焰上的集中辉光。默认值较低以免泛光充满洞穴
+option.NETHER_FOG_SAMPLES=霾采样数
+option.NETHER_FOG_SAMPLES.comment=步数越多 = 层次越平滑。12通常足够
+option.NETHER_FOG_EMBERS=灰烬云 [?§e]
+option.NETHER_FOG_EMBERS.comment=薄雾中缓慢移动的大片灰烬区域。默认关闭——无时间抗锯齿时可能显颗粒感
+option.HAND_DYNAMIC_LIGHTING=手持动态光照
+value.HAND_DYNAMIC_LIGHTING.-1=§a关
+value.HAND_DYNAMIC_LIGHTING.0=§e带光照
+value.HAND_DYNAMIC_LIGHTING.1=§e始终
+
+screen.EVENTS_SCREEN=事件
+screen.FLOWER_FESTIVAL_SCREEN=花卉节
+option.FLOWER_FESTIVAL=花卉节
+option.FLOWER_FESTIVAL.comment=花朵开始随花瓣颜色发光。花朵离玩家越近越亮；远处花朵渐隐。启用光传播体积时，花朵也会以其自身颜色照亮周围地面。
+option.EVENT_FLOWER_BRIGHTNESS=辉光亮度
+option.EVENT_FLOWER_BRIGHTNESS.comment=花朵在事件期间的发光强度。
+option.EVENT_FLOWER_FADE_START=渐隐起始
+option.EVENT_FLOWER_FADE_START.comment=与玩家之间的距离，花朵在此距离内以全强度发光，超出后开始渐隐。
+option.EVENT_FLOWER_FADE_END=渐隐结束
+option.EVENT_FLOWER_FADE_END.comment=与玩家之间的距离，超出此距离后光芒完全消失。
+
+screen.DH_SCREEN=远景地平线
+option.DH_SEAM_MARGIN=细节层次接缝边距 [§e?]
+option.DH_SEAM_MARGIN.comment=在原版渲染距离之前多少区块远距离地平线地形会完全淡入。数值越低 = 细节层次开始得越近，隐藏原版/远距离地平线接缝。
+option.DH_SEAM_WIDTH=细节层次接缝宽度
+option.DH_SEAM_DITHER=抖动细节层次接缝 [§e?]
+option.DH_SEAM_DITHER.comment=柔化原版/远距离地平线过渡。仅当在接缝处看到噪点时才禁用。
+option.DH_TERRAIN_NOISE=细节层次地形噪声
+option.DH_SHADOW_ENABLED=细节层次阴影投射者 [§e?]
+option.DH_SHADOW_ENABLED.comment=允许远距离地平线写入阴影贴图。不会对超出阴影距离的细节层次进行着色——为此请使用接触阴影。
+option.DH_FOLIAGE_SSS=细节层次植被次表面散射 [§e?]
+option.DH_FOLIAGE_SSS.comment=对细节层次树叶应用环绕光照，使树方块不再完全明亮。
+option.DH_AO=细节层次环境光遮蔽 [§e?]
+option.DH_AO.comment=对远距离地平线地形的屏幕空间环境光遮蔽（丘陵与树丛间的缝隙）。
+option.DH_DEPTH_SHADOWS=细节层次接触阴影 [§e?]
+option.DH_DEPTH_SHADOWS.comment=对比原版 + 细节层次深度追踪阳光，使远处树木无需巨大阴影贴图也能获得接触阴影。
+option.DH_DEPTH_SHADOW_STEPS=接触阴影步数
+
+screen.LPV_SCREEN=光线体素化
+option.LPV_ENABLED=光线体素化（LPV）[?§e]
+option.LPV_ENABLED.comment=火把、荧光石和岩浆以自身颜色发光。完全替代原版方块光照。显存：1024×512 — 约 10 吉比字节，1024×256 — 约 5 吉比字节，默认 128×64 — 约 20 兆比字节。
+option.LPV_SIZE_XZ=体积宽度 [§e?]
+option.LPV_SIZE_XZ.comment=体素体积的水平边（X/Z），以你为中心的区块数。1 区块 = 16 方块。体素光线在范围外不存在；有效距离为边长的一半。内存与计算量随宽度² × 高度增长。
+option.LPV_SIZE_Y=体积高度 [?§e]
+option.LPV_SIZE_Y.comment=体素体积的垂直边（Y），以你的眼睛高度为中心的方块数。96 方块（上下各 48）适合大多数玩家建筑与居所。内存与计算量随宽度² × 高度增长。
+option.LPV_DEBUG_BOUNDS=显示体积边界 [?§e]
+option.LPV_DEBUG_BOUNDS.comment=调试
+option.LPV_BRIGHTNESS=亮度
+option.LPV_BRIGHTNESS.comment=1.0 匹配原版火把衰减曲线。更高数值仅在该基础上增加额外能量。
+option.LPV_FALLOFF=衰减 [§e?]
+option.LPV_FALLOFF.comment=光线在一个体素内保留的亮度比例，决定了光源的照射距离。高数值使光线深入洞穴，但也会冲淡房间形状。
+option.LPV_DAY_LEAK=日光泄漏 [?§e]
+option.LPV_DAY_LEAK.comment=在完全日照下保留的彩色方块光比例。火把在黑暗洞穴中始终以全强度生效；此项仅决定它们在正午时仍能为表面染色的程度。
+option.LPV_SATURATION=光源饱和度
+option.LPV_SATURATION.comment=光源调色板的饱和度。设为 0 会使所有光源变为白色。
+option.LPV_TINT_SATURATION=玻璃饱和度
+option.LPV_TINT_SATURATION.comment=彩色玻璃为穿过的光线染色的饱和度。
+option.AIR_FOG=3D 空气雾 [§e?]
+option.AIR_FOG.comment=体积雾：蓝色远景（瑞利散射）+ 地面/日落辉光（米氏散射）。基于高度，因此山峰会穿透。替代主世界距离雾。加载远距离地平线时会渲染至其范围。
+option.AIR_FOG_STRENGTH=3D 雾强度
+option.AIR_FOG_DENSITY=瑞利密度 [?§e]
+option.AIR_FOG_DENSITY.comment=随距离增加的蓝色大气薄雾。数值越强 = 越远的地形越早融入天空。
+option.AIR_FOG_MIE=米氏薄雾 [§e?]
+option.AIR_FOG_MIE.comment=接近地面的白色/金色薄雾。在黎明、黄昏和雨天更强。
+option.AIR_FOG_HEIGHT=海拔衰减 [?§e]
+option.AIR_FOG_HEIGHT.comment=雾保持浓密的高度。数值越低 = 雾贴近山谷；数值越高 = 薄雾填充更多天空。
+option.AIR_FOG_SAMPLES=3D 雾采样数
+option.AIR_FOG_SAMPLES.comment=更多步数 = 远距离地平线地形上的高度层更平滑。12 通常足够。
+option.AIR_FOG_RAIN=雨雾增强
+option.AIR_FOG_NOISE=云雾 [?§e]
+option.AIR_FOG_NOISE.comment=米氏层中的柔和噪声团块。在山谷黎明时最明显。
+
+option.AIR_FOG_RAIN.comment=体积空气雾的降雨增强。
+option.AIR_FOG_STRENGTH.comment=3D 雾“吞噬”距离与大气深度的强度。
+option.AO_MODE.comment=环境光遮蔽计算模式（SSAO / GTAO）。
+option.AO_RADIUS.comment=环境光遮蔽采样半径。
+option.AO_SAMPLES.comment=环境光遮蔽采样数。数值越高 = 越平滑，但负载更重。
+option.AO_STRENGTH.comment=环境光遮蔽暗化强度。
+option.AUTO_EXPOSURE_STRENGTH.comment=自动曝光强度：亮度变化的主动程度。
+option.CLOUD_LC_DENSITY.comment=低层（LC）云层的密度。
+option.CLOUD_LC_DETAIL.comment=低层云层的细节级别。
+option.CLOUD_LC_DISTANCE.comment=低层云的绘制距离。
+option.CLOUD_MC_DENSITY.comment=中层（MC）云层的密度。
+option.CLOUD_MC_DETAIL.comment=中层云层的细节层级。
+option.CLOUD_MC_DISTANCE.comment=中层云的绘制距离。
+option.CLOUD_UC_DENSITY.comment=高层（UC）云层的密度。
+option.CLOUD_UC_DETAIL.comment=高层云层的细节层级。
+option.CLOUD_UC_DISTANCE.comment=高层云的绘制距离。
+option.DH_DEPTH_SHADOW_STEPS.comment=按深度划分的接触阴影步数。
+option.DH_SEAM_WIDTH.comment=远景视界中LOD缝合平滑区域的宽度（越宽 = 过渡越柔和）。
+option.DH_TERRAIN_NOISE.comment=用于更自然等级过渡的LOD地形噪波。
+option.EMISSION_STRENGTH.comment=具有自发光属性的材质和方块的发光强度。
+option.ENABLE_FOG.comment=启用雾。
+option.ENABLE_SHADOWS.comment=启用阴影。
+option.END_STARS_AMOUNT.comment=末地星空密度（可见星星的数量）。
+option.END_STARS_OPACITY.comment=末地星空在天空中的可见程度。
+option.FOLIAGE_SSS_STRENGTH.comment=树叶在逆光下的次表面散射强度。
+option.GLOWING_ORES.comment=为发光矿石启用增强辉光效果。
+option.HAND_DYNAMIC_LIGHTING.comment=来自手持物品的动态光照。
+option.IPBR_REFLECTION_STRENGTH.comment=IPBR中的反射强度。
+option.LIGHT_BRIGHTNESS.comment=太阳亮度。
+option.MOON_B.comment=月光蓝色分量。
+option.MOON_G.comment=月光绿色分量。
+option.MOON_R.comment=月光红色分量。
+option.NETHER_FOG_STRENGTH.comment=下界雾气强度。
+option.NORMAL_RESOLUTION.comment=程序化法线的分辨率。越高 = 越精确。
+option.NORMAL_STRENGTH.comment=程序化法线的强度。
+option.NORMAL_THRESHOLD.comment=法线生成阈值：将弱细节与噪波分离。
+option.OVERWORLD_FOG_MIN_SLIDER.comment=主世界最低雾气强度。
+option.REFLECTIONS.comment=整体反射不透明度（SSR可见性）。
+option.SHADOW_BLUENESS.comment=阴影色调：阴影的冷色/蓝色调程度。
+option.SHADOW_DARKNESS.comment=整体阴影暗度：阴影使区域变暗的强度。
+option.SHADOW_ENTITY.comment=实体阴影。
+option.SSR_BINARY_STEPS.comment=SSR末端的细化步骤（越高 = 越精确，但负载越重）。
+option.SSR_MAX_STEPS.comment=SSR光线追踪最大步数。
+option.SSR_STEP_SIZE.comment=SSR步长（越小 = 越精确，越大 = 越快）。
+option.STAR_AMOUNT.comment=星空密度（可见星星的数量）。
+option.STAR_BRIGHTNESS.comment=星星亮度与整体星空闪烁度。
+option.STAR_SIZE.comment=星星尺寸缩放。
+option.STYLE_CONTRAST.comment=色彩分级对比度。
+option.STYLE_SATURATION.comment=色彩分级饱和度。
+option.TORCH_INNER_B.comment=火把颜色蓝色分量（内层）。
+option.TORCH_INNER_G.comment=火把颜色绿色分量（内层）。
+option.TORCH_INNER_R.comment=火把颜色红色分量（内层）。
+option.TORCH_MIDDLE_B.comment=火把颜色蓝色分量（中层）。
+option.TORCH_MIDDLE_G.comment=火把颜色绿色分量（中层）。
+option.TORCH_MIDDLE_R.comment=火把颜色红色分量（中层）。
+option.TORCH_OUTER_B.comment=火把颜色蓝色分量（外层）。
+option.TORCH_OUTER_G.comment=火把颜色绿色分量（外层）。
+option.TORCH_OUTER_R.comment=火把颜色红色分量（外层）。
+option.VL_STRENGTH.comment=体积光照强度（VL）。
+option.WATER_A.comment=水不透明度：遮蔽地面和体积的强度。
+option.WATER_B.comment=水体色调：冷色/蓝色调的程度。
+option.WATER_BRIGHTNESS.comment=水面及附近反射的发光亮度。
+option.WATER_FOG_DENSITY.comment=水下雾气随距离的密度（随深度变暗的速度）。
+option.WATER_GLINT_BRIGHTNESS.comment=水面的光泽强度。
+option.WATER_GLINT_CUTOFF.comment=光泽可见性阈值：光泽在何种角度/亮度下变得更明显。
+option.WATER_WAVE_SIZE.comment=水波尺寸。
+option.WAVING_AMPLITUDE.comment=树叶/植物的摇摆幅度：摇晃的程度。
+option.WAVING_LEAVES.comment=启用树叶摇摆。
+option.WAVING_PLANTS.comment=启用植物摇摆。
+option.WEATHER_OPACITY.comment=天气叠加层不透明度（天气效果的可见程度）。
+option.shadowDistance.comment=阴影距离。越高 = 可见范围越远，但负载越重。
+option.shadowMapResolution.comment=阴影贴图分辨率。越高 = 越清晰，但负载越重。

@@ -1,0 +1,45 @@
+# ============================================================
+#  Color BoostX - Language File (en_us)
+# ============================================================
+
+# Screen names
+screen.COLOR_SETTINGS=颜色设置
+screen.NIGHT_SETTINGS=夜间设置
+screen.WATER_SETTINGS=水体设置
+screen.GRASS_SETTINGS=草设置
+screen.CLOUD_SETTINGS=云设置
+screen.PERFORMANCE=性能
+
+# Color options
+option.SATURATION=饱和度
+option.SATURATION.comment=控制颜色的鲜艳程度。§b越高 = 越鲜艳§r，§7越低 = 灰度§r。
+option.BRIGHTNESS=亮度
+option.BRIGHTNESS.comment=提亮或变暗整个场景。
+option.CONTRAST=对比度
+option.CONTRAST.comment=增加或减少亮部与暗部之间的差异。
+
+# Night options
+option.BRIGHT_NIGHT=亮夜
+option.BRIGHT_NIGHT.comment=提升阴影亮度，使夜晚更清晰可见。
+option.STARS_GLOW=发光星
+option.STARS_GLOW.comment=为夜空中的星星添加微弱的闪烁光芒。
+option.MOON_GLOW=月光
+option.MOON_GLOW.comment=在夜间渲染月亮周围柔和的光晕。
+
+# Water options
+option.CLEAR_WATER=清除水下雾
+option.CLEAR_WATER.comment=移除浓密的水下迷雾，使你能看得更远。
+option.WATER_TINT=水下蓝色色调
+option.WATER_TINT.comment=在水下游泳时应用一层清凉的蓝色覆盖层。
+
+# Grass options
+option.WAVING_GRASS=摇曳的草
+option.WAVING_GRASS.comment=让草和小植物在风中轻微摇曳。
+
+# Cloud options
+option.BOX_CLOUDS=盒装云
+option.BOX_CLOUDS.comment=渲染扁平的盒装云。§cDisable§r以使用原版云。
+
+# Performance options
+option.LITE_MODE=精简模式
+option.LITE_MODE.comment=§c禁用§r 星星、月光辉光及其他额外效果以获取最高 FPS。

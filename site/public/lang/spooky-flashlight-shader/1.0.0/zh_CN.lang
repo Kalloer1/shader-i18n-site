@@ -1,0 +1,4 @@
+option.FLASHLIGHT_FLICKER = 手电筒闪烁
+option.FLASHLIGHT_FLICKER.comment = 随机闪烁手电筒，营造恐怖效果。
+option.GRAY_FOG.comment = 灰色雾
+option.GRAY_FOG.comment = 使雾中物体更灰。

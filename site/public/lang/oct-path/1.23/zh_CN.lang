@@ -1,0 +1,77 @@
+option.FRUSTUM_CULLING=视野剔除
+option.FRUSTUM_CULLING.comment=显著提升性能，仅加载你正前方的区块。会导致室内和洞穴内出现光泄漏。适合远距离户外截图。
+
+option.RAYBUFFER_MULT=最大活动光线
+option.RAYBUFFER_MULT.comment=最大活动光线数量。数值越低可能更快（尤其是在 AMD 上）。如果屏幕出现大面积黑色区域，请提高此值。更多光照跳跃需要更多活动光线。
+value.RAYBUFFER_MULT.1=1x
+value.RAYBUFFER_MULT.2=2x
+value.RAYBUFFER_MULT.4=4x
+
+option.VOXEL_BUFFER_HEIGHT=最大已加载区块数
+option.VOXEL_BUFFER_HEIGHT.comment=可以加载的大致最大区块数。数值越低可能更快（尤其是在 AMD 上）。如果屏幕出现紫色闪烁，请调高此值。更高的视距需要更多已加载区块。启用“Frustum Culling”可减少已加载区块数。
+value.VOXEL_BUFFER_HEIGHT.512=1x
+value.VOXEL_BUFFER_HEIGHT.1024=2x
+value.VOXEL_BUFFER_HEIGHT.2048=4x
+value.VOXEL_BUFFER_HEIGHT.4096=8x
+value.VOXEL_BUFFER_HEIGHT.6144=12x
+value.VOXEL_BUFFER_HEIGHT.8192=16x
+value.VOXEL_BUFFER_HEIGHT.12288=24x
+value.VOXEL_BUFFER_HEIGHT.16384=32x
+
+screen.Pathtracing=光线追踪
+option.MAX_LIGHT_BOUNCES=光照跳数
+option.MAX_LIGHT_BOUNCES.comment=光照最多可跳动的次数
+option.SUNLIGHT_RAYS=阳光射线
+option.AMBIENT_RAYS=环境射线
+option.SPECULAR_RAYS=反射光线
+option.TINTING=半透明色调
+option.TINTING.comment=通过半透明块（如彩色玻璃等）传输光线的色调强度
+value.TINTING.-0.2=-2
+value.TINTING.-0.1=-1
+value.TINTING.0.0=默认
+value.TINTING.0.1=+1
+value.TINTING.0.2=+2
+
+option.ANY_ATROUS_FILTER=空间模糊滤镜
+option.ANY_ATROUS_FILTER.comment=对路径追踪的噪点进行大规模模糊以减少噪点。
+option.REPROJECT=Temporal Filter
+option.REPROJECT.comment=尝试重用上一帧的路径追踪信息，即使在移动时。
+option.HISTORY_LIMIT=Temporal Filter Limit
+option.HISTORY_LIMIT.comment=用于控制时间滤镜强度的上限。
+
+
+screen.Color=色彩校正
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=场景的总亮度。
+option.LOWLIGHT_EYE=低光眼
+option.LOWLIGHT_EYE.comment=在低光环境下使场景失去饱和度。模拟视网膜杆细胞与锥细胞的效果。
+screen.EmissionColor=发光颜色
+option.CopperBulb_R=铜灯泡 R
+option.CopperBulb_G=铜灯泡 G
+option.CopperBulb_B=铜灯泡 B
+option.Furnace_R=炉子 R
+option.Furnace_G=炉子 G
+option.Furnace_B=炉子 B
+option.Furnace_R.comment=适用于炉子、熔炉、烟熏机
+option.Furnace_G.comment=适用于炉子、熔炉、烟熏机
+option.Furnace_B.comment=适用于炉子、熔炉、烟熏机
+
+
+screen.Effects=屏幕效果
+
+option.BLOOM=泛光
+option.TAA.comment=时间反锯齿。
+
+option.PARALLAX=POM
+option.POM_DEPTH_MULT=POM 高度
+option.PARALLAX.comment=视差闭合映射。使用支持 POM 的资源包时，表面的不平整被表现，使方块面具有立体感。
+screen.POM.comment=视差闭合映射。
+option.POM_SILHOUETTE=POM 轮廓
+option.POM_SILHOUETTE.comment=使用 POM 信息判断块边缘是否可见穿透，并在块轮廓上显示真实形状。
+option.QUADTREE_POM=四边形树 POM
+option.QUADTREE_POM.comment=使用加速 POM 算法处理大尺寸纹理。通常适用于 512x 及更大的纹理。然而，使用极大的资源包（跨越数GB）时可能因 OpenGL 限制而出现故障。
+option.POM_QUALITY=POM 质量
+option.POM_QUALITY.comment=POM 中的射线漫步计算成本。提高此值可减少使用高分辨率资源包时出现的伪影。仅在四边形树 POM 关闭时生效。
+
+option.RASTER_ENGINE=栅格引擎
+option.DEBUG=调试查看器

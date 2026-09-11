@@ -1,0 +1,11 @@
+option.MIRROR = 镜像屏幕
+option.HUE_ANGLE = 色相旋转
+option.HUE_STRENGTH = 色相强度
+option.WOBBLE_STRENGTH = 摇晃强度
+option.WOBBLE_SPEED = 摇晃速度
+
+option.MIRROR.comment = 交换左右视角
+option.HUE_ANGLE.comment = 旋转颜色色调
+option.HUE_STRENGTH.comment = 色调偏移强度
+option.WOBBLE_STRENGTH.comment = 摇摆效果强度
+option.WOBBLE_SPEED.comment = 摇摆振荡速度

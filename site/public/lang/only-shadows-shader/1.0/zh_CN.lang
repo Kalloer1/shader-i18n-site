@@ -1,0 +1,16 @@
+profile.LOW=低配
+profile.MEDIUM=中配
+profile.HIGH=高配
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.SHADOW_DARKNESS=阴影强度
+option.SHADOW_FILTER=阴影过滤
+option.SHADOW_SOFTNESS=阴影柔和度
+value.SHADOW_FILTER.0=关闭
+value.SHADOW_FILTER.1=3x3
+value.SHADOW_FILTER.2=5x5
+comment.shadowMapResolution=阴影映射分辨率。2048 为中等配置电脑设计。
+comment.shadowDistance=阴影范围（块）。
+comment.SHADOW_DARKNESS=阴影中有多少像素被暗化。
+comment.SHADOW_FILTER=用于柔化边缘的采样数量。
+comment.SHADOW_SOFTNESS=阴影过滤的宽度。

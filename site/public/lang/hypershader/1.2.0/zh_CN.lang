@@ -1,0 +1,91 @@
+# English — default/fallback language (players with any language not
+# covered by a lang file will see this)
+
+profile.FAST=快速
+profile.BALANCED=平衡（默认）
+profile.FANCY=精细
+
+screen.LUZ=光照与太阳
+screen.CIELO=天空与云层
+screen.CLIMA=天气（雨和雪）
+screen.VIENTO=风（植被）
+screen.COLOR=颜色
+screen.AGUA=水
+screen.LAVA=岩浆
+screen.SOMBRAS=阴影
+screen.PBR=PBR / 视差
+
+option.SUN_BRIGHTNESS=阳光亮度
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.INTERIOR_DARKEN=内部暗化
+option.GODRAY_STRENGTH=神射光强度 (太阳与月亮)
+option.GODRAY_SAMPLES=神射光质量
+option.FOG_DENSITY=大气雾
+option.NETHER_FOG=下界雾
+option.GALAXY=银河 (银河系)
+option.GALAXY_STRENGTH=银河亮度
+option.STAR_AMOUNT=星体密度
+option.STAR_BRIGHTNESS=星体亮度
+option.SHOOTING_STARS=流星
+option.CLOUDS=云层
+option.CLOUD_COVERAGE=云量
+option.CLOUD_SPEED=云速
+option.WAVING=植物摇摆
+option.WAVE_SPEED=风速
+option.WAVE_STRENGTH=风力
+option.EXPOSURE=曝光 (全局亮度)
+option.SATURATION=饱和度
+option.CONTRAST=对比度
+option.WATER_WAVE_HEIGHT=波高
+option.WATER_WAVE_SPEED=波速
+option.WATER_FOG_DENSITY=水体密度 (外部)
+option.UNDERWATER_DENSITY=水下雾
+option.SSR_STEPS=反射步数 (SSR)
+option.LAVA_FLOW_SPEED=熔岩流速
+option.LAVA_NOISE_SCALE=熔岩图案缩放
+option.LAVA_EMISSION_STRENGTH=熔岩发光
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_SPREAD=泛光扩散
+option.BLOOM_THRESHOLD=泛光阈值
+option.SHADOW_SAMPLES=阴影采样 (PCF)
+option.SHADOW_SOFTNESS=半影柔和度
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.POM_LAYERS=POM 层数
+option.POM_DEPTH=POM 深度
+
+# --- v1.1: Weather ---
+option.WET_EFFECTS=湿表面（雨）
+option.PUDDLES=水坑
+option.PUDDLE_AMOUNT=水坑数量
+option.RAIN_RIPPLES=水面雨滴
+option.CLOUD_SHADOWS=云影
+option.CLOUD_SHADOW_STRENGTH=云影暗度
+option.RAINBOW=雨后彩虹
+option.RAINBOW_STRENGTH=彩虹亮度
+option.LIGHTNING_FLASH=闪电
+
+# --- v1.1: Water 2.0 ---
+option.CAUSTICS=焦散（水下光线）
+option.CAUSTICS_STRENGTH=焦散强度
+option.REFRACTION=水折射
+option.REFRACTION_STRENGTH=折射强度
+option.FOAM=岸边泡沫
+
+# --- v1.1: Comfort ---
+option.FXAA=FXAA (平滑边缘)
+option.HANDLIGHT=动态手部光照
+option.HANDLIGHT_STRENGTH=手部光照强度
+option.STAR_TWINKLE=闪烁星光
+
+# --- v1.2: The Elements Update ---
+option.FROST_EFFECTS=下雪时出现霜冻
+option.FROST_STRENGTH=霜冻强度
+option.HEAT_SHIMMER=岩浆热雾
+option.HEAT_SHIMMER_STRENGTH=热雾强度
+option.UNDERWATER_RAYS=水下光线
+option.UNDERWATER_RAYS_STRENGTH=水下光线强度
+option.POM_DISTANCE=浮雕距离 (POM)
+
+option.NORMAL_MAPPING=法线贴图（法线光照）

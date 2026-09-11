@@ -1,0 +1,280 @@
+#shaders/lang/zh_CN.lang
+# RenderPearl v2.8.0-beta.4 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：RenderPearl v2.8.0-beta.4.zip 的 shaders/lang/en_US.lang
+profile.COPPER=§c铜
+profile.WOOD=§8木头
+profile.STONE=§7石头
+profile.IRON=§3铁
+profile.GOLD=§6金
+profile.DIAMOND=§b钻石
+profile.NETHERITE=§5下界合金
+profile.SCREENSHOT=§c⌚§r §d§l截图
+profile.comment=§c⌚§r §d§l截图§r 配置了一些通常无法访问的选项，可能会严重降低性能
+
+option.VERSION=§6§oRender§d§oPearl
+option.VERSION.comment=By Luracasmus\n§9https://modrinth.com/shader/renderpearl
+suffix.VERSION=2.8.0-beta.4
+
+screen.LIGHTING=§6◀§r 光照 §6▶
+option.DIR_SL=§b⌚§r 直接天空光
+option.DIR_BL=§b⌚§r 直接方块光
+option.IND_SL=§b⌚§r 间接天空光
+option.IND_BL=§b⌚§r 间接方块光
+option.AMBIENT=§b⌚§r 环境光
+value.AMBIENT.0=§c关闭
+
+option.SSS=§6⌚§r 次表面散射
+option.SSS.comment=允许部分光线穿过薄表面\n\n§6⚠§r 这会禁用一些阴影贴图采样优化
+value.SSS.0=§c关闭
+
+option.ambientOcclusionLevel=§b⌚§r 环境光遮蔽
+option.ambientOcclusionLevel.comment=使方块之间的角落变暗
+value.ambientOcclusionLevel.0.0=§c关闭
+value.ambientOcclusionLevel.0.1=10%
+value.ambientOcclusionLevel.0.2=20%
+value.ambientOcclusionLevel.0.3=30%
+value.ambientOcclusionLevel.0.4=40%
+value.ambientOcclusionLevel.0.5=50%
+value.ambientOcclusionLevel.0.6=60%
+value.ambientOcclusionLevel.0.7=70%
+value.ambientOcclusionLevel.0.8=80%
+value.ambientOcclusionLevel.0.9=90%
+value.ambientOcclusionLevel.1.0=100%
+
+screen.SHADOW_MAP=§6◀§r 阴影贴图 §6▶
+option.shadowMapResolution=§c⌚§r 阴影贴图分辨率
+suffix.shadowMapResolution=\ px
+option.SM_DIST=§c⌚§r 阴影距离
+option.SM_DIST.comment=阴影渲染的正方形区域的一半边长\n较低的值会使较近的阴影更清晰\n\n§6⚠§r 建议将此值设置为低于或等于您的 §l渲染距离§r 以获得最佳性能和质量
+suffix.SM_DIST=\ 区块
+value.SM_DIST.0=§c关闭
+
+option.SM_BLUR=§c⌚§r 模糊
+value.SM_BLUR.0=§c关闭
+value.SM_BLUR.1=Linear
+value.SM_BLUR.2=Gaussian
+
+option.SM_FADE_DIST=§b⌚§r 淡出距离
+option.SM_DISTORTION=§c⌚§r 扭曲
+option.SM_DISTORTION.comment=控制近处和远处阴影质量的权衡\n较高的值会将更多的阴影贴图像素分配给靠近中心的几何体
+suffix.SM_DISTORTION=\%
+
+option.SM_ENTITY=§c⌚§r 实体阴影
+option.SM_PLR=§e⌚§r 玩家阴影
+option.SM_PLR.comment=§b🛈§r 当启用 §l§6⌚§r §l实体阴影§r 时始终激活
+option.SM_BLOCK_ENTITY=§e⌚§r 方块实体阴影
+
+option.DIR_SHADING=§b⌚§r 方向性环境光遮蔽
+option.DIR_SHADING.comment=启用类似于原版应用于环境光遮蔽的方向性着色
+value.DIR_SHADING.0=§c关闭
+
+screen.LIGHT_LIST=§6◀§r 光照列表 §6▶
+option.LL_DIST=§c⌚§r 距离
+option.LL_DIST.comment=将光线添加到光照列表的切比雪夫距离\n\n§6⚠§r 更改此值有时需要修改 §l§c⌚§r§l 容量§r 和/或 §l§6⌚§r§l LDS 比率§r 以避免伪影并保持最佳性能 - 因此建议改用配置档选项
+suffix.LL_DIST=\ 区块
+
+option.LL_CAPACITY=§c⌚§r 容量
+option.LL_CAPACITY.comment=控制在剔除§o之前§r可以注册的光源数量，以防止出现伪影\n\n§c⚠§r 最大支持值取决于活动的 GPU、图形驱动程序和 §l§6⌚§r§l 16/8-Bit 类型§r 的状态及支持情况
+value.LL_CAPACITY.6144=§c⚠§r 6144 个光源
+value.LL_CAPACITY.7168=§c⚠§r 7168 个光源
+value.LL_CAPACITY.8192=§c⚠§r 8192 个光源
+value.LL_CAPACITY.9216=§c⚠§r 9216 个光源
+value.LL_CAPACITY.10240=§c⚠§r 10240 个光源
+value.LL_CAPACITY.11264=§c⚠§r 11264 个光源
+value.LL_CAPACITY.12288=§c⚠§r 12288 个光源
+value.LL_CAPACITY.13312=§c⚠§r 13312 个光源
+value.LL_CAPACITY.14336=§c⚠§r 14336 个光源
+value.LL_CAPACITY.15360=§c⚠§r 15360 个光源
+value.LL_CAPACITY.16384=§c⚠§r 16384 个光源
+suffix.LL_CAPACITY=\ 个光源
+
+option.MIN_LL_INTENSITY=§6⌚§r 最小光照强度
+
+option.LL_FALLOFF_MARGIN=§b⌚§r 衰减余量
+
+option.LL_RATE=§6⌚§r 刷新率
+option.LL_RATE.comment=每次重建光源列表之间的帧延迟\n\n较高的数值可提升性能，但会增加光照更新的延迟
+prefix.LL_RATE=1/
+
+option.LOD_FALLOFF=§c⌚§r LOD 衰减
+option.LOD_FALLOFF.comment=距离越远质量降低的倍数
+
+option.LAVA_LOD_BIAS=§6⌚§r 岩浆 LOD 偏移
+option.LAVA_LOD_BIAS.comment=添加到岩浆上的额外 LOD 偏移，以减少其通常过多的光源数量
+value.LAVA_LOD_BIAS.0.0=§c关闭
+
+option.LDS_RATIO=§6⌚§r LDS 比率
+option.LDS_RATIO.comment=每个图块（工作组）分配的本地数据共享内存量，占 §l§c⌚§r§l 容量§r 的比例\n\n这会影响剔除§o之后§r 可以处理的最大光源数量，以防止出现伪影
+
+screen.FALLBACK_BLOCK=§6◀§r 回退区块光照 §6▶
+screen.FALLBACK_BLOCK.comment=光源列表范围之外的光源的回退区块光照颜色
+
+option.BL_FALLBACK_R=§b⌚§c 红色强度
+option.BL_FALLBACK_G=§b⌚§a 绿色强度
+option.BL_FALLBACK_B=§b⌚§9 蓝色强度
+
+screen.HAND_LIGHT=§6◀§r 手部光照 §6▶
+option.HAND_LIGHT=§e⌚§r 亮度
+value.HAND_LIGHT.0=§c关闭
+
+option.MAX_HAND_LIGHT_TRACE_DIST=§c⌚§r 最大射线距离
+option.HAND_LIGHT_TRACE_STEPS=§c⌚§r 射线追踪步数
+value.HAND_LIGHT_TRACE_STEPS.0=§c关闭
+
+option.HAND_LIGHT_TRACE_HARDNESS=§e⌚§r 追踪阴影硬度
+value.HAND_LIGHT_TRACE_HARDNESS.0=§c关闭
+
+screen.CUSTOM_EMISSIVE_BLOCKS=§6◀§r 自定义自发光区块 §6▶
+option.EMISSIVE_REDSTONE_BLOCK=§e⌚§c 自发光红石块
+option.EMISSIVE_EMERALD_BLOCK=§e⌚§a 自发光绿宝石块
+option.EMISSIVE_LAPIS_BLOCK=§e⌚§9 自发光青金石块
+
+screen.POST=§6◀§r 后处理 §6▶
+option.SATURATION=§b⌚§r 饱和度
+suffix.SATURATION=%
+
+option.RED_MUL=§b⌚ §c红色
+suffix.RED_MUL=%
+option.GREEN_MUL=§b⌚ §a绿色
+suffix.GREEN_MUL=%
+option.BLUE_MUL=§b⌚ §9蓝色
+suffix.BLUE_MUL=%
+
+option.TONEMAP=§b⌚§r 色调映射运算符
+option.TONEMAP.comment=确定用于将颜色转换为显示器可显示范围的的方法
+
+value.TONEMAP.0=饱和
+value.TONEMAP.1=Tony McMapface
+value.TONEMAP.2=Uchimura
+value.TONEMAP.3=ACES Fitted
+value.TONEMAP.4=SBDT
+
+option.SHARPNESS=§b⌚§r FFX CAS 锐度
+option.SHARPNESS.comment=控制 RenderPearl 修改版的 FidelityFX Contrast Adaptive Sharpening 1.2 的锐度
+
+option.AUTO_EXP=§e⌚§r 自动曝光
+value.AUTO_EXP.0=§c关闭
+option.AUTO_EXP_SPEED=§b⌚§r 插值速度
+option.AUTO_EXP_SPEED.comment=控制 §l§b⌚§r§l 自动曝光§r 的插值速度
+option.AUTO_EXP_TARGET=§b⌚§r 目标亮度
+option.AUTO_EXP_TARGET.comment=色调映射前屏幕的目标几何平均亮度。
+
+screen.SMAA=§6◀§r SMAA §6▶
+option.SMAA_THRESHOLD=§e⌚§r 对比度阈值
+option.SMAA_THRESHOLD.comment=基于颜色的边缘检测中使用的阈值\n较低的值会导致更多的边缘被抗锯齿
+
+option.SMAA_SEARCH=§e⌚§r 搜索步数
+option.SMAA_SEARCH.comment=垂直和水平模式搜索中的最大步数\n搜索的像素距离是这个值的两倍
+
+option.SMAA_SEARCH_DIAG=§e⌚§r 对角线搜索步数
+option.SMAA_SEARCH_DIAG.comment=模式搜索中搜索的对角线步数/像素的最大数量
+value.SMAA_SEARCH_DIAG.0=§c关闭
+
+option.SMAA_CORNER=§e⌚§r 角落圆角化
+value.SMAA_CORNER.0=§c关闭
+
+screen.ATMOSPHERICS=§6◀§r 大气层 §6▶
+option.VL=§c⌚§r 体积光
+value.VL.0=§c关闭
+option.VL_SAMPLES=§c⌚§r 体积光采样数
+
+option.sunPathRotation=§b⌚§r 太阳路径旋转
+suffix.sunPathRotation=\ °
+
+option.FOG=§b⌚§r 基础雾
+value.FOG.0=§c关闭
+
+option.RAIN_FOG=§b⌚§r 雨雾
+value.RAIN_FOG.0=§c关闭
+
+option.WATER_FOG=§b⌚§r 水雾
+value.WATER_FOG.0=§c关闭
+
+option.SUN_BLOOM=§b⌚§r 太阳泛光
+value.SUN_BLOOM.0=§c关闭
+
+option.SKY_BLOOM=§b⌚§r 天空泛光
+value.SKY_BLOOM.0=§c关闭
+
+option.CLOUD_FOG_END=§b⌚§r 云雾结束
+suffix.CLOUD_FOG_END=\ 区块
+
+screen.CEL_BODIES=§6◀§r 天体 §6▶
+option.SUN_SIZE=§b⌚§r 太阳大小
+option.MOON_SIZE=§b⌚§r 月亮大小
+option.MOON_PHASE_DIFF=§b⌚§r 月相差异
+
+screen.SURFACE=§6◀§r 表面 §6▶
+option.WATER_OPACITY=§b⌚§r 水透明度
+suffix.WATER_OPACITY=%
+
+option.WAVE_SPEED=§b⌚§r 波浪速度
+option.WAVES=§b⌚§r 波浪
+value.WAVES.0=§f关闭
+
+option.SM=§e⌚§r 资源包高光贴图粗糙度
+option.SM.comment=启用采样 PBR 资源包的高光贴图以获取表面粗糙度\n禁用时，粗糙度值将自动生成
+option.SM_CH=§b⌚§r 通道
+value.SM_CH.r=R
+value.SM_CH.g=G
+value.SM_CH.b=B
+value.SM_CH.a=A
+option.SM_TYPE=§b⌚§r 类型
+value.SM_TYPE.0=线性粗糙度
+value.SM_TYPE.1=感知粗糙度
+value.SM_TYPE.2=感知平滑度
+option.NORMALS=§e⌚§r 法线
+value.NORMALS.0=自动生成
+value.NORMALS.1=资源包法线贴图
+value.NORMALS.2=平面
+option.EMISSION_BRIGHTNESS=§b⌚§r 自发光亮度
+
+screen.UTIL=§6◀§r 工具 §6▶
+option.LINE_WIDTH=§b⌚§r 线条宽度
+option.LINE_WIDTH.comment=决定区块选择轮廓和钓鱼竿线条的宽度
+
+option.COMPASS=§b⌚§r 指南针
+option.LIGHT_LEVELS=§b⌚§r 光照等级可视化
+
+screen.COMPAT=§6◀§r 兼容性 §6▶
+option.CONST_IMMUT=§e⌚§r 不可变常量
+option.CONST_IMMUT.comment=将所有可设为不可变的着色器变量标记为常量，可能启用更好的优化\n\n§c⚠§r 可能与某些非 NVIDIA/Geforce 显卡驱动不兼容
+value.CONST_IMMUT.0=§c关闭
+value.CONST_IMMUT.1=§c⚠§r 开启 (基于设备假设支持)
+value.CONST_IMMUT.2=§c⚠§r 开启 (始终)
+
+option.MINMAX_3=§e⌚§r 三元最小/最大值
+option.MINMAX_3.comment=使用 §oAMD_shader_trinary_minmax§r 扩展在单一函数调用中执行三元最小和最大操作\n\n§c⚠§r 如果假设支持扩展，可能与某些显卡驱动不兼容
+value.MINMAX_3.0=§c关闭
+value.MINMAX_3.1=开启 (检查支持情况)
+value.MINMAX_3.2=§c⚠§r 开启 (基于设备假设支持)
+value.MINMAX_3.3=§c⚠§r 开启 (始终)
+
+option.MUL_32x16=§e⌚§r 32x16 位乘法
+option.MUL_32x16.comment=使用 §oINTEL_shader_integer_functions2§r 扩展提供的特殊函数执行 32 位整数与 16 位可表示整数范围内的乘法，这可能比常规 32 位乘法运算符更快\n\n§c⚠§r 如果假设支持扩展，可能与某些显卡驱动不兼容
+value.MUL_32x16.0=§c关闭
+value.MUL_32x16.1=开启 (检查支持情况)
+value.MUL_32x16.2=§c⚠§r 开启 (基于设备假设支持)
+value.MUL_32x16.3=§c⚠§r 开启 (始终)
+
+option.SUBGROUP=§e⌚§r 子组操作
+option.SUBGROUP.comment=启用 §oKHR_shader_subgroup§r 扩展提供的操作和变量，允许在子组内的着色器调用之间快速共享数据\n这对于基于光照列表的半透明几何体光照是必需的\n\n§c⚠§r 如果假设支持扩展，可能与某些显卡驱动不兼容
+value.SUBGROUP.0=§c关闭
+value.SUBGROUP.1=开启 (检查支持情况)
+value.SUBGROUP.2=§c⚠§r 开启 (基于设备假设支持)
+value.SUBGROUP.3=§c⚠§r 开启 (始终)
+
+option.SIZED_16_8=§6⌚§r 16/8 位类型
+option.SIZED_16_8.comment=使用扩展提供的半精度或四分之一精度数据类型以减少寄存器、LDS 和显存使用量\n性能影响因硬件和驱动而异，因为类型转换有开销，但使用较小类型的操作可能更快\n\n§c⚠§r 如果假设支持扩展，可能与某些显卡驱动不兼容 - 请参阅下方选项
+
+option.BUFFER_16_8=§e⌚ §6⚠§r 16/8 位缓冲区
+option.BUFFER_16_8.comment=缩小缓冲区，假设完全支持 §l§6⌚§r§l 16/8 位类型§r 添加的所有数据类型\n\n§6⚠§r 如果 §l§6⌚§r§l 16/8 位类型§r 可选启用的某些扩展被禁用或不可用，可能会导致问题
+
+option.ASSUME_NV_GPU_SHADER5=§6⌚ §c⚠§r 基于设备假设支持 §oNV_gpu_shader5§r
+option.ASSUME_NV_GPU_SHADER5.comment=基于设备特征假设支持扩展，即使 Iris 未声明支持
+
+option.ASSUME_AMD_GPU_SHADER_HALF_FLOAT=§6⌚ §c⚠§r 基于设备假设支持 §oAMD_gpu_shader_half_float§r
+option.ASSUME_AMD_GPU_SHADER_HALF_FLOAT.comment=基于设备特征假设支持扩展，即使 Iris 未声明支持
+
+option.ASSUME_AMD_GPU_SHADER_INT16=§6⌚ §c⚠§r 基于设备假设支持 §oAMD_gpu_shader_int16§r
+option.ASSUME_AMD_GPU_SHADER_INT16.comment=基于设备特征假设支持扩展，即使 Iris 未声明支持

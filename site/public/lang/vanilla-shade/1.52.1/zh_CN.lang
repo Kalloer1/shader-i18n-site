@@ -1,0 +1,8 @@
+profile.LOW=§a低
+profile.MEDIUM=§e中（默认）
+profile.HIGH=§c高
+profile.comment=着色器配置方案在性能与画质设置之间进行切换，以获得最佳的视觉保真度与性能比率。[*] “§e中等§r”匹配资源包的默认设置。[*§e]§r 所有受影响的设置都将自动处理——只需选择一个档位即可开始游戏。
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE.comment=当真实太阳（或月亮）可见时，产生相机风格的镜头光晕和光斑。当太阳被遮挡或因天气而暗淡时，将自动隐藏。
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=云层在世界上投射真实的阴影：阳光会与实际的云层进行光线投射测试，因此阴影会随云层漂移，晴朗的孔洞则让阳光穿过。当云层遮蔽太阳时，也会隐藏镜头光晕。

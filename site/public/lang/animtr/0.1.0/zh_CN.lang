@@ -1,0 +1,63 @@
+
+option.PROC_PROMO=
+value.PROC_PROMO.true=[:: procPromo 光影包 v0.6 ::]
+value.PROC_PROMO.false=[:: §6§kgh§r §oprocPromo§r§6 §kij§r ::]
+option.PROC_PROMO.comment=§f感谢试用我的光影包。 §o由...创作 §r§6Kevin Edzenga§7§o，2022-2024。 §oGitHub: §r§6ProcStack。 §7§o（此按钮无任何作用）
+
+#General Quality Controls
+option.BaseQuality=基础质量
+value.BaseQuality.0 = 低配
+value.BaseQuality.1 = 中配
+value.BaseQuality.2 = 高配
+option.BaseQuality.comment=减少纹理模糊采样、更重的数学函数以及性能下降。
+
+#Color Values & Gamma
+option.LightBlackLevel=黑色等级
+option.LightBlackLevel.comment=设置光照能有多暗。较低的值更压抑，较高的值更适合看清环境。
+option.LightWhiteLevel=白色等级
+option.LightWhiteLevel.comment=设置方块光照能有多亮。
+option.FogAmount=雾数量
+
+#Screen Style Effects
+option.GlowBrightness=泛光数量
+option.DetailBlurring=细节模糊
+option.EdgeShading=边缘描边
+option.UnderWaterBlur=水下效果
+option.SolidLeaves=实体树叶
+option.WorldColor=世界颜色
+
+#Anime Stylization
+option.BorderThickness=边框厚度
+option.BorderOpacity=边框不透明度
+option.CelLevels=卡通阴影等级
+option.HandDrawn=手绘颗粒感
+option.ColorPop=色彩自然饱和度提升
+option.EnableBorders=启用卡通描边
+option.EnableExtraDetail=启用额外纹理细节
+option.EnableExtraDetail.comment=恢复原始方块纹理信息以获得更好的可玩性。
+
+#Lighting & Atmosphere
+option.LightSoftness=光照柔和度
+option.NightDarkness=夜晚黑暗度
+option.NightDarkness.comment=设定夜晚世界的黑暗程度。数值越高越暗。
+option.EnableOreGlow=开启矿石闪烁
+option.EnableOreGlow.comment=使铁矿石、钻石及其他矿石在黑暗中发出微光。
+option.CandyMode=糖果模式
+option.CandyMode.comment=切换基于群系的鲜活配色（粉/薰衣草/青）。
+
+#Shadow Options
+option.shadowMapResolution=阴影分辨率
+option.ShadowSampleCount=阴影质量
+option.DisableShadows=禁用动态阴影
+
+#Debugging Effects
+option.DebugView=调试视图
+value.DebugView.0=关
+value.DebugView.1=细节模糊
+value.DebugView.2=阴影相机
+value.DebugView.3=阴影调试
+value.DebugView.4=原版 vs procPromo
+
+#Pastel Colors
+option.PastelSaturation=粉彩饱和度
+option.PastelWash=粉彩洗色强度

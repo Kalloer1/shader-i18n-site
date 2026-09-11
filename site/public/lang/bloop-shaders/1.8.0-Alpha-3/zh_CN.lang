@@ -1,0 +1,519 @@
+#shaders/lang/zh_CN.lang
+# Bloop Shaders v1.8.0-Alpha-3 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Bloop-1.8.0-Alpha-3.zip 的 shaders/lang/en_US.lang
+# Profile Settings
+profile.EXTREME=§c极高
+profile.EXTREME.comment=极高质量预设。
+profile.HIGH=§e高配
+profile.HIGH.comment=高质量预设。
+profile.LOW=§b低配
+profile.LOW.comment=低质量预设。
+profile.LOWER=§d更低
+profile.LOWER.comment=更低质量预设。
+profile.LOWTAA=§c低配 TAA
+profile.LOWTAA.comment=低配TAA质量预设。
+profile.MEDIUM=中配
+profile.MEDIUM.comment=中质量预设。
+profile.MEDIUM_HIGH=中高配
+profile.MEDIUM_HIGH.comment=中高质量预设。
+profile.MEDIUM_LOW=§a中低配
+profile.MEDIUM_LOW.comment=中低质量预设。
+profile.POTATO=§d极低配
+profile.POTATO.comment=极低质量预设。
+profile.STANDARD=标准
+profile.STANDARD.comment=标准质量预设。
+profile.ULTRA=§c极致
+profile.ULTRA.comment=极致质量预设。
+profile.UPSCALED=§a超采样
+profile.UPSCALED.comment=超采样质量预设。
+
+option.VL_QUALITY=体积效果
+
+value.VL_QUALITY.0=关闭
+value.VL_QUALITY.1=简单
+value.VL_QUALITY.2=标准
+value.VL_QUALITY.3=精美
+
+
+# Screen Settings
+screen.Beta=测试版
+screen.Beta.comment=打开测试版设置界面。
+screen.Debug=调试
+screen.Debug.comment=打开调试设置界面。
+screen.Debug2=调试2
+screen.Debug2.comment=打开调试2设置界面。
+screen.DOF=景深
+screen.DOF.comment=打开景深设置界面。
+screen.HDR_OUTPUT=HDR输出
+screen.HDR_OUTPUT.comment=打开HDR输出设置界面。
+screen.LabPBR=LabPBR
+screen.LabPBR.comment=打开LabPBR设置界面。
+screen.LPV=泛光填充
+screen.LPV.comment=打开泛光填充设置界面。
+screen.Misc=杂项
+screen.Misc.comment=打开杂项设置界面。
+screen.PBR=PBR
+screen.PBR.comment=打开PBR设置界面。
+screen.POM=视差遮蔽映射
+screen.POM.comment=打开视差遮蔽映射设置界面。
+screen.Quality=质量
+screen.Quality.comment=打开质量设置界面。
+screen.RealisticClouds=写实云层
+screen.RealisticClouds.comment=打开写实云层设置界面。
+screen.Shading=着色
+screen.Shading.comment=打开着色设置界面。
+screen.SHADOW_FILTERING=阴影过滤
+screen.SHADOW_FILTERING.comment=打开阴影过滤设置界面。
+screen.TAA=时间性抗锯齿
+screen.TAA.comment=打开时间性抗锯齿设置界面。
+screen.Temporal_effects=时间效果
+screen.Temporal_effects.comment=打开时间性效果设置界面。
+screen.Tonemap=色调映射
+screen.Tonemap.comment=打开色调映射设置界面。
+screen.Tonemapping=色调映射处理
+screen.Tonemapping.comment=打开色调映射处理设置界面。
+screen.Water=水体
+screen.Water.comment=打开水体设置界面。
+screen.Wavy_stuff=波浪效果
+screen.Wavy_stuff.comment=打开波浪效果设置界面。
+screen.PBR_ADVANCED=高级设置
+
+# Option Settings
+option.ALT_CLOUDS=替代云
+option.ALT_CLOUDS.comment=切换替代云渲染。
+
+option.APERTURE=光圈
+option.APERTURE.comment=控制景深的相机光圈。
+
+option.BLOOM=泛光
+option.BLOOM.comment=切换泛光照明效果。
+
+option.BOKEH_MODE=散景模式
+option.BOKEH_MODE.comment=设置散景模糊的样式。
+
+option.BUMP_MULT=法线深度
+option.BUMP_MULT.comment=调整法线贴图的强度。
+
+option.CAMERA_SENSOR_SIZE_MM=传感器尺寸
+option.CAMERA_SENSOR_SIZE_MM.comment=设置用于深度计算的相机传感器尺寸（毫米）。
+
+option.CAUSTICS=焦散
+option.CAUSTICS.comment=切换水下焦散光效。
+
+option.CLOUDS=云
+option.CLOUDS.comment=切换云渲染。
+
+option.CLOUD_COVER=云层覆盖
+option.CLOUD_COVER.comment=控制云层的覆盖量。
+
+option.CLOUD_DENSITY=密度
+option.CLOUD_DENSITY.comment=调整云的厚度。
+
+option.CLOUD_LAYER_HEIGHT=层高度
+option.CLOUD_LAYER_HEIGHT.comment=设置云层的垂直位置。
+
+option.CLOUD_MARCHING_STEPS=光线步进步数
+option.CLOUD_MARCHING_STEPS.comment=控制云光线步进的细节等级。
+
+option.CLOUD_QUALITY=云分辨率
+option.CLOUD_QUALITY.comment=调整云的分辨率。
+
+option.CLOUD_SHADOWS=云阴影
+option.CLOUD_SHADOWS.comment=切换云层阴影投射。
+
+option.CLOUD_STYLE=云样式
+option.CLOUD_STYLE.comment=设置云的视觉样式。
+
+option.CLOUD_TYPE=云类型修饰符
+option.CLOUD_TYPE.comment=改变云的形成类型。
+
+option.CONTRAST=对比度
+option.CONTRAST.comment=调整图像对比度。
+
+option.DEBUG_MODE=调试模式
+option.DEBUG_MODE.comment=切换用于光影调试的调试模式。
+
+option.DH_SHADOWMAP=Distant Horizons 阴影
+option.DH_SHADOWMAP.comment=切换 Distant Horizons 的阴影贴图。
+
+option.DISTORTION_ADJUSTMENT=调整扭曲
+option.DISTORTION_ADJUSTMENT.comment=调整阴影扭曲。
+
+option.DLM=定向光照贴图
+option.DLM.comment=切换定向光照贴图以实现更真实的光照。
+
+option.DOF=景深
+option.DOF.comment=切换相机景深效果。
+
+option.DOF_MODE=对焦模式
+option.DOF_MODE.comment=设置景深对焦的方法。
+
+option.DYNAMIC_LIGHTS_COMP=动态光照兼容性
+option.DYNAMIC_LIGHTS_COMP.comment=切换与动态光照模组的兼容性。
+
+option.EXTENDED_SHADOWS=扩展阴影
+option.EXTENDED_SHADOWS.comment=切换扩展屏幕空间阴影。
+
+option.EXCLUDE_MODE=模糊模式
+option.EXCLUDE_MODE.comment=控制模糊的排除行为。
+
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=调整整体亮度（曝光）。
+
+option.FOCAL=焦距
+option.FOCAL.comment=设置相机焦距。
+
+option.GENERATED_NORMALS=程序化生成的法线贴图
+option.GENERATED_NORMALS.comment=切换程序化生成的法线。
+
+option.HARDCODED_METALS=硬编码金属
+option.HARDCODED_METALS.comment=切换特殊金属材质行为。
+
+option.HDR_MAX=HDR 最大值
+option.HDR_MAX.comment=设置 HDR 亮度最大值限制。
+
+option.VOLUMETRIC_LIGHTING_FAKE=额外阳光束
+option.VOLUMETRIC_LIGHTING_FAKE.comment=增加空气中更多可见的光线。
+
+option.BETTER_WATER_REFLECTIONS=更干净的水面反射
+option.BETTER_WATER_REFLECTIONS.comment=让水面反射更平滑自然，特别是从远处观看时。
+
+option.GGX_SQUARE=方形高光
+option.GGX_SQUARE.comment=让闪亮的表面呈现方形的、像素风格的光泽。
+
+
+option.SELECTOR_COLOR=选择器颜色
+
+option.HELD_LIGHT=手持物品光照
+option.HELD_LIGHT.comment=切换持有光源时的光照发射。
+
+option.HQ_NOISE=高质量噪波
+option.HQ_NOISE.comment=切换高质量的噪波图案。
+
+option.HQ_WATER=高质量波浪
+option.HQ_WATER.comment=切换高保真度的水波模拟。
+
+option.LAB_PBR=LabPBR 贴图
+option.LAB_PBR.comment=切换对 LabPBR 纹理的支持。
+
+option.LITEMATICA=Litematica 修复
+option.LITEMATICA.comment=修复 Litematica 的幽灵方块渲染问题。
+
+option.LOD_FIX=LOD 修复
+option.LOD_FIX.comment=修复细节层次过渡问题。
+
+option.LPV_ENABLED=泛光填充照明
+option.LPV_ENABLED.comment=切换泛光填充动态照明系统。
+
+option.LPV_ENTITY_LIGHTS=实体光照
+option.LPV_ENTITY_LIGHTS.comment=切换实体上的泛光填充照明。
+
+option.LPV_NORMAL_STRENGTH=法线强度
+option.LPV_NORMAL_STRENGTH.comment=调整法线贴图的强度以用于光照效果。
+
+option.LPV_SATURATION=光照饱和度
+option.LPV_SATURATION.comment=控制泛光填充照明的颜色饱和度。
+
+option.LPV_SIZE=泛光填充距离
+option.LPV_SIZE.comment=设置泛光填充照明的传播距离。
+
+option.LPV_TINT_SATURATION=着色饱和度
+option.LPV_TINT_SATURATION.comment=控制泛光填充着色的饱和度。
+
+option.MIN_LIGHT=最小环境光照
+option.MIN_LIGHT.comment=设置基础最小环境光照等级。
+
+option.MIN_LIGHT_BOOST=亮度滑块乘数
+option.MIN_LIGHT_BOOST.comment=调整亮度滑块对光照的影响。
+
+option.MID_IN=中间调输入
+option.MID_IN.comment=调整输入颜色范围中的中间调。
+
+option.MID_OUT=中间调输出
+option.MID_OUT.comment=调整输出颜色范围中的中间调。
+
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR.comment=切换基于运动的模糊效果。
+
+option.NAMETAG_FIX=名牌修复
+option.NAMETAG_FIX.comment=修复名牌可见性问题。
+
+option.NORMAL_FIX=法线方向修复
+option.NORMAL_FIX.comment=修复不正确的着色方向。
+
+option.NORMAL_MAPS=法线贴图
+option.NORMAL_MAPS.comment=切换表面使用法线贴图。
+
+option.NO_ENTITY_TAA=在实体上禁用
+option.NO_ENTITY_TAA.comment=禁用实体上的 TAA 以避免模糊。
+option.NO_HAND_TAA=在手上禁用
+option.NO_HAND_TAA.comment=禁用手上 TAA 以避免模糊。
+
+option.PI_SUPPORT=Pi 支持
+option.PI_SUPPORT.comment=为 Raspberry Pi 5 硬件优化着色器。
+
+option.PENUMBRA_SHADOWS=半影阴影
+option.PENUMBRA_SHADOWS.comment=切换软边缘阴影（半影）。
+
+option.PBR_REFLECTIONS=屏幕空间反射
+option.PBR_REFLECTIONS.comment=切换来自 PBR 表面的反射。
+
+option.PIXEL_LOCK=像素化效果
+option.PIXEL_LOCK.comment=切换屏幕空间像素锁定以获得复古视觉效果。
+
+option.PIXEL_PACK=像素包
+option.PIXEL_PACK.comment=增强低分辨率纹理包的 POM。
+
+option.RENDER_SCALE_X=水平渲染缩放
+option.RENDER_SCALE_X.comment=水平调整渲染分辨率。
+
+option.RENDER_SCALE_Y=垂直渲染缩放
+option.RENDER_SCALE_Y.comment=垂直调整渲染分辨率。
+
+option.REQUIRES_IRIS=需要 Iris 1.7+
+option.REQUIRES_IRIS.comment=需要 Iris 1.7 或更新版本以实现完全兼容。
+
+option.RSM=全局光照
+option.RSM.comment=通过阴影贴图切换全局光照。
+
+option.RSM_SAMPLES=GI 采样
+option.RSM_SAMPLES.comment=设置 GI 质量的采样数。
+
+option.RTAO_SAMPLES=高级 AO 采样
+option.RTAO_SAMPLES.comment=设置高级环境光遮蔽的采样数。
+
+option.RTAO_TRACE_SAMPLES=高级 AO 追踪采样
+option.RTAO_TRACE_SAMPLES.comment=设置环境光遮蔽质量的追踪采样数。
+
+option.SATURATION=饱和度
+option.SATURATION.comment=调整全局颜色饱和度。
+
+option.SHADOWS_ENABLED=启用阴影
+option.SHADOWS_ENABLED.comment=切换整体阴影渲染。
+
+option.SHADOW_CULLING=阴影剔除
+option.SHADOW_CULLING.comment=跳过不可见阴影以提高性能。
+
+option.SHADOW_DEBUG=阴影调试
+option.SHADOW_DEBUG.comment=启用阴影调试视觉效果。
+
+option.SHADOW_FILTERING=阴影过滤
+option.SHADOW_FILTERING.comment=控制阴影边缘的平滑度。
+
+option.SHADOW_SAMPLES=阴影采样
+option.SHADOW_SAMPLES.comment=调整阴影的采样质量。
+
+option.SHADOW_WAVE=波浪阴影
+option.SHADOW_WAVE.comment=切换动画波浪阴影。
+
+option.SHARPENING_AMOUNT=锐化强度
+option.SHARPENING_AMOUNT.comment=调整图像锐化强度。
+
+option.SHIFT_AMOUNT=偏移量
+option.SHIFT_AMOUNT.comment=设置水平/垂直偏移失真。
+
+option.SKYBLEND=天空渐变
+option.SKYBLEND.comment=更平滑地将天空融入地平线。
+
+option.SSPT=屏幕空间 GI
+option.SSPT.comment=切换屏幕空间全局光照。
+
+option.SSPT_MIX=SSPT 混合
+option.SSPT_MIX.comment=将 SSPT 与传统光照混合。
+
+option.SSR_ACCUMULATION=SSR 累积
+option.SSR_ACCUMULATION.comment=随时间混合屏幕空间反射。
+
+option.SSR_QUALITY=屏幕空间反射
+option.SSR_QUALITY.comment=调整 SSR 的质量级别。
+
+option.SSR_STEPS=SSR 步数
+option.SSR_STEPS.comment=控制 SSR 的光线行进步数。
+
+option.SUNMULT=日落/日出倍增器
+option.SUNMULT.comment=调整日落和日出光照的强度。
+
+option.TAA=时间抗锯齿
+option.TAA.comment=开关时间性抗锯齿。
+
+option.TAA_CLIP=裁剪
+option.TAA_CLIP.comment=调整TAA的裁剪行为。
+
+option.TAA_FILTER=TAA滤镜
+option.TAA_FILTER.comment=优化TAA采样过滤。
+
+option.TAA_HISTORY_WEIGHT=混合因子
+option.TAA_HISTORY_WEIGHT.comment=设置TAA帧间的混合因子。
+
+option.TAA_OFFCENTER_REJECTION=离心剔除
+option.TAA_OFFCENTER_REJECTION.comment=提升运动状态下TAA的稳定性。
+
+option.TAA_UPSCALING=TAA放大
+option.TAA_UPSCALING.comment=开关基于TAA的图像放大。
+
+option.TAA_USE_CLOSEST_DEPTH=使用最近深度
+option.TAA_USE_CLOSEST_DEPTH.comment=提升TAA深度精度。
+
+option.TILT_ANGLE=倾斜角度
+option.TILT_ANGLE.comment=设置相机模拟的倾斜角度。
+
+option.TILT_SHIFT=移轴摄影
+option.TILT_SHIFT.comment=开关移轴摄影效果。
+
+option.TORCH_COLOR=光源颜色
+option.TORCH_COLOR.comment=设置手持光源的颜色。
+
+option.VANILLA_SKY_COLOR=原版天空颜色
+option.VANILLA_SKY_COLOR.comment=开关使用原版Minecraft天空颜色。
+
+option.VANILLA_WATER=纹理水面
+option.VANILLA_WATER.comment=开关使用原版水面纹理。
+
+option.VERTEX_WAVES=几何波浪
+option.VERTEX_WAVES.comment=开关顶点动画波浪。
+
+option.VIBRANCE=自然饱和度
+option.VIBRANCE.comment=增强饱和颜色的强度。
+
+option.VL_NOISE_DENSITY=体积雾
+option.VL_NOISE_DENSITY.comment=控制体积雾的密度。
+
+option.VL_SAMPLES=体积采样
+option.VL_SAMPLES.comment=设置体积效果的采样数。
+
+option.VL_SELF_SHADOWING=体积雾自遮蔽
+option.VL_SELF_SHADOWING.comment=开关体积雾内的自遮蔽效果。
+
+option.VOLUMETRIC_LIGHTING=体积效果
+option.VOLUMETRIC_LIGHTING.comment=开关体积光束与雾气。
+
+option.WATER_FILTER=水面反射降噪
+option.WATER_FILTER.comment=开关水面反射平滑处理。
+
+option.WAVY_SPEED=波动速度
+option.WAVY_SPEED.comment=设置波动视觉效果的速度。
+
+option.WAVY_STRENGTH=波动强度
+option.WAVY_STRENGTH.comment=设置波动视觉效果的强度。
+
+option.WATER_PBR=半透明方块PBR
+option.WATER_PBR.comment=开关半透明方块的PBR光照。
+
+option.CONTACT_SHADOWS=接触阴影
+option.CONTACT_SHADOWS.comment=开关表面附近的精细阴影。
+
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=开关阴影中的彩色光照。
+
+option.SSAO=环境光遮蔽
+option.SSAO.comment=开关屏幕空间环境光遮蔽。
+
+option.REFLECTION_SAMPLES=反射采样 | 最小
+option.REFLECTION_SAMPLES.comment=设置反射的最小采样数。
+
+option.REFLECTION_SAMPLES_MAX=反射采样 | 最大
+option.REFLECTION_SAMPLES_MAX.comment=设置反射的最大采样数。
+
+option.REFLECTION_CUTOFF=SSR截断
+option.REFLECTION_CUTOFF.comment=控制反射的截断阈值。
+
+option.REFRACTION=折射
+option.REFRACTION.comment=开关折射效果，例如水体扭曲。
+
+
+
+
+# Value Settings
+value.CLOUD_QUALITY.1=0.5
+value.CLOUD_QUALITY.2=0.75
+value.CLOUD_QUALITY.3=1.0
+value.CLOUD_STYLE.1=Minecraft
+value.CLOUD_STYLE.2=真实
+value.DEBUG_MODE.0=无
+value.DEBUG_MODE.1=环境光
+value.DEBUG_MODE.2=反射
+value.DEBUG_MODE.3=世界法线
+value.DEBUG_MODE.4=阴影
+value.DEBUG_MODE.5=火把光
+value.DOF_MODE.0=自动
+value.DOF_MODE.1=手动
+value.DOF_MODE.2=手动+
+value.EXCLUDE_MODE.0=远近及手部
+value.EXCLUDE_MODE.1=远，不含近处及手部
+value.EXCLUDE_MODE.2=远近，不含手部
+value.LPV_NORMAL_STRENGTH.0=关闭
+value.LPV_SIZE.6=小 [64]
+value.LPV_SIZE.7=中 [128]
+value.LPV_SIZE.8=大 [256]
+value.SHADOW_FILTERING.0=无
+value.SHADOW_FILTERING.1=简单
+value.SHADOW_FILTERING.2=高级
+value.SSAO.0=禁用
+value.SSAO.1=简单
+value.SSAO.2=高级
+value.SSR_QUALITY.0=关闭
+value.SSR_QUALITY.1=天空反射
+value.SSR_QUALITY.2=简单反射
+value.SSR_QUALITY.3=精确反射
+value.shadowDistance.112.0=7 区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.144.0=9 区块
+value.shadowDistance.160.0=10 区块
+value.shadowDistance.176.0=11 区块
+value.shadowDistance.192.0=12 区块
+value.shadowDistance.208.0=13 区块
+value.shadowDistance.224.0=14 区块
+value.shadowDistance.240.0=15 区块
+value.shadowDistance.256.0=16 区块
+value.shadowDistance.272.0=17 区块
+value.shadowDistance.288.0=18 区块
+value.shadowDistance.304.0=19 区块
+value.shadowDistance.320.0=20 区块
+value.shadowDistance.336.0=21 区块
+value.shadowDistance.352.0=22 区块
+value.shadowDistance.368.0=23 区块
+value.shadowDistance.384.0=24 区块
+value.shadowDistance.400.0=25 区块
+value.shadowDistance.416.0=26 区块
+value.shadowDistance.432.0=27 区块
+value.shadowDistance.448.0=28 区块
+value.shadowDistance.464.0=29 区块
+value.shadowDistance.480.0=30 区块
+value.shadowDistance.496.0=31 区块
+value.shadowDistance.64.0=4 区块
+value.shadowDistance.80.0=5 区块
+value.shadowDistance.96.0=6 区块
+value.shadowDistance.512.0=32 区块
+
+
+value.SELECTOR_COLOR.0=§7默认
+value.SELECTOR_COLOR.1=§c红色
+value.SELECTOR_COLOR.2=§a绿色
+value.SELECTOR_COLOR.3=§9蓝色
+value.SELECTOR_COLOR.4=§e黄色
+value.SELECTOR_COLOR.5=§d粉红色
+value.SELECTOR_COLOR.6=§5紫色
+value.SELECTOR_COLOR.7=§6橙色
+value.SELECTOR_COLOR.8=§f白色
+value.SELECTOR_COLOR.9=§8灰色
+
+# Suffix Settings
+suffix.FOCAL=mm
+suffix.LPV_NORMAL_STRENGTH=%
+suffix.LPV_SATURATION=%
+suffix.LPV_TINT_SATURATION=%
+suffix.MANUAL_FOCUS=m
+
+# Prefix Settings
+prefix.APERTURE=f/
+
+
+
+
+
+
+
+
+
+
+

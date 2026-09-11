@@ -1,0 +1,18 @@
+screen.FLASHLIGHT_OPTIONS = 电筒选项
+
+option.MEGA_DARKNESS_ENABLED = 启用巨暗模式
+value.MEGA_DARKNESS_ENABLED.0 = 否
+value.MEGA_DARKNESS_ENABLED.1 = 是
+
+option.FOG_START_DISTANCE = 雾开始距离
+suffix.FOG_START_DISTANCE=%
+
+option.FLASHLIGHT_COLOR_R = 红色 量
+suffix.FLASHLIGHT_COLOR_R=%
+option.FLASHLIGHT_COLOR_G = 绿色 量
+suffix.FLASHLIGHT_COLOR_G=%
+option.FLASHLIGHT_COLOR_B = 蓝色 量
+suffix.FLASHLIGHT_COLOR_B=%
+
+option.FLASHLIGHT_BEAM_WIDTH = 手电筒光束宽度
+option.FLASHLIGHT_DISTANCE = 手电筒距离

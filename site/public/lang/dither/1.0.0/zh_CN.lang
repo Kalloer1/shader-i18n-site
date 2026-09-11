@@ -1,0 +1,20 @@
+option.OUTLINE = 轮廓
+option.OUTLINE_WIDTH = 轮廓宽度
+option.OUTLINE_SHADE = 轮廓阴影
+option.PIXELS = 像素大小
+option.DITHERING = 双抖
+option.DITHER_THRESHOLD = 双抖阈值
+option.VIGNETTE = 暗角
+option.VIGNETTE_SIZE = 暗角大小
+
+value.OUTLINE_SHADE.1 = 最轻颜色
+value.OUTLINE_SHADE.0 = 最重颜色
+
+option.OUTLINE.comment = 在深度突变处添加描边
+option.OUTLINE_WIDTH.comment = 控制描边宽度
+option.OUTLINE_SHADE.comment = 控制描边颜色为最亮或最暗调色板颜色
+option.PIXELS.comment = 控制像素大小
+option.DITHERING.comment = 开关抖动效果
+option.DITHER_THRESHOLD.comment = 控制抖动阈值
+option.VIGNETTE.comment = 切换暗角效果
+option.VIGNETTE_SIZE.comment = 控制暗角大小

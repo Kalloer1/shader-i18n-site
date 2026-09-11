@@ -1,0 +1,28 @@
+option.SHADOW_STRENGTH = 阴影强度
+
+option.sunPathRotation = 太阳角度
+suffix.sunPathRotation = °
+
+option.shadowMapResolution = 阴影分辨率
+suffix.shadowMapResolution = x
+
+option.SHADOW_SOFTNESS = 阴影柔和度
+
+option.FOLIAGE_SHADOW = 树叶阴影
+
+option.TRANSPARENT_SHADOWS = 半透明阴影
+value.TRANSPARENT_SHADOWS.2 = 完全
+value.TRANSPARENT_SHADOWS.1 = 无
+value.TRANSPARENT_SHADOWS.0 = 不透明
+
+option.TRANSPARENT_SHADOWS.comment=§e完全 §f表示半透明物体在不透明度越低时投射的阴影越弱. §e无 §f表示半透明物体不会投射阴影. §e不透明 §f表示半透明物体会投射完整阴影.
+
+option.FXAA=抗锯齿
+
+option.SHADOW_SAMPLES = 阴影采样次数
+
+option.shadowDistance = 阴影距离
+suffix.shadowDistance = \u00a0块
+
+option.SHADOW_DISTORT_FACTOR = 阴影贴图失真
+option.SHADOW_BIAS = 阴影偏移

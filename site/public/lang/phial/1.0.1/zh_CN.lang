@@ -1,0 +1,4 @@
+option.ditheringScale = 抖动比例
+option.vignetteSize = 暗角大小
+option.pixelizationSize = 像素化大小
+option.vignetteQuantization = 暗角量化

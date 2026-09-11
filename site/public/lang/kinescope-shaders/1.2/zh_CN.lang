@@ -1,0 +1,20 @@
+screen.KINESCOPE_TITLE=电影级调色包V1.2 (Chocapic13_shaders_edit)
+screen.KINESCOPE_TITLE.comment=对 Chocapic13 的 V9 Ultra 的电影级重新调色。本页面仅包含主电影级调色开关 - 真正的设置在下面的分类中，顶部的配置文件按钮可切换质量等级。
+
+profile.comment=土豆 - 几乎在所有设备上运行，不支持景深或体积光。低配 - 阴影和效果较轻。 中配 - 品质与性能平衡。高配 - 优化的经典默认设置。 极高 - 最大化的阴影、云层和体积光，最昂贵的档位。
+profile.Potato=土豆
+profile.Potato.comment=最低成本。禁用景深和云层体积光，将阴影/水/云层质量降至最低。
+profile.Low=低配
+profile.Low.comment=轻量级阴影和反射，不支持景深或体积光。适合老旧/集成显卡。
+profile.Medium=中配
+profile.Medium.comment=品质与性能平衡。启用景深，禁用云层体积光。
+profile.High=高配
+profile.High.comment=优化的经典默认设置：完整阴影、景深和云层体积光。
+profile.Ultra=极高
+profile.Ultra.comment=最大化的阴影分辨率/距离，最浓密的云层，最长的光线投射。 最昂贵的档位。
+
+screen.Cinematic=电影效果
+screen.Cinematic.comment=电影级效果：色调映射、分色调、色差、暗角、颗粒、信封条和畸变镜头光斑。
+
+option.ANAMORPHIC_STREAKS.comment=Kinescope 的标志性效果 - 酷炫的蓝色水平光斑从明亮光源处溢出，仿佛使用 anamorphic 镜头拍摄的画面。
+option.WATER_FACE_DRIPS.comment=Kinescope 的标志性效果 - 当你从水中浮出水面时，镜头上会出现水滴，并在几秒内逐渐消失。

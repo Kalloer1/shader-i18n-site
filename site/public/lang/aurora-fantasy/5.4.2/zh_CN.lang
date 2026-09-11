@@ -1,0 +1,605 @@
+# Aurora Fantasy 5.4.2 - English
+
+# ═══════════════════════════════════════════
+#  Profiles
+# ═══════════════════════════════════════════
+profile.BALANCED=§a§l平衡
+profile.BALANCED.comment=§a§l平衡§r: 完整的特性集，精心平衡的质量设置。
+
+profile.EXTREME=§c§l极致 §4§o(无极限)
+profile.EXTREME.comment=§c§l极致§r: 最高分辨率和采样密度，不受性能限制。
+
+option.TEXTURE_QUALITY=源纹理分辨率
+option.TEXTURE_QUALITY.comment=奥罗拉无缝云层和水面细节贴图的分辨率
+value.TEXTURE_QUALITY.1=§a1024 · 平衡
+value.TEXTURE_QUALITY.2=§c2048 · 极致
+option.AUX_BUFFER_QUALITY=大气缓冲分辨率
+option.AUX_BUFFER_QUALITY.comment=平滑程序化大气查找的分辨率
+value.AUX_BUFFER_QUALITY.1=§a75%
+value.AUX_BUFFER_QUALITY.2=§c100%
+
+# ═══════════════════════════════════════════
+#  Screens
+# ═══════════════════════════════════════════
+screen.SHADOWS_SCREEN=§l⚡ 阴影与光照
+screen.SHADOWS_SCREEN.comment=阴影、环境光遮蔽、体积光和光照设置。
+
+screen.ATMOSPHERE_SCREEN=§l☁ 天空与大气
+screen.ATMOSPHERE_SCREEN.comment=云朵、天空颜色、雾气和星辰
+
+screen.WATER_SCREEN=§l💧 水与天气
+screen.WATER_SCREEN.comment=反射效果、水面、雨水积水和天气。
+
+screen.EFFECTS_SCREEN=§l✦ 效果
+screen.EFFECTS_SCREEN.comment=萤火之光、泛光、雨地倒影、自发光材质、波浪效果、景深、运动模糊和抗锯齿。
+
+screen.CAMERA_SCREEN=§l📷 相机与颜色
+screen.CAMERA_SCREEN.comment=色调映射、饱和度、对比度、亮度和清晰度。
+
+screen.CUSTOM_COLORS_SCREEN=§l🎨 自定义颜色
+screen.CUSTOM_COLORS_SCREEN.comment=自定义天空、水和光线颜色。先将配色方案设置为“自定义”。
+
+# ═══════════════════════════════════════════
+#  Shadows & Lighting
+# ═══════════════════════════════════════════
+option.SHADOW_CASTING=阴影
+option.SHADOW_CASTING.comment=启用实时阴影渲染。
+
+option.SHADOW_ENTITIES=实体阴影
+option.SHADOW_ENTITIES.comment=玩家和生物的阴影。禁用可提升约30%的帧数。
+
+option.SHADOW_QTY_SLIDER=阴影分辨率
+option.SHADOW_QTY_SLIDER.comment=阴影贴图分辨率。数值越高阴影越清晰，但对 GPU 负担更大。
+value.SHADOW_QTY_SLIDER.1=§7512
+value.SHADOW_QTY_SLIDER.2=§71024
+value.SHADOW_QTY_SLIDER.3=§a1536
+value.SHADOW_QTY_SLIDER.4=§a2048
+value.SHADOW_QTY_SLIDER.5=§e3072
+value.SHADOW_QTY_SLIDER.6=§e4096
+value.SHADOW_QTY_SLIDER.7=§c6144
+value.SHADOW_QTY_SLIDER.8=§c8192
+
+option.SHADOW_DISTANCE_SLIDER=阴影距离
+option.SHADOW_DISTANCE_SLIDER.comment=阴影渲染的距离。使用约 80% 的渲染距离。
+value.SHADOW_DISTANCE_SLIDER.1=§74 4 区块
+value.SHADOW_DISTANCE_SLIDER.2=§75 5 区块
+value.SHADOW_DISTANCE_SLIDER.3=§a6 6 区块
+value.SHADOW_DISTANCE_SLIDER.4=§a8 8 区块
+value.SHADOW_DISTANCE_SLIDER.5=§e10 10 区块
+value.SHADOW_DISTANCE_SLIDER.6=§e12 12 区块
+value.SHADOW_DISTANCE_SLIDER.7=§c14 14 区块
+value.SHADOW_DISTANCE_SLIDER.8=§c16 16 区块
+
+option.SHADOW_TYPE=阴影滤镜
+value.SHADOW_TYPE.0=硬阴影
+value.SHADOW_TYPE.1=软阴影
+
+option.SHADOW_BLUR=阴影柔和度
+suffix.SHADOW_BLUR=x
+
+option.SHADOW_SAMPLES=阴影滤波采样
+option.SHADOW_SAMPLES.comment=用于柔和和彩色阴影的旋转圆盘采样。
+suffix.SHADOW_SAMPLES= 采样点
+
+option.COLORED_SHADOW=彩色阴影
+option.COLORED_SHADOW.comment=通过彩色玻璃和冰的阴影会变色。
+
+option.sunPathRotation=太阳角度
+suffix.sunPathRotation=°
+
+option.VOL_LIGHT=光线
+option.VOL_LIGHT.comment=神射光 / 体积光。深度：简单，无需阴影即可工作。体积：精确，需要阴影。
+value.VOL_LIGHT.0=关闭
+value.VOL_LIGHT.1=深度
+value.VOL_LIGHT.2=体积
+
+option.GODRAY_STEPS=光线质量
+value.GODRAY_STEPS.2=§72
+value.GODRAY_STEPS.3=§a3
+value.GODRAY_STEPS.4=§a4
+value.GODRAY_STEPS.5=§e5
+value.GODRAY_STEPS.6=§e6
+value.GODRAY_STEPS.7=§c7
+
+option.AO=环境光遮蔽
+option.AO.comment=在角落和裂缝中添加柔和阴影。
+value.AO.0=关闭
+value.AO.1=开启
+
+option.VANILLA_AO=原版环境光遮蔽
+option.VANILLA_AO.comment=Minecraft 的内置环境光遮蔽。比光影环境光遮蔽快得多。
+value.VANILLA_AO.0=关闭
+value.VANILLA_AO.1=开启
+
+option.AO_STRENGTH=环境光遮蔽强度
+suffix.AO_STRENGTH=x
+
+option.OMNI_MUL=光照强度
+suffix.OMNI_MUL=x
+option.OMNI_MUL.comment=控制阴影的暗度和光照的颜色强度。
+
+option.BLOCKLIGHT_TEMP=火把颜色
+value.BLOCKLIGHT_TEMP.-1=§6暖色+
+value.BLOCKLIGHT_TEMP.0=§e温暖
+value.BLOCKLIGHT_TEMP.1=§f中性
+value.BLOCKLIGHT_TEMP.2=§e黄色
+value.BLOCKLIGHT_TEMP.3=§f苍白
+value.BLOCKLIGHT_TEMP.4=§b白色
+value.BLOCKLIGHT_TEMP.5=§9凉爽
+
+option.DYN_HAND_LIGHT=手持光源
+option.DYN_HAND_LIGHT.comment=手持火把时可照亮附近的方块。
+
+option.NIGHT_BRIGHT=夜间亮度
+suffix.NIGHT_BRIGHT=x
+
+option.AVOID_DARK_LEVEL=最低亮度
+suffix.AVOID_DARK_LEVEL=%
+option.AVOID_DARK_LEVEL.comment=最低光照等级。数值越高，洞穴越明亮。
+value.AVOID_DARK_LEVEL.50.0=全亮度
+
+# ═══════════════════════════════════════════
+#  Sky & Atmosphere
+# ═══════════════════════════════════════════
+option.COLOR_SCHEME=§l颜色方案
+option.COLOR_SCHEME.comment=天空和光照颜色主题。选择“自定义”以使用自定义颜色屏幕。
+value.COLOR_SCHEME.0=飘渺
+value.COLOR_SCHEME.1=New Shoka
+value.COLOR_SCHEME.2=Shoka
+value.COLOR_SCHEME.3=传统
+value.COLOR_SCHEME.4=船长
+value.COLOR_SCHEME.5=迷幻
+value.COLOR_SCHEME.6=可可
+value.COLOR_SCHEME.7=Testigo
+value.COLOR_SCHEME.8=§b写实+
+value.COLOR_SCHEME.9=§b写实 (波兰语)
+value.COLOR_SCHEME.10=§6极光传统
+value.COLOR_SCHEME.11=§f原版
+value.COLOR_SCHEME.12=§4诅咒
+value.COLOR_SCHEME.99=§e自定义
+
+option.V_CLOUDS=云层
+option.V_CLOUDS.comment=关闭：无云。原版+：增强原版云层。静态：移动但保持形状。动态：不断变化的形状。
+value.V_CLOUDS.-1=关闭
+value.V_CLOUDS.0=原版+
+value.V_CLOUDS.1=静态
+value.V_CLOUDS.2=动态
+
+option.USE_CLOUD_VOL_STYLE=云层形状
+value.USE_CLOUD_VOL_STYLE.-1=自动
+value.USE_CLOUD_VOL_STYLE.0=自然
+value.USE_CLOUD_VOL_STYLE.1=方盒状
+
+option.CLOUD_DENSITY=云密度
+suffix.CLOUD_DENSITY=x
+
+option.CLOUD_STEPS_AVG=云层质量
+value.CLOUD_STEPS_AVG.3=§a3
+value.CLOUD_STEPS_AVG.4=§e4
+value.CLOUD_STEPS_AVG.5=§e5
+value.CLOUD_STEPS_AVG.10=§c10
+
+option.CIRRUS=卷云
+option.CIRRUS.comment=高空薄云层
+
+option.CIRRUS_STEPS_AVG=Cirrus 质量
+value.CIRRUS_STEPS_AVG.3=§a3
+value.CIRRUS_STEPS_AVG.4=§e4
+value.CIRRUS_STEPS_AVG.5=§c5
+
+option.CLOUD_REFLECTION=云反射
+option.CLOUD_REFLECTION.comment=体积云在水面上产生反射。
+
+option.END_CLOUDS=末地云
+option.END_CLOUDS.comment=末地维度中的云层。
+
+option.BIOME_SKY=生物群系天空
+option.BIOME_SKY.comment=天空颜色随生物群系变化。
+
+option.BIOME_FOG=生物群系雾
+option.BIOME_FOG.comment=每种生物群系的雾密度都会发生变化.
+
+option.FOG_ACTIVE=雾
+
+option.FOG_ADJUST=雾密度
+value.FOG_ADJUST.10.0=§7稀薄
+value.FOG_ADJUST.8.0=§7轻
+value.FOG_ADJUST.4.0=§a正常
+value.FOG_ADJUST.2.0=§e浓
+value.FOG_ADJUST.1.5=§c厚
+value.FOG_ADJUST.1.0=§c最大
+
+option.SANDSTORM=沙尘暴
+option.SANDSTORM.comment=沙漠沙尘暴效果。需要开启群系雾效。
+
+option.STAR_SLIDER=星星
+value.STAR_SLIDER.0=关闭
+value.STAR_SLIDER.1=§a标准
+value.STAR_SLIDER.2=§c详细
+
+option.STARS_BRIGHTNESS=星亮度
+suffix.STARS_BRIGHTNESS=x
+
+option.STARS_COVERAGE=星体覆盖率
+suffix.STARS_COVERAGE=x
+
+option.END_STARS=末地之星
+option.END_STARS.comment=末地维度中的星体
+
+# ═══════════════════════════════════════════
+#  Water & Weather
+# ═══════════════════════════════════════════
+option.REFLECTION_SLIDER=反射
+option.REFLECTION_SLIDER.comment=关闭：无。基础：翻转图像。SSR：屏幕空间光线追踪。
+value.REFLECTION_SLIDER.0=关闭
+value.REFLECTION_SLIDER.1=§a基础
+value.REFLECTION_SLIDER.2=§eSSR
+
+option.WATER_REFLECTION_STEPS=水面反射采样次数
+option.WATER_REFLECTION_STEPS.comment=用于在水面查找精确屏幕空间反射的射线采样次数
+suffix.WATER_REFLECTION_STEPS= 步数
+
+option.SUN_REFLECTION=太阳反射
+value.SUN_REFLECTION.0=关闭
+value.SUN_REFLECTION.1=圆
+value.SUN_REFLECTION.2=方
+
+option.SSR_MAX_STEPS=SSR 质量
+option.SSR_MAX_STEPS.comment=光线追踪步数。步数越多反射越清晰。
+value.SSR_MAX_STEPS.4=§74
+value.SSR_MAX_STEPS.8=§a8
+value.SSR_MAX_STEPS.16=§a16
+value.SSR_MAX_STEPS.24=§e24
+value.SSR_MAX_STEPS.32=§e32
+value.SSR_MAX_STEPS.64=§c64
+
+option.SSR_STRENGTH=SSR 强度
+value.SSR_STRENGTH.1=10%
+value.SSR_STRENGTH.5=50%
+value.SSR_STRENGTH.8=80%
+value.SSR_STRENGTH.10=§c100%
+
+option.REFRACTION=折射
+option.REFRACTION.comment=光线通过水时发生弯曲。
+value.REFRACTION.0=关闭
+value.REFRACTION.1=开启
+
+option.USE_WATER_TEXTURE=水纹理
+value.USE_WATER_TEXTURE.-1=自动
+value.USE_WATER_TEXTURE.0=光影
+value.USE_WATER_TEXTURE.1=资源包
+
+option.WATER_ABSORPTION=水体清晰度
+suffix.WATER_ABSORPTION=%
+option.WATER_ABSORPTION.comment=水体吸收光线的程度。低值 = 清澈，高值 = 浑浊。
+
+option.WATER_FOG=水雾
+suffix.WATER_FOG=x
+
+option.CAUSTICS=水面焦散
+option.CAUSTICS.comment=在阳光照射下的水域中投射动态波浪光影图案。
+option.CAUSTICS_INTENSITY=焦散强度
+suffix.CAUSTICS_INTENSITY=x
+
+option.USE_WATER_TURBULENCE=波浪强度
+value.USE_WATER_TURBULENCE.-1=自动
+value.USE_WATER_TURBULENCE.0=平坦
+value.USE_WATER_TURBULENCE.1=轻微
+value.USE_WATER_TURBULENCE.2=普通
+value.USE_WATER_TURBULENCE.3=强
+
+option.WATER_FOAM=水边泡沫
+option.WATER_FOAM.comment=水边出现的白色泡沫。
+
+option.FOAM_WIDTH=泡沫宽度
+suffix.FOAM_WIDTH=x
+
+option.RAIN_PUDDLES=雨地积水与反射
+option.RAIN_PUDDLES.comment=这是控制完整雨地系统的总开关。关闭后会移除积水、湿地光泽、水动画、雨波、环境反射和 SSR。雨粒子仍会正常显示。
+
+option.WEATHER_OPACITY=雨雾不透明度
+suffix.WEATHER_OPACITY=x
+
+# ═══════════════════════════════════════════
+#  Effects
+# ═══════════════════════════════════════════
+option.BLOOM=泛光
+option.BLOOM.comment=在明亮光源周围产生的发光效果。
+
+option.BLOOM_STRENGTH=泛光强度
+suffix.BLOOM_STRENGTH=x
+
+option.MATERIAL_GLOSS=材质高光
+option.MATERIAL_GLOSS.comment=金属和抛光表面的高光效果。
+
+option.WAVING=植物摇摆
+value.WAVING.0=关闭
+value.WAVING.1=开启
+
+option.EMMISIVE_ORE=发光的矿石
+option.EMMISIVE_ORE.comment=钻石、金、铁矿石会发出柔和的光。
+
+option.EMMISIVE_MATERIAL=发光的方块
+option.EMMISIVE_MATERIAL.comment=附魔台、中继器等会发出光芒。
+
+option.WIND_FORCE=风力
+suffix.WIND_FORCE=x
+
+option.DOF=景深
+option.DOF.comment=启用电影式焦外虚化。
+option.DOF_STRENGTH=景深强度
+option.DOF_STRENGTH.comment=控制景深开启时的虚化半径。
+suffix.DOF_STRENGTH=%
+value.DOF_STRENGTH.0=关闭
+
+option.MOTION_BLUR=运动模糊
+
+option.MOTION_BLUR_STRENGTH=模糊强度
+suffix.MOTION_BLUR_STRENGTH=x
+
+option.AA_TYPE=抗锯齿
+option.AA_TYPE.comment=推荐智能 TAA。仅使用 TAA 可能显得模糊。
+value.AA_TYPE.0=关闭
+value.AA_TYPE.1=降噪
+value.AA_TYPE.2=TAA
+value.AA_TYPE.3=§b智能 TAA
+
+option.FXAA=FXAA
+option.FXAA.comment=边缘平滑效果。配合 Smart TAA 使用效果最佳。
+
+# ═══════════════════════════════════════════
+#  Camera & Colors
+# ═══════════════════════════════════════════
+option.STYLE=§l风格
+value.STYLE.1=§6增强
+value.STYLE.2=§bVanilla
+option.STYLE.comment=增强：更好的视觉效果和光照。原版：原始的 Minecraft 外观。
+
+option.TONEMAPPING=色调映射
+option.TONEMAPPING.comment=颜色映射算法。影响整体外观。
+value.TONEMAPPING.0=传统
+value.TONEMAPPING.1=洛特
+value.TONEMAPPING.2=ACES
+value.TONEMAPPING.3=迷幻
+
+option.SATURATION=饱和度
+suffix.SATURATION=x
+
+option.CONTRAST=对比度
+suffix.CONTRAST=x
+
+option.BRIGHTNESS=亮度
+suffix.BRIGHTNESS=倍
+
+option.GAMMA=伽马
+suffix.GAMMA=倍
+
+option.VIBRANCE=自然饱和度
+suffix.VIBRANCE=x
+option.VIBRANCE.comment=提升暗淡的颜色，同时不会过度饱和明亮的颜色。
+
+option.EXPOSURE=曝光
+suffix.EXPOSURE=x
+
+option.SHARP_FORCE=锐利度
+suffix.SHARP_FORCE=x
+
+# ═══════════════════════════════════════════
+#  Custom Colors
+# ═══════════════════════════════════════════
+screen.CUSTOM_COLORS_DAY=☀ 白天
+screen.CUSTOM_COLORS_SUNSET=🌅 黄昏
+screen.CUSTOM_COLORS_NIGHT=🌙 夜晚
+screen.CUSTOM_COLORS_WATER=💧 水
+
+option.NIGHT_BRIGHT_RANGE=月相效果
+option.NIGHT_BRIGHT_RANGE.comment=月相对夜间亮度的影响程度。
+suffix.NIGHT_BRIGHT_RANGE=x
+
+option.RED=红色
+option.GREEN=绿色
+option.BLUE=蓝色
+suffix.RED=x
+suffix.GREEN=x
+suffix.BLUE=x
+
+option.LIGHT_DAY_COLOR_R=光照 R
+option.LIGHT_DAY_COLOR_G=光照 G
+option.LIGHT_DAY_COLOR_B=光照 B
+option.ZENITH_DAY_COLOR_R=天顶 R
+option.ZENITH_DAY_COLOR_G=天顶 G
+option.ZENITH_DAY_COLOR_B=天顶 B
+option.HORIZON_DAY_COLOR_R=地平线 R
+option.HORIZON_DAY_COLOR_G=地平线 G
+option.HORIZON_DAY_COLOR_B=地平线 B
+option.LIGHT_SUNSET_COLOR_R=光照 R
+option.LIGHT_SUNSET_COLOR_G=光照 G
+option.LIGHT_SUNSET_COLOR_B=光照 B
+option.ZENITH_SUNSET_COLOR_R=天顶 R
+option.ZENITH_SUNSET_COLOR_G=天顶 G
+option.ZENITH_SUNSET_COLOR_B=天顶 B
+option.HORIZON_SUNSET_COLOR_R=地平线 R
+option.HORIZON_SUNSET_COLOR_G=地平线 G
+option.HORIZON_SUNSET_COLOR_B=地平线 B
+option.LIGHT_NIGHT_COLOR_R=光照 R
+option.LIGHT_NIGHT_COLOR_G=光照 G
+option.LIGHT_NIGHT_COLOR_B=光照 B
+option.ZENITH_NIGHT_COLOR_R=天顶 R
+option.ZENITH_NIGHT_COLOR_G=天顶 G
+option.ZENITH_NIGHT_COLOR_B=天顶 B
+option.HORIZON_NIGHT_COLOR_R=地平线 R
+option.HORIZON_NIGHT_COLOR_G=地平线 G
+option.HORIZON_NIGHT_COLOR_B=地平线 B
+option.WATER_COLOR_R=水 R
+option.WATER_COLOR_G=水 G
+
+option.WEATHER_OPACITY=雨水不透明度
+suffix.WEATHER_OPACITY=倍
+
+option.CAMERA_RAIN_DROPS=相机雨滴
+option.CAMERA_RAIN_DROPS.comment=在玩家的相机镜头上显示滑动雨珠和流动水痕。禁用此选项不会影响世界中的雨水或积水。
+
+# ═══════════════════════════════════════════
+#  Effects
+# ═══════════════════════════════════════════
+option.BLOOM=泛光
+option.BLOOM.comment=明亮光源周围的辉光效果。
+
+option.BLOOM_STRENGTH=泛光强度
+suffix.BLOOM_STRENGTH=x
+
+option.MATERIAL_GLOSS=材质高光
+option.MATERIAL_GLOSS.comment=金属和抛光表面的高光效果。
+
+option.WAVING=波浪植物
+value.WAVING.0=关闭
+value.WAVING.1=开启
+
+option.EMMISIVE_ORE=发光矿石
+option.EMMISIVE_ORE.comment=钻石、金、铁矿石发出柔和光芒。
+
+option.EMMISIVE_MATERIAL=发光方块
+option.EMMISIVE_MATERIAL.comment=附魔台、中继器等会发出光。
+
+option.WIND_FORCE=风力
+suffix.WIND_FORCE=x
+
+option.DOF=景深
+option.DOF.comment=启用电影级虚焦.
+option.DOF_STRENGTH=景深强度
+option.DOF_STRENGTH.comment=控制景深启用时的虚化半径.
+suffix.DOF_STRENGTH=%
+value.DOF_STRENGTH.0=Off
+
+option.MOTION_BLUR=运动模糊
+
+option.MOTION_BLUR_STRENGTH=模糊强度
+suffix.MOTION_BLUR_STRENGTH=x
+
+option.AA_TYPE=抗锯齿
+option.AA_TYPE.comment=推荐智能 TAA。仅使用 TAA 可能显得模糊。
+value.AA_TYPE.0=关闭
+value.AA_TYPE.1=降噪
+value.AA_TYPE.2=TAA
+value.AA_TYPE.3=§b智能 TAA
+
+option.FXAA=FXAA
+option.FXAA.comment=额外边缘平滑处理。配合 Smart TAA 效果最佳。
+
+# ═══════════════════════════════════════════
+#  Camera & Colors
+# ═══════════════════════════════════════════
+option.STYLE=§l风格
+value.STYLE.1=§6增强
+value.STYLE.2=§b原版
+option.STYLE.comment=增强：更好的视觉效果和光照。原版：原版 Minecraft 外观。
+
+option.TONEMAPPING=色调映射
+option.TONEMAPPING.comment=颜色映射算法。影响整体外观。
+value.TONEMAPPING.0=传统
+value.TONEMAPPING.1=Lottes
+value.TONEMAPPING.2=ACES
+value.TONEMAPPING.3=迷幻
+
+option.SATURATION=饱和度
+suffix.SATURATION=x
+
+option.CONTRAST=对比度
+suffix.CONTRAST=x
+
+option.BRIGHTNESS=亮度
+suffix.BRIGHTNESS=x
+
+option.GAMMA=伽马
+suffix.GAMMA=x
+
+option.VIBRANCE=自然饱和度
+suffix.VIBRANCE=x
+option.VIBRANCE.comment=提升暗淡的颜色，同时不会过度饱和明亮的颜色。
+
+option.EXPOSURE=曝光
+suffix.EXPOSURE=x
+
+option.SHARP_FORCE=锐利度
+suffix.SHARP_FORCE=倍
+
+# ═══════════════════════════════════════════
+#  Custom Colors
+# ═══════════════════════════════════════════
+screen.CUSTOM_COLORS_DAY=☀ 白天
+screen.CUSTOM_COLORS_SUNSET=🌅 日落
+screen.CUSTOM_COLORS_NIGHT=🌙 夜
+screen.CUSTOM_COLORS_WATER=💧 水
+
+option.NIGHT_BRIGHT_RANGE=月相效果
+option.NIGHT_BRIGHT_RANGE.comment=月相对夜间亮度的影响程度。
+suffix.NIGHT_BRIGHT_RANGE=x
+
+option.NIGHT_NEUTRAL_FILL=中性夜间填充
+option.NIGHT_NEUTRAL_FILL.comment=添加一种不改变方块调色的微弱中性色户外夜间光照。
+suffix.NIGHT_NEUTRAL_FILL=x
+
+option.RED=红色
+option.GREEN=绿色
+option.BLUE=蓝色
+suffix.RED=x
+suffix.GREEN=x
+suffix.BLUE=x
+
+option.LIGHT_DAY_COLOR_R=光 R
+option.LIGHT_DAY_COLOR_G=光 G
+option.LIGHT_DAY_COLOR_B=光 B
+option.ZENITH_DAY_COLOR_R=天顶 R
+option.ZENITH_DAY_COLOR_G=天顶 G
+option.ZENITH_DAY_COLOR_B=天顶 B
+option.HORIZON_DAY_COLOR_R=地平线 R
+option.HORIZON_DAY_COLOR_G=地平线 G
+option.HORIZON_DAY_COLOR_B=地平线 B
+option.LIGHT_SUNSET_COLOR_R=光 R
+option.LIGHT_SUNSET_COLOR_G=光 G
+option.LIGHT_SUNSET_COLOR_B=光 B
+option.ZENITH_SUNSET_COLOR_R=天顶 R
+option.ZENITH_SUNSET_COLOR_G=天顶 G
+option.ZENITH_SUNSET_COLOR_B=天顶 B
+option.HORIZON_SUNSET_COLOR_R=地平线 R
+option.HORIZON_SUNSET_COLOR_G=地平线 G
+option.HORIZON_SUNSET_COLOR_B=地平线 B
+option.LIGHT_NIGHT_COLOR_R=光 R
+option.LIGHT_NIGHT_COLOR_G=光 G
+option.LIGHT_NIGHT_COLOR_B=光 B
+option.ZENITH_NIGHT_COLOR_R=天顶 R
+option.ZENITH_NIGHT_COLOR_G=天顶 G
+option.ZENITH_NIGHT_COLOR_B=天顶 B
+option.HORIZON_NIGHT_COLOR_R=地平线 R
+option.HORIZON_NIGHT_COLOR_G=地平线 G
+option.HORIZON_NIGHT_COLOR_B=地平线 B
+option.WATER_COLOR_R=水 R
+option.WATER_COLOR_G=水 G
+option.WATER_COLOR_B=水 B
+
+# ═══════════════════════════════════════════
+#  Distant Rendering Mod Support
+# ═══════════════════════════════════════════
+option.DISTANT_RENDER_COMPAT=§b⚙ 远处渲染兼容性
+option.DISTANT_RENDER_COMPAT.comment=仅当渲染距离模组未自动暴露 Distant Horizons 支持时启用。§c原版和 Distant Horizons 请保持关闭状态。
+
+# ═══════════════════════════════════════════
+#  Aurora Fantasy Night Features
+# ═══════════════════════════════════════════
+option.FANTASY_LIFE_SYSTEM=魅惑萤火生命
+option.FANTASY_LIFE_SYSTEM.comment=主开关，用于控制体积萤火虫、发光植物和树冠光照，包括它们与玩家的互动。
+option.FANTASY_LIFE_QUALITY=魅惑生命品质
+option.FANTASY_LIFE_QUALITY.comment=配置文件管理的萤火虫及其照亮自然世界的图形细节。
+value.FANTASY_LIFE_QUALITY.1=§a低
+value.FANTASY_LIFE_QUALITY.2=§e中
+value.FANTASY_LIFE_QUALITY.3=§b高
+value.FANTASY_LIFE_QUALITY.4=§d极高
+option.FANTASY_FIREFLIES=奇幻萤火虫
+option.FANTASY_FIREFLIES.comment=世界锚定的发光萤火虫和微小的有翅夜间生物，它们聚集在户外植被附近。
+value.FANTASY_FIREFLIES.0=§c关闭
+value.FANTASY_FIREFLIES.1=§a低
+value.FANTASY_FIREFLIES.2=§e中
+value.FANTASY_FIREFLIES.3=§b高
+value.FANTASY_FIREFLIES.4=§d极高
+option.FANTASY_NIGHT_FLORA=魅惑夜间植被
+option.FANTASY_NIGHT_FLORA.comment=在夜间为花朵、树叶和开花的树冠添加受限的、保持纹理的光生物发光效果。

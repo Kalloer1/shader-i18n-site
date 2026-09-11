@@ -1,0 +1,27 @@
+# Colorblind Shader - English labels
+# Based on clinical definitions from NIH, Colour Blind Awareness, Britannica
+
+option.COLORBLIND_MODE=色盲模式
+option.COLORBLIND_MODE.comment=模拟特定类型的色觉缺陷。双色视 = 一种视锥细胞完全缺失。异常 = 一种视锥细胞减弱。
+
+value.COLORBLIND_MODE.0=正常视力
+value.COLORBLIND_MODE.1=绿色盲（无绿锥细胞）
+value.COLORBLIND_MODE.2=红色盲（无红锥细胞）
+value.COLORBLIND_MODE.3=蓝色盲（无蓝锥细胞）
+value.COLORBLIND_MODE.4=绿色弱（绿锥细胞敏感度低）
+value.COLORBLIND_MODE.5=红色弱（红锥细胞敏感度低）
+value.COLORBLIND_MODE.6=蓝色弱（蓝锥细胞敏感度低）
+value.COLORBLIND_MODE.7=全色盲（无视锥细胞）
+value.COLORBLIND_MODE.8=蓝锥细胞单色视觉
+
+option.CONTRAST=对比度
+option.CONTRAST.comment=提高色彩对比度。建议 CVD 用户使用 1.2-1.5。
+suffix.CONTRAST=x
+
+option.SHADOW_STRENGTH=阴影强度
+option.SHADOW_STRENGTH.comment=控制表面阴影的深浅。
+
+option.SHOW_NORMALS=显示法线 [DEBUG]
+option.SHOW_NORMALS.comment=将表面法线向量可视化为颜色。
+
+screen.ADVANCED=高级设置

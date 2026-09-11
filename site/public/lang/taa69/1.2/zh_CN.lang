@@ -1,0 +1,10 @@
+
+option.IRIS_LIGHTMAP =使用Iris光照贴图
+option.IRIS_LIGHTMAP.comment =若光照异常请尝试调整此项
+
+
+option.CUTOUT_MIPMAPS =截面多级渐远纹理
+option.CUTOUT_MIPMAPS.comment =截面几何体的纹理过滤
+value.CUTOUT_MIPMAPS.0=无
+value.CUTOUT_MIPMAPS.1=仅树叶
+value.CUTOUT_MIPMAPS.2=全部

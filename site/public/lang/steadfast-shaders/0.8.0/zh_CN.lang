@@ -1,0 +1,84 @@
+option.STEADFAST=稳定光影
+option.STEADFAST.comment=由 Iris 的原始开发者 coderbot16 制作。
+	This is a closed alpha release - §c§lplease do not redistribute in public!
+value.STEADFAST.BY_CODERBOT=by coderbot16
+profile.MINISHITA_HIGH=§aMinishita (WIP)§r 风格 - §b🔥 高配§r
+profile.MINISHITA_HIGH=§aMinishita (WIP)§r 风格 - §b🔥 高配§r
+profile.MINISHITA_MEDIUM=§aMinishita (WIP)§r 风格 - §a» 中配§r
+profile.MINISHITA_LOW=§aMinishita (WIP)§r 风格 - §e↓ 低配§r
+profile.MINISHITA_TOASTER=§aMinishita (WIP)§r 风格 - §c▶ 烤面包机§r
+profile.PARAGON_HIGH=§a★ Paragon§r 风格 - §b🔥 高配§r
+profile.PARAGON_MEDIUM=§a★ Paragon§r 风格 - §a» 中配§r
+profile.PARAGON_LOW=§a★ Paragon§r 风格 - §e↓ 低配§r
+profile.PARAGON_TOASTER=§a★ Paragon§r 风格 - §c▶ 烤面包机§r
+profile.FANTASY_HIGH=§d🪄 Fantasy§r 风格 - §b🔥 高配§r
+profile.FANTASY_MEDIUM=§d🪄 Fantasy§r 风格 - §a» 中配§r
+profile.FANTASY_LOW=§d🪄 Fantasy§r 风格 - §e↓ 低配§r
+profile.FANTASY_TOASTER=§d🪄 Fantasy§r 风格 - §c▶ 烤面包机§r
+profile.SEMI_NATURAL_HIGH=§b🏔️ Semi-Natural§r 风格 - §b🔥 高配§r
+profile.SEMI_NATURAL_MEDIUM=§b🏔️ Semi-Natural§r 风格 - §a» 中配§r
+profile.SEMI_NATURAL_LOW=§b🏔️ Semi-Natural§r 风格 - §e↓ 低配§r
+profile.SEMI_NATURAL_TOASTER=§b🏔️ Semi-Natural§r 风格 - §c▶ 烤面包机§r
+profile.RETRO_MEDIUM=§6😎 Retro§r 风格 - §a» 中配§r
+profile.RETRO_LOW=§6😎 Retro§r 风格 - §e↓ 低配§r
+profile.RETRO_TOASTER=§6😎 Retro§r 风格 - §c▶ 烤面包机§r
+profile.comment=
+	§a★ Paragon§r: The flagship style of Steadfast.. \
+	Colorful and pleasing, Paragon unifies the Semi-Natural (daytime) and \
+	Fantasy (nighttime) styles and is the very best that Steadfast has to \
+	offer.\n\n\
+	\
+	§d🪄 Fantasy§r: A warm style emphasizing blue and yellow.. \
+	Fantasy draws inspiration from the classic look of Chocapic13's shaders \
+	and edits like Sildur's shaders.\n\n\
+	\
+	§b⛰ Semi-Natural§r: A bright, realism-focused style.. \
+	Semi-Natural draws inspiration from the brighter, colder aesthetic of the \
+	SEUS v10.1 era, and approximates a more "natural" / "realistic" look.\n\n\
+	\
+	§6😎 Retro§r: A warm, cozy, and very lightweight style.. \
+	A throwback to 2012 shaders, Retro features weakened contrast between the \
+	sun and shadows, no directional shading from sunlight (like internal \
+	shaders), and the vanilla water texture.\n\n\
+	\
+	§b🔥 High§r / §a» Medium§r / §e↓ Low§r / §c▶ Toaster§r - Pre-tuned \
+	tradeoffs between quality and performance allowing you to adapt Steadfast \
+	to your device..
+
+screen.EFFECTS=特效与后期处理
+screen.WATER=水与彩色玻璃
+screen.ATMOSPHERE_CLOUDS=大气与云
+screen.LIGHTING=光照与阴影
+screen.DEVELOPMENT=开发与调试
+
+option.shadowDistance=阴影距离
+value.shadowDistance.32.0=极低（2区块）
+value.shadowDistance.48.0=很低（3区块）
+value.shadowDistance.64.0=低（4区块）
+value.shadowDistance.80.0=低（5区块）
+value.shadowDistance.96.0=低（6区块）
+value.shadowDistance.112.0=中（7区块）
+value.shadowDistance.128.0=中（8区块）
+value.shadowDistance.144.0=中（9区块）
+value.shadowDistance.160.0=普通（10区块）
+value.shadowDistance.192.0=高（12区块）
+value.shadowDistance.256.0=极高（16区块）
+option.shadowDistance.comment=阴影渲染距离控制阴影渲染的远近\
+	terrain can potentially cast or receive real-time shadows.\n\n\
+	Terrain outside of this distance will cast and receive approximate, static \
+	shadows based on skylight.\n\n\
+	Lower distances mean that less terrain will be rendered, improving frame \
+	rates.\n\n\
+	The actual shadow render distance is capped by the View Distance setting \
+	in Video Settings..
+
+option.SURFACE_COLORS=表面颜色
+value.SURFACE_COLORS.STANDARD=标准
+value.SURFACE_COLORS.NONE=None (whiteworld)
+value.SURFACE_COLORS.VERTEX_COLOR=顶点颜色（植被）
+option.SURFACE_COLORS.comment=当设置为无时，物体的基本颜色为\
+	disregarded in favor of simply treating every surface as white. \
+	With vertex color, only the texture color is disregarded, so foliage \
+	remains green. \
+	Useful for debugging lighting. \
+	Alpha testing is still applied.

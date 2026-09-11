@@ -1,0 +1,41 @@
+option.UNKN_COLOR_R = 杂项红色
+option.UNKN_COLOR_G = 杂项绿色
+option.UNKN_COLOR_B = 杂项蓝色
+option.UNKN_COLOR_I = 杂项强度
+option.GRND_COLOR_R = 地面红色
+option.GRND_COLOR_G = 地面绿色
+option.GRND_COLOR_B = 地面蓝色
+option.GRND_COLOR_I = 地面强度
+option.PLYR_COLOR_R = 玩家红色
+option.PLYR_COLOR_G = 玩家绿色
+option.PLYR_COLOR_B = 玩家蓝色
+option.PLYR_COLOR_I = 玩家强度
+option.FRND_COLOR_R = 好友红色
+option.FRND_COLOR_G = 好友绿色
+option.FRND_COLOR_B = 好友蓝色
+option.FRND_COLOR_I = 好友强度
+option.ENMY_COLOR_R = 敌人红色
+option.ENMY_COLOR_G = 敌人绿色
+option.ENMY_COLOR_B = 敌人蓝色
+option.ENMY_COLOR_I = 敌人强度
+
+option.COLOR_SENS = 颜色灵敏度
+option.DEPTH_SENS = 深度灵敏度
+option.NORM_SENS = 法线灵敏度
+
+option.ENTITY_COLOR_SENS = 实体颜色灵敏度
+option.ENTITY_DEPTH_SENS = 实体深度灵敏度
+option.DH_COLOR_SENS = 远景色彩灵敏度
+option.DH_DEPTH_SENS = 远景深度灵敏度
+
+option.LIGHT_STYLE = 光照样式
+option.LIGHT_FACTOR = 光照灵敏度
+
+value.LIGHT_STYLE.1 = 暗
+value.LIGHT_STYLE.2 = 亮
+value.LIGHT_STYLE.3 = 全部
+
+option.THICKER_LINES = 更粗的线条
+
+option.EDGE_BLOOM = 边缘辉光
+option.EDGE_STATIC = 边缘静态

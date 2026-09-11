@@ -1,0 +1,92 @@
+profile.DEFAULT=默认
+profile.NO_VHS=无 VHS
+profile.BACKROOMS=回廊
+profile.POOLROOMS=泳池房
+profile.LIMINAL_NIGHT=迷离之夜
+profile.PARKING_GARAGE=停车场车库
+profile.DEAD_CHANNEL=死亡频道
+profile.LOST=迷失
+profile.AFTER_HOURS=营业时间后
+profile.FORGOTTEN=遗忘
+profile.BODY_CAMERA=尸体摄像头
+
+screen.WORLD=世界设置
+screen.VHS=复古录像带设置
+screen.FLASHLIGHT=手电筒设置
+screen.EXTRA=录像带与CRT效果 高级设置
+screen.OTHER=其他
+
+option.HELD_ITEM_BRIGHTNESS=手持物品亮度
+option.HELD_ITEM_SPOTLIGHT=手持物品聚光灯
+
+option.LENS_DISTORTION=镜头畸变
+option.ASPECT_RATIO=VHS 宽高比
+option.COLOUR_DEPTH=色彩深度
+option.LUMA_QUALITY=亮度模糊
+option.CHROMA_QUALITY=色度模糊
+option.LUMA_NOISE=亮度噪点
+option.CHROMA_NOISE=色度噪点
+option.INTERLACING=隔行扫描
+option.INTERLACE_FRAMERATE=隔行扫描帧率
+option.INTERLACE_STRENGTH=隔行扫描鬼影
+option.SHARPNESS=锐利度（负值表示柔焦）
+option.TRACKING_ERROR=追踪误差故障
+option.TRACKING_ERROR_STRENGTH=追踪误差强度
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION_STRENGTH=色差强度
+option.HEAD_SWITCH_NOISE=头部切换噪点
+option.HEAD_SWITCH_STRENGTH=头部切换强度
+option.CCD_SMEAR=CCD 光斑拖尾
+option.CCD_SMEAR_LENGTH=CCD 拖尾长度
+option.CCD_SMEAR_STRENGTH=CCD 拖尾强度
+option.CCD_SMEAR_TAPS=CCD 拖尾质量
+option.FILM_DUST=胶片灰尘与划痕
+option.FILM_DUST_RATE=胶片灰尘闪烁速率
+option.FILM_DUST_DENSITY=胶片灰尘密度
+option.FILM_DUST_STRENGTH=胶片灰尘强度
+
+option.FLASHLIGHT_INTENSITY=手电筒亮度
+option.FLASHLIGHT_DONUT_SIZE=手电筒光束孔径大小
+option.FLASHLIGHT_HOTSPOT_SIZE=手电筒热点大小
+option.FLASHLIGHT_FLICKER=手电筒闪烁
+option.FLASHLIGHT_DARK_ONLY=仅在黑暗中显示手电筒
+option.FLASHLIGHT_DARK_THRESHOLD=手电筒黑暗阈值
+
+option.COLOUR_GRADE=颜色等级 (1=Backrooms 2=Poolrooms 3=Liminal Night 4=Parking Garage 5=Dead Channel 6=Lost 7=After Hours 8=Forgotten 9=Body Camera)
+option.VIGNETTE_STRENGTH=暗角强度
+option.FOG_DENSITY=雾密度
+option.DESATURATION=全局去饱和
+
+
+option.SCAN_LINES=扫描线
+option.SCAN_LINE_STRENGTH=扫描线强度
+option.TRACKING_WAVE=追踪波（波浪形失真带）
+option.TRACKING_WAVE_STRENGTH=追踪波强度
+option.COLOR_BLEED=色溢出
+option.COLOR_BLEED_STRENGTH=色溢出强度
+option.WOBBLE=VHS 抖动/晃动
+option.WOBBLE_STRENGTH=抖动强度
+option.STATIC_SNOW=静态/雪
+option.STATIC_SNOW_STRENGTH=静态/雪强度
+option.DROPOUT_LINES=丢弃线
+option.DROPOUT_STRENGTH=丢弃线强度
+option.SIGNAL_LOSS=信号丢失闪烁
+option.SIGNAL_LOSS_STRENGTH=信号丢失频率
+option.BLOOM=泛光/辉光
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_THRESHOLD=泛光阈值
+option.SCREEN_CURVATURE=屏幕曲率（CRT）
+option.SCREEN_CURVATURE_STRENGTH=屏幕曲率强度
+option.REWIND_STREAK=倒带/快进拖影（手动视角）
+option.REWIND_STREAK_STRENGTH=倒带拖影强度
+option.PAUSE_JITTER=暂停抖动（手动视角）
+option.PAUSE_JITTER_STRENGTH=暂停抖动强度
+option.FILM_GRAIN=胶片颗粒叠加
+option.FILM_GRAIN_STRENGTH=胶片颗粒强度
+option.VCR_TIMESTAMP=VCR 时间戳叠加（REC + 时钟）
+option.BRIGHTNESS_FLICKER=亮度闪烁
+option.BRIGHTNESS_FLICKER_STRENGTH=亮度闪烁强度
+option.VERTICAL_ROLL=垂直滚动（追踪猎取）
+option.VERTICAL_ROLL_STRENGTH=垂直滚动强度
+
+option.FAST_LINEAR_SRGB=快速线性 sRGB 转换

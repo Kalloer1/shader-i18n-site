@@ -1,0 +1,58 @@
+# === ThaiGlow LITE — ป้ายชื่อตัวเลือก (ภาษาไทย) ===
+
+screen.LIGHTING=การตั้งค่าแสง
+screen.SHADOW=การตั้งค่าเงา
+screen.FOG=การตั้งค่าหมอก
+screen.EFFECTS=เอฟเฟกต์
+screen.SKY=ท้องฟ้า
+screen.PERFORMANCE=ประสิทธิภาพ
+
+# ---- แสง ----
+option.DAY_BRIGHTNESS=ความสว่างกลางวัน
+option.DAY_BRIGHTNESS.comment=ปรับความสว่างโดยรวมในเวลากลางวัน
+
+option.NIGHT_BRIGHTNESS=ความสว่างกลางคืน
+option.NIGHT_BRIGHTNESS.comment=ปรับความสว่างโดยรวมในเวลากลางคืน
+
+option.TORCH_COLOR_R=สีไฟ (แดง)
+option.TORCH_COLOR_G=สีไฟ (เขียว)
+option.TORCH_COLOR_B=สีไฟ (น้ำเงิน)
+
+option.TORCH_STRENGTH=ความเข้มแสงไฟ
+option.TORCH_STRENGTH.comment=ความสว่างของแสงไฟคบเพลิง/โคมไฟ
+
+# ---- เงา ----
+option.ENABLE_DIRLIGHT=เปิด/ปิด แสงทิศทาง
+option.ENABLE_DIRLIGHT.comment=เปิดหรือปิดแสงอาทิตย์และเงา
+
+option.SHADOW_STRENGTH=ความเข้มเงา
+option.SHADOW_STRENGTH.comment=ยิ่งมาก เงายิ่งดำ
+
+option.SHADOW_QUALITY=คุณภาพเงา
+option.SHADOW_QUALITY.comment=用于计算阴影的采样数 — 影响帧率
+value.SHADOW_QUALITY.0=低（1 采样）
+value.SHADOW_QUALITY.1=中（4 采样）
+value.SHADOW_QUALITY.2=高（9 采样）
+
+# ---- หมอก ----
+option.ENABLE_FOG=เปิด/ปิด หมอก
+option.FOG_DENSITY=ความหนาแน่นหมอก
+
+# ---- เอฟเฟกต์ ----
+option.ENABLE_SPECULAR=แสงสะท้อน (ฝน)
+option.ENABLE_SPECULAR.comment=แสงสะท้อนบนพื้นผิวเปียกขณะฝนตก
+
+option.ENABLE_WIND=ลม
+option.ENABLE_WIND.comment=แอนิเมชันต้นไม้/หญ้าแกว่งตามลม
+
+option.WIND_SPEED=ความเร็วลม
+
+option.WAVE_SPEED=ความเร็วคลื่นน้ำ
+option.WAVE_HEIGHT=ความสูงคลื่นน้ำ
+
+# ---- ท้องฟ้า ----
+option.ENABLE_SUNMOON=พระอาทิตย์/พระจันทร์
+option.ENABLE_SUNMOON.comment=เปิดหรือปิดการแสดงผลพระอาทิตย์และพระจันทร์
+
+option.ENABLE_CLOUDS=เมฆ
+option.ENABLE_CLOUDS.comment=เปิดหรือปิดการแสดงผลเมฆ

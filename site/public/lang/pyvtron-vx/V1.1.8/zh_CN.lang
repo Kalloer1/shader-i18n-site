@@ -1,0 +1,350 @@
+
+
+screen.PYVTRON_VX_SHADER_INFO=版权所有 © 2025 - 2026 Pyvtron VX 光影包 由 Pyvton 制作
+
+screen.RAYTRACING=光线追踪
+
+option.RAYTRACE_QUALITY=光线追踪质量
+option.RAYTRACE_REFINEMENT=光线追踪细化
+option.RAYTRACE_REFINEMENT_STEPS=光线追踪细化步骤
+
+screen.LIGHTING=光照
+
+screen.LIGHT_SOURCE=光源
+
+option.SUNLIGHT_INTENSITY=阳光强度
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.sunPathRotation=太阳路径旋转
+option.TORCHLIGHT_BRIGHTNESS=触光亮度
+option.TORCHLIGHT_COLOR_TEMPERATURE=触光色温
+value.TORCHLIGHT_COLOR_TEMPERATURE.2000=2000K
+value.TORCHLIGHT_COLOR_TEMPERATURE.2300=2300K
+value.TORCHLIGHT_COLOR_TEMPERATURE.2500=2500K
+value.TORCHLIGHT_COLOR_TEMPERATURE.3000=3000K
+value.TORCHLIGHT_COLOR_TEMPERATURE.5000=6500K (白光)
+value.TORCHLIGHT_COLOR_TEMPERATURE.999=RGB
+option.NOLIGHT_BRIGHTNESS=基础亮度
+
+screen.GLOWING_BLOCKS=发光方块
+
+option.GLOWING_LAPIS_BLOCK=发光石蓝宝石块
+option.GLOWING_LAPIS_BLOCK_STRENGTH=发光石蓝宝石块强度
+option.GLOWING_EMERALD_BLOCK=发光绿宝石块
+option.GLOWING_EMERALD_BLOCK_STRENGTH=发光绿宝石块强度
+option.GLOWING_DIAMOND_BLOCK=发光钻石块
+option.GLOWING_DIAMOND_BLOCK_STRENGTH=发光钻石块强度
+
+screen.HELDLIGHT=持有光源
+
+option.HELDLIGHT_BRIGHTNESS=Brightness
+option.HELDLIGHT_FALLOFF=Distance Falloff
+option.NORMAL_HELDLIGHT=Effect Normal
+option.SPECULAR_HELDLIGHT=Effect Specular
+option.FLASHLIGHT_HELDLIGHT=Flashlight Mode
+option.FLASHLIGHT_HELDLIGHT_FALLOFF=Distance Falloff
+
+screen.SHADOWS=阴影
+
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowDistance=阴影距离
+value.shadowDistance.64.0=4
+value.shadowDistance.96.0=6
+value.shadowDistance.128.0=8
+value.shadowDistance.192.0=12
+value.shadowDistance.256.0=16
+value.shadowDistance.384.0=24
+value.shadowDistance.512.0=32
+value.shadowDistance.768.0=48
+value.shadowDistance.1024.0=64
+suffix.shadowDistance=区块
+option.SHADOW_MAP_BIAS=阴影贴图偏移
+option.VARIABLE_PENUMBRA_SHADOWS=可变阴影棱影
+option.COLORED_SHADOWS=彩色阴影
+option.SCREEN_SPACE_SHADOWS=屏幕空间阴影
+option.SUNLIGHT_LEAK_FIX=阳光泄漏修复
+
+screen.GI_OPTION=全局光照 (GI)
+
+option.GI=GI
+option.ENABLE_SSAO=SSAO
+option.GI_QUALITY=采样质量
+option.GI_FILTER_QUALITY=滤镜质量
+option.GI_RENDER_RESOLUTION=渲染分辨率
+value.GI_RENDER_RESOLUTION.1=半分辨率
+value.GI_RENDER_RESOLUTION.0=全分辨率
+option.GI_RADIUS=半径
+option.GI_BRIGHTNESS=强度
+option.GI_SATURATION=饱和度
+option.SKYLIGHT_EFFECT_GI=泄光修复
+
+screen.SURFACE=纹理
+
+option.TEXTURE_RESOLUTION=纹理分辨率
+
+screen.POM=视差
+
+option.PARALLAX=实体视差启用
+option.SMOOTH_PARALLAX=平滑视差
+option.PARALLAX_DEPTH=实体视差深度
+option.PARALLAX_DISTANCE=实体视差距离
+option.PARALLAX_SHADOW=实体视差自阴影
+
+screen.PBR=PBR
+
+option.TEXTURE_PBR_FORMAT=PBR 格式
+value.TEXTURE_PBR_FORMAT.0=PTGI
+value.TEXTURE_PBR_FORMAT.1=Lab PBR
+option.ROUGHNESS_CLAMP= clamp 高粗糙度
+option.SKY_IMAGE_LOD=反射天空盒 LOD 等级
+option.SKY_IMAGE_HORIZON=反射天空盒地平线
+option.TERRAIN_NORMAL_CLAMP=地形法线 clamp
+option.HAND_NORMAL_CLAMP=手持物品法线 clamp
+option.ENTITY_NORMAL_CLAMP=实体法线 clamp
+option.LANDFOG_REFLECTION=反射中的陆地雾
+option.VFOG_REFLECTION=反射中的体积雾
+
+screen.WATER_RAIN=水雨
+
+option.WATER_WAVES_SPEED=水波速度
+option.WATER_PARALLAX=水Parallax
+option.RAIN_SPLASH_EFFECT=雨滴溅落
+option.RAIN_SPLASH_BILATERAL=雨滴溅落平滑
+option.RAIN_VISIBILITY=雨可见度
+option.drynessHalflife=干>>湿 半衰期
+option.wetnessHalflife=湿>>干 半衰期
+
+screen.SKY_TEXTURE=天空纹理
+
+option.STARS=星星
+option.STARS_AMOUNT=星星 数量
+option.ROUND_MOON=圆月
+option.STARS_SCALE=星星 比例
+option.SKY_TEXTURE_BRIGHTNESS=纹理 亮度
+
+screen.SURFMISC=杂项
+
+option.ENTITY_STATUS_COLOR=实体状态颜色
+option.EYES_LIGHTING=实体眼睛光照
+option.SELECTION_BOX_COLOR=方块选中框颜色
+value.SELECTION_BOX_COLOR.0.0=黑色
+value.SELECTION_BOX_COLOR.1.0=白色
+option.WAVING_PLANTS=摆动的植物
+option.PLANT_TOUCH_EFFECT=植物触碰效果
+option.GENERAL_GRASS_FIX=通用草方块修复
+
+screen.VOLUMETRIC_CLOUDS=积云
+screen.PLANAR_CLOUDS=平面云
+screen.VOLUMETRIC_FOG=体积雾
+
+screen.ATMOSPHERICS=大气效果
+
+option.PLANE_CLOUDS=平面云
+
+screen.PC=设置
+option.PC_COVERAGE=覆盖
+option.PC_NOISE_SCALE=噪声尺度
+option.PC_ALTITUDE=高度
+
+option.VOLUMETRIC_CLOUDS=积雨云
+
+screen.VC=设置
+option.CLOUD_ACCURACY=采样质量
+option.CLOUD_FBM_OCTAVES=噪声八重
+option.CLOUD_NOISE_SCALE=噪声尺度
+option.CLOUD_MULTISCAT_QUALITY=多散射质量
+option.ADAPTIVE_OCTAVES=自适应八重
+option.CLOUD_SUNLIGHT_QUALITY=阳光质量
+option.CLOUD_SKYLIGHT_QUALITY=天光质量
+option.ATMO_TRAINSITION_DISTANCE=大气过渡距离
+option.CLOUD_SPEED=云层速度
+option.CLOUD_SHADOW=云层阴影
+
+screen.CLEAR_SETTING=清除设置
+
+option.CLOUD_CLEAR_ALTITUDE=Fake Mode Altitude
+option.CLOUD_CLEAR_THICKNESS=Thickness
+option.CLOUD_CLEAR_COVERY=Covery
+option.CLOUD_CLEAR_DENSITY=Density
+option.CLOUD_CLEAR_FBM_OCTSCALE=Noise Lacunarity
+option.CLOUD_CLEAR_UPPER_LIMIT=Upper Limit of Vertical Density Segments
+option.CLOUD_CLEAR_LOWER_LIMIT=Lower Limit of Vertical Density Segments
+option.CLOUD_CLEAR_SUNLIGHTING=Sunlight Strength
+option.CLOUD_CLEAR_SKYLIGHTING=Skylight Strength
+option.CLOUD_CLEAR_SUNLIGHT_LENGTH=Sunlight Sample Length
+option.CLOUD_CLEAR_SKYLIGHT_LENGTH=Skylight Sample Length
+
+screen.RAIN_SETTING=雨设置
+
+option.CLOUD_RAIN_ALTITUDE=Fake Mode Altitude
+option.CLOUD_RAIN_THICKNESS=Thickness
+option.CLOUD_RAIN_COVERY=Covery
+option.CLOUD_RAIN_DENSITY=Density
+option.CLOUD_RAIN_LIGHT_DENSITY=Lighting Density
+option.CLOUD_RAIN_FBM_OCTSCALE=Noise Lacunarity
+option.CLOUD_RAIN_UPPER_LIMIT=Upper Limit of Vertical Density Segments
+option.CLOUD_RAIN_LOWER_LIMIT=Lower Limit of Vertical Density Segments
+option.CLOUD_RAIN_SUNLIGHTING=Sunlight Strength
+option.CLOUD_RAIN_SKYLIGHTING=Skylight Strength
+option.CLOUD_RAIN_SUNLIGHT_LENGTH=Sunlight Sample Length
+option.CLOUD_RAIN_SKYLIGHT_LENGTH=Skylight Sample Length
+
+option.VFOG=体积雾
+
+screen.VFOG=设置
+option.VFOG_NOISE_TYPE=噪声类型
+option.VFOG_HQ_CLOUD_SHADOW=精准云阴影
+option.VFOG_DENSITY=密度
+option.VFOG_DENSITY_BASE=基准密度
+option.VFOG_QUALITY=质量
+option.VFOG_MULTISCAT_QUALITY=多散射质量
+option.VFOG_HEIGHT=中点高度
+option.VFOG_HEIGHT_2=中点高度
+option.VFOG_FALLOFF=衰减距离
+option.VFOG_IGNORE_WORLDTIME=忽略世界时间
+option.INDOOR_VFOG=室内体积雾
+option.VFOG_STAINED=透明度染色
+option.VFOG_SUNLIGHT_DENSITY=阳光强度
+option.VFOG_FOG_DENSITY=天光强度
+option.VFOG_SUNLIGHT_STEPLENGTH=阳光步长
+option.VFOG_SUNLIGHT_STEPS=阳光步数
+
+screen.VOLUMETRIC_CLOUD_FOG=体积云雾
+
+option.VCFOG_QUALITY=质量
+option.VCFOG_RANGE=范围
+option.VCFOG_HIGH_ACCURACY=高质量体积云雾
+option.VCFOG_DENSITY=密度
+option.VCFOG_IGNORE_GROUND=体积云雾范围
+option.VCFOG_H_FADE_HEIGHT=淡化高度
+option.VCFOG_H_FADE_MIDPOINT=淡化中点
+option.VCFOG_D_FADE_RATIO=淡化比例
+
+screen.LIGHT_RAYS=体积光
+
+option.VOLUMETRIC_LIGHT_STRENGTH=体积光强度
+option.VOLUMETRIC_LIGHT_QUALITY=体积光质量
+
+option.CLOUD_VOLUMETRIC_FOG=体积云雾
+
+#screen.SKY_MISC=Misc
+option.RAYLEIGH_AMOUNT=陆地雾密度
+option.INDOOR_FOG=室内陆地雾
+option.UNDERWATER_FOG=水下雾
+option.RAIN_FOG=雨雾
+option.RAIN_FOG_DENSITY=雨雾密度
+
+screen.AURORA=极光
+
+option.AURORA=极光
+option.AURORA_ONLY_IN_SNOW_BIOME=仅限雪地群系的极光
+option.AURORA_RESOLUTION=极光分辨率
+option.AURORA_STRENGTH=极光强度
+option.AURORA_DISTANCE=极光距离
+option.AURORA_HEIGHT=极光高度
+option.AURORA_INTENSITY=极光亮度
+option.AURORA_LENGTH=极光长度
+
+screen.POSTPROCESSING=后处理
+
+option.TAA=TAA 抗锯齿
+
+screen.LENS_FLARE=镜头光晕
+
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE_STRENGTH=镜头光晕强度
+option.LENS_FLARE_SAMPLES=镜头光晕采样数
+option.LENS_FLARE_BLUR_SAMPLES=镜头光晕模糊采样数
+option.LENS_FLARE_THRESHOLD=镜头光晕阈值
+option.GHOST_FLARE_SPACING_MULT=幽灵光晕间距倍率
+option.HALO_FLARE_SPACING_MULT=光环光晕间距倍率
+
+screen.DOF=景深
+
+option.DOF=是否启用景深
+option.DOF_STRENGTH=强度
+option.CAMERA_FOCUS_MODE=焦点模式
+value.CAMERA_FOCUS_MODE.0=自动
+value.CAMERA_FOCUS_MODE.1=手动
+option.CAMERA_FOCAL_POINT=手动焦点
+suffix.CAMERA_FOCAL_POINT= 米
+option.CAMERA_APERTURE=光圈
+option.DOF_SAMPLES=采样质量
+option.DISTORTION_BARREL=桶形畸变数量
+
+screen.EXPOSURE_SETTING=曝光
+
+option.AE_MODE=AE 模式
+value.AE_MODE.0=中心加权
+value.AE_MODE.1=仅中心
+value.AE_MODE.2=屏幕平均
+option.AE_CURVE=AE 曲线
+option.AE_OFFSET=AE 偏移
+suffix.AE_OFFSET= EV
+option.LUMINANCE_WEIGHT=亮度加权
+option.LUMINANCE_WEIGHT_MODE=加权模式
+value.LUMINANCE_WEIGHT_MODE.0=阴影优先
+value.LUMINANCE_WEIGHT_MODE.1=高光优先
+option.LUMINANCE_WEIGHT_STRENGTH=加权强度
+option.SMOOTH_EXPOSURE=平滑曝光
+option.EXPOSURE_TIME=曝光过渡时间
+option.MANUAL_EXPOSURE=手动曝光
+option.EV_VALUE=精确 EV 值
+suffix.EV_VALUE=EV
+
+screen.MOTION_BLUR_SETTING=运动模糊
+
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_DITHER=抖动
+option.MOTION_BLUR_QUALITY=质量
+option.MOTION_BLUR_SUTTER_ANGLE=快门角
+suffix.MOTION_BLUR_SUTTER_ANGLE=°
+
+screen.BLOOM=泛光
+
+option.BLOOM_EFFECTS=泛光开关
+option.BLOOM_AMOUNT=泛光强度
+option.MICRO_BLOOM=清晰边缘
+option.BLOOM_KB=保持亮度
+option.BLOOM_DB=暗处增强
+option.BLOOM_DB_MULTIPLIER=增强倍率
+
+screen.COLOR=颜色调整
+
+option.TONEMAP_OPERATOR=色调映射
+value.TONEMAP_OPERATOR.SEUSTonemap=SEUS
+value.TONEMAP_OPERATOR.LottesTonemap=Lottes
+value.TONEMAP_OPERATOR.UchimuraTonemap=Uchimura
+value.TONEMAP_OPERATOR.HableTonemap=Hable
+value.TONEMAP_OPERATOR.ACESTonemap=ACES
+value.TONEMAP_OPERATOR.ACESTonemap2=ACES II
+option.TONEMAP_CURVE=色调映射曲线
+
+option.ADVANCED_COLOR=启用高级颜色调整
+
+screen.ADVANCED_COLOR=设置
+
+option.SATURATION=饱和度
+option.GAMMA=伽马
+option.LUMA_GAMMA=亮度伽马
+option.WHITE_CLIP=白色裁切
+option.WHITE_BALANCE=白平衡
+option.TINT_BALANCE=色调平衡
+
+screen.POSTMISC=其他
+
+option.POST_SHARPENING=后处理锐化强度
+value.POST_SHARPENING.0=关闭
+value.POST_SHARPENING.1=低
+value.POST_SHARPENING.2=中
+value.POST_SHARPENING.3=高
+option.LOWLIGHT_COLORFADE=暗光颜色淡化
+
+screen.SHORTCUT=快捷键
+
+screen.DEBUG=调试
+
+option.WHITE_DEBUG_WORLD=白色调试世界
+option.LUT=查找表
+option.CLOUD_SPEED=云层速度
+option.FTC_OFFSET=FTC 偏移量

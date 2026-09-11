@@ -1,0 +1,9 @@
+option.BRIGHTNESS=亮度
+option.BRIGHTNESS.comment=越低 = 越暗。1.00 = 原版亮度。
+option.DARK_PIXEL_PROTECTION=暗像素保护
+option.DARK_PIXEL_PROTECTION.comment=越高 = 保护洞穴、夜晚和其他已经较暗的像素，使其不至于太黑。
+
+option.OUTLINE_WIDTH=方块边框宽度
+option.OUTLINE_ALPHA=方块边框透明度
+value.OUTLINE_WIDTH.2.5=类似原版
+value.OUTLINE_ALPHA.0.85=可见

@@ -1,0 +1,14 @@
+option.WAVE_AMPLITUDE = 波幅
+
+option.FOG = 雾
+value.FOG.0 = 关闭
+value.FOG.1 = 开启
+
+option.SHADOW_MAP = 阴影质量
+option.SHADOW_RANGE = 阴影采样
+option.SHADOW_RADIUS = 阴影模糊
+
+option.LIGHTING_AMBIENT = 环境光强度
+option.LIGHTING_DIFFUSE = 漫反射光强度
+option.LIGHTING_SPECULAR = 高光光强度
+option.LIGHTING_SHININESS = 表面光泽度

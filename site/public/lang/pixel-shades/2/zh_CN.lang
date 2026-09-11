@@ -1,0 +1,133 @@
+# ============================================================
+#   PIXEL SHADES - Language File (en_US)
+#   Author: Dark_PixelForge
+# ============================================================
+
+# ── Info Labels ──────────────────────────────────────────────
+info0=§6§lPixel Shades §7by §b§lDark_PixelForge
+info1=§7A 电影感原版着色器。戏剧性的天空，深沉的阴影，风格化的水。
+info2=§7Version 版本 §f1.0.0
+
+# ── Profile Names ────────────────────────────────────────────
+profile.POTATO=§8Potato
+profile.LOW=§aLow
+profile.MEDIUM=§eMedium
+profile.HIGH=§6High
+profile.ULTRA=§cUltra
+
+# ── Screen Names ─────────────────────────────────────────────
+screen.PIXEL_INFO=屏幕像素信息 §e §l 着色器信息
+screen.PERFORMANCE=性能设置 §c §l 性能设置
+screen.LIGHTING=照明设置 §6 §l 照明设置
+screen.SKY=天空盒与大气层 §b §l 天空盒与大气层
+screen.WATER=水设置 §3 §l 水设置
+screen.POST_FX=后处理 §d §l 后处理
+
+# ── Performance ───────────────────────────────────────────────
+option.PS_SHADOW_QUALITY=阴影质量
+option.PS_SHADOW_QUALITY.comment=控制阴影软度和阴影采样的数量。更高 = 更柔和的阴影。
+value.PS_SHADOW_QUALITY.0=关闭
+value.PS_SHADOW_QUALITY.1=低 (硬)
+value.PS_SHADOW_QUALITY.2=中等 (PCF 6)
+value.PS_SHADOW_QUALITY.3=高 (PCF 12)
+value.PS_SHADOW_QUALITY.4=超 (PCF 12 宽)
+
+option.PS_SHADOW_DIST=阴影距离
+option.PS_SHADOW_DIST.comment=阴影在多远处渲染
+
+option.PS_CLOUD_MODE=云风景模式
+value.PS_CLOUD_MODE.0=关闭
+value.PS_CLOUD_MODE.1=平面层
+value.PS_CLOUD_MODE.2=体积光
+
+option.PS_GOD_RAYS=体积光
+option.PS_GOD_RAYS.comment=体积光从太阳发出的光柱。0=关闭，1=低（8步），2=高（16步）
+value.PS_GOD_RAYS.0=关闭
+value.PS_GOD_RAYS.1=低
+value.PS_GOD_RAYS.2=高
+
+option.PS_SSAO=环境光遮蔽
+value.PS_SSAO.0=关闭
+value.PS_SSAO.1=开启
+
+option.PS_TAA=TAA
+option.PS_TAA.comment=时间反演抗锯齿。平滑多帧边缘
+value.PS_TAA.0=Off
+value.PS_TAA.1=On
+
+option.PS_BLOOM=体积光
+value.PS_BLOOM.0=关闭
+value.PS_BLOOM.1=开启
+
+# ── Lighting ──────────────────────────────────────────────────
+option.PS_SUN_BRIGHTNESS=太阳亮度
+option.PS_MOON_BRIGHTNESS=月亮亮度
+option.PS_AMBIENT_MULT=环境光强度
+option.PS_SHADOW_STRENGTH=阴影强度
+option.PS_BLOCKLIGHT_TEMP=光源温度
+value.PS_BLOCKLIGHT_TEMP.1=冷白光
+value.PS_BLOCKLIGHT_TEMP.2=暖白光
+value.PS_BLOCKLIGHT_TEMP.3=蜡烛光
+value.PS_BLOCKLIGHT_TEMP.4=余烬光
+value.PS_BLOCKLIGHT_TEMP.5=霓虹蓝
+option.PS_SUBSURFACE_SCATTER=叶片次表面散射
+option.PS_SUBSURFACE_SCATTER.comment=叶片次表面散射 — 光线可见地穿透其中
+value.PS_SUBSURFACE_SCATTER.0=关闭
+value.PS_SUBSURFACE_SCATTER.1=开启
+option.PS_AO_STRENGTH=环境光遮蔽强度
+
+# ── Sky ───────────────────────────────────────────────────────
+option.PS_SKY_STYLE=天空风格
+value.PS_SKY_STYLE.1=原版+
+value.PS_SKY_STYLE.2=电影感
+value.PS_SKY_STYLE.3=黑暗严肃
+option.PS_CLOUD_HEIGHT=云层高度
+option.PS_CLOUD_COVERAGE=云层覆盖率
+option.PS_STAR_BRIGHTNESS=星光亮度
+option.PS_HORIZON_GLOW=地平线光晕
+value.PS_HORIZON_GLOW.0=关闭
+value.PS_HORIZON_GLOW.1=开启
+option.PS_SUNSET_INTENSITY=日落强度
+option.PS_DAWN_TINT=黎明色调
+value.PS_DAWN_TINT.0=关闭
+value.PS_DAWN_TINT.1=开启
+
+# ── Water ─────────────────────────────────────────────────────
+option.PS_WATER_STYLE=水流风格
+value.PS_WATER_STYLE.0=原版
+value.PS_WATER_STYLE.1=风格化
+value.PS_WATER_STYLE.2=写实
+option.PS_WATER_COLOR_R=水红
+option.PS_WATER_COLOR_G=水绿
+option.PS_WATER_COLOR_B=水蓝
+option.PS_WATER_OPACITY=水体不透明度
+option.PS_WATER_FOAM=泡沫
+value.PS_WATER_FOAM.0=关闭
+value.PS_WATER_FOAM.1=开启
+option.PS_WATER_WAVE_HEIGHT=波浪高度
+option.PS_WATER_WAVE_SPEED=波浪速度
+option.PS_CAUSTICS=焦散
+value.PS_CAUSTICS.0=关闭
+value.PS_CAUSTICS.1=开启
+
+# ── Post FX ───────────────────────────────────────────────────
+option.PS_TONEMAP=Tonemapper
+value.PS_TONEMAP.1=Reinhard
+value.PS_TONEMAP.2=ACES Filmic
+value.PS_TONEMAP.3=Uncharted 2
+option.PS_EXPOSURE=Exposure
+option.PS_CONTRAST=Contrast
+option.PS_SATURATION=Saturation
+option.PS_VIGNETTE=Vignette
+value.PS_VIGNETTE.0=Off
+value.PS_VIGNETTE.1=On
+option.PS_CHROMATIC=Chromatic Aberration
+value.PS_CHROMATIC.0=Off
+value.PS_CHROMATIC.1=On
+option.PS_FILM_GRAIN=Film Grain
+value.PS_FILM_GRAIN.0=Off
+value.PS_FILM_GRAIN.1=On
+option.PS_BLOOM_STRENGTH=Bloom 强度
+option.PS_SHARPEN=Image Sharpening
+value.PS_SHARPEN.0=Off
+value.PS_SHARPEN.1=On

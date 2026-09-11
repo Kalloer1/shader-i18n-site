@@ -1,0 +1,13 @@
+option.oldLighting=旧光照
+option.oldLighting.comment=ON: 经典的 1.8 以前平面每个面块光照。每个面块拥有一个纯亮度；方向阴影保持（顶部最亮，侧面较暗），但面块顶点之间的平滑环境光遮蔽渐变被移除。OFF: 原版现代平滑光照（资源包保持光照不变）。
+
+screen.QOL=生活品质额外
+
+option.HAND_LIGHT=旧手电光
+option.HAND_LIGHT.comment=被手电光源（火把、发光石等）照亮你的手和所持物品，如经典内部光影。
+
+option.LIQUID_CONSISTENT_SHADE=一致的液体阴影
+option.LIQUID_CONSISTENT_SHADE.comment=使水和其他液体保持原版阴影，以保持一致性并避免在旧光照下出现平铺阴影伪影。
+
+option.BIGBLOCK_FIX=大方块暗化修复
+option.BIGBLOCK_FIX.comment=防止大方块/非立方体方块（胸柜、墙体、栅栏、地板、楼梯）过度变暗。绕过 Iris/OptiFine 问题 #2494。

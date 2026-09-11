@@ -1,0 +1,60 @@
+#Settings
+option.BY=§6悬停于我
+option.BY.comment=§9Discord: §fhttps://discord.com/invite/65CkSpxrmm. §4YouTube: §fhttps://www.youtube.com/@lolip_p.
+value.BY.0=§f作者：LoLip_p
+value.BY.1=§f作者：LoLip_p
+
+option.PATREON=§6Patreon
+option.PATREON.comment=§fpatreon.com/lolip_p
+value.PATREON.0=§fpatreon.com/lolip_p
+value.PATREON.1=§fpatreon.com/lolip_p
+
+screen.PP=后期处理
+screen.LT=光照
+
+option.TYPE_AA=§6抗锯齿类型
+option.TYPE_AA.comment=§2快速近似抗锯齿§f(§6FXAA§f). 它通过分析屏幕上的像素并应用模糊滤镜来减少这些锯齿的外观，而不需要大量的计算能力。§2时间抗锯齿§f(§6TAA§f). 结合过去帧和当前帧的信息来消除当前帧中的锯齿。
+value.TYPE_AA.0=FXAA
+value.TYPE_AA.1=TAA
+
+#Motion Blur
+option.MOTION_BLUR=§6运动模糊
+option.MOTION_BLUR.comment=旋转相机时模糊图像（使游戏体验更愉悦和流畅）。数值越高，平滑效果越强。建议保持开启，并仅根据您的偏好更改 §2运动模糊强度 §f 参数。
+value.MOTION_BLUR.0=关
+value.MOTION_BLUR.1=开
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+option.MOTION_BLURRING_STRENGTH.comment=调整模糊强度。§4较高的数值可能会使部分人感到头晕和恶心。
+
+option.FOG=§6雾
+value.FOG.0=关
+value.FOG.1=开
+option.FOG_DISTANCE=雾距离
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整阴影距离。
+
+value.shadowDistance.64.0=§a4 区块
+value.shadowDistance.80.0=§a5 区块
+value.shadowDistance.96.0=§a6 区块
+value.shadowDistance.112.0=§a7 区块
+value.shadowDistance.128.0=§a8 区块
+value.shadowDistance.160.0=§e10 区块
+value.shadowDistance.192.0=§e12 区块
+value.shadowDistance.224.0=§e14 区块
+value.shadowDistance.256.0=§c16 区块
+value.shadowDistance.320.0=§c20 区块
+value.shadowDistance.384.0=§4§l24 区块
+value.shadowDistance.512.0=§4§l32 区块
+value.shadowDistance.768.0=§4§k-§r§4§l§n§o48 区块§r§4§k-
+value.shadowDistance.1024.0=§4§k-§r§4§l§n§o64 区块§r§4§k-
+
+option.shadowMapResolution=质量
+option.shadowMapResolution.comment=调整阴影贴图大小。§e[*]§r 更高的分辨率能提供更锐利的阴影，但会降低性能。
+value.shadowMapResolution.512=极低 (512)
+value.shadowMapResolution.768=低 (768)
+value.shadowMapResolution.1024=中低 (1024)
+value.shadowMapResolution.1536=中 (1536)
+value.shadowMapResolution.2048=中高 (2048)
+value.shadowMapResolution.3072=高 (3072)
+value.shadowMapResolution.4096=极高 (4096)
+value.shadowMapResolution.8192=超高 (8192)

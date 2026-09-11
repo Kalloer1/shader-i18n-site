@@ -1,0 +1,97 @@
+# SwiftShade Language Configuration
+
+screen.COLOR_CORRECTION =颜色校正
+screen.GRASS_SETTINGS =草地与植被
+screen.ATMOSPHERE =大气与雾效
+screen.VISUALS =视觉效果与游戏玩法
+
+# Color Correction
+option.CC_ENABLED =颜色校正
+option.CC_ENABLED.comment =启用后处理饱和度、对比度与色彩分级。
+value.CC_ENABLED.0 =关
+value.CC_ENABLED.1 =开
+
+option.SATURATION =饱和度
+option.SATURATION.comment =整体色彩饱和度等级。
+suffix.SATURATION = %
+
+option.CONTRAST =对比度
+option.CONTRAST.comment =调节图像动态范围与对比度。
+suffix.CONTRAST = %
+
+option.COLOR_TEMP =色温
+option.COLOR_TEMP.comment =平衡暖调阳光与冷调阴影。
+value.COLOR_TEMP.0 =Cool
+value.COLOR_TEMP.1 =中性
+value.COLOR_TEMP.2 =暖艳风格
+
+option.GAMMA =亮度伽马值
+option.GAMMA.comment =中间调亮度增强。
+value.GAMMA.0 =暗色（标准）
+value.GAMMA.1 =平衡
+value.GAMMA.2 =明亮
+
+# Grass & Foliage
+option.GRASS_STYLE =草地颜色风格
+option.GRASS_STYLE.comment =改变草地与树叶的鲜艳度与色调。
+value.GRASS_STYLE.0 =原版
+value.GRASS_STYLE.1 =深郁翠绿（推荐）
+value.GRASS_STYLE.2 =幽暗深林
+value.GRASS_STYLE.3 =明艳亮绿
+
+option.GRASS_DARKNESS =草地暗度
+option.GRASS_DARKNESS.comment =微调草地色调的深暗程度。
+value.GRASS_DARKNESS.0 =光照
+value.GRASS_DARKNESS.1 =中深
+value.GRASS_DARKNESS.2 =极深
+
+# Atmosphere
+option.FOG_ENABLED =大气雾
+option.FOG_ENABLED.comment =为地形启用柔和的大气距离雾。
+value.FOG_ENABLED.0 =关
+value.FOG_ENABLED.1 =开
+
+option.FOG_DENSITY =雾密度
+option.FOG_DENSITY.comment =距离雾的浓度。
+suffix.FOG_DENSITY = %
+
+option.FOG_START =雾起始距离
+option.FOG_START.comment =雾效从距离玩家多近处开始。
+value.FOG_START.0 =近距（8%）
+value.FOG_START.1 =正常（20%）
+value.FOG_START.2 =远距（35%）
+
+option.FOG_COLOR_STYLE =雾气色调风格
+option.FOG_COLOR_STYLE.comment =大气雾的配色方案。
+value.FOG_COLOR_STYLE.0 =大气蓝灰
+value.FOG_COLOR_STYLE.1 =原版匹配
+value.FOG_COLOR_STYLE.2 =柔和薄雾
+
+option.CUSTOM_SUN =自定义太阳与月亮光晕
+option.CUSTOM_SUN.comment =为太阳与月亮增强清晰柔和的视觉效果。
+value.CUSTOM_SUN.0 =原版
+value.CUSTOM_SUN.1 =柔光辐射
+
+# Visuals
+option.SPLASH_TITLE =欢迎标题
+option.SPLASH_TITLE.comment =进入世界时短暂显示"迅影"标题。
+value.SPLASH_TITLE.0 =关
+value.SPLASH_TITLE.1 =开
+
+option.FULLBRIGHT =全亮模式
+option.FULLBRIGHT.comment =移除黑暗洞穴/夜晚阴影以获得最佳PVP视野。
+value.FULLBRIGHT.0 =关
+value.FULLBRIGHT.1 =开
+
+option.FXAA_ENABLED =抗锯齿（快速近似抗锯齿）
+option.FXAA_ENABLED.comment =以最小性能代价平滑方块边缘锯齿。
+value.FXAA_ENABLED.0 =关
+value.FXAA_ENABLED.1 =开
+
+option.CLOUD_OPACITY =云层不透明度
+option.CLOUD_OPACITY.comment =原版云层的透明度。
+suffix.CLOUD_OPACITY = %
+
+option.WATER_OPACITY =水不透明度
+option.WATER_OPACITY.comment =水面的透明度。
+suffix.WATER_OPACITY = %

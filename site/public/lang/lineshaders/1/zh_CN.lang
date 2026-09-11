@@ -1,0 +1,26 @@
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=整体曝光/亮度乘数。
+
+option.SATURATION=饱和度
+option.SATURATION.comment=颜色饱和度调整。
+
+option.VIBRANCE=自然饱和度
+option.VIBRANCE.comment=为色彩偏淡的区域提供智能化的饱和度提升。
+
+option.CONTRAST=对比度
+option.CONTRAST.comment=对比度调整。
+
+option.BRIGHTNESS=亮度
+option.BRIGHTNESS.comment= additive 亮度偏移。
+
+option.COLOR_TINT_R=红色通道色调
+option.COLOR_TINT_R.comment=红色通道色调乘数。
+
+option.COLOR_TINT_G=绿色色调
+option.COLOR_TINT_G.comment=绿色通道色调乘数。
+
+option.COLOR_TINT_B=颜色色调 蓝色
+option.COLOR_TINT_B.comment=蓝色通道颜色色调乘数。
+
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=屏幕边缘的暗化。

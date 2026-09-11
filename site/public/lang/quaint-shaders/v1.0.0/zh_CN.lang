@@ -1,0 +1,125 @@
+# on/off settings
+option.SHADOWS=阴影
+option.SHADOWS.comment=切换阴影
+value.SHADOWS.0=§c关闭
+value.SHADOWS.1=§a开启
+
+option.FOG_ON=雾
+option.FOG_ON.comment=切换远处雾效
+value.FOG_ON.0=§c关
+value.FOG_ON.1=§a开
+
+option.EDGE_DETECTION=边缘检测
+option.EDGE_DETECTION.comment=切换地形边缘高亮显示（模式：网格和轮廓）
+value.EDGE_DETECTION.0=§c关闭
+value.EDGE_DETECTION.1=§a开启
+
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION.comment=切换相机镜头色差效果
+value.CHROMATIC_ABERRATION.0=§c关闭
+value.CHROMATIC_ABERRATION.1=§a开启
+
+option.BLOOM_ON=泛光
+option.BLOOM_ON.comment=启用/禁用泛光
+value.BLOOM_ON.0=§c关闭
+value.BLOOM_ON.1=§a开启
+
+option.COLOR_MAPPING=ACES 色彩映射
+option.COLOR_MAPPING.comment=调整游戏色彩，增加鲜艳度
+value.COLOR_MAPPING.0=§c关闭
+value.COLOR_MAPPING.1=§a开启
+
+option.FXAA_ENABLED=FXAA 启用
+option.FXAA_ENABLED.comment=切换快速近似抗锯齿
+value.FXAA_ENABLED.0=§c关闭
+value.FXAA_ENABLED.1=§a启用
+
+option.SSAO_ENABLED=SSAO 开启
+option.SSAO_ENABLED.comment=模拟缝隙中的柔和阴影
+value.SSAO_ENABLED.0=§c关闭
+value.SSAO_ENABLED.1=§a开启
+
+# advanced options screen (on the menu)
+screen.ADVANCED=高级选项
+screen.ADVANCED.comment=调整所有特效的值、设置和阈值！
+
+# advanced option nested screens
+screen.LIGHTING_OPTIONS=光照选项
+screen.FOG_OPTIONS=雾效选项
+screen.ABERRATION_OPTIONS=色差选项
+screen.EDGE_DETECTION_OPTIONS=边缘设置
+screen.BLOOM_OPTIONS=泛光设置
+screen.FXAA_OPTIONS=FXAA 选项
+screen.SSAO_OPTIONS=SSAO 选项
+screen.ENVIRONMENT_OPTIONS=环境设置
+
+# nested screen options
+# custom lighting
+option.SHADOW_RADIUS=阴影半径
+option.SHADOW_RADIUS.comment=调整阴影边缘的模糊程度
+option.SHADOW_RANGE=阴影范围
+option.SHADOW_RANGE.comment=调整阴影的范围
+
+# fog
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY.comment=调整雾的密度，影响视野
+
+# aberration
+option.CHROMATIC_ABERRATION_STRENGTH=色差强度
+option.CHROMATIC_ABERRATION_STRENGTH.comment=调整色差强度
+
+# edge detection
+option.EDGE_DETECTION_MODE=边缘检测模式
+option.EDGE_DETECTION_MODE.comment=§6轮廓§f: 突出显示地形中深度差异处的边缘。\n§b网格§f: 突出显示地形的所有边缘。
+value.EDGE_DETECTION_MODE.0=§6轮廓
+value.EDGE_DETECTION_MODE.1=§b网格
+option.EDGE_DETECTION_STRENGTH=边缘检测强度
+option.EDGE_DETECTION_STRENGTH.comment=强度越大，检测到的边缘越多！
+option.EDGE_SIZE=边缘高亮尺寸
+option.EDGE_SIZE.comment=调整高亮边缘的大小
+option.EDGE_BRIGHTNESS=边缘亮度
+option.EDGE_BRIGHTNESS.comment=改变高亮边缘的强度
+option.EXCLUDE_ENTITIES=排除生物
+option.EXCLUDE_ENTITIES.comment=切换边缘检测对生物（僵尸、羊等）的应用
+value.EXCLUDE_ENTITIES.0=§c关闭
+value.EXCLUDE_ENTITIES.1=§a开启
+option.EXCLUDE_FOLIAGE=排除植被
+option.EXCLUDE_FOLIAGE.comment=切换边缘检测对植被（树叶、花瓣等）的应用
+value.EXCLUDE_FOLIAGE.0=§c关闭
+value.EXCLUDE_FOLIAGE.1=§a开启
+
+# bloom
+option.BLOOM_THRESHOLD=泛光阈值
+option.BLOOM_THRESHOLD.comment=调整应用泛光所需的阈值
+
+# FXAA
+option.FXAA_MIN_THRESHOLD=最小阈值
+option.FXAA_MIN_THRESHOLD.comment=通过的最低亮度
+option.FXAA_MAX_THRESHOLD=最大阈值
+option.FXAA_MAX_THRESHOLD.comment=边缘检测灵敏度
+option.FXAA_ITERATIONS=迭代次数
+option.FXAA_ITERATIONS.comment=每条边缘的质量步骤
+option.SUBPIXEL_QUALITY=次像素质量
+option.SUBPIXEL_QUALITY.comment=细边和粒子模糊
+
+# SSAO
+option.SSAO_SAMPLES=采样次数
+option.SSAO_SAMPLES.comment=阴影平滑度，影响帧率
+option.SSAO_RADIUS=遮蔽半径
+option.SSAO_RADIUS.comment=阴影半径
+option.SSAO_POWER=遮蔽强度
+option.SSAO_POWER.comment=增加遮蔽程度
+option.SSAO_BIAS=偏移量
+option.SSAO_BIAS.comment=防止平面表面着色错误（出现错误时调整）
+option.SSAO_BLUR_SHARPNESS=模糊锐度
+option.SSAO_BLUR_SHARPNESS.comment=调整阴影边缘的清晰度
+
+# environment
+option.WAVING_WATER=波浪水
+option.WAVING_WATER.comment=切换波浪水效果
+value.WAVING_WATER.0=§c关闭
+value.WAVING_WATER.1=§b开启
+option.WAVING_FOLIAGE=波浪植被
+option.WAVING_FOLIAGE.comment=切换波浪植被效果（树叶、花朵等）
+value.WAVING_FOLIAGE.0=§c关闭
+value.WAVING_FOLIAGE.1=§b开启

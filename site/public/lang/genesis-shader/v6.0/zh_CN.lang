@@ -1,0 +1,44 @@
+option.ALPHACRAFT = Genesis
+option.ALPHACRAFT.comment = 由 Recko 制作！如需联系他，请在 Discord 上搜索用户名 "reckobot"。
+option.DISCLAIMER = 注意
+option.DISCLAIMER.comment = 目前该光影包无法更改光照选项，因此您需要在视频设置中自行禁用。
+value.DISCLAIMER.0 = 悬停查看信息
+
+value.ALPHACRAFT.0 = v6.0
+
+value.RENDER_DISTANCE.0 = 世界边界
+value.RENDER_DISTANCE.1 = 远处
+value.RENDER_DISTANCE.2 = 中等
+value.RENDER_DISTANCE.3 = 短暂
+value.RENDER_DISTANCE.4 = 微小
+value.RENDER_DISTANCE.5 = 无雾
+option.RENDER_DISTANCE.comment = 异闻图腾的呼应
+
+option.RENDER_DISTANCE = 渲染距离
+option.FAST_LEAVES = 快速树叶
+option.INVISIBLE_GRASS = 隐形草
+option.CLOUD_OFFSET = 云高度偏移
+
+option.BRIGHTNESS = 亮度
+option.SATURATION = 饱和度
+option.CONTRAST = 对比度
+
+option.WATER_TRANSPARENCY = 透明度
+option.WATER_BRIGHTNESS = 亮度
+option.WATER_SATURATION = 饱和度
+option.WATER_CONTRAST = 对比度
+
+option.FOLIAGE_BRIGHTNESS = 亮度
+option.FOLIAGE_SATURATION = 饱和度
+option.FOLIAGE_CONTRAST = 对比度
+
+option.WATERMARK = Alpha 水印
+option.WATERMARK_SCALE = Alpha 水印比例
+
+option.PRESET = 颜色预设
+value.PRESET.0 = ALPHA
+value.PRESET.1 = BETA
+value.PRESET.0.comment = 更亮的颜色，更鲜艳
+value.PRESET.1.comment = 柔和的颜色，更舒适眼睛
+
+option.RENDER_DISTANCE_MULT = 渲染距离乘数

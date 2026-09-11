@@ -1,0 +1,27 @@
+option.DotSize = 点大小
+option.DotSize.comment = 调整 Ben-Day dots 的半径，以像素为单位
+
+option.Celshade = 轮廓线
+option.Celshade.comment = 切换轮廓线。
+
+option.OutlineSize = 轮廓厚度
+option.OutlineSize.comment = 调整轮廓的粗细
+
+option.ChromaticAbberation = 色差
+option.ChromaticAbberation.comment = 将颜色从边缘分离。模拟经典漫画中常见的印刷错误。\n. §9边缘§f：屏幕边缘处分离更强。§9恒定§f：全屏幕均匀分离。§9景深§f(§4实验性§f)：不在注视处分离更强
+
+value.ChromaticAbberation.0 = 边缘
+value.ChromaticAbberation.1 = 恒定
+value.ChromaticAbberation.2 = 景深
+value.ChromaticAbberation.3 = §c关闭
+
+option.Intensity = 分离强度
+option.Intensity.comment = 数值越高，分离效果越强
+
+option.Frames = 每帧动画
+option.Frames.comment = §4实验性§f。减少实体更新的帧数。例如：当设置为三时，实体每三帧更新一次。
+
+value.Frames.1 = 一
+value.Frames.2 = 二
+value.Frames.3 = 三
+value.Frames.4 = 四

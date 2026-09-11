@@ -1,0 +1,22 @@
+profile.DEFAULT=默认
+profile.NO_VHS=无 VHS
+
+screen.WORLD=世界设置
+screen.VHS=VHS 设置
+screen.OTHER=其他
+
+option.HELD_ITEM_BRIGHTNESS=手持物品亮度
+option.HELD_ITEM_SPOTLIGHT=手持物品聚光灯
+
+option.LENS_DISTORTION=镜头畸变
+option.ASPECT_RATIO=VHS 宽高比
+option.COLOUR_DEPTH=色彩深度
+option.LUMA_QUALITY=亮度纹理大小
+option.CHROMA_QUALITY=色度纹理大小
+option.LUMA_NOISE=亮度噪声
+option.CHROMA_NOISE=色度噪声
+option.INTERLACING=隔行扫描
+option.INTERLACE_FRAMERATE=隔行扫描帧率
+option.SHARPNESS=后期锐化
+
+option.FAST_LINEAR_SRGB=快速线性 sRGB 转换

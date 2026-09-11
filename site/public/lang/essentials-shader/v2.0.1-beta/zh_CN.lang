@@ -1,0 +1,4 @@
+option.ABOUT_ESSENTIALS=[ 悬停查看 ]
+value.ABOUT_ESSENTIALS.1=信息
+
+option.ABOUT_ESSENTIALS.comment=一个仅有基础特效的轻量级 Minecraft 光影包，用于模拟阴影、阳光射线等真实效果，可在集成显卡上运行。\n\n有很多轻量级光影包，据说能很好地保持 FPS，但 ESSENTIALS 光影包将其提升到了极简的下一级别，具有假阳光射线/月光射线、半真实水、基于深度的雾等等。\n\n是的，它可能是你遇到的最差的光影包，但它肯定会达成其制作目的。\n\n注意：这里没有可更改的光影包设置，因为一切都已尽可能优化，以便你可以直接启用并游玩！

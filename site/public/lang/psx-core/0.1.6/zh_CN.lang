@@ -1,0 +1,31 @@
+screen.INFO=PSX-Core 光影包
+screen.DITHER=图像抖动
+screen.COLOR=颜色与 banding
+screen.GEOMETRY=渲染
+screen.FOG=雾设置
+
+option.psx_enable_dither=抖动
+option.psx_dither_strength=抖动强度
+option.psx_pattern_scale=巴尔尺度
+option.psx_color_steps=颜色步骤
+option.psx_post_scale=渲染尺度
+option.psx_post_contrast=合成对比度
+option.psx_light_steps=Gouraud 等级
+option.psx_warp_limit=仿射强度
+option.psx_enable_vertex_snap=顶点对齐
+option.psx_affine_held_items=仿射手持物品
+option.psx_vertex_resolution=对齐分辨率
+option.psx_fog_enable=雾
+option.psx_fog_distance=雾距离
+option.psx_fog_noise=雾噪声
+
+option.INFO=PSX-Core (Shader)
+value.INFO.0.0=§aby dooji
+value.psx_enable_dither.0.0=关闭
+value.psx_enable_dither.1.0=开启
+value.psx_enable_vertex_snap.0.0=关闭
+value.psx_enable_vertex_snap.1.0=开启
+value.psx_affine_held_items.0.0=关闭
+value.psx_affine_held_items.1.0=开启
+value.psx_fog_enable.0.0=关闭
+value.psx_fog_enable.1.0=开启

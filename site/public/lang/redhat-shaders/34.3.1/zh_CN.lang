@@ -1,0 +1,456 @@
+#shaders/lang/zh_CN.lang
+# RedHat Shaders v34.3.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：RedHat_v34.3.1.zip 的 shaders/lang/en_US.lang
+
+///// Screen Menus ///// 
+
+screen.WAVING=摇摆物体
+screen.WAVING.comment=开关摇摆的植物、花朵等
+screen.EFFECTS=后处理
+screen.EFFECTS.comment=开关镜头光晕等效果
+screen.DOFO=景深
+screen.DOFO.comment=景深选项
+screen.SH=着色
+screen.SH.comment=着色与阴影选项
+screen.CELSH=卡通渲染
+screen.SHA=阴影
+screen.SHA.comment=阴影设置
+screen.COLORS=颜色
+screen.COLORS.comment=颜色设置
+screen.RTX=表面
+screen.RTX.comment=表面设置
+screen.REFLECT=反射
+screen.REFLECT.comment=开关反射效果
+screen.LENS=镜头效果选项
+screen.LENS.comment=开关多种阳光效果
+screen.VIGNETTE=暗角
+screen.VIGNETTE.comment=开关暗角并调整强度
+screen.CLOUD=云选项
+screen.EMISSIVE=光照
+screen.EMISSIVE.comment=光照选项
+screen.CAUSTIC=水焦散
+screen.WATERCOLOR=水颜色
+screen.WAVESEF=摇摆相机与手部
+screen.TORCHCOLOR=火把颜色
+screen.SSAO=屏幕空间环境光遮蔽
+screen.STARCOLOR=星星颜色
+screen.FOG=雾
+screen.TONEMAP=色调映射与色彩效果
+screen.SUNL=阳光与月光
+screen.AXIS=坐标轴
+screen.FRAMETIME=帧时间
+screen.WAVA=摇摆手部
+screen.FOGCOLOR=雾颜色
+screen.STYLES=镜头光晕
+screen.EBO=自动曝光
+screen.GEOMETRY=摇摆几何体
+screen.BLOOM=泛光
+screen.TORCH=自发光
+screen.NIGHTDES=夜间去饱和度
+screen.SKYCOLOR=天空颜色
+screen.CINEMATICE=电影效果
+screen.CINEMATICBARS=电影黑边
+screen.GRAIN=噪点
+screen.RGBMODE=RGB 模式
+screen.RGBC=色彩配置
+screen.POSTERIZE=色阶分离
+screen.HDR=HDR
+screen.CHROMATICAB=色差
+screen.GODRAYS=体积光 (2D)
+screen.VL=体积光 (3D)
+screen.ATMOSPHERICS=大气效果
+screen.LIGHT_SHAFTS=体积光
+screen.MATERIAL=材质与世界
+screen.POM=视差遮蔽映射
+screen.LIGHTCOLOR=光照颜色
+screen.FIXES=阴影修复
+
+///// Waving Geometry Options /////
+
+// Waving Foliage & Other
+option.WorldTimeAnimation=世界时间动画
+option.WAVING_FIRE=火焰摇曳
+option.WAVING_WATER=水流波动
+option.WAVE_SIZE=波浪尺寸
+option.WAVING_GRASS=草丛摇曳
+option.WAVING_FLOWERS=花朵摇曳
+option.WAVING_VINES=藤蔓摇曳
+option.WAVING_LILYPAD=睡莲摇曳
+option.WAVING_LEAVES=树叶摇曳
+option.WAVING_MUSHROOM=蘑菇摇曳
+option.WAVING_NETHER_WART=地狱疣摇曳
+option.WAVING_CROPS=作物摇曳
+option.WAVING_SAPLINGS=树苗摇曳
+option.WAVING_METALLIC=金属摇曳
+option.WAVING_DEADBUSH=灌木摇曳
+option.WAVING_UNDERWATER=珊瑚摇曳
+
+// Waving Visual
+option.WAVING_HAND=手臂摇曳
+option.WAVING_HAND.comment=为你的人物手臂添加动画。§a[+] §f不影响性能。
+option.WAVING_CAMERA=视角摇曳
+option.WAVING_CAMERA.comment=为你的人物角色添加动画。§a[+] §f不影响性能。§c[-] §f可能引起部分人晕动症
+
+option.FRAMETIME1=帧时间 X 轴
+option.FRAMETIME2=帧时间 Y 轴
+
+option.YAXIS=X 轴
+option.XAXIS=Y 轴
+
+///// Camera/Cinematic Effects /////
+
+// Grain
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN.comment=在黑暗区域为画面添加颗粒效果。§a[+] §f不影响性能。
+option.GRAIN_CHECK=颗粒检测
+option.GRAIN_CHECK.comment=调整效果触发所需的黑暗程度。
+option.GRAIN_DENSITY=颗粒密度
+option.GRAIN_DENSITY.comment=调整效果的强度。
+
+// Cinematic Bars
+option.BLACK_BORDER=电影黑边
+option.BLACK_BORDER.comment=添加两条黑色边框以模拟电影效果。§a[+] §f不影响性能。
+option.BORDER_RATIO=比例
+option.BORDER_RATIO.comment=调整黑色边框的比例/粗细。
+option.BORDER_OPACITY=不透明度
+option.BORDER_OPACITY.comment=调整黑色边框的不透明度。
+
+// Fake Auto Exposure and Auto Exposure
+option.DYNAMIC_EXPOSURE=自动曝光
+option.DYNAMIC_EXPOSURE.comment=当你身处黑暗区域时，使明亮区域略微变亮。§a[+] §f不影响性能。
+option.DYNAMIC_EXPOSURE_VAR=强度
+option.DYNAMIC_EXPOSURE_VAR.comment=调整自动曝光的亮度。
+
+option.EYE_BLINDNESS=模拟自动曝光
+option.EYE_BLINDNESS.comment=模拟动态曝光效果。§a[+] §f不影响性能。§e[!] §f仅在看向太阳时可见，且需要镜头效果。
+option.ESTRENGTH=强度
+option.ESTRENGTH.comment=调整模拟自动曝光的亮度。
+
+// Bloom
+option.BLOOM=泛光
+option.BLOOM.comment=为光源（如火把）添加模糊效果。§c[x] §f对性能有轻微/中等影响。
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=调整泛光的强度。
+
+// Lens Effects
+
+option.LENS_EFFECTS=镜头效果
+option.LENS_EFFECTS.comment=模拟相机效果，例如镜头光晕。§a[+] §f对性能影响很小。
+
+option.LENS_FLARES=镜头光晕
+option.LENS_FLARES.comment=看向太阳时显示镜头光晕。§c[x] §f对性能有轻微/中等影响。§e[!] §f需要镜头效果。
+value.LENS_FLARES.0=关闭
+value.LENS_FLARES.1=RedHat（默认）
+value.LENS_FLARES.2=Chocapic13 v5.1.1
+value.LENS_FLARES.3=简约
+value.LENS_FLARES.4=SEUS v10 镜头附加
+value.LENS_FLARES.5=RedHat 经典
+value.LENS_FLARES.6=TME v1.0
+value.LENS_FLARES.7=ChocaStalgia
+value.LENS_FLARES.8=GWZ 镜头
+value.LENS_FLARES.9=Better Chocapic 镜头
+
+option.GLOWING_SUN=炽热太阳
+option.GLOWING_SUN.comment=使太阳更亮以模拟脏眼镜。§a[+] §f 性能影响小，与体积光搭配效果极佳。§e[!] §f 需要镜头效果。
+option.SUN_POWER=炽热太阳强度
+option.SUN_POWER.comment=调整炽热太阳的强度。
+
+option.DIRTY_LENS=脏镜头
+option.DIRTY_LENS.comment=添加视觉上的脏污，模拟脏相机和眼镜。§e[!] §f 需要镜头效果。
+option.ANAMORPHIC_LENS=变形镜头
+option.ANAMORPHIC_LENS.comment=模拟眼球镜头。§e[!] §f 需要镜头效果。§a[+] §f 性能影响小。
+
+// Rain Drops
+option.RAIN_DROPS=雨滴
+option.RAIN_DROPS.comment=模拟下雨时视觉上的水滴。§c[x] §f 性能影响低。
+
+// Tonemap Operators
+option.TONEMAPPING=色调映射操作符
+option.TONEMAPPING.comment=改变光影包颜色的呈现方式。§a[+] §f 性能影响小。
+value.TONEMAPPING.0=§c无
+value.TONEMAPPING.1=Uncharted 2
+value.TONEMAPPING.2=Filmic
+value.TONEMAPPING.3=ACES Approximated
+
+// Vignette
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=调整暗角的强度。
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE.comment=调整暗角的强度。
+
+// Depth of Field
+option.DOF=景深
+option.DOF.comment=模拟眼睛聚焦。§a[+] §f 对截图非常有用。§c[x] §f 性能影响中等。
+option.LENS_SIZE=镜头大小
+option.LENS_SIZE.comment=调整使用景深时相机的镜头大小。
+
+option.DISTANT_BLUR=远处模糊
+option.DISTANT_BLUR.comment=使远处的所有事物模糊。§e[!] §f 需要景深。
+
+option.HEXAGONAL_BOKEH=六边形散景
+option.HEXAGONAL_BOKEH.comment=使用六边形散景进行景深，而非圆形散景。
+
+// Celshading
+option.CELSHADING=卡通着色（轮廓）
+option.BORDER=强度
+
+// Chromatic Aberration (requires DOF)
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION.comment=在视觉角落添加色边。§e[!] §f 需要景深。
+option.CHROMATIC_ABERRATION_STRENGTH=强度
+option.CHROMATIC_ABERRATION_STRENGTH.comment=调整色边的强度。
+option.CHROMA_COLOR=色边颜色
+option.CHROMA_COLOR.comment=自定义色边的颜色。
+value.CHROMA_COLOR.0=蓝 - 红
+value.CHROMA_COLOR.1=绿 - 红
+///// Sky and Atmospheric Effects /////
+
+// Sun & Moon Options
+option.DRAWSUN=圆形太阳
+option.DRAWSUN.comment=使太阳变圆。§a[+] §f 几乎不影响性能。
+option.DRAWMOON=圆形月亮
+option.DRAWMOON.comment=使月亮变圆。§a[+] §f 几乎不影响性能。
+option.sunPathRotation=太阳和月亮角度旋转
+option.sunPathRotation.comment=调整太阳和月亮的旋转角度。§c[x] §f 将此设置为0会导致光照问题。
+
+// Clouds
+option.CLOUDS=低层云
+option.CLOUDS.comment=使用天空中的噪点生成云。§c[x] §f 性能影响中等。
+option.CHOCAPIC_CLOUDS=高层云
+option.CHOCAPIC_CLOUDS.comment=使用天空中的噪点生成云。§c[x] §f 性能影响中等。
+option.CLOUD_SPEED=云速度
+option.CLOUD_SPEED.comment=云动画速度。
+option.CLOUD_SPEED.comment=云动画速度。
+value.CLOUD_SPEED.10000=极快
+value.CLOUD_SPEED.30000=更快
+value.CLOUD_SPEED.60000=快+
+value.CLOUD_SPEED.90000=快
+value.CLOUD_SPEED.120000=中等
+value.CLOUD_SPEED.140000=慢
+value.CLOUD_SPEED.160000=慢+
+value.CLOUD_SPEED.180000=更慢
+value.CLOUD_SPEED.200000=极慢
+value.CLOUD_SPEED.230000=龟速
+
+// Fog
+option.FOG=雾
+option.FOG.comment=添加雾。§c[x] §f低/中配性能影响。§e[!] §f可能对高光反射造成问题。
+option.DENSITY=雾密度
+option.DENSITY.comment=调整雾的密度。
+value.DENSITY.1000=极高
+value.DENSITY.2000=高配+
+value.DENSITY.3000=高配
+value.DENSITY.5000=中配
+value.DENSITY.6000=中配+
+value.DENSITY.7200=低配+
+value.DENSITY.8500=低配
+value.DENSITY.10000=极低
+
+// Stars
+option.Stars=星星
+option.Stars.comment=使用fBm生成星星。§c[x] §f低配性能影响。
+
+// Posterize
+option.POSTERIZE=色调分离
+option.POSTERIZE.comment=添加色带。
+option.POSTERIZE_NUM=颜色数量
+option.POSTERIZE_NUM.comment=调整色调分离的颜色数量。
+
+// HDR
+option.HDR=HDR
+option.HDR.comment=原始HDR的伪版本，允许使用超过255 RGB值的颜色。
+option.HDR_MULT=HDR 倍率
+option.HDR_MULT.comment=HDR 倍率。
+option.HDR_MAX=最大范围
+option.HDR_MIN=最小范围
+
+///// Lighting and Reflections /////
+
+// Light Amount
+option.SUNLIGHTAMOUNT=阳光强度
+option.SUNLIGHTAMOUNT.comment=调整阳光强度。
+option.MOONLIGHT_AMOUNT=月光强度
+option.MOONLIGHT_AMOUNT.comment=调整月光强度。
+
+// Shadows
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=调整阴影分辨率。§c[x] §f高值减少阴影距离并影响性能。
+value.shadowMapResolution.512=极低
+value.shadowMapResolution.1024=低配
+value.shadowMapResolution.1539=低配+
+value.shadowMapResolution.2048=中配
+value.shadowMapResolution.3072=中配+
+value.shadowMapResolution.3539=高配
+value.shadowMapResolution.4096=高配+
+value.shadowMapResolution.8192=极高
+value.shadowMapResolution.16389=极高+
+value.shadowMapResolution.18000=疯狂
+value.shadowMapResolution.19000=你疯了吗？
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整阴影显示距离。§c[x] §f高值降低阴影质量并影响性能。
+
+option.SHADOW_DARKNESS=阴影暗度
+option.SHADOW_DARKNESS.comment=调整阴影的暗度。
+
+option.SHADOW_FILTER=过滤
+option.SHADOW_FILTER.comment=§a[+] §f过滤阴影并使其更平滑。§c[x] §f高配性能影响
+value.SHADOW_FILTER.0=高配
+value.SHADOW_FILTER.1=低配
+value.SHADOW_FILTER.2=无
+
+option.SHADOW_ACNE_FIX=阴影瑕疵修复
+option.SHADOW_ACNE_FIX.comment=§a[+] §f修复阴影瑕疵。§c[x] §f降低阴影质量并可能轻微影响性能。
+
+// Lighting Fixes
+option.CAVE_LEAKING_FIX=洞穴漏光修复
+option.CAVE_LEAKING_FIX.comment=修复洞穴或大型结构内的随机闪电。
+
+option.WATER_LEAKING_FIX=水下漏光修复
+option.WATER_LEAKING_FIX.comment=修复在水下时大型海洋内的随机闪电。
+
+// Godrays
+option.GODRAYS=体积光
+option.GODRAYS.comment=添加 2D 体积光。§a[+] §f比体积光性能消耗更低。§c[x] §f对性能有一定影响，且效果不如体积光
+option.GODRAYS_AMOUNT=体积光数量
+option.GODRAYS_AMOUNT.comment=调整黄昏光束的数量。
+
+// Volumetric Light
+option.VOLUMETRIC_LIGHT=体积光照
+option.VOLUMETRIC_LIGHT.comment=添加 3D 体积光。§a[+] §f效果远胜黄昏光束。§c[x] §f对性能有较大影响。
+option.VL_MULT=体积光倍增器
+option.VL_MULT.comment=简单的体积光倍增器
+option.VL_BLUR=模糊数量
+option.VL_BLUR.comment=应用于体积光的模糊强度。§a[+] §f当质量设置为低值时，可修复锯齿。§c[x] §f可能产生少量瑕疵。
+option.VL_QUALITY=质量
+option.VL_QUALITY.comment=体积光的质量。§a[+] §f高质量可以替代高模糊量，并呈现极佳效果。§c[x] §f过高的数值对性能要求很高。
+
+// Water Caustics & Normals
+option.WATER_CAUSTIC=水面焦散
+option.CAUSTIC_STRENGTH=焦散强度
+option.CAUSTIC_SPEED=焦散速度
+option.CAUSTIC_SIZE=焦散大小
+
+option.CAUSTIC_STYLE=焦散样式
+value.CAUSTIC_STYLE.0=Legacy
+value.CAUSTIC_STYLE.1=默认
+value.CAUSTIC_STYLE.2=性能
+
+option.REFRACTION=折射
+value.REFRACTION.0.0=关
+value.REFRACTION.0.1=开
+
+option.WATER_NORMALS=水面法线
+value.WATER_NORMALS.1=默认
+value.WATER_NORMALS.0=原版
+
+// Emissive Light
+option.TORCH_INTENSITY=火把亮度
+option.TORCH_ATTEN=火把衰减
+option.TORCH_ATTEN.comment=火把光照的衰减程度
+option.TORCH_MULT=火把倍率
+option.TORCH_MULT.comment=火把光照图衰减函数，其中 x 是 Minecraft 光照图的火把光照值：((x*mult)^atten)*intensity
+option.TORCH_LIGHT_JITTER_SPEED=抖动速度
+
+// Reflections
+option.ICE_REFLECTION=冰面反射
+option.RAIN_REFLECTIONS=雨天反射
+option.RAIN_REFLECTIONS.comment=使方块在下雨时看起来湿润
+option.WATER_REFLECTIONS=水面反射
+
+// SSS Options
+option.SSS_STRENGTH=次表面散射数量
+
+///// Color Options /////
+
+// Water
+option.RED=红色
+option.GREEN=绿色
+option.BLUE=蓝色
+option.OPACITY=不透明度
+
+option.UNDERWATER_COLOR=水下操作
+value.UNDERWATER_COLOR.0=天空
+value.UNDERWATER_COLOR.1=RGB
+value.UNDERWATER_COLOR.2=水体颜色
+value.UNDERWATER_COLOR.3=RGB 原版
+
+// Emissive Light
+option.RT=红色数量
+option.GT=绿色数量
+option.BT=蓝色数量
+
+// Stars Color
+option.RS=红色数量
+option.GS=绿色数量
+option.BS=蓝色数量
+
+// Fog Color
+option.RFOG=红色数量
+option.GFOG=绿色数量
+option.BFOG=蓝色数量
+
+// Sky Color
+option.SR=红色数量
+option.SG=绿色数量
+option.SB=蓝色数量
+option.DYNAMIC_SKY_COLOR=动态天空颜色
+option.DYNAMIC_SKY_COLOR.comment=根据时间改变天空颜色。§a[+] §f无性能影响。
+
+// Saturation
+option.SATURATION=饱和度
+
+// RGB Mode
+option.RGB_MODE=RGB模式
+option.RGB=红色数量
+option.GGB=绿色数量
+option.BGB=蓝色数量
+
+// Lighting Color
+option.SRR=日出红色数量
+option.SRG=日出绿色数量
+option.SRB=日出蓝色数量
+option.NR=正午红色数量
+option.NG=正午绿色数量
+option.NB=正午蓝色数量
+option.SSR=日落红色数量
+option.SSG=日落绿色数量
+option.SSB=日落蓝色数量
+option.MNR=午夜红色数量
+option.MNG=午夜绿色数量
+option.MNB=午夜蓝色数量
+
+// Color Presets
+option.COLOR_PRESET=颜色预设
+value.COLOR_PRESET.0=默认
+value.COLOR_PRESET.1=传统
+value.COLOR_PRESET.2=冰
+value.COLOR_PRESET.3=牛奶帝国
+
+// Color Effects
+option.NIGHT_DESATURATION=夜间去饱和
+option.DESATURATION_STRENGTH=去饱和强度
+
+///// Resource-Pack Support /////
+
+// Parallax Occlusion Mapping
+option.POM=Parallax Occlusion Mapping
+option.POM.comment=需要支持POM的资源包
+option.POM_MAP_RES=POM分辨率
+option.POM_MAP_RES.comment=将其设置为资源包的分辨率
+
+///// Advanced and Other Options /////
+
+option.INFO=RedHat
+value.INFO.0=v34.3
+option.INFO.comment=由mlgimposter制作，鸣谢Chocapic13、Septonious、CrankerMan、Capt Tatsu、Robobo1221和CYBOXGaming
+
+option.noiseTextureResolution=噪声纹理分辨率
+option.noiseTextureResolution.comment=值过高会导致崩溃。§c[x] §f高值对性能影响很大。
+
+profile.comment=根据硬件性能一键调整设置。
+
+
+
+
+

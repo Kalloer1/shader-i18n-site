@@ -1,0 +1,2069 @@
+## §a §2  §e §6  §c §4 §5   §r
+
+# --- Automatically added #define options ---
+option.ABSOLUTE_BIOME_RAIN_CONTROL=绝对群系降雨控制
+option.ACCENTUATE_TORCH_SMOOTHNESS=强化火炬平滑度
+option.ADDITIVE_CLOUD_ALPHA=附加云透明度
+option.ADJUST_SATURATION=调节饱和度
+option.AE_CHECK_CORNERS=AE检查角落
+option.AE_CORNERS_STR=AE角落强度
+option.AE_LUMINANCE_B=AE亮度蓝通道
+option.AE_LUMINANCE_G=AE亮度绿通道
+option.AE_LUMINANCE_R=AE亮度红通道
+option.AE_SAMPLE_WIDTH=AE采样宽度
+option.AE_SPD=AE速度参数
+option.AIR_DENSITY=空气密度
+option.AIR_SPECULAR=空气高光反射
+option.ALBEDO_TEXTURE_CALL_FOR_FLAG_CHECK=反照率纹理标记检查
+option.ALBEDO_TEXTURE_CALL_PREFIX=反照率纹理调用前缀
+option.ALBEDO_TEXTURE_CALL_PREFIX_FAST=反照率纹理快速调用前缀
+option.ALBEDO_TEXTURE_CALL_SUFFIX=反照率纹理调用后缀
+option.ALBEDO_TEXTURE_SAMPLER=反照率纹理采样器
+option.ALBEDO_TEXTURE_SET_UV_SUFFIX=反照率纹理UV设置后缀
+option.ALGAE=藻类
+option.ALPHA_CUTOFF_CPF=透明度裁剪CPF
+option.AMBIENT_LIGHT_FLAT=平坦环境光
+option.AMBIENT_OCCLUSSION_TEXTURES=环境光遮蔽纹理
+	option.AMBIENT_OCCLUSSION_TEXTURES.comment =纹理环境光遮蔽对缝隙的阴影强度
+option.HAND_LIGHT_CAPTURE_BACKUP =逐像素颜色检测
+	option.HAND_LIGHT_CAPTURE_BACKUP.comment =捕捉手部渲染的每个像素以计算光照颜色。仅第一人称视角有效。会出现闪烁
+	value.HAND_LIGHT_CAPTURE_BACKUP.0 =关
+	value.HAND_LIGHT_CAPTURE_BACKUP.1 =开启 - 存在缺陷
+screen.Automating_Held_Light_Color =自动化手持光源颜色（开发中）
+option.AMBIENT_SKY_LIGHT=环境天空光
+option.AMBIENT_SKY_LIGHT_CLOUDS=环境天空光照云层
+option.ANIMATE_NOISE_H2=噪波动画H2
+option.APPLY_OPACITY_TYPE=应用不透明度类型
+option.ASSUMED_DEPTH=假设深度
+option.ASSUMED_DEPTH_DYNAMIC=动态假设深度
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE_HIGH=自动曝光高值
+option.AUTO_EXPOSURE_LOW=自动曝光低值
+option.AUTO_EXPOSURE_RANGE=自动曝光范围
+option.BACKGROUND_RESOLUTIION_DIVIDER=背景分辨率分割器
+option.BACK_LIT_GRASS=背光草地
+option.BASIC_REFLECTIONS_ONLY=仅基础反射
+option.BG_LIT_AMBIENT_LIGHT=背景光照环境光
+option.BG_LIT_FREQUENCY=背景光照频率
+option.BG_LIT_SKY_LIGHTING=背景光照天空光
+option.BIOME_WATER=群系水体
+option.BLEND_PIXELS=像素混合
+option.BLEND_PIXELS_SOFTNESS=像素混合柔和度
+option.BLOCK_ENTITY_SHADOWS=方块实体阴影
+option.BLOCK_LIGHT_BRIGHTNESS=方块光亮度
+option.BLOCK_LIGHT_BRIGHTNESS_IN_DAYLIGHT=日光下方块光照亮度
+option.BLOOM_DEPTH_WIDE=宽幅泛光深度
+option.BLOOM_FALLOFF=泛光衰减
+option.BLOOM_ONLY_BRIGHTS=仅明亮物体泛光
+option.BLOOM_ONLY_BRIGHTS_POW=仅明亮物体泛光强度
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH_WIDE=宽幅泛光强度
+option.BLURRY_SHADOWS=模糊阴影
+option.BORDERS=边界
+option.BORDERS_IN_DH=DH模式中的边界
+option.BORDERS_SENSITIVITY=边界敏感度
+option.BORDER_FOG=边界雾
+option.BORDER_FOG_ALTITUDE=边界雾高度
+option.BORDER_FOG_CLOUDS=边界雾云层
+option.BORDER_FOG_START=边界雾起始距离
+option.BORDER_OPACITY=边界不透明度
+option.BORDER_SAMPLES=边界采样数
+option.BOUNCE_LIGHT_M=反弹光参数M
+option.BOUNCE_MORE=增强反弹光
+option.BRIGHTER_UNDERWATER=水下增亮
+option.BRIGHTNESS=亮度
+option.BRIGHTNESS_MULT=亮度乘数
+option.BRIGHT_TIME=明亮时段
+option.BTIGHTNESS_CONTRAST=亮度对比度
+option.BTIGHTNESS_CONTRAST_CENTER=亮度对比度中心
+option.BUGGY_DH_SHADING=有缺陷的DH着色
+option.CACHE_CLOUD_DOWNSCALING=缓存云层降采样
+option.CAPTURE_CPF_POM_DEPTH=捕获CPF视差深度
+option.CAUSTICS=焦散
+option.CAUSTIC_STR=散焦强度
+option.CAVE_DARKNESS_DEPTH=洞穴黑暗深度
+option.CAVE_DARKNESS_DEPTH.comment=洞穴光照泄漏修复在海平面下多少时达到100%
+option.CAVE_LIGHT_LEAK_FIX=洞穴光照泄漏修复
+option.CAVE_LIGHT_LEAK_FIX.comment =当游戏判定玩家已在地下一段时间，或方块未暴露于天空光照时，将日光转暗，以修复可能发生的光照“泄漏”。“逐方块”模式会使树下变暗，并可能阻止进入洞穴和悬垂结构下方的日光。
+	value.CAVE_LIGHT_LEAK_FIX.0 =关
+	value.CAVE_LIGHT_LEAK_FIX.1 =1 - 玩家在地下 & 时间
+	value.CAVE_LIGHT_LEAK_FIX.2 =2 - 逐方块天空曝光
+	
+	screen.Testing.comment =请勿期望这些功能正常运作，这是正在开发中的内容或用于调试的功能
+	
+option.CAVE_LIGHT_LEAK_2_EXP=洞穴光照泄漏修复 2 强度
+option.CAVE_LIGHT_LEAK_2_EXP.comment =调节逐方块光照泄漏的强度。数值越高，会在树下、悬垂结构和小型建筑内更强烈地消除日光。数值越低，则需要更少的天空曝光才会使日光变暗。
+	
+option.CAVE_LIGHT_LEAK_FIX_SKY=洞穴光照泄漏修复（天空与雾）
+option.CAVE_LIGHT_LEAK_FIX_SKY.comment =当游戏判定玩家已在地下一段时间时，将天空与雾转暗，以修复可能发生的光照“泄漏”
+	value.CAVE_LIGHT_LEAK_FIX_SKY.0 =关
+	value.CAVE_LIGHT_LEAK_FIX_SKY.1 =开
+option.CAVE_MOUTH_DUST=洞口尘埃
+option.CDDDD=CDDDD
+option.CIRRUS_LAYERS=卷云层
+option.CLEAN_CLOUDS=纯净云朵
+option.CLORD_CLEANLINESS=云朵清晰度
+option.CLOUDINESS_PATCHY_SIZE=云朵斑块尺寸
+option.CLOUDS=云
+option.CLOUDS_FINE_BLOOM_STRENGTH=云朵精细泛光强度
+option.CLOUDS_O_FRACTAL_DEPTH=云层分形深度
+option.CLOUDS_SHADOW_STUFF=云朵阴影效果
+option.CLOUD_BLOOM_DEPTH_WIDE=云朵泛光深度范围
+option.CLOUD_BLOOM_FALLOFF=云朵泛光衰减
+option.CLOUD_BLOOM_STRENGTH_WIDE=云朵泛光强度范围
+option.CLOUD_CRISPNESS=云朵锐利度
+option.CLOUD_CRISP_BIAS=云朵锐利偏差
+option.CLOUD_FOG=云雾
+option.CLOUD_FRACTAL_DEPTH_MAX=云朵分形深度最大值
+option.CLOUD_FRACTAL_DEPTH_MIN=云朵分形深度最小值
+option.CLOUD_OPACITY=云层不透明度
+option.CLOUD_PATCHY_STR=云朵斑块强度
+option.CLOUD_PATCHY_STR_V=云朵斑块强度垂直
+option.CLOUD_PATCH_CUTOFF=云朵斑块截断
+option.CLOUD_PATCH_CUTOFF_V=云朵斑块截断垂直
+option.CLOUD_PATCH_USE=启用云朵斑块
+option.CLOUD_SAMPLES_FOR_STYLE_1=样式1的云朵采样数
+option.CLOUD_SCALE=云层缩放
+option.CLOUD_SHADING=云层着色
+option.CLOUD_SHADING_ON_SKYLIGHT=云朵在天光上的着色
+option.CLOUD_SHADOWS_ON_STUFF_STR=云朵阴影效果强度
+option.CLOUD_SHADOW_BIAS=云朵阴影偏差
+option.CLOUD_SIZE=云层大小
+option.CLOUD_SIZE_CUTOFF=云朵尺寸截断
+option.CLOUD_SIZE_STR=云朵尺寸强度
+option.CLOUD_SPECULAR=云朵镜面反射
+option.CLOUD_SPEED=云层速度
+option.CLOUD_STYLE=云层样式
+option.CLOUD_VOXEL_SIZE=云朵体素尺寸
+option.COLORED_LIGHT_SPEC=彩色光照规格
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS_RANGE_CLOUDS=云朵彩色阴影范围
+option.COLOR_BITS=色彩位深
+option.COLOR_BITS_SKY=天空色彩位深
+option.COLOR_MERGE_DIST_CPF=色彩混合距离CPF
+option.COLOR_SPACE=色彩空间
+option.CONSTRAIN_TO_VANILLA_LIGHTMAP_DISTANCE=限制于原版光照贴图距离
+option.CONTRAST=对比度
+option.COS_SCROLL=余弦滚动
+option.CPF_ADDS_DEPTH_WRITE=CPF添加深度写入
+option.CPF_NEAR_FAR_WORKAROUND=CPF远近适配方案
+option.CPF_RELATIVE_SPACE=CPF相对空间
+option.CPF_SHADER_STYLE=CPF着色器样式
+option.CRISP_BLOCK_EDGES_SHADOWS=清晰方块边缘阴影
+option.CRYSTAL_SSS=水晶次表面散射
+option.CTMPOMFIX=CTMPOM修复
+option.CTMPOMFIX_INFO=ctmpomfix 信息
+option.CURVE_ASPECT=曲线外观
+option.CURVE_LENS=曲线镜头
+
+option.CUSTOM_TORCH_COLOR=自定义火把颜色
+option.DAILY_WEATHER=每日天气
+option.DARKEN_MISSING_REFRACTION_DATA_INVERTED=翻转缺失折射数据变暗
+option.DARKEN_ONION_SKY_INDOORS=室内洋葱天空变暗
+option.DAY_LENGTH=日长
+option.DBLX_MULT=双线性多重采样
+option.DEBUG_55=调试55
+option.DEBUG_552=调试552
+option.DEBUG_CLOUDS=调试云朵
+option.DEBUG_CPF=调试CPF
+option.DEBUG_FIX_CIRCLE=调试圆形修复
+option.DEBUG_GEN_NORMAL_MAP=调试生成法线贴图
+option.DEBUG_MODE=调试模式
+option.DEBUG_SHADOWS=调试阴影
+option.DEBUG_TEX_EMISSIVE=调试发光纹理
+option.DEBUG_VIEWS=调试视图
+option.DEFAULT_FRACTAL_DEPTH=默认分形深度
+option.DEFER_DEPTH_WRITE_CPF=延迟深度写入CPF
+option.DEFER_SHADING=延迟着色
+option.DEFER_WATER=延迟水面
+option.DEFER_WATER2=延迟水面2
+option.DELICATE_TORCH_DEPTH=精细火把深度
+option.DEPTH_WRITE_CPF=深度写入CPF
+option.DHSTR2=深度历史缓冲2
+option.DH_BORDERS_FADE=DH边界淡出
+option.DH_FADE=DH淡出
+option.DH_FANCY_NOISE=DH花式噪波
+option.DH_FLYING_FIX_CIRCLE=DH飞行圆形修复
+option.DH_FLYING_FIX_CIRCLE_ONLY_IN_AIR=仅空中DH飞行圆形修复
+option.DH_FLYING_FIX_CIRCLE_SPEED=DH飞行圆形修复速度
+option.DH_FOG_END=DH雾效结束
+option.DH_MODE=DH模式
+option.DH_NOISE_FRACTAL_STEPS=DH噪波分形步长
+option.DH_RAY_M=DH光线M
+option.DH_REG_CUTOFF=DH常规截断
+option.DH_SHADOWS=DH阴影
+option.DH_SMOOTHED_VALUE_=DH平滑数值
+option.DH_TEXTURE=dh 纹理
+option.DH_TEXTURE_STR=dh 纹理强度
+option.DH_WETNESS=dh 湿度
+option.DIFFFUSE_VX_BEHAVIOR=漫反射体素行为
+option.DIFFUSE_BOUNCE_LIGHT=漫反射反弹光
+option.DIFFUSE_PTX_EXP_STEP=漫反射光追曝光步长
+option.DIFFUSE_RAY_SMOOTHNESS=漫反射光线平滑度
+option.DIFFUSE_THE_RAYS=漫反射光线
+option.DIFFUSE_THE_RAYS_SPEC=漫反射光线（高光）
+option.DIRECTIONAL_LIGHTING=定向光照
+option.DIRTY_WATER=浑浊水
+option.DIRTY_WATER_B=浑浊水 B 通道
+option.DIRTY_WATER_G=浑浊水 G 通道
+option.DIRTY_WATER_R=浑浊水 R 通道
+option.DIRT_POROSITY=泥土孔隙度
+option.DISABLE_DRAINAGE_WITHOUT_POM=禁用无视差贴图时的排水效果
+option.DISABLE_SKY_RAY_TRACE=禁用天空光线追踪
+option.DITHER_TRANS=抖动透明
+option.DONT_BLOW_OUT_WHITES=防止高光过曝
+option.DONT_VOXELIZE_CARPETS=不体素化地毯
+option.DOWNSAMPLING=降采样
+option.DOWNSCALE_CLOUDS=缩放云层
+option.DOWNSCALE_PTX=缩放光追
+option.DO_BLURS=执行模糊
+option.DSTR=深度采样
+option.DUAL_CELESTIAL_LIGHTING=双重天体光照
+option.DUAL_DISTORT=双重扭曲
+option.DYNAMIC_BIOME_SKY=动态群系天空
+option.DYNAMIC_BIOME_SKY_COLOR=动态群系天空颜色
+option.DYNAMIC_QUALITY_CPF=动态质量 CPF
+option.DYNAMIC_SKY_SS=动态天空 SS
+option.EARLY_SHADOW_CLOUDS=早期阴影云层
+option.ELEVATION_LIGHTING=海拔光照
+option.ENABLE_CTMPOMFIX_POM_SPACE=ctmpomfix 视差贴图空间
+option.ENTITY_SHADOWS=实体阴影
+option.ENTITY_TEX_FILTER_FIX=实体纹理过滤修复
+option.EPBR_EMMISIVENESS_IN_VOXELS_ENTITY=体素实体中的自发光贴图
+option.EVENING_TIME_=傍晚时间
+option.EXPONENTIAL_FOG=指数雾
+option.EXPONENTIAL_FOG_=指数雾
+option.EXPONENTIAL_SKY_FALL_OFF=指数天空衰减
+option.EXPONENTIAL_TORCH_FALL_OFF=指数火把衰减
+option.EXPOSURE_HIGH_PASS=曝光高通滤波
+option.EXPOSURE_HIGH_PASS_RANGE=曝光高通范围
+option.EXPOSURE_PRE=预曝光
+option.EXTEND_3D_SHADOWS_CPF=延伸 3D 阴影 CPF
+option.EXTRA_DARK_NIGHT=额外黑暗夜晚
+option.EXTRA_DARK_T_STORMS=额外黑暗雷暴
+option.EXTRA_VIBRANT_BL=额外鲜艳泛光
+option.FADE_IN_POM_CPF=淡入视差贴图 CPF
+option.FADE_LIGHT_UPDATES=渐隐光照更新
+option.FADE_LIGHT_UPDATES_AMOUNT=渐隐光照更新量
+option.FADE_PRE_GLASS_FOG=预淡入玻璃雾
+option.FADE_SHADOWS=阴影淡化
+option.FADE_SS_SKY_EDGE=淡入 SS 天空边缘
+option.FAKE_SKY_REFLECTION=伪天空反射
+option.FALLBACK_CIRRUS_SHADOWS=备用卷云阴影
+option.FANCY_WATER=精致水面
+option.FAR=远
+option.FAR_CLOUDS=远景云层
+option.FAR_FIXES_CPF=远景修复 cpf
+option.FAST_PTX=快速光追
+option.FAST_TEX_READS_CPF=快速纹理读取 CPF
+option.FILL_BG=填充背景
+option.FILTER_HERE=此处过滤
+option.FIRE_BRIGHT_B=火焰亮度 B
+option.FIRE_BRIGHT_G=火焰亮度 G
+option.FIRE_BRIGHT_R=火焰亮度 R
+option.FIRE_DARK_B=火焰暗部 B
+option.FIRE_DARK_G=火焰暗部 G
+option.FIRE_DARK_R=火焰暗部 R
+option.FIX_COLOR_SPACE=修正色彩空间
+option.FIX_SSS_LIGHT_LEAK=修复次表面光照泄漏
+option.FLASHLIGHT_BRIGHTNESS=手电筒亮度
+option.FLASHLIGHT_DISTANCE=手电筒距离
+option.FLASHLIGHT_FLICKER_SPEED=手电筒闪烁速度
+option.FLASHLIGHT_FLICKER_STR=手电筒闪烁强度
+option.FLASHLIGHT_WIDTH=手电筒宽度
+option.FLASH_BANG_LIMIT=闪光弹限制
+option.FLASH_LIGHT=闪光灯
+option.FLICKERING_FIRE=闪烁火焰
+option.FLICKERING_TORCHES=闪烁火把
+option.FLIP_SHADOW_SPIRAL_RANDOMLY=随机翻转阴影螺旋
+option.FLIP_V_BUFFERS=翻转体素缓冲
+option.FLOODFILL_LIGHTING=泛洪填充光照
+option.FOG=雾
+option.FOG_3D=3D 雾
+option.FOG_AMBIENT_LIGHTING=雾环境光照
+option.FOG_AMBIENT_LIGHTING_AMOUNT=雾环境光照量
+option.FOG_AMBIENT_LIGHTING_DIST=雾环境光照距离
+option.FOG_AMBIENT_SPECULAR=雾环境高光
+option.FOG_BLUR=雾模糊
+option.FOG_END=雾终点
+option.FOG_HIDES_DH_BORDERS=雾隐藏远景边界
+option.FOG_LAYERS=雾层
+option.FOG_MAX=最大雾量
+option.FOG_START=雾起点
+option.FORCE_CRISP_SHADOWS=强制清晰阴影
+option.FORWARD_RENDER=前向渲染
+option.FORWARD_RENDER_BG=前向渲染背景
+option.FRACTAL_ROUGHNESS=分形粗糙度
+option.FRACTAL_ROUGHNESS_O_CLOUDS=云层分形粗糙度
+option.FREEZE_TRANSITION_TIME=冻结过渡时间
+option.FRESNEL_CURVE=菲涅尔曲线
+option.FROG_OCHE_B=蛙明石 B
+option.FROG_OCHE_G=蛙明石 G
+option.FROG_OCHE_R=蛙明石 R
+option.FROG_PEARL_B=蛙影珠 B
+option.FROG_PEARL_G=蛙影珠 G
+option.FROG_PEARL_R=蛙影珠 R
+option.FROG_VER_B=蛙葱 B
+option.FROG_VER_G=蛙葱 G
+option.FROG_VER_R=蛙葱 R
+option.FULL_DARKNESS=完全黑暗
+option.FULL_RES_SKY_TRACE=全分辨率天空追踪
+option.GALAXY_BRIGHTNESS=星系亮度
+option.GALAXY_COLOR_SCALE=星系颜色比例
+option.GALAXY_PATCHY_SCALE=星系斑块比例
+option.GALAXY_SCALE=星系比例
+option.GALAXY_TIME_SCALE=星系时间比例
+option.GEM_GLASS=宝石玻璃
+option.GEN_NORMAL_MAP=生成法线贴图
+option.GLASS_DIST_BIAS=玻璃距离偏移
+option.GLASS_FLIP_BIAS=玻璃翻转偏移
+option.GLASS_TINIT_STRENGTH=玻璃染色强度
+option.GLOWING_CONCRETE=发光混凝土
+option.GLOWING_DEEP_ALGAE=发光深海藻
+option.GLOWING_ROCKETS=发光火箭
+option.GLOW_BERRIES_B=发光浆果 B
+option.GLOW_BERRIES_G=发光浆果 G
+option.GLOW_BERRIES_R=发光浆果 R
+option.GLOW_FRAME_B=发光框 B
+option.GLOW_FRAME_G=发光框 G
+option.GLOW_FRAME_R=发光框 R
+option.GODRAYS=丁达尔光效
+option.GODRAY_DITHER=丁达尔光抖动
+option.GODRAY_SAMPLES=光束采样
+option.GRASS_SHADOWS=草地阴影
+option.GR_STR=光线强度
+option.GR_SUN_WIDTH=太阳光线宽度
+option.GR_VIEW_SMOOTH=视线平滑度
+option.G_NORM_MAP_STR=法线贴图强度
+option.G_NORM_MAP_SUB_PIXEL_STR=法线贴图子像素强度
+option.G_NORM_SP_RES=法线采样分辨率
+option.HALF_RAYS=半光束
+option.HANDHELD_REDUCE_DIFFUSE_BY_REFLECTIVITY_=手持物体反射率减弱漫反射
+option.HAND_AS_WATER=手部视为水面
+option.HAND_HELD_LIGHTING=手持光照
+option.HAND_HELD_TORCH=手持光源
+	value.HAND_HELD_TORCH.0 =§c关§r
+	value.HAND_HELD_TORCH.1 =§a开§r
+option.HAND_HELD_TORCH_RANGE=手持光源范围
+option.HAND_TEX_FILTER_FIX=手持纹理滤波修正
+option.HARD_ALPHA=硬边透明度
+option.HAZINESS=模糊度
+option.HELP_INFO=帮助信息
+option.HOLLOW_CENTER=中空中心
+option.H_LAYERS=高度分层
+option.INCREASE_QUALITY_AT_ANGLES_CPF=角度质量增强（CPF）
+option.INDEPENDENT_BRANCHES=独立分支
+option.INFINITE_DIFFUSE_PTX_RANGE=无限漫反射路径距离
+option.INFINITE_OCEAN=无限海洋
+option.INITIAL_POM_QUALITY_CPF=初始视差贴图质量（CPF）
+option.INTEGRATED_PBR=集成式基于物理的渲染
+option.INTEGRATED_SSS=集成次表面散射
+option.INTEGRATED_SSS_STR=集成次表面散射强度
+option.IS_AN_ENTITY=实体？
+option.IS_HAND=手持物品？
+option.IS_PARTICLE=粒子？
+option.IS_THE_END=末地？
+option.IS_THE_NETHER=下界？
+option.IS_WATER_SHADER=水面着色器？
+option.IS_WEATHER=天气？
+option.JANK_TRACING=卡顿追踪
+option.JET_STREAM=喷射流
+option.KILL_SWITCH=终止开关
+option.LAVA_BRIGHT_B=岩浆亮度 B
+option.LAVA_BRIGHT_G=岩浆亮度 G
+option.LAVA_BRIGHT_R=岩浆亮度 R
+option.LAVA_DARK_B=岩浆暗部 B
+option.LAVA_DARK_G=岩浆暗部 G
+option.LAVA_DARK_R=岩浆暗部 R
+option.LAVA_LEVEL=岩浆液面高度
+option.LAVA_NOISE_ORGANIC=岩浆有机噪声
+option.LAVA_RESOLUTION=岩浆分辨率
+option.LEFT_HANDED=左手模式
+option.LESSEN_REFLECTIONS_BY_BOUNCE_NUMBER=根据反弹次数减少反射
+option.LIGHTNING_PROC=闪电生成
+option.LIGHTNING_SROBE_SPD_1=闪电频闪速度1
+option.LIGHTNING_SROBE_SPD_2=闪电频闪速度2
+option.LIGHTNING_SROBE_SPD_NONE=闪电频闪无速度
+option.LIGHTNING_SROBE_STR_1=闪电频闪强度1
+option.LIGHTNING_SROBE_STR_2=闪电频闪强度2
+option.LIGHTNING_SROBE_STR_STEADY=闪电稳定频闪强度
+option.LIGHT_BLOCK_B=光源方块 B
+option.LIGHT_BLOCK_G=光源方块 G
+option.LIGHT_BLOCK_R=光源方块 R
+option.LIGHT_COLOR_SATURATION=光源颜色饱和度
+option.LIGHT_FADE_VXFL=光照衰减体素滤波
+option.LIGHT_FALLOFF=光线衰减
+option.LIGHT_FALLOFF_RATE=光照衰减率
+option.LIGHT_LEAK_ANGLE_LIMIT=漏光角度限制
+option.LIGHT_UPDATE_SPEED=光照更新速度
+option.LIGHT_VIIBRANCE=光照强度
+option.LIMIT_CLOUD_SHADING_BY_STEPSIZE=基于步长限制云层着色
+option.LIT_A=通道A
+option.LIT_B=通道B
+option.LIT_ENTIRE_SKY=照亮整个天空
+option.LIT_G=通道G
+option.LIT_R=通道R
+option.LONG_SUNSET_SHADOWS=长效日落阴影
+option.LOW_QUALITY_CLOUDS=低质量云层
+option.LPV_BLOCKS_BY_LM=通过光照图控制光照体积方块
+option.LPV_PARTICLES_BY_LM=通过光照图控制光照体积粒子
+option.LabPBR_Textures=LABPBR材质
+option.MANUAL_EXPOSURE_RANGE=手动曝光范围
+option.MAXIMUM_ALBEDO=最大反照率
+option.METAL_AMBIENT=金属环境光
+option.METAL_AMBIENT_LIT=金属受光照环境光
+option.METAL_REFLECTIVE=金属反射性
+option.METAL_SMOOTHER=金属平滑器
+option.MID_ATMOSPHERE_LAYERS=中层大气分层
+option.MINIMUM_BIOME_CLOUDS=最小群系云量
+option.MINIMUM_BIOME_CLOUDS_HI=最小群系云量（高）
+option.MINIMUM_LIGHT_LEVEL=最低光照等级
+option.MINIMUM_LIGHT_LEVEL.comment =调高此选项使洞穴更明亮，它限制了场景可达到的最暗程度
+option.MINIMUM_LIGHT_LEVEL_END=末地最低光照等级
+option.MINIMUM_LIGHT_LEVEL_NETHER=下界最低亮度等级
+option.MOB_SHADOWS=生物阴影
+option.MOON_BRIGHTNESS=月球亮度
+option.MOON_COLOR_B=月光颜色蓝
+option.MOON_COLOR_G=月光颜色绿
+option.MOON_COLOR_R=月光颜色红
+option.NAMETAG_OPACITY=标牌不透明度
+option.NARROW_DIFFUSE_CONE_BY_SMOOTHNESS=基于平滑度收窄漫反射锥
+option.NETHER_RED_AMBIENT_LIGHT=下界红色环境光
+option.NIGHT_SKY_SCALE=夜空比例
+option.NOISE_AMOUNT_IN_RAYS=光线噪点量
+option.NOISE_FUNCTION_CPF=噪声函数 cpf
+option.NOISE_GRID_SIZE_2D=噪声网格尺寸 2d
+option.NOISE_I1=噪声 i1
+option.NOISE_STRENGTH_CPF=噪声强度 cpf
+option.NOISE_TILING=噪声平铺
+option.NON_DIRECTIONAL_AMBIENT_SKY_LIGHT=非方向性环境天空光
+option.NOON_GODRAYS=正午上帝光线
+option.NORMALS_BIT_DEPTH=法线位深度
+option.NORMAL_TEXTURE_CALL_PREFIX=法线纹理调用前缀
+option.NORMAL_TEXTURE_CALL_SUFFIX=法线纹理调用后缀
+option.NORMAL_TEXTURE_SAMPLER=法线纹理采样器
+option.NO_DH_SHADOWS=无 dh 阴影
+option.NO_SNOW=无雪
+option.N_BLANK_A=n 空白 a
+option.N_BLANK_B=n 空白 b
+option.N_BLANK_G=n 空白 g
+option.N_BLANK_R=n 空白 r
+option.No_PBR_Textures=无 pbr 纹理
+option.OBJECT_SHADOWS_RANGE_CLOUDS=物体阴影范围云层
+option.OCEAN_DEEP_STYLE=海洋深色风格
+option.OCEAN_DEPTH_LAYER_SIZE=海洋深度层尺寸
+option.OFFSCREEN_PTX_STEPS=屏外 ptx 步进
+option.OFF_SCREEN_BOUNCES=屏外反弹
+option.OLD_SNOW=旧雪
+option.ONION_HD=洋葱高清
+option.ONION_HEIGHT=洋葱高度
+option.ONION_MIPS=洋葱 mips
+option.ONION_NO_VIGNETTE=洋葱无晕影
+option.ONION_SKY_BEHIND=洋葱天空背景
+option.ONION_SKY_FADE_SPEED=洋葱天空淡出速度
+option.ONION_SKY_ONLY_IN_BLOCK_SKY=洋葱天空仅在方块天空中
+option.ONLY_DRAW_DH=仅绘制 dh
+option.ONLY_I2_SHADOW=仅 i2 阴影
+option.OVERRIDE_CAMPFIRE=覆盖营火效果
+option.OVERRIDE_FIRE=覆盖火焰效果
+option.OVERRIDE_LAVA=覆盖岩浆效果
+option.OVERRIDE_TORCHES=覆盖火把效果
+option.OZONE_LAYERS=臭氧层
+option.Only_Normal_Maps=仅法线贴图
+option.PARTIAL_BLOCKS_OCCLUDE=部分方块遮蔽
+option.PARTIAL_FOG_BLENDING_METHOD=部分雾混合方法
+option.PARTICLES_LPV=粒子光照体积
+option.PATCHY_BY_LAYER=按层斑块
+option.PATHTRACE_PARTICLES=路径追踪粒子
+option.PATHTRACE_WEATHER=路径追踪天气
+option.PATH_TRACING_RESOLUTION=路径追踪分辨率
+option.PATH_TRACING_RESOLUTION_DIVIDER=路径追踪分辨率除数
+option.PBR=基于物理的渲染
+option.PBR_AO_CPF=pbr 环境光遮蔽 cpf
+option.PBR_DRAINAGE=pbr 排水
+option.PBR_EMMISIVENESS_IN_VOXELS_TERRAIN=体素地形中的PBR自发光
+option.PBR_EMMISSIVE_STRENGTH=pbr 自发光强度
+option.PBR_FOR_ENTITIES=实体 pbr
+option.PBR_LPV_EMISSION=PBR光照体积发射
+option.PBR_RAY_STEPS_SKY=pbr 天空光线步进
+option.PBR_WETNESS_CPF=pbr 湿度 cpf
+option.PBR_WETNESS_DARKENING=pbr 湿度变暗
+option.PEARL_WATER=珍珠水
+option.PERFECT_ONION=完美洋葱
+option.PIXEL_LOCKED_SHADOW_RES=像素锁定阴影分辨率
+option.PLAYER_SHADOW=玩家阴影
+option.POM=视差映射
+option.POM_DEPTH_CPF=pom 深度 cpf
+option.POM_DEPTH_VARIABLE=pom 深度变量
+option.POM_DISTANCE_CPF=pom 距离 cpf
+option.POM_DIST_VARIABLE=pom 距离变量
+option.POM_QUALITY_VARIABLE=pom 质量变量
+option.POM_SHADOWS_ACCURATE=pom 阴影精确
+option.POM_SHADOW_DEPTH=pom 阴影深度
+option.POM_STYLE_CPF=pom 样式 cpf
+option.POOFY_LAYERS=蓬松层
+option.POST_DITHER_FOG=后抖动雾
+option.POST_DITHER_PTX=后抖动 ptx
+option.POTATO_SHADOWS=土豆阴影
+option.PRENUMBRA_INFO=半影信息
+option.PRENUMBRA_WIDTH=半影宽度
+option.PRIORITIZE_SS_SKY=优先天空
+option.PTX_BLOOM_DEPTH_WIDE=ptx 泛光深度宽
+option.PTX_BLOOM_FALLOFF=ptx 泛光衰减
+option.PTX_BLOOM_STRENGTH_WIDE=ptx 泛光强度宽
+option.PTX_CHECK_NORMALS=ptx 检查法线
+option.PTX_CHECK_ONION_NORMALS=ptx 检查洋葱法线
+option.PTX_CHECK_PBR_AT_COLLISION=ptx 在碰撞处检查 pbr
+option.PTX_DIFFUSE_RANGE=ptx 漫反射范围
+option.PTX_SINGLE_PIXEL=ptx 单像素
+option.PTX_TORCH_DIFFUSE_RANGE_WORKAROUND=ptx 火把漫反射范围变通方案
+option.PUDDLE_DEPTH=水坑深度
+option.PULSING_AMBIENT_LIGHT=脉动环境光
+option.PULSING_FOG=脉动雾
+option.QUAD_TEXTURE_POSITION_COMPONENT=四边形纹理位置分量
+option.QUAD_TEXTURE_SIZE_COMPONENT=四边形纹理尺寸分量
+option.QUICK_CLOUDS=快速云层
+option.RAINFALL_MOON_GLOWING_ALGAE=降雨月光荧光藻
+option.RAIN_3D=降雨3D效果
+option.RAIN_DOWN_SIDES=侧壁降雨效果
+option.RAIN_DROPS=雨滴
+option.RAIN_OPACITY=雨水不透明度
+option.RAIN_RIPPLE_OPACITY=雨波不透明度
+option.RAIN_RIPPLE_SPD=雨波速度
+option.RAIN_RUN_OFF=雨水径流
+option.RAY_ACCELERATION=光线加速
+option.RAY_BIAS=光线偏移
+option.RAY_DIST=光线距离
+option.RAY_FULLY_CONVERGE=光线完全收敛
+option.RAY_NUM_H=光线数（水平）
+option.RAY_NUM_W=光线数（垂直）
+option.RECESS_POM_IN_PTX=ptx 中内凹视差贴图
+option.REDUCE_DIFFUSE_BY_REFLECTIVITY_=按反射率降低漫反射
+option.REDUCE_DIFFUSE_BY_REFLECTIVITY_METALS=按反射率降低金属漫反射
+option.RED_STONE_B=红石蓝通道
+option.RED_STONE_G=红石绿通道
+option.RED_STONE_R=红石红通道
+option.REFINER_STEPS_RAY=精炼步长光线
+option.REFINE_POM_CPF=精炼视差贴图 cpf
+option.REFLECTION_CUTOFF=反射截断
+option.REFRACTIONS=折射
+option.REFRACTION_DISTANCE=折射距离
+option.REFRACTION_STEPS=折射步数
+option.REFRACTION_WARBLE_WHERE_NO_INFO=无信息区域折射抖动
+option.REFRACT_GLASS=折射玻璃
+option.REINHART=莱因哈特
+option.RENDER_DISTANCE_CPF=渲染距离 cpf
+option.RESTORE_ARTIST_INTENTIONS=恢复艺术家意图
+option.RIPPLES_OUTSIDE_PUDDLES=水坑外波纹
+option.RIPPLE_RESOLUTION=波纹分辨率
+option.ROUGH_FRESNEL=粗糙菲涅尔
+option.ROUGH_FRESNEL_CURVE=粗糙菲涅尔曲线
+option.ROUGH_FRESNEL_EXPONENT=粗糙菲涅尔指数
+option.ROUGH_FRESNEL_EXPONENTIAL=粗糙菲涅尔指数曲线
+option.SANDSTONE_POROSITY=砂岩孔隙度
+option.SAND_POROSITY=沙土孔隙度
+option.SATURATION=饱和度
+option.SAVE_WRITES=保存写入
+option.SCALE_MOVING_GALAXY=缩放移动星系
+option.SCREEN_TANGENT=屏幕切线
+option.SEA_LEVEL=海平面
+option.SEA_LEVEL.comment=用于"洞穴光线泄漏修复"
+option.SHADER_LAVA=着色器岩浆
+option.SHADER_NOISE_FUNCTION=着色器噪声函数
+option.SHADE_ALGAE=着色藻类
+option.SHADING_STEPS_CLOUDS=云层着色步数
+option.SHADING_STEPS_FOG=雾气着色步数
+option.SHADING_STEPS_OCEAN=海洋着色步数
+option.SHADOWS=阴影
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BIAS_PL=阴影偏移（像素锁定）
+option.SHADOW_BIAS_PL.comment - Lower will have buggy artifacts, higher will have floating shadows - like space between things and thier shadows
+option.SHADOW_BRIGHTNESS=阴影亮度
+option.SHADOW_DEPTH_MULT=阴影深度倍增
+option.SHADOW_DISTORT_ENABLED=启用阴影扭曲
+option.SHADOW_DISTORT_FACTOR=阴影扭曲系数
+option.SHADOW_EXTRA_SOFTNESS=阴影额外柔和度
+option.SHADOW_FADE=阴影渐隐
+option.SHADOW_LENS_CURVATURE=阴影透镜曲率
+option.SHADOW_NOISE_STR=阴影噪声强度
+option.SHADOW_NOISE_VARIATION=阴影噪声变化
+option.SHADOW_SAMPLES=阴影采样数
+option.SHADOW_SOFTNESS_WEIGHT=阴影柔和度权重
+option.SHADOW_SUB_PIXEL_SEED_RES=阴影亚像素种子分辨率
+option.SHADOW_WEIGHT_EXPONENT=阴影权重指数
+option.SHOW_MOB_DAMAGE=显示生物伤害
+option.SKY_AMBIENT_LIGHT=天空环境光
+
+option.SKY_LIGHT_BRIGHTNESS=天空光照亮度
+option.SKY_LIGHT_FALLOFF=天空光照衰减
+option.SKY_NOISE_H=天空噪声水平参数1
+option.SKY_NOISE_H2=天空噪声水平参数2
+option.SKY_NOISE_W=天空噪声宽度
+option.SKY_ONION_ORIENTATION=天空洋葱层朝向
+option.SKY_ONION_REFRESH_FADE_SPD=天空洋葱层刷新渐隐速度
+option.SKY_ONION_RIGHT_BORDER=天空洋葱层右边界
+option.SKY_ONION_TOP_BORDER=天空洋葱层上边界
+option.SKY_ONION_UPDATE_D=天空洋葱层更新距离
+option.SKY_ONION_UPDATE_SPEED=天空洋葱层更新速度
+option.SKY_RAY_ACCELERATION=天空光线加速
+option.SKY_RAY_NUM_H=天空光线数（水平）
+option.SKY_RAY_NUM_W=天空射线数量 宽
+option.SKY_RAY_STEP_SIZE=天空射线步进尺寸
+option.SKY_REFLECTION=天空反射
+option.SKY_STEPS=天空步数
+option.SKY_TAA=天空 时间抗锯齿
+option.SKY_TINT_DIRECTION=天空色调方向
+option.SLUSH_RANGE=泥泞范围
+option.SMOOTHING_NOISE_CPF=平滑噪声 cpf
+option.SMOOTHNESS_EXPONENTIAL=平滑度指数
+option.SMOOTH_DH_FADE_IN=平滑 远景渲染 淡入
+option.SMOOTH_DH_NORMALS=平滑 远景渲染 法线
+option.SMOOTH_ONION_BORDER=平滑边界
+option.SM_BIAS=阴影 偏差
+option.SM_BIAS_N=阴影偏移法线
+option.SNOW_3D=3D 积雪
+option.SNOW_COLOR_B=积雪颜色 蓝
+option.SNOW_COLOR_G=积雪颜色 绿
+option.SNOW_COLOR_R=积雪颜色 红
+option.SNOW_DISTANCE=积雪距离
+option.SNOW_DISTANCE_FADE=积雪距离 淡出
+option.SNOW_DROPS=积雪飘落
+option.SNOW_EVERYWHERE=全地积雪
+option.SNOW_IN_HAND=手持物积雪
+option.SNOW_ON_ENTITES=实体积雪
+option.SNOW_ON_FAR_CHUNKS=远区块积雪
+option.SNOW_ON_WALLS=墙面积雪
+option.SNOW_SIZE_DIVIDER=积雪大小分割器
+option.SOUL_FIRE_BRIGHT_B=灵魂火亮部蓝通道
+option.SOUL_FIRE_BRIGHT_G=灵魂火亮部绿通道
+option.SOUL_FIRE_BRIGHT_R=灵魂火亮部红通道
+option.SOUL_FIRE_DARK_B=灵魂火暗部蓝通道
+option.SOUL_FIRE_DARK_G=灵魂火暗部绿通道
+option.SOUL_FIRE_DARK_R=灵魂火暗部红通道
+option.SOUL_LANTERN_B=灵魂灯笼蓝通道
+option.SOUL_LANTERN_B_HIGH=灵魂灯笼蓝通道高值
+option.SOUL_LANTERN_G=灵魂灯笼绿通道
+option.SOUL_LANTERN_G_HIGH=灵魂灯笼绿通道高值
+option.SOUL_LANTERN_R=灵魂灯笼红通道
+option.SOUL_LANTERN_R_HIGH=灵魂灯笼红通道高值
+option.SPECULAR_BOUNCE_LIGHT=镜面反射弹射光
+option.SPECULAR_TEXTURE_SAMPLER=镜面反射纹理采样器
+option.SPECULAR_VX_BEHAVIOR=高光反射行为
+option.SSS=次表面散射
+option.SSS_DECAY_CURVE=次表面散射 衰减曲线
+option.SSS_DECAY_RATE=次表面散射 衰减速率
+option.SSS_DEEP=次表面散射 深度
+option.SSS_SCATTER_WIDTH=次表面散射 散射宽度
+option.SSS_SHALLOW=次表面散射 浅度
+option.SS_PARTIAL=屏幕空间 部分
+option.SS_SHADOWS=屏幕空间 阴影
+option.SS_SUN_SHADOWS_ASSUMED_DEPTH=屏幕空间 太阳阴影 假定深度
+option.SS_SUN_SHADOWS_MAX_RANGE=屏幕空间 太阳阴影 最大范围
+option.SS_SUN_SHADOWS_RANGE=屏幕空间 太阳阴影 范围
+option.SS_SUN_SHADOW_STEPS=屏幕空间 太阳阴影 步数
+option.STARS=星星
+option.STAR_BRIGHTNESS=星星亮度
+option.STAR_CRISPNESS=星星清晰度
+option.STAR_CUTOFF=星星截止点
+option.STAR_SCALE=星星缩放
+option.STAR_SIZE=星体大小
+option.STORM_STRENGTH=暴风强度
+option.SUNHEAP=太阳堆叠
+option.SUNLIGHT_ELEVATION_TINT_HEIGHT=阳光高度色调高度
+option.SUNRISE=日出
+option.SUNRISE_COLORATION=日出着色
+option.SUNRISE_TYPE=日出类型
+option.SUNSET=日落
+option.SUNSET_FADE_B=日落淡出 蓝
+option.SUNSET_FADE_G=日落淡出 绿
+option.SUNSET_FADE_R=日落淡出 红
+option.SUN_BRIGHTNESS=太阳亮度
+option.SUN_COLOR_B=太阳颜色 蓝
+option.SUN_COLOR_G=太阳颜色 绿
+option.SUN_COLOR_R=太阳颜色 红
+option.SUN_DIRECT_WATER_PENETRATION=太阳直射水体穿透
+option.SUN_ELEVATION_TINT=太阳高度色调
+option.SUN_GR_HAZE=太阳 绿灰度
+option.SUN_MELTS_SNOW=太阳融化积雪
+option.SUN_MELTS_SNOW_AMOUNT=太阳融化积雪量
+option.SUN_SPECULAR_INDOOR_FALLOFF_CPF=太阳镜面反射 室内衰减 色彩偏移系数
+option.SUN_THROUGH_CLOUDS=太阳穿透云层
+option.SUN_THROUGH_CLOUDS_WIDTH=太阳穿透云层 宽度
+option.SUN_WIDTH=太阳宽度
+option.SUPER_SMOOTH_DH=超级平滑 远景渲染
+option.S_BLANK_A=着色器 空白 a
+option.S_BLANK_B=着色器 空白 b
+option.S_BLANK_G=着色器 空白 g
+option.S_BLANK_R=着色器 空白 r
+option.TAA_BRIGHT_SPD=时间抗锯齿 亮度速度
+option.TAA_BRIGHT_SPDS=时间抗锯齿 亮度速度 s
+option.TAA_BRIGHT_SPDSA=时间抗锯齿 亮度速度 sa
+option.TAA_DARK_SPD=时间抗锯齿 暗部速度
+option.TAA_DARK_SPDS=时间抗锯齿 暗部速度 s
+option.TAA_DARK_SPDSA=时间抗锯齿 暗部速度 sa
+option.TAA_HISTORY=taa历史记录
+option.TAA_HISTORYS=taa历史记录（复数）
+option.TAA_ON=taa开启
+option.TAA_WIDTH=taa宽度
+
+screen.Debug_Lighting =调试光照
+screen.Debug_Lighting.comment =您不应直接修改这些参数，它们会随预设配置而变化。手动修改可能导致显示异常。
+option.TAA_WIDTHS=taa宽度（复数）
+option.TEMPERATURE_DEEP_GLOWING_ALGAE=深度发光藻类温度
+option.TEMPERATURE_MOON_GLOWING_ALGAE=月光发光藻类温度
+option.TEXTURE_BLEND_SOFTNESS_CPF=纹理混合柔度cpf
+option.TEXTURE_CALL_GRADS=纹理调用渐变
+option.TEXTURE_CALL_PREFIX=纹理调用前缀
+option.TEXTURE_CALL_SUFFIX=纹理调用后缀
+option.TEXTURE_CALL_SUFFIX_FAST=快速纹理调用后缀
+option.TEXTURE_FILTERING_CPF=纹理过滤cpf
+option.TEXTURE_FILTERING_DISTANCE_CPF=纹理过滤距离cpf
+option.TEXTURE_FILTER_FADE_CPF=纹理滤镜淡入cpf
+option.TEXTURE_FILTER_HAND=纹理滤镜手持
+option.TEXTURE_SIZE_AVAILABLE=可用纹理尺寸
+option.THAW_TRANSITION_TIME=解冻过渡时间
+option.THE_ONION=洋葱
+option.THIS_IS_DISTANT_HORIZONS=此为远景渲染
+option.TILEHG=高度图图块
+option.TILEWG=宽度图图块
+option.TM_AMPLITUDE=纹理映射振幅
+option.TM_WHITE=纹理映射白色
+option.TONEMAPPING=色调映射
+option.TONEMAPPING2_STRENGTH=色调映射2强度
+option.TONEMAPPING_BRIGHTNESS=色调映射亮度
+option.TONEMAPPING_RANGE=色调映射范围
+option.TORCH_B=火把蓝色分量
+option.TORCH_BRIGHTNESS=火把亮度
+option.TORCH_DISTANCE=火把距离
+option.TORCH_DIV_BOUNCES=火把弹射分段
+option.TORCH_FALLOFF=火把衰减
+option.TORCH_FLICKERING=火把闪烁
+option.TORCH_G=火把绿色分量
+option.TORCH_HI_B=火把高亮蓝色分量
+option.TORCH_HI_G=火把高亮绿色分量
+option.TORCH_HI_R=火把高亮红色分量
+option.TORCH_HORIZONTAL_OFFSET=火把水平偏移
+option.TORCH_LIGHT_3D=灯光3D效果
+option.TORCH_LITE_STEPS=火把光照步数
+option.TORCH_LOW_B=火把低亮蓝色分量
+option.TORCH_LOW_G=火把低亮绿色分量
+option.TORCH_LOW_R=火把低亮红色分量
+option.TORCH_MELTS_SNOW=火把融化雪
+option.TORCH_POSITION_ON_SCREEN_X=火把屏幕位置X
+option.TORCH_POSITION_ON_SCREEN_Y=火把屏幕位置Y
+option.TORCH_R=火把红色分量
+option.TORCH_RAYS_X=火把光线X轴
+option.TORCH_RAYS_Y=火把光线Y轴
+option.TORCH_SHADOWS_ASSUMED_DEPTH=火把阴影假定深度
+option.TORCH_V_OFFSET=火把垂直偏移
+option.TORCH_WIDTH_X=火把宽度X轴
+option.TORCH_WIDTH_Y=火把宽度Y轴
+option.TORCH_Z_OFFSET=火把Z轴偏移
+option.TRANSLUCENT_MODE=半透明模式
+option.UNDEFER_SHADING=取消延迟着色
+option.UPPER_ATMOSPHERE_CLOUD_LAYERS=高层云层
+option.UPPER_ATMOSPHERE_LAYERS=高层大气层
+option.UPSCALE_ENTITIES=实体升级
+option.UPSCALE_HAND_HELD=手持物品升级
+option.UPSCALE_PARTICLES=提升粒子效果
+option.UPSCALE_RESOLUTION_CPF=分辨率升级cpf
+option.UPSCALE_TERRAIN=升级地形
+option.USE_CACHED_CLOUDS=缓存云层
+option.USE_HARD_CODED_GLASS_COLORS=硬编码玻璃颜色
+option.USE_MINECRAFT_CLOUD_COLORS=Minecraft云层颜色
+option.USE_MINECRAFT_FOG_COLORS=Minecraft雾颜色
+option.USE_MINECRAFT_SKY_COLORS=Minecraft天空颜色
+option.USE_MINECRAFT_TORCH_LIGHTING=Minecraft火把光照
+option.VANILLA_AO_EXPONENT=原版环境光遮蔽指数
+option.VANILLA_CELESTIALS=原版天体
+option.VANILLA_CLOUDS=原版云
+option.VANILLA_WATER_COLOR=原版水颜色
+option.VANILLA_lIGHTING=原版光照
+option.VARIABLE_HEIGHT_POOFY=可变高度蓬松感
+option.VERY_OLD_MC=极旧版Minecraft
+option.VIGNETTE_PTX=晕影ptx
+option.VISUALIZED_DATA=可视化数据
+option.VOXELIZE_ENTITIES=实体体素化
+option.VOXELIZE_GRASS=体素化草地
+option.VOXEL_AREA=体素区域
+option.VOXEL_PHOTON_SIMULATION_QUALITY=体素光子模拟质量
+option.VOXEL_POSITION_RECONSTRUCTION_METHOD=体素位置重建方法
+option.WATERFALLS=瀑布
+option.WATERFALL_SHINY=瀑布反光效果
+option.WATERFALL_SPEED=瀑布速度
+option.WATERFALL_WHITENESS=瀑布白度
+option.WATER_ABSORB_B=水体吸收蓝
+option.WATER_ABSORB_G=水体吸收绿
+option.WATER_ABSORB_R=水体吸收红
+option.WATER_CAUSTIC_BRIGHTNESS=水体焦散亮度
+option.WATER_CAUSTIC_EXPONENT=水体焦散指数
+option.WATER_CAUSTIC_PASSES=水体焦散通道
+option.WATER_COLOR_ABSORPTION_MULT=水体颜色吸收倍增
+option.WATER_F0=水体F0反射率
+option.WATER_FOAM_B=水体泡沫蓝
+option.WATER_FOAM_BRIGHTNESS=水体泡沫亮度
+option.WATER_FOAM_G=水体泡沫绿
+option.WATER_FOAM_R=水体泡沫红
+option.WATER_FOG=水雾
+option.WATER_FOG_B=水体雾蓝
+option.WATER_FOG_G=水体雾绿
+option.WATER_FOG_R=水体雾红
+option.WATER_NO_COLOR=水体无色
+option.WATER_SCALE=水体缩放
+option.WATER_SKIN_A2=水体表皮a2
+option.WATER_SKIN_B=水体表皮蓝
+option.WATER_SKIN_B2=水体表皮蓝2
+option.WATER_SKIN_G=水体表皮绿
+option.WATER_SKIN_G2=水体表皮绿2
+option.WATER_SKIN_R=水体表皮红
+option.WATER_SKIN_R2=水体表皮红2
+option.WATER_SMOOTHNESS=水面光滑度
+option.WATER_SPEED=水体速度
+option.WATER_STYLE=水样式
+option.WATER_SUN_DEPTH=水体日照深度
+option.WATER_TRANSLUCENCY_ANGLE=水体半透明角度
+option.WATER_TRANSLUCENCY_DISTANCE=水体半透明距离
+option.WAVY_FOLIAGE=波动植被
+option.WAVY_PLANTS=波浪植物
+option.WEATHER_AS_TRANSLUCENT=天气半透明化
+option.WEATHER_BUFFFER=天气缓冲
+option.WEATHER_EFFECT=天气效果
+option.WEATHER_TIME=天气时间
+option.WET_F0=湿润F0反射率
+option.WHERE_TO_VOXELIZE=体素化范围
+option.WHITE_WATER_SLANTS=白浪斜度
+option.WIDEN_FILTERED_THINGS=扩展过滤内容
+option.WIDTH_MOVING_WATERG=流动水体宽度
+option.WIND_SPEED=风速
+option.WIND_SPOT_SIZE=风场斑点尺寸
+option.WIND_STRENGTH=风力强度
+option.WISPS=微光粒子
+option.WRITE_SP=写入阴影
+
+
+
+
+
+
+
+
+
+
+option.TEXTURE_FILTERING_CPF=纹理升级/过滤
+option.TEXTURE_FILTERING_CPF.comment =过滤纹理以避免近距离像素化，性能可能因模式而异，Alpha 模式为调试用途或可能效果不佳。0 -无，1 -双线性，2 -自适应对比度双线性，3-清晰 V1，4 -清晰/混合 Alpha，5-清晰 V2（快速），6-圆角清晰 Alpha，7-圆角混合 Alpha
+	value.TEXTURE_FILTERING_CPF.0 =无
+	value.TEXTURE_FILTERING_CPF.1 =双线性
+	value.TEXTURE_FILTERING_CPF.2 =双线性（自适应）
+	value.TEXTURE_FILTERING_CPF.3 =清晰-1
+	value.TEXTURE_FILTERING_CPF.4 =清晰/混合（透明通道）
+	value.TEXTURE_FILTERING_CPF.5 =清晰-2（快速）
+	value.TEXTURE_FILTERING_CPF.6 =圆角清晰（透明通道）
+	value.TEXTURE_FILTERING_CPF.7 =圆角（透明通道）
+	
+option.COLORED_SHADOWS =彩色阴影
+	option.COLORED_SHADOWS.comment =彩色玻璃等产生彩色阴影
+		value.COLORED_SHADOWS.0 =否
+		value.COLORED_SHADOWS.1 =是
+
+option.FADE_SHADOWS =阴影淡化
+	option.FADE_SHADOWS.comment =远距离阴影淡出以隐藏性能裁剪
+		value.FADE_SHADOWS.0 =否
+		value.FADE_SHADOWS.1 =是
+
+option.TEXTURE_FILTERING_DISTANCE_CPF=升级距离
+option.TEXTURE_FILTERING_DISTANCE_CPF.comment =该效果的作用范围。对于高分辨率资源包，极低设置已足够
+
+option.UPSCALE_RESOLUTION_CPF=升级倍率
+option.UPSCALE_RESOLUTION_CPF.comment =超分辨率与纹理过滤的倍增系数。1为无限。这些设置视觉效果相似，仅存在视觉偏好差异。
+
+option.TEXTURE_BLEND_SOFTNESS_CPF=升级柔和度
+option.TEXTURE_BLEND_SOFTNESS_CPF.comment =1为更柔和的纹理混合。降低此值会增强自适应对比度以保持高对比度区域，但同时会限制柔和混合。过低会破坏清晰的升级效果
+
+option.TEXTURE_FILTER_FADE_CPF=纹理过滤淡入
+option.TEXTURE_FILTER_FADE_CPF.comment =纹理过滤的淡入效果。可能不适用于所有风格
+
+option.FOG.comment =0 - 关闭。1 - 开启
+
+option.CUSTOM_TORCH_COLOR=自定义火把颜色
+option.CUSTOM_TORCH_COLOR.comment =0-原版。1-自定义：使用 torch_hi RGB值。2-动态：从 torch_hi_rgb 渐变到 torch_lo_rgb
+
+option.SHADOWS.comment=0 - 关闭。1 - 开启
+option.DIRECTIONAL_LIGHTING.comment =0-关闭（未使用阴影时，仅原版风格光照）。1-开启（开启阴影时始终启用）
+
+
+
+option.DONT_BLOW_OUT_WHITES.comment =0-关闭。1-略微限制屏幕最亮部分。同时会使物体色彩饱和度降低、色彩减弱，因此也可尝试降低天空光照或太阳亮度。
+
+option.BACK_LIT_GRASS.comment =让阳光穿过草丛照射到背面
+
+option.NON_DIRECTIONAL_AMBIENT_SKY_LIGHT=非定向天空光强度
+option.NON_DIRECTIONAL_AMBIENT_SKY_LIGHT.comment=（仅PBR）数值越高，阴影中的光线越柔和明亮。数值越低，天光效果越硬朗，阴影中的3D纹理更明显（因天光自上方照射）
+
+option.PBR=基于物理的渲染模式（读取）
+option.PBR.comment =在默认预设下开启此选项会出现错误。它会自动在"高画质"预设中启用，因为这些预设使用PBR纹§a理。如需使用PBR纹理，建议从"高画质"预设开始调整。§r
+
+option.METAL_SMOOTHER=金属平滑器
+option.METAL_SMOOTHER.comment=此选项使金属表面更光滑，反射更清晰
+
+option.SUNSET=日落类型
+option.SUNSET.comment =0-即时切换。1-淡入黑色。2-色彩渐变
+
+
+option.CUSTOM_SUN_COLOR=太阳与月亮颜色
+	option.CUSTOM_SUN_COLOR.comment =选择太阳颜色类型。自定义模式在不使用光照贴图天空颜色时效果更好。
+		value.CUSTOM_SUN_COLOR.0 =光照图
+		value.CUSTOM_SUN_COLOR.1 =自定义
+
+option.SKY_COLOR_ALTERNATE=天空光颜色
+	option.SKY_COLOR_ALTERNATE.comment=选择使用"光照贴图"天空颜色或真实天空色作为天光来源。若选择真实颜色会呈现强烈蓝色，除非您使用偏红且减少蓝/绿色的自定义太阳颜色，并可能提高太阳亮度。
+		value.SKY_COLOR_ALTERNATE.0 =光照图
+		value.SKY_COLOR_ALTERNATE.1 =天空颜色
+		value.SKY_COLOR_ALTERNATE.2 =天空与雾效颜色
+
+screen.Fog_tints_Light =雾效为光线染色
+	screen.Fog_tints_Light.comment =雾效可为光线添加色彩以营造特定群系氛围
+
+option.SHADOWS=阴影样式
+option.SHADOWS.comment =采样数可能影响帧率。0 -无：0采样。1 -基础：1采样。2 -模糊边缘：4采样。3 -清晰：4采样。4 -柔和边缘双线性：8采样。5 -块状预阴影（按8的倍数选择采样）。6 -平滑预阴影（选择采样数）。7 -平滑预阴影 有问题v2版：（按8的倍数选择采样）
+
+option.BORDER_SAMPLES.comment =采样值越高，阴影边缘越厚，但可能影响帧率
+
+option.PRENUMBRA_INFO=半影信息（鼠标悬停查看）
+option.PRENUMBRA_INFO.comment =针对阴影样式5及以上，这些额外选项可能生效
+
+option.SSS=柔和光照
+option.SSS.comment=0-关闭。1-仅作用于植物和次表面散射。2-全场景生效
+	value.SSS.0 =关
+	value.SSS.1 =基于物理的渲染
+	value.SSS.2 =全场景
+
+ option.TORCH_HORIZONTAL_OFFSET.comment=数值越高，光源的立体偏移效果越强（相对屏幕中心）。数值越低，光源越居中且效果越不明显。低值适合第三人称视角配合Z轴偏移调高
+ option.TORCH_LIGHT_3D =3D火把光照
+ option.TORCH_LIGHT_3D.comment=0 -扁平手持光源仅基于距离。1 -戏剧性，使用3D数据。2 -精确且可调，使用3D数据
+ 	value.TORCH_LIGHT_3D.0 =平面模式
+	value.TORCH_LIGHT_3D.1 =戏剧性
+	value.TORCH_LIGHT_3D.2 =精确
+	
+ option.TORCH_V_OFFSET=火把垂直偏移
+ option.TORCH_V_OFFSET.comment =相对于世界方块中心的下移距离
+ option.HAND_HELD_TORCH.comment =此为基于屏幕空间的光照，非"彩色光照"菜单中的体素光照。0-关闭 1-开启
+option.TORCH_Z_OFFSET.comment =调整此值可使火把光源远离摄像机，适配第三人称视角
+
+option.GRASS_SHADOWS=草丛投影
+	value.GRASS_SHADOWS.0 =否
+	value.GRASS_SHADOWS.1 =是
+	
+option.SHADOW_FADE =阴影淡出量
+	option.SHADOW_FADE.comment =阴影淡出所占渲染距离比例
+
+option.WIDEN_FILTERED_THINGS.comment=此选项可能使剑在特定升级设置下视觉效果更佳
+option.ENTITY_TEX_FILTER_FIX.comment =修复掉落物和手持物品升级时出现的孔洞
+option.UPSCALE_HAND_HELD.comment=该功能可能存在缺陷
+
+option.DH_SHADOWS=DH阴影（实验性，低分辨率）
+option.DH_SHADOWS.comment =实验性功能！会降低帧率。禁用阴影扭曲，需要高分辨率阴影贴图
+option.BORDERS_IN_DH.comment =在远距离地平线区块中绘制卡通边框，可能影响帧率
+option.EXPONENTIAL_FOG_.comment=0-关闭。1-推荐（关闭，但在远距离地平线模式下启用）。2-开启
+
+option.LONG_SUNSET_SHADOWS=长距离DH日落阴影
+option.LONG_SUNSET_SHADOWS.comment =扩展阴影贴图深度以延长阴影效果，减少日出日落时光线泄漏。效果不完美，可能显著降低帧率
+
+option.BORDERS_SENSITIVITY=边界敏感度
+option.BORDERS_SENSITIVITY.comment =数值越低，轮廓线越多；数值越高，需更大物体间距才会绘制轮廓
+
+option.BORDER_SAMPLES=边框采样/厚度
+
+option.DH_FLYING_FIX_CIRCLE =修复飞行时的圆环问题
+option.DH_FLYING_FIX_CIRCLE_SPEED =圆环修复速度
+option.DH_FLYING_FIX_CIRCLE_ONLY_IN_AIR =仅在飞行时修复圆环
+option.DH_FLYING_FIX_CIRCLE.comment =修复高速飞行时因CPU性能不足产生的世界空洞圆环
+option.DH_FLYING_FIX_CIRCLE_SPEED.comment =完全消除圆环所需的移动速度。过低可能导致DH与常规渲染空间重叠产生伪影。请使用调试功能根据帧率调整，单一参数无法适配所有帧率范围
+option.DH_FLYING_FIX_CIRCLE_ONLY_IN_AIR.comment =仅在空中飞行时修复圆环，以最小化图形异常
+
+option.FIX_COLOR_SPACE.comment =使用线性色彩进行着色（本着色器非专为该模式设计）
+
+option.DEBUG_FIX_CIRCLE.comment Shows the flying fix. Black means you are going too slow to start the circle shrinking, Red means you are at the top speed,-DOESN'T WORK IN MENU,-UNPAUSE. You want the circle gone when flying fast, so set lower speed if not gone when red.
+
+option.FORCE_CRISP_SHADOWS.comment =使所有阴影选项呈现清晰边缘，利用其采样机制生成锐利阴影。视觉效果可能欠佳，但或许能找到适用场景
+option.FORCE_CRISP_SHADOWS=强制锐利阴影（不推荐）
+
+option.SHADOW_DISTORT_ENABLED.comment=阴影距离过低时请勿使用此功能。通过扭曲阴影贴图增强近处阴影细节但降低远处阴影质量
+option.SHADOW_DISTORT_ENABLED=阴影贴图扭曲
+
+option.SHADOW_BIAS.comment =若阴影在地面出现斑点，请提高此数值。过高会导致阴影悬浮脱节
+
+option.CLOUDS.comment =0 -原版。1 -精致 V1。2 -精致 V2
+
+option.shadowDistance =阴影渲染距离
+option.shadowDistance.comment =帧率消耗！阴影渲染距离。若设置为极低，请禁用“阴影贴图扭曲”，否则阴影将出现破损。
+
+
+
+
+
+
+
+option.TEXTURE_FILTERING_CPF=纹理升级/过滤
+option.TEXTURE_FILTERING_CPF.comment =过滤纹理以避免近距离像素化，性能可能因模式而异，Alpha 模式为调试用途或可能效果不佳。0 -无，1 -双线性，2 -自适应对比度双线性，3-清晰 V1，4 -清晰/混合 Alpha，5-清晰 V2（快速），6-圆角清晰 Alpha，7-圆角混合 Alpha
+
+option.TEXTURE_FILTERING_DISTANCE_CPF=升级距离
+option.TEXTURE_FILTERING_DISTANCE_CPF.comment =该效果的作用范围。对于高分辨率资源包，极低设置已足够
+
+option.UPSCALE_RESOLUTION_CPF=升级倍率
+option.UPSCALE_RESOLUTION_CPF.comment =超分辨率与纹理过滤的倍增系数。1为无限。这些设置视觉效果相似，仅存在视觉偏好差异。
+
+option.TEXTURE_BLEND_SOFTNESS_CPF=升级柔和度
+option.TEXTURE_BLEND_SOFTNESS_CPF.comment =1为更柔和的纹理混合。降低此值会增强自适应对比度以保持高对比度区域，但同时会限制柔和混合。过低会破坏清晰的升级效果
+
+option.TEXTURE_FILTER_FADE_CPF=纹理过滤淡入
+option.TEXTURE_FILTER_FADE_CPF.comment =纹理过滤的淡入效果。可能不适用于所有风格
+
+option.FOG.comment =0 - 关闭。1 - 开启
+
+option.CUSTOM_TORCH_COLOR=自定义火把颜色
+option.CUSTOM_TORCH_COLOR.comment =0-原版。1-自定义：使用 torch_hi RGB值。2-动态：从 torch_hi_rgb 渐变到 torch_lo_rgb
+
+option.SHADOWS.comment=0 - 关闭。1 - 开启
+option.DIRECTIONAL_LIGHTING.comment ="否"-未使用阴影时关闭，仅保留原版风格光照。"是"-开启（启用阴影时始终开启）
+
+option.COLORED_SHADOWS.comment=0-染色玻璃产生普通阴影 1-染色玻璃产生彩色阴影 2-染色玻璃不产生阴影
+
+option.DONT_BLOW_OUT_WHITES =色调映射模式
+option.DONT_BLOW_OUT_WHITES.comment =0-关闭。1-轻微限制屏幕最亮区域，会使画面饱和度与鲜艳度降低，您也可尝试降低天空光或太阳亮度。2-可调节强度，会压暗图像
+
+option.BACK_LIT_GRASS.comment =让阳光穿过草丛照射到背面
+
+option.NON_DIRECTIONAL_AMBIENT_SKY_LIGHT=非定向天空光强度
+option.NON_DIRECTIONAL_AMBIENT_SKY_LIGHT.comment=（仅PBR）数值越高，阴影中的光线越柔和明亮。数值越低，天光效果越硬朗，阴影中的3D纹理更明显（因天光自上方照射）
+
+option.PBR=基于物理的渲染模式（读取）
+
+option.METAL_SMOOTHER=金属平滑器
+option.METAL_SMOOTHER.comment=此选项使金属表面更光滑，反射更清晰
+
+option.SUNSET=日落类型
+option.SUNSET.comment =0-即时切换。1-淡入黑色。2-色彩渐变
+
+
+
+option.SHADOWS=阴影样式
+option.SHADOWS.comment =采样数可能影响帧率。0-无：0采样。1-基础：1采样，可§a能需要提高下方"阴影偏移"。2-§r边缘模糊：4采样。3-清晰：4采样。4-柔和边缘双线性：8采样。5-方块化半影（按8为单位选择采样数）。6-平滑半影（自由选择采样数）。7-平滑半影错误修复版v2：（按8为单位选择采样数）
+
+option.BORDER_SAMPLES.comment =采样值越高，阴影边缘越厚，但可能影响帧率
+
+option.PRENUMBRA_INFO=半影信息（鼠标悬停查看）
+option.PRENUMBRA_INFO.comment =针对阴影样式5及以上，这些额外选项可能生效
+
+option.SSS=柔和光照
+option.SSS.comment=0-关闭。1-仅作用于植物和次表面散射。2-全场景生效
+
+
+ option.TORCH_HORIZONTAL_OFFSET.comment=数值越高，光源的立体偏移效果越强（相对屏幕中心）。数值越低，光源越居中且效果越不明显。低值适合第三人称视角配合Z轴偏移调高
+ option.TORCH_LIGHT_3D =3D火把光照
+
+
+ option.TORCH_V_OFFSET=火把垂直偏移
+ option.TORCH_V_OFFSET.comment =相对于世界方块中心的下移距离
+
+option.TORCH_Z_OFFSET.comment =调整此值可使火把光源远离摄像机，适配第三人称视角
+
+option.GRASS_SHADOWS=草丛投影
+
+option.WIDEN_FILTERED_THINGS.comment=此选项可能使剑在特定升级设置下视觉效果更佳
+option.ENTITY_TEX_FILTER_FIX.comment =修复掉落物和手持物品升级时出现的孔洞
+option.UPSCALE_HAND_HELD.comment=该功能可能存在缺陷
+
+option.DH_SHADOWS=DH阴影（实验性，低分辨率）
+option.DH_SHADOWS.comment =实验性功能！会降低帧率。禁用阴影扭曲，需要高分辨率阴影贴图
+option.BORDERS_IN_DH.comment =在远距离地平线区块中绘制卡通边框，可能影响帧率
+option.EXPONENTIAL_FOG_.comment=0-关闭。1-推荐（关闭，但在远距离地平线模式下启用）。2-开启
+
+option.LONG_SUNSET_SHADOWS=长距离DH日落阴影
+option.LONG_SUNSET_SHADOWS.comment =扩展阴影贴图深度以延长阴影效果，减少日出日落时光线泄漏。效果不完美，可能显著降低帧率
+
+option.BORDERS_SENSITIVITY=边界敏感度
+option.BORDERS_SENSITIVITY.comment =数值越低，轮廓线越多；数值越高，需更大物体间距才会绘制轮廓
+
+option.BORDER_SAMPLES=边框采样/厚度
+
+option.DH_FLYING_FIX_CIRCLE =修复飞行时的圆环问题
+option.DH_FLYING_FIX_CIRCLE_SPEED =圆环修复速度
+option.DH_FLYING_FIX_CIRCLE_ONLY_IN_AIR =仅在飞行时修复圆环
+option.DH_FLYING_FIX_CIRCLE.comment =修复高速飞行时因CPU性能不足产生的世界空洞圆环
+option.DH_FLYING_FIX_CIRCLE_SPEED.comment =完全消除圆环所需的移动速度。过低可能导致DH与常规渲染空间重叠产生伪影。请使用调试功能根据帧率调整，单一参数无法适配所有帧率范围
+option.DH_FLYING_FIX_CIRCLE_ONLY_IN_AIR.comment =仅在空中飞行时修复圆环，以最小化图形异常
+
+option.FIX_COLOR_SPACE.comment =使用线性色彩进行着色（本着色器非专为该模式设计）
+
+option.DEBUG_FIX_CIRCLE.comment Shows the flying fix. Black means you are going too slow to start the circle shrinking, Red means you are at the top speed,-DOESN'T WORK IN MENU,-UNPAUSE. You want the circle gone when flying fast, so set lower speed if not gone when red.
+
+option.FORCE_CRISP_SHADOWS.comment =使所有阴影选项呈现清晰边缘，利用其采样机制生成锐利阴影。视觉效果可能欠佳，但或许能找到适用场景
+option.FORCE_CRISP_SHADOWS=强制锐利阴影（不推荐）
+
+option.SHADOW_DISTORT_ENABLED.comment=阴影距离过低时请勿使用此功能。通过扭曲阴影贴图增强近处阴影细节但降低远处阴影质量
+option.SHADOW_DISTORT_ENABLED=阴影贴图扭曲
+
+option.SHADOW_BIAS.comment =若阴影在地面出现斑点，请提高此数值。过高会导致阴影悬浮脱节
+
+option.CLOUDS.comment =0 -原版。1 -精致 V1。2 -精致 V2
+
+option.shadowDistance =阴影渲染距离
+option.shadowDistance.comment =帧率消耗！阴影渲染距离。若设置为极低，请禁用“阴影贴图扭曲”，否则阴影将出现破损。
+
+option.FLOODFILL_LIGHTING=彩色光照质量
+	value.FLOODFILL_LIGHTING.0=关
+	value.FLOODFILL_LIGHTING.1=基础
+	value.FLOODFILL_LIGHTING.2=方向光-1
+	value.FLOODFILL_LIGHTING.3=戏剧化（开发中）
+	value.FLOODFILL_LIGHTING.4=方向光-2（开发中）
+	value.FLOODFILL_LIGHTING.5=方块状
+	value.FLOODFILL_LIGHTING.7=花式（开发中）
+
+screen.Fancy_Lighting =增强光照与材质效果
+
+
+option.CRYSTAL_SSS =水晶折射
+	option.CRYSTAL_SSS.comment =光线穿过水晶等具有次表面散射材质背面时的效果，需要"花式光照与材质"
+		value.CRYSTAL_SSS.0=否
+		value.CRYSTAL_SSS.1=是
+
+option.COLORED_LIGHT_SPEC =增强光照与材质效果
+	option.COLORED_LIGHT_SPEC.comment =使用PBR（基于物理的渲染）材质与特殊技术，让所有光源（不仅是日月）产生更好的光照与材质效果。需要启用"花式"预设，或将"彩色光照质量"设为"花式"且"PBR模式"设为"lab_pbr_textures"
+		value.COLORED_LIGHT_SPEC.0 =否
+		value.COLORED_LIGHT_SPEC.1 =是
+
+profile.Fancy_Fast =花式（快速）
+
+option.FLICKERING_TORCHES=闪烁覆写
+option.FLICKERING_TORCHES.comment =归色调会自动检测，应适用于所有方块（含模组），但部分动画纹理会产生闪烁。使用此选项覆写闪烁行为
+value.FLICKERING_TORCHES.0=使用纹理
+value.FLICKERING_TORCHES.1=RGB覆写（静态）
+value.FLICKERING_TORCHES.2=动画RGB覆写
+value.FLICKERING_TORCHES.3=仅动画岩浆
+
+option.LIGHT_FALLOFF=光线衰减
+option.LIGHT_FALLOFF.comment =0-原版（边缘高度饱和以维持原版色彩范围） 1-自定义（不影响生物生成，仅改变视觉效果）
+value.LIGHT_FALLOFF.1=原版
+value.LIGHT_FALLOFF.2=自定义
+
+option.VOXELIZE_GRASS =草地遮蔽
+option.VOXELIZE_GRASS.comment =草地是否体素化，将影响其是否阻挡光照
+value.VOXELIZE_GRASS.0 =否
+value.VOXELIZE_GRASS.1 =是
+
+option.VANILLA_lIGHTING =原版光照
+option.VANILLA_lIGHTING.comment =当方向光照与阴影均关闭时使用Iris的"旧光照"模式
+value.VANILLA_lIGHTING.0 =否
+value.VANILLA_lIGHTING.1 =是
+
+option.DIRECTIONAL_LIGHTING =定向光照
+value.DIRECTIONAL_LIGHTING.0 =否
+value.DIRECTIONAL_LIGHTING.1 =是
+
+option.TONEMAPPING_BRIGHTNESS =色调映射1亮度
+option.TONEMAPPING_BRIGHTNESS.comment =色调映射处理前允许的最大亮度值
+option.TONEMAPPING_RANGE =色调映射1压缩度
+option.TONEMAPPING_RANGE.comment ="色调映射亮度"上的光值分割比例。0.1表示10%或10倍范围，即0.1亮度增量会从0.9-1.0范围被压缩至0.1内，使1.9亮度值不会过曝
+
+option.LIGHT_FALLOFF_RATE=光照衰减率
+option.LIGHT_FALLOFF_RATE.comment =在使用自定义光照衰减时生效。数值越高照射范围越远。适用于大型建筑实现平滑阴影效果。不影响生物生成，仅改变§e视觉效果。修改此选项可能影响"高画质"PBR与"方向性"设置下的彩色光照质量§r
+
+
+option.BLOCK_LIGHT_BRIGHTNESS=方块光亮度
+option.BLOCK_LIGHT_BRIGHTNESS.comment =方块光亮度，更高值将增强色彩鲜艳度
+
+option.EXTRA_VIBRANT_BL=额外鲜艳
+option.EXTRA_VIBRANT_BL.comment =额外鲜艳的彩色光，不兼容自定义光照衰减
+ 
+screen.Borders_and_Effects =颜色与效果
+screen.Borders_and_Effects.comment =颜色调整、状态效果、神圣光线、卡通边框等
+
+option.BLOCK_LIGHT_BRIGHTNESS_IN_DAYLIGHT=方块光照的白天亮度
+option.BLOCK_LIGHT_BRIGHTNESS_IN_DAYLIGHT.comment =类似伪自动曝光功能，设置为低可防止火把在阳光下过于刺眼
+
+screen.Color_Overrides =颜色覆盖
+screen.Color_Overrides.comment =对特定内容启用可自定义的颜色覆盖
+
+option.VOXEL_PHOTON_SIMULATION_QUALITY=质量
+option.VOXEL_PHOTON_SIMULATION_QUALITY.comment =调整画质，可能影响帧率。"泄漏原版"为旧版，缺少手持光源的体素化等特性
+value.VOXEL_PHOTON_SIMULATION_QUALITY.1=泄漏原版
+value.VOXEL_PHOTON_SIMULATION_QUALITY.2=玻璃染色透光
+
+option.SAVE_WRITES=节省带宽（需阅读说明）
+option.SAVE_WRITES.comment =写入3D纹理前检测数值更新需求。此操作可能增减帧率，取决于设备性能
+value.SAVE_WRITES.0=直接写入
+value.SAVE_WRITES.1=先行检测
+
+option.USE_HARD_CODED_GLASS_COLORS=覆盖颜色
+option.USE_HARD_CODED_GLASS_COLORS.comment =在可用处使用可调节的硬编码颜色，而非自动颜色检测。适用于彩色玻璃颜色无法自动正确识别的资源包，选择"硬编码"
+value.USE_HARD_CODED_GLASS_COLORS.0=使用纹理
+value.USE_HARD_CODED_GLASS_COLORS.1=使用覆盖配置
+
+screen.Other =其他（及下界）
+screen.Fog_and_DH =自然环境与大气效果
+screen.Fog_and_DH.comment =自然与大气设置：雾效、云层、水体等
+screen.Pbr_Options =PBR 选项
+screen.Texture_Upscaling =纹理放大
+screen.Hand_Held_Torch =手持光源（屏幕空间）
+screen.Textures.comment =画质提升、PBR支持、视差映射（3D纹理）等。可在PBR选项中修改草地光照
+screen.Lighting.comment =光照、彩色光照覆盖与调整、自定义太阳颜色、亮度控制、全局光照等
+	
+	screen.Hand_Held_Torch.comment ="彩色光照"菜单中还包含基于体素的手持光源设置
+screen.Sky_Ambient_Light =天空环境光
+screen.Sun_and_Moon =太阳与月亮
+screen.Brightness_Darkness =亮度与暗度
+
+option.DONT_VOXELIZE_CARPETS=地毯/台阶
+option.DONT_VOXELIZE_CARPETS.comment =不进行体素化处理，否则会阻挡光线
+value.DONT_VOXELIZE_CARPETS.0 =方块光照
+value.DONT_VOXELIZE_CARPETS.1 =不阻挡光线
+
+option.MOB_SHADOWS=生物阴影（方块光源产生）
+option.MOB_SHADOWS.comment =控制生物、掉落物及玩家是否阻挡方块光。此为方块状阴影，仅当"半透明方块遮蔽"开启时生效
+value.MOB_SHADOWS.0 =否
+value.MOB_SHADOWS.1 =是
+
+option.VOXELIZE_ENTITIES=动态光源
+option.VOXELIZE_ENTITIES.comment =生物、掉落物及玩家手持物品的光照
+value.VOXELIZE_ENTITIES.0 =否
+value.VOXELIZE_ENTITIES.1 =是
+
+option.LIGHT_UPDATE_SPEED=光照更新速度
+option.LIGHT_UPDATE_SPEED.comment =以每帧方块数为单位，可能影响帧率
+
+
+option.FADE_LIGHT_UPDATES=渐隐光照更新
+option.FADE_LIGHT_UPDATES.comment =减弱动态/移动光源的"脉冲"效果，降低粒子光源的闪烁现象
+value.FADE_LIGHT_UPDATES.0 =否
+value.FADE_LIGHT_UPDATES.1 =是
+
+
+option.FADE_LIGHT_UPDATES_AMOUNT=渐隐光照更新量
+option.FADE_LIGHT_UPDATES_AMOUNT.comment =减弱动态/移动光源的"脉冲"效果，降低粒子光源的闪烁现象
+
+
+option.LPV_PARTICLES_BY_LM=粒子检测
+option.LPV_PARTICLES_BY_LM.comment =利用原版方块光数据检测发光粒子
+value.LPV_PARTICLES_BY_LM.0 =否
+value.LPV_PARTICLES_BY_LM.1 =是
+
+option.PBR_LPV_EMISSION=PBR纹理检测
+option.PBR_LPV_EMISSION.comment =尝试通过PBR纹理识别发光体
+ value.PBR_LPV_EMISSION.0 =否
+ value.PBR_LPV_EMISSION.1 =是
+ 
+ 
+option.LPV_BLOCKS_BY_LM =通过光照贴图检测
+option.LPV_BLOCKS_BY_LM.comment =使蜘蛛眼发光，但着火或头部碰撞光源时可能出现异常
+ value.LPV_BLOCKS_BY_LM.0 =否
+ value.LPV_BLOCKS_BY_LM.1 =是
+ 
+ option.FLICKERING_FIRE =火焰闪烁效果
+option.FLICKERING_FIRE.comment =火焰设置：使用纹理或使用火把/营火覆盖配置
+ value.FLICKERING_FIRE.0 =使用这些覆盖配置
+ value.FLICKERING_FIRE.1 =使用纹理
+ 
+
+
+option.LIGHT_VIIBRANCE=光照鲜艳度
+option.LIGHT_VIIBRANCE.comment =确保物体明亮发光。数值越高，光照颜色越明亮饱和；数值较低时可能减少粒子光照开启时的火把异常，但哭泣黑曜石等将不再发光
+
+option.GLOWING_CONCRETE=发光混凝土
+option.GLOWING_CONCRETE.comment =使混凝土与混凝土粉末变为彩色光源！可作霓虹灯等创意用途
+ value.GLOWING_CONCRETE.0 =否
+ value.GLOWING_CONCRETE.1 =是
+
+option.PARTICLES_LPV=粒子光照（存在异常）
+option.PARTICLES_LPV.comment =适用于Hex Casting与光之魔杖等模组。调高"彩色光照/光照更新/渐隐光照更新量"可修复闪烁问题。若Iris模组加入"粒子ID系统"则可避免异常。火把等粒子源易出现故障
+ value.PARTICLES_LPV.0 =否
+ value.PARTICLES_LPV.1 =是
+ 
+ option.GLOWING_ROCKETS=发光火箭
+option.GLOWING_ROCKETS.comment =使火箭发光
+ value.GLOWING_ROCKETS.0 =否
+ value.GLOWING_ROCKETS.1 =是
+
+option.LPV_PARTICLES_BY_LM=通过光照贴图检测粒子光照
+option.LPV_PARTICLES_BY_LM.comment =即使无PBR纹理也能使发光粒子发光，但在火把附近可能异常。需向Iris模组反馈加入"粒子ID系统"，Hex Casting与光之魔杖依赖此功能
+
+ option.ADJUST_SATURATION=调节饱和度
+option.ADJUST_SATURATION.comment =是否调整颜色饱和度（彩色光照的色彩浓度）
+ value.ADJUST_SATURATION.0 =否
+ value.ADJUST_SATURATION.1 =是
+
+ option.LIGHT_COLOR_SATURATION=饱和度
+option.LIGHT_COLOR_SATURATION.comment =彩色光照的色彩浓度。0.0为纯白光，1.0为高饱和彩色光
+
+screen.Brightness_and_Color_Adjustments    =亮度与色彩调节
+screen.Brightness_and_Color_Adjustments.comment =调整光照的亮度与色彩浓度
+screen.Light_Range  =光照范围
+screen.Light_Detection   =光照检测
+screen.Moving_Lights =移动光源（基于体素）
+screen.Lighting_Updates   =光照更新
+
+screen.Light_Range.comment =调节光照范围
+screen.Light_Detection.comment   =光照检测方式（如是否让PBR纹理照亮周围环境）
+screen.Moving_Lights.comment =动态光源选项（包括生物、掉落火把、手持物品、粒子、火箭、火球等）
+screen.Lighting_Updates.comment   =光照更新速度与渐隐选项
+
+screen.Colored_Lighting =§a彩色光照§r
+screen.Colored_Lighting.comment =与彩色光照系统相关的选项。大部分光照选项都在这里。可调节几乎所有的相关参数。
+
+option.PBR_EMMISIVENESS_IN_VOXELS_TERRAIN =方块PBR亮度
+option.PBR_EMMISIVENESS_IN_VOXELS_TERRAIN.omment =PBR自发光纹理作为彩色光源时的强度（适用于放置方块）
+
+option.EPBR_EMMISIVENESS_IN_VOXELS_ENTITY =生物PBR亮度
+option.EPBR_EMMISIVENESS_IN_VOXELS_ENTITY.omment =PBR自发光纹理作为彩色光源时的强度（适用于生物与实体）
+ 
+option.TONEMAPPING2_STRENGTH =色调映射2强度
+option.TONEMAPPING2_STRENGTH.comment =色调映射选项2的强度，数值越高画面越暗
+
+screen.Name_Tags =名牌
+   
+ option.UN_SHADED_NAMETAGS =无阴影名牌
+option.UN_SHADED_NAMETAGS.comment =开启后，名牌将不受阴影影响，保持全亮
+value.UN_SHADED_NAMETAGS.0 =否
+value.UN_SHADED_NAMETAGS.1 =是
+
+option.SEE_NAMETAGS_BETTER_THROUGH_WALLS =穿墙可视性增强
+option.SEE_NAMETAGS_BETTER_THROUGH_WALLS.comment =开启后，名牌名称在穿过墙壁时的可见度将可调节
+value.SEE_NAMETAGS_BETTER_THROUGH_WALLS.0 =否
+value.SEE_NAMETAGS_BETTER_THROUGH_WALLS.1 =是
+
+option.NAMETAGS_OPACITY_THROUGH_WALLS =穿墙可见度
+option.NAMETAGS_OPACITY_THROUGH_WALLS.comment =当“穿墙可视性增强”开启时，名牌在穿墙状态下的不透明度
+
+
+option.NAMETAG_OPACITY =背景不透明度
+option.NAMETAG_OPACITY.comment =名牌背景可见度
+
+option.PARTIAL_BLOCKS_OCCLUDE =部分方块遮蔽
+option.PARTIAL_BLOCKS_OCCLUDE.comment =开启时，开关、草丛等会部分遮挡光线
+value.PARTIAL_BLOCKS_OCCLUDE.0 =否
+value.PARTIAL_BLOCKS_OCCLUDE.1 =是
+
+
+option.METAL_AMBIENT_LIT =金属环境光
+	option.METAL_AMBIENT_LIT.comment =是否增强柔化金属光照以避免未使用全局光照时的黑色区域
+		value.METAL_AMBIENT_LIT.0 =否
+		value.METAL_AMBIENT_LIT.1 =是
+
+option.METAL_AMBIENT =金属环境光强度
+	option.METAL_AMBIENT.comment =未使用全局光照时金属的环境光照。这会使未被光源直接照射的金属区域显得不那么暗。
+
+
+option.DIFFFUSE_VX_BEHAVIOR =漫反射行为
+	option.DIFFFUSE_VX_BEHAVIOR.comment =为非反射材质选择不同的光照效果。在“精美”彩色光照质量下
+		value.DIFFFUSE_VX_BEHAVIOR.1 =1 -粗糙
+		value.DIFFFUSE_VX_BEHAVIOR.2 =2 -戏剧化
+
+option.SPECULAR_VX_BEHAVIOR =镜面反射行为
+	option.SPECULAR_VX_BEHAVIOR.comment =为反射材质选择不同的光照效果。在“精美”彩色光照质量下
+		value.SPECULAR_VX_BEHAVIOR.1 =1 -戏剧化-定向
+		value.SPECULAR_VX_BEHAVIOR.2 =2 -粗糙
+		value.SPECULAR_VX_BEHAVIOR.3 =3 -戏剧化
+		
+
+option.NETHER_RED_AMBIENT_LIGHT =红色环境光
+	option.NETHER_RED_AMBIENT_LIGHT.comment =一种基于海拔的红色环境光，在下界底部附近更亮。可设置为脉动或稳定。
+		value.NETHER_RED_AMBIENT_LIGHT.0 =关
+		value.NETHER_RED_AMBIENT_LIGHT.1 =开
+		
+option.PULSING_FOG =脉动雾
+	option.PULSING_FOG.comment =随时间改变可视距离的雾。
+		value.PULSING_FOG.0 =关
+		value.PULSING_FOG.1 =开
+
+option.PULSING_AMBIENT_LIGHT =脉动的红色环境光
+	option.PULSING_AMBIENT_LIGHT.comment =为在下界底部附近更亮的基于海拔的红色环境光添加脉动效果。
+		value.PULSING_AMBIENT_LIGHT.0 =关
+		value.PULSING_AMBIENT_LIGHT.1 =开
+		
+option.MINIMUM_LIGHT_LEVEL_NETHER =最低光照等级（下界）
+	option.MINIMUM_LIGHT_LEVEL_NETHER.comment =黑暗的暗度。0.0是全黑，1.0是全亮。
+
+option.LAVA_LEVEL =岩浆液面高度
+	option.LAVA_LEVEL.comment =下界的脉动效果
+    
+	
+option.sunPathRotation =太阳角度
+	option.sunPathRotation.comment =天空中太阳路径的角度。0.0 为正上方。如果将其调整接近 0.0，你可能需要调整偏移量，否则可能会出现阴影痤疮（物体上的小黑点）或浮动阴影。0.0 在某些情况下可能会出现闪烁。
+	
+screen.Culling =阴影剔除（为提升帧率）
+	screen.Culling.comment =禁用特定阴影，或缩短其渲染距离以节省帧率
+		option.BLOCK_ENTITY_SHADOWS =方块实体阴影
+			option.BLOCK_ENTITY_SHADOWS.comment =为动态方块（如箱子）绘制阴影
+				value.BLOCK_ENTITY_SHADOWS.0 =否
+				value.BLOCK_ENTITY_SHADOWS.1 =是
+		option.PLAYER_SHADOW =玩家阴影
+			option.PLAYER_SHADOW.comment =禁用生物阴影时，仍绘制玩家阴影
+				value.PLAYER_SHADOW.0 =否
+				value.PLAYER_SHADOW.1 =是
+		option.ENTITY_SHADOWS =生物（生物）阴影
+			option.ENTITY_SHADOWS.comment =是否渲染生物阴影。您可以在下方重新启用部分选项
+				value.ENTITY_SHADOWS.0 =否
+				value.ENTITY_SHADOWS.1 =是
+		option.entityShadowDistanceMul =生物（生物）阴影范围（似乎不起作用）
+			option.entityShadowDistanceMul.comment =为总阴影距离的百分比。0.1是10%，1.0是100%
+	
+	option.PIXEL_LOCKED_SHADOW_RES =§a像素锁定阴影（分辨率）§r
+		option.PIXEL_LOCKED_SHADOW_RES.comment =选择像素锁定阴影的分辨率。与你的资源包匹配。原版是16。§a关闭为最高值。§r
+		value.PIXEL_LOCKED_SHADOW_RES.0 =关闭，不使用此偏移
+		value.PIXEL_LOCKED_SHADOW_RES.5555 =关闭，但使用此偏移方法
+	
+option.SHADOW_BIAS =阴影偏移
+	option.SHADOW_BIAS.comment =阴影忽略物体的近距离。设置更高可消除地面暗斑，但会使植物等物体看起来漂浮。调整阴影至您喜好时设置，低偏移可能使柔和阴影边缘呈锯齿状
+
+option.NORMAL_BIAS =法线偏移
+	option.NORMAL_BIAS.comment =基于方块面方向的偏移。可能比常规偏移更好，但设置过高时效果可能不佳
+	
+option.SHADOW_DISTORT_ENABLED =阴影扭曲
+	option.SHADOW_DISTORT_ENABLED.comment =以远处阴影质量下降为代价提升近处阴影质量。通常推荐开启，除非使用极低阴影距离
+		value.SHADOW_DISTORT_ENABLED.0 =关
+		value.SHADOW_DISTORT_ENABLED.1 =开
+	
+option.SHADOW_DISTORT_FACTOR =阴影扭曲因子
+	option.SHADOW_DISTORT_FACTOR.comment =阴影贴图扭曲强度
+	
+option.shadowMapResolution =阴影贴图分辨率
+	option.shadowMapResolution.comment =更清晰、更少像素化的阴影需更高分辨率。帧率消耗极大
+	
+    	
+	
+option.UPSCALE_TERRAIN =升级地形
+	option.UPSCALE_TERRAIN.comment =0 - 否，1 - 是
+
+option.UPSCALE_HAND_HELD =放大手持物品
+	option.UPSCALE_HAND_HELD.comment =0 - 否，1 - 是
+
+option.UPSCALE_PARTICLES =提升粒子效果
+	option.UPSCALE_PARTICLES.comment =0 - 否，1 - 是
+
+option.UPSCALE_ENTITIES =放大生物
+	option.UPSCALE_ENTITIES.comment =0 - 否，1 - 是
+
+option.ENTITY_TEX_FILTER_FIX =生物纹理过滤修复
+	option.ENTITY_TEX_FILTER_FIX.comment =0-否，1-模式1，2-模式2
+
+option.HAND_TEX_FILTER_FIX =手持纹理过滤修复
+	option.HAND_TEX_FILTER_FIX.comment =0-否，1-模式1，2-模式2
+
+option.WIDEN_FILTERED_THINGS =扩展过滤内容
+	option.WIDEN_FILTERED_THINGS.comment =0 -否，1 -是。可在开启纹理过滤时使低分辨率与原版纹理减少锯齿与破损感
+	
+    <empty> <empty>     <empty> <empty> 
+
+option.SHADOW_SAMPLES =阴影采样数
+	option.SHADOW_SAMPLES.comment =更多采样可获得更佳柔和阴影，但可能增加帧率消耗
+option.PRENUMBRA_WIDTH =半影宽度
+	option.PRENUMBRA_WIDTH.comment =柔和阴影的最大宽度。远处物体会产生更柔和的阴影。极柔和效果可能很好，但近处物体处于远处阴影边缘时可能呈现瑕疵
+option.SHADOW_SOFTNESS_WEIGHT =阴影柔和度权重
+	option.SHADOW_SOFTNESS_WEIGHT.comment =采样中心权重强度，宽度增加时权重降低
+option.SHADOW_WEIGHT_EXPONENT =阴影权重指数
+	option.SHADOW_WEIGHT_EXPONENT.comment =应用于“阴影柔和度权重”的指数曲线
+option.SHADOW_NOISE_STR =阴影噪点强度
+	option.SHADOW_NOISE_STR.comment =阴影随机性强度
+option.SHADOW_NOISE_VARIATION =阴影噪声变化
+	option.SHADOW_NOISE_VARIATION.comment =阴影噪点强度变化
+option.FLIP_SHADOW_SPIRAL_RANDOMLY =随机翻转阴影螺旋
+	option.FLIP_SHADOW_SPIRAL_RANDOMLY.comment =可打破低采样数时可能出现的螺旋图案
+option.SHADOW_SUB_PIXEL_SEED_RES =阴影子像素种子分辨率
+	option.SHADOW_SUB_PIXEL_SEED_RES.comment =阴影噪点子像素种子分辨率
+option.SHADOW_EXTRA_SOFTNESS =阴影额外柔和度
+	option.SHADOW_EXTRA_SOFTNESS.comment =应用于所有阴影的额外柔和度，包括近处阴影
+	
+	
+   
+option.FOG =雾
+	option.FOG.comment =雾增添深度感与氛围
+		value.FOG.0 =关
+		value.FOG.1 =开
+option.EXPONENTIAL_FOG_ =指数雾
+	option.EXPONENTIAL_FOG_.comment =非线性距离积累的雾效。您可能更喜欢此效果
+		value.EXPONENTIAL_FOG_.0 =关
+		value.EXPONENTIAL_FOG_.1 =开
+option.FOG_START =雾起点
+	option.FOG_START.comment =距渲染距离多近开始雾效
+option.FOG_END =雾终点
+	option.FOG_END.comment =距离多远时达到完全雾效量
+option.FOG_MAX =雾气浓度
+	option.FOG_MAX.comment =雾的浓度
+option.BORDER_FOG_START =边界雾起始距离
+	option.BORDER_FOG_START.comment =边界雾起始位置
+option.CLOUD_FOG =云雾
+	option.CLOUD_FOG.comment =雾会淡化云层
+		value.CLOUD_FOG.0 =关
+		value.CLOUD_FOG.1 =开
+		
+
+
+
+//VERSION 0.3.4
+option.VOXELIZE_PLAYER=手持物品与玩家（体素化）
+	option.VOXELIZE_PLAYER.comment =通过体素化使手持物品和玩家在彩色光照下发光。这§a对于自动检测模组光源颜色是必要的，§r§a也是发光模组配件的必要条件。§r
+		value.VOXELIZE_PLAYER.0 =否
+		value.VOXELIZE_PLAYER.1 =是
+	
+option.RANGE_FOR_DISABLING_PLAYER_HELD_LIGHTS=区分玩家的范围
+	option.RANGE_FOR_DISABLING_PLAYER_HELD_LIGHTS.comment =不幸的是，如果你想让一个玩家发光而另一个不发光，这是区分你和其他玩家的唯一方法。
+
+screen.Mobs =生物阴影
+screen.Mobs.comment =生物在原版游戏中有方向性光照，尝试匹配或调整该效果。
+	option.ENTITY_LIGHTING_DIRECTIONALITY=方向性
+		option.ENTITY_LIGHTING_DIRECTIONALITY.comment =生物在原版中有方向性光照，尝试匹配或调整。光源方向性强度（与各向同性光照对比）。值越高阴影越暗
+	option.ENTITY_LIGHTING_ANGLE_X=光照角度 X
+		option.ENTITY_LIGHTING_ANGLE_X.comment =生物在原版游戏中有方向性光照，尝试匹配或调整该效果。
+	option.ENTITY_LIGHTING_ANGLE_Y=光照角度 Y
+		option.ENTITY_LIGHTING_ANGLE_Y.comment =生物在原版游戏中有方向性光照，尝试匹配或调整该效果。
+	option.ENTITY_LIGHTING_ANGLE_Z=光照角度 Z
+		option.ENTITY_LIGHTING_ANGLE_Z.comment =生物在原版游戏中有方向性光照，尝试匹配或调整该效果。
+		
+  screen.Voxy_Shading =体素阴影
+  screen.Voxy_Shading.comment =体素在原版中有方向性光照，尝试匹配或调整它。
+	option.VOXY_LIGHTING_DIRECTIONALITY=方向性
+		option.VOXY_LIGHTING_DIRECTIONALITY.comment =生物在原版中有方向性光照，尝试匹配或调整。光源方向性强度（与各向同性光照对比）。值越高阴影越暗
+	option.VOXY_LIGHTING_ANGLE_X=光照角度 X
+		option.VOXY_LIGHTING_ANGLE_X.comment =生物在原版游戏中有方向性光照，尝试匹配或调整该效果。
+	option.VOXY_LIGHTING_ANGLE_Y=光照角度 Y
+		option.VOXY_LIGHTING_ANGLE_Y.comment =生物在原版游戏中有方向性光照，尝试匹配或调整该效果。
+	option.VOXY_LIGHTING_ANGLE_Z=光照角度 Z
+	
+option.OTHER_PLAYER_LIGHTS=其他玩家的光源
+	option.OTHER_PLAYER_LIGHTS.comment =你希望其他玩家在手持火把或发光时产生光照吗？
+		value.OTHER_PLAYER_LIGHTS.0 =否
+		value.OTHER_PLAYER_LIGHTS.1 =是
+
+
+
+//v0.3.5	
+	
+	option.TRANSLECENT_LIGHTS=半透明光源
+		option.TRANSLECENT_LIGHTS.comment =用于诸如“深渊装饰”等模组。关闭此项可能节省约半帧。
+			value.TRANSLECENT_LIGHTS.0 =否
+			value.TRANSLECENT_LIGHTS.1 =是
+	
+	 
+	
+	option.SMART_COLOR_SATURATION=智能饱和度
+		option.SMART_COLOR_SATURATION.comment =修复某些方块发白光的问题。如果纹理大部分为白色，会使方块颜色更丰富。某些模组需要此功能使方块发出彩色光。可调节增强程度。
+			value.SMART_COLOR_SATURATION.0 =否
+			value.SMART_COLOR_SATURATION.1 =是
+	option.SMART_COLOR_SATURATION_BOOST=智能饱和度增强
+	option.SMART_COLOR_SATURATION_BOOST.comment =修复某些方块发白光的问题。如果纹理大部分为白色，会使方块颜色更丰富。此项控制增强的强度。
+	
+	
+	
+//v0.3.6 -POM
+
+ option.POM_DEPTH_CPF =POM深度
+option.POM_DEPTH_CPF.comment =视差遮蔽映射深度（3D纹理或视差遮蔽映射）。标准值为0.25，多数资源包基于此设计。设置更高可能导致异常。若高值破坏阴影，请告知
+
+ option.POM =视差映射（3D纹理）
+option.POM.comment =视差遮蔽映射是3D纹理技术。选项在“增强3D纹理/视差遮蔽映射”中。0 -关闭。1 -开启
+value.POM.0 =§c关§r
+value.POM.1 =§a开§r
+
+screen.POM=视差映射（3D纹理）
+screen.POM.comment=视差遮蔽映射（视差遮蔽映射或3D纹理）选项
+
+ option.CTMPOMFIX_VERSION =连续纹理映射/视差遮蔽映射修复版本
+option.CTMPOMFIX_VERSION.comment =应用我的 ctm/pom 修复方案，通过约 11 种不同的平铺技术并缓冲纹理边缘，实现更好、无缝的 3D 纹理工作效果，同时利用 ctm 和 pom。资源包必须兼容才能受益。详情请访问我的 discord。
+ option.INITIAL_POM_QUALITY_CPF =初始 pom 质量
+option.INITIAL_POM_QUALITY_CPF.comment =pom 的追踪步进值。对于草等高细节物体，设置过低会导致画面失真，因为它会丢失草叶细节。只要此值不太低以至于遗漏物体，提高精细度将进一步提升质量。此值会通过“精细度步进”设置呈指数级增长。建议设置为 20 或更高，但无需高出太多。初始值 20 加精细度 5，相当于以 25 的成本获得约 1000 的质量。
+ option.REFINE_POM_CPF =精炼步数
+option.REFINE_POM_CPF.comment =pom 精细度步进。以几乎零成本实现指数级质量提升。设为 1 时，以 1 的成本获得约 4 倍质量。每增加一步，质量额外提升约 2 倍。对于草等尖锐细节，如果初始质量设置过低则效果不佳，建议初始质量至少为 20。在一些着色器上，低值可能会闪烁。
+ option.POM_DISTANCE_CPF =视差距离
+option.POM_DISTANCE_CPF.comment =执行 pom 的距离，即仅在靠近时执行。
+ option.FADE_IN_POM_CPF =pom 淡入。
+option.FADE_IN_POM_CPF.comment =在 pom 距离的这个比例内淡入 pom（单位为十分之一）。
+ option.POM_STYLE_CPF =视差贴图样式
+option.POM_STYLE_CPF.comment =0 - 锐利的体素立方体。 1 - 根据纹理升级分辨率进行曲面细分。 2 - 平滑多边形
+value.POM_STYLE_CPF.0 =0 - 尖锐体素方块
+value.POM_STYLE_CPF.1 =1 - 曲面细分
+value.POM_STYLE_CPF.2 =2 - 平滑多边形
+ option.EXTEND_3D_SHADOWS_CPF =扩展 3D 阴影
+option.EXTEND_3D_SHADOWS_CPF.comment =在 pom 范围外的纹理中为 3D 阴影、ao、“光线追踪太阳阴影”等写入深度。 0 - 关闭。 1 和 2 看起来一样，但其中一个可能在你的机器上更快。我需要测试这是否仍然有效，这只是从 ctmpomfix 移植过来的。
+ option.CAPTURE_CPF_POM_DEPTH =捕获 pom 深度（调试）
+option.CAPTURE_CPF_POM_DEPTH.comment =不要更改此项
+ option.CTMPOMFIX_INFO =ctmpomfix 信息
+option.CTMPOMFIX_INFO.comment =ctmpomfix 通过特殊功能彻底改进 3D 纹理（pom），包括修复为其格式化的资源包中 3D 连通纹理的接缝。在许多情况下，它能极大地提升质量/性能。打开 pom，在 optifine 中：关闭 视频设置/质量/更好的草地
+ option.CTMPOMFIX_Advanced_Options =ctmpomfix 高级选项
+option.CTMPOMFIX_Advanced_Options.comment =高级 pom 选项
+
+ option.NOISE_STRENGTH_CPF =噪波强度
+option.NOISE_STRENGTH_CPF.comment =应用于 pom 的噪声强度
+ option.FAR_FIXES_CPF =远景修复 cpf
+option.FAR_FIXES_CPF.comment =ctmpomfix 选项：直接保持开启。隐藏 pom 范围外错误的 3D 覆盖层，并修复使用 ctmpomfix 模式 11（某些模组）的纹理的 UV。在某些情况下也可能提高性能。
+ option.FAST_TEX_READS_CPF =快速纹理读取
+option.FAST_TEX_READS_CPF.comment =应该会更快，但对我无效。
+ option.DEPTH_WRITE_CPF =深度写入（读取）
+option.DEPTH_WRITE_CPF.comment =速度慢，占用帧数。它§c是 ctmpomfix v2 功能（方块间的 ctm 3D 材质过渡）所§r必§e需的。也是 3D 草地着色器所§r必需的。关闭可能会破坏功能。
+ option.SMOOTHING_NOISE_CPF =平滑噪声 cpf
+option.SMOOTHING_NOISE_CPF.comment =你可以应用噪声来平滑 pom，它会使其模糊但减少可见的图层，尤其在斜角时。如果精细度闪烁，也有助于消除闪烁，但也可能导致闪烁，或使 3D 覆盖层出现接缝。0 - 禁用噪声 1 - 使用噪声。 2 - 模糊距离 3 - 模糊近处以平滑
+ option.UPSCALE_RESOLUTION_CPF =提升分辨率
+option.UPSCALE_RESOLUTION_CPF.comment =超分辨率与纹理过滤的倍增系数。1为无限。这些设置视觉效果相似，仅存在视觉偏好差异。
+ option.NOISE_FUNCTION_CPF =噪声函数 cpf
+option.NOISE_FUNCTION_CPF.comment =一些着色器会向 pom 注入噪声函数，有助于隐藏图层但可能模糊。通常是有益的。0 - 使用着色器提供的噪声函数（如果有的话）。1+ - 使用其他函数。1+ 可能会在 pom 中引入一些色带，直到我找到更好的替代噪声函数。
+ option.DYNAMIC_QUALITY_CPF =动态质量
+option.DYNAMIC_QUALITY_CPF.comment =远距离降低 pom 质量。可能会提高性能。也可能会降低。需要启用淡入。
+
+ option.INCREASE_QUALITY_AT_ANGLES_CPF =斜角时增加质量
+option.INCREASE_QUALITY_AT_ANGLES_CPF.comment =在掠射角增加 pom 的质量。值越低质量越好，但 0 为关闭。这也限制了光线在方块内部传播的距离。
+ option.NOISE_STRENGTH_CPF =噪波强度
+option.NOISE_STRENGTH_CPF.comment =一些着色器会向 pom 注入噪声函数，有助于隐藏图层但可能模糊。调整其强度。这可以改善或恶化 pom 的外观。这可能引起或解决闪烁。
+ option.COLOR_MERGE_DIST_CPF =颜色合并距离 cpf
+option.COLOR_MERGE_DIST_CPF.comment =纹理过滤将使用此值混合或关联相近颜色。效果因过滤方式而异。保持原状，否则可能影响纹理过滤功能。
+ option.ALPHA_CUTOFF_CPF =Alpha 截断
+option.ALPHA_CUTOFF_CPF.comment =不透明度高于此值的材质在纹理过滤中将变为实体。数值越低，草丛越茂密。
+	
+	screen.Textures =纹理
+	
+	
+	option.WATER_FOG_DISTANCE=水下雾距离
+	option.WATER_FOG_DISTANCE.comment =水下可视距离
+
+screen.Status_Effects =状态效果
+	option.NIGHT_VISION_MODE =夜视模式
+	option.NIGHT_VISION_MODE.comment =选择夜视效果的工作方式
+		value.NIGHT_VISION_MODE.0 =全亮度
+		value.NIGHT_VISION_MODE.1 =伽马
+		value.NIGHT_VISION_MODE.2 =热感
+	
+screen.Cave_Light_Leak =洞穴光线渗透
+screen.Dimensions_and_Other =维度与模组及其他
+screen.Dimensions_and_Other.comment =维度：末地与下界菜单。模组：体素、远景、及其他支持模组。其他：杂项选项
+ 
+
+option.LAVA_NOISE_ORGANIC=有机岩浆噪点
+	option.LAVA_NOISE_ORGANIC.comment =岩浆中更自然的图案，而非环形的高亮区域
+		value.LAVA_NOISE_ORGANIC.0 =关
+		value.LAVA_NOISE_ORGANIC.1 =开
+		
+option.EXTEND_LAVA_PATTERN=扩展岩浆图案
+	option.EXTEND_LAVA_PATTERN.comment =将岩浆图案延伸到更远处，不仅限于彩色光照范围。可能会耗费几帧，我无法确定
+		value.EXTEND_LAVA_PATTERN.0 =关
+		value.EXTEND_LAVA_PATTERN.1 =开
+
+option.ADJUST_GAMMA=调节伽马值
+	option.ADJUST_GAMMA.comment =调节伽马值。
+		value.ADJUST_GAMMA.0 =否
+		value.ADJUST_GAMMA.1 =是
+	
+option.GAMMA_DISPLAY=伽马调节
+	option.GAMMA_DISPLAY.comment =当“调节伽马值”开启时使用的伽马值。
+ 
+option.SHADOW_BIAS_IN_DISTANCE=阴影偏移（远距离）
+	option.SHADOW_BIAS_IN_DISTANCE.comment =远距离物体的偏移量，用于补偿阴影贴图扭曲。这消除了远处物体上出现的阴影痤疮问题，但设置过高可能导致阴影看起来不连贯。
+	
+
+
+option.AO_EFFECTS_BLOCKLIGHT=环境光遮蔽影响方块光照
+	option.AO_EFFECTS_BLOCKLIGHT.comment =环境光遮蔽阻止光线照射某些区域。它影响天空光照，通过此选项可选择是否影响方块光照。
+	When PBR is off, AO imply affects the color not the lighting, like in vanilla.
+		value.AO_EFFECTS_BLOCKLIGHT.0 =否
+		value.AO_EFFECTS_BLOCKLIGHT.1 =是
+	option.SEA_LEVEL=海平面
+	option.SEA_LEVEL.comment =用于特定效果，例如：高度雾、雾影响光照、洞穴光线渗透修复
+	
+	option.SKY_HEIGHT=天空高度
+	option.SKY_HEIGHT.comment =用于特定效果，例如：高度雾、雾影响光照。在天空高度处，雾没有影响；在海平面处，影响最大。
+
+	option.FOG_AFFECTS_LIGHT=雾影响太阳光
+		option.FOG_AFFECTS_LIGHT.comment =开启后，群系雾会给太阳光着色
+			value.FOG_AFFECTS_LIGHT.0 =关
+			value.FOG_AFFECTS_LIGHT.1 =开
+		
+	option.FOG_BY_HEIGHT=高度雾
+		option.FOG_BY_HEIGHT.comment =天空中的雾取决于海拔高度
+			value.FOG_BY_HEIGHT.0 =关
+			value.FOG_BY_HEIGHT.1 =开
+	 
+	 option.FOG_AFFECTS_LIGHT_STR=雾影响太阳光（强度）
+		option.FOG_AFFECTS_LIGHT_STR.comment =雾给太阳光着色的强度
+	
+	 option.FOG_IN_SKYLIGHT_STR=雾影响天空光（强度）
+		option.FOG_IN_SKYLIGHT_STR.comment =雾在海平面处给天空光着色的强度
+	
+value.GODRAYS.0 =关
+value.GODRAYS.1 =开
+
+value.SHOW_MOB_DAMAGE.0 =关
+value.SHOW_MOB_DAMAGE.1 =开
+
+screen.Held_Lights =手持光源
+	screen.Held_Lights.comment =手持光源选项。可采用基于体素或屏幕空间的方式
+option.AUTO_HAND_HELD_COLOR_DETECTION=手持光源颜色模式
+	option.AUTO_HAND_HELD_COLOR_DETECTION.comment =使用何种方法，各有利弊，我仍在优化中。0-硬编码和/或基于体素。1-最亮单一光源。2-检测最亮RGB值。3-叠加光源，按最亮通道排序RGB。4-叠加光源，按最亮RGB值排序。§a'手持物品与玩家（体素化）'是自动检测模式（大于0）运作的必要条件
+		value.AUTO_HAND_HELD_COLOR_DETECTION.0 =0-硬编码和/或基于体素
+		value.AUTO_HAND_HELD_COLOR_DETECTION.1 =1-最亮单一光源
+		value.AUTO_HAND_HELD_COLOR_DETECTION.2 =2-最亮RGB
+		value.AUTO_HAND_HELD_COLOR_DETECTION.3 =3-叠加光源，排序方式A
+		value.AUTO_HAND_HELD_COLOR_DETECTION.4 =4-叠加光源，排序方式B
+        value.AUTO_HAND_HELD_COLOR_DETECTION.6 =6-使用覆盖列表
+
+  
+option.HELD_TORCH_FALLOFF=手持光源衰减
+	option.HELD_TORCH_FALLOFF.comment =手持光源随距离的光线衰减速度
+option.HELD_TORCH_BRIGHTNESS=手持光源亮度
+	option.HELD_TORCH_BRIGHTNESS.comment =手持光源的亮度值
+
+
+screen.Color_Adjustments =色彩调整
+	screen.Color_Adjustments.comment =调整色彩、对比度、饱和度与亮度
+	
+	option.USE_MANUAL_FINAL_ADJUSTMENTS=使用手动色彩调整
+		option.USE_MANUAL_FINAL_ADJUSTMENTS.comment =使用以下选项
+			value.USE_MANUAL_FINAL_ADJUSTMENTS.0 = §cno§r
+			value.USE_MANUAL_FINAL_ADJUSTMENTS.1 =§a是§r
+	option.BTIGHTNESS_CONTRAST_CENTER=亮度对比度中心
+		option.BTIGHTNESS_CONTRAST_CENTER.comment =增强亮度对比度的基准点
+	option.BTIGHTNESS_CONTRAST=亮度对比度
+		option.BTIGHTNESS_CONTRAST.comment =增强亮度对比度，不附加常规对比度增强带来的饱和度提升效果
+	option.SATURATION=饱和度
+		option.SATURATION.comment =色彩鲜艳程度。0为黑白，1.0为标准值，数值越高色彩越鲜艳
+	option.CONTRAST=对比度
+		option.CONTRAST.comment =对比度
+	option.BRIGHTNESS=亮度
+	option.BRIGHTNESS.comment =亮度
+	
+		value.ADJUST_GAMMA.0 = §cno§r
+			value.ADJUST_GAMMA.1 =§a是§r
+	 
+	
+	option.HELD_LIGHT_PBR=手持光源PBR渲染
+	option.HELD_LIGHT_PBR.comment =通过计算光线与材质粗糙度/光滑度、次表面散射、光泽度、金属特性等的相互作用，展示PBR材质效果。需使§a用'高品质'预设§r
+		value.HELD_LIGHT_PBR.0 =否
+		value.HELD_LIGHT_PBR.1 =是
+	 
+	
+	option.USE_PBR_TO_GET_RIGHT_FACE=启用PBR以识别正确表面（未测试）
+		option.USE_PBR_TO_GET_RIGHT_FACE.comment =运行额外计算，确保自动彩色光检测时使用正确表面。例如确保红色灯罩配白色底座时显示红色而非白色。此选项尚未测试
+			value.USE_PBR_TO_GET_RIGHT_FACE.0 =否
+			value.USE_PBR_TO_GET_RIGHT_FACE.1 =是
+	
+
+
+	option.VANILLA_EMMISIVE_THRSHHOLD=原版发光阈值
+	option.VANILLA_EMMISIVE_THRSHHOLD.comment =使原版非PBR像素产生发光效果所需的亮度值
+
+       
+
+    option.USE_EXTENDED_OVERRIDE_LIST=使用扩展覆盖列表
+	option.USE_EXTENDED_OVERRIDE_LIST.comment =可选项（适用于帧率极低且有效果的情况）。检查'block.properties'和'item.properties'文件中的主列表，修正无法自动识别正确颜色的方块
+        value.USE_EXTENDED_OVERRIDE_LIST.0 =否
+		value.USE_EXTENDED_OVERRIDE_LIST.1 =是
+
+   value.BORDERS.0 =关
+	value.BORDERS.1 =开
+	
+	   value.BORDERS_IN_DH.0 =关
+	value.BORDERS_IN_DH.1 =开
+
+option.SOLAR_GI=全局光照（读取）
+	option.SOLAR_GI.comment =全局光照指光线反复反弹产生的效果，通常是计算成本最高的部分。路径追踪资源包试图实现此效果。选项：1) 基础-仅地板反射 2) 基础-所有表面反射 3) 优化-专用散射§a计算。主要在'高品质'预设下测试§r
+        value.SOLAR_GI.0 =  §coff §r
+		value.SOLAR_GI.1 =1) 基础-仅地板反射
+		value.SOLAR_GI.2 =2§a) 基础-所有表面反射§r
+	
+	screen.GI_Advanced =全局光照高级设置
+		screen.GI_Advanced.comment =更多全局光照选项，设置不当可能导致画面异常。可在§a此修复闪烁问题§r
+	screen.GI_Adjustments=全局光照调整
+		screen.GI_Adjustments.comment=更多全局光照选项
+	
+option.VANILLA_AO_TORCH=原版环境光遮蔽（通用）
+	option.VANILLA_AO_TORCH.comment =原版环境光遮蔽对非阳光/天光照明的影响强度。降低数值可减少角落暗化程度
+option.VANILLA_AO_SKY=原版环境光遮蔽（天光）
+	 	option.VANILLA_AO_SKY.comment =原版环境光遮蔽对天光的影响强度。降低数值可减少角落暗化程度
+	 
+	option.SOLAR_GI_DOT=太阳全局光照着色
+		option.SOLAR_GI_DOT.comment =使用着色算法判断表面对阳光的反射强度。关闭时效果更强烈。仅影响'1) 基础'模式，其他模式默认开启但可调整
+			value.SOLAR_GI_DOT.0 =关
+			value.SOLAR_GI_DOT.1 =开
+	
+	option.DIRECTIONAL_SOLAR_GI=全局光照捕获方向性强度
+		option.DIRECTIONAL_SOLAR_GI.comment =反射光受表面着色与阳光直射影响的程度比。1.00更精确，0.0效果更强烈
+		
+option.FIX_FLIICKERING_GI=修复全局光照闪烁1（淡入淡出）
+	option.FIX_FLIICKERING_GI.comment =树下等具有精细阴影细节的区域可能出现严重全局光照闪烁，尤其当'修复闪烁2-采样'设置较低时。此选项通过降低户外所有彩色光与全局光照的更新速度来§e修复，但会减弱光照变化的响应性§r
+		value.FIX_FLIICKERING_GI.0 = §eoff §r
+		value.FIX_FLIICKERING_GI.1 = §aon§r
+	
+option.SOLAR_GI_SHADOWMAP_SAMPLES=修复全局光照闪烁2（采样）
+	option.SOLAR_GI_SHADOWMAP_SAMPLES.comment =全局光照在树下及细节阴影处可能产生严重闪烁（尤其在未使用“闪烁修复1-淡出”时）。此选项通过在更多位置采样阴影贴图来修复该问题，在极低端设备上可能对帧率产生微小影响。
+	value.SOLAR_GI_SHADOWMAP_SAMPLES.16 = §a16§r
+	value.SOLAR_GI_SHADOWMAP_SAMPLES.1 = §c1§r
+		
+	screen.GI =全局光照（进行中）
+	
+	
+	
+	
+	option.TRACELESS_PT=无迹路径追踪（必读）
+	option.TRACELESS_PT.comment =请勿启用，此功能仅消耗帧率且尚未呈现良好效果
+	
+	
+	option.REBALANCE_LIGHTING_FOR_GI=为全局光照重新平衡光照
+	option.REBALANCE_LIGHTING_FOR_GI.comment =降低整体亮度以避免全局光照导致场景过亮：1) 增亮超出全局光照范围的区域 2) 同时降低整体亮度
+		value.REBALANCE_LIGHTING_FOR_GI.0 =否
+			value.REBALANCE_LIGHTING_FOR_GI.1 =仅增亮远景
+			value.REBALANCE_LIGHTING_FOR_GI.2 =是
+	
+	 
+	
+	
+	option.GI_INTENSITY=全局光照强度
+	option.GI_INTENSITY.comment =调节全局光照强度（即光线从物体表面反弹的效果）
+	
+	option.ADJUST_GI_INTENSITY=调节全局光照
+	option.ADJUST_GI_INTENSITY.comment =运行代码调整全局光照强度，并根据倾斜日光角度产生的反弹光强弱（或近似开关状态）进行动态调节。在低端设备上可能对帧生成时间产生轻微影响
+		value.ADJUST_GI_INTENSITY.0 =  §cno §r
+			value.ADJUST_GI_INTENSITY.1 =§a是§r
+			
+			
+		
+	
+	option.GI_FADE=全局光照时间淡出
+	option.GI_FADE.comment =以更高或更低的程度淡入全局光照的变更。较高值可帮助减少来自树叶等精细阴影的全局光照闪烁§e。此设置影响所有室外光照，但过高会限制光照范围与响应速度§r
+	
+	
+
+	
+	
+option.END_SKY_TEXTURED =末地天空纹理化
+	option.END_SKY_TEXTURED.comment whether or not to run the gbuffers_skyTextured program in the end. Maybe some mods use it. Will create staticy looking sky if they don't
+		value.END_SKY_TEXTURED.0 =§c关§r
+		value.END_SKY_TEXTURED.1 =§a开§r
+
+profile.comment=§a“仅彩色光照”配置§r文件仅包含彩色光照，其他配置均含阴影§a。“普§r通”含阴影，§a“精§r致”含丁达尔效应、柔和阴影及PBR方块§a光，§r“卡通”是添加了卡通描边的§a精致模式。§r“土豆阴影”以20格距离运行阴影，无扭曲效果，采用淡出处理，并在512像素阴影贴图上启用双线性过滤
+ 
+profile.Just_Colored_Lighting=§a仅彩色光照§r
+ 
+## §a §2  §e §6  §c §4 §5   §r
+//#define VOXEL_AREA 128 //[32 48 64 96 128 160 192 224 256 512]
+option.VOXEL_AREA=彩色光照范围
+option.VOXEL_AREA.comment=周围启用彩色光照的范围。此功§e能需要显存并消耗帧§r率，且受渲染距离限制（LOD无辅助效果）
+value.VOXEL_AREA.32 =  §a 32 §r
+value.VOXEL_AREA.48 = §a 48 §r
+value.VOXEL_AREA.64 = §a 64 §r
+value.VOXEL_AREA.96 = §a 96 §r
+value.VOXEL_AREA.128 = §a 128 §r
+value.VOXEL_AREA.160 = §e 160 §r
+value.VOXEL_AREA.192 = §e 192 §r
+value.VOXEL_AREA.224 = §e 224 §r
+value.VOXEL_AREA.256 = §c 256 §r
+value.VOXEL_AREA.512 =5§c12 慢速§r
+value.VOXEL_AREA.1024 =1§c024 极慢且存在缺陷§r
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	
+	option.PITCH_BLACK_CAVES=更暗的洞穴
+	option.PITCH_BLACK_CAVES.comment =允许洞穴完全变为黑暗
+	
+	
+	option.AAA=
+	option.AAA.comment = 
+	
+	option.AAA=
+	option.AAA.comment = 
+		value.AAA.0 =§c关§r
+		value.AAA.1 =§a开§r
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+screen.INFO_CLICK=信息（悬停查看）
+screen.INFO_CLICK.comment=将鼠标悬停在选项上可查看提示！“仅彩色光照”配置无阴影，其他配置均含阴影。建议为PBR纹理启用“精致”配置，手动切换§a“纹理/PBR模式”目前存在缺陷。着色器版权(c) timetravelbeard 2025-2§r026，如需报告错误请访问patreon.com/timetravelbeard链接的Discord。可通过Patreon或YouTube支持开发
+
+screen.Mod_Support =模组支持
+screen.Mod_Support.comment =模组支持相关事项与信息
+
+screen.Distant_Horizons =远景地平线
+screen.Distant_Horizons.comment =Distant Horizons选项
+
+screen.Voxy =Voxy
+screen.Voxy.comment =Voxy将自动获得支持，但在0.2.10之前的版本中需在此处切换选项以修复默认预设下的黑色区块
+
+option.WORK_GROUP_SIZE =工作组大小
+option.WORK_GROUP_SIZE.comment =调整此参数可能提升着色器彩色光照的运行速度，具体效果因设备而异
+
+
+screen.Glowing_Blocks =发光方块（鼠标悬停查看）
+screen.Glowing_Blocks.comment =若遇到发光异常或颜色错误的方块/物品，请反馈以便我将其添加至正常列表。您也可通过编辑“物品属性”和“方块属性”文件（位于文件末尾）自行测试修复，但请告知以便在下次更新中收录
+
+option.FORCE_VOXY_BUILT_IN_SHADERS =强制使用Voxy内置着色器
+option.FORCE_VOXY_BUILT_IN_SHADERS.comment =§a此选项适用于0.2.10之前版本Voxy的默认预设：当区块显示为黑§r色时，启用此选项可禁用自定义着色器并强制运行Voxy内置着色器。这是针对Voxy无法正确加载光照贴图采样器（导致地形变黑）的变通方案。Voxy 0.2.10及以上版本不应需要此选项
+value.FORCE_VOXY_BUILT_IN_SHADERS.0 =否
+value.FORCE_VOXY_BUILT_IN_SHADERS.1 =是，但下界除外
+value.FORCE_VOXY_BUILT_IN_SHADERS.2 =始终
+
+
+
+
+screen.Macro_Detail =宏观粗糙度（开发中）
+    screen.Macro_Detail.comment =每种材质类型超精细高清纹理，以增强PBR粗糙§a度。请给我反馈！这些只是测试纹理§r
+
+       option.USE_MACRO_TEXTURES=宏观粗糙度
+	option.USE_MACRO_TEXTURES.comment =在有PBR粗糙度的地方使用超精细纹理。0 -关闭。1 -单一纹理。2 -多纹理（需要资源包）
+        value.USE_MACRO_TEXTURES.0 =§c关§r
+        value.USE_MACRO_TEXTURES.1 =单数模式
+        value.USE_MACRO_TEXTURES.2 =§a多纹理（需要资源包）§r
+
+option.MACRO_SMOOTHNESS_STRENGTH=宏观平滑度变化
+	option.MACRO_SMOOTHNESS_STRENGTH.comment =平滑度微观变化的强度
+
+option.MACRO_TILING_SCALE=平铺缩放
+	option.MACRO_TILING_SCALE.comment =纹理平铺频率的缩放比例
+
+option.MACRO_RENDER_DISTANCE=宏观渲染距离
+	option.MACRO_RENDER_DISTANCE.comment =宏观粗糙度开始可见的距离。随着距离拉近会逐渐淡入，以减少噪点并保留你所使用普通资源包的艺术效果。
+
+option.MACRO_NORMALS_STRENGTH=宏观粗糙度强度
+	option.MACRO_NORMALS_STRENGTH.comment =材质宏观粗糙度纹理在近距离时的应用强度
+option.MACRO_TILING_SCALE_MOBS=生物平铺缩放
+	option.MACRO_TILING_SCALE_MOBS.comment =生物身上纹理平铺频率的缩放比例
+
+option.MOB_WORLD_SCALING=校正比例
+	option.MOB_WORLD_SCALING.comment =修复生物的比例，以防止在非常长的矩形上纹理被拉伸
+    value.MOB_WORLD_SCALING.0 =§c关§r
+        value.MOB_WORLD_SCALING.1 =§a开§r
+
+option.PRESERVE_NORMALSVS_MACRO=保留法线
+	option.PRESERVE_NORMALSVS_MACRO.comment =开启时，原始纹理的法线被用作宏观细节凸起的表面。关闭时，你会失去像patrix所使用的圆形烘焙法线，但外观会更柔和。
+ value.PRESERVE_NORMALSVS_MACRO.0 =§c关§r
+        value.PRESERVE_NORMALSVS_MACRO.1 =§a开§r
+
+
+
+option.REDSTONE_DUST_GLOWS=红石粉发光（必读）
+	option.REDSTONE_DUST_GLOWS.comment =激活的红石粉将发§e光，并可阻挡光线穿透§r
+ value.REDSTONE_DUST_GLOWS.0 =§c关§r
+        value.REDSTONE_DUST_GLOWS.1 =§a开§r
+		
+		
+		
+
+option.BLOCK_LIGHTS_CATCH_HELD_LIGHT=方块光捕捉手持光源
+	option.BLOCK_LIGHTS_CATCH_HELD_LIGHT.comment =关闭时，光源不会被手持光源照亮
+		value.BLOCK_LIGHTS_CATCH_HELD_LIGHT.0 =§c关§r
+        value.BLOCK_LIGHTS_CATCH_HELD_LIGHT.1 =§a开§r
+		
+		
+		
+
+option.PER_BLOCK_EMMISSIVE=每方块自发光
+	option.PER_BLOCK_EMMISSIVE.comment =覆盖PBR纹理，使整个方块作为光源发光，而非像素级自发光。
+		value.PER_BLOCK_EMMISSIVE.0 =§c关§r
+        value.PER_BLOCK_EMMISSIVE.1 =§a开§r
+
+
+
+
+//2026-5
+
+screen.Copper_Torches =铜灯
+option.COPPER_LANTERNS=铜灯笼
+	option.COPPER_LANTERNS.comment =选择如何确定其光照颜色。0 -自动纹理检测。1 -铜火把颜色。2 -从火把到铜火把渐变
+		value.COPPER_LANTERNS.0 =自动纹理检测
+        value.COPPER_LANTERNS.1 =铜质火把
+        value.COPPER_LANTERNS.2 =橙色到绿色
+
+
+option.COPPER_BULBS=铜灯泡
+	option.COPPER_BULBS.comment =选择如何确定其光照颜色。0 -自动纹理检测。1 -铜火把颜色。2 -从火把到铜火把渐变。3 -暖光
+	    value.COPPER_BULBS.0 =自动纹理检测
+        value.COPPER_BULBS.1 =铜质火把
+        value.COPPER_BULBS.2 =橙色到绿色
+        value.COPPER_BULBS.3 =暖光
+
+
+screen.Create_Color_Wheel =创造模式与色轮
+
+option.COLORWHEEL_OIT=OIT（顺序无关透明度）
+	option.COLORWHEEL_OIT.comment =可能消耗一些帧率，使玻璃层在创造模式装置中彼此紧邻渲染。
+		value.COLORWHEEL_OIT.0 =§c关§r
+        value.COLORWHEEL_OIT.1 =§a开§r
+
+
+//blanks: - 
+
+
+option.PER_BLOCK_EMMISSIVE=每方块自发光
+	option.PER_BLOCK_EMMISSIVE.comment =覆盖PBR纹理，使整个方块作为光源发光，而非像素级自发光。
+		value.PER_BLOCK_EMMISSIVE.0 =§c关§r
+        value.PER_BLOCK_EMMISSIVE.1 =§a开§r
+		
+		
+option.PER_BLOCK_EMMISSIVE=每方块自发光
+	option.PER_BLOCK_EMMISSIVE.comment =覆盖PBR纹理，使整个方块作为光源发光，而非像素级自发光。
+		value.PER_BLOCK_EMMISSIVE.0 =§c关§r
+        value.PER_BLOCK_EMMISSIVE.1 =§a开§r
+		
+		
+option.PER_BLOCK_EMMISSIVE=每方块自发光
+	option.PER_BLOCK_EMMISSIVE.comment =覆盖PBR纹理，使整个方块作为光源发光，而非像素级自发光。
+		value.PER_BLOCK_EMMISSIVE.0 =§c关§r
+        value.PER_BLOCK_EMMISSIVE.1 =§a开§r
+		
+		
+option.FLASHLIGHT_BRIGHTNESS=手电筒亮度
+option.FLASHLIGHT_CURVATURE=手电筒曲率
+option.FLASHLIGHT_DISTANCE=手电筒距离
+option.FLASHLIGHT_FLICKER_SPEED=手电筒闪烁速度
+option.FLASHLIGHT_FLICKER_STR=手电筒闪烁强度
+option.FLASHLIGHT_MIN=手电筒最小值
+option.FLASHLIGHT_WIDTH=手电筒宽度
+option.FLASH_LIGHT=闪光灯
+option.FLASH_LIGHT_BRIGHTNESS=手电筒亮度
+option.FLASH_LIGHT_CRISPNESS=手电筒清晰度
+option.FLASH_LIGHT_LISTED_ITEMS_ONLY=手电筒开启时机
+option.FLASH_LIGHT_WIDTH=手电筒宽度
+
+option.FLASH_LIGHT =手电筒
+option.FLASH_LIGHT.comment =0 -关。1 -基础。2 -景深效果与焦散环。3 -资源包（基础）。4 -带景深的资源包。资源包图像应为 'textures/simply_upscaled/flashlight.png'（Modrinth 上有示例）
+value.FLASH_LIGHT.0 =关
+value.FLASH_LIGHT.1 =1 -基础
+value.FLASH_LIGHT.2 =2 -景深效果
+value.FLASH_LIGHT.3 =3 -资源包基础
+value.FLASH_LIGHT.4 =4 -资源包景深
+
+option.FLASHLIGHT_DISTANCE =手电筒距离
+option.FLASHLIGHT_DISTANCE.comment =手电筒距离与火把距离的比较
+option.FLASHLIGHT_MIN =手电筒最小宽度
+option.FLASHLIGHT_MIN.comment =近距离手电筒的最小宽度
+option.FLASH_LIGHT_BRIGHTNESS =手电筒亮度
+option.FLASH_LIGHT_BRIGHTNESS.comment =手电筒亮度
+option.FLASHLIGHT_CURVATURE =手电筒曲率
+option.FLASHLIGHT_CURVATURE.comment =调整手电筒光束的曲率，以修复不同宽度和距离设置下的透视问题
+
+option.FLASH_LIGHT_CRISPNESS =手电筒清晰度
+option.FLASH_LIGHT_CRISPNESS.comment =光束边缘的清晰程度。仅适用于手电筒模式1和2
+option.FLASH_LIGHT_WIDTH =手电筒宽度
+option.FLASH_LIGHT_WIDTH.comment =手电筒宽度与屏幕的比较
+option.FLASH_LIGHT_LISTED_ITEMS_ONLY =手电筒开启时机
+option.FLASH_LIGHT_LISTED_ITEMS_ONLY.comment =使手电筒效果适用于所有光源，或仅适用于'item.properties'文件中列出的光源。如果您想让它适用于模组物品，请在 Discord（Modrinth 上有链接）上告诉我，我会在下次更新中添加您的模组物品。
+   value.FLASH_LIGHT_LISTED_ITEMS_ONLY.0 =所有光源
+   value.FLASH_LIGHT_LISTED_ITEMS_ONLY.1 =仅白名单
+    value.FLASH_LIGHT_LISTED_ITEMS_ONLY.2 =始终
+
+screen.Flash_Light =闪光灯
+  screen.Hand_Held_Torch =手持火炬
+    screen.Texture_Upscaling=纹理放大
+    screen.Pbr_Options=PBR 选项
+    screen.Borders_and_Effects=边框与效果
+    screen.Fog_and_DH=雾效与距离层次
+	
+	screen.Coastal_Waves =海岸波浪
+		option.COASTAL_WAVES_FIX =海岸波浪修复
+			option.COASTAL_WAVES_FIX.comment =若在默认预设下波浪显示为黑色，则是原版光照贴图未能正确读取；此功能通过为阳光和天光模拟数值来规避该问题
+				value.COASTAL_WAVES_FIX.0 =§c关§r
+				value.COASTAL_WAVES_FIX.1 =§a开§r

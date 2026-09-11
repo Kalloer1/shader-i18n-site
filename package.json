@@ -1,0 +1,30 @@
+{
+  "name": "shader-i18n-site",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Minecraft Java 版光影包简体中文本地化资源站",
+  "scripts": {
+    "dev": "vitepress dev site",
+    "build": "node scripts/gen-shader-pages.mjs && vitepress build site",
+    "preview": "vitepress preview site",
+    "prebuild": "node scripts/gen-shader-pages.mjs",
+    "catalog": "node scripts/fetch-catalog.mjs",
+    "sync": "node scripts/sync-metadata.mjs",
+    "translate": "node scripts/pipeline.mjs",
+    "validate:lang": "node scripts/validate-lang.mjs",
+    "release": "node scripts/release.mjs",
+    "detect-changes": "node scripts/detect-changes.mjs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13",
+    "wrangler": "^4.129.0"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  },
+  "dependencies": {
+    "medium-zoom": "^1.1.0"
+  }
+}

@@ -1,0 +1,69 @@
+profile.LITE=轻量级
+profile.LOW=低配
+profile.MEDIUM=中配
+profile.HIGH=高配
+profile.ULTRA=极高
+
+screen.ATMOSPHERE=大气
+screen.LIGHTING=光照
+screen.MATERIALS=材质
+screen.IMAGE_EFFECTS=图像效果
+screen.TONE=色调 (滤镜与颜色)
+
+screen.PARALLAX_SETTINGS=纹理视差设置
+screen.WATER_OPTIONS=水效果设置
+screen.SHADOW_OPTIONS=阴影设置
+
+option.CrespecularRays=晨光斜射
+option.HIGH_QUALITY_Crespecular=高级晨光
+option.VOLUMETRIC_CLOUDS=体积云
+option.HQ_VOLUMETRICS=高级体积云
+
+option.WISDOM_AMBIENT_OCCLUSION=智慧环境光遮蔽 (AO)
+option.HQ_AO=高质量环境光遮蔽
+option.IBL=IBL 反射
+option.IBL_SSR=IBL 屏幕空间反射
+option.SSR_STEPS=反射步数
+option.DIRECTIONAL_LIGHTMAP=方向性方块光照
+
+option.NORMALS=法线贴图
+option.SPECULAR_TO_PBR_CONVERSION=高光到PBR转换
+option.SPECULAR_TO_PBR_CONVERSION.comment=将传统高光贴图转换为PBR贴图以提高兼容性。
+option.ParallaxOcclusion=视差遮蔽映射
+option.maxSteps=最大视差遮蔽步数
+option.maxSteps.comment=数值越高，效果越好，但性能越低。
+option.scale=视差遮蔽缩放
+option.TILE_RESOLUTION=纹理分辨率
+
+option.WATER_PARALLAX=水流视差
+option.WATER_REFRACTION=水流折射
+option.NATURAL_WAVE_GENERATOR=自然波浪生成器
+option.SEA_HEIGHT=波高
+option.WATER_CAUSTICS=水流焦散
+
+option.WAVING_FOILAGE=摇曳的树叶
+
+option.BLOOM=泛光
+option.DOF=景深
+option.MOTION_BLUR=运动模糊
+option.SSEDAA=SSEDAA（抗锯齿）
+option.VIGNETTE=暗角
+option.DIRTY_LENS=脏镜头
+option.DIRTY_LENS_TEXTURE=脏镜头纹理
+option.DIRTY_LENS_TEXTURE.comment=需要 Optifine 的新纹理加载功能
+option.SCREEN_RAIN_DROPS=相机上的雨滴
+
+option.EXPOSURE=曝光
+option.AVERAGE_EXPOSURE=平均曝光
+option.BLACK_AND_WHITE=黑白滤镜
+option.PRIME_RENDER=主渲染
+option.ambientOcclusionLevel=原版边缘遮蔽
+option.NOISE_AND_GRAIN=噪点和颗粒
+option.FILMIC_CINEMATIC=电影风格
+option.FILMIC_CINEMATIC_ANAMORPHIC=电影风格畸变
+option.EIGHT_BIT=8位滤镜
+option.MODERN=现代（白色）光
+option.SPACE=太空模式（无太阳）
+
+option.Version=版本：V3.2 发布版，构建
+option.Version.comment=更多信息请访问：qionouu.cn

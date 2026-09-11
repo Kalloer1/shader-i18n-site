@@ -1,0 +1,44 @@
+option.DITHERING_STYLE=抖动风格
+value.DITHERING_STYLE.0=有序 (Bayer)
+value.DITHERING_STYLE.1=蓝噪声
+value.DITHERING_STYLE.2=三角噪声
+value.DITHERING_STYLE.3=IGN 噪声
+value.DITHERING_STYLE.4=随机通道
+value.DITHERING_STYLE.5=半色调
+
+option.BAYER_SIZE=Bayer 矩阵大小
+value.BAYER_SIZE.2=2x2 矩阵
+value.BAYER_SIZE.4=4x4 矩阵
+value.BAYER_SIZE.8=8x8 矩阵
+value.BAYER_SIZE.16=16x16 矩阵
+value.BAYER_SIZE.32=32x32 矩阵
+option.BAYER_SIZE.comment=此设置 §c无法§r 起作用，除非你已选择「有序 (Bayer)」抖动
+
+option.BAYER_STYLE=Bayer 抖动风格
+value.BAYER_STYLE.0=单色
+value.BAYER_STYLE.1=单通道
+value.BAYER_STYLE.2=彩色
+value.BAYER_STYLE.3=调整后
+value.BAYER_STYLE.4=色相
+value.BAYER_STYLE.5=平滑
+option.BAYER_STYLE.comment=此设置 §c不会§r 起作用，除非你已选择「有序 (Bayer)」抖动方式
+
+option.SCALE=缩放
+value.SCALE.1=1倍
+value.SCALE.2=2倍
+value.SCALE.3=3倍
+value.SCALE.4=4倍
+value.SCALE.5=5倍
+value.SCALE.6=6倍
+value.SCALE.7=7倍
+value.SCALE.8=8倍
+
+option.POSTERIZING_AMOUNT=色阶数量
+value.POSTERIZING_AMOUNT.2=2 色阶
+value.POSTERIZING_AMOUNT.4=4 色阶
+value.POSTERIZING_AMOUNT.8=8 色阶
+value.POSTERIZING_AMOUNT.12=12 色阶
+value.POSTERIZING_AMOUNT.16=16 色阶
+
+screen.ORDERED=有序（Bayer）抖动设置
+screen.ORDERED.comment=这些设置 §c不会§r 起作用，除非你已选择 “有序（Bayer）” 抖动

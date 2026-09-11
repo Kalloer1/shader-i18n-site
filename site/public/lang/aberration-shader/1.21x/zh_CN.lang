@@ -1,0 +1,113 @@
+option.CRYSTAL_MODE=水晶模式
+option.CRYSTAL_MODE.comment=末影水晶边框颜色主题
+
+value.CRYSTAL_MODE.0=关闭
+value.CRYSTAL_MODE.1=§c§lR§6§la§e§li§a§ln§2§lb§9§lo§d§lw
+value.CRYSTAL_MODE.2=§2§l★ 自然
+value.CRYSTAL_MODE.3=§9§l≈ 海洋
+value.CRYSTAL_MODE.4=§c§l☀ 日落
+
+option.CRYSTAL_SPEED=循环速度
+option.CRYSTAL_SPEED.comment=水晶颜色循环的速度。自然总是缓慢脉动。
+
+value.CRYSTAL_SPEED.2=缓慢漂移
+value.CRYSTAL_SPEED.5=柔和
+value.CRYSTAL_SPEED.10=默认
+value.CRYSTAL_SPEED.20=快速
+value.CRYSTAL_SPEED.40=频闪
+
+option.ARROW_MODE=箭头样式
+option.ARROW_MODE.comment=飞行箭头的视觉样式。使用下方子菜单为每种样式配置颜色
+
+value.ARROW_MODE.0=关闭
+value.ARROW_MODE.1=虚空光环
+value.ARROW_MODE.2=\u00a70\u00a7l彩色虚空
+value.ARROW_MODE.3=\u00a76\u00a7l发光光环
+
+option.ARROW_VOID_COLOR=填充颜色
+option.ARROW_VOID_COLOR.comment=箭头样式设为彩色虚空时使用的颜色
+
+value.ARROW_VOID_COLOR.0=§0§l黑色
+value.ARROW_VOID_COLOR.1=§5§l紫色
+value.ARROW_VOID_COLOR.2=§f§l白色
+value.ARROW_VOID_COLOR.3=§2§l绿色
+value.ARROW_VOID_COLOR.4=§9§l蓝色
+value.ARROW_VOID_COLOR.5=§c§l红色
+value.ARROW_VOID_COLOR.6=§d§l粉色
+
+option.ARROW_HALO_COLOR=环颜色
+option.ARROW_HALO_COLOR.comment=当箭头样式设置为发光光晕时使用的颜色
+
+value.ARROW_HALO_COLOR.0=§6§l金色
+value.ARROW_HALO_COLOR.1=§b§l青色
+value.ARROW_HALO_COLOR.2=§d§l紫色
+value.ARROW_HALO_COLOR.3=§f§l白色
+
+option.CRYSTAL_BLEND_STEPS=混合平滑度
+option.CRYSTAL_BLEND_STEPS.comment=颜色锚点间的细分步骤。越高 = 过渡越丝滑
+
+value.CRYSTAL_BLEND_STEPS.1=默认 (12 步)
+value.CRYSTAL_BLEND_STEPS.2=平滑 (24 步)
+value.CRYSTAL_BLEND_STEPS.4=更平滑 (48 步)
+value.CRYSTAL_BLEND_STEPS.8=极高 (96 步)
+
+screen.BLENDING=§e§l 色彩混合
+screen.ARROW=§6§l 箭头效果
+screen.VOID_OPTIONS=§0§l 彩色虚空设置
+screen.HALO_OPTIONS=§6§l 发光光晕设置
+
+option.HUD_ICON=模式图标
+option.HUD_ICON.comment=右上角显示当前模式的动画圆圈
+
+value.HUD_ICON.0=关闭
+value.HUD_ICON.1=开启
+
+option.SCREEN_BORDER=屏幕边框
+option.SCREEN_BORDER.comment=屏幕边缘的动画发光边框
+
+value.SCREEN_BORDER.0=关闭
+value.SCREEN_BORDER.1=开启
+
+option.BORDER_THICKNESS=边框厚度
+option.BORDER_THICKNESS.comment=边框辉光向内延伸的距离
+
+value.BORDER_THICKNESS.1=极细
+value.BORDER_THICKNESS.2=细
+value.BORDER_THICKNESS.3=默认
+value.BORDER_THICKNESS.4=宽
+value.BORDER_THICKNESS.5=极宽
+
+screen.SCREEN_FX=§b§l 屏幕特效
+
+option.HIT_FLASH_MODE=击中闪光样式
+option.HIT_FLASH_MODE.comment=实体受到伤害时的视觉效果
+
+value.HIT_FLASH_MODE.0=\u00a7c\u00a7l原版红
+value.HIT_FLASH_MODE.1=\u00a7b\u00a7l水晶闪光
+value.HIT_FLASH_MODE.2=\u00a7d\u00a7l水晶 + 红
+
+screen.HIT_FLASH=§c§l 击中闪光
+
+
+
+
+
+option.GLINT_MODE=光泽模式
+option.GLINT_MODE.comment=盔甲和武器上的附魔光泽颜色
+
+value.GLINT_MODE.0=§fVanilla
+value.GLINT_MODE.1=§c§lR§6§la§e§li§a§ln§2§lb§9§lo§d§lw
+value.GLINT_MODE.2=§2§l☘ 自然
+value.GLINT_MODE.3=§9§l≈ 海洋
+value.GLINT_MODE.4=§c§l☀ 日落
+
+option.GLINT_SPEED=光泽速度
+option.GLINT_SPEED.comment=光泽颜色循环的速度
+
+value.GLINT_SPEED.2=缓慢漂移
+value.GLINT_SPEED.5=温和
+value.GLINT_SPEED.10=默认
+value.GLINT_SPEED.20=快速
+value.GLINT_SPEED.40=频闪
+
+value.GLINT_MODE.5=§d§l✨ 霓虹扫掠

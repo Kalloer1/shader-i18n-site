@@ -1,0 +1,63 @@
+# =============================================================
+#   Ink Wash Painting Shader Pack - English Localization
+# =============================================================
+
+option.INK_CONTRAST=墨水对比度
+option.INK_CONTRAST.comment=控制深色和浅色墨迹之间的对比度。默认：1.4
+
+option.COLOR_HINT=颜色保留
+option.COLOR_HINT.comment=保留细微的原始色彩，如国画中的矿物颜料。0 = 纯墨，0.10 = 彩墨。默认：0.04
+
+option.NIGHT_DARKEN=夜间暗化
+option.NIGHT_DARKEN.comment=夜间变暗的程度。0 = 无变化，2.0 = 最暗。默认：1.0
+
+option.NETHER_BRIGHT=下界亮度
+option.NETHER_BRIGHT.comment=提升下界维度亮度。如果下界太暗，请增加此值。0 = 无提升，1.0 = 最大提升。默认：0.4
+
+option.INK_FLOW=墨流动画
+option.INK_FLOW.comment=微妙的动态墨流，营造手绘感。0 = 静态。默认：0.3
+
+option.WIND_STRENGTH=风吹摇动
+option.WIND_STRENGTH.comment=控制树叶、草和花在风中的摇动程度。0 = 静止，3.0 = 强风。默认：1.0
+
+option.EDGE_STRENGTH=边缘强度
+option.EDGE_STRENGTH.comment=中等画笔笔划轮廓（方块级边缘）。默认：1.5
+
+option.EDGE_THICK=粗轮廓
+option.EDGE_THICK.comment=主要结构（山脉、建筑）的粗笔触描边。默认：1.2
+
+option.EDGE_FINE=精细细节
+option.EDGE_FINE.comment=区块纹理细节的精细描边线。默认：1.0
+
+option.NEAR_COLOR=近距离颜色色调
+option.NEAR_COLOR.comment=附近方块会获得细微的原始颜色提示以增强深度感。默认：开
+
+option.DISTANCE_FADE=距离衰减
+option.DISTANCE_FADE.comment=远处物体会逐渐变为纸白色，就像水墨画中的远山。默认：0.6
+
+option.INK_DIFFUSION=墨水扩散
+option.INK_DIFFUSION.comment=湿墨水在纸上扩散的程度。0 = 清晰，1.0 = 最大扩散。默认：0.5
+
+option.PAPER_GRAIN=纸张颗粒
+option.PAPER_GRAIN.comment=宣纸的细腻颗粒纹理。默认：0.03
+
+option.PAPER_INTENSITY=宣纸纹理
+option.PAPER_INTENSITY.comment=宣纸纤维纹理的强度，使用 FBM 噪声。默认：0.06
+
+option.VIGNETTE_STRENGTH=暗角
+option.VIGNETTE_STRENGTH.comment=边缘微暗效果，犹如卷轴边缘墨迹汇聚。默认值：0.4
+
+option.SEAL_ENABLED=图章
+option.SEAL_ENABLED.comment=显示右下角的朱红色印章。默认：开
+
+option.BORDER_ENABLED=滚动边框
+option.BORDER_ENABLED.comment=传统卷轴式边框。默认：开
+
+value.SEAL_ENABLED.0=关闭
+value.SEAL_ENABLED.1=开启
+value.BORDER_ENABLED.0=关闭
+value.BORDER_ENABLED.1=开启
+value.NEAR_COLOR.0=关闭
+value.NEAR_COLOR.1=开启
+
+screen=墨洗设置

@@ -1,0 +1,547 @@
+# AuraLite Shaders v1.1.4 - Copyright (c) 2026 AlexanderNyr. Licensed under CC BY-NC-SA 4.0.
+# ==============================================================================
+# AuraLite Shader Pack - English Language Translations
+# ==============================================================================
+
+# ==============================================================================
+# Quality Profiles — Rebalanced v1.0.4
+# ==============================================================================
+profile.VERY_LOW=极低
+profile.VERY_LOW.comment=绝对最大帧率。所有附加效果关闭：无阴影、无云朵、无 PBR、无 SSR、无体积光。仅进行极简渲染。
+profile.LOW=低配
+profile.LOW.comment=轻量级但可玩。保留植被/水体动画、更亮的星星、FXAA、暗角。无阴影、云朵或 PBR。
+profile.MED=中配
+profile.MED.comment=日常最佳平衡点。阴影 1024，云朵，PBR，SSR 快速，体积光，植被 SSS，湿反射，地面雾气，流星。
+profile.HIGH=高配
+profile.HIGH.comment=发烧友级质量。阴影 2048，SSR 平衡，TAA，SSAO 微弱，体积光 平衡，SMAA。
+profile.ULTRA=极高
+profile.ULTRA.comment=高端。阴影 4096，SSR 高，SSAO 平衡，体积光 高，TAA 稳定，所有效果开启。
+profile.EXTREME=极限
+profile.EXTREME.comment=电影级极限。一切最大化：PBR 无限范围，摄影（AgX）色调映射，最深 SSAO，流星风暴。
+profile.CUSTOM=自定义
+profile.CUSTOM.comment=自定义用户修改的设置。
+
+screen.TRANSLATION_NOTICE=⚠ 翻译可能包含错误
+screen.TRANSLATION_NOTICE.comment=部分本地化字符串可能不准确。如果看起来有些奇怪，请与英文原文进行对比。
+
+# Screens
+screen.LIGHTING=照明设置
+screen.LIGHTING.comment=配置阴影、光照颜色和亮度。
+
+screen.FOLIAGE=植被设置
+screen.FOLIAGE.comment=配置草和叶子的摆动动画。
+
+screen.WATER=水体设置
+screen.WATER.comment=配置波浪、透明度和水体样式。
+
+screen.CLOUDS_MENU=天空与云
+screen.CLOUDS_MENU.comment=配置3D云和天空效果的物理高度、厚度和风格。
+
+screen.POST_PROCESS=后处理与雾
+screen.POST_PROCESS.comment=配置曝光、雾和电影级效果。
+
+# Options
+option.SHADOWS=动态阴影
+option.SHADOWS.comment=启用或禁用太阳和月亮的柔和动态阴影。
+
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=改变阴影贴图质量。较高的值可能会降低性能。
+
+option.PBR_LIGHTING=PBR 照明 (LabPBR)
+option.PBR_LIGHTING.comment=启用基于物理的渲染，用于金属、粗糙度和 3D 法线贴图（需要 PBR 资源包）。
+
+option.PBR_POM=3D 方块浮雕 (POM)
+option.PBR_POM.comment=启用基于物理的视差遮蔽映射以实现 3D 方块纹理。建议在不兼容的资源包上禁用。
+
+option.PBR_STRENGTH=PBR 强度
+option.PBR_STRENGTH.comment=控制 PBR 金属表面的反射率与光泽度。
+
+value.PBR_STRENGTH.1=轻微
+value.PBR_STRENGTH.2=标准
+value.PBR_STRENGTH.3=镜面
+
+option.SSAO=SSAO / 屏幕空间环境光遮蔽
+option.SSAO.comment=用于角落、方块下方及几何交界处接触阴影的屏幕空间环境光遮蔽。从 HIGH 及以上启用。
+option.SSAO_STRENGTH=SSAO 强度
+option.SSAO_STRENGTH.comment=控制屏幕空间环境光遮蔽的深度。仅在启用 SSAO 时生效。
+value.SSAO_STRENGTH.1=微弱
+value.SSAO_STRENGTH.2=平衡
+value.SSAO_STRENGTH.3=深度
+
+option.LIGHTMAP_WARMTH=火把暖度
+option.LIGHTMAP_WARMTH.comment=调整方块/火把光的温暖度和颜色。
+
+value.LIGHTMAP_WARMTH.1=舒适
+value.LIGHTMAP_WARMTH.2=温暖
+value.LIGHTMAP_WARMTH.3=强烈
+
+option.WAVING_LEAVES=树叶摇曳
+option.WAVING_LEAVES.comment=启用树叶温和的摇曳动画。
+
+option.WAVING_GRASS=摇摆植被
+option.WAVING_GRASS.comment=启用草、花和作物的摇摆动画。
+
+option.WIND_SPEED=风速
+option.WIND_SPEED.comment=控制树叶、植物和水波的摇曳速度。
+
+option.FOLIAGE_SSS=叶片SSS
+option.FOLIAGE_SSS.comment=当逆光观察时，为叶片、草和植物启用次表面散射（半透明）。
+
+value.WIND_SPEED.1=轻风
+value.WIND_SPEED.2=微风
+value.WIND_SPEED.3=狂风
+
+option.WATER_WAVES=水波
+option.WATER_WAVES.comment=在水面上启用3D几何波浪。冰和玻璃方块不包括在波动画中。
+
+option.WATER_TRANSPARENCY=水密度
+option.WATER_TRANSPARENCY.comment=控制水、普通冰和玻璃方块的透明度和不透明度。
+
+value.WATER_TRANSPARENCY.1=清晰
+value.WATER_TRANSPARENCY.2=平衡
+value.WATER_TRANSPARENCY.3=深
+
+option.PROCEDURAL_CLOUDS=体积3D云
+option.PROCEDURAL_CLOUDS.comment=启用物理可飞行的3D云，可抵达并穿行其中。
+
+option.CLOUD_HEIGHT=云层高度
+option.CLOUD_HEIGHT.comment=设置世界中云层的物理高度（Y级高度），单位为米。
+
+value.CLOUD_HEIGHT.1=低（约 110m）
+value.CLOUD_HEIGHT.2=标准（约 160m）
+value.CLOUD_HEIGHT.3=高（约 240m）
+
+option.CLOUD_THICKNESS=云层厚度
+option.CLOUD_THICKNESS.comment=配置云层的垂直厚度与体积。
+
+value.CLOUD_THICKNESS.1=薄 (卷云)
+value.CLOUD_THICKNESS.2=标准 (积云)
+value.CLOUD_THICKNESS.3=浓密 (暴风雨云)
+
+option.CLOUD_DISTANCE=云渲染距离
+option.CLOUD_DISTANCE.comment=体积云的最大渲染距离。质量配置档会自动提高它。
+value.CLOUD_DISTANCE.1=近
+value.CLOUD_DISTANCE.2=标准
+value.CLOUD_DISTANCE.3=远
+value.CLOUD_DISTANCE.4=非常远
+
+option.CLOUD_SHADOWS=云阴影
+option.CLOUD_SHADOWS.comment=根据体积云密度生成投射到地形上的透明程序化阴影。通过质量配置档进行平衡。
+option.CLOUD_SHADOW_STRENGTH=云阴影强度
+option.CLOUD_SHADOW_STRENGTH.comment=控制透明云阴影的可见度和强烈程度。
+value.CLOUD_SHADOW_STRENGTH.1=柔和
+value.CLOUD_SHADOW_STRENGTH.2=平衡
+value.CLOUD_SHADOW_STRENGTH.3=强烈
+
+option.GODRAYS=体积光 / 太阳光束
+option.GODRAYS.comment=真正的体积光线行进光束：每步阴影贴图遮挡能在树木和地形间雕琢出真实的云隙光。抖动采样，精确的比尔-朗伯积分，彩色的太阳/月亮辐射。
+option.GODRAYS_QUALITY=体积光质量
+option.GODRAYS_QUALITY.comment=光线行进采样数和积分距离。快速：8次采样/96米。平衡：16/128米。高：24/160米。
+option.GODRAYS_STRENGTH=体积光强度
+option.GODRAYS_STRENGTH.comment=体积光束的亮度。微弱：柔和的大气雾霭。平衡：清晰可见的光束。戏剧性：大胆的电影感光束。
+value.GODRAYS_STRENGTH.1=微弱
+value.GODRAYS_STRENGTH.2=平衡
+value.GODRAYS_STRENGTH.3=戏剧性
+value.GODRAYS_QUALITY.1=快速
+value.GODRAYS_QUALITY.2=平衡
+value.GODRAYS_QUALITY.3=高
+
+option.AURORA_MODE=北极光
+option.AURORA_MODE.comment=控制夜空中真实流动极光的显示。
+
+value.AURORA_MODE.0=禁用
+value.AURORA_MODE.1=仅限寒冷群系
+value.AURORA_MODE.2=始终启用
+
+option.AURORA_SPEED=极光速度
+option.AURORA_SPEED.comment=控制北极光的摇曳和流动速度。
+
+value.AURORA_SPEED.1=慢
+value.AURORA_SPEED.2=标准
+value.AURORA_SPEED.3=快
+
+option.AURORA_STRENGTH=极光亮度
+option.AURORA_STRENGTH.comment=控制极光的整体辉光亮度。
+
+value.AURORA_STRENGTH.1=柔和
+value.AURORA_STRENGTH.2=标准
+value.AURORA_STRENGTH.3=发光
+
+option.AURORA_QUALITY=极光质量
+option.AURORA_QUALITY.comment=北极光的光线步进步数。更高的设置能平滑极光帷幕的体积并减少可见的分层；新的中心采样消除了逐像素的颗粒感。
+value.AURORA_QUALITY.1=柔和 (8 步)
+value.AURORA_QUALITY.2=均衡 (12 步)
+value.AURORA_QUALITY.3=丝滑 (18 步)
+option.NEBULA_BRIGHTNESS=银河亮度
+option.NEBULA_BRIGHTNESS.comment=调整夜间斜向褐色银河星云的辉光亮度。
+
+value.NEBULA_BRIGHTNESS.1=暗
+value.NEBULA_BRIGHTNESS.2=标准
+value.NEBULA_BRIGHTNESS.3=亮
+
+option.STARS_BRIGHTNESS=星星亮度
+option.STARS_BRIGHTNESS.comment=控制夜晚星星的亮度和闪烁光芒。
+
+value.STARS_BRIGHTNESS.1=微弱
+value.STARS_BRIGHTNESS.2=标准
+value.STARS_BRIGHTNESS.3=明亮
+
+option.STARS_AMOUNT=星星密度
+option.STARS_AMOUNT.comment=控制天空中星星的整体数量和密度。
+
+value.STARS_AMOUNT.1=稀少
+value.STARS_AMOUNT.2=标准
+value.STARS_AMOUNT.3=密集
+
+option.RAINBOW_STRENGTH=彩虹强度
+option.RAINBOW_STRENGTH.comment=配置雨后彩虹的亮度和色彩饱和度。
+
+value.RAINBOW_STRENGTH.1=柔和
+value.RAINBOW_STRENGTH.2=平衡
+value.RAINBOW_STRENGTH.3=鲜艳
+
+option.SHOOTING_STARS=流星（陨星）
+option.SHOOTING_STARS.comment=基于物理的流星进入中间层（约80-120公里）。渲染真实的3D大圆弧线，带有烧蚀光变曲线、黑体等离子体颜色（3500-5500 K）、地平线附近的瑞利消光，以及火流星上持久的电离轨迹。
+
+option.SHOOTING_STARS_FREQUENCY=流星活动 (ZHR)
+option.SHOOTING_STARS_FREQUENCY.comment=近似天顶每小时速率。偶发 = 约每小时10颗的真实背景。活跃 = 微弱流星雨。暴风雨 = 峰值密度（约每小时100颗）。
+
+value.SHOOTING_STARS_FREQUENCY.1=零星 (~10/小时)
+value.SHOOTING_STARS_FREQUENCY.2=活跃流星雨
+value.SHOOTING_STARS_FREQUENCY.3=流星风暴
+
+option.SHOOTING_STARS_BRIGHTNESS=星等标度
+option.SHOOTING_STARS_BRIGHTNESS.comment=流星星等标度的主乘数。暗淡 = 真实平均值；明亮 = 缩放火球以获得电影级可见度。
+
+value.SHOOTING_STARS_BRIGHTNESS.1=微弱（真实）
+value.SHOOTING_STARS_BRIGHTNESS.2=标准
+value.SHOOTING_STARS_BRIGHTNESS.3=明亮火球
+
+option.COZY_LIGHTS=火把闪烁
+option.COZY_LIGHTS.comment=启用温暖、舒适的实时闪烁动画，用于火把、营火和灯笼。
+
+option.WET_REFLECTIONS=雨天湿润反射
+option.WET_REFLECTIONS.comment=下雨时，地面、草地和石头等方块在天空下会变得湿润、深色且有光泽。
+
+option.GROUND_MIST=低空地面雾 (Y=62-66)
+option.GROUND_MIST.comment=启用柔和的金白色晨昏雾层，在黎明和黄昏时分滑过水面和冰面。
+
+option.FOG_DENSITY_LEVEL=雾密度
+option.FOG_DENSITY_LEVEL.comment=控制大气地平线雾的强度。
+
+value.FOG_DENSITY_LEVEL.1=低配
+value.FOG_DENSITY_LEVEL.2=中配
+value.FOG_DENSITY_LEVEL.3=高配
+
+option.EXPOSURE=曝光亮度
+option.EXPOSURE.comment=控制图像的整体亮度。
+
+value.EXPOSURE.1=柔和
+value.EXPOSURE.2=平衡
+value.EXPOSURE.3=鲜艳
+
+option.COLOR_SATURATION=颜色饱和度
+option.COLOR_SATURATION.comment=控制屏幕颜色的非线性饱和度。使树叶更翠绿，天空更蔚蓝。
+
+value.COLOR_SATURATION.1=柔和
+value.COLOR_SATURATION.2=均衡
+value.COLOR_SATURATION.3=鲜艳
+value.COLOR_SATURATION.4=鲜活
+
+option.CONTRAST=图像对比度
+option.CONTRAST.comment=选择色调映射和对比度曲线样式。
+
+value.CONTRAST.1=柔和
+value.CONTRAST.2=电影感（ACES）
+value.CONTRAST.3=强烈（高对比度）
+value.CONTRAST.4=摄影（类似AgX）
+
+option.TAA=时间抗锯齿 (TAA)
+option.TAA.comment=结合运动重投影与邻域裁剪的时域解析。在高级预设下减少画面闪烁与锯齿边缘。
+option.TAA_STRENGTH=TAA 强度
+option.TAA_STRENGTH.comment=控制历史混合。数值越高越稳定，但在运动期间可能更模糊。
+value.TAA_STRENGTH.1=轻度
+value.TAA_STRENGTH.2=平衡
+value.TAA_STRENGTH.3=稳定
+
+option.TAA_JITTER=TAA 相机抖动
+option.TAA_JITTER.comment=次像素 Halton 相机抖动，让 TAA 能够重建次像素细节。默认关闭以提供极其稳定的图像；Subtle+ 模式以轻微的时间抖动为代价消除高频闪烁。需要启用 TAA。
+value.TAA_JITTER.0=关闭
+value.TAA_JITTER.1=轻微
+value.TAA_JITTER.2=标准
+value.TAA_JITTER.3=强烈
+
+
+
+option.VIGNETTE=暗角效果
+option.VIGNETTE.comment=在屏幕边缘启用细微的暗化，以增强视觉聚焦。
+
+# ==============================================================================
+# Spatial Anti-Aliasing
+# ==============================================================================
+option.SPATIAL_AA_MODE=空间抗锯齿
+option.SPATIAL_AA_MODE.comment=选择后期处理抗锯齿方法。FXAA 速度快且开销低。SMAA 使用深度缓冲区，可在几何边缘提供更好的质量。可与 TAA 结合使用。
+value.SPATIAL_AA_MODE.0=关闭
+value.SPATIAL_AA_MODE.1=FXAA (快速)
+value.SPATIAL_AA_MODE.2=SMAA (质量)
+
+option.HEAT_SHIMMER=岩浆上方热气扭曲
+option.HEAT_SHIMMER.comment=在岩浆表面上方启用细微的屏幕空间热扭曲效果。
+
+option.HEAT_SHIMMER_STRENGTH=热抖动强度
+option.HEAT_SHIMMER_STRENGTH.comment=控制岩浆上方热气扭曲的强度。
+value.HEAT_SHIMMER_STRENGTH.1=轻微
+value.HEAT_SHIMMER_STRENGTH.2=平衡
+value.HEAT_SHIMMER_STRENGTH.3=强烈
+
+option.WATER_RIFFLES=水波纹强度
+option.WATER_RIFFLES.comment=调整水面上的精细法线贴图波纹的波动性和强度。不影响冰或玻璃。
+
+value.WATER_RIFFLES.1=平静
+value.WATER_RIFFLES.2=标准
+value.WATER_RIFFLES.3=起伏
+
+option.WATER_SPECULAR_STRENGTH=水高光辉光
+option.WATER_SPECULAR_STRENGTH.comment=调整水波纹上太阳/月亮反射的亮度。
+
+value.WATER_SPECULAR_STRENGTH.1=柔和
+value.WATER_SPECULAR_STRENGTH.2=标准
+value.WATER_SPECULAR_STRENGTH.3=闪烁
+
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=控制阴影边缘的柔和与扩散程度。使用旋转泊松圆盘过滤以实现平滑半影。
+
+value.SHADOW_SOFTNESS.1=锐利
+value.SHADOW_SOFTNESS.2=柔和
+value.SHADOW_SOFTNESS.3=超柔和
+
+# ==============================================================================
+# Sun & Moon Lighting
+# ==============================================================================
+screen.SUN_MOON=太阳与月亮
+screen.SUN_MOON.comment=精细调整太阳和月亮的强度、色温和大气效果。
+
+option.SUN_INTENSITY=太阳强度
+option.SUN_INTENSITY.comment=直射阳光的主亮度。越高 = 白天对比度越强。
+value.SUN_INTENSITY.1=微弱
+value.SUN_INTENSITY.2=标准
+value.SUN_INTENSITY.3=明亮
+value.SUN_INTENSITY.4=炽热
+
+option.MOON_INTENSITY=月光强度
+option.MOON_INTENSITY.comment=月光总亮度。越高则越亮，夜晚更清晰可见。
+value.MOON_INTENSITY.1=漆黑夜
+value.MOON_INTENSITY.2=标准
+value.MOON_INTENSITY.3=明亮月亮
+value.MOON_INTENSITY.4=满月之夜
+
+option.SUN_TEMPERATURE=太阳色温
+option.SUN_TEMPERATURE.comment=调整太阳的开尔文曲线。真实模式使用Tanner Helland黑体；暖色=金色；冷色=中性白。
+value.SUN_TEMPERATURE.1=冷色 / 中性
+value.SUN_TEMPERATURE.2=真实
+value.SUN_TEMPERATURE.3=暖金
+
+option.MOON_TEMPERATURE=月亮色温
+option.MOON_TEMPERATURE.comment=月光的色调。冰蓝 = 寒冷蓝色；银色 = 真实的 4100K；温暖 = 丰收月奶油色。
+value.MOON_TEMPERATURE.1=冰蓝色
+value.MOON_TEMPERATURE.2=银色（真实）
+value.MOON_TEMPERATURE.3=温暖奶油色
+
+option.SUN_HALO=太阳光晕（Mie Scatter）
+option.SUN_HALO.comment=当视线靠近太阳时，会在地形上产生柔和的暖色光晕（Mie forward-scattering）
+
+option.SUNRISE_GLOW=增强的日出/日落辉光
+option.SUNRISE_GLOW.comment=启用更强的暖色背向散射，包裹背对低太阳的表面。
+
+# ==============================================================================
+# Extended shadow settings
+# ==============================================================================
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=最大阴影贴图覆盖距离。192m 可提供短暂的 Distant Horizons 接缝延续；512m/768m 可提供扩展的 DH 阴影覆盖。使用 Shadow LOD 和 Distant Horizons Shadow Range 来控制 GPU 消耗。
+value.shadowDistance.60.0=近 (60m)
+value.shadowDistance.80.0=标准 (80m)
+value.shadowDistance.120.0=远 (120m)
+value.shadowDistance.160.0=超远 (160m)
+value.shadowDistance.256.0=扩展 (256m)
+value.shadowDistance.384.0=渲染距离 (384m)
+value.shadowDistance.192.0=DH 接缝 (192m)
+value.shadowDistance.512.0=DH 扩展 (512m)
+value.shadowDistance.768.0=DH 远 (768m)
+
+option.SHADOW_LOD=阴影 LOD
+option.SHADOW_LOD.comment=控制阴影质量随距离的降级。在扩展的192-768m阴影覆盖范围内，LOD减少采样数并增加滤波半径以保持性能。关闭：全局统一质量（最慢）。平衡：在距离25-50%时减少。激进：在距离15-60%时最大减少。在所选接收器范围的95%之外跳过阴影。
+value.SHADOW_LOD.0=关闭（统一质量）
+value.SHADOW_LOD.1=平衡
+value.SHADOW_LOD.2=激进
+option.DH_SHADOW_RANGE=Distant Horizons 阴影范围
+option.DH_SHADOW_RANGE.comment=Distant Horizons LOD 地形和水可以从共享 DH 阴影贴图接收样本的最大范围。接缝模式使阴影接近原版区块；远模式扩展覆盖但可能消耗更多 GPU 时间。没有 Distant Horizons 时无效。
+value.DH_SHADOW_RANGE.1=接缝（1.25倍）
+value.DH_SHADOW_RANGE.2=扩展（2倍）
+value.DH_SHADOW_RANGE.3=远（4倍）
+option.SHADOW_PCSS_BLUR=PCSS 距离模糊
+option.SHADOW_PCSS_BLUR.comment=启用 PCSS 半影软化，在距离和下雨时增加阴影模糊。禁用则固定阴影软化（更清晰的远景阴影，但不太真实）。
+value.SHADOW_PCSS_BLUR.0=关闭（固定软化）
+value.SHADOW_PCSS_BLUR.1=开启（PCSS 半影）
+
+option.AMBIENT_BRIGHTNESS=阴影提亮/环境光
+option.AMBIENT_BRIGHTNESS.comment=控制阴影区域在夜晚和洞穴中的暗度。
+value.AMBIENT_BRIGHTNESS.1=暗
+value.AMBIENT_BRIGHTNESS.2=标准
+value.AMBIENT_BRIGHTNESS.3=提亮（明亮）
+
+option.SHADOW_TINT=阴影色调
+option.SHADOW_TINT.comment=为白天阴影染色。现实世界中蓝天下的阴影带有微妙的冷色调。
+value.SHADOW_TINT.1=中性灰
+value.SHADOW_TINT.2=冷蓝色（真实）
+value.SHADOW_TINT.3=暖色
+
+option.LIGHT_WRAP=光线包裹
+option.LIGHT_WRAP.comment=柔化照亮与未照亮表面之间的明暗交界线。真实 = 物理 Lambert；柔和 = 截图更美观。
+value.LIGHT_WRAP.1=真实 (Lambert)
+value.LIGHT_WRAP.2=柔和包裹
+value.LIGHT_WRAP.3=风格化
+
+# ==============================================================================
+# Screen-Space Reflections (SSR)
+# ==============================================================================
+option.SSR=屏幕空间反射（SSR）
+option.SSR.comment=为水、潮湿表面和金属 PBR 方块添加实时反射环境。自 v1.0.4 版起在中配及以上画质档位启用。
+
+option.SSR_QUALITY=SSR 质量
+option.SSR_QUALITY.comment=控制屏幕空间反射的精度和射线距离。更高 = 更清晰的反射，但 GPU 消耗更大。
+value.SSR_QUALITY.1=快速 (12 步)
+value.SSR_QUALITY.2=平衡 (24 步)
+value.SSR_QUALITY.3=高 (40 步)
+
+option.SSR_STRENGTH=SSR强度
+option.SSR_STRENGTH.comment=控制反射环境在反射表面上的可见度和突出程度。
+
+option.WATER_WAVE_SCALE=波浪振幅
+option.WATER_WAVE_SCALE.comment=控制水面波浪的可见陡峭程度。平静 = 如镜面，风暴 = 强烈破碎的反射。
+option.WATER_WAVE_DETAIL=波浪细节
+option.WATER_WAVE_DETAIL.comment=控制每个方块出现多少小波浪。粗糙 = 少数大波浪，密集 = 许多微小涟漪。
+option.UNDERWATER_NIGHT_DARKNESS=水下夜间黑暗度
+option.UNDERWATER_NIGHT_DARKNESS.comment=控制夜晚水下场景的黑暗程度。月光池保持亮度；极度黑暗带来极端生存风格的黑暗。
+value.SSR_STRENGTH.1=微弱
+value.SSR_STRENGTH.2=平衡
+value.SSR_STRENGTH.3=强烈
+
+# v0.2.9 — water/underwater value labels
+value.WATER_WAVE_SCALE.1=平静
+value.WATER_WAVE_SCALE.2=标准
+value.WATER_WAVE_SCALE.3=汹涌
+value.WATER_WAVE_SCALE.4=风暴
+value.WATER_WAVE_DETAIL.1=粗糙
+value.WATER_WAVE_DETAIL.2=标准
+value.WATER_WAVE_DETAIL.3=致密
+value.UNDERWATER_NIGHT_DARKNESS.1=月光池
+value.UNDERWATER_NIGHT_DARKNESS.2=昏暗
+value.UNDERWATER_NIGHT_DARKNESS.3=真实夜晚
+value.UNDERWATER_NIGHT_DARKNESS.4=漆黑
+
+# PBR Distance
+option.PBR_DISTANCE=PBR渲染距离
+option.PBR_DISTANCE.comment=PBR高光的最大距离。在远距离地形上节省 GPU。低配为近 (16m)，中配为标准 (48m)，高配/极高为远 (128m)，极限为无限。
+value.PBR_DISTANCE.1=近 (16m)
+value.PBR_DISTANCE.2=标准 (48m)
+value.PBR_DISTANCE.3=远 (128m)
+value.PBR_DISTANCE.4=无限
+
+# ==============================================================================
+# Tri-Mode Physical Sky (v1.1.0)
+# ==============================================================================
+screen.ATMOSPHERE_OPTIONS=大气
+screen.ATMOSPHERE_OPTIONS.comment=物理天空散射、高度和时间解析控制。
+option.ATMOSPHERE_TURBIDITY=大气浑浊度
+option.ATMOSPHERE_TURBIDITY.comment=控制物理天空中的气溶胶雾霾。清晰呈现深蓝天空；朦胧则带来更明亮、柔和的地平线和更强的前向散射。
+value.ATMOSPHERE_TURBIDITY.1=清晰
+value.ATMOSPHERE_TURBIDITY.2=平衡
+value.ATMOSPHERE_TURBIDITY.3=朦胧
+option.ATMOSPHERE_SCALE=大气尺度
+option.ATMOSPHERE_SCALE.comment=将 Minecraft 高度转换为物理天空的大气高度。紧凑模式使山脉对天空的影响减小；电影模式保留原始的大尺度高度效果。
+value.ATMOSPHERE_SCALE.1=紧凑 (25m/block)
+value.ATMOSPHERE_SCALE.2=平衡 (50m/block)
+value.ATMOSPHERE_SCALE.3=电影 (100m/block)
+option.GROUND_BOUNCE_MODE=地面反弹反照率
+option.GROUND_BOUNCE_MODE.comment=控制物理天空中低层大气的地面反弹颜色。自动适应寒冷和沼泽群系信号。
+value.GROUND_BOUNCE_MODE.0=自动（感知群系）
+value.GROUND_BOUNCE_MODE.1=中性土壤
+value.GROUND_BOUNCE_MODE.2=植被
+value.GROUND_BOUNCE_MODE.3=雪
+value.GROUND_BOUNCE_MODE.4=沙漠
+option.SKY_TEMPORAL=天空时间解析
+option.SKY_TEMPORAL.comment=对物理天空和渐变天空使用仅旋转的历史混合，以平滑地平线渐变和低采样散射。需要 TAA。渐变天空使用较低的历史权重以限制云/极光拖尾。
+option.SKY_MODE=天空模式
+option.SKY_STYLE=天空风格
+option.SKY_STYLE.comment=物理天空的艺术方向。真实 = 真实角尺寸与中性颜色（天文外观）。半真实 = 可辨识的太阳/月亮（x2.8），更丰富的颜色，柔和辉光。幻想 = 宏大的太阳/月亮（x5.5），大日冕，鲜艳的青/绯红/靛蓝色板。
+option.SKY_MODE.comment=实验性 — 在所有配置档中关闭。渐变 = 轻量旧版天空（开尔文，稳定默认）。物理（实时）结合逐像素瑞利、米氏和臭氧一级散射，使用微小的 HDR 透射/多重散射 LUT，感知群系的地面反弹和可选的天空时间解析。在实验标签页中手动启用。
+value.SKY_MODE.0=渐变（旧版）
+value.SKY_STYLE.0=真实
+value.SKY_STYLE.1=半真实
+value.SKY_STYLE.2=幻想
+value.SKY_MODE.1=物理（实时）
+
+option.SKY_QUALITY=天空散射质量
+option.SKY_QUALITY.comment=物理天空的主光线步进采样数。微型 LUT 可稳定透射率和有界多重散射；更高的质量仍能改善逐像素单次散射细节。快速：7x3。标准：10x4。高：14x5。
+value.SKY_QUALITY.1=快速 (8x4)
+value.SKY_QUALITY.2=标准 (12x6)
+value.SKY_QUALITY.3=高 (16x8)
+
+# Experimental tab
+screen.EXPERIMENTAL=⚗ 实验性
+screen.EXPERIMENTAL.comment=实验性功能，可能在未来的版本中更改或移除。
+
+# v1.1.1 — shadow pipeline + POM option labels
+value.shadowMapResolution.512=512
+value.shadowMapResolution.1024=1024
+value.shadowMapResolution.2048=2048
+value.shadowMapResolution.4096=4096
+value.shadowMapResolution.8192=8192
+option.POM_DEPTH=POM 深度
+option.POM_DEPTH.comment=在启用 PBR POM 时，控制视差遮蔽映射的可见深度。
+value.POM_DEPTH.1=低
+value.POM_DEPTH.2=标准
+value.POM_DEPTH.3=深度
+option.POM_STEPS=POM 步数
+option.POM_STEPS.comment=控制视差遮蔽映射的光线行进步数。数值越高，质量越好，但 GPU 消耗也越多。
+value.POM_STEPS.1=快速
+value.POM_STEPS.2=标准
+value.POM_STEPS.3=高
+value.POM_STEPS.4=极高
+
+screen.SHADOW_OPTIONS=阴影
+screen.SHADOW_OPTIONS.comment=动态阴影分辨率、距离、柔和度和色调。
+screen.PBR_OPTIONS=PBR与材质
+screen.PBR_OPTIONS.comment=PBR光照、视差浮雕、强度和渲染距离。
+screen.AO_REFLECTIONS=AO与反射
+screen.AO_REFLECTIONS.comment=SSAO、屏幕空间反射和雨水湿润反射。
+screen.CLOUD_SHAPE=云
+screen.CLOUD_SHAPE.comment=体积云形状、高度、距离和云层阴影。
+screen.LIGHT_SHAFTS=体积光
+screen.LIGHT_SHAFTS.comment=体积化太阳/月亮光束及其质量/强度。
+screen.NIGHT_SKY=夜空
+screen.NIGHT_SKY.comment=极光、星星、银河和流星。
+
+# [v1.1.3]
+option.CLOUD_QUALITY=云光线步进质量
+option.CLOUD_QUALITY.comment=体积云的光线步进步数。便宜（8步）最快，但在厚云上可能出现光带；高（16步）最平滑。
+value.CLOUD_QUALITY.1=便宜（8步）
+value.CLOUD_QUALITY.2=标准（12步）
+value.CLOUD_QUALITY.3=高（16步）
+option.BLOOM=HDR泛光
+option.BLOOM.comment=启用或禁用HDR泛光。禁用时，AuraLite会跳过所有五次泛光合成处理，以降低GPU负载。
+option.HDR_BLOOM=泛光强度
+option.HDR_BLOOM.comment=过亮源（如太阳/月亮盘、岩浆、传送门、热高光）周围的宽高斯泛光强度。启用HDR泛光时，会经过半分辨率泛光链处理。
+value.HDR_BLOOM.1=微弱
+value.HDR_BLOOM.2=平衡
+value.HDR_BLOOM.3=强烈
+option.POST_SHARPEN=TAA后锐化
+option.POST_SHARPEN.comment=温和的5抽头非锐化掩膜，可恢复因时间累积而丢失的纹理细节。禁用可获得更柔和、更电影感的画面。
+
+# [v1.1.3]
+option.WATER_DEBUG=水体诊断
+option.WATER_DEBUG.comment=用于诊断有问题的水体渲染的开发者覆盖层（关闭 / 分类 / 光照贴图 / 原始标签透明度）。报告水体问题时，请在分类模式下截取屏幕截图：绿色 = 健康，红色 = 深度救援，黄色 = 从自发光路径救援，洋红色 = 被岩浆/传送门守卫拒绝。正常游戏时请保持关闭。
+value.WATER_DEBUG.0=关闭
+value.WATER_DEBUG.1=分类
+value.WATER_DEBUG.2=光照贴图
+value.WATER_DEBUG.3=原始标签透明度

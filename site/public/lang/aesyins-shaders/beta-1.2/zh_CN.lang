@@ -1,0 +1,158 @@
+langPackName=英语
+
+# Screens
+screen.MADE_BY_AESYIN=§d§l由 aesyin
+screen.MADE_BY_AESYIN.comment=由 aesyin 制作的风格化卡通光影。
+
+profile.aesyin=§d§laesyin
+profile.Low=§e低配
+profile.Medium=§a中配
+profile.High=§c高配
+profile.comment=光影质量预设。点击切换预设。
+
+screen.LIGHTING=光照
+screen.POST_PROCESSING=后期处理
+screen.COLOR_CORRECTION=色彩校正
+screen.BLOOM=泛光
+screen.SHADOWS=阴影
+screen.SSAO=环境光遮蔽 (SSAO)
+screen.ANTI_ALIASING=抗锯齿
+screen.OUTLINES=描边
+
+# Main shader settings screen
+option.ENABLE_SHADOWS=阴影
+option.ENABLE_SHARP_SHADOWS=锐化阴影
+option.SHADOW_DARKNESS=阴影暗度
+option.SHADOW_THRESHOLD=阴影裁切阈值
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.AMBIENT_LEVEL=环境光等级
+
+
+option.ENABLE_SSAO=启用环境光遮蔽
+option.ENABLE_SSAO.comment=启用屏幕空间环境光遮蔽以生成柔和的角落阴影。
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_RADIUS=环境光遮蔽扩散半径
+option.SSAO_SAMPLES=环境光遮蔽质量
+option.SSAO_SAMPLES.comment=更高的采样数可减少噪点但会降低FPS。
+
+screen.WORLD=世界
+screen.CLOUDS=云
+option.CLOUD_BRIGHTNESS=云亮度
+option.CLOUD_BRIGHTNESS.comment=控制纯白云的刺眼强度。1.0为默认值。
+screen.SKY=天空
+option.ENABLE_NEBULA=宇宙星云
+option.ENABLE_SHOOTING_STARS=流星
+
+# Water
+screen.WATER_MENU=水
+option.ENABLE_WAVES=启用波浪
+option.WAVE_SPEED_MULT=波浪速度
+option.WAVE_FREQ_MULT=波浪频率
+option.WAVE_STRENGTH=波浪强度
+option.ENABLE_FOAM=岸边泡沫
+option.FOAM_THICKNESS=泡沫厚度
+option.ENABLE_UNDERWATER_FOG=水下雾
+option.WATER_TRANSPARENCY=透明度
+option.WATER_TRANSPARENCY.0.45=低
+option.WATER_TRANSPARENCY.0.65=中
+option.WATER_TRANSPARENCY.0.85=高
+
+# Weather screen
+screen.WEATHER=天气
+option.RAIN_TILT=雨水倾斜
+option.RAIN_DENSITY=雨水密度
+option.CARTOON_RAIN=卡通雨水风格
+
+# Animations screen
+screen.ANIMATIONS=动画
+screen.WAVY_FOLIAGE=摇曳树叶
+option.WAVY_FOLIAGE=启用摇曳树叶
+option.WAVY_SPEED=摇曳速度
+option.WAVY_STRENGTH=摇曳强度
+
+# Post-processing screen
+option.HIT_COLOR_ENABLED=击中颜色
+option.HIT_COLOR_ENABLED.comment=当实体被击中时启用红色闪烁。
+screen.LENS_FLARE=镜头光晕
+screen.LENS_FLARE.comment=配置屏幕空间镜头光晕效果。
+option.ENABLE_LENS_FLARE=启用镜头光晕
+option.ENABLE_LENS_FLARE.comment=当看向太阳时启用电影级镜头光晕。
+option.LENS_FLARE_INTENSITY=强度
+option.ENABLE_BLOOM=泛光
+option.BLOOM_INTENSITY=强度
+
+screen.MOTION_BLUR=运动模糊
+screen.MOTION_BLUR.comment=配置基于摄像机的运动模糊。
+option.ENABLE_MOTION_BLUR=启用运动模糊
+option.ENABLE_MOTION_BLUR.comment=平滑快速的相机移动。
+option.MOTION_BLUR_INTENSITY=强度
+option.MOTION_BLUR_INTENSITY.comment=调整模糊的强度。
+
+screen.DOF=景深
+screen.DOF.comment=配置基于焦点的电影级模糊效果。
+option.ENABLE_DOF=启用景深
+option.ENABLE_DOF.comment=将相机焦点对准你注视的目标。
+option.DOF_APERTURE=光圈 (f-stop)
+option.DOF_APERTURE.comment=控制镜头开口的大小。较低的数值（较大的开口）会大幅缩小对焦区域并产生巨大的背景模糊。
+option.DOF_FOCAL_LENGTH=焦距 (mm)
+option.DOF_FOCAL_LENGTH.comment=模拟镜头变焦。较高的焦距会压缩背景并增加模糊的强度。
+option.DOF_DISTANCE_BLUR=距离模糊
+option.DOF_DISTANCE_BLUR.comment=在远处地平线上添加柔和的持续模糊效果。
+option.DOF_SAMPLES=散景质量 (采样数)
+option.DOF_SAMPLES.comment=较高的数值需要更多的采样来制作丝滑的散景圆圈，但会降低 FPS。
+
+# Colour correction sub-screen
+option.COLOR_SATURATION=饱和度
+option.COLOR_BRIGHTNESS=亮度
+option.COLOR_CONTRAST=对比度
+option.COLOR_VIBRANCE=自然饱和度
+
+option.Dynamic Lights=动态光照
+
+# Anti-Aliasing sub-screen
+option.ENABLE_AA=启用抗锯齿 (FXAA)
+option.ENABLE_AA.comment=使用快速近似抗锯齿平滑锯齿边缘。
+option.AA_EDGE_THRESHOLD=边缘敏感度
+option.AA_EDGE_THRESHOLD.comment=低值影响更多边缘，高值仅关注锐利线条。尝试 0.125。
+
+# Outlines sub-screen
+screen.WORLD_OUTLINES=世界轮廓
+screen.ENTITY_OUTLINES=实体轮廓
+option.ENABLE_OUTLINES=实体轮廓
+option.OUTLINE_THICKNESS=实体厚度
+option.OUTLINE_STYLE=实体样式
+option.OUTLINE_SMOOTHNESS=实体平滑度
+
+option.ENABLE_WORLD_OUTLINES=世界轮廓
+option.ENABLE_WORLD_OUTLINES.comment=在物理世界中的所有方块（树木、泥土、草、建筑）上绘制轮廓。
+option.WORLD_OUTLINE_STYLE=世界样式
+option.WORLD_OUTLINE_THICKNESS=世界厚度
+
+value.OUTLINE_STYLE.1=暗色
+value.OUTLINE_STYLE.2=亮色
+value.OUTLINE_STYLE.3=反色
+value.OUTLINE_STYLE.4=地牢
+
+value.WORLD_OUTLINE_STYLE.1=暗色
+value.WORLD_OUTLINE_STYLE.2=亮色
+value.WORLD_OUTLINE_STYLE.3=反色
+value.WORLD_OUTLINE_STYLE.4=地牢
+
+# Wind Streak Effects
+screen.WIND_EFFECTS=风效
+option.ENABLE_WIND_STREAKS=启用风纹
+option.ENABLE_WIND_STREAKS.comment=添加细长的水平白色风纹，呼啸着掠过相机。
+option.WIND_STREAK_OPACITY=风纹不透明度
+option.WIND_STREAK_OPACITY.comment=控制风纹的透明度。(0.5 = 50% 不透明度，1.0 = 实心)
+option.WIND_STREAK_SIZE_VARIANCE=尺寸变化
+option.WIND_STREAK_SIZE_VARIANCE.comment=随机化每条风纹的精确厚度和长度。(0.0 = 统一尺寸，1.0 = 差异极大)
+option.WIND_STREAK_RADIUS=渲染半径
+option.WIND_STREAK_RADIUS.comment=风纹出现的最大方块距离。过高数值可能略微降低 FPS。
+option.WIND_STREAK_TAPER=末端渐尖
+option.WIND_STREAK_TAPER.comment=将线条末端拉成尖锐的空气动力学点，类似于动漫速度线。
+option.WIND_STREAK_SINE=正弦摆动
+option.WIND_STREAK_SINE.comment=为飞过的风纹添加垂直波浪形运动。
+option.WIND_STREAK_SPEED=风速
+option.WIND_STREAK_SPEED.comment=风纹掠过相机的速度。注意：相对于速度线，它们是向后吹的！
+option.WIND_STREAK_DENSITY=风纹密度
+option.WIND_STREAK_DENSITY.comment=在任何给定时间内，渲染半径内存在的风纹绝对数量。

@@ -1,0 +1,288 @@
+#shaders/lang/en_us.lang
+
+#Profiles
+profile.LOW=低
+profile.MEDIUM=中（默认）
+profile.HIGH=高
+profile.ULTRA=超高
+profile.comment=着色器配置文件更改性能设置以优化视觉保真度与性能的比率。除非你知道你在做什么，否则建议使用其中一个配置文件。
+
+#Screens
+screen.COOL_FEATURES=酷炫功能
+screen.COOL_FEATURES.comment=关于着色器包的一般信息。
+
+screen.PERFORMANCE_SETTINGS=性能设置
+screen.PERFORMANCE_SETTINGS.comment=直接影响性能和渲染质量的设置。
+
+screen.CLOUD_SETTINGS=云
+screen.CLOUD_SETTINGS.comment=控制云渲染、外观和速度的设置。
+
+screen.ATMOSPHERE_SETTINGS=大气与雾效
+screen.ATMOSPHERE_SETTINGS.comment=用于大气雾、体积雾和薄雾的设置。
+
+screen.LIGHTING_SETTINGS=光照
+screen.LIGHTING_SETTINGS.comment=与阴影和环境光遮蔽相关的设置。
+
+screen.WATER_SETTINGS=水
+screen.WATER_SETTINGS.comment=用于水渲染、焦散和波浪效果的设置。
+
+screen.POST_PROCESSING=后期处理
+screen.POST_PROCESSING.comment=色调映射、色彩分级及最终画面调整的设置
+
+#Information
+option.info0=NXT 光影包
+value.info0.0=
+option.info0.comment=基于物理渲染的光影包，包含自定义云层、水体、雾效与光照增强效果
+
+option.info1=视觉特效
+value.info1.0=
+option.info1.comment=开关电影级后期处理特效。所有特效默认禁用
+
+option.info2=提示与说明
+value.info2.0=
+option.info2.comment=降低渲染距离以获得最佳性能。使用预设配置的质量档位。降低阴影质量对性能提升最为明显
+
+option.OLD_TV_EFFECT=\u00A7c复古电视效果
+option.OLD_TV_EFFECT.comment=添加带有扫描线、暗角及轻微色彩溢出的复古CRT电视视觉效果。默认禁用
+
+option.CRTBarSize=CRT边缘条尺寸
+option.CRTBarSize.comment=圆角CRT边缘条的尺寸。数值越高可见区域越大，数值越低圆角越明显
+
+option.ScanlineIntensity=扫描线强度
+option.ScanlineIntensity.comment=水平扫描线强度。0 = 无扫描线，数值越高线条越明显
+
+option.ScanlineFrequency=扫描线密度
+option.ScanlineFrequency.comment=扫描线间距密度。数值越高可见线条越多
+
+option.CRTCurveStrength=CRT曲线强度
+option.CRTCurveStrength.comment=屏幕曲面弯曲程度（模拟真实CRT显示器）。0 = 平面，数值越高曲面效果越强
+
+option.CRTFlicker=CRT屏幕闪烁
+option.CRTFlicker.comment=屏幕亮度闪烁幅度。0 = 稳定，数值越高闪烁越明显
+
+option.LETTER_BOX=\u00A7a宽银幕效果
+option.LETTER_BOX.comment=在屏幕顶部和底部添加电影级宽屏黑条。默认禁用
+
+option.LetterBoxSize=宽银幕黑条高度
+option.LetterBoxSize.comment=宽银幕黑条的高度。数值越高黑条越厚，可见区域越小
+
+option.VHS_EFFECT=\u00A79录像带效果
+option.VHS_EFFECT.comment=添加带有追踪线、色彩溢出、画面抖动和静态噪点的复古VHS录像带视觉效果。默认禁用
+
+option.VHSWobble=VHS抖动效果
+option.VHSWobble.comment=画面水平抖动/扭曲幅度。0 = 稳定，数值越高图像变形越严重
+
+option.VHSGrain=VHS噪点颗粒
+option.VHSGrain.comment=静态噪点/颗粒覆盖层的强度。0 = 清晰，数值越高噪点越多
+
+option.VHSSplit=VHS色彩溢出
+option.VHSSplit.comment=RGB通道分离导致的色边程度。0 = 锐利，数值越高色彩分离越明显
+
+option.GLITCH_EFFECT=\u00A7e数字故障效果
+option.GLITCH_EFFECT.comment=添加随机画面撕裂、区块错位及色彩通道分离，模拟数据损坏/赛博朋克视觉效果。默认禁用
+
+option.GlitchBlocks=故障区块数量
+option.GlitchBlocks.comment=用于故障错位的水平区块数量。数值越高区块越小，细节越丰富
+
+option.GlitchSplit=故障RGB分离
+option.GlitchSplit.comment=故障效果中的色彩通道分离程度。0 = 无，数值越高分离越明显
+
+option.GlitchBarCount=故障条纹数量
+option.GlitchBarCount.comment=随机变黑的水平条纹数量。数值越高可能出现的条纹越多
+
+#Settings
+option.SHADOW_QUALITY=阴影质量
+option.SHADOW_QUALITY.comment=实时阴影质量调节。降低数值可显著提升性能
+value.SHADOW_QUALITY.0=低
+value.SHADOW_QUALITY.1=中
+value.SHADOW_QUALITY.2=高
+value.SHADOW_QUALITY.3=超高
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=玩家到阴影渲染距离。降低数值可提升性能
+value.shadowDistance.64.0=4区块
+value.shadowDistance.96.0=6区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.192.0=12区块（默认）
+value.shadowDistance.256.0=16区块
+
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BIAS.comment=调节阴影痤疮与彼得潘效应伪影。通常默认值即可
+
+option.ShadowPCFSamples=阴影PCF采样数
+option.ShadowPCFSamples.comment=阴影过滤采样数量。数值越低速度越快，数值越高阴影越平滑
+
+option.ShadowPCSSSamples=阴影PCSS采样数
+option.ShadowPCSSSamples.comment=软阴影遮挡体搜索采样数量。数值越低速度越快，数值越高软阴影越精确
+
+option.ShadowSoftness=阴影柔化半径
+option.ShadowSoftness.comment=软阴影半影最大半径。数值越高阴影边缘越柔和，但可能损失细节
+
+option.CloudSamples=云层光线步进采样数
+option.CloudSamples.comment=体积云的光线步进步数。数值越低速度越快，数值越高细节越丰富
+
+option.GodRaySamples=神光采样数
+option.GodRaySamples.comment=光轴的最大光线步进步数。数值越低速度越快，数值越高光轴越平滑
+
+option.WaterFogSamples=水下雾效采样数
+option.WaterFogSamples.comment=水下雾气散射的步进次数。数值越低速度越快，数值越高水雾效果越精确
+
+option.AtmosphereSamples=大气采样数
+option.AtmosphereSamples.comment=大气散射的积分步数。数值越低速度越快，数值越高天空色彩越精确
+
+option.CLOUD_QUALITY=云层质量
+option.CLOUD_QUALITY.comment=调节体积云的细节与采样质量
+value.CLOUD_QUALITY.1=低
+value.CLOUD_QUALITY.2=中
+value.CLOUD_QUALITY.3=高
+
+option.CloudScatteringCoefficient=云层散射
+option.CloudScatteringCoefficient.comment=控制光线穿过云层的散射程度。数值越高云层越明亮且不透明度越高
+
+option.CloudAbsorptionCoefficient=云层吸收
+option.CloudAbsorptionCoefficient.comment=控制云层的光线吸收程度。数值越高云层阴影越暗
+
+option.CloudMultiScatteringD=云层多重散射
+option.CloudMultiScatteringD.comment=模拟光线在云层内多次反射的过程。数值越高，云朵显得越柔和、扩散感越强。
+
+option.Cloud2DHeight=云层高度
+option.Cloud2DHeight.comment=设置二维云层在海拔之上的方块高度。
+
+option.CloudSpeed=云层速度
+option.CloudSpeed.comment=控制云朵飘过天空的速度。数值越低 = 越平缓，数值越高 = 越动态。
+
+option.CloudDensity=云层密度
+option.CloudDensity.comment=整体云层厚度乘数。数值越高 = 云朵越饱满，数值越低 = 越轻薄如絮。
+
+option.CloudThickness=云层厚度
+option.CloudThickness.comment=云层的垂直厚度。越厚 = 体积纵深感越强，越薄 = 云层越平坦。
+
+option.CloudDetailStrength=云层细节侵蚀度
+option.CloudDetailStrength.comment=细节噪波侵蚀云层边缘的程度。数值越高 = 边缘越呈絮状/破碎，数值越低 = 云朵越平滑。
+
+option.CloudHeightFalloff=云层高度衰减
+option.CloudHeightFalloff.comment=云朵上下边缘变薄的速度。数值越低 = 边缘越柔和，数值越高 = 云层边界越清晰。
+
+option.CloudAmbientBrightness=云层环境亮度
+option.CloudAmbientBrightness.comment=环境/天空光照射云层的亮度。数值越高 = 云底越明亮。
+
+option.CloudAmbientSaturation=云层环境饱和度
+option.CloudAmbientSaturation.comment=环境光照射云层的色彩饱和度。0 = 纯灰度，1.0 = 完整天空色彩。
+
+option.CloudPhaseMix=云层相位混合
+option.CloudPhaseMix.comment=前向与后向光散射的混合程度。0 = 完全前向辉光，0.5 = 均衡，数值越高 = 更多背光效果。
+
+option.unitDistance=雾气距离缩放
+option.unitDistance.comment=控制大气雾随距离积累的速度。数值越低，雾气显得越近。
+
+option.VolumetricFogHeight=雾气基础高度
+option.VolumetricFogHeight.comment=体积雾开始出现的海拔高度。
+
+option.VolumetricFogThickness=雾气浓度
+option.VolumetricFogThickness.comment=体积雾层在基础高度之上延伸的垂直高度。
+
+option.FogDensity=雾密度
+option.FogDensity.comment=高度雾强度乘数。数值越低 = 雾越稀薄，数值越高 = 雾越浓厚。
+
+option.HeightFogDensity=高度雾强度
+option.HeightFogDensity.comment=控制低洼处高度雾的视觉浓度。数值越高 = 越不透明。
+
+option.HeightFogFalloff=高度雾衰减
+option.HeightFogFalloff.comment=高度雾随海拔升高而变薄的速度。数值越高 = 边缘越锐利，数值越低 = 过渡越柔和。
+
+option.HeightFogFloor=雾气最低高度
+option.HeightFogFloor.comment=高度雾开始出现的最低海拔（以方块为单位）。
+
+option.PatchyFogDensity=斑驳雾密度
+option.PatchyFogDensity.comment=控制斑驳雾效果的可见度。0 = 仅显示均匀雾，数值越高 = 斑驳变化越明显。
+
+option.PatchyFogSpeed=斑驳雾速度
+option.PatchyFogSpeed.comment=斑驳雾在场景中飘动的速度。
+
+option.VolumetricFogDensity=体积雾密度
+option.VolumetricFogDensity.comment=控制体积雾层的浓度。数值越高 = 雾越浓密。
+
+option.WaterFogDensity=水雾密度
+option.WaterFogDensity.comment=控制水下能见度衰减速度。数值越高 = 水体越浑浊，数值越低 = 越清澈。
+
+option.GTAO_ON=基础环境光遮蔽
+option.GTAO_ON.comment=启用基于物理的环境光遮蔽，可在缝隙和角落产生真实的接触阴影。
+
+option.VanillaAO=原版环境光遮蔽
+option.VanillaAO.comment=启用Minecraft内置的平滑光照环境光遮蔽。
+
+option.SunlightStrength=阳光强度
+option.SunlightStrength.comment=直射阳光的亮度。数值越高 = 阳光照射区域越明亮。
+
+option.MoonlightStrength=月光强度
+option.MoonlightStrength.comment=夜间月光亮度。数值越高 = 夜间越明亮。
+
+option.SSS_Strength=次表面散射
+option.SSS_Strength.comment=光线穿过树叶和薄表面的强度。数值越高 = 叶片边缘发光效果越明显。
+
+option.AmbientStrength=环境光强度
+option.AmbientStrength.comment=天空/环境光在物体表面的亮度。数值越高 = 阴影和间接光照越明亮。
+
+option.BlockLightR=火把光红色分量
+option.BlockLightR.comment=火把/方块光源颜色的红色分量。数值越高 = 橙色更暖，数值越低 = 色调更冷。
+
+option.BlockLightG=火把光绿色分量
+option.BlockLightG.comment=火把/方块光源颜色的绿色分量。
+
+option.BlockLightB=火把光蓝色分量
+option.BlockLightB.comment=火把/方块光源颜色的蓝色分量。数值越高 = 蓝色调越明显。
+
+option.BlockLightBrightness=火把光亮度
+option.BlockLightBrightness.comment=火把及手持光源的整体亮度乘数。
+
+option.ReflectionStrength=湿润表面反射
+option.ReflectionStrength.comment=湿润表面和农田的反光强度。数值越高 = 镜面反射效果越强。
+
+option.WaterCaustics_ON=水面焦散
+option.WaterCaustics_ON.comment=启用水下表面的动态焦散光效。
+
+option.FLAT_WATER=平静水面
+option.FLAT_WATER.comment=禁用水波和表面动画，呈现完全静止如镜的水面。默认关闭。
+
+option.WAVE_PARALLAX_HEIGHT=水面波浪高度
+option.WAVE_PARALLAX_HEIGHT.comment=调整水面波浪的视觉高度。
+
+option.WAVE_PARALLAX_MIN_SAMPLES=波浪最小采样数
+option.WAVE_PARALLAX_MIN_SAMPLES.comment=水面视差波浪的最小光线步进次数。数值越低 = 计算越快。
+
+option.WAVE_PARALLAX_MAX_SAMPLES=波浪最大采样数
+option.WAVE_PARALLAX_MAX_SAMPLES.comment=水面视差波浪的最大光线步进次数。数值越高=质量越好。
+
+option.TAA=时域抗锯齿
+option.TAA.comment=启用时间性抗锯齿以减少闪烁和锯齿边缘。提升图像稳定性。
+
+option.TAA_Intensity=TAA 强度
+option.TAA_Intensity.comment=控制时间累积的应用强度。数值较低时图像更锐利，但可能闪烁更明显。
+
+option.AGX_ADDITIVE=AGX曝光值
+option.AGX_ADDITIVE.comment=调整AGX色调映射器的曝光级别。数值越高画面越亮。
+
+option.AGX_EV=AGX曝光值补偿
+option.AGX_EV.comment=色调映射器的曝光值补偿。调整整体亮度感知。
+
+option.AGX_LOOK=AgX外观
+option.AGX_LOOK.comment=更改AGX色调映射器的色彩分级风格。
+value.AGX_LOOK.0=默认
+value.AGX_LOOK.1=金色
+value.AGX_LOOK.2=鲜明
+value.AGX_LOOK.3=自定义
+
+option.ExposureBias=曝光补偿
+option.ExposureBias.comment=在色调映射前调整最终图像的明暗度。0 = 中性。
+
+option.Saturation=饱和度
+option.Saturation.comment=控制色彩鲜艳度。1.0 = 自然，数值越高=越鲜艳，数值越低=越去饱和。
+
+option.Contrast=对比度
+option.Contrast.comment=控制明暗区域的差异。数值越高=对比度越强，数值越低=画面越平。
+
+option.VignetteStrength=暗角强度
+option.VignetteStrength.comment=屏幕边缘暗化效果。0 = 无，数值越高=角落越暗以呈现电影感。
+
+option.UnderwaterDistortion=水下扭曲
+option.UnderwaterDistortion.comment=水下热浪扭曲效果的强度。0 = 无，数值越高=波纹越明显。

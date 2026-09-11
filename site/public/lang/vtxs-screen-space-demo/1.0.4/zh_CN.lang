@@ -1,0 +1,68 @@
+screen.postProcessing =后期处理
+
+
+option.BLOOM_INTENSITY =泛光强度
+value.BLOOM_INTENSITY.0=关
+
+option.AA =抗锯齿
+value.AA.0=关
+value.AA.1=QGBAA抗锯齿
+value.AA.2=TGBAA抗锯齿
+option.AA.comment =QGBAA仅消除几何边缘锯齿，TGBAA同时消除纹理像素间的锯齿
+
+option.LM_INTENSITY =光照贴图强度
+option.LM_INTENSITY.comment =原版光照强度缩放
+
+
+option.EXPOSURE =曝光
+
+option.HIZ_PIXEL_SIZE =光线追踪精度
+option.HIZ_PIXEL_SIZE.comment =此选项控制光线追踪器在屏幕上行进的步长。调整该值是在最大射线长度与精度之间的权衡。当前高精度模式下最大射线长度为1536像素，低精度模式下为2560像素。建议在高分辨率显示器上使用低精度
+
+value.HIZ_PIXEL_SIZE.3 =高
+value.HIZ_PIXEL_SIZE.5 =低
+
+option.SHADOW_DISTANCE =太阳阴影距离
+option.SHADOW_DISTANCE.comment =太阳与月亮阴影的渲染距离
+
+value.SHADOW_DISTANCE.0.375 =3 区块
+value.SHADOW_DISTANCE.0.500 =4区块
+value.SHADOW_DISTANCE.0.750 =6区块
+value.SHADOW_DISTANCE.1.000 =8 区块
+value.SHADOW_DISTANCE.1.250 =10区块
+value.SHADOW_DISTANCE.1.500 =12区块
+value.SHADOW_DISTANCE.2.000 =16区块
+value.SHADOW_DISTANCE.2.500 =20区块
+value.SHADOW_DISTANCE.3.000 =24区块
+
+option.SHADOW_QUALITY =太阳阴影质量
+option.SHADOW_QUALITY.comment =控制太阳与月亮阴影的质量，此设置更改阴影贴图分辨率、采样数量和可变半影范围
+value.SHADOW_QUALITY.0 =低
+value.SHADOW_QUALITY.1 =默认
+value.SHADOW_QUALITY.2 =高
+
+option.RAY_PENETRATION =光线穿透度
+option.RAY_PENETRATION.comment =允许光线穿透物体后方，可能导致漏光现象
+value.RAY_PENETRATION.0 =关
+value.RAY_PENETRATION.1 =开
+
+option.DENOISER =降噪器
+value.DENOISER.0 =关
+value.DENOISER.1 =低
+value.DENOISER.2 =开
+
+option.REMOVE_FOG =禁用体积效果
+option.REMOVE_FOG.comment =禁用雾和光束效果
+
+option.VANILLA_CLOUDS =原版云
+option.CLOUD_SHADOWS =云层阴影
+
+
+option.EMISSION_MULTIPLIER =表面自发光强度
+option.EMISSION_MULTIPLIER.comment =调节发光材质的亮度
+
+option.TONEMAP_OPERATOR =色调映射运算符
+value.TONEMAP_OPERATOR.tonemapVTXS =VTShader技术
+value.TONEMAP_OPERATOR.tonemapACESFitted =色彩编码的电影级色调映射
+value.TONEMAP_OPERATOR.tonemapLottes =洛特斯
+value.TONEMAP_OPERATOR.tonemapReinhard =reinhard

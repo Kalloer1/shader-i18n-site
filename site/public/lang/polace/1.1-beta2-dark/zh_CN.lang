@@ -1,0 +1,105 @@
+# Translation File for Polace Shaderpack Settings Screen (en_US)
+# Built specifically for modern Iris 1.10.7+ and Sodium 0.8.12+
+
+# Screen Headers & Sections
+screen.main=Polace 精英设置
+screen.main.label=Polace 精英设置
+screen.GRAPHICS_STRENGTH=图形与性能
+screen.LIGHTING=环境与光照设置
+screen.POST_PROCESSING=电影后期处理
+screen.WATER_SETTINGS=水体与流体美学
+screen.SODIUM_PBR_COMPAT=GPU 与 Sodium 兼容性
+
+# Option Titles
+option.SHADOW_MAP_SIZE=阴影分辨率
+option.SHADOW_SAMPLES=PCF 柔化
+option.RAYMARCH_STEPS=体积光神射步数
+option.TORCH_LIGHT_STRENGTH=手电光照强度
+option.DIRECT_SUN_STRENGTH=直射阳光强度
+option.VOLUMETRIC_INTENSITY=体积光强度
+option.FOG_ALTITUDE_SCALE=雾高度缩放
+option.COLOR_TEMP=颜色温度
+option.WATER_WAVE_SPEED=水波速度
+option.WATER_WAVE_HEIGHT=水波高度
+option.WATER_TRANSPARENCY=水透明度
+option.WATER_ABSORPTION_COEFF=水吸收
+option.ACES_TONEMAPPING=ACES 色调曲线
+option.FXAA=屏幕抗锯齿 (FXAA)
+option.CHROMATIC_ABERRATION=色差畸变
+option.VIGNETTE=暗角边框阴影
+option.BLOOM_GLOW=泛光溢出光晕
+option.SODIUM_LOD_OPTIMIZATION=钠渲染线程
+option.LAB_PBR_STANDARD=LabPBR 1.3 冶金
+option.PARALLAX_MAPPING=视差遮蔽 (POM)
+option.PARALLAX_DEPTH=视差深度缩放
+option.COMPATIBILITY_MODE=GPU 兼容模式
+
+# Tooltips
+option.SHADOW_MAP_SIZE.tooltip=控制深度阴影缓冲区大小。低配=512，中配=2048，高配=4096，极高=8192。更高产生锐利清晰的阴影。
+option.SHADOW_SAMPLES.tooltip=百分比更近过滤的柔化采样。更高消除像素化的阴影边缘。
+option.RAYMARCH_STEPS.tooltip=沿太阳射线路径的采样。设置为 0 可完全禁用体积光并提升帧率。
+option.TORCH_LIGHT_STRENGTH.tooltip=控制发光方块的亮度。
+option.DIRECT_SUN_STRENGTH.tooltip=控制太阳或月亮的强烈原始光照贡献。
+option.VOLUMETRIC_INTENSITY.tooltip=调整体积雾和光线的散射亮度。
+option.FOG_ALTITUDE_SCALE.tooltip=增加雾层覆盖的深度因子和缩放比例。
+option.ACES_TONEMAPPING.tooltip=应用专业的电影级 HDR 平衡曲线。
+option.FXAA.tooltip=平滑屏幕输出中的锯齿块和像素对角线。
+option.CHROMATIC_ABERRATION.tooltip=模拟专业光学玻璃镜头在屏幕边缘的色彩偏移。
+option.VIGNETTE.tooltip=在屏幕边缘应用柔和的阴影暗边。
+option.BLOOM_GLOW.tooltip=为发光方块周围添加美丽的光芒光环。
+option.COLOR_TEMP.tooltip=在温暖的余烬或冰冷的北极色调之间切换色平衡。
+option.WATER_WAVE_SPEED.tooltip=游泳时 Gerstner 波浪周期的速度因子。
+option.WATER_WAVE_HEIGHT.tooltip=波峰高度因子。
+option.WATER_TRANSPARENCY.tooltip=基础水体透明度，用于观察清澈的水池。
+option.WATER_ABSORPTION_COEFF.tooltip=提高会增加水深颜色渗漏密度。
+option.SODIUM_LOD_OPTIMIZATION.tooltip=优化顶点数组布局结构，专为 Sodium 的高性能多核区块构建者设计。
+option.LAB_PBR_STANDARD.tooltip=启用高级材质支持（金属反射、粗糙度、自发光贴图和高度深度贴图），使用资源包。
+option.PARALLAX_MAPPING.tooltip=使用深度高度贴图在纹理表面启用 3D 位移效果。需要启用 PBR 的资源包。
+option.PARALLAX_DEPTH.tooltip=调整表面方块的渲染深度位移深度。过高可能引发纹理扭曲伪影。
+option.COMPATIBILITY_MODE.tooltip=关闭高级着色器路径，以支持旧款显卡。
+
+# Option Values Mapping
+value.SHADOW_MAP_SIZE.512=512x (极低)
+value.SHADOW_MAP_SIZE.1024=1024x (低配)
+value.SHADOW_MAP_SIZE.2048=2048x (中配)
+value.SHADOW_MAP_SIZE.4096=4096x (高配)
+value.SHADOW_MAP_SIZE.8192=8192x (极高)
+
+value.SHADOW_SAMPLES.2=2 (快速)
+value.SHADOW_SAMPLES.4=4 (低配)
+value.SHADOW_SAMPLES.6=6 (中配)
+value.SHADOW_SAMPLES.8=8 (高配)
+value.SHADOW_SAMPLES.12=12 (极高)
+value.SHADOW_SAMPLES.16=16 (极致)
+
+value.RAYMARCH_STEPS.0=禁用
+value.RAYMARCH_STEPS.12=低配 (12)
+value.RAYMARCH_STEPS.20=中配 (20)
+value.RAYMARCH_STEPS.30=高配 (30)
+value.RAYMARCH_STEPS.35=电影 (35)
+value.RAYMARCH_STEPS.45=疯狂 (45)
+
+value.ACES_TONEMAPPING.0=已禁用
+value.ACES_TONEMAPPING.1=已启用
+value.FXAA.0=已禁用
+value.FXAA.1=已启用
+value.CHROMATIC_ABERRATION.0=已禁用
+value.CHROMATIC_ABERRATION.1=已启用
+value.VIGNETTE.0=已禁用
+value.VIGNETTE.1=已启用
+value.BLOOM_GLOW.0=已禁用
+value.BLOOM_GLOW.1=已启用
+value.SODIUM_LOD_OPTIMIZATION.0=已禁用
+value.SODIUM_LOD_OPTIMIZATION.1=已启用
+value.COMPATIBILITY_MODE.0=已禁用
+value.COMPATIBILITY_MODE.1=已启用
+value.LAB_PBR_STANDARD.0=已禁用
+value.LAB_PBR_STANDARD.1=已启用
+value.PARALLAX_MAPPING.0=已禁用
+value.PARALLAX_MAPPING.1=已启用
+value.PARALLAX_DEPTH.0.05=浅 (0.05)
+value.PARALLAX_DEPTH.0.10=低 (0.10)
+value.PARALLAX_DEPTH.0.15=中 (0.15)
+value.PARALLAX_DEPTH.0.20=深 (0.20)
+value.PARALLAX_DEPTH.0.25=陡 (0.25)
+value.PARALLAX_DEPTH.0.30=极 (0.30)

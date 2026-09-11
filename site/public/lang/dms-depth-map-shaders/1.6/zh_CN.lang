@@ -1,0 +1,14 @@
+option.MAX_DISTANCE = 最大距离 (区块)
+option.MAX_DISTANCE.comment = 颜色变为黑色的距离
+option.FALLOFF_CURVE = 渐变曲线
+option.FALLOFF_CURVE.comment = 调整不同距离映射到颜色的方式
+option.CLOUDS = 云层
+option.CLOUDS.comment = 云层是否被渲染
+option.GRADIENT_START= 渐变起点 (区块)
+option.GRADIENT_START.comment= 玩家到起始点的距离，补偿8位渲染
+option.INVERT_GRADIENT = 反转
+option.INVERT_GRADIENT.comment = 反转梯度
+option.SHOW_DEBUG_LINES = 调试线
+option.SHOW_DEBUG_LINES.comment = 标记梯度的起点和终点
+value.SHOW_DEBUG_LINES.0 = 关闭
+value.SHOW_DEBUG_LINES.1 = 开启

@@ -1,0 +1,51 @@
+option.info=Simplicissimus 由 RRe36
+value.info.0=v1.3a
+
+option.shadowMapResolution=阴影贴图分辨率
+option.hq_shadows=柔和阴影
+option.pixel_shadows=像素阴影 (WIP)
+option.pixel_shadow_res=像素大小
+
+option.sunPathRotation=太阳路径旋转
+
+option.labpbr_enabled=labPBR 支持
+option.normalmap_enabled=Normalmap 支持
+option.normalmap_enabled.comment=启用 "labPBR Support" 时自动启用
+
+option.taa_enabled=临时抗锯齿
+option.wind_effects=风效果
+option.fogIntensity=雾强度
+value.fogIntensity.0=关闭
+option.fogStart=雾起始
+option.useMotionblur=运动模糊
+option.promoOutline_enabled=促销轮廓
+option.promoOutline_enabled.comment=来自CaptTatsu的BSL Shaders并获许可
+
+option.bloom=泛光
+option.bloomIntensity=强度
+option.VIEWPORT_GAMUT=显示色域
+option.VIEWPORT_GAMUT.comment=此设置可让您选择与显示器相匹配的色域，以确保预期的外观。默认假设所选色域的正确伽马响应。此设置在 Iris 中被忽略，转而采用其内置的显示色域管理。请在此处的视频设置中设置该值。
+value.VIEWPORT_GAMUT.0=sRGB
+value.VIEWPORT_GAMUT.1=DCI-P3 (D65)
+value.VIEWPORT_GAMUT.2=Display P3
+
+screen.colorgrade=颜色分级
+option.do_colorgrading=启用颜色分级
+option.vibrance_int=自然饱和度
+option.saturation_int=饱和度
+option.gamma_curve=伽马曲线
+option.brightness_int=亮度
+option.constrast_int=对比度
+option.colorlum_r=红色增益
+option.colorlum_g=绿色增益
+option.colorlum_b=蓝色增益
+
+option.vignette_enabled=暗角
+option.vignette_start=内半径
+option.vignette_end=外半径
+option.vignette_intensity=强度
+option.vignette_exponent=衰减
+
+option.cloud_twolayer=云实例层
+option.cloud_twolayer.comment=当位于常规云层上方但实例层下方时会出现一些奇怪的情况。
+option.s_secondCloudLayer=2D 云层

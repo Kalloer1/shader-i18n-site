@@ -1,0 +1,26 @@
+option.Composite_CRTScale = CRT 分辨率
+value.Composite_CRTScale.4 = 低配
+value.Composite_CRTScale.2 = 高配
+
+option.Composite_BloomQuality = 泛光质量
+value.Composite_BloomQuality.0 = 低配
+value.Composite_BloomQuality.1 = 中配
+value.Composite_BloomQuality.2 = 高配
+option.Composite_BloomQuality.comment = 用于泛光的采样次数
+
+option.Composite_BlurQuality = 模糊质量
+value.Composite_BlurQuality.0 = 低配
+value.Composite_BlurQuality.1 = 中配
+value.Composite_BlurQuality.2 = 高配
+option.Composite_BlurQuality.comment = 在CRT边缘使用多少个样本
+
+option.Atmosphere_Sun_Tempurature = 太阳温度
+option.Atmosphere_Sun_Tempurature.comment = 控制太阳的颜色
+option.Atmosphere_Sun_Brightness = 太阳亮度
+
+option.Atmosphere_Moon_Tempurature = 月球温度
+option.Atmosphere_Moon_Tempurature.comment = 控制月亮的颜色
+option.Atmosphere_Moon_Brightness = 月球亮度
+
+option.Camera_Gamma = Gamma
+option.Camera_BloomStrength = 泛光强度

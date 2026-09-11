@@ -1,0 +1,6 @@
+option.J=缩放
+option.J.comment=世界的缩放。
+option.MODE=畸变模式
+option.MODE.comment 0: Rotation zx\n1: Rotation xy\n2: Rotation yz\n3: Relativity (Jittery)\n4: Uptown\n5: Downtown\n6: Solv Geodesics\n7: Custom 1\n8: Custom 2\n9: Custom 3
+option.f5_distance F5 Distance
+option.f5_distance.comment Camera distance when you press F5

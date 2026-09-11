@@ -1,0 +1,24 @@
+#shaders/lang/en_us.lang
+
+# Key
+
+# §a Little to no performance impact.
+# §e Slight performance impact.
+# §6 Moderate performance impact.
+# §c High performance impact.
+# §4 Extreme performance impact.
+
+
+# Global
+
+screen.Global= 全局
+
+screen.motionblur= 运动模糊
+option.MOTION_BLUR= 运动模糊
+option.MOTION_BLUR.comment= 启用/禁用运动模糊。这是一个来自 fps 游戏的流行效果，模拟你在快速转动时视力的模糊感。§a 对性能影响极小。
+option.MOTION_BLUR_NOISE= 运动模糊噪点
+option.MOTION_BLUR_NOISE.comment= 为模糊效果添加噪点。
+option.MOTION_BLUR_STRENGTH= 运动模糊强度
+option.MOTION_BLUR_STRENGTH.comment= 应用的模糊效果的强度。数值越高，模糊越明显。
+option.MOTION_BLUR_SAMPLES= 运动模糊采样次数
+option.MOTION_BLUR_SAMPLES.comment= 沿模糊方向取样的数量。数值越高，效果越平滑，但消耗略高。§a 对性能影响极小。

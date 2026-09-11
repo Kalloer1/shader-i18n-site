@@ -1,0 +1,21 @@
+option.INFO =水§2波纹效§r果.2版
+value.INFO.0 =制作：x§ayzcio
+
+option.GIMG =重影效果
+option.GIMG.comment =开斋节音乐彩蛋
+
+option.NOISE =颗粒感（噪点效果）
+option.NOISE.comment = 123
+
+option.BLURCOLOR =饱和度
+
+option.GLICH =色差
+
+profile.no_glich =无§3故障效果
+
+
+#DEFAULT COLOR
+value.GIMG.2.0 = §e2.0
+value.NOISE.0.3 = §e0.3
+value.BLURCOLOR.0.006 = §e0.006
+value.GLICH.0.01 = §e0.01

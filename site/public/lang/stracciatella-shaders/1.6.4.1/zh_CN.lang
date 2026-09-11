@@ -1,0 +1,520 @@
+///////////////////////////////////////////////////////////
+// ATMOSPHERICS
+///////////////////////////////////////////////////////////
+
+screen.ATMOSPHERICS=雾与天空
+
+option.FOG=雾
+option.FOG.comment=§n边框§r。简单，与原版相当。§n自§r动。当“远地平线”模组存在时启用“高级§n”雾。§r高级。边框雾以及可配置的基于距离和高度的指数雾。
+value.FOG.0=关
+value.FOG.1=边界
+value.FOG.2=自动
+value.FOG.3=高级
+
+// ADVANCED FOG ///////////////////////////////////////////
+
+screen.FOG_ADVANCED_CONFIG=高级雾
+
+option.FA_GLOBAL_DENSITY=全局雾密度
+option.FA_GLOBAL_DENSITY.comment=应用于指数雾的全局恒定雾密度。主世界、下界和末地的密度值相对于此值。
+
+option.FA_OVERWORLD_DENSITY_FACTOR=主世界雾气密度
+option.FA_OVERWORLD_DENSITY_FACTOR.comment=主世界恒定雾的密度。相对于“全局密度”。
+option.FA_OVERWORLD_NOISE_FOG=主世界噪点雾
+
+option.FA_NETHER_DENSITY_FACTOR=下界雾气浓度
+option.FA_NETHER_DENSITY_FACTOR.comment=下界恒定雾的密度。相对于“全局密度”。
+option.FA_NETHER_NOISE_FOG=下界噪点雾
+
+option.FA_END_DENSITY_FACTOR=末地雾密度
+option.FA_END_DENSITY_FACTOR.comment=末地恒定雾的密度。相对于“全局密度”。
+
+screen.FA_OVERWORLD=主世界
+option.FA_SCALE_MULTIPLIER=高度缩放倍数
+option.FA_SCALE_MULTIPLIER.comment=应用于计算高度雾所用缩放因子的倍数。数值越高，密度衰减越陡峭。
+option.FA_FACTOR_MULTIPLIER=高度密度倍数
+option.FA_FACTOR_MULTIPLIER.comment=应用于根据世界高度计算出的密度的倍数。
+
+option.FA_SUNSET_ANISOTROPIC=各向异性日落雾
+option.FA_SUNSET_ANISOTROPIC.comment=日落和日出时的雾密度在朝向太阳的方向上增加更多。
+option.FA_SUNSET_ANISOTROPY=日落雾各向异性
+option.FA_SUNSET_ANISOTROPY.comment=各向异性的强度
+option.FA_SUNSET_MULTIPLIER=日落雾倍数
+option.FA_SUNSET_MULTIPLIER.comment=控制日落和日出期间雾的变化程度。
+
+option.FA_DYNAMIC_FACTOR_START=动态密度起始高度
+suffix.FA_DYNAMIC_FACTOR_START=\ 方块
+option.FA_DYNAMIC_FACTOR_START.comment=雾密度在超过所选世界高度后随玩家高度增加而开始增加。设为默认值时，此选项作为校正因子，以保持雾密度（视觉上）恒定。
+option.FA_DYNAMIC_FACTOR_MULTIPLIER=动态密度倍数
+option.FA_DYNAMIC_FACTOR_MULTIPLIER.comment=控制玩家高度对雾密度的影响程度。
+
+option.FA_OVERWORLD_WIND=风速
+suffix.FA_OVERWORLD_WIND=\ 方块/秒
+option.FA_OVERWORLD_NOISE_SCALE=噪点雾缩放
+option.FA_OVERWORLD_NOISE_FADE=噪点雾淡出
+option.FA_OVERWORLD_NOISE_FOG_FACTOR=噪点雾密度倍数
+
+screen.FA_NETHER=下界
+option.FA_NETHER_WIND=风速
+suffix.FA_NETHER_WIND=\ 方块/秒
+option.FA_NETHER_NOISE_SCALE=噪点雾缩放
+option.FA_NETHER_NOISE_FADE=噪点雾淡出
+option.FA_NETHER_PLAYER_FOG_MULTIPLIER=近处雾密度倍数
+
+screen.FA_END=末地
+
+option.FOG_START=雾起点
+option.FOG_START.comment=设置雾开始出现的位置。相对于渲染距离。
+option.FOG_END=雾终点
+option.FOG_END.comment=设置雾达到最大浓度的位置。相对于渲染距离。
+
+screen.CAVE_SKY_CONFIG=洞穴雾与天空
+option.CAVE_FOG=洞穴雾
+option.CAVE_FOG.comment=当你在地下时，雾会变为另一种颜色。
+option.CAVE_SKY=洞穴天空
+option.CAVE_SKY.comment=当你在地下时，天空会变为另一种颜色。
+option.CAVE_SKY_HEIGHT=洞穴天空高度阈值
+option.CAVE_SKY_HEIGHT.comment=控制天空颜色开始变化所需的世界高度。
+
+option.FOG_CAVE_R=洞穴雾 §cR
+option.FOG_CAVE_R.comment=洞穴内雾气颜色
+option.FOG_CAVE_G=洞穴雾 §2G
+option.FOG_CAVE_G.comment=洞穴内雾气颜色
+option.FOG_CAVE_B=洞穴雾 §9B
+option.FOG_CAVE_B.comment=洞穴内雾气颜色
+
+screen.SUN_MOON_CONFIG=§e太§r阳与§7月亮§r
+option.SUN_SIZE_CHANGE=更改太阳和月亮大小
+option.SUN_SIZE=太阳和月亮大小
+option.SUN_SIZE.comment=更改太阳和月亮的大小。
+option.sunPathRotation=太阳角度
+option.sunPathRotation.comment=倾斜太阳和月亮的旋转轴。原版值为0。
+
+option.SUN_RAIN_OPACITY=下雨时的不透明度
+suffix.SUN_RAIN_OPACITY=%
+option.SUN_RAIN_OPACITY.comment=100% 完全可见。0% 下雨时完全隐藏。
+
+option.HORIZON_CLIP=隐藏于地平线之下
+option.HORIZON_CLIP.comment=太阳和月亮开始在地平线以下消失。
+option.HORIZON_CLIP_HEIGHT=过渡高度
+option.HORIZON_CLIP_HEIGHT.comment=较低：太阳和月亮出现位置较低。较高：太阳和月亮出现位置较高。
+option.HORIZON_CLIP_TRANSITION=过渡
+option.HORIZON_CLIP_TRANSITION.comment=较低：过渡时间更长。较高：过渡时间更短。
+
+screen.STARS_CONFIG=星星
+option.STAR_BRIGHTNESS=原版星星亮度
+
+option.CUSTOM_STARS=自定义星星
+option.STAR_SIZE=尺寸
+option.STAR_DENSITY=密度
+option.STAR_COVERAGE=覆盖范围
+option.STAR_GLOW_SIZE=发光半径
+option.STAR_GLOW_AMOUNT=发光强度
+
+option.SHOOTING_STARS=流星
+option.SHOOTING_STARS.comment=§c仅§r在启用“自定义星空”时生效
+option.SHOOTING_STARS_ANGLE=方向
+option.SHOOTING_STARS_DENSITY=密度
+option.SHOOTING_STARS_SPEED=速度
+option.SHOOTING_STARS_LENGTH=拖尾长度
+option.SHOOTING_STARS_THICKNESS=尾迹粗细
+
+option.SKY_CUSTOM_SUNSET=自定义日落
+option.SKY_SUNSET_R=天空日落颜色-§c红
+option.SKY_SUNSET_G=天空日落颜色-§2绿
+option.SKY_SUNSET_B=天空日落颜色-§9蓝
+
+option.SKY_CUSTOM_COLOR=自定义天空颜色
+screen.SKY_CUSTOM_COLOR_CONFIG=天空颜色配置
+option.SKY_NIGHT_BRIGHTNESS=夜空亮度
+option.SKY_DAY_R=天空白天颜色-§c红
+option.SKY_DAY_G=天空白天颜色-§2绿
+option.SKY_DAY_B=天空白天颜色-§9蓝
+option.SKY_DAY_RAIN_R=天空雨天白天颜色-§c红
+option.SKY_DAY_RAIN_G=天空雨天白天颜色-§2绿
+option.SKY_DAY_RAIN_B=天空雨天白天颜色-§9蓝
+option.SKY_NIGHT_R=天空夜晚颜色-§c红
+option.SKY_NIGHT_G=天空夜晚颜色-§2绿
+option.SKY_NIGHT_B=天空夜晚颜色-§9蓝
+option.SKY_NIGHT_RAIN_R=天空雨天夜晚颜色-§c红
+option.SKY_NIGHT_RAIN_G=天空雨天夜晚颜色-§2绿
+option.SKY_NIGHT_RAIN_B=天空雨天夜晚颜色-§9蓝
+
+option.FOG_CUSTOM_COLOR=自定义雾颜色
+screen.FOG_CUSTOM_COLOR_CONFIG=雾颜色配置
+option.FOG_NIGHT_BRIGHTNESS=夜间雾亮度
+option.FOG_DAY_R=雾白天颜色-§c红
+option.FOG_DAY_G=雾白天颜色-§2绿
+option.FOG_DAY_B=雾白天颜色-§9蓝
+option.FOG_DAY_RAIN_R=雾雨天白天颜色-§c红
+option.FOG_DAY_RAIN_G=雾雨天白天颜色-§2绿
+option.FOG_DAY_RAIN_B=雾雨天白天颜色-§9蓝
+option.FOG_NIGHT_R=雾夜晚颜色-§c红
+option.FOG_NIGHT_G=雾夜晚颜色-§2绿
+option.FOG_NIGHT_B=雾夜晚颜色-§9蓝
+option.FOG_NIGHT_RAIN_R=雾雨天夜晚颜色-§c红
+option.FOG_NIGHT_RAIN_G=雾雨天夜晚颜色-§2绿
+option.FOG_NIGHT_RAIN_B=雾雨天夜晚颜色-§9蓝
+
+screen.END_SKY_CONFIG=末地天空
+option.END_SKY_UP_R=末地天空上层颜色-§c红
+option.END_SKY_UP_G=末地天空上层颜色-§2绿
+option.END_SKY_UP_B=末地天空上层颜色-§9蓝
+option.END_SKY_DOWN_R=末地天空下层颜色-§c红
+option.END_SKY_DOWN_G=末地天空下层颜色-§2绿
+option.END_SKY_DOWN_B=末地天空下层颜色-§9蓝
+
+
+///////////////////////////////////////////////////////////
+// LIGHTING
+///////////////////////////////////////////////////////////
+
+screen.LIGHTING=光照
+
+option.CUSTOM_LIGHTMAP_MODE=光照图
+option.CUSTOM_LIGHTMAP_MODE.comment=§n默认§r。所有功能。§n精简§r。缩减功能（仅保留“自适应方块光照缩减”和“最低光照”）
+value.CUSTOM_LIGHTMAP_MODE.0=简单
+value.CUSTOM_LIGHTMAP_MODE.1=默认
+
+screen.CUSTOM_LIGHTMAP_CONFIG=光照贴图设置
+option.LIGHTMAP_SKYLIGHT_AO=天空光环境光遮蔽
+option.LIGHTMAP_SKYLIGHT_AO.comment=调节天空光的环境光遮蔽强度
+suffix.LIGHTMAP_SKYLIGHT_AO=%
+option.LIGHTMAP_BLOCKLIGHT_AO=方块光环境光遮蔽
+option.LIGHTMAP_BLOCKLIGHT_AO.comment=调节方块光的环境光遮蔽强度
+suffix.LIGHTMAP_BLOCKLIGHT_AO=%
+option.LIGHTMAP_SKYLIGHT_CONTRAST=天空光伽马值
+option.LIGHTMAP_SKYLIGHT_CONTRAST.comment=数值越高 = 越暗。数值越低 = 越亮。
+option.LIGHTMAP_BLOCKLIGHT_CONTRAST=方块光伽马值
+option.LIGHTMAP_BLOCKLIGHT_CONTRAST.comment=数值越高 = 越暗。数值越低 = 越亮。
+
+option.LIGHTMAP_MINIMUM_LIGHT=最小光照
+option.LIGHTMAP_MINIMUM_LIGHT.comment=设置光照贴图的最低亮度。防止洞穴完全黑暗（除非将此值设为零）
+option.LIGHTMAP_NIGHT_VISION_MINIMUM_LIGHT=夜视效果最低光照
+option.LIGHTMAP_NIGHT_VISION_MINIMUM_LIGHT.comment=设置启用夜视效果时的光照贴图最低亮度
+
+option.LIGHTMAP_TERRAIN_SHADING=地形着色
+option.LIGHTMAP_TERRAIN_SHADING.comment=原版风格的地形着色。在平滑光照禁用时有用
+
+option.COLORED_LIGHTS=§c§6彩§e§a§b§d色§c§r灯光
+option.COLORED_LIGHTS.comment=为方块启用彩色光照效果
+
+screen.COLORED_LIGHTS_CONFIG=彩色光照设置
+option.LIGHTMAP_COLOR_VIBRANCE=鲜艳度
+option.LIGHTMAP_COLOR_REJECTION=累积舍弃阈值
+option.LIGHTMAP_COLOR_REJECTION.comment=设置时间历史信息的丢弃方式。数值越高，历史信息越容易被丢弃
+value.LIGHTMAP_COLOR_REJECTION.0=低
+value.LIGHTMAP_COLOR_REJECTION.1=默认
+value.LIGHTMAP_COLOR_REJECTION.2=高
+option.LIGHTMAP_COLOR_BLEND=累积混合因子
+option.LIGHTMAP_COLOR_BLEND.comment=设置时间历史信息与新信息的融合比例。较低的数值会降低历史信息权重，导致颜色更新更快但可能增加闪烁
+option.LIGHTMAP_COLOR_REGEN=累积再生速度
+option.LIGHTMAP_COLOR_REGEN.comment=设置空白区域（无颜色信息）的填充速度。高数值会使颜色初始显现更快，但可能在非遮挡区域引入闪烁
+option.LIGHTMAP_COLOR_FLICKER_RED=闪烁抑制
+option.LIGHTMAP_COLOR_FLICKER_RED.comment=如果出现频繁的色块闪烁，请提高此滑块值。较高数值会减缓新颜色的扩散和显现速度
+option.LIGHTMAP_COLOR_LOD_BIAS=采样细节偏差
+option.LIGHTMAP_COLOR_LOD_BIAS.comment=控制颜色采样的细节层级。较高数值会使颜色更平滑但可能跳过小型光源；较低数值会采样更高细节但会降低平滑度并引入闪烁。着色器会尽力自动计算适当的细节层级
+
+screen.CUSTOM_LIGHTMAP_COLOR_CONFIG=光照贴图颜色
+
+option.LIGHTMAP_NETHER_SKY_BRIGHTNESS=下界环境亮度
+
+screen.END_SKYLIGHT=末地环境光
+option.LIGHTMAP_END_SKY_BRIGHTNESS=末地环境亮度
+option.LIGHTMAP_END_SKY_SATURATION=末地环境饱和度
+
+option.LIGHTMAP_BLOCKLIGHT_REDUCTION=自适应方块光照调节
+option.LIGHTMAP_BLOCKLIGHT_REDUCTION.comment=当天空明亮时降低方块光照以避免过曝。如果白天区块光照过亮，请调高此滑块。
+
+option.LIGHTMAP_SKY_DAY_R=天空光 日间 §c红
+option.LIGHTMAP_SKY_DAY_G=天空光 日间 §2绿
+option.LIGHTMAP_SKY_DAY_B=天空光 日间 §9蓝
+option.LIGHTMAP_SKY_NIGHT_R=天空光 夜间 红§c
+option.LIGHTMAP_SKY_NIGHT_G=天空光 夜间 绿§2
+option.LIGHTMAP_SKY_NIGHT_B=天空光 夜间 蓝§9
+option.LIGHTMAP_BLOCK_R=方块光照 红§c
+option.LIGHTMAP_BLOCK_R.comment=选择方块光源颜色（火把、荧石等）。若启用"复杂方块光照"，此颜色将不§c会§r生效。
+option.LIGHTMAP_BLOCK_G=方块光照 绿§2
+option.LIGHTMAP_BLOCK_G.comment=选择方块光源颜色（火把、荧石等）。若启用"复杂方块光照"，此颜色将不§c会§r生效。
+option.LIGHTMAP_BLOCK_B=方块光照 蓝§9
+option.LIGHTMAP_BLOCK_B.comment=选择方块光源颜色（火把、荧石等）。若启用"复杂方块光照"，此颜色将不§c会§r生效。
+
+option.LIGHTMAP_COMPLEX_BLOCKLIGHT=复合方块光照
+option.LIGHTMAP_COMPLEX_BLOCKLIGHT.comment=允许为方块光照选择两种颜色，一种用于暗部，一种用于亮部
+option.LIGHTMAP_COMPLEX_BLOCKLIGHT_BLEND_CURVE=混合曲线
+option.LIGHTMAP_COMPLEX_BLOCKLIGHT_BLEND_CURVE.comment=越高：强调"亮"色；越低：强调"暗"色。50 = 线性过渡
+
+option.LIGHTMAP_COMPLEX_BLOCK_BRIGHT_R=复合方块光照 亮部 红§c
+option.LIGHTMAP_COMPLEX_BLOCK_BRIGHT_G=复合方块光照 亮部 绿§2
+option.LIGHTMAP_COMPLEX_BLOCK_BRIGHT_B=复合方块光照 亮部 蓝§9
+option.LIGHTMAP_COMPLEX_BLOCK_DARK_R=复合方块光照 暗部 红§c
+option.LIGHTMAP_COMPLEX_BLOCK_DARK_G=复合方块光照 暗部 绿§2
+option.LIGHTMAP_COMPLEX_BLOCK_DARK_B=复合方块光照 暗部 蓝§9
+
+
+option.DIRECTIONAL_LIGHTMAPS=§o定向光§r照贴图
+option.DIRECTIONAL_LIGHTMAPS_STRENGTH=方向性光照强度
+
+option.NORMAL_TEXTURE_MODE=法线贴图
+value.NORMAL_TEXTURE_MODE.0=变革性
+value.NORMAL_TEXTURE_MODE.1=纹理
+
+option.GENERATED_NORMALS_RESOLUTION_MULTIPLIER=法线贴图分辨率倍增器
+option.GENERATED_NORMALS_RESOLUTION_MULTIPLIER.comment=自动生成的法线贴图可能与资源包的分辨率不同。此滑块允许你为法线贴图选择更高的分辨率，无性能影响。
+suffix.GENERATED_NORMALS_RESOLUTION_MULTIPLIER=x
+
+option.HDR_EMISSIVES=§eHD§rR 自发光
+option.HDR_EMISSIVES_BRIGHTNESS=HDR 自发光亮度
+
+
+///////////////////////////////////////////////////////////
+// WEATHER
+///////////////////////////////////////////////////////////
+
+screen.WEATHER=天气
+
+option.RAIN_DETECTION_MODE=雨§r天检测
+option.RAIN_DETECTION_MODE.comment=着色器检测是否下雨的方式。"颜色"通常是更好的选择。如果§n遇到以下情况，请§r选择"温度"：雨天没有下雨效果，非雨天物体却出现下雨效果。
+value.RAIN_DETECTION_MODE.0=色温
+value.RAIN_DETECTION_MODE.1=颜色
+
+option.RAIN_REFRACTION=雨§r§o天折射§r
+value.RAIN_REFRACTION.0=关
+value.RAIN_REFRACTION.1=快速
+value.RAIN_REFRACTION.2=花哨
+option.RAIN_REFRACTION_STRENGTH=雨§r§o天折射§r强度
+option.RAIN_OPACITY=雨水§r不透明度
+
+option.ANGLED_DOWNFALL=§o角度§r化降雨
+option.ANGLED_DOWNFALL_AMOUNT=§o角度§r化降雨强度
+option.ANGLED_DOWNFALL_ROTATION_SPEED=§o角度§r化降雨旋转速度
+
+option.RAIN_PUDDLES=雨§r水坑
+option.RAIN_PUDDLE_COVERAGE=雨§r天水坑覆盖率
+option.RAIN_PUDDLE_SIZE=雨天§r水坑大小
+option.RAIN_PUDDLE_OPACITY=雨天§r水坑不透明度
+
+screen.RAIN_PUDDLE_COLOR_CONFIG=雨§r天水坑颜色
+option.RAIN_PUDDLE_COLOR_R=雨天水坑颜色 红§c
+option.RAIN_PUDDLE_COLOR_G=雨天水坑颜色 绿§2
+option.RAIN_PUDDLE_COLOR_B=雨天水坑颜色 蓝§9
+
+option.RAIN_PUDDLE_PARALLAX=雨§r天水坑视差
+option.RAIN_PUDDLE_PARALLAX_REFRACTION=视差折射
+option.RAIN_PUDDLE_PARALLAX_DEPTH=视差深度
+suffix.RAIN_PUDDLE_PARALLAX_DEPTH=m
+
+///////////////////////////////////////////////////////////
+// WAVING
+///////////////////////////////////////////////////////////
+
+screen.WAVING=摆动方块
+
+option.WAVING_BLOCKS=摆动方块
+option.WAVING_BLOCKS_AMOUNT=摆动方块强度
+option.WAVING_BLOCKS_SPEED=摆动方块速度
+option.WAVING_LEAVES=摇摆§a树§2§a§2叶§a§r
+option.WAVING_LILYPADS=摆动睡莲
+option.WAVING_LILYPADS.comment=由"摆动液体强度"和"摆动液体速度"控制。
+option.WAVING_LANTERNS=摇曳灯笼
+option.WAVING_FIRE=摆动火§6§e§6焰§e§r
+
+option.WAVING_LIQUIDS=摆动§b液§9§b§9§b体§r
+option.WAVING_LIQUIDS.comment=水和岩浆
+option.WAVING_LIQUIDS_AMOUNT=摆动液体强度
+option.WAVING_LIQUIDS_SPEED=摆动液体速度
+
+
+///////////////////////////////////////////////////////////
+// CAMERA
+///////////////////////////////////////////////////////////
+
+screen.CAMERA=相机与色彩
+
+option.FXAA=快速近似抗锯齿
+option.FXAA.comment=启用抗锯齿，提升边缘质量。
+option.HQ_UPSCALING=高质量缩放
+option.HQ_UPSCALING.comment=切换到双三次采样。内部启用FXAA。在较低的渲染质量设置下可能有用。
+
+option.CONTRAST=对比度
+option.VIBRANCE=鲜艳度
+option.SATURATION=饱和度
+option.BRIGHTNESS=亮度
+
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=暗化屏幕边缘。
+value.VIGNETTE.0=关
+value.VIGNETTE.1=圆形
+value.VIGNETTE.2=方形
+option.VIGNETTE_STRENGTH=暗角强度
+
+option.COLOR_LUT=查找表
+option.COLOR_LUT.comment=对图像应用自定义颜色查找表。/!\§c§n 仅§r适用于OptiG8及以上版本！如何§n添加你的LUT：解§r压.zip文件，进入：shaders/lut。将你的LUT放入此文件夹并命名为"lut[数字].png"。然后可通过滑块选择该文件。最多可加载6个LUT。
+option.LUT_CELL_SIZE=LUT 单元格大小
+option.LUT_CELL_SIZE.comment=单侧单元格数量。通过沿一侧数LUT图像上的方格来确定此值。
+option.LUT_LOG_COLOR=使用对数颜色
+
+option.LUT_SELECTOR=选择的LUT
+option.LUT_SELECTOR.comment=§n着色器附带的默认LUT有：. lut0.p§rng：中性；lut1.png：天空瀑布；lut2.png：夏夜冒险；lut3.png：铬色；lut4.png：海军上将动漫LUT；lut5.png：绿->红颜色替换（红外）
+prefix.LUT_SELECTOR=查找表
+suffix.LUT_SELECTOR=.png
+
+
+
+///////////////////////////////////////////////////////////
+// WATER
+///////////////////////////////////////////////////////////
+
+screen.WATER=水
+option.FOG_UNDERWATER_DENSITY=水下雾气密度
+option.FOG_UNDERWATER_DENSITY_DEPTH_INFLUENCE=深度影响
+option.FOG_UNDERWATER_DENSITY_DEPTH_INFLUENCE.comment=越高：深度对雾密度影响越强；越低：深度对雾密度影响越弱；为零：深度对雾密度无影响。
+
+option.FOG_UNDERWATER_BRIGHTNESS_TIME_INFLUENCE=雾亮度影响
+option.FOG_UNDERWATER_BRIGHTNESS_TIME_INFLUENCE.comment=越高：水下雾在夜间会更暗。
+option.FOG_UNDERWATER_BRIGHTNESS_DEPTH_INFLUENCE=雾亮度影响
+option.FOG_UNDERWATER_BRIGHTNESS_DEPTH_INFLUENCE.comment=越高：下潜越深，水下雾变暗速度越快。
+
+
+///////////////////////////////////////////////////////////
+// UTILITIES
+///////////////////////////////////////////////////////////
+
+screen.UTILITIES=工具与效果
+
+option.BLINKING_ORES=闪烁矿石
+screen.BLINKING_ORES_CONFIG=闪烁矿石设置
+
+option.BLINKING_ORES_BRIGHTNESS=闪烁亮度
+
+option.BLINKING_ORES_DIAMOND=钻石
+option.BLINKING_ORES_ANCIENT_DEBRIS=远古残骸
+option.BLINKING_ORES_IRON=铁
+option.BLINKING_ORES_GOLD=金
+option.BLINKING_ORES_COPPER=铜
+option.BLINKING_ORES_REDSTONE=红石
+option.BLINKING_ORES_LAPIS=青金石
+option.BLINKING_ORES_EMERALD=翡翠
+option.BLINKING_ORES_COAL=煤炭
+option.BLINKING_ORES_NETHER_QUARTZ=下界石英
+option.BLINKING_ORES_NETHER_GOLD=下界金
+
+option.DAMAGE_EFFECT=伤害效果
+option.DAMAGE_EFFECT_REDNESS=伤害效果泛§c红程度§r
+option.DAMAGE_EFFECT_DISPLACEMENT=伤害效§l果§r§l§r§l抖§r§l§r§l动§r§l§r
+option.DAMAGE_EFFECT_DISPLACEMENT_SIZE=伤害效果单元格大小
+
+option.SPEED_EFFECT=§o§l速度§r效果
+option.SPEED_EFFECT.comment=快速移动时添加拖尾效果。
+option.SPEED_EFFECT_STRENGTH=速度效果强度
+option.SPEED_EFFECT_STREAK_LENGTH=速度效果拖尾长度
+
+///////////////////////////////////////////////////////////
+// OTHER
+///////////////////////////////////////////////////////////
+
+screen.OTHER=其他
+
+screen.DH_CONFIG=远景地平线
+option.DH_DISCARD_SMOOTH=渐隐地形
+option.DH_DISCARD_SMOOTH.comment=平滑渐隐Minecraft地形，减少远景地形与Minecraft地形之间的过渡。
+option.DH_TERRAIN_DISCARD=丢弃DH地形
+option.DH_TERRAIN_DISCARD_TOLERANCE=地形丢弃容差
+option.DH_TRANSPARENT_DISCARD=区块丢弃DH透明物体
+option.DH_TRANSPARENT_DISCARD_TOLERANCE=透明物体丢弃容差
+
+//option.DITHERING=§7D§rit§7h§re§7r§rin§7g§r
+option.DITHERING=抖动
+value.DITHERING.0=无
+value.DITHERING.1=智能
+value.DITHERING.2=完整
+option.DITHERING.comment=移除色带。智能：在选定程序中启用抖动。全面：在所有程序中启用抖动。
+
+option.TIME_MODE=时间模式
+option.TIME_MODE.comment=设置着色器用于确定时间的方法。时间用于驱动动画，例如摇摆的树叶和水。实时：使用实§n际时间§r。世界时间：使§n用游戏§r内时间。这对replaymod等动画工具很有用。§n帧数：基§r于固定帧率使用帧数计算。这对replaymod等动画工具很有用。
+value.TIME_MODE.0=实时
+value.TIME_MODE.1=世界时间
+value.TIME_MODE.2=帧数
+
+option.TIME_MODE_FRAME_RATE=时间模式帧率
+option.TIME_MODE_FRAME_RATE.comment=当选择“时间模式：帧数”时用于计算时间的帧率。
+suffix.TIME_MODE_FRAME_RATE=帧率
+
+option.BLOCK_OUTLINE_SOLID=实心方块轮廓
+option.LINE_THICKNESS.comment=使方块轮廓不再透明。
+option.LINE_THICKNESS=线§l条粗细§r
+option.LINE_THICKNESS.comment=适用于所有线条，例如方块轮廓和碰撞箱。/!\ §c§n仅§r适用于1.17及以上版本。/!\ §c§n在§rIris中无效。
+suffix.LINE_THICKNESS=像素
+
+option.BLOCK_OUTLINE_STYLE=方块轮廓样式
+value.BLOCK_OUTLINE_STYLE.0=§8黑色§r
+value.BLOCK_OUTLINE_STYLE.1=§f白色§f
+value.BLOCK_OUTLINE_STYLE.2=§c§6彩§e§a§b§d虹§c
+value.BLOCK_OUTLINE_STYLE.3=自定义颜色
+
+screen.BLOCK_OUTLINE_COLOR_CONFIG=自定义颜色配置
+option.BLOCK_OUTLINE_COLOR_R=方块轮廓颜色 R§c
+option.BLOCK_OUTLINE_COLOR_G=方块轮廓颜色 G§2
+option.BLOCK_OUTLINE_COLOR_B=方块轮廓颜色 B§9
+
+
+///////////////////////////////////////////////////////////
+// DEBUG
+///////////////////////////////////////////////////////////
+
+screen.DEBUG_OPTS=调试选项
+screen.DEBUG_OPTS.comment=调试选项和内部开关在此处转储。
+
+screen.EXPERIMENTAL=实验性功能标志
+
+option.DEBUG=调试视图
+option.DEBUG_MODE=调试视图
+value.DEBUG_MODE.0=缓冲
+value.DEBUG_MODE.1=光照图
+value.DEBUG_MODE.2=彩色灯光
+option.DEBUG_BLEND=调试视图不透明度
+
+option.DEBUG_BUFFER_INDEX=缓冲
+prefix.DEBUG_BUFFER_INDEX=颜色纹理
+option.DEBUG_BUFFER_INDEX.comment=§ntex0:§r 主纹§n理。tex§r1: 光照图、环境光遮蔽和自§n发光。te§rx2:§n 查找表。§rtex3: 雨水§n模板。t§rex4: 彩色光源（主）§n。tex5§r: 彩色光源（输入）。te§nx6: 彩§r色光源（多级渐远纹理）。
+option.DEBUG_BUFFER_CHANNELS=缓冲器 > 通道
+value.DEBUG_BUFFER_CHANNELS.0=RGB / XYZ
+value.DEBUG_BUFFER_CHANNELS.1=R / X
+value.DEBUG_BUFFER_CHANNELS.2=G / Y
+value.DEBUG_BUFFER_CHANNELS.3=B / Z
+value.DEBUG_BUFFER_CHANNELS.4=A / W
+
+option.DEBUG_LIGHTMAP_MODE=光照图 > 视图
+option.DEBUG_LIGHTMAP_MODE.comment=§n光照图 + 环境光遮§r蔽：方块光照: R，天空光照: G，环境光遮蔽: §nB。光照图：§r方块光照: R，天空光照: G。环境光遮§n蔽：§r环境光遮蔽: §nRGB。自发光§r：自发光: RGB。
+value.DEBUG_LIGHTMAP_MODE.0=光照图 + 环境光遮蔽
+value.DEBUG_LIGHTMAP_MODE.1=光照图
+value.DEBUG_LIGHTMAP_MODE.2=环境光遮蔽
+value.DEBUG_LIGHTMAP_MODE.3=发光
+
+option.DEBUG_COLORED_LIGHTS_MODE=彩色光源 > 视图
+value.DEBUG_COLORED_LIGHTS_MODE.0=混合颜色
+value.DEBUG_COLORED_LIGHTS_MODE.1=混合时间
+value.DEBUG_COLORED_LIGHTS_MODE.2=原始颜色
+value.DEBUG_COLORED_LIGHTS_MODE.3=源颜色
+
+screen.DEBUG_DUMP=废品堆
+
+///////////////////////////////////////////////////////////
+// NON-OPTIONS
+///////////////////////////////////////////////////////////
+
+option.SHADER_NAME=Stracciatella着色器
+value.SHADER_NAME.0=v1.6.4.1
+
+profile.VANILLA=原版
+profile.DEFAULT=默认
+profile.STRACCIATELLA=Stracciatella
+
+option.AGRESSIVE_OPTIMISATION=激进优化
+option.AGRESSIVE_OPTIMISATION.comment=激活可能破坏某些视觉效果或在未来Minecraft版本中失效的优化。
+value.AGRESSIVE_OPTIMISATION.0=关
+value.AGRESSIVE_OPTIMISATION.1=开
+value.AGRESSIVE_OPTIMISATION.2=不安全
+
+option.CREDITS=作者
+value.CREDITS.0=§c§l德雷§6§l斯顿§2§l博士§r

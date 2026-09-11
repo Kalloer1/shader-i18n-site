@@ -1,0 +1,14 @@
+profile.Low=低性能模式
+profile.Medium=平衡
+profile.Ultra=极致写实模式
+
+screen.MAIN=Aetheria极致设置
+
+option.BLOOM=电影级泛光
+option.AURORA=360度北极光
+option.DISTANCE_FOG=体积大气雾效
+option.DYNAMIC_LIGHTS=闪烁动态光源
+option.WAVING_PLANTS=植被摇曳
+option.RAIN_REFLECTIONS=雨水坑洼与反射效果
+option.SSAO=环境光遮蔽（SSAO）
+option.VIGNETTE=电影镜头暗角

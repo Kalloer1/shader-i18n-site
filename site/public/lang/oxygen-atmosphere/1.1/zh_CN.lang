@@ -1,0 +1,360 @@
+#Profiles
+############################
+profile.no_effects=无效果
+profile.shadowless_low=阴影消除低
+profile.shadowless_medium=阴影消除中
+profile.shadowless_high=阴影消除高
+profile.low=低
+profile.medium=中
+profile.high=高
+profile.extremeplus=极高(景深)
+
+profile.comment=无阴影配置专为低性能机器设计，忽略阴影。传统配置会逐渐添加更高质量的阴影和更先进的重型效果。请尝试可用的选项并找到最适合您的组合。
+
+#About
+#############################
+option.ACERCADE=Oxygen Atmosphere 1.1
+option.ACERCADE.comment=感谢使用此着色器！设置 OptiFine 原生质量控制为正常或默认值以获得更好的质量。
+value.ACERCADE.0=v.9.5c
+
+#Options
+#############################
+option.SHADOW_CASTING=阴影
+
+option.SHADOW_DISTANCE_SLIDER=阴影距离
+value.SHADOW_DISTANCE_SLIDER.0=短
+value.SHADOW_DISTANCE_SLIDER.1=中
+value.SHADOW_DISTANCE_SLIDER.2=远
+
+option.SHADOW_QTY_SLIDER=阴影质量滑块
+value.SHADOW_QTY_SLIDER.0=None
+value.SHADOW_QTY_SLIDER.1=低配
+value.SHADOW_QTY_SLIDER.2=中配
+value.SHADOW_QTY_SLIDER.3=高配
+
+option.REFLECTION_SLIDER=反射
+value.REFLECTION_SLIDER.0=关闭
+value.REFLECTION_SLIDER.1=翻转图像
+value.REFLECTION_SLIDER.2=体积光追踪
+
+option.SHADOW_TYPE=Shadow type
+value.SHADOW_TYPE.0=Simple
+value.SHADOW_TYPE.1=Filtered
+
+option.SHADOW_BLUR=阴影模糊强度
+
+option.COLORED_SHADOW=彩色阴影
+
+option.VOL_LIGHT=体积光
+value.VOL_LIGHT.0=关闭
+value.VOL_LIGHT.1=基于深度
+value.VOL_LIGHT.2=体积光
+
+option.DOF=景深
+
+option.DOF_STRENGTH=DoF 强度
+
+option.DOF_SAMPLES_FACTOR=景深采样因子
+
+option.AO=环境光遮蔽
+value.AO.0=关闭
+value.AO.1=开启
+
+option.AOSTEPS=环境光遮蔽采样对
+
+option.AO_STRENGTH=环境光遮蔽 强度
+
+option.AA_TYPE=时间采样
+value.AA_TYPE.0=关闭
+value.AA_TYPE.1=去噪
+value.AA_TYPE.2=TAA
+
+option.GRASS_QUALITY=草地细节
+option.GRASS_QUALITY.comment=选择附近草的密度如何
+option.GRASS_MODE=草地风格
+option.GRASS_MODE.comment=选择原始草、增强过的原版植物，或整个地面上的草
+value.GRASS_MODE.0=原版
+value.GRASS_MODE.1=增强 (默认)
+value.GRASS_MODE.2=全覆盖
+value.GRASS_QUALITY.0=低配
+value.GRASS_QUALITY.1=中配
+value.GRASS_QUALITY.2=高配
+value.GRASS_QUALITY.3=极高
+value.GRASS_QUALITY.4=最大
+option.GRASS_LOD_MODE=草地距离
+option.GRASS_LOD_MODE.comment=选择详细草可见多远
+value.GRASS_LOD_MODE.0=非常短
+value.GRASS_LOD_MODE.1=短
+value.GRASS_LOD_MODE.2=正常
+value.GRASS_LOD_MODE.3=很远
+value.GRASS_LOD_MODE.4=非常远
+
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_SAMPLES=运动模糊采样数
+
+option.VANILLA_WATER=原版水类似
+
+option.WATER_TEXTURE=水纹理
+value.WATER_TEXTURE.0=否
+value.WATER_TEXTURE.1=是
+
+option.WATER_COLOR_SOURCE=水色
+value.WATER_COLOR_SOURCE.0=着色方案
+value.WATER_COLOR_SOURCE.1=资源包
+
+option.REFLECTION=反射
+value.REFLECTION.0=关闭
+value.REFLECTION.1=开启
+
+option.REFRACTION=折射
+value.REFRACTION.0=关闭
+value.REFRACTION.1=开启
+
+option.SSR_TYPE=反射类型
+value.SSR_TYPE.0=翻转图像
+value.SSR_TYPE.1=Raymarching
+
+option.SUN_REFLECTION=太阳反射
+value.SUN_REFLECTION.0=关闭
+value.SUN_REFLECTION.1=开启
+
+option.CLOUD_REFLECTION=云层反射
+
+option.WAVING=摇摆植物
+value.WAVING.0=否
+value.WAVING.1=是
+
+option.CHROMA_ABER=色差
+value.CHROMA_ABER.0=否
+value.CHROMA_ABER.1=是
+
+option.CHROMA_ABER_STRENGTH=色差强度
+
+option.WATER_ABSORPTION=水吸收指数
+
+option.WATER_TURBULENCE=波浪强度
+value.WATER_TURBULENCE.7.0=非常低
+value.WATER_TURBULENCE.1.75=中
+value.WATER_TURBULENCE.0.9=中等
+value.WATER_TURBULENCE.0.5=高
+
+option.COLOR_SCHEME=颜色方案
+value.COLOR_SCHEME.0=空灵
+value.COLOR_SCHEME.1=new肖卡
+value.COLOR_SCHEME.2=肖卡
+value.COLOR_SCHEME.3=遗留
+value.COLOR_SCHEME.4=船长
+value.COLOR_SCHEME.5=迷幻
+value.COLOR_SCHEME.6=可可
+value.COLOR_SCHEME.7=Testigo
+value.COLOR_SCHEME.8=氧气大气层
+value.COLOR_SCHEME.99=自定义
+
+option.LIGHT_SUNSET_COLOR_R=日落光 R
+option.LIGHT_SUNSET_COLOR_G=日落光 G
+option.LIGHT_SUNSET_COLOR_B=日落光 B
+
+option.LIGHT_DAY_COLOR_R=日光 R
+option.LIGHT_DAY_COLOR_G=日光 G
+option.LIGHT_DAY_COLOR_B=日光 B
+
+option.LIGHT_NIGHT_COLOR_R=夜间亮度 R
+option.LIGHT_NIGHT_COLOR_G=夜间亮度 G
+option.LIGHT_NIGHT_COLOR_B=夜间亮度 B
+
+option.ZENITH_SUNSET_COLOR_R=顶点日落 R
+option.ZENITH_SUNSET_COLOR_G=顶点日落 G
+option.ZENITH_SUNSET_COLOR_B=顶点日落 B
+
+option.ZENITH_DAY_COLOR_R=Zenith 白天 红
+option.ZENITH_DAY_COLOR_G=Zenith 白天 绿
+option.ZENITH_DAY_COLOR_B=Zenith 白天 蓝
+
+option.ZENITH_NIGHT_COLOR_R=天空之夜 R
+option.ZENITH_NIGHT_COLOR_G=天空之夜 G
+option.ZENITH_NIGHT_COLOR_B=天空之夜 B
+
+option.HORIZON_SUNSET_COLOR_R=Horizon sunset R
+option.HORIZON_SUNSET_COLOR_G=Horizon sunset G
+option.HORIZON_SUNSET_COLOR_B=Horizon sunset B
+
+option.HORIZON_DAY_COLOR_R=地平线 R
+option.HORIZON_DAY_COLOR_G=地平线 G
+option.HORIZON_DAY_COLOR_B=地平线 B
+
+option.HORIZON_NIGHT_COLOR_R=地平线夜红
+option.HORIZON_NIGHT_COLOR_G=地平线夜绿
+option.HORIZON_NIGHT_COLOR_B=地平线夜蓝
+
+option.WATER_COLOR_R=水 R
+option.WATER_COLOR_G=水 G
+option.WATER_COLOR_B=水 B
+
+option.NV_COLOR_R=夜视 R 乘数
+option.NV_COLOR_G=夜视 G 乘数
+option.NV_COLOR_B=夜视 B 乘数
+
+option.OMNI_TINT_CUSTOM=全域色调
+
+option.AVOID_DARK_LEVEL=暗度
+
+option.NIGHT_BRIGHT=夜间亮度
+
+option.V_CLOUDS=云层
+value.V_CLOUDS.0=原版
+value.V_CLOUDS.1=体积光静态
+value.V_CLOUDS.2=动态体积光
+
+option.CLOUD_VOL_STYLE=体积云样式
+value.CLOUD_VOL_STYLE.0=自然
+value.CLOUD_VOL_STYLE.1=方盒
+
+option.CLOUD_SPEED=云层速度
+value.CLOUD_SPEED.0=正常
+value.CLOUD_SPEED.1=时间拉伸 1
+value.CLOUD_SPEED.2=时间拉伸 2
+
+option.END_CLOUDS=末地中的云层
+
+option.CLOUD_STEPS_AVG=云层采样数
+
+option.BLOOM=体积光
+
+option.COLOR_BLINDNESS=色盲
+
+option.COLOR_BLIND_MODE=CB类型
+value.COLOR_BLIND_MODE.0=Protanopia
+value.COLOR_BLIND_MODE.1=Deuteranopia
+value.COLOR_BLIND_MODE.2=Tritanopia
+
+option.DEBUG_MODE=调试模式
+
+option.BLOOM_SAMPLES=体积光 采样对
+
+option.BLACK_ENTITY_FIX=黑色实体修复
+value.BLACK_ENTITY_FIX.0=关闭
+value.BLACK_ENTITY_FIX.1=开启
+
+option.FOG_ACTIVE=雾效开启
+
+option.FOG_ADJUST=雾度调整
+option.WORLD_FOG_DENSITY=世界雾密度
+option.WORLD_FOG_DENSITY.comment=光学密度的纯净室分析大气层。
+option.WORLD_FOG_ALTITUDE=世界雾高度
+option.WORLD_FOG_ALTITUDE.comment=大气最稠密的世界高度。
+option.WORLD_FOG_HEIGHT_FALLOFF=世界雾高度衰减
+option.WORLD_FOG_HEIGHT_FALLOFF.comment=大气在参考高度之上逐渐稀疏的速度。
+value.FOG_ADJUST.20.0=无雾
+value.FOG_ADJUST.10.0=超低
+value.FOG_ADJUST.8.0=非常低
+value.FOG_ADJUST.4.0=低
+value.FOG_ADJUST.2.0=中等
+value.FOG_ADJUST.1.0=高
+
+option.NETHER_FOG_DISTANCE=幽暗迷雾距离
+value.NETHER_FOG_DISTANCE.0=渲染距离
+value.NETHER_FOG_DISTANCE.1=原版
+
+option.BLOCKLIGHT_TEMP=选项.BLOCKLIGHT_TEMP
+value.BLOCKLIGHT_TEMP.0=较暖
+value.BLOCKLIGHT_TEMP.1=温暖
+value.BLOCKLIGHT_TEMP.2=黄色
+value.BLOCKLIGHT_TEMP.3=淡黄
+value.BLOCKLIGHT_TEMP.4=纯白光
+
+option.sunPathRotation=太阳角度
+
+option.USE_BASIC_SH=自定义基础着色器自定义尺寸
+
+option.MATERIAL_GLOSS=材质光泽
+
+option.DYN_HAND_LIGHT=仿真动态光
+
+#Screens
+screen.ADVANCED_SCREEN=高级选项
+screen.ADVANCED_SCREEN.comment=设置高级选项
+
+screen.COMPATIBILITY_SCREEN=屏幕.兼容性设置
+screen.COMPATIBILITY_SCREEN.comment=设置兼容性选项
+
+screen.SHADOWS_SCREEN=阴影
+screen.SHADOWS_SCREEN.comment=设置阴影选项
+
+option.SHADOW_LOCK=像素锁定阴影
+value.SHADOW_LOCK.0=关闭
+value.SHADOW_LOCK.16=16x16
+value.SHADOW_LOCK.32=32x32
+value.SHADOW_LOCK.64=64x64
+value.SHADOW_LOCK.128=128x128
+value.SHADOW_LOCK.256=256x256
+
+screen.DOF_SCREEN=景深
+screen.DOF_SCREEN.comment=设置景深选项
+
+screen.AO_SCREEN=环境光遮蔽
+screen.AO_SCREEN.comment=设置环境光遮蔽选项
+
+screen.WATER_SCREEN=Water
+screen.WATER_SCREEN.comment=设置水选项
+
+screen.POST_SCREEN=后效果
+screen.POST_SCREEN.comment=设置后效果选项
+
+screen.LIGHT_SCREEN=亮度
+screen.LIGHT_SCREEN.comment=设置光照选项
+
+screen.CLOUDS_SCREEN=太阳与云层
+screen.CLOUDS_SCREEN.comment=设置太阳和云层选项
+
+screen.FOG_SCREEN=雾
+screen.FOG_SCREEN.comment=设置雾选项
+
+screen.MOTION_BLUR_SCREEN=运动模糊
+screen.MOTION_BLUR_SCREEN.comment=设置运动模糊选项
+
+screen.ACCESIBILITY_SCREEN=可访问性
+screen.ACCESIBILITY_SCREEN.comment=设置可访问性选项
+
+screen.CUSTOM_COLORS_SCREEN=自定义颜色
+screen.CUSTOM_COLORS_SCREEN.comment=设置自定义颜色
+screen.CUSTOM_COLORS_DAY=日间自定义颜色
+screen.CUSTOM_COLORS_SUNSET=日落/黎明自定义颜色
+screen.CUSTOM_COLORS_NIGHT=夜间自定义颜色
+screen.CUSTOM_COLORS_WATER=水域自定义颜色
+screen.CUSTOM_COLORS_NV=夜视自定义颜色
+screen.WEATHER_SCREEN=动态天气
+screen.WEATHER_SCREEN.comment=配置风驱动雨水及其水波高光
+
+option.DYNAMIC_RAIN=动态雨
+option.DYNAMIC_RAIN.comment=让雨水随风移动
+option.RAIN_WIND_STRENGTH=风力
+option.RAIN_WIND_STRENGTH.comment=选择雨水如何偏向风的方向
+option.RAIN_MOTION_RESPONSE=运动效应
+option.RAIN_MOTION_RESPONSE.comment=选择雨水在你移动时的反应方式
+option.RAIN_OPACITY=雨量
+option.RAIN_OPACITY.comment=选择雨水的可见程度
+option.RAIN_REFLECTION=雨光
+option.RAIN_REFLECTION.comment=选择雨水反射的程度
+option.RAIN_BRIGHTNESS=雨亮度
+option.RAIN_BRIGHTNESS.comment=选择雨水的亮度
+option.RAIN_SSR=雨反射
+option.RAIN_SSR.comment=雨水上映周围世界
+option.RAIN_PUDDLES=雨水池塘
+option.RAIN_PUDDLES.comment=下雨时在户外地面上创建池塘
+option.PUDDLE_COVERAGE=池塘覆盖量
+option.PUDDLE_COVERAGE.comment=选择有多少个池塘出现
+option.PUDDLE_REFLECTION=池塘反射
+option.PUDDLE_REFLECTION.comment=选择池塘对世界的反射清晰度
+option.PUDDLE_RIPPLE_STRENGTH=池塘涟漪强度
+option.PUDDLE_RIPPLE_STRENGTH.comment=选择水的涟漪强度
+option.PUDDLE_WATER_MOTION=水流动
+option.PUDDLE_WATER_MOTION.comment=选择池塘水的移动程度
+option.PUDDLE_RAIN_RINGS=雨滴环
+option.PUDDLE_RAIN_RINGS.comment=选择雨滴环的可见度
+option.PUDDLE_WIND_WAVES=池塘风浪
+option.PUDDLE_WIND_WAVES.comment=选择池塘上的风浪强度
+option.PUDDLE_SSR_GLINTS=反射周围环境
+option.PUDDLE_SSR_GLINTS.comment=反射附近的草地、地形和物体
+option.PUDDLE_SSR_STEPS=反射质量
+option.PUDDLE_SSR_STEPS.comment=更高的质量会使反射更清晰，但消耗更多性能

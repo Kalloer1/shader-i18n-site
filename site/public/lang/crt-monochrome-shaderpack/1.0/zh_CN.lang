@@ -1,0 +1,16 @@
+screen.THEME=主题颜色
+screen.BACKGROUND=强调颜色
+screen.CRT=CRT 设置
+screen.WORLD=世界设置
+
+option.THEME_R=红色
+option.THEME_G=绿色
+option.THEME_B=蓝色
+option.BG_R=红色
+option.BG_G=绿色
+option.BG_B=蓝色
+option.CURVATURE=曲率
+option.SCANLINE_INTENSITY=扫描线强度
+option.ABERRATION_OFFSET=色差偏移
+option.THRESHOLD=对比阈值
+option.FADE_DIST=虚空距离

@@ -1,0 +1,29 @@
+#Main Menu
+screen.Settings=设置
+screen.Lighting=光照
+screen.Shadows=阴影
+screen.Links=链接
+
+#Profile
+profile.HighFramesExtra_V3=HighFramesExtra V3
+
+#Lighting
+option.EXPOSURE_MULTIPLIER=曝光度
+option.MIN_LIGHT_AMOUNT=最低光照
+option.TORCH_AMOUNT=火把亮度
+option.TORCH_R=火把红
+option.TORCH_G=火把绿
+option.TORCH_B=火把蓝
+option.TONEMAP_ACES=色调映射 ACES
+
+#Shadows
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowDistance=阴影距离
+option.ambientOcclusionLevel=环境光遮蔽强度
+
+#Links
+option.Official_Website=访问官方网站
+option.CurseForge_Download=在CurseForge上下载
+
+sliders.comment.Official_Website=访问我们的网站
+sliders.comment.CurseForge_Download=在 CurseForge 上下载

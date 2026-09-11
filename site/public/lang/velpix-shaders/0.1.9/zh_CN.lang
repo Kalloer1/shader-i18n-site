@@ -1,0 +1,220 @@
+screen.COLOR = §d🎨 颜色
+
+screen.Tone_Mapping = §6🎞 色调映射
+option.Color_ToneMapper = §a启用 色调映射
+option.TONEMAPPER = §e色调映射
+value.TONEMAPPER.TONEMAP_REINHARD = §6Reinhard
+value.TONEMAPPER.TONEMAP_WHITE = §f白色
+value.TONEMAPPER.TONEMAP_ACES = §cACES
+
+screen.Saturation = §d🌈 饱和度
+option.Saturation_Amount = §e饱和度数量
+
+screen.CONTRAST = §7🌓 对比度
+option.Contrast = §a启用对比度
+option.Contrast_Strength = §e数量
+
+screen.Sharpness = §f✦ 锐度
+option.SHARPNESS = §a启用锐度
+option.SHARPNESS_STRENGHT = §e数量
+
+screen.Film_Grain = §8🎞 胶片颗粒
+option.Color_FilmGrain = §a启用胶片颗粒
+option.FilmGrain_Strength = §e强度
+
+screen.Kuwahara_Distance = §b🖌 Kuwahara
+option.KUWAHARA_FOG = §a启用 Kuwahara
+option.KUWAHARA_RADIUS = §e半径
+
+screen.Bloom = §6✨ 泛光
+option.BLOOM = §a启用泛光
+option.BLOOM_THRESHOLD = §e阈值
+option.BLOOM_KNEE = §e肩部
+option.BLOOM_INTENSITY = §e强度
+option.BLOOM_SATURATION = §e饱和度
+
+screen.LENS = §e☀ 镜头光晕
+option.Lens_Flare = §a启用镜头光晕
+option.Lens_Intensity = §e强度
+
+screen.MOTION_BLUR = §5〰 运动模糊
+option.MB = §a启用运动模糊
+option.MB_STRENGTH = §e强度
+
+screen.Cinematic_bars = §8▰ 电影边框
+option.CINEMATIC_BARS = §a启用 电影边框
+
+screen.Post = §5🪄 后处理
+
+screen.SelectionBlock = §cR§6a§ei§an§bb§9o§dw §cS§6e§el§ae§bc§9t§di§co§6n
+option.RAINBOW_LINES = §cR§6a§ei§an§bb§9o§dw §cL§6i§en§ae§bs
+option.RGB_VELOCITY = §cR§6a§ei§an§bb§9o§dw §cA§6n§ei§am§ba§9t§di§co§6n §cS§6p§ee§ae§bd
+
+screen.Orb = §cR§6a§ei§an§bb§9o§dw §cO§6r§eb
+option.RAINBOW_ORB = §a启用彩虹宝石
+
+screen.Lighting = §6💡 照明
+option.Diffuse_Light = §a漫反射光
+
+screen.SHADOWS = §8🌑 阴影
+option.Shadows = §a启用阴影
+option.shadowMapResolution = §e分辨率
+
+screen.Block_Light_Color = §6🔥 火把光色
+option.Torch_r = §c红色
+option.Torch_g = §a绿色
+option.Torch_b = §9蓝色
+
+screen.Torch_Light = §6🔥 火把光
+option.TORCH_STRENGTH = §e强度
+option.TORCH_CURVE = §e衰减
+
+screen.vl = §6🌤 体积光
+option.VL = §a启用体积光
+option.VL_QUALITY = §e质量
+option.VP_SUN_VOL_INTENSITY = §6太阳强度
+option.VP_MOON_VOL_INTENSITY = §9月亮强度
+option.VP_VOL_DENSITY = §e密度
+option.VP_VOL_DISTANCE = §e距离
+
+screen.DynamicLight = §e💡 动态光照
+option.Colored_Dynamic = §6彩色动态光照
+option.Colored_intensity = §e动态光照强度
+
+screen.Ambient_Oclussion = §8🌑 环境光遮蔽
+option.AO = §a启用环境光遮蔽
+option.AO_STRENGHT = §e强度
+
+screen.Sky_Light = §b☁ 天空光
+option.PseudoScattering = §a伪散射
+option.SKY_SCATTER_STRENGTH = §e数量
+
+screen.sky_saturation = §9🌌 天空饱和度
+option.Sky_SATURATION = §a启用天空饱和度
+option.Sky_SATURATION_AMOUNT = §e数量
+
+screen.Velpix_Draw_Sky = §b🎨 Velpix 绘画天空
+option.Painted_Sky = §a启用绘画天空
+option.SKY_GRADIENT_CURVE = §e渐变数量
+
+screen.Sky = §9☁ 天空
+
+screen.Artisitc_Sun = §6☀ 艺术式太阳
+option.VELPIX_SUN = §e太阳风格
+value.VELPIX_SUN.VELPIX_SUN_VELPIX = §6Velpix
+value.VELPIX_SUN.VELPIX_SUN_VANILLA = §fVanilla
+option.SUN_SIZE = §e太阳大小
+
+screen.Artisitc_Moon = §9🌙 艺术月
+option.VELPIX_MOON = §e月亮风格
+value.VELPIX_MOON.VELPIX_MOON_VELPIX = §9Velpix
+value.VELPIX_MOON.VELPIX_MOON_Vanilla = §fVanilla
+option.Moon_SIZE = §e月亮大小
+
+screen.Fog = §7🌫 雾
+option.ARTISTIC_FOG = §a艺术雾
+option.FOG_Intensity = §e强度
+
+screen.Volumetric = §6🌫 体积雾
+
+screen.DeepDark = §8🕳 深暗之深
+option.Deep_fog = §a启用深暗之深雾
+option.Deep_density = §e密度
+option.DEEP_FOG_SCALE = §e雾尺度
+option.DEEP_FOG_R = §c红色
+option.DEEP_FOG_G = §a绿色
+option.DEEP_FOG_B = §9蓝色
+
+screen.Aurora = §d🌌 北极光
+option.Aurora = §a启用北极光
+option.Aurora_Brightness = §e亮度
+
+screen.Aurora_Animation = §b🎞 动画
+option.Translate_Aurora_Animation = §e移动极光
+option.Aurora_Distortion_Animation = §e扭曲
+option.Aurora_Color_Animation = §e颜色动画
+option.Aurora_Animation_Speed = §e速度
+
+screen.Aurora_Color = §d🎨 极光颜色
+
+screen.Aurora_Color1 = §a🟢 极光颜色 1
+option.AURORA_COLOR_1_R = §c红色
+option.AURORA_COLOR_1_G = §a绿色
+option.AURORA_COLOR_1_B = §9蓝色
+
+screen.Aurora_Color2 = §b🔵 极光颜色 2
+option.AURORA_COLOR_2_R = §c红色
+option.AURORA_COLOR_2_G = §a绿色
+option.AURORA_COLOR_2_B = §9蓝色
+
+screen.Aurora_Color3 = §5🟣 极光颜色 3
+option.AURORA_COLOR_3_R = §c红色
+option.AURORA_COLOR_3_G = §a绿色
+option.AURORA_COLOR_3_B = §9蓝色
+
+screen.marshmallow_clouds = §9☁ 芝士云 Velpix 云
+option.Velpix_Clouds = §9启用芝士云 Velpix
+option.Clouds_Mode = §9云模式
+value.Clouds_Mode.MARSHMELLOW = §f芝士
+value.Clouds_Mode.COTTON = §d棉花糖
+
+screen.Clouds_parameters = §9☁ 云参数
+option.CLOUD_DENSITY = §e云密度
+option.CLOUD_HEIGHT = §e云高度
+option.CLOUD_SPEED = §e云速度
+option.CLOUD_DETAIL = §e云细节
+option.CLOUD_SHADOW = §8云阴影
+option.CLOUD_RAIN = §b雨云
+
+screen.Stars = §5✨ Velpix 星星
+option.ENABLE_STARS = §a启用星星
+option.Velpix_Stars = §b星星模式
+option.NUMBER_OF_STARS = §5星星数量
+option.STARS_BRIGHTNESS = §b星星亮度
+option.CONSTELLATION_BRIGHTNESS = §5星座亮度
+option.TWINKLE_SPEED = §b闪烁速度
+
+screen.Water = §9💧 水
+screen.Water_Color = §b🎨 水色
+option.WATER_R = §c红色
+option.WATER_G = §a绿色
+option.WATER_B = §9蓝色
+
+screen.Water_Reflects = §b🪞 反射
+option.Water_Reflections = §9水面反射
+
+screen.WATER_TYPE = §9🌊 水类型
+option.WATER_TYPE = §e水风格
+value.WATER_TYPE.WATER_ARTISTIC = §d艺术风
+value.WATER_TYPE.WATER_VANILLA = §a原版
+option.CAUSTICS = §a启用焦散
+
+screen.Materials = §6🧱 材料
+
+screen.Reflective = §5🪞 反射材质
+option.Reflective_Materials = §d启用反射材质
+
+screen.Emissive = §6✨ 自发光材质
+option.Emessive_Material = §a启用自发光材质
+option.Emessive_Material_Intensity = §e强度
+
+screen.Emessive_Foliage = §a🌿 自发光叶物
+option.Emessive_Flowers = §a启用自发光花朵
+option.Emessive_Flowers_Intensity = §e强度
+
+screen.Other = §7⚙ 其他
+
+screen.Wind_Anim = §a🌿 风力动画
+option.Wind_Animations = §a启用风力动画
+option.Speed = §e速度
+
+screen.Rain = §b🌧 雨
+
+screen.Rain_Drops = §b💧 雨滴
+option.Rain_Drops = §a启用雨滴
+option.Rain_Drop_Size = §e雨滴大小
+option.Rain_Drop_Strength = §e雨滴强度
+
+screen.rain_Puddles = §9💦 雨水积水
+option.Puddles = §a启用积水
+option.Puddles_scale = §e积水规模

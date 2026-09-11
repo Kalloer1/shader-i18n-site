@@ -1,0 +1,180 @@
+option.TONEMAPPING_TYPE =色调映射运算符
+    value.TONEMAPPING_TYPE.0 =色彩编码的电影级色调映射
+    value.TONEMAPPING_TYPE.1 =未知海域
+    value.TONEMAPPING_TYPE.2 =深度
+    value.TONEMAPPING_TYPE.3 =AGX
+    value.TONEMAPPING_TYPE.4 =玻璃质感
+    value.TONEMAPPING_TYPE.5 =镜面反射
+    value.TONEMAPPING_TYPE.6 =洛特斯
+
+option.WATER_FOG_DENSITY =水雾密度
+option.FOG_DENSITY.comment =生成式
+
+option.SUN_ROTATION =太阳角度
+option.SUN_ROTATION.comment =Reinhard Jodie 色调映射
+
+option.SHADOW_SOFTNESS =阴影柔和度
+option.SHADOW_SOFTNESS.comment =通用色调映射
+
+option.SHADOW_RESOLUTION =阴影分辨率
+option.SHADOW_RESOLUTION.comment =Hejl Burgess §c色调映射§r
+
+option.SHADOW_SAMPLES =水下雾的浓稠度
+option.SHADOW_SAMPLES.comment =太阳偏离中心§c的程度§r
+
+option.SHADOW_DISTANCE =阴影距离
+option.SHADOW_DISTANCE.comment =阴影的平滑度与锐利度，§c同时影响其清晰度§r
+    value.SHADOW_DISTANCE.64.0 =4区块
+    value.SHADOW_DISTANCE.128.0 =8 区块
+    value.SHADOW_DISTANCE.192.0 =12区块
+    value.SHADOW_DISTANCE.256.0 =16区块
+    value.SHADOW_DISTANCE.384.0 =24区块
+    value.SHADOW_DISTANCE.512.0 =32 区块
+    
+option.VOLUMETRICS =体积雾
+option.VL_SAMPLES =阴影贴图的分辨率，决定阴影的细节程度，对性能影响高
+option.VL_SAMPLES.comment =提升体积云质量，可能§c对性能产生重大影响§r
+option.VL_EXT =体积雾消光强度
+option.VL_EXT.commone =调整雾的密度（数值越低雾越浓）
+
+option.AMBIENT_FOG_MULT =环境雾强度倍增器
+option.AMBIENT_FOG_MULT.comment =调节阴影区域中的雾量
+
+option.MULTI_SCATTER_INTENSITY =多重散射强度
+option.MULTI_SCATTER_INTENSITY.comment =调节多重散射强度（增强雾气的明亮色调）
+
+option.WATER_FOG_GLSL =启用水雾效果
+option.WATER_FOG_GLSL.comment =启用或禁用水雾效果，§c对性能无影响§r
+    value.WATER_FOG_GLSL.0  =关
+    value.WATER_FOG_GLSL.1  =开
+
+
+option.FXAA_GLSL =快速近似抗锯齿
+option.FXAA_GLSL.comment =启用快速近似抗锯齿技术
+    value.FXAA_GLSL.0  =关
+    value.FXAA_GLSL.1  =开
+
+
+
+option.DO_SSR =ssr
+option.DO_SSR.comment =启用屏幕空间反射技术
+    value.DO_SSR.0 =关
+    value.DO_SSR.1 =开
+
+
+option.BINARY_REFINEMENT =二值化精炼处理
+option.BINARY_REFINEMENT.comment =通过额外精炼步骤提高SSR精度，但会影响性能
+    value.BINARY_REFINEMENT.0 =关
+    value.BINARY_REFINEMENT.1 =开
+
+option.NAME =埃舍利亚 v4.1
+    value.NAME.0 =§c作者：quirkyplague§r
+    value.NAME.1 =§b作者：quirkyplague§
+
+option.ROUGH_REFLECTION =粗略反射
+option.ROUGH_REFLECTION.comment =允许粗糙度变化，较粗糙的反射§3将产生噪点
+
+
+
+option.ABSORPTION_R =红色吸收
+option.ABSORPTION_G =绿色吸收
+option.ABSORPTION_B =蓝色吸收
+    suffix.ABSORPTION_R = %
+    suffix.ABSORPTION_G = %
+    suffix.ABSORPTION_B = %
+
+option.SCATTER_R =红色光散射强度
+option.SCATTER_G =绿色光散射强度
+option.SCATTER_B =蓝色光散射强度
+    suffix.SCATTER_R = %
+    suffix.SCATTER_G = %
+    suffix.SCATTER_B = %
+    
+option.SCATTER_COEFF =散射量
+option.ABSORPTION_COEFF =吸光量
+
+option.RAYLEIGH_COEFF =瑞利散射系数
+option.SUN_ANGULAR_RADIUS_MULT =太阳大小
+option.MOON_ANGULAR_RADIUS_MULT =月球大小
+option.SUN_BRIGHTNESS_MULT =太阳亮度
+option.MOON_BRIGHTNESS_MULT =月球亮度
+
+option.BLOOM_RADIUS =泛光半径
+option.BLOOM_QUALITY =泛光质量
+option.BLOOM_GLSL =泛光：
+    value.BLOOM_GLSL.0 =关
+    value.BLOOM_GLSL.1 =开
+
+option.WAVE_FREQUENCY  =波浪频率
+option.WAVE_SPEED =波浪速度
+option.WAVE_INTENSITY =波浪强度
+option.WAVE_SOFTNESS =波浪柔化程度
+option.WAVE_SOFTNESS.comment =每层波形的锐度
+option.WAVE_OCTAVES =波浪倍频
+option.WAVE_PULL =波浪拉伸系数
+option.WAVE_PULL.comment =定义基础波形
+option.WAVE_RANDOMNESS =波浪随机度
+option.WAVE_RANDOMNESS.comment =数值越高波浪随机性越低
+
+option.UNDERWATER_FOG_DENSITY =水下雾气密度
+option.WAVES =水面波浪
+
+option.MORNING_PHASE =晨雾各向异性
+option.DAY_PHASE =日间雾各向异性
+option.NOON_PHASE =正午雾各向异性
+option.EVENING_PHASE =暮雾各向异性
+option.NIGHT_PHASE =夜雾各向异性
+
+option.ZENITH_BLEND =天顶混合点
+option.HORIZON_BLEND =地平线混合点
+option.GROUND_BLEND =地面混合点
+
+option.HC_SSS =集成次表面散射
+option.HC_EMISSION =综合自发光
+
+option.TEMPORAL_REPROJECTION =时域重投影
+option.TEMPORAL_REPROJECTION.comment =启用帧混合以减少视觉噪点
+    value.TEMPORAL_REPROJECTION.0 =关
+    value.TEMPORAL_REPROJECTION.1 =开
+
+option.TA_FACTOR =时域累积系数
+option.TA_FACTOR.comment =重投影的强度等级
+
+option.SCREENSHOT_MODE =截图模式
+option.SCREENSHOT_MODE.comment =启用强累积模式以最大化去噪，适用于隐藏HUD时的截图
+    value.SCREENSHOT_MODE.0 =关
+    value.SCREENSHOT_MODE.1 =开
+    value.SCREENSHOT_MODE.2 =地狱维度
+
+option.ADVANCED_FOG_TRACING =高品质体积雾
+    
+option.FOG_DENSITY =雾密度
+option.WEATHER_DENSITY =天气雾密度
+option.TRACING_DISTANCE =最大雾距
+option.MS_FALLOFF =多次散射衰减
+option.MS_POWER =多次散射强度
+option.STBN_SAMPLES =蓝噪声采样
+option.STEP_SIZE =雾步长
+option.STEP_SIZE.comment =决定雾的整体质量（步长越小 = 质量越高但性能损耗越大）
+option.NOISE_SAMPLING =非均匀雾
+option.NOISE_SAMPLING.common =启用二维噪声图以产生密度变化（存在较多问题）
+
+option.CLOUD_DISTANCE_TYPE =云层渲染距离方法
+    value.CLOUD_DISTANCE_TYPE.0 =手动
+    value.CLOUD_DISTANCE_TYPE.1 =自动
+
+option.CLOUD_STYLE =云层样式
+    value.CLOUD_STYLE.0 =方块状
+    value.CLOUD_STYLE.1 =幻想风格
+
+option.AO_METHOD =环境光遮蔽样式
+    value.AO_METHOD.0 =原版环境光遮蔽
+    value.AO_METHOD.1 =屏幕空间环境光遮蔽
+
+option.SSAO_SAMPLES =屏幕空间环境光遮蔽采样数
+option.SSAO_RADIUS =环境光遮蔽半径
+option.SSAO_INTENSITY =环境光遮蔽强度
+option.VANILLA_AO_LEVEL =原版环境光遮蔽强度
+option.SSAO_TA_FACTOR =屏幕空间环境光遮蔽时域累积系数
+option.FILTER_AO =过滤屏幕空间环境光遮蔽
+

@@ -1,0 +1,236 @@
+#
+# Info 
+#
+
+screen.PYVTRON_SHADERS                                     =Pyvtron光影
+
+#
+# Profiles
+#
+
+profile.LITE                                               =轻§2量版
+profile.LOW                                                =§a低
+profile.MEDIUM                                             =§e中等（标准）
+profile.HIGH                                               =§6高
+profile.VERY_HIGH                                          =§2极高
+profile.ULTRA                                              =§c超高
+profile.EXTREME                                            =§4§k极§4端§4§k
+
+#
+# Options and Values
+#
+
+screen.VOLUMETRIC_FOG                                      =体积雾
+
+option.END_VOLUMETRIC_FOG                                  =末地体积雾
+value.END_VOLUMETRIC_FOG.false                             =关
+value.END_VOLUMETRIC_FOG.true                              =开
+option.END_FOG_STRENGTH                                    =末地雾气强度
+
+option.NETHER_VOLUMETRIC_FOG                               =下界体积雾
+value.NETHER_VOLUMETRIC_FOG.false                          =关
+value.NETHER_VOLUMETRIC_FOG.true                           =开
+option.NETHER_FOG_STRENGTH                                 =下界雾气强度
+
+option.VOLUMETRIC_FOG                                      =体积雾
+value.VOLUMETRIC_FOG.false                                 =关
+value.VOLUMETRIC_FOG.true                                  =开
+option.FOG_STRENGTH                                        =雾气强度
+
+screen.LIGHTING                                            =光照
+
+screen.LIGHT_SOURCE                                        =光源
+
+option.AMBIENT_LIGHT_BRIGHTNESS                            =环境光亮度
+option.SUNLIGHT_BRIGHTNESS                                 =阳光亮度
+option.sunPathRotation                                     =太阳旋转
+
+screen.VOLUMETRIC_LIGHT                                    =体积光
+
+option.LIGHT_SCATTERING                                    =体积光
+value.LIGHT_SCATTERING.0                                   =关
+value.LIGHT_SCATTERING.1                                   =开
+option.VOLUMETRIC_LIGHT_SAMPLES                            =体积光采样数
+option.VOLUMETRIC_LIGHT_RENDER_QUALITY                     =体积光渲染 - 质量
+option.VOLUMETRIC_LIGHT_RENDERDISTANCE                     =体积光渲染 - 距离
+
+screen.TORCHLIGHT_TEMPERATURE                              =火把光与温度
+
+option.TEMPERATURE.comment                                 =值越低 -> 越冷。值越高 -> 越暖。
+option.TEMPERATURE                                         =色温
+option.TORCHLIGHT_TEMPERATURE                              =火把光温度
+option.TORCHLIGHT_TEMPERATURE.comment                      =值越低 = 越冷。值越高 = 越暖。
+
+screen.SHADOWS                                             =阴影
+
+option.SOFT_SHADOWS                                        =柔和阴影
+option.FIX_SUNLIGHT_LEAK                                   =旧版光泄漏修复
+option.shadowMapResolution                                 =阴影分辨率
+
+option.shadowDistance                                      =阴影距离
+
+value.shadowDistance.32.0                                  =2 区块
+value.shadowDistance.48.0                                  =3 区块
+value.shadowDistance.64.0                                  =4区块
+value.shadowDistance.80.0                                  =5 区块
+value.shadowDistance.96.0                                  =6区块
+value.shadowDistance.112.0                                 =7区块
+value.shadowDistance.128.0                                 =8 区块
+value.shadowDistance.144.0                                 =9个区块
+value.shadowDistance.160.0                                 =10区块
+value.shadowDistance.176.0                                 =11个区块
+value.shadowDistance.192.0                                 =12区块
+value.shadowDistance.208.0                                 =13个区块
+value.shadowDistance.224.0                                 =14区块
+value.shadowDistance.240.0                                 =15个区块
+value.shadowDistance.256.0                                 =16区块
+value.shadowDistance.272.0                                 =17 区块
+value.shadowDistance.288.0                                 =18 区块
+value.shadowDistance.304.0                                 =19 区块
+value.shadowDistance.320.0                                 =20区块
+value.shadowDistance.336.0                                 =21 区块
+value.shadowDistance.352.0                                 =22 区块
+value.shadowDistance.368.0                                 =23 区块
+value.shadowDistance.384.0                                 =24区块
+value.shadowDistance.512.0                                 =32 区块
+value.shadowDistance.768.0                                 =48个区块
+value.shadowDistance.1024.0                                =64个区块
+value.shadowDistance.1536.0                                =96区块
+value.shadowDistance.2048.0                                =128区块
+value.shadowDistance.4096.0                                =256区块
+value.shadowDistance.8192.0                                =512区块
+
+option.SHADOW_BRIGHTNESS                                   =阴影亮度
+option.shadowDistanceRenderMul                             =最大阴影边界
+value.shadowDistanceRenderMul.-1.0                         =未优化
+value.shadowDistanceRenderMul.1.0                          =已优化
+
+screen.SURFACE                                             =表面
+
+option.TEXTURE_RESOLUTION                                  =纹理分辨率
+
+screen.RAIN                                                =雨
+
+option.RAINDROP_REFRACTION                                 =雨滴折射
+
+screen.WATER                                               =水
+
+option.WATER_REFRACTION_STRENGTH                           =水面折射强度
+option.WATER_WAVE_SPEED                                    =水面波浪速度
+option.WATER_WAVE_SCALE                                    =水波规模
+option.WATER_WAVES_AMOUNT                                  =水波数量
+option.WATER_RED_AMOUNT                                    =水面红色量
+option.WATER_GREEN_AMOUNT                                  =水面绿色量
+option.WATER_BLUE_AMOUNT                                   =水面蓝色量
+
+screen.SSR                                                 =屏幕空间反射（SSR）
+
+option.SSR_SAMPLES                                         =屏幕空间反射采样数
+option.SSR_METHOD                                          =SSR方法
+value.SSR_METHOD.0                                         =反射向量
+value.SSR_METHOD.1                                         =光线追踪
+
+screen.PBR_POM                                             =PBR与POM
+
+option.AUTO_BUMP                                           =自动凹凸
+option.PBR                                                 =PBR（基于物理的渲染）
+option.POM                                                 =POM（视差遮蔽映射）
+option.POM_QUALITY                                         =视差质量
+option.POM_DEPTH                                           =POM深度
+option.TORCH_NORMALS                                       =火把光法线贴图
+option.NORMAL_MAP_BUMPMULT                                 =法线贴图凹凸倍增
+
+screen.POSTPROCESSING                                      =后期处理
+
+option.EXPOSURE                                            =曝光
+option.CHROMATIC_ABERRATION                                =色差
+option.FILM_GRAIN                                          =胶片颗粒
+option.centerDepthHalflife                                 =焦点速度
+option.DEPTH_OF_FIELD                                      =景深
+option.DIRTY_LENS                                          =脏镜头
+
+screen.TONEMAPING                                          =色调映射
+
+option.TONEMAPPING                                         =色调映射
+option.SATURATION                                          =饱和度
+option.CONTRAST                                            =对比度
+option.WHITESCALE                                          =白色缩放
+option.BRIGHTNESS                                          =亮度
+
+screen.WIND                                                =风
+
+option.WINDY_TERRAIN                                       =风蚀地形
+option.WIND_SPEED                                          =风速
+
+screen.BLOOM                                               =泛光
+
+option.BLOOM                                               =泛光
+option.BLOOM_SAMPLES                                       =泛光采样
+
+screen.VIGNETTE                                            =暗角
+
+option.VIGNETTE                                            =暗角
+option.VIGNETTE_STRENGTH                                   =暗角强度
+option.VIGNETTE_SHARPNESS                                  =暗角锐度
+
+screen.LENS_FLARE                                          =镜头光晕
+
+option.LENS_FLARE                                          =镜头光晕
+option.LENS_POWER                                          =镜头强度
+
+screen.BLUR                                                =模糊强度
+
+option.DISTANCE_BLUR                                       =距离模糊
+option.MOTIONBLUR                                          =动态模糊
+option.MOTIONBLUR_AMOUNT                                   =运动模糊量
+option.MOTION_BLUR_STRENGTH                                =动态模糊强度
+option.MOTION_BLUR_STRENGTH                                =动态模糊强度
+option.MOTION_BLUR_DITHER                                  =运动模糊抖动
+option.MOTION_BLUR_QUALITY                                 =运动模糊质量
+option.MOTION_BLUR_SUTTER_ANGLE                            =运动模糊快门角度
+
+screen.HEATWAVE                                            =热浪
+
+option.NETHER_HEATWAVE                                     =下界热浪
+option.NETHER_HEATWAVE_SPEED                               =下界热浪速度
+option.NETHER_HEATWAVE_SIZE                                =下界热浪尺寸
+option.HEATWAVE                                            =热浪
+option.HEATWAVE_SPEED                                      =热浪速度
+option.HEATWAVE_SIZE                                       =热浪尺寸
+option.HEATWAVE_SPEED                                      =热浪速度
+option.END_HEATWAVE                                        =末地热浪
+option.END_HEATWAVE_SPEED                                  =末地热浪速度
+option.END_HEATWAVE_SIZE                                   =末地热浪尺寸
+
+screen.DEPTH_OF_FIELD                                      =景深
+
+option.DEPTH_OF_FIELD_AMOUNT                               =景深强度
+option.DEPTH_OF_FIELD_RANGE                                =景深范围
+
+screen.UNDERWATER_FOG                                      =水下雾
+
+option.UNDERWATER_FOG_STRENGTH                             =水下雾气强度
+option.UNDERWATER_FOG                                      =水下雾
+value.UNDERWATER_FOG.0                                     =关
+value.UNDERWATER_FOG.1                                     =开
+option.UNDERWATER_FOG_BRIGHTNESS                           =水下雾气亮度
+
+screen.OTHER                                               =其他
+
+option.OVERRIDE_FOLIAGE_COLOR                              =覆盖植被颜色
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

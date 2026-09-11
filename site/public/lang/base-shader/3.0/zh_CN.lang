@@ -1,0 +1,20 @@
+option.WORLD_FOG=世界雾
+
+option.CLOUD_FOG=云雾
+
+option.SKY_FOG=天空雾
+
+option.DIRECTIONAL_ENTITY_LIGHT=方向实体光
+
+option.DIRECTIONAL_BLOCK_LIGHT=方向性方块光照
+
+option.BLOCK_LIGHT_BRIGHTNESS_FIX=太阳光亮度修复
+option.BLOCK_LIGHT_BRIGHTNESS_FIX.comment=参见 https://bugs.mojang.com/browse/MC/issues/MC-278012
+
+option.GLINT_STRENGTH=附魔光辉强度
+
+option.MIPMAP_TYPE= mipmap 类型
+option.MIPMAP_TYPE.comment=将 mipmap 类型从“准确”更改为其他选项后，Iris 将不会在关闭光影包时重新加载所有区块，这会让对比更加方便。
+value.MIPMAP_TYPE.0=准确
+value.MIPMAP_TYPE.1=全部
+value.MIPMAP_TYPE.2=仅实心

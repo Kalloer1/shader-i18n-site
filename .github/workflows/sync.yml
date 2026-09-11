@@ -1,0 +1,40 @@
+name: sync
+
+on:
+  schedule:
+    - cron: '0 21 * * *'  # UTC 21:00 = 北京时间 05:00
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Sync catalog
+        run: npm run catalog
+
+      - name: Sync metadata
+        run: npm run sync
+        env:
+          CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+
+      - name: Detect changes and write to smart table
+        run: node scripts/detect-changes.mjs
+        env:
+          TENCENT_DOCS_TOKEN: ${{ secrets.TENCENT_DOCS_TOKEN }}
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: daily sync $(date -u +%Y-%m-%d)"
+          git push || true

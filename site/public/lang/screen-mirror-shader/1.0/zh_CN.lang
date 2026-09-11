@@ -1,0 +1,17 @@
+option.HORIZONTAL_SYMMETRY=水平对称
+option.HORIZONTAL_SYMMETRY.comment=控制水平镜像效果。选择图像的水平镜像方式。
+
+option.VERTICAL_SYMMETRY=垂直对称
+option.VERTICAL_SYMMETRY.comment=控制垂直镜像效果。选择图像的垂直镜像方式。
+
+value.HORIZONTAL_SYMMETRY.0=关闭
+value.HORIZONTAL_SYMMETRY.1=左→右镜像
+value.HORIZONTAL_SYMMETRY.2=左→右镜像（中心轴）
+value.HORIZONTAL_SYMMETRY.3=右→左镜像
+value.HORIZONTAL_SYMMETRY.4=全屏镜像
+
+value.VERTICAL_SYMMETRY.0=关闭
+value.VERTICAL_SYMMETRY.1=镜像 下→上
+value.VERTICAL_SYMMETRY.2=镜像 下→上 (中心轴)
+value.VERTICAL_SYMMETRY.3=镜像 上→下
+value.VERTICAL_SYMMETRY.4=全屏镜像

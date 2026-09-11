@@ -1,0 +1,9 @@
+#shaders/lang/zh_CN.lang
+# VanillAA v1.3 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：VanillAA.zip 的 shaders/lang/en_US.lang
+option.SHARPENING=锐化
+value.SHARPENING.0=关闭
+value.SHARPENING.1=非锐化蒙版
+value.SHARPENING.2=CAS
+
+option.CAS_AMOUNT=CAS 数量

@@ -1,0 +1,16 @@
+option.SHARPENING=锐化
+value.SHARPENING.0=关闭
+value.SHARPENING.1=非锐掩模
+value.SHARPENING.2=CAS（推荐）
+option.CAS_AMOUNT=CAS 锐度
+option.SATURATION=饱和度
+option.VIBRANCE=自然饱和度
+option.AMBIENT_BRIGHTNESS=环境亮度
+option.NIGHT_AMBIENT_LIFT=夜间亮度
+option.SKY_BLUE_BOOST=天空深度
+option.WATER_CLARITY=水 clarity
+option.SUNSET_WARMTH=日落暖度
+option.SUNLIGHT_WARMTH=阳光暖度
+option.WATER_BLUE_TINT=水蓝色调
+option.WAVE_STRENGTH=波浪强度
+option.WAVE_SPEED=波浪速度

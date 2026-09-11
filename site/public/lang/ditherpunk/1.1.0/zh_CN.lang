@@ -1,0 +1,108 @@
+// Main Menu Settings
+screen.LAYER_ONE                   =层一
+screen.LAYER_TWO                   =层二
+screen.LAYER_THREE                 =层三
+screen.GBUFFERS_LAYER_SELECT       =G缓冲区层选择
+screen.EDGES                       =边缘
+screen.COLORMAP                    =色彩映射
+screen.DEBUG                       =调试
+option.LAYERMASK_SCALE             =层遮罩缩放
+option.OFFSET_DITHER_BY_ROTATION   =按旋转偏移抖动
+option.PRE_BLEND_ALPHA             =预混合Alpha
+option.DISABLE_LEAVES_TRANSPARENCY =禁用透明树叶
+
+option.LAYERMASK_SCALE.comment             =建议将此设置为你的配置所使用的最高分辨率
+option.OFFSET_DITHER_BY_ROTATION.comment   =抖动图案将随摄像机旋转而移动，使图案看起来固定在物体上（在视野中心或静止时使用小视野效果最佳）
+option.PRE_BLEND_ALPHA.comment             =不单独处理透明方块/实体。强制位深度精度
+option.DISABLE_LEAVES_TRANSPARENCY.comment =移除树叶的镂空透明度。如果你使用边缘线，建议开启。
+
+// Profiles
+profile.comment =Opera Dinn模式 - 灵感源自Lucas Pope的《奥伯拉丁的回归》。Macintosh模式 - Apple Macintosh 128K (1984)。PS1模式 - Sony PlayStation (1994)。Gameboy模式 - Nintendo Game Boy (1989)。Virtualboy模式 - Nintendo Virtual Boy (1995)。基础模式 - 原版我的世界，是自定义的良好起点。
+
+// Edge Settings
+option.DRAW_EDGES                  =绘制边缘线
+option.EDGE_DEPTH_FAR_CUTOFF       =深度截断
+option.EDGE_DEPTH_THRESHOLD        =基于深度的边缘灵敏度
+option.EDGE_DARK_LIGHT_THRESHOLD   =暗/亮边缘阈值
+option.EDGE_LIGHT_R                =亮边缘颜色（红）
+option.EDGE_LIGHT_G                =亮边缘颜色（绿）
+option.EDGE_LIGHT_B                =亮边缘颜色（蓝）
+option.EDGE_DARK_R                 =暗边缘颜色（红）
+option.EDGE_DARK_G                 =暗边缘颜色（绿）
+option.EDGE_DARK_B                 =暗边缘颜色（蓝）
+option.EDGE_USE_GBUFFER_BOUNDARIES =绘制G缓冲区边界边缘
+option.EDGE_GBUFFER_USE_DEPTH      =G缓冲区边缘使用深度截断
+option.EDGE_USE_DEPTH              =绘制深度边缘
+option.EDGE_USE_NORMALS            =绘制表面法线边缘
+option.EDGE_NORMALS_USE_DEPTH      =法线边缘使用深度截断
+option.EDGE_IGNORE_WEATHER         =忽略天气
+
+option.EDGE_DEPTH_FAR_CUTOFF.comment       =限制边缘在特定距离外绘制。绘制G缓冲区边界边缘和法线边缘时必须启用
+option.EDGE_DEPTH_THRESHOLD.comment        =确定绘制深度边缘所需的最小几何体间距
+option.EDGE_DARK_LIGHT_THRESHOLD.comment   =灰度值大于此值的区域将使用深色绘制。小于或等于此值的区域将使用浅色绘制
+option.EDGE_USE_GBUFFER_BOUNDARIES.comment =在不同渲染通道之间绘制边缘（例如天空与地形、地形与水面等）
+
+// Color Map Settings
+option.COLORMAP =色彩映射
+option.CMAP_LIGHT_R =浅边缘颜色（红）
+option.CMAP_LIGHT_G =浅边缘颜色（绿）
+option.CMAP_LIGHT_B =浅边缘颜色（蓝）
+option.CMAP_DARK_R  =深色（红）
+option.CMAP_DARK_G  =深色（绿）
+option.CMAP_DARK_B  =深色（蓝）
+
+option.COLORMAP.comment =将渲染图像的灰度值映射到两个输入颜色之间的渐变
+
+// Gbuffer Layer Select
+option.GBUFFERS_ARMOR_GLINT_LAYER.comment  =护甲附魔光泽叠加层
+option.GBUFFERS_BASIC_LAYER.comment        =方块选择框、鱼线、牵引绳
+option.GBUFFERS_BEACONBEAM_LAYER.comment   =信标光束
+option.GBUFFERS_BLOCK_LAYER.comment        =方块/实体方块
+option.GBUFFERS_CLOUDS_LAYER.comment       =云
+option.GBUFFERS_ENTITIES_LAYER.comment     =实体
+option.GBUFFERS_HAND_LAYER.comment         =手部、不透明手持物品
+option.GBUFFERS_HAND_WATER_LAYER.comment   =半透明手持物品
+option.GBUFFERS_SKYBASIC_LAYER.comment     =天空、地平线、星星、虚空
+option.GBUFFERS_SKYTEXTURED_LAYER.comment  =太阳、月亮
+option.GBUFFERS_SPIDEREYES_LAYER.comment   =蜘蛛、末影人、末影龙的眼睛
+option.GBUFFERS_TERRAIN_LAYER.comment      =不透明几何体（包括镂空透明）、受损方块叠加层
+option.GBUFFERS_TEXTURED_LAYER.comment     =粒子效果
+option.GBUFFERS_TEXTURED_LIT_LAYER.comment =发光/自发光粒子、世界边界
+option.GBUFFERS_WATER_LAYER.comment        =半透明几何体
+option.GBUFFERS_WEATHER_LAYER.comment      =雨、雪
+
+// Layer 1 Settings
+option.LAYER_ONE_MONOCHROME =单色
+option.LAYER_ONE_SCALE      =缩放
+option.LAYER_ONE_BIT_DEPTH  =体积光采样数
+option.LAYER_ONE_DITHER     =体积云采样数
+option.LAYER_ONE_BAYER_SIZE =色彩纹理13
+
+value.LAYER_ONE_DITHER.0 =无
+value.LAYER_ONE_DITHER.1 =白噪声
+value.LAYER_ONE_DITHER.2 =蓝噪声
+value.LAYER_ONE_DITHER.3 =色彩纹理15
+
+// Layer 2 Settings
+option.LAYER_TWO_MONOCHROME =单色
+option.LAYER_TWO_SCALE      =缩放
+option.LAYER_TWO_BIT_DEPTH  =体积光采样数
+option.LAYER_TWO_DITHER     =体积云采样数
+option.LAYER_TWO_BAYER_SIZE =色彩纹理13
+
+value.LAYER_TWO_DITHER.0 =无
+value.LAYER_TWO_DITHER.1 =白噪声
+value.LAYER_TWO_DITHER.2 =蓝噪声
+value.LAYER_TWO_DITHER.3 =色彩纹理15
+
+// Layer 3 Settings
+option.LAYER_THREE_MONOCHROME =单色
+option.LAYER_THREE_SCALE      =缩放
+option.LAYER_THREE_BIT_DEPTH  =体积光采样数
+option.LAYER_THREE_DITHER     =体积云采样数
+option.LAYER_THREE_BAYER_SIZE =色彩纹理13
+
+value.LAYER_THREE_DITHER.0 =无
+value.LAYER_THREE_DITHER.1 =白噪声
+value.LAYER_THREE_DITHER.2 =蓝噪声
+value.LAYER_THREE_DITHER.3 =色彩纹理15

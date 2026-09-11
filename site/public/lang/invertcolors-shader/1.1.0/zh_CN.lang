@@ -1,0 +1,3 @@
+option.FOG_ENABLED=启用雾
+option.LIGHTLEVEL_ENABLED=启用光影图
+option.RENDER=启用反色

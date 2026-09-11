@@ -1,0 +1,16 @@
+screen.SIGHT_RADIUS=视野半径设置
+screen.SONAR=声呐设置
+
+screen.BY=着色器 by theredencryption
+screen.LINK=youtube.com/theredencryption
+
+option.sightRadiusWhileStanding=站立视野半径
+option.sightRadiusWhileSneaking=潜行视野半径
+
+option.doSonar=启用声呐？
+option.sonarSpeedMultiplier=声呐速度倍率
+
+suffix.sightRadiusWhileStanding=m
+suffix.sightRadiusWhileSneaking=m
+
+suffix.sonarSpeedMultiplier=x

@@ -1,0 +1,53 @@
+profile.PERFORMANCE=性能
+profile.BALANCED=平衡
+profile.QUALITY=画质
+profile.comment=性能优先考虑帧率。平衡目标为 Apple M1。画质提升阴影和后处理效果。
+
+screen.LIGHTING=照明与阴影
+screen.ATMOSPHERE=大气与颜色
+screen.WATER=水
+screen.POST=后期处理
+
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=单张稳定阴影贴图的分辨率。更高的数值会消耗 GPU 时间和内存。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=方块中实时阴影的最大距离。
+option.SHADOW_QUALITY=阴影滤波
+option.SHADOW_QUALITY.comment=Off，五采 PCF 或九采 PCF。
+value.SHADOW_QUALITY.0=关闭
+value.SHADOW_QUALITY.1=柔和
+value.SHADOW_QUALITY.2=更柔和
+option.CAVE_BRIGHTNESS=洞穴可见性
+option.CAVE_BRIGHTNESS.comment=控制暗室内的最低可读环境光，防止洞穴完全发亮。
+
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY.comment=控制距离和低空大气混合程度。
+option.COLOR_WARMTH=颜色暖度
+option.COLOR_WARMTH.comment=调整最终的暖色/冷色平衡。
+option.SATURATION=饱和度
+option.SATURATION.comment=调整最终颜色强度，同时保持亮度。
+option.WAVING_PLANTS=摇曳植物
+option.WAVING_PLANTS.comment=动画化草地、花朵、作物等类似植被。
+option.WAVING_LEAVES=摇曳树叶
+option.WAVING_LEAVES.comment=为树叶添加低幅度的风动动画。
+
+option.AURORA_DEBUG_MODE=极光调试模式
+option.AURORA_DEBUG_MODE.comment=强制每晚出现极光，便于截图与探索。保留自然稀有事件行为时请关闭此选项。
+value.AURORA_DEBUG_MODE.0=关闭
+value.AURORA_DEBUG_MODE.1=开启
+
+option.WATER_QUALITY=水质量
+option.WATER_QUALITY.comment=控制分析波纹细节和反射强度。
+value.WATER_QUALITY.0=快速
+value.WATER_QUALITY.1=平衡
+value.WATER_QUALITY.2=详细
+
+option.BLOOM_QUALITY=Bloom 质量
+option.BLOOM_QUALITY.comment=控制亮通行滤波器的采样数量。
+value.BLOOM_QUALITY.0=关闭
+value.BLOOM_QUALITY.1=快速
+value.BLOOM_QUALITY.2=流畅
+option.BLOOM_STRENGTH=Bloom 强度
+option.BLOOM_STRENGTH.comment=仅最亮区域的光晕强度。
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=在电影式色调映射之前的最终场景曝光。

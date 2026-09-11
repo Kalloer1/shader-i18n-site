@@ -1,0 +1,16 @@
+# Thử tô màu nhãn nút bằng mã màu Minecraft (§) — không phải tính năng
+# chính thức của Iris, chỉ ăn theo nếu Iris không lọc bỏ mã màu khi vẽ
+# text nút trong màn hình Shader Pack Settings. Nếu không hiện màu, chữ
+# vẫn hiển thị bình thường (mã § đơn giản bị bỏ qua), không lỗi gì cả.
+# §c = đỏ, §l = in đậm, §r = reset về mặc định (đóng ở cuối cho chắc)
+option.PERFORMANCE_MODE = §c§l固定卡顿§r
+
+# GRAPHICS (previously INFO) — renamed to "Graphics", colored bold blue
+# (§b + §l) so it stands out from other options. value.GRAPHICS.0..3
+# replace the raw 0/1/2/3 with Low/Medium/High/Ultra text in the menu
+# (the button still sets the underlying number 0-3 used in the code).
+option.GRAPHICS = §b§lGraphics§r
+value.GRAPHICS.0 = 低配
+value.GRAPHICS.1 = 中配
+value.GRAPHICS.2 = 高配
+value.GRAPHICS.3 = 极高

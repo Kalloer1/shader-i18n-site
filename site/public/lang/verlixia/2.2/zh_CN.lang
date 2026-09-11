@@ -1,0 +1,14 @@
+#shaders/lang/en_US.lang
+
+#Profiles
+profile.LOW=维瑞克西亚快速模式
+profile.MEDIUM=维瑞克西亚标准模式
+profile.HIGH=维瑞克西亚高品质模式
+profile.ULTRA=维瑞克西亚电影模式
+profile.comment=快速：性能优先的基础阴影。标准：平滑阴影与基础环境光遮蔽。高品质：完整体积光照与金色光束。电影模式：最高阴影分辨率、蓝宝石夜色及高级水面反射。
+
+#Settings
+option.ABOUT=维瑞克西亚
+option.ABOUT.comment=基于capttatsu的BSL着色器改编
+value.ABOUT.0=由 kaiakk 创作
+

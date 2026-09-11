@@ -1,0 +1,176 @@
+screen.Cam=效果
+screen.LT=光照
+screen.VHS=叠加层
+screen.AO=环境光遮蔽
+screen.BLM=泛光
+screen.AE=曝光
+
+option.FORCE_4_3_RATIO=4:3 宽高比
+value.FORCE_4_3_RATIO.0=关闭
+value.FORCE_4_3_RATIO.1=开启
+
+#AO
+option.AO=环境光遮蔽
+value.AO.0=关
+value.AO.1=开
+option.SAMPLES=采样数
+option.INTENSITY=强度
+option.SCALE=缩放
+option.SAMPLE_RAD=半径
+option.MAX_DISTANCE=最大距离
+option.ambientOcclusionLevel=原版 (AO)
+
+#FXAA
+option.ANTI_ALIASING=抗锯齿
+value.ANTI_ALIASING.0=关闭
+value.ANTI_ALIASING.1=开启
+
+option.BIT=16 位
+value.BIT.0=关
+value.BIT.1=开
+
+option.SSR=屏幕反射
+value.SSR.0=关闭
+value.SSR.1=开启
+
+option.PBR=PBR
+value.PBR.0=关
+value.PBR.1=开
+
+option.WAVES=波浪
+value.WAVES.0=关闭
+value.WAVES.1=开启
+
+option.SWAYING_FOLIAGE=摇曳的植物
+value.SWAYING_FOLIAGE.0=关闭
+value.SWAYING_FOLIAGE.1=开启
+
+option.GREY_WEATHER=灰色天气
+value.GREY_WEATHER.0=关
+value.GREY_WEATHER.1=开
+
+option.MOTION_BLUR=运动模糊
+value.MOTION_BLUR.0=关闭
+value.MOTION_BLUR.1=开启
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+
+option.GRAIN=颗粒
+value.GRAIN.0=关闭
+value.GRAIN.1=开启
+option.GRAIN_STRENGTH=颗粒强度
+
+option.SCANLINE=扫描线
+value.SCANLINE.0=关闭
+value.SCANLINE.1=开启
+option.SCANLINE_STRENGTH=扫描线强度
+option.SCANLINE_WIDTH=扫描线宽度
+
+option.COLOR_DIST=颜色畸变
+value.COLOR_DIST.0=关闭
+value.COLOR_DIST.1=开启
+option.COLOR_DIST_STRENGTH=颜色畸变强度
+
+option.BLACK_STRIPES=黑色条纹
+value.BLACK_STRIPES.0=关闭
+value.BLACK_STRIPES.1=开启
+
+option.DOF=景深
+value.DOF.0=关
+value.DOF.1=开
+option.DOF_STRENGTH=模糊强度
+option.TONEMAP_WHITE=色调映射白点
+
+option.LENS_FLARE_ENABLE=镜头光晕
+value.LENS_FLARE_ENABLE.0=关
+value.LENS_FLARE_ENABLE.1=开
+
+option.EXPOSURE=曝光
+option.AUTO_EXPOSURE=自动曝光
+value.AUTO_EXPOSURE.0=关闭
+value.AUTO_EXPOSURE.1=开启
+option.AUTO_EXPOSURE_SPEED=曝光速度
+option.AUTO_EXPOSURE_RADIUS=曝光半径
+
+option.VIGNETTE=暗角
+value.VIGNETTE.0=关
+value.VIGNETTE.1=开
+
+
+option.SATURATION=饱和度
+option.BRIGHTNESS=亮度
+option.CONTRAST=对比度
+
+
+option.ENABLE_NVG_IsSneaking=潜行时夜视
+value.ENABLE_NVG_IsSneaking.0=关闭
+value.ENABLE_NVG_IsSneaking.1=开启
+
+option.R=红色
+option.G=绿色
+option.B=蓝色
+
+option.TI=热成像
+value.TI.0=关闭
+value.TI.1=开启
+option.NVG=夜视
+value.NVG.0=关闭
+value.NVG.1=开启
+option.degree_brightness_increase=亮度增加程度
+
+
+#Lighting
+option.FOG=雾
+value.FOG.0=关闭
+value.FOG.1=开启
+option.FOG_DISTANCE=雾距离
+option.WATER_ALPHA=水体透明度
+
+option.SOFT=软阴影
+value.SOFT.1=关
+value.SOFT.2=开
+
+option.degree_night_darkness=夜间阴影程度
+
+option.SHADING=着色
+value.SHADING.0=关闭
+value.SHADING.1=开启
+option.NEW_LIGHTING=平滑光照
+value.NEW_LIGHTING.0=关闭
+value.NEW_LIGHTING.1=开启
+option.CLASSIC_NIGHT=经典夜晚
+value.CLASSIC_NIGHT.0=关闭
+value.CLASSIC_NIGHT.1=开启
+option.SHADOW_TRANSPARENCY=阴影透明度
+option.SUN_ANGLE=太阳角度
+option.LIGHT_ABSORPTION=光线吸收
+
+option.ENABLE_SHADOW=阴影
+value.ENABLE_SHADOW.0=关闭
+value.ENABLE_SHADOW.1=开启
+option.sunPathRotation=太阳路径旋转
+option.shadowDistance=阴影距离
+
+value.shadowDistance.64.0=4 区块
+value.shadowDistance.80.0=5 区块
+value.shadowDistance.96.0=6 区块
+value.shadowDistance.112.0=7 区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.160.0=10 区块
+value.shadowDistance.192.0=12 区块
+value.shadowDistance.224.0=14 区块
+value.shadowDistance.256.0=16 区块
+value.shadowDistance.320.0=20 区块
+value.shadowDistance.384.0=24 区块
+value.shadowDistance.512.0=32 区块
+value.shadowDistance.768.0=48 区块
+value.shadowDistance.1024.0=64 区块
+
+option.shadowMapResolution=阴影质量
+value.shadowMapResolution.512=极低 (512)
+value.shadowMapResolution.768=低 (768)
+value.shadowMapResolution.1024=低中 (1024)
+value.shadowMapResolution.1536=中 (1536)
+value.shadowMapResolution.2048=中高 (2048)
+value.shadowMapResolution.3072=高 (3072)
+value.shadowMapResolution.4096=极高 (4096)
+value.shadowMapResolution.8192=超高 (8192)

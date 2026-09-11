@@ -1,0 +1,343 @@
+
+screen.Water =水
+	option.vanillaWater =原版水
+	option.vanillaWater.comment =仅将原版纹理应用于水面，尚未完善支持功能，抱歉！
+	option.waterBumpness =水面波纹强度
+	option.waterBumpness.comment =调整水面的波浪感或凹凸感
+	option.waterReflectance =水体反射率
+	option.waterReflectance.comment =调整水面如镜面般的光泽度
+	option.ssrSamples =屏幕空间反射采样数
+	option.ssrSamples.comment =屏幕空间反射的采样数量，主要影响反射质量与范围
+	option.waterSunRefRadius =水面太阳反射半径
+	option.waterSunRefRadius.comment =调整水面太阳反射区域的大小
+
+screen.WaterColorSettings =水体颜色设置
+	option.waterColorR =水体颜色红色
+	option.waterColorR.comment =调整水面的红色色调
+	option.waterColorG =水体颜色绿色
+	option.waterColorG.comment =调整水面的绿色色调
+	option.waterColorB =水体颜色蓝色
+	option.waterColorB.comment =调整水面的蓝色色调
+	option.waterColorA =水色透明度
+	option.waterColorA.comment =调整水体的透明与实体感
+
+screen.WaterAbsorbSettings =水体吸收设置
+	option.waterAbsorbR =水体红色吸收率
+	option.waterAbsorbR.comment =调整水体对红光的吸收程度
+	option.waterAbsorbG =水体绿色吸收率
+	option.waterAbsorbG.comment =调整水体对绿光的吸收程度
+	option.waterAbsorbB =水体蓝色吸收率
+	option.waterAbsorbB.comment =调整水体对蓝光的吸收程度
+
+screen.WaterFogSettings =水下雾效设置
+	option.waterFogColorR =水下雾色（红）
+	option.waterFogColorR.comment =调整水下雾气的红色成分
+	option.waterFogColorG =水下雾色（绿）
+	option.waterFogColorG.comment =调整水下雾气的绿色成分
+	option.waterFogColorB =水下雾色（蓝）
+	option.waterFogColorB.comment =调整水下雾气的蓝色成分
+
+screen.WaterCausticsSettings =水体焦散设置
+	option.accurateCaustics =精确焦散效果
+	option.accurateCaustics.comment =为水下物体添加焦散光斑，效果出色！
+	option.causticsDistanceThreshold =焦散距离阈值
+
+screen.SeasonSettings =季节设置
+	option.seasonalColors =季节色彩
+	option.seasonalColors.comment =使植被颜色随季节变化，同时增加色彩层次感
+	option.seasonCycle =季节循环
+	option.seasonCycle.comment =调整季节更替速度
+	option.colorVariationStrength =颜色变化强度
+	option.colorVariationStrength.comment =调整颜色变化的明显程度
+
+screen.Lighting =光照
+	option.foliageSSSAmount =植被次表面散射强度
+	option.foliageSSSAmount.comment =去除漫射阴影——当阳光穿透植被时使其微微发光
+	option.shadowMapResolution =阴影贴图分辨率
+	option.shadowMapResolution.comment =调整阴影贴图分辨率
+	option.shadowDistance =阴影距离
+	option.shadowDistance.comment =调整阴影可见距离
+
+screen.ShadowColorSettings =阴影颜色设置
+	option.shadowColorR =阴影颜色（红）
+	option.shadowColorR.comment =调整阴影的红色色调
+	option.shadowColorB =阴影颜色（蓝）
+	option.shadowColorB.comment =调整阴影的蓝色色调
+	option.shadowColorM =阴影颜色乘数
+	option.shadowColorM.comment =调整阴影明暗程度
+
+screen.EmissionSettings =自发光设置
+	option.emissionM =自发光乘数
+	option.emissionM.comment =调整发光像素的明暗强度（需资源包支持）
+
+screen.VLSettings =体积光照设置
+	option.VL =体积光照
+	option.VL.comment =光束！雾气！啊！！
+	option.VLSpread =体积光扩散
+	option.VLSpread.comment =调整体积光扩散范围，使其更宽或更贴近太阳
+	option.VLStrength =体积光照强度
+	option.VLStrength.comment =体积光强度
+	option.VLTransMult =体积光透射乘数
+	option.VLTransMult.comment =调整光线穿透空气物体的程度
+	option.VLStainedMult =体积光染色乘数
+	option.VLStainedMult.comment =调整光线穿透半透明物体（染色玻璃）的强度
+	option.VLMist =极低薄雾
+	option.VLMist.comment =浓烟雾！浓烟雾！
+	option.VLNetherSwirl =极低的下界旋涡
+	option.VLNetherSwirl.comment =使下界中的雾气产生旋涡效果
+
+screen.VLColorSettings =体积光照颜色设置
+	option.VLColorR =极低的红色
+	option.VLColorR.comment =改变上帝光线的红色成分
+	option.VLColorG =极低的绿色
+	option.VLColorG.comment =改变上帝光线的绿色成分
+	option.VLColorB =极低的蓝色
+	option.VLColorB.comment =改变上帝光线的蓝色成分
+
+screen.BasicFogSettings =基础雾效设置
+	option.terrainFogMult =地形雾气乘数
+	option.terrainFogMult.comment =增强或减弱雾气强度（会被"极低"设置覆盖）
+
+screen.BlockLightSettings =方块光源设置
+	option.blockLightR =方块光照红
+	option.blockLightR.comment =改变发光方块光线的红色成分
+	option.blockLightG =方块光照绿
+	option.blockLightG.comment =改变发光方块光线的绿色成分
+	option.blockLightB =方块光照蓝
+	option.blockLightB.comment =改变发光方块光线的蓝色成分
+	option.blockLightM =方块光照乘数
+	option.blockLightM.comment =增强或减弱方块光照亮度
+	option.directionalLMaps =定向光照贴图
+	option.directionalLMaps.comment =为光照效果添加方向性（存在轻微问题，需要资源包）
+	option.directionalStrength =方向强度
+	option.directionalStrength.comment =调整方向性的强度
+
+screen.VanillaAOSettings =原版环境光遮蔽设置
+	option.concentratedAO =集中式环境光遮蔽
+	option.concentratedAO.comment =一种优化原版环境光遮蔽效果的技术，使暗角更深且过渡更自然
+
+screen.SSAOSettings =环境光遮蔽设置
+	option.SSAO =屏幕空间环境光遮蔽
+	option.SSAO.comment =在角落添加更优质的环境光遮蔽（替换原版环境光遮蔽）
+	option.SSAOSamples =环境光遮蔽采样数
+	option.SSAOSamples.comment =采样数越多 - 质量越好 - 噪点越少
+	option.SSAOrad =环境光遮蔽半径
+	option.SSAOrad.comment =调整环境光遮蔽的扩散范围
+	option.ambSSS =环境次表面散射
+	option.ambSSS.comment =使树叶等物体呈现柔和的间接光照效果
+
+screen.TexAOSettings =贴图环境光遮蔽设置
+	option.textureAOStrength =纹理环境光遮蔽强度
+	option.textureAOStrength.comment =调整纹理环境光遮蔽的影响强度（需要资源包）
+
+screen.SunRefSettings =太阳反射设置
+	option.sunRefIntensity =太阳反射强度
+	option.sunRefIntensity.comment =增强或减弱太阳在方块上的反射亮度
+
+screen.RReflectionsSettings =反射设置
+	option.PBRReflectionsAndEmission =PBR反射与自发光
+	option.PBRReflectionsAndEmission.comment =为反光方块添加反射效果并支持自发光（需要资源包）
+	option.extraDepthCheck =额外深度检测
+	option.extraDepthCheck.comment =使反射更精确地检测障碍物
+	option.rrSamples =反射光线采样
+	option.rrSamples.comment =调整反射的平滑度与颗粒感
+	option.rrBounces =反射光线弹射次数
+	option.rrBounces.comment =增加反射光线弹射次数以获得更多细节
+	option.rrLODStrength =反射LOD强度
+	option.rrLODStrength.comment =降低粗糙反射噪点的技术，反射距离碰撞点越远，LOD层级越高
+	option.ditherStrength =抖动强度
+	option.ditherStrength.comment =增强或减弱反射中的颗粒图案
+
+screen.ParallaxSettings =视差设置
+	option.steepParallax =陡峭视差
+	option.steepParallax.comment =使平面纹理呈现立体凹凸效果
+	option.SPSamples =陡峭视差采样
+	option.SPSamples.comment =采样数越多效果质量越高
+	option.SPSelfShadowSamples =陡峭视差自阴影采样
+	option.SPSelfShadowSamples.comment =扩大或缩小自阴影范围
+
+screen.PuddlesSettings =水坑设置
+	option.rainPuddles =雨水坑
+	option.rainPuddles.comment =在下雨时为地面添加水坑
+	option.puddleReflectance =水坑反射率
+	option.puddleReflectance.comment =增强或减弱水坑光泽度
+
+screen.DOFSettings =景深设置
+	option.DOF =景深
+	option.DOF.comment =使远处或极近的物体呈现模糊效果
+	option.DOFDepthEdgeFix =景深边缘修正
+	option.DOFDepthEdgeFix.comment =修复物体边缘的异常模糊线条
+	option.DOFExcludeHand =景深排除手部
+	option.DOFExcludeHand.comment =保持手部不被模糊处理
+	option.DOFStrength =景深强度
+	option.DOFStrength.comment =增强或减弱模糊强度
+	option.aperture =光圈
+	option.aperture.comment =调整模糊程度（模拟相机景深效果）
+	option.sensorHeight =感应器高度
+	option.sensorHeight.comment =调整模糊效果（模拟相机传感器特性）
+	option.focusDistance =焦点距离
+	option.focusDistance.comment =调整物体开始模糊的距离阈值
+
+screen.MBlurSettings =抖动
+	option.MotionBlur =动态模糊
+	option.MotionBlur.comment =移动时产生动态模糊效果
+	option.MBlurStrength =动态模糊强度
+	option.MBlurStrength.comment =增强或减弱运动模糊
+
+screen.CASettings =色差设置
+	option.chromaticAberration =色差
+	option.chromaticAberration.comment =使边缘产生色彩分离效果
+	option.chromaticAberrationStrength =色差强度
+	option.chromaticAberrationStrength.comment =增强或减弱该效果
+
+screen.SharpeningSettings =锐化设置
+	option.sharpening =锐化
+	option.sharpening.comment =调节画面锐化/模糊程度（使用CAS算法）
+	option.sharpeningStrength =锐化强度
+	option.sharpeningStrength.comment =增强或减弱锐化效果
+
+screen.BloomSettings =泛光设置
+	option.BloomBlur =泛光模糊
+	option.BloomBlur.comment =使高亮物体产生光晕与模糊扩散
+	option.bloomThreshold =泛光阈值
+	option.bloomThreshold.comment =调整物体发光所需的最低亮度阈值
+	option.bloomStrength =泛光强度
+	option.bloomStrength.comment =使泛光更强或更弱。
+	option.bloomSpread =泛光扩散
+	option.bloomSpread.comment =控制泛光的扩散半径大小。
+	option.GlowEffect =泛光效果
+	option.GlowEffect.comment =让一切都发光！
+
+screen.TAASettings =时间性抗锯齿设置
+	option.TAA =时域抗锯齿
+	option.TAA.comment =使锯齿边缘看起来更平滑。
+	option.catmullRomTAAFiltering =卡特穆尔-罗姆TAA抗锯齿过滤
+	option.catmullRomTAAFiltering.comment =使平滑效果看起来更好。
+	option.TAAMixBlendFac =TAA混合混合因子
+	option.TAAMixBlendFac.comment =控制平滑效果与前一帧的混合程度。
+
+screen.Colors =颜色
+	option.Saturation =饱和度
+	option.Saturation.comment =使所有颜色更鲜艳或更灰暗。
+	option.Contrast =对比度
+	option.Contrast.comment =使暗部更暗，亮部更亮。
+	option.Vibrance =鲜艳度
+	option.Vibrance.comment =使灰暗的颜色更鲜艳。
+	option.LUTS =色彩查找表
+	option.LUTS.comment =改变整体的色彩观感，如同滤镜或色彩校正。
+
+screen.VCloudsSettings =体积云设置
+	option.volumetricClouds =体积云
+	option.volumetricClouds.comment =添加蓬松的云彩！
+	option.volumetricBlockyClouds =云彩方块化
+	option.volumetricBlockyClouds.comment =使云彩看起来更像方块——更贴近《我的世界》的氛围！
+	option.volumetricDetailedClouds =添加额外细节
+	option.volumetricDetailedClouds.comment =为云彩添加额外的小细节。性能开销很大！
+	option.volumetricAltitude =体积云高度
+	option.volumetricAltitude.comment =改变云彩的高度。
+	option.volumetricThickness =体积云厚度
+	option.volumetricThickness.comment =使云彩更厚或更薄。
+	option.volumetirCoverage =体积云覆盖度
+	option.volumetirCoverage.comment =改变天空被云彩覆盖的比例。
+	option.volumetricDensity =体积云密度
+	option.volumetricDensity.comment =使云彩更实体化或更通透。
+	option.volumetricScatteringDensity =体积光散射密度
+	option.volumetricScatteringDensity.comment =控制光线在云彩内部的反弹程度。
+	option.volumetricSamples =体积采样数
+	option.volumetricSamples.comment =采样数越多，云彩看起来越实体、越明亮。
+	option.volumetricScatteringSamples =体积光散射采样数
+	option.volumetricScatteringSamples.comment =控制云彩内光线的质量高低。
+	option.volumetricDownscaleFactor =体积云降采样因子
+	option.volumetricDownscaleFactor.comment =使云彩渲染更快但细节更少。
+	option.volumetricUpscaleFactor =边缘拟合上采样半径
+	option.volumetricUpscaleFactor.comment =用于覆盖边缘的双边上采样方法半径。
+	option.volumetricTAAU =体积云TAA抗锯齿
+	option.volumetricTAAU.comment =噪声消失！
+
+screen.FCloudsSettings =平坦云层设置
+	option.flatClouds =平面云彩
+	option.flatClouds.comment =添加像旧版《我的世界》那样扁平的云彩。
+	option.flatAltitude =平面云高度
+	option.flatAltitude.comment =改变平面云的高度。
+	option.flatThickness =平面云厚度
+	option.flatThickness.comment =使平面云更厚或更薄。
+	option.flatCoverage =平面云覆盖度
+	option.flatCoverage.comment =改变天空被平面云覆盖的比例。
+	option.flatDensity =平面云密度
+	option.flatDensity.comment =使平面云更实体化或更通透。
+	option.flatScatteringSamples =平面云光散射采样数
+	option.flatScatteringSamples.comment =控制平面云内光线的平滑度。
+
+screen.ShootingStarsSettings =流星设置
+	option.shootingStars =流星
+	option.shootingStars.comment =在夜晚的天空中添加流星。
+	option.shootingStarsCount =流星数量
+	option.shootingStarsCount.comment =控制出现流星的多少。
+	option.shootingStarWidth =流星宽度
+	option.shootingStarWidth.comment =使流星更粗或更细。
+	option.shootingStarSpeed =流星速度
+	option.shootingStarSpeed.comment =使流星移动更快或更慢。
+	option.shootingStarLength =流星长度
+	option.shootingStarLength.comment =使流星更长或更短。
+	option.shootingStarBrightness =流星亮度
+	option.shootingStarBrightness.comment =使流星更亮或更暗。
+	option.shootingStarDuration =流星持续时间
+	option.shootingStarDuration.comment =控制流星持续的时间长短。
+
+screen.NetherSettings =下界设置
+	option.NetherSkyR =下界天空红色
+	option.NetherSkyR.comment =控制下界天空的红色程度。
+	option.NetherSkyG =下界天空绿色
+	option.NetherSkyG.comment =控制下界天空的绿色程度。
+	option.NetherSkyB =下界天空蓝色
+	option.NetherSkyB.comment =控制下界天空的蓝色程度。
+
+screen.SkySettings =天空设置
+	option.pinkSunsetAndRise =粉色日出与日落
+	option.pinkSunsetAndRise.comment =使日出和日落呈现粉色。
+
+screen.WeatherSettings =天气设置
+	option.weatherOpacityMult =天气不透明度倍增器
+	option.weatherOpacityMult.comment =使雨雪更具通透感或更密集
+
+screen.Atmosphere =大气
+screen.Lighting =光照
+screen.Material =材质
+screen.Water =水
+screen.PostProcessing =后期处理
+screen.Colors =颜色
+
+screen.VCloudsSettings =体积云设置
+screen.FCloudsSettings =平坦云层设置
+screen.ShootingStarsSettings =流星设置
+screen.NetherSettings =下界设置
+screen.SeasonSettings =季节设置
+screen.SkySettings =天空设置
+screen.WeatherSettings =天气设置
+screen.ShadowsSettings =阴影设置
+screen.ShadowColorSettings =阴影颜色设置
+screen.EmissionSettings =自发光设置
+screen.VLSettings =体积光照设置
+screen.VLColorSettings =体积光照颜色设置
+screen.BasicFogSettings =基础雾效设置
+screen.BlockLightSettings =方块光源设置
+screen.VanillaAOSettings =原版环境光遮蔽设置
+screen.SSAOSettings =环境光遮蔽设置
+screen.TexAOSettings =贴图环境光遮蔽设置
+screen.SunRefSettings =太阳反射设置
+
+screen.RReflectionsSettings =反射设置
+screen.ParallaxSettings =视差设置
+screen.PuddlesSettings =水坑设置
+
+screen.WaterColorSettings =水体颜色设置
+screen.WaterAbsorbSettings =水体吸收设置
+screen.WaterFogSettings =水下雾效设置
+screen.WaterCausticsSettings =水体焦散设置
+
+screen.DOFSettings =景深设置
+screen.MBlurSettings =抖动
+screen.CASettings =色差设置
+screen.SharpeningSettings =锐化设置
+screen.BloomSettings =泛光设置
+screen.TAASettings =时间性抗锯齿设置

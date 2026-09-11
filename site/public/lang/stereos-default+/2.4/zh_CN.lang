@@ -1,0 +1,17 @@
+screen.Water=水
+option.WaveAmount=波浪大小
+option.WaveAmount.comment=更改波浪的大小。
+option.WaveSpeed=波浪速度
+option.WaveSpeed.comment=更改波浪的速度。
+screen.Lava=熔岩
+option.LavaSpeed=熔岩波浪速度
+option.LavaSpeed.comment=更改熔岩波浪的速度。
+screen.Shadows=阴影
+option.ShadowSamples=阴影样本数
+option.ShadowSamples.comment=更改阴影边缘的“平滑度”。数值越高会影响性能！
+option.Ambient=环境光
+option.Ambient.comment=更改世界中环境光的亮度。会影响所有与光照相关的事物！
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowMapResolution.comment=更改阴影边缘的“清晰度”。数值越高会影响性能！
+option.TransparentShadowHardness=透明物体阴影硬度
+option.TransparentShadowHardness.comment=更改透明物体的阴影颜色显示程度。数值过高可能影响性能！

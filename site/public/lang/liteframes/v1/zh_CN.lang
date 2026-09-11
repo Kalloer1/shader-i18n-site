@@ -1,0 +1,83 @@
+# LiteFrames by EPTUNE STUDIOS
+
+# ---- Shadows ----
+Shadows=阴影
+shadowMapResolution.shadowMapResolution=阴影贴图分辨率
+shadowDistance.shadowDistance=阴影距离
+sunPathRotation.sunPathRotation=日光路径旋转
+
+# ---- Lighting ----
+Lighting=光照
+torchLightColor=火把光颜色
+ambientLightMultiplier.ambientMultiplier=环境光倍率
+directLightMultiplier.directMultiplier=直光倍率
+minimumLight.minimumLight=最小光照级别
+
+# ---- Sky ----
+Sky=天空
+sunRender=渲染 太阳
+moonRender=渲染 月亮
+skyGradientToggle=天空渐变
+sunsetBandIntensity.sunsetIntensity=日落条带强度
+sunGlow.sunGlow=阳光光晕
+
+# ---- Clouds ----
+Clouds=云层
+cloudToggle=启用云层
+cloudCellSize.cloudCell=云层单元格大小
+cloudHeight.cloudHeight=云层高度
+cloudThickness.cloudThickness=云层厚度
+cloudWindSpeed.cloudWind=云层风速
+cloudCoverage.cloudCoverage=云层覆盖率
+
+# ---- Fog ----
+Fog=雾
+fogToggle=开启雾
+fogDensity.fogDensity=雾密度
+fogStart.fogStart=雾起始
+underwaterFog.underwaterFog=水下雾强度
+underwaterTintR.underwaterTintR=水下红色调
+underwaterTintG.underwaterTintG=水下绿色调
+underwaterTintB.underwaterTintB=水下蓝色调
+underwaterFogDensity.underwaterFogDensity=水下雾密度
+
+# ---- Volumetric Light ----
+Volumetric Light=体积光
+volumetricShaftsToggle=启用体积光柱
+godRaysToggle=启用体积光
+godrayDensity.godrayDensity=体积光密度
+godrayDecay.godrayDecay=体积光衰减
+godrayStrength.godrayStrength=体积光强度
+godraySolid.godraySolid=体积光固体混合
+godraySamples.godraySamples=体积光采样数量
+
+# ---- Bloom ----
+Bloom=泛光
+bloomToggle=开启泛光
+bloomStrength.bloomStrength=泛光强度
+
+# ---- Color Grading ----
+Color Grading=色彩校正
+temperature.temperature=温度
+tint.tint=色调
+saturation.saturation=饱和度
+vibrance.vibrance=自然饱和度
+contrast.contrast=对比度
+brightness.brightness=亮度
+
+# ---- Effects ----
+Effects=效果
+vignetteToggle=开启暗角
+vignetteStrength.vignetteStrength=暗角强度
+
+# ---- Water ----
+Water=水
+waterReflection.waterReflection=水反射强度
+waterFresnel.waterFresnel=水棱镜力
+waterSpecular.waterSpecular=水高光强度
+waterAlpha.waterAlpha=水透明度
+
+# ---- High Haze ----
+High Haze=高雾
+highHazeToggle=启用高雾
+highHazeOpacity.highHazeOpacity=高雾不透明度

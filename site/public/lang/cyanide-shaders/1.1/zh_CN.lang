@@ -1,0 +1,68 @@
+
+screen.COLORS           =颜色
+screen.COLORS.comment   =修改光影包的颜色。
+screen.LIGHTC           =光照
+screen.NETHER           =下界
+screen.END              =末地
+screen.POST             =后期处理
+screen.POST.comment     =开关后期处理效果，例如泛光。
+screen.ATMO             =大气效果
+screen.ATMO.comment     =修改光影包的大气视觉效果。
+
+option.INFO                     =氰化物光影
+value.INFO.0                    =版本 1.1
+option.INFO.comment             =制作人员 - mlgimposter, akashii, xordev。
+
+option.SHADERSMOD               =光影模组
+option.SHADERSMOD.comment       =选择你正在使用的光影加载器。[i] §9选§f§9择§f Iris 以修复天空。
+value.SHADERSMOD.0              =optifine
+value.SHADERSMOD.1              =Iris
+
+option.BLOOM                    =泛光
+option.BLOOM.comment            =在明亮表面产生模糊效果。[i§9§f§9]§f 可能影响性能。
+option.BLOOM_MULT               =泛光强度
+option.BLOOM_MULT.comment       =调整模糊效果的强度。
+option.TONEMAPPING              =色调映射运算符
+option.TONEMAPPING.comment      =模拟 HDR 并调整颜色。[i] 选择 §9U§fn§9§fcharted 2 可使游戏画面类似 Minecraft Xbox 360 版本。
+value.TONEMAPPING.0             =§c无
+value.TONEMAPPING.1             =电影色调映射
+value.TONEMAPPING.2             =未知海域
+value.TONEMAPPING.3             =ACES 近似
+value.TONEMAPPING.4             =reinhard
+
+option.RLRISE           =日出§c红§f色量
+option.GLRISE           =日出§a绿色§f量
+option.BLRISE           =日出§b蓝色§f量
+
+option.RLDAY            =白天§c红§f色量
+option.GLDAY            =白§a天绿§f色量
+option.BLDAY            =白天§b蓝§f色量
+
+option.RLSET            =日落§c红§f色量
+option.GLSET            =日落§a绿色§f量
+option.BLSET            =日落§b蓝§f色量
+
+option.RLNIGHT          =夜晚§c红§f色量
+option.GLNIGHT          =夜晚§a绿§f色量
+option.BLNIGHT          =夜晚§b蓝§f色量
+
+option.NETHERR          =§c红§f色量
+option.NETHERG          =§a绿色§f量
+option.NETHERB          =§b蓝色§f量
+
+option.ENDR             =§c红§f色量
+option.ENDG             =§a绿色§f量
+option.ENDB             =§b蓝色§f量
+
+option.BSUNRISE         =亮度
+option.BDAY             =亮度
+option.BSUNSET          =亮度
+option.BNIGHT           =亮度
+
+option.FOG                  =雾
+option.FOG.comment          =生成颜色与时间同步的雾气。[i] 需§9§f要§9§f在详细设置中将雾气设为"精细"。
+option.FOG_DENSITY          =密度
+option.FOG_DENSITY.comment  =调整雾气浓度。[i]§9§f§9 §f过高值可能导致部分问题。
+option.FOG_DIST             =距离
+option.FOG_DIST.comment     =调整雾气距离。[i]§9§f§9§f 距离也会受到渲染距离的影响。
+

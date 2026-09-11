@@ -1,0 +1,83 @@
+
+screen.LIGHTING=照明 + 阴影
+screen.WATER=水
+screen.SKY_FOG=天空 + 雾
+screen.UNDERWATER=水下
+screen.POST=后期处理
+screen.PERFORMANCE=性能
+
+option.BREEZE_SATURATION=饱和度
+option.BREEZE_CONTRAST=对比度
+option.BREEZE_WARMTH=温暖度
+option.BREEZE_BLOOM=泛光
+option.BREEZE_VIGNETTE=暗角
+option.BREEZE_SHARPEN=锐化
+option.BREEZE_FAST_MODE=快速模式
+option.BREEZE_SHADOWS=阴影
+option.BREEZE_SHADOW_STRENGTH=阴影强度
+option.BREEZE_SHADOW_SOFTNESS=阴影柔和度
+option.BREEZE_LIGHT_SMOOTH=光影平滑
+option.BREEZE_WATER_TINT=水深染色
+option.BREEZE_WATER_WAVES=水波
+option.BREEZE_WATER_GLINT=水面日光
+option.BREEZE_WATER_REFLECTIONS=水面反射
+option.BREEZE_WATER_CLARITY=水 clarity
+option.BREEZE_AO=屏幕环境光遮蔽
+option.BREEZE_ATMOSPHERE=大气
+option.BREEZE_GODRAYS=体积光
+option.BREEZE_FOG_DENSITY=雾密度
+option.BREEZE_SUNSET_POWER=日出/日落强度
+option.BREEZE_COLOR_BLEND=颜色混合
+option.BREEZE_UNDERWATER=水下效果
+option.BREEZE_UNDERWATER_DENSITY=水下雾
+option.BREEZE_UNDERWATER_CAUSTICS=水下焦散
+screen.FOLIAGE=树叶风
+screen.MOTION=运动模糊
+option.BREEZE_FOLIAGE_WAVING=树叶摆动
+option.BREEZE_WIND_STRENGTH=风强度
+option.BREEZE_WIND_SPEED=风速度
+option.BREEZE_LEAF_FLUTTER=叶片飘动
+option.BREEZE_MOTION_BLUR=运动模糊
+option.BREEZE_MOTION_BLUR_STRENGTH=运动模糊强度
+option.BREEZE_MOTION_BLUR_QUALITY=运动模糊质量
+screen.LIGHTING=光照 + 阴影
+screen.WATER=水
+screen.SKY_FOG=天空 + 雾
+screen.FOLIAGE=树叶风
+screen.UNDERWATER=水下
+screen.POST=后期处理
+screen.MOTION=运动模糊
+screen.PERFORMANCE=性能
+option.BREEZE_SKY_CLEANUP=天空清理
+option.BREEZE_SKYBOX_CORRECTION=天空盒方向修复
+option.BREEZE_FOLIAGE_WAVING=树叶摆动
+option.BREEZE_WIND_STRENGTH=风力强度
+option.BREEZE_WIND_SPEED=风速
+option.BREEZE_LEAF_FLUTTER=叶子轻颤
+option.BREEZE_MOTION_BLUR=运动模糊
+option.BREEZE_MOTION_BLUR_STRENGTH=运动模糊强度
+option.BREEZE_MOTION_BLUR_QUALITY=运动模糊质量
+
+option.BREEZE_MOON_HALO=月光光环
+
+option.BREEZE_BIOME_FOG=群系彩色雾
+option.BREEZE_BIOME_FOG_STRENGTH=群系雾强度
+option.BREEZE_NIGHT_GRAY_FOG=灰色夜雾
+
+option.BREEZE_DIRECT_SKY_COLOR=直接天空颜色修复
+option.BREEZE_DIRECT_SKY_COLOR.comment=绕过原版天空盒面颜色，以避免黑红立方体天空面 artifact。
+
+option.BREEZE_END_SKY_FIX=End 天空硬修复
+
+option.BREEZE_END_SKY_FORCE=强制结束天空替换
+
+option.BREEZE_END_PULSE_CLEANUP=结束脉冲终结者
+
+option.BREEZE_END_CLARITY=终极清晰度
+option.BREEZE_END_AURORA=终极极光
+option.BREEZE_END_AURORA_STRENGTH=终极极光强度
+profile.POTATO=土豆
+profile.LOW=低配
+profile.MEDIUM=中配
+profile.HIGH=高配
+profile.ULTRA=极高

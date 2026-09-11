@@ -1,0 +1,22 @@
+#shaders/lang/en_us.lang
+
+# Key
+
+# §a Little to no performance impact.
+# §e Slight performance impact.
+# §6 Moderate performance impact.
+# §c High performance impact.
+# §4 Extreme performance impact.
+
+
+# Global
+
+screen.Global= 全局
+
+screen.motionblur= 运动模糊
+option.MOTION_BLUR= 运动模糊
+option.MOTION_BLUR.comment= 启用/禁用运动模糊。一种来自 FPS 游戏的流行特效，模拟你快速转身时的视线模糊。§a 对性能几乎无影响。
+option.MOTION_BLUR_NOISE= 运动模糊噪声
+option.MOTION_BLUR_NOISE.comment= 为模糊添加噪声。
+option.MOTION_BLUR_STRENGTH= 运动模糊强度
+option.MOTION_BLUR_STRENGTH.comment= 应用模糊的强度。数值越低，效果越强烈。

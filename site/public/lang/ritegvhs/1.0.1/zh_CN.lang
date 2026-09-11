@@ -1,0 +1,33 @@
+option.WORLD_FOG=世界雾
+
+option.CLOUD_FOG=云雾
+
+option.SKY_FOG=天空雾
+
+option.DIRECTIONAL_ENTITY_LIGHT=方向实体光
+
+option.DIRECTIONAL_BLOCK_LIGHT=方向区块光
+
+option.BLOCK_LIGHT_BRIGHTNESS_FIX=阳光亮度修正
+option.BLOCK_LIGHT_BRIGHTNESS_FIX.comment=参见 https://bugs.mojang.com/browse/MC/issues/MC-278012
+
+option.GLINT_STRENGTH=附魔闪光强度
+
+option.MIPMAP_TYPE=Mipmap 类型
+option.MIPMAP_TYPE.comment=更改 Mipmap 类型从 "Accurate" 到其他将使 Iris 在关闭光影时不重新加载所有块，便于比较。
+value.MIPMAP_TYPE.0=精确
+value.MIPMAP_TYPE.1=全部
+value.MIPMAP_TYPE.2=仅实心
+
+screen.BASE_OPTS=基础光影选项
+
+option.VHS_SATURATION=饱和度
+option.VHS_CUTOFF=磁带切断
+option.VHS_SHARPEN=锐化
+
+option.VHS_LUMA_XRES=明亮度分辨率
+option.VHS_CHROMA_XRES=色度分辨率
+option.VHS_BOTH_YRES=垂直分辨率
+
+option.VHS_LUMA_NOISE=明亮噪声
+option.VHS_CHROMA_NOISE=色度噪声

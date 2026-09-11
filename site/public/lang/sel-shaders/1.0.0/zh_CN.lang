@@ -1,0 +1,16 @@
+options.SATURATION =饱和度
+options.SATURATION.comment =控制世界的整体饱和度（0：灰度，1：默认，5：极其鲜艳）
+
+screen.Waving_Options =摆动选项
+
+option.WAVING_LEAVES =摇摆树叶
+option.WAVING_LEAVES.comment =使树叶在风中摇曳。
+
+option.WAVING_GRASS =摇曳草丛
+option.WAVING_GRASS.comment =使草和蕨类植物在风中摇曳。
+
+option.WAVING_FLOWERS =花卉摆动
+option.WAVING_FLOWERS.comment =使花朵和其他装饰性植物在风中摇曳。
+
+option.WAVING_CROPS =农作物摆动
+option.WAVING_CROPS.comment =使农作物和浆果在风中摇曳。

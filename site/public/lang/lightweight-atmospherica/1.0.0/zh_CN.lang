@@ -1,0 +1,11 @@
+option.NIGHTAMBIENT = 夜间环境光
+option.NIGHTAMBIENT.comment = 夜间环境光的亮度。
+option.FOG_DENSITY = 雾密度
+screen.CBL = 自定义方块光
+option.RED = 红色
+option.GREEN = 绿色
+option.BLUE = 蓝色
+screen.SYSTEM = 系统配置
+screen.SYSTEM.comment = 不建议新手使用！\n此处的系统设置可能影响性能！
+option.RESOLUTION = 阴影分辨率
+option.RESOLUTION.comment = 阴影贴图分辨率。数值越低，阴影越模糊；数值越高，阴影越锐利。

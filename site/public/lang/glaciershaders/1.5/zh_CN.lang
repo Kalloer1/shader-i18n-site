@@ -1,0 +1,49 @@
+# Options
+option.ShadowMapping=阴影贴图
+option.ShadowSamples=阴影采样
+option.Brightness=亮度
+option.Bloom=泛光
+option.BloomQuality=泛光质量
+option.ChromaticAberration=色差
+option.ChromaticAberrationQuality=色差质量
+option.Saturation=饱和度
+option.Exposure=曝光
+option.CinematicBars=电影条
+option.Lensflare=镜头光晕
+option.Red=红色
+option.Green=绿色
+option.Blue=蓝色
+option.WavingPlants=植物摆动
+option.WavingPlantsSpeed=植物摆动速度
+option.WavingLeaves=树叶摆动
+option.WavingLeavesSpeed=树叶摆动速度
+option.WaterWave=水波
+option.UnderWaterCaustics=水下焦散
+
+# Screen Layout
+screen=[信息] <空> [波浪设置] [阴影设置] [后处理]
+
+# INFO Section
+screen.INFO=Open4ES-Shader-Android
+screen.INFO.comment=制作： §5@ENDERMANYK§r
+
+# Waving Settings
+screen.WavingSettings=[WavingPlants] 无 [WavingLeaves] 无 [WavingWater]
+screen.WavingSettings.columns=1
+
+screen.WavingPlants=植物摇摆 植物摇摆速度
+screen.WavingLeaves=树叶摇摆 树叶摇摆速度
+screen.WavingWater=水波 水下焦散
+
+# Shadow Settings
+screen.ShadowSettings=阴影贴图 阴影采样
+
+# Post-Processing Settings
+screen.PostProcessing=[世界色] 亮度 泛光 泛光质量 色差 色差质量 镜头光晕
+screen.WorldColor=红色 绿色 蓝色
+
+# Sliders
+sliders=树叶摆动速度 植物摆动速度 阴影采样数量 色差效果质量 红色 绿色 蓝色 亮度 泛光效果质量
+
+# Columns
+screen.columns=1

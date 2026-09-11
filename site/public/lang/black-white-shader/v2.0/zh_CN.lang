@@ -1,0 +1,7 @@
+# Settings
+option.THRESHOLD= 阈值
+option.INVERT= 反转
+
+# Comments
+option.THRESHOLD.comment= 调整黑白像素之间的亮度阈值。（默认 0.5）
+option.INVERT.comment= 反转黑白输出。（默认 关闭）

@@ -1,0 +1,162 @@
+## Refract Shaders - shader options screen translations
+## Standard OptiFine/Iris shader-options .lang format: gives every
+## submenu and #define setting a human-readable name + tooltip in the
+## in-game shader options screen instead of the raw macro name.
+
+# ---------------------------------------------------------------------
+# Submenu categories
+# ---------------------------------------------------------------------
+screen.SHADOWS=阴影
+screen.AMBIENT_OCCLUSION=环境光遮蔽
+screen.LIGHTING=光照与泛光
+screen.SKY=天空与云彩
+screen.WATER=水
+screen.WEATHER=天气
+screen.NIGHT=夜晚
+screen.COLOR_GRADE=色彩分级
+
+# ---------------------------------------------------------------------
+# Shadows
+# ---------------------------------------------------------------------
+option.SHADOW_RES=阴影贴图分辨率
+option.SHADOW_RES.comment=阳光/月光阴影贴图的分辨率。数值越高，阴影边缘越锐利、越清晰，但会消耗更多显存和性能。
+
+option.SHADOW_DISTANCE=阴影距离
+option.SHADOW_DISTANCE.comment=阴影被绘制的距离，以区块为单位。阴影会在接近该距离时逐渐恢复为完全照亮，而不是突然消失。
+
+option.SOFT_SHADOWS=柔和阴影
+option.SOFT_SHADOWS.comment=启用过滤的、带硬度衰减的柔和阴影边缘。关闭时回退到每个像素单个硬边缘采样（更便宜、更方块化）。
+value.SOFT_SHADOWS.0=关闭（硬边缘）
+value.SOFT_SHADOWS.1=开启（柔和边缘）
+
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=阴影边缘随着距离投射物越远变得越柔和，类似真实的半影。也影响玻璃中柔和的彩色光线效果。
+
+option.COLORED_GLASS_STRENGTH=彩色玻璃强度
+option.COLORED_GLASS_STRENGTH.comment=彩色玻璃玻璃、树叶和冰块上投射的染色光线强度。0 会完全禁用彩色阴影。
+
+option.GLASS_BLEED_STRENGTH=玻璃光晕强度
+option.GLASS_BLEED_STRENGTH.comment=染色玻璃窗从其锐利的阴影轮廓之外溢射到相邻表面的彩色光线的距离，类似穿过玻璃窗的真实散射光。0 保持彩色光仅限于确切的阴影形状。
+
+option.GLASS_SKYLIGHT_STRENGTH=玻璃天光阴影强度
+option.GLASS_SKYLIGHT_STRENGTH.comment=玻璃、树叶和冰块如何显著降低通过它们的直射阳光强度，而不仅仅是改变颜色。真实的彩绘玻璃会直接遮挡一部分光线。0 表示玻璃仅改变光线颜色而不进行衰减。
+
+# ---------------------------------------------------------------------
+# Ambient Occlusion
+# ---------------------------------------------------------------------
+option.SSAO=环境光遮蔽
+option.SSAO.comment=在角落、褶皱以及物体接触的地方添加柔和的接触暗化 —  — 单一的方向性阴影贴图无法单独产生的细节。
+value.SSAO.0=关闭
+value.SSAO.1=开启
+
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_STRENGTH.comment=环境光遮蔽效果的暗影程度。0 时即使启用 AO 也几乎看不见；1 时为强烈的明显暗化。
+
+option.SSAO_SAMPLES=环境光遮蔽质量
+option.SSAO_SAMPLES.comment=每个像素用于环境光遮蔽的样本数。数值越高视觉效果越光滑/噪点越少，但性能消耗也越高。
+
+# ---------------------------------------------------------------------
+# Lighting & Bloom
+# ---------------------------------------------------------------------
+option.GODRAY_STRENGTH=体积光强度
+option.GODRAY_STRENGTH.comment=体积阳光/月光束和太阳/月亮周围光斑的亮度强度。0 禁用两者。
+
+option.GODRAY_STEPS=体积光质量
+option.GODRAY_STEPS.comment=体积光体射光光线步数。数值越高越光滑，但性能消耗也越高。
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=泛光在明亮高光（阳光、岩浆、发光石、水中闪光等）周围的整体发光强度。0 禁用泛光。
+
+option.BLOOM_THRESHOLD=泛光阈值
+option.BLOOM_THRESHOLD.comment=在发光前，物体需要多亮。数值越高，泛光越集中，仅限于最亮的高光，而不会扩展成大面积的柔和光晕。
+
+# ---------------------------------------------------------------------
+# Sky & Clouds
+# ---------------------------------------------------------------------
+option.CLOUD_STEPS=云质量
+option.CLOUD_STEPS.comment=体积云体射步数。数值越高视觉越光滑细致，但性能消耗也越高。
+
+option.CLOUD_COVERAGE=云层覆盖率
+option.CLOUD_COVERAGE.comment=天空中被云层覆盖的比例。数值越低，天空越多云。
+
+option.CLOUD_OPACITY=云厚度
+option.CLOUD_OPACITY.comment=云的最大不透明度。数值越低，云层越稀薄/透明，即使完全覆盖也会更see-through。
+
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY.comment=大气雾浓度的乘数，包括近距离雾霾以及渲染距离边缘的淡化效果。
+
+# ---------------------------------------------------------------------
+# Water
+# ---------------------------------------------------------------------
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_WAVE_HEIGHT.comment=水面实际顶点级水波浪的振幅，以区块为单位。0 使水面完全平直。
+
+option.WATER_CLARITY=水体清澈度
+option.WATER_CLARITY.comment=光线在水体中穿透的距离达到完全深度色调前的深度。数值越高，水体在更长的距离上保持清澈，能更好地透视出浅至中等深度水域下的沉底细节。
+
+option.WATER_REFLECTION_STRENGTH=反射强度
+option.WATER_REFLECTION_STRENGTH.comment=水面在近水平视角下的镜像反射程度。数值越高，水面越像完整的镜子；数值越低，水面越显粗糙。
+
+option.WATER_FOAM_STRENGTH=海浪强度
+option.WATER_FOAM_STRENGTH.comment=水体与浅滩地面接触处海岸线泡沫的可见度。0 会完全移除泡沫。
+
+option.WATER_GLINT_STRENGTH=阳光冲击强度
+option.WATER_GLINT_STRENGTH.comment=阳光/月光在水面上的高光及闪光/闪耀光斑的强度。若高光泛光成为一个柔和的大光晕而不是紧凑的闪光，可适当降低此数值。
+
+option.CAUSTICS_STRENGTH=焦散强度
+option.CAUSTICS_STRENGTH.comment=浅水区域中跳动的光斑图案强度以及游泳时全屏的闪光效果。0 会完全禁用焦散。
+
+option.UNDERWATER_DISTORTION=水下扭曲
+option.UNDERWATER_DISTORTION.comment=当相机处于水下时，屏幕视觉扭曲的强度。0 会禁用扭曲，但保留颜色滤镜和焦散效果。
+
+option.CHROMATIC_DISPERSION_STRENGTH=色差强度
+option.CHROMATIC_DISPERSION_STRENGTH.comment=在水面反射的斜射角度上出现细微的棱镜/彩虹边缘，模拟通过折射表面产生的真实色散效果。0 保持反射完全中性色调。
+
+# ---------------------------------------------------------------------
+# Weather
+# ---------------------------------------------------------------------
+option.WET_REFLECTIONS=湿润地面反射
+option.WET_REFLECTIONS.comment=在雨天下，雨滴形的屏幕空间反射会出现在平坦、朝上的地面上。
+value.WET_REFLECTIONS.0=关闭
+value.WET_REFLECTIONS.1=开启
+
+option.WET_REFLECTIONS_STRENGTH=湿泥反射强度
+option.WET_REFLECTIONS_STRENGTH.comment=湿地上水洼反射的强度。若湿地反射关闭，则无效。
+
+option.CLOUD_SHADOW_STRENGTH=云影强度
+option.CLOUD_SHADOW_STRENGTH.comment=云层飘动时，对地面下方的阳光衰减程度。0 表示禁用云影。
+
+option.RAIN_RIPPLE_STRENGTH=雨纹强度
+option.RAIN_RIPPLE_STRENGTH.comment=雨天时在水面上出现的动画同心涟漪的强度。0 禁用雨纹。
+
+# ---------------------------------------------------------------------
+# Night
+# ---------------------------------------------------------------------
+option.NIGHT_DARKNESS=夜间暗黑程度
+option.NIGHT_DARKNESS.comment=夜间的基础暗黑程度。0 接近原版亮度，1 为正常暗，2 为非常暗。
+value.NIGHT_DARKNESS.0=类似原版
+value.NIGHT_DARKNESS.1=暗
+value.NIGHT_DARKNESS.2=非常暗
+
+option.TRUE_BLACK_NIGHTS=真黑夜
+option.TRUE_BLACK_NIGHTS.comment=额外暗黑选项：将夜间环境光推得更低，移除围屋式光底，需实际光源才能看清。默认关闭保留正常月光夜晚。
+value.TRUE_BLACK_NIGHTS.0=关闭
+value.TRUE_BLACK_NIGHTS.1=开启
+
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.NIGHT_BRIGHTNESS.comment=在夜间黑暗/真黑夜之上额外施加的乘数 - 如果即使在低黑暗度设置下夜间仍然看不清，请调高此值。
+
+# ---------------------------------------------------------------------
+# Color Grading
+# ---------------------------------------------------------------------
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=在色调映射之前应用的手动亮度乘数。
+
+option.SATURATION=饱和度
+option.SATURATION.comment=最终颜色饱和度。1.0 为中性；数值越大越鲜艳，数值越小越接近灰度。
+
+option.WARMTH=温度
+option.WARMTH.comment=通过白昼黑夜循环以及阴影和高光之间施加的细微暖色/冷色偏移。
+
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE_STRENGTH.comment=屏幕边缘的暗化处理。0 禁用暗角。潜水时会自动增强暗角效果。

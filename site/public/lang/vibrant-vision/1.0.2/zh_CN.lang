@@ -1,0 +1,1288 @@
+#shaders/lang/en_us.lang
+
+#Profiles
+profile.FAST=快速
+profile.FAST.comment=短阴影和简单的反射以获得最佳性能。像素阴影保持启用；接触阴影和像素方块光被禁用。
+profile.BALANCED=平衡
+profile.BALANCED.comment=稳定的阴影和中等材质细节，适合日常游戏。像素阴影保持启用；接触阴影和像素方块光被禁用。
+profile.VIBRANT=鲜艳 (推荐)
+profile.VIBRANT.comment=推荐效果，包含像素阴影、像素接触阴影、像素方块光、水面高光、水面焦散和完整材质细节。
+profile.LUSH=高
+profile.LUSH.comment=更高的阴影和阳光质量，搭配彩色光，适用于更快的 GPU。
+profile.SHOWCASE=极高
+profile.SHOWCASE.comment=最大化的阴影距离、采样、彩色光和世界反射，适用于截图或高端硬件。
+profile.comment=五个质量预设调整阴影、反射、材质、阳光和彩色光距离。每个预设都保持像素阴影；VIBRANT 及以上等级添加像素接触阴影、像素方块光、水面高光和水面焦散。
+
+#Information
+screen.VV_GUIDE=帮助
+screen.VV_GUIDE.comment=简短的解释，用于选择配置档、调整成本和配置资源包支持。
+
+option.info0=悬停查看详情
+value.info0.0=
+option.info0.comment=这些条目仅供参考，不会影响渲染图像。
+
+option.info1=提升性能
+value.info1.0=
+option.info1.comment=选择 BALANCED 或 FAST 模式，然后降低 Minecraft 的渲染距离。阴影、阳光、彩色光、反射和材质质量会消耗最多性能。
+
+option.info2=选择预设
+value.info2.0=
+option.info2.comment=VIBRANT 是作者设定的默认选项。BALANCED 保持完整效果但减少采样次数，FAST 优先考虑速度，LUSH 提升滤波和彩色光效，SHOWCASE 启用最昂贵的追踪路径。
+
+option.info3=预设详情
+value.info3.0=
+option.info3.comment=配置档会将渲染成本设置作为一个测试过的组进行更改。水、云、天空和相机外观保持单独可调，这样你可以单独调整偏好，而不影响性能。
+
+option.info4=材质来源
+value.info4.0=
+option.info4.comment=材质选择深度、发射和反射的来源。默认材质使用内置规则，labPBR 读取兼容的资源包，基础材质使用更简单的路径。
+
+option.info5=性能成本
+value.info5.0=
+option.info5.comment=黄色标签表示可测量的 GPU 开销。红色标签表示特别昂贵的特效或可能成倍增加采样工作量的值。
+
+option.info6=云设置
+value.info6.0=
+option.info6.comment=鲜艳模式会增加一个明亮的轮廓，褪色模式会将精细云向下扩展并带有透明度渐变，默认模式则保持原版云层光照。
+
+option.info7=兼容性
+value.info7.0=
+option.info7.comment=Iris 是主要加载器。当检测到不支持的自定义图像、操作系统或模组组合时，会自动回退（如可能）；屏幕上的错误文本会解释哪些组合无法安全运行。
+
+option.vvCredit0=Vibrant Vision 1.0.2
+value.vvCredit0.0=
+option.vvCredit0.comment=Vibrant Vision for Minecraft: Java Edition 的首次发布。
+option.vvCredit1=由无名氏制作
+value.vvCredit1.0=
+option.vvCredit1.comment=项目方向、着色器标识、调谐、维护、标志和包艺术由 The Unnamed 提供。
+option.vvCredit2=Java 版光影包
+value.vvCredit2.0=
+option.vvCredit2.comment=旨在为 Java 版带来清新、色彩鲜艳、充满活力视觉风格的氛围，同时保持 Minecraft 材质可读性。
+option.vvCredit3=许可证信息
+value.vvCredit3.0=
+option.vvCredit3.comment=版权 © 2026 The Unnamed。有关允许使用和分发条款，请参阅 License.txt。
+
+option.VV_COLOR_RESPONSE=颜色
+option.VV_COLOR_RESPONSE.comment=将 Vibrant Vision 的清凉可读色调、温暖阳光、清新植被、受保护高光以及青色水/天空分离效果融合在一起。
+option.VV_INDIRECT_LIGHT=间接光照
+option.VV_INDIRECT_LIGHT.comment=为侧向户外表面添加适度的间接天空和阳光颜色，同时不会提升完全封闭内部区域的亮度。
+option.VV_CREATOR_MARK=创作者标记
+option.VV_CREATOR_MARK.comment=在选定角落显示“VIBRANT VISION 1.0.2”和“CREATED BY THE UNNAMED”。默认禁用。
+option.VV_CREATOR_MARK_POSITION=位置
+value.VV_CREATOR_MARK_POSITION.0=左上
+value.VV_CREATOR_MARK_POSITION.1=右上
+value.VV_CREATOR_MARK_POSITION.2=左下
+value.VV_CREATOR_MARK_POSITION.3=右下
+option.VV_CREATOR_MARK_SCALE=大小
+value.VV_CREATOR_MARK_SCALE.1=1x — 紧凑
+value.VV_CREATOR_MARK_SCALE.2=2x — 推荐
+value.VV_CREATOR_MARK_SCALE.3=3x — 大
+option.VV_CREATOR_MARK_INSET=边距
+option.VV_CREATOR_MARK_OPACITY=不透明度
+
+#Screens
+screen.VV_FRAME_BUDGET=质量
+screen.VV_FRAME_BUDGET.comment=这是 Vibrant Vision 配置档协调控制的工作负载项。
+
+screen.VV_SKY_CANVAS=天空
+screen.VV_SKY_CANVAS.comment=云层、雾气、太阳与月亮、维度天空以及天气。
+
+screen.ATM_COLOR_SETTINGS=天空颜色
+screen.ATM_COLOR_SETTINGS.comment=启用对主要在天空和雾气中可见的大气颜色的自定义。
+
+screen.MORNING_ATM_MULTS=黎明天空颜色
+screen.NOON_ATM_MULTS=正午天空颜色
+screen.NIGHT_ATM_MULTS=夜晚天空颜色
+screen.RAIN_ATM_MULTS=天气天空颜色
+screen.NETHER_ATM_MULTS=下界天空颜色
+screen.END_ATM_MULTS=末地天空颜色
+
+screen.VV_CLOUDS=云层
+screen.VV_CLOUDS.comment=选择轮廓鲜明的 Vibrant 云层、渐变的 Faded 云层或默认云层，然后调整它们的颜色和阴影。
+
+screen.CLOUD_COLOR_SETTINGS=云颜色设置
+screen.CLOUD_COLOR_SETTINGS.comment=调整亮部和暗部云层的通道平衡
+
+screen.FOG_SETTINGS=雾
+screen.FOG_SETTINGS.comment=与各种类型的雾相关的设置。
+
+screen.SUN_MOON_SETTINGS=太阳与月亮
+screen.SUN_MOON_SETTINGS.comment=与太阳和月亮相关的设置
+
+screen.NETHER_SETTINGS=下界
+screen.NETHER_SETTINGS.comment=与下界维度相关的设置。
+
+screen.END_SETTINGS=末地
+screen.END_SETTINGS.comment=与末地维度相关的设置
+
+screen.WEATHER_SETTINGS=天气
+screen.WEATHER_SETTINGS.comment=与天气相关的设置
+
+screen.VV_CAMERA=显示
+screen.VV_CAMERA.comment=最终颜色响应、泛光、对焦、镜头和时间呈现控制。
+
+screen.VV_COLOR_RESPONSE_SCREEN=颜色
+screen.VV_COLOR_RESPONSE_SCREEN.comment=Vibrant Vision 的曝光、对比度、饱和度、高光衰减和间接光响应。
+
+screen.COLORGRADING_SETTINGS=颜色通道
+screen.COLORGRADING_SETTINGS.comment=用于混合最终颜色通道的设置
+
+screen.WORLD_BLUR_SETTINGS=模糊
+screen.WORLD_BLUR_SETTINGS.comment=与精细世界模糊效果相关的设置。
+
+screen.TAA_SETTINGS=抗锯齿
+screen.TAA_SETTINGS.comment=用于确定临时抗锯齿行为设置
+
+screen.VV_SURFACES=材质
+screen.VV_SURFACES.comment=水反射、材质内置响应、labPBR 输入、自发光和动画表面控制。
+
+screen.VV_NATIVE_MATERIALS=默认材质
+screen.VV_NATIVE_MATERIALS.comment=Vibrant Vision 内置的表面凹凸、涂层、自发光方块和材质规则。
+
+screen.GLOWING_ORE_SETTINGS=发光矿石
+screen.GLOWING_ORE_SETTINGS.comment=调整矿石方块发光效果的设置
+
+screen.GLOWING_STUFF_SETTINGS=发光方块
+screen.GLOWING_STUFF_SETTINGS.comment=设置以调整各类方块的发光效果。
+
+screen.VV_MATERIAL_EXTRAS=其他材质
+screen.VV_MATERIAL_EXTRAS.comment=发射源、粒子、玻璃行为、色度表面以及兼容性安全材质规则。
+
+screen.VV_PACK_MATERIALS=资源包
+screen.VV_PACK_MATERIALS.comment=用于兼容 labPBR 资源包的法线、发光和视差控制。
+
+screen.VV_PIXEL_LIGHT=光影
+screen.VV_PIXEL_LIGHT.comment=方块状阴影、接触阴影、方块光源、阳光、柔和的天空光
+
+screen.LIGHT_COLOR_SETTINGS=光照颜色
+screen.LIGHT_COLOR_SETTINGS.comment=允许自定义所有表面的光照颜色。
+
+screen.MORNING_LIGHT_MULTS=晨光倍率
+screen.NOON_LIGHT_MULTS=日间倍率
+screen.NIGHT_LIGHT_MULTS=夜光倍率
+screen.RAIN_LIGHT_MULTS=天气光倍率
+screen.NETHER_LIGHT_MULTS=下界光倍率
+screen.END_LIGHT_MULTS=末地光倍率
+
+screen.VV_LOCAL_LIGHT=本地光照
+screen.VV_LOCAL_LIGHT.comment=调整方块和手持物品的光照。启用彩色光照时，颜色设置不会影响大多数光源。
+
+screen.MOON_PHASE_INF_SETTINGS=月相
+screen.MOON_PHASE_INF_SETTINGS.comment=设置不同月相如何影响夜间照明。
+
+screen.VV_VOXEL_LIGHT=彩色光
+screen.VV_VOXEL_LIGHT.comment=设置附近彩色方块光照。彩色光必须在质量设置中启用，并需要支持的 Iris 系统。
+
+screen.VV_PIXEL_GRID=像素光照
+screen.VV_PIXEL_GRID.comment=控制 Vibrant Vision 配置档中共享的方块对齐阴影、接触阴影和局部光照特性。
+
+screen.VV_WATER=水
+screen.VV_WATER.comment=水效果、高光、焦散、清晰度、颜色、泡沫、折射和波浪。
+
+screen.WATER_COLOR_SETTINGS=水色
+
+screen.UNDERWATER_COLOR_SETTINGS=水下颜色
+
+screen.WATER_WAVE_SETTINGS=水波设置
+screen.WATER_WAVE_SETTINGS.comment=控制波浪水和反射水的小、中、大波浪。
+
+screen.WAVING_SETTINGS=移动
+screen.WAVING_SETTINGS.comment=关于波浪纹理的设置
+
+screen.VV_EXTRAS=额外功能
+screen.VV_EXTRAS.comment=手电筒、选择辅助工具、轮廓线、月亮响应、诊断信息和特殊场景效果。
+
+screen.VV_FLASHLIGHT_SETTINGS=手电筒
+screen.VV_FLASHLIGHT_SETTINGS.comment=可选的从相机投射出的温暖光线，通过可控锥形和距离衰减。
+
+screen.SELECT_OUTLINE_SETTINGS=方块轮廓
+screen.SELECT_OUTLINE_SETTINGS.comment=更改方块选择轮廓的设置。
+
+screen.WORLD_OUTLINE_SETTINGS=世界轮廓
+screen.WORLD_OUTLINE_SETTINGS.comment=关于可选轮廓效果的设置
+
+#Settings
+option.VV_MATERIAL_SOURCE=材质
+option.VV_MATERIAL_SOURCE.comment=选择深度、发射、反射和特殊材质的供应方式。默认材质使用内置规则，基础简化表面，labPBR 读取兼容的资源包。
+value.VV_MATERIAL_SOURCE.0=基础
+value.VV_MATERIAL_SOURCE.1=默认材质
+value.VV_MATERIAL_SOURCE.3=labPBR
+
+option.WATER_REFLECT_QUALITY=水面反射
+option.WATER_REFLECT_QUALITY.comment=控制水面和透明表面的反射效果。完整模式会追踪可见场景，快速模式使用更简单的镜面反射，天空模式仅反射环境，关闭则禁用反射。
+value.WATER_REFLECT_QUALITY.-1=关闭
+value.WATER_REFLECT_QUALITY.0=天空
+value.WATER_REFLECT_QUALITY.1=快速
+value.WATER_REFLECT_QUALITY.2=完整
+
+option.BLOCK_REFLECT_QUALITY=反射
+option.BLOCK_REFLECT_QUALITY.comment=控制固体方块上的反射效果。仅高光会保留太阳和月亮的光斑；完全模式还会反射材质。材质设置不得为基础模式。
+value.BLOCK_REFLECT_QUALITY.0=关闭
+value.BLOCK_REFLECT_QUALITY.1=高光
+value.BLOCK_REFLECT_QUALITY.3=完全
+
+option.SHADOW_QUALITY=阴影质量
+option.SHADOW_QUALITY.comment=控制阴影分辨率和平滑采样。更高的设置使阴影更清晰，并提高水面焦散的分辨率。关闭时也会禁用基于阴影的阳光光束。
+value.SHADOW_QUALITY.-1=关闭
+value.SHADOW_QUALITY.0=最低
+value.SHADOW_QUALITY.1=低
+value.SHADOW_QUALITY.2=中等
+value.SHADOW_QUALITY.3=高
+value.SHADOW_QUALITY.4=极高
+value.SHADOW_QUALITY.5=最高
+
+option.LIGHTSHAFT_QUALI_DEFINE=光束质量
+option.LIGHTSHAFT_QUALI_DEFINE.comment=控制阳光光束和末地光束的质量。影子质量必须高于关闭状态才能在主世界启用阳光光束。
+value.LIGHTSHAFT_QUALI_DEFINE.0=关闭
+value.LIGHTSHAFT_QUALI_DEFINE.1=低
+value.LIGHTSHAFT_QUALI_DEFINE.2=中
+value.LIGHTSHAFT_QUALI_DEFINE.3=高
+value.LIGHTSHAFT_QUALI_DEFINE.4=极高
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=设置阴影贴图从相机延伸的距离。更远的距离覆盖更多地形，但会降低纹素密度并增加相关追踪的成本。
+value.shadowDistance.64.0=4 区块
+value.shadowDistance.80.0=5 区块
+value.shadowDistance.96.0=6 区块
+value.shadowDistance.112.0=7 区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.160.0=10 区块
+value.shadowDistance.192.0=12 区块
+value.shadowDistance.224.0=14 区块
+value.shadowDistance.256.0=16 区块
+value.shadowDistance.320.0=20 区块
+value.shadowDistance.384.0=24 区块
+value.shadowDistance.512.0=32 区块
+value.shadowDistance.768.0=48 区块
+value.shadowDistance.1024.0=64 区块
+
+option.ENTITY_SHADOW=实体阴影
+option.ENTITY_SHADOW.comment=为生物、玩家（可选）以及箱子等方块实体添加阴影贴图。完全开启时在繁忙区域可能消耗极大。
+value.ENTITY_SHADOW.-1=关闭
+value.ENTITY_SHADOW.1=实体
+value.ENTITY_SHADOW.2=全部
+
+option.DETAIL_QUALITY=效果质量
+option.DETAIL_QUALITY.comment=调整水材质、时间过滤辅助、天空反射、星云、Nether 天气、积水精度、表面运动和运动模糊为一组。
+value.DETAIL_QUALITY.0=低配
+value.DETAIL_QUALITY.2=中配
+value.DETAIL_QUALITY.3=高配
+
+option.FXAA_DEFINE=边缘平滑
+option.FXAA_DEFINE.comment=应用一个轻量级的最终边缘平滑器。临时滤波通常会先处理大部分锯齿问题。
+value.FXAA_DEFINE.-1=关闭
+value.FXAA_DEFINE.1=开启
+
+option.SSAO_QUALI_DEFINE=接触阴影
+option.SSAO_QUALI_DEFINE.comment=调整屏幕空间环境光遮蔽采样，影响边缘、褶皱及附近接触点。
+value.SSAO_QUALI_DEFINE.0=关闭
+value.SSAO_QUALI_DEFINE.2=中等
+value.SSAO_QUALI_DEFINE.3=高
+
+option.ANISOTROPIC_FILTER=纹理过滤
+option.ANISOTROPIC_FILTER.comment=保持 mip 贴图在浅视角时更清晰。Minecraft 的 Mipmap 等级应设置为 4。
+value.ANISOTROPIC_FILTER.0=关闭
+value.ANISOTROPIC_FILTER.4=4x
+value.ANISOTROPIC_FILTER.8=8x
+value.ANISOTROPIC_FILTER.16=16x
+
+option.COLORED_LIGHTING=彩色光照
+option.COLORED_LIGHTING.comment=添加来自附近方块的彩色光照。需要 Iris 自定义图像、阴影质量高于关闭状态且系统支持。更远的距离会消耗更多内存和性能。
+value.COLORED_LIGHTING.0=关闭
+value.COLORED_LIGHTING.128=4 个区块
+value.COLORED_LIGHTING.192=6 个区块
+value.COLORED_LIGHTING.256=8 个区块
+value.COLORED_LIGHTING.384=12 个区块
+value.COLORED_LIGHTING.512=16 个区块
+value.COLORED_LIGHTING.768=24 个区块
+value.COLORED_LIGHTING.1024=32 个区块
+
+option.WORLD_SPACE_REFLECTIONS=世界反射
+option.WORLD_SPACE_REFLECTIONS.comment=即使在屏幕外也能反射附近的方块。需要彩色光源，且在更远距离时会消耗更多性能。
+value.WORLD_SPACE_REFLECTIONS.-1=关闭
+value.WORLD_SPACE_REFLECTIONS.1=开启
+
+option.WORLD_SPACE_REF_MODE=反射模式
+option.WORLD_SPACE_REF_MODE.comment=仅世界模式可避免屏幕边缘的缝隙。混合模式结合世界数据与屏幕上的详细反射。
+value.WORLD_SPACE_REF_MODE.1=仅世界
+value.WORLD_SPACE_REF_MODE.2=混合
+
+option.WORLD_SPACE_PLAYER_REF=玩家反射
+option.WORLD_SPACE_PLAYER_REF.comment=使玩家模型在世界空间反射中显示反射效果。
+value.WORLD_SPACE_PLAYER_REF.-1=关闭
+value.WORLD_SPACE_PLAYER_REF.1=开启
+
+option.SSAO_I=接触阴影强度
+option.SSAO_I.comment=控制附近角落和边缘的小阴影。接触阴影必须在质量设置中启用。
+value.SSAO_I.0=关闭
+
+option.VANILLAAO_I=角落阴影强度
+option.VANILLAAO_I.comment=决定 Minecraft 环境光遮蔽的强度，为场景边缘添加额外的环境阴影。
+value.VANILLAAO_I.0=关闭
+
+option.BORDER_FOG=距离雾
+option.BORDER_FOG.comment=世界边缘处产生浓雾以隐藏区块边界。 §e[*]§r 建议在渲染距离小于8区块时禁用边界雾。
+
+option.ATM_FOG_MULT=雾密度
+option.ATM_FOG_MULT.comment=调整基于海拔的雾的强度。
+value.ATM_FOG_MULT.0.50=非常微弱
+value.ATM_FOG_MULT.0.65=微弱
+value.ATM_FOG_MULT.0.80=正常
+value.ATM_FOG_MULT.0.95=强烈
+
+option.ATM_FOG_DISTANCE=雾距离
+option.ATM_FOG_DISTANCE.comment=调整大气雾从摄像机开始出现的距离。§e[*]§r 注意雾距离也会被视频设置中的渲染距离自动调整。
+
+option.ATM_FOG_ALTITUDE=雾高度
+option.ATM_FOG_ALTITUDE.comment=确定大气雾气最显著出现的高度。
+
+option.CAVE_FOG=洞穴雾气
+option.CAVE_FOG.comment=在深地下区域启用额外的雾气。
+
+option.LIGHTSHAFT_BEHAVIOUR=阳光射线
+option.LIGHTSHAFT_BEHAVIOUR.comment=选择如何渲染阳光射线。自动根据场景调整效果。高强度使用最强的效果并消耗更多性能。
+value.LIGHTSHAFT_BEHAVIOUR.0=关闭
+value.LIGHTSHAFT_BEHAVIOUR.1=自动
+value.LIGHTSHAFT_BEHAVIOUR.2=普通
+value.LIGHTSHAFT_BEHAVIOUR.3=高
+
+option.LIGHTSHAFT_SMOKE=阳光烟雾
+option.LIGHTSHAFT_SMOKE.comment=为光束添加体积烟雾。§c[-]§r 此效果可能严重影响性能。
+
+option.SPECIAL_PALE_GARDEN_LIGHTSHAFTS=苍白花园阳光
+option.SPECIAL_PALE_GARDEN_LIGHTSHAFTS.comment=在苍白花园群系中使用更强的阳光。
+
+option.LIGHTSHAFT_DAY_I=白天亮度
+option.LIGHTSHAFT_NIGHT_I=夜间亮度
+option.LIGHTSHAFT_RAIN_I=雨天亮度
+
+option.LIGHTSHAFT_SUNSET_SATURATION=日落颜色
+option.LIGHTSHAFT_SUNSET_SATURATION.comment=调整日出和日落时光束颜色的额外饱和度。较高的数值会使颜色偏向红橙色，而较低的数值则会使其偏向黄色。
+
+option.VV_CLOUD_FORM=云层样式
+option.VV_CLOUD_FORM.comment=高亮模式为云层形状添加一个明亮的单像素轮廓。淡化模式将精细云的侧面向下延伸，并使其平滑地融入天空。默认使用原版的云层光照。必须在视频设置中启用云层。
+value.VV_CLOUD_FORM.1=高亮
+value.VV_CLOUD_FORM.2=淡化
+value.VV_CLOUD_FORM.3=默认
+
+option.VV_CLOUD_SHADOWS=云层阴影
+option.VV_CLOUD_SHADOWS.comment=让云层在地面上投射移动的阴影。当摄像机移动时，阴影图案在世界中保持固定。
+
+option.VV_CLOUD_SHADOW_STRENGTH=云影强度
+option.VV_CLOUD_SHADOW_STRENGTH.comment=控制云影在地上的阴暗程度.
+
+option.VV_CLOUD_EDGE_LIGHT=云边缘光
+option.VV_CLOUD_EDGE_LIGHT.comment=控制充满活力的云层周围的明亮轮廓。
+
+option.VV_CLOUD_FADE_STRENGTH=云渐变
+option.VV_CLOUD_FADE_STRENGTH.comment=控制云渐变效果在向上移动时变得透明的速度。
+
+option.VV_CLOUD_FADE_LENGTH=云层深度
+option.VV_CLOUD_FADE_LENGTH.comment=控制淡化云层向下延伸的距离。
+
+option.VV_FADED_CLOUD_HEIGHT=淡云高度
+option.VV_FADED_CLOUD_HEIGHT.comment=设置淡云的高度（单位：方块）。
+value.VV_FADED_CLOUD_HEIGHT.96.0=96 方块
+value.VV_FADED_CLOUD_HEIGHT.112.0=112 方块
+value.VV_FADED_CLOUD_HEIGHT.128.0=128 方块
+value.VV_FADED_CLOUD_HEIGHT.144.0=144 方块
+value.VV_FADED_CLOUD_HEIGHT.160.0=160 方块
+value.VV_FADED_CLOUD_HEIGHT.176.0=176 方块
+value.VV_FADED_CLOUD_HEIGHT.192.0=192 方块
+value.VV_FADED_CLOUD_HEIGHT.208.0=208 方块
+value.VV_FADED_CLOUD_HEIGHT.224.0=224 方块
+value.VV_FADED_CLOUD_HEIGHT.240.0=240 方块
+value.VV_FADED_CLOUD_HEIGHT.256.0=256 方块
+value.VV_FADED_CLOUD_HEIGHT.288.0=288 方块
+value.VV_FADED_CLOUD_HEIGHT.320.0=320 方块
+value.VV_FADED_CLOUD_HEIGHT.352.0=352 方块
+value.VV_FADED_CLOUD_HEIGHT.384.0=384 方块
+
+option.VV_CLOUD_OPACITY=云层不透明度
+option.VV_CLOUD_OPACITY.comment=控制动态和褪色云层的透明度。默认设置忽略此选项。
+
+option.VV_CLOUD_TINT_R=红色
+option.VV_CLOUD_TINT_G=绿色
+option.VV_CLOUD_TINT_B=蓝色
+
+option.NETHER_STORM=下界雾
+option.NETHER_STORM.comment=为下界维度添加类似烟雾的体积光效果。 §c[-]§r 此效果可能会影响性能。
+
+option.NETHER_STORM_I=下界迷雾强度
+option.NETHER_STORM_I.comment=调整下界风暴的不透明度。
+
+option.NETHER_STORM_LOWER_ALT=下界迷雾高度
+option.NETHER_STORM_LOWER_ALT.comment=确定下界风暴的起始下限高度。下界风暴不会出现在此高度以下，距离此高度越近，光芒越明亮。
+
+option.NETHER_STORM_HEIGHT=下界迷雾深度
+option.NETHER_STORM_HEIGHT.comment=决定下界风暴形成的高度。降低此值将导致下界风暴聚集在“下界风暴低海拔区域”。
+
+option.NETHER_VIEW_LIMIT=下界视野距离
+option.NETHER_VIEW_LIMIT.comment=决定下界中雾气允许可见的最大距离。 §c[-]§r 提高此设置可能会在启用“下界风暴”时影响性能。
+value.NETHER_VIEW_LIMIT.96.0=6 区块
+value.NETHER_VIEW_LIMIT.112.0=7 区块
+value.NETHER_VIEW_LIMIT.128.0=8 区块
+value.NETHER_VIEW_LIMIT.160.0=10 区块
+value.NETHER_VIEW_LIMIT.192.0=12 区块
+value.NETHER_VIEW_LIMIT.224.0=14 区块
+value.NETHER_VIEW_LIMIT.256.0=16 区块
+value.NETHER_VIEW_LIMIT.320.0=20 区块
+value.NETHER_VIEW_LIMIT.384.0=24 区块
+value.NETHER_VIEW_LIMIT.512.0=32 区块
+value.NETHER_VIEW_LIMIT.768.0=48 区块
+value.NETHER_VIEW_LIMIT.1024.0=64 区块
+value.NETHER_VIEW_LIMIT.99999.0=无限
+
+option.NETHER_COLOR_MODE=下界颜色
+option.NETHER_COLOR_MODE.comment=控制下界雾和光照是否使用当前群系调色板、一个更稳定的群系混合效果，或一种一致的颜色处理方式。
+value.NETHER_COLOR_MODE.3=群系
+value.NETHER_COLOR_MODE.2=基于群系
+value.NETHER_COLOR_MODE.0=恒定
+
+option.END_BEAM_INTENSITY=末地光束亮度
+option.END_BEAM_INTENSITY.comment=调整末地维度中可见光束的亮度。
+
+option.END_STAR_INTENSITY=末地之星亮度
+option.END_STAR_INTENSITY.comment=调整末地维度中可见的星星的亮度。
+
+option.END_FLASHES=末地闪光
+option.END_FLASHES.comment=启用对 1.21.9 版本新增的“末地闪光”环境特效的支持。天��中的闪光强度与末地光束的强度直接相关。
+
+option.END_BEAM_CENTER_ALT=末地射线高度
+option.END_BEAM_CENTER_ALT.comment=调整末地射线在世界 y 层级所处的高度。
+
+option.END_BEAM_HEIGHT=末地光束尺寸
+option.END_BEAM_HEIGHT.comment=调整末地光束的物理高度。
+
+option.TM_EXPOSURE=亮度
+option.TM_EXPOSURE.comment=也称为“色调映射曝光”。调整整个图像的整体亮度。
+
+option.TM_CONTRAST=对比度
+option.TM_CONTRAST.comment=调整深色调的暗度和亮色调的亮度.
+
+option.T_SATURATION=饱和度
+option.T_SATURATION.comment=调整图像的整体饱和度.
+
+option.T_VIBRANCE=自然饱和度
+option.T_VIBRANCE.comment=也称为“自然饱和度”。调整图像的色彩饱和度，但已饱和的像素影响较小。
+
+option.TM_DARK_DESATURATION=阴影饱和度
+option.TM_DARK_DESATURATION.comment=调整应用于较暗区域的颜色淡化效果的程度。
+
+option.TM_WHITE_PATH=白点
+option.TM_WHITE_PATH.comment=调整较亮颜色到达白色的难易程度。
+
+option.COLORGRADING=颜色混合器
+option.COLORGRADING.comment=启用自由混合最终颜色通道的设置。
+option.GR_RR=红色 → 红色
+option.GR_RG=红色 → 绿色
+option.GR_RB=红色 → 蓝色
+option.GR_RC=红色响应曲线
+option.GR_GR=绿色 → 红色
+option.GR_GG=绿色 → 绿色
+option.GR_GB=绿色 → 蓝色
+option.GR_GC=绿色响应曲线
+option.GR_BR=蓝色 → 红色
+option.GR_BG=蓝色 → 绿色
+option.GR_BB=蓝色 → 蓝色
+option.GR_BC=蓝色响应曲线
+
+option.WATER_LOOK=水面风格
+option.WATER_LOOK.comment=平静保持简单的 Minecraft 风格表面，波浪增加分层波浪效果，反射增强反射强度。
+value.WATER_LOOK.1=平静
+value.WATER_LOOK.2=波浪
+value.WATER_LOOK.3=反射
+
+option.WATER_CAUSTIC_LOOK=焦散样式
+option.WATER_CAUSTIC_LOOK.comment=选择通过水投射到水下表面的光影图案
+value.WATER_CAUSTIC_LOOK.1=锐利
+value.WATER_CAUSTIC_LOOK.3=流动
+
+option.VV_WATER_SUN_TRAIL=水面高光
+option.VV_WATER_SUN_TRAIL.comment=当水面像素反射太阳、月亮或附近光源时，光线会补全水面纹理像素。光的位置、方向、颜色和距离会影响结果。
+option.VV_WATER_SUN_TRAIL_STRENGTH=水面高光强度
+option.VV_WATER_SUN_TRAIL_STRENGTH.comment=控制水面反射光像素的亮度。
+
+option.VV_UNDERWATER_LIGHT_LINES=水下焦散
+option.VV_UNDERWATER_LIGHT_LINES.comment=将移动的水光投射到阴影贴图中，使用与普通阴影相同的实时分辨率。
+option.VV_UNDERWATER_LIGHT_STRENGTH=焦散强度
+option.VV_UNDERWATER_LIGHT_STRENGTH.comment=控制投射到水下方块上的水光亮度。
+
+option.WATER_REFRACTION_INTENSITY=折射
+option.WATER_REFRACTION_INTENSITY.comment=控制水对图像的弯曲程度。完全折射需要中等效果质量或更高。
+
+option.WATER_FOAM_I=泡沫
+option.WATER_FOAM_I.comment=控制水边出现的泡沫。需要中等效果质量或更高。
+
+option.WATER_ALPHA_MULT=不透明度
+option.WATER_ALPHA_MULT.comment=控制水体的不透明度显示。需要中配效果或更高。
+
+option.WATER_FOG_MULT=水下雾
+option.WATER_FOG_MULT.comment=调整水下雾的透明度。数值越高，雾越浓。§c[-]§r 极端数值会破坏水下光照平衡。
+
+option.WATERCOLOR_R=红色
+option.WATERCOLOR_G=绿色
+option.WATERCOLOR_B=蓝色
+
+option.WATERCOLOR_MODE=水色
+option.WATERCOLOR_MODE.comment=选择水色是否保持恒定或根据群系变化。群系模式会将不寻常的群系颜色保持在可读范围内。需要 Minecraft 1.13 或更高版本。
+value.WATERCOLOR_MODE.3=群系
+value.WATERCOLOR_MODE.2=基于群系
+value.WATERCOLOR_MODE.0=恒定
+
+option.BRIGHT_CAVE_WATER=洞穴水体清晰
+option.BRIGHT_CAVE_WATER.comment=使浅水或封闭区域的水变得更亮，以提高洞穴中的能见度，并为海洋的浅水部分增加一些颜色细节。§e[*]§r 如果水不透明度因子设置高于 199，则此效果将无法工作（技术原因）。
+
+option.UNDERWATERCOLOR_R=红色
+option.UNDERWATERCOLOR_G=绿色
+option.UNDERWATERCOLOR_B=蓝色
+
+option.WATER_BUMPINESS=波浪强度
+option.WATER_BUMPINESS.comment=调整水面可见的表面方向波浪（法线）的强度。
+
+option.WATER_BUMP_SMALL=小波浪
+option.WATER_BUMP_SMALL.comment=调整比其他波浪更小的波浪的强度。
+
+option.WATER_BUMP_MED=中等波浪
+option.WATER_BUMP_MED.comment=调整与其他波浪相比中等大小波浪的强度。
+
+option.WATER_BUMP_BIG=大波浪
+option.WATER_BUMP_BIG.comment=调整比其他波浪更大的波浪的强度。
+
+option.WATER_SPEED_MULT=波浪速度
+option.WATER_SPEED_MULT.comment=调整水面方向波浪（法线）的移动速度。
+
+option.WATER_SIZE_MULT=波浪大小
+option.WATER_SIZE_MULT.comment=调整水面表面方向波浪（法线）的显示大小。
+
+option.SUN_ANGLE=太阳角度
+option.SUN_ANGLE.comment=旋转太阳和月亮的运行路径。数值 0 可获得 Vibrant Vision 光照平衡，并确保最稳定的轴向对齐阴影。
+value.SUN_ANGLE.0=默认值
+value.SUN_ANGLE.-40=-40 (对角)
+
+option.CELESTIAL_LOOK=太阳与月亮
+option.CELESTIAL_LOOK.comment=选择方块圆盘或圆形圆盘。某些自定义天空资源包可能会意外地将这些遮罩组合在一起。
+value.CELESTIAL_LOOK.1=方块圆盘
+value.CELESTIAL_LOOK.2=圆形圆盘
+value.CELESTIAL_LOOK.3=小型圆形圆盘
+
+option.SUN_MOON_HORIZON=隐藏地平线以下的太阳/月亮
+option.SUN_MOON_HORIZON.comment=防止太阳/月亮出现在地平线以下。
+
+option.SUN_MOON_DURING_RAIN=在雨中显示
+option.SUN_MOON_DURING_RAIN.comment=决定在雨中是否显示太阳和月亮。§e[*]§r 此设置还会改变雨中的光照平衡。
+
+option.IMPROVED_RAIN_DEFINE=玻璃后雨
+option.IMPROVED_RAIN_DEFINE.comment=启用改进的天气纹理处理，可提供更好的颜色，并修复 Minecraft 错误，即彩色或修改玻璃后雨/雪不可见。
+value.IMPROVED_RAIN_DEFINE.0=关闭
+value.IMPROVED_RAIN_DEFINE.1=开启
+
+option.NIGHT_STAR_AMOUNT=星星数量
+option.NIGHT_STAR_AMOUNT.comment=决定夜空中的星星数量。
+value.NIGHT_STAR_AMOUNT.0=关闭
+value.NIGHT_STAR_AMOUNT.1=低
+value.NIGHT_STAR_AMOUNT.2=中
+value.NIGHT_STAR_AMOUNT.3=高
+value.NIGHT_STAR_AMOUNT.4=极高
+
+option.NIGHT_NEBULAE=星云
+option.NIGHT_NEBULAE.comment=在夜空中添加类似星系的程序化星云。每晚星云的排列都会发生变化，并会带来适中的渲染开销。
+value.NIGHT_NEBULAE.-1=关闭
+value.NIGHT_NEBULAE.1=开启
+
+option.NIGHT_NEBULA_I=星云亮度
+option.NIGHT_NEBULA_I.comment=调整夜星云的亮度。
+
+option.WEATHER_LOOK=天气光照
+option.WEATHER_LOOK.comment=选择在雨雪期间使用的天空和光照平衡。
+value.WEATHER_LOOK.1=轻柔 & 温暖
+value.WEATHER_LOOK.2=强烈 & 寒冷
+
+option.SPECIAL_BIOME_WEATHER=生物群系天气
+option.SPECIAL_BIOME_WEATHER.comment=改变寒冷和干燥生物群系的大气平衡，使其感觉像雪暴或沙暴。
+
+option.WEATHER_TEX_OPACITY=雨和雪
+option.WEATHER_TEX_OPACITY.comment=调整降雨/降雪天气纹理的透明度。
+
+option.SHADOW_SMOOTHING=阴影柔和度
+option.SHADOW_SMOOTHING.comment=控制阴影边缘的锐利程度。非常锐利的阴影可能更容易闪烁。阴影质量必须为低配或更高。
+value.SHADOW_SMOOTHING.4=非常平滑
+value.SHADOW_SMOOTHING.3=平滑
+value.SHADOW_SMOOTHING.2=锐利
+value.SHADOW_SMOOTHING.1=非常锐利
+
+option.PIXELATED_SHADOWS=像素阴影
+option.PIXELATED_SHADOWS.comment=使太阳和月亮投下的阴影呈现像素化效果。
+
+option.PIXELATED_BLOCKLIGHT=像素化方块光
+option.PIXELATED_BLOCKLIGHT.comment=使光源方块发出的光看起来呈像素化。
+
+option.PIXELATED_AO=像素接触阴影
+option.PIXELATED_AO.comment=使 Minecraft 的原版环境光遮蔽效果变得像素化。
+
+option.PIXEL_SCALE=像素尺寸
+option.PIXEL_SCALE.comment=对纹理分辨率进行缩放。
+value.PIXEL_SCALE.-2=0.25x
+value.PIXEL_SCALE.-1=0.5x
+value.PIXEL_SCALE.1=1x
+value.PIXEL_SCALE.2=2x
+value.PIXEL_SCALE.3=4x
+value.PIXEL_SCALE.4=8x
+value.PIXEL_SCALE.5=16x
+
+option.BLOOM_ENABLED=泛光
+option.BLOOM_ENABLED.comment=启用来自明亮物体和湿度的模糊光晕。 §c[-]§r 此效果可能会影响性能。
+value.BLOOM_ENABLED.-1=关
+value.BLOOM_ENABLED.1=开
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=决定明亮物体的发光强度，以及雨水/洞穴湿度产生的泛光效果。§c[-]§r 过强的泛光会使图像变得比预期更模糊、更明亮，尤其在潮湿环境中。
+value.BLOOM_STRENGTH.0.027=15%
+value.BLOOM_STRENGTH.0.036=20%
+value.BLOOM_STRENGTH.0.045=25%
+value.BLOOM_STRENGTH.0.054=30%
+value.BLOOM_STRENGTH.0.063=35%
+value.BLOOM_STRENGTH.0.072=40%
+value.BLOOM_STRENGTH.0.081=45%
+value.BLOOM_STRENGTH.0.09=50%
+value.BLOOM_STRENGTH.0.10=55%
+value.BLOOM_STRENGTH.0.11=60%
+value.BLOOM_STRENGTH.0.12=65%
+value.BLOOM_STRENGTH.0.13=70%
+value.BLOOM_STRENGTH.0.14=75%
+value.BLOOM_STRENGTH.0.15=80%
+value.BLOOM_STRENGTH.0.16=85%
+value.BLOOM_STRENGTH.0.17=90%
+value.BLOOM_STRENGTH.0.18=95%
+value.BLOOM_STRENGTH.0.19=100%
+value.BLOOM_STRENGTH.0.21=110%
+value.BLOOM_STRENGTH.0.23=120%
+value.BLOOM_STRENGTH.0.25=130%
+value.BLOOM_STRENGTH.0.28=150%
+value.BLOOM_STRENGTH.0.32=180%
+value.BLOOM_STRENGTH.10.00=最大值
+
+option.IMAGE_SHARPENING=清晰度
+option.IMAGE_SHARPENING.comment=使用滤镜使图像更清晰。§c[-]§r 过度锐化可能会导致视觉伪影，如锯齿、闪烁、噪点和细微的亮度变化。
+value.IMAGE_SHARPENING.0=关
+value.IMAGE_SHARPENING.1=1倍
+value.IMAGE_SHARPENING.2=2倍
+value.IMAGE_SHARPENING.3=3倍
+value.IMAGE_SHARPENING.4=4倍
+value.IMAGE_SHARPENING.5=5倍
+value.IMAGE_SHARPENING.6=6倍
+value.IMAGE_SHARPENING.7=7倍
+value.IMAGE_SHARPENING.8=8倍
+value.IMAGE_SHARPENING.9=9倍
+value.IMAGE_SHARPENING.10=10倍
+
+option.LENSFLARE_MODE=镜头光晕
+option.LENSFLARE_MODE.comment=当面向太阳或月亮时添加相机镜头反射效果。 §c[-]§r 此效果可能严重影响性能。
+value.LENSFLARE_MODE.0=关闭
+value.LENSFLARE_MODE.1=仅太阳
+value.LENSFLARE_MODE.2=太阳与月亮
+
+option.LENSFLARE_I=镜头光晕强度
+option.LENSFLARE_I.comment=调整镜头光晕效果的强度。
+
+option.TAA_MODE=临时抗锯齿
+option.TAA_MODE.comment=启用临时抗锯齿，可以平滑颗粒状效果，通过减少某些更复杂效果的采样次数来提升性能，并在正确设置下减少锯齿。 §c[-]§r：关闭此功能将导致性能和效果质量下降。
+value.TAA_MODE.0=关闭
+value.TAA_MODE.1=开启
+
+option.TAA_SMOOTHING=时间强度
+option.TAA_SMOOTHING.comment=调整时间滤波器应用的平滑程度。更高的数值会使图像更模糊，但可以减少闪烁和颗粒感。静止不动时差异不会明显。
+value.TAA_SMOOTHING.2=低配
+value.TAA_SMOOTHING.3=中配
+value.TAA_SMOOTHING.4=高配
+
+option.TAA_JITTER=时间模式
+option.TAA_JITTER.comment=抖动有助于 Temporal 滤波器更好地抗锯齿图像，但存在一些缺点。 §e[*]§r 更高的值将改善抗锯齿效果，但同时也会导致大量闪烁和模糊。 §e[*]§r 建议在 Full 抖动时使用高 Temporal 平滑。 §c[-]§r 关闭抖动将消除抗锯齿益处。
+value.TAA_JITTER.0=关闭
+value.TAA_JITTER.1=低
+value.TAA_JITTER.2=中
+value.TAA_JITTER.3=全
+
+option.TAA_MOVEMENT_IMPROVEMENT_FILTER=运动质量
+option.TAA_MOVEMENT_IMPROVEMENT_FILTER.comment=使用更高级的采样方法，减少 Temporal 滤镜的模糊程度。
+value.TAA_MOVEMENT_IMPROVEMENT_FILTER.0=关闭
+value.TAA_MOVEMENT_IMPROVEMENT_FILTER.1=开启
+
+option.FXAA_STRENGTH=边缘平滑强度
+option.FXAA_STRENGTH.comment=调整 FXAA 效果的强度。数值越高抗锯齿效果越好，但图像会变得更模糊。
+value.FXAA_STRENGTH.-1=关闭
+
+option.FXAA_TAA_INTERACTION=运动平滑
+option.FXAA_TAA_INTERACTION.comment=当相机移动时降低 FXAA 的强度。数值越高图像越清晰，但闪烁也越多。
+value.FXAA_TAA_INTERACTION.0=关闭
+value.FXAA_TAA_INTERACTION.2=20
+value.FXAA_TAA_INTERACTION.4=40
+value.FXAA_TAA_INTERACTION.6=60
+value.FXAA_TAA_INTERACTION.8=80
+value.FXAA_TAA_INTERACTION.10=100
+
+option.DISTANT_LIGHT_BOKEH=远处光源模糊
+option.DISTANT_LIGHT_BOKEH.comment=为远处光源添加微小模糊效果。默认材质可识别额外光源。
+
+option.MOTION_BLUR_EFFECT=运动模糊
+option.MOTION_BLUR_EFFECT.comment=在移动相机时对图像应用模糊效果。 §c[-]§r 此效果可能会影响性能。
+value.MOTION_BLUR_EFFECT.-1=关闭
+value.MOTION_BLUR_EFFECT.1=开启
+
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+option.MOTION_BLURRING_STRENGTH.comment=调整运动模糊的强度。
+
+option.WORLD_BLUR=景深
+option.WORLD_BLUR.comment=启用世界模糊。距离模糊：模糊效果像雾一样，根据距离相机远近应用。景深：模糊效果取决于相机的焦点。§c[-]§r 此效果可能严重影响性能。
+value.WORLD_BLUR.0=关闭
+value.WORLD_BLUR.1=距离模糊
+value.WORLD_BLUR.2=景深
+
+option.WB_FOV_SCALED=FOV 缩放
+option.WB_FOV_SCALED.comment=将世界模糊效果与相机视野缩放同步。当启用此选项时，缩放视野会使世界模糊效果变得更强烈。
+
+option.WB_CHROMATIC=色差
+option.WB_CHROMATIC.comment=将色差应用于模糊区域，在模糊区域中分离不同颜色。
+
+option.WB_ANAMORPHIC=宽景泛光
+option.WB_ANAMORPHIC.comment=将模糊效果拉伸到一个方向. §c[-]§r 此选项可能会降低世界模糊的质量
+
+option.WB_DOF_I=模糊强度
+option.WB_DOF_FOCUS=焦点距离
+option.WB_DOF_FOCUS.comment=确定相机的焦点距离。自动：焦点将根据屏幕中心点进行调整。亮度：焦点将由视频设置中的“亮度”滑块决定。
+value.WB_DOF_FOCUS.-1=亮度
+value.WB_DOF_FOCUS.0=自动
+
+option.WB_DB_DAY_I=白天距离模糊
+option.WB_DB_NIGHT_I=夜晚距离模糊
+option.WB_DB_RAIN_I=天气距离模糊
+option.WB_DB_WATER_I=水下距离模糊
+option.WB_DB_NETHER_I=地狱距离模糊
+option.WB_DB_END_I=末地距离模糊
+
+option.VIGNETTE_R=暗角
+option.VIGNETTE_R.comment=在屏幕边缘应用暗淡效果。
+
+option.CHROMA_ABERRATION=颜色分离
+option.CHROMA_ABERRATION.comment=使不同颜色在屏幕边缘分离。 §c[-]§r 色差可能使图像显得模糊；不建议使用过高的数值进行游戏。
+value.CHROMA_ABERRATION.4=4
+value.CHROMA_ABERRATION.5=5
+value.CHROMA_ABERRATION.6=6
+value.CHROMA_ABERRATION.7=7
+value.CHROMA_ABERRATION.8=8
+
+option.VV_EMISSION_SOURCE=自发光纹理
+option.VV_EMISSION_SOURCE.comment=保持 Vibrant Vision 内置的自发光规则，或允许 labPBR 的 alpha 数据覆盖提供高光贴图的兼容表面。
+value.VV_EMISSION_SOURCE.1=默认材质
+value.VV_EMISSION_SOURCE.3=labPBR 覆盖
+
+option.VV_MATERIAL_SAFE_MODE=安全材质
+option.VV_MATERIAL_SAFE_MODE.comment=使用更温和的内置材质检测，适用于重新分配纹理通道的资源包或模组。
+
+option.VV_PARTICLE_MATERIALS=粒子材质
+option.VV_PARTICLE_MATERIALS.comment=启用多种粒子功能，包括发光岩浆粒子和更鲜艳的水粒子等。
+
+option.FANCY_GLASS=玻璃层
+option.FANCY_GLASS.comment=为玻璃添加透明深度层。需要默认材质和最新版本的 Iris。
+
+option.GREEN_SCREEN_LIME=绿色屏幕方块
+option.GREEN_SCREEN_LIME.comment=将青石灰混凝土、羊毛和地毯转换为绿色屏幕方块。禁用泛光效果，并在质量设置中选择快速以获得最干净的边缘。
+
+option.MIRROR_TINTED_GLASS=着色玻璃反射
+option.MIRROR_TINTED_GLASS.comment=增加着色玻璃块的反射性和不透明度。启用世界空间反射以获得最佳效果。
+
+option.MORE_REFLECTIVE_DISTANT_GLASS=远处玻璃反射
+option.MORE_REFLECTIVE_DISTANT_GLASS.comment=提高远处玻璃的反射性和不透明度，使带有玻璃窗的建筑看起来更美观。
+
+option.HIDE_ARMOR=盔甲
+option.HIDE_ARMOR.comment=隐藏玩家或所有实体的盔甲和鞘翅。鞘翅仅在飞行时显示。 §e[*]§r 此设置仅在 Iris 下有效。 §e[*]§r “仅限主玩家” 选项可能显得杂乱，如果其他穿盔甲的实体靠近主玩家时尤其如此。
+value.HIDE_ARMOR.0=关闭
+value.HIDE_ARMOR.1=主玩家
+value.HIDE_ARMOR.2=所有实体
+
+option.HAND_SWAYING=手部摆动
+option.HAND_SWAYING.comment=为玩家手部添加缓慢的摆动动画，模拟呼吸效果。
+value.HAND_SWAYING.0=关闭
+value.HAND_SWAYING.1=微弱
+value.HAND_SWAYING.2=正常
+value.HAND_SWAYING.3=强烈
+
+option.LESS_LAVA_FOG=清除岩浆雾
+option.LESS_LAVA_FOG.comment=减少岩浆和粉雪的雾气，提升内部能见度。
+
+option.REDUCE_CLOSE_PARTICLES=附近粒子
+option.REDUCE_CLOSE_PARTICLES.comment=降低靠近摄像机的粒子透明度以提高可见性。
+
+option.SNOWY_WORLD=雪世界
+option.SNOWY_WORLD.comment=使整个世界覆盖着雪。
+
+option.SHOW_LIGHT_LEVEL=光照等级
+option.SHOW_LIGHT_LEVEL.comment=在主世界：黄色表示生物可以在夜间生成，红色表示生物可以随时生成。在地狱或末地：黄色表示部分生物可以生成，红色表示所有生物可以生成。§e[*]§r 关闭平滑光照以获取精确结果。
+value.SHOW_LIGHT_LEVEL.0=关闭
+value.SHOW_LIGHT_LEVEL.1=握住蜘蛛眼
+value.SHOW_LIGHT_LEVEL.2=握住光源
+value.SHOW_LIGHT_LEVEL.3=始终开启
+
+option.COLOR_CODED_PROGRAMS=调试颜色
+option.COLOR_CODED_PROGRAMS.comment=显示哪些着色器程序正在用于渲染几何体。§c[-]§r 此选项仅用于开发目的，不应用于游戏。§e[*]§r 颜色值可在光影包文件中找到：shaders/lib/misc/colorCodedPrograms.glsl
+
+option.GLOWING_COLORED_PARTICLES=发光粒子
+option.GLOWING_COLORED_PARTICLES.comment=使所有技术上属于“彩色”的粒子变为自发光。§c[-]§r 此选项不建议用于一般游戏，因为它会使许多不应该发光的材质产生的粒子发光。
+
+option.CAVE_LIGHTING=洞穴亮度
+option.CAVE_LIGHTING.comment=为没有 skylight 的区域添加额外照明。 §e[*]§r 洞穴照明也会受到视频设置中“亮度”滑块的影响。 §c[-]§r 大幅更改此设置可能会破坏照明平衡。
+
+option.AMBIENT_MULT=阴影亮度
+option.AMBIENT_MULT.comment=决定阴影中可见的环境光亮度。 §c[-]§r 剧烈更改此设置可能会破坏光照平衡。
+
+option.PLAYER_SHADOW=玩家阴影
+option.PLAYER_SHADOW.comment=让玩家投射第一人称阴影。需要 Iris 和阴影质量高于关闭状态。
+value.PLAYER_SHADOW.-1=关闭
+value.PLAYER_SHADOW.1=开启
+
+option.GENERATED_NORMALS=内置深度
+option.GENERATED_NORMALS.comment=在默认材质下添加内置深度。不寻常的资源包纹理布局可能会显示异常。
+
+option.COATED_TEXTURES=内置光泽
+option.COATED_TEXTURES.comment=为默认材质添加内置光泽。非标准的资源包材质布局可能显示异常。
+
+option.ENTITY_GN_AND_CT=实体材质
+option.ENTITY_GN_AND_CT.comment=决定是否允许生成法线和涂层纹理显示在实体上。§e[*]§r 如果主 GN 或 CT 选项被禁用，则不会在实体上启用 GN 或 CT。
+
+option.GENERATED_NORMAL_MULT=深度强度
+option.GENERATED_NORMAL_MULT.comment=调整表面上自动生成的凹凸细节的强度。
+
+option.GENERATED_NORMAL_RES=深度细节
+option.GENERATED_NORMAL_RES.comment=调整自动生成的表面凹凸细节的分辨率/大小。§e[*]§r 请注意，GN 分辨率还取决于每个纹理自身的分辨率，这意味着资源包或模组可能会破坏不同方块上 GN 的分辨率。
+
+option.COATED_TEXTURE_MULT=光泽强度
+option.COATED_TEXTURE_MULT.comment=调整纹理上自动生成的灰尘细节的强度。
+
+option.GLOWING_ORE_MASTER=发光的矿石
+option.GLOWING_ORE_MASTER.comment=内置自发光矿石材料的总开关。以下各个矿石开关仅在启用时生效。
+value.GLOWING_ORE_MASTER.0=关闭
+value.GLOWING_ORE_MASTER.1=开启
+
+option.GLOWING_ORE_MULT=矿石亮度
+option.GLOWING_ORE_MULT.comment=决定发光的矿石的发射强度。
+
+option.GLOWING_ORE_IRON=发光的铁矿石
+option.GLOWING_ORE_GOLD=发光的金矿石
+option.GLOWING_ORE_COPPER=发光的铜矿石
+option.GLOWING_ORE_REDSTONE=发光的红石矿石
+option.GLOWING_ORE_REDSTONE.comment=§e[*]§r 所有红石矿石即使在“激活”状态下也会发光，无论此设置如何。
+option.GLOWING_ORE_LAPIS=发光的青金石矿石
+option.GLOWING_ORE_EMERALD=发光的绿宝石矿石
+option.GLOWING_ORE_DIAMOND=发光的钻石矿石
+option.GLOWING_ORE_NETHERQUARTZ=发光的下界石英矿石
+option.GLOWING_ORE_NETHERGOLD=发光的下界金矿石
+option.GLOWING_ORE_GILDEDBLACKSTONE=发光的金质黑石
+option.GLOWING_ORE_ANCIENTDEBRIS=发光的远古残骸
+option.GLOWING_ORE_MODDED=发光模组矿石
+option.GLOWING_ORE_MODDED.comment=§e[*]§r
+
+option.GLOWING_AMETHYST=发光的紫水晶
+value.GLOWING_AMETHYST.0=关闭
+value.GLOWING_AMETHYST.1=水晶
+value.GLOWING_AMETHYST.2=水晶和方块
+
+option.GLOWING_LICHEN=发光地衣
+value.GLOWING_LICHEN.0=关闭
+value.GLOWING_LICHEN.1=仅在封闭区域
+value.GLOWING_LICHEN.2=始终
+
+option.EMISSIVE_REDSTONE_BLOCK=发光的红石块
+
+option.EMISSIVE_LAPIS_BLOCK=发光的青金石块
+
+option.GLOWING_ARMOR_TRIM=发光护甲镶嵌
+option.GLOWING_ARMOR_TRIM.comment=使护甲镶嵌发光。§e[*]§r 此功能仅在 Iris 光影包中生效，因为 OptiFine 不支持护甲镶嵌检测。
+
+option.NORMAL_MAP_STRENGTH=纹理深度
+option.NORMAL_MAP_STRENGTH.comment=调整表面凹凸细节的强度。表面数据源必须设置为 labPBR，并使用兼容的资源包。
+
+option.CUSTOM_EMISSION_INTENSITY=发射亮度
+option.CUSTOM_EMISSION_INTENSITY.comment=调整 labPBR 发光表面的亮度强度。表面数据源必须设置为 labPBR，且必须使用兼容的资源包。
+
+option.POM=视差
+option.POM.comment=为 labPBR 表面添加视觉深度。此效果可能严重影响性能，且需要兼容的 labPBR 资源包。
+value.POM.false=关闭
+value.POM.true=开启
+
+option.POM_DEPTH=视差深度
+option.POM_DEPTH.comment=调整来自兼容 labPBR 资源包的视差映射的视觉深度。
+
+option.POM_QUALITY=视差质量
+option.POM_QUALITY.comment=调整视差精度。数值高于 200 会严重影响性能；数值低于 100 会强制使用平滑光照。需要兼容的 labPBR 资源包。
+value.POM_QUALITY.16=16
+value.POM_QUALITY.32=32
+value.POM_QUALITY.64=64
+value.POM_QUALITY.256=256
+value.POM_QUALITY.512=512
+
+option.POM_DISTANCE=视差距离
+option.POM_DISTANCE.comment=调整视差贴图的计算范围。将此值保持在 50 以下可节省部分 GPU 资源。需要兼容的 labPBR 资源包。
+value.POM_DISTANCE.64=64
+value.POM_DISTANCE.128=128
+value.POM_DISTANCE.256=256
+value.POM_DISTANCE.512=512
+value.POM_DISTANCE.1024=1024
+
+option.POM_LIGHTING_MODE=视差光照
+option.POM_LIGHTING_MODE.comment=调整视差表面的光照响应。锐利 尊重表面的朝向；平滑 保持原始表面光照。低视差细节强制使用平滑。
+value.POM_LIGHTING_MODE.1=平滑
+value.POM_LIGHTING_MODE.2=锐利
+
+option.POM_ALLOW_CUTOUT=视差裁剪
+option.POM_ALLOW_CUTOUT.comment=使 POM 能够在裁剪块区域（如树叶间隙）上生效。§c[-]§r 此效果可能严重影响性能。
+
+option.DIRECTIONAL_BLOCKLIGHT=方向性方块光
+option.DIRECTIONAL_BLOCKLIGHT.comment=为 labPBR 法线添加方向敏感的方块光深度。可能消耗性能，并可能在不寻常的法线贴图上显示出瑕疵。
+value.DIRECTIONAL_BLOCKLIGHT.0=关闭
+value.DIRECTIONAL_BLOCKLIGHT.3=微弱
+value.DIRECTIONAL_BLOCKLIGHT.7=正常
+value.DIRECTIONAL_BLOCKLIGHT.11=强烈
+
+option.HELD_LIGHTING_MODE=手持光源
+option.HELD_LIGHTING_MODE.comment=允许手持光源为场景投射光照.
+value.HELD_LIGHTING_MODE.0=关闭
+value.HELD_LIGHTING_MODE.1=柔和
+value.HELD_LIGHTING_MODE.2=正常
+
+option.VV_FLASHLIGHT=手电筒
+option.VV_FLASHLIGHT.comment=从相机处投射出一个温暖的光束锥。这与手持物品无关，默认禁用。
+option.VV_FLASHLIGHT_STRENGTH=亮度
+option.VV_FLASHLIGHT_STRENGTH.comment=控制相机中心光束的强度。
+option.VV_FLASHLIGHT_RANGE=距离
+option.VV_FLASHLIGHT_RANGE.comment=控制光束淡出的距离。
+option.VV_FLASHLIGHT_WIDTH=宽度
+option.VV_FLASHLIGHT_WIDTH.comment=控制锥体边缘。数值越低，光束越宽；数值越高，光束越窄。
+
+option.BLOCKLIGHT_FLICKERING=方块光闪烁
+option.BLOCKLIGHT_FLICKERING.comment=为方块发出的光添加闪烁效果。
+value.BLOCKLIGHT_FLICKERING.0=关闭
+
+option.WAVING_SPEED=移动速度
+option.WAVING_SPEED.comment=调整波浪效果出现的速度。
+
+option.WAVING_I=移动强度
+option.WAVING_I.comment=调整波动的块的移动幅度。§c[-]§r 过大的波纹强度可能导致波纹块与其他块产生重叠。
+value.WAVING_I.1.25=1.25
+value.WAVING_I.1.50=1.50
+value.WAVING_I.1.75=1.75
+value.WAVING_I.2.00=2.00
+value.WAVING_I.50.0=最大值
+
+option.NO_WAVING_INDOORS=室内移动
+option.NO_WAVING_INDOORS.comment=阻止方块在封闭区域内因天光而飘动。§c[-]§r 启用此设置可能会导致某些资源包或模组出现问题。
+
+option.WAVING_I_RAIN_MULT=雨水运动
+option.WAVING_I_RAIN_MULT.comment=在雨天时，乘以波纹的速度和强度。§c[-]§r 过高的波纹强度可能导致波纹方块与其他方块重叠或错位。§c[-]§r 当数值超过 100 时，可能会影响性能。
+value.WAVING_I.125=125
+value.WAVING_I.150=150
+value.WAVING_I.175=175
+value.WAVING_I.200=200
+
+option.WAVING_FOLIAGE=草的摆动
+option.WAVING_FOLIAGE.comment=为草和其他类似的植被添加运动效果，模拟风的吹动。
+
+option.WAVING_LEAVES=树叶飘动
+option.WAVING_LEAVES.comment=使树叶产生飘动效果，模拟风的移动。
+
+option.WAVING_LAVA=岩浆移动
+option.WAVING_LAVA.comment=为岩浆添加持续的移动效果。§e[*]§r 特别是岩浆的波动不会受到“No Surface Motion in Closed Areas”设置的影响。
+
+option.WAVING_LILY_PAD=莲叶移动
+option.WAVING_LILY_PAD.comment=为莲叶和蛤蛤卵添加移动效果，以模拟水波的影响。§c[-]§r 这会导致莲叶在水淹方块上变得不可见
+
+option.WAVING_WATER_VERTEX=水面动态
+option.WAVING_WATER_VERTEX.comment=使水面产生移动，模拟风的效果。§e[*]§r 此选项与“水波强度”设置无关。
+
+option.WAVING_RAIN=雨雪动态效果
+option.WAVING_RAIN.comment=为降落的雨雪纹理添加动态效果，使其看起来更生动。
+
+option.SPECIAL_PORTAL_EFFECTS=门户特效
+option.SPECIAL_PORTAL_EFFECTS.comment=为下界门、末地门和末地网关添加特殊动画和发射效果。
+
+option.REFLECTION_RES=反射质量
+option.REFLECTION_RES.comment=调整 PBR 反射在方块（以及已启用世界空间反射时）上的分辨率以提升性能。 §c[-]§r “全”分辨率反射在某些情况下可能比预期更严重影响性能。 §e[*]§r 此功能在 OptiFine 上不可用。
+value.REFLECTION_RES.1.0=全
+value.REFLECTION_RES.0.5=半
+
+option.WORLD_OUTLINE=世界轮廓
+option.WORLD_OUTLINE.comment=为方块添加明亮的轮廓。§c[-]§r 此效果可能会影响性能。
+
+option.WORLD_OUTLINE_THICKNESS=轮廓宽度
+option.WORLD_OUTLINE_THICKNESS.comment=控制世界轮廓的宽度。更宽的轮廓会消耗更多性能。
+
+option.WORLD_OUTLINE_I=轮廓亮度
+option.WORLD_OUTLINE_I.comment=控制世界轮廓的亮度。
+
+option.WORLD_OUTLINE_ON_ENTITIES=实体轮廓
+option.WORLD_OUTLINE_ON_ENTITIES.comment=将世界轮廓应用于实体。某些材质资源包可能无法正确支持此功能。
+
+option.WORLD_OUTLINE_SCALED=距离缩放
+option.WORLD_OUTLINE_SCALED.comment=使世界轮廓的大小根据距离进行缩放。
+
+option.DARK_OUTLINE=暗边框
+option.DARK_OUTLINE.comment=在方块周围添加暗边框。 §c[-]§r 此效果可能会影响性能。
+
+option.DARK_OUTLINE_THICKNESS=暗描边宽度
+option.DARK_OUTLINE_THICKNESS.comment=决定暗描边效果的粗细。§c[-]§r 提高此设置可能会影响性能。
+
+option.RAIN_PUDDLES=积水
+option.RAIN_PUDDLES.comment=在雨天为地形添加积水。 §c[-]§r 雨后积水可能严重影响性能。
+value.RAIN_PUDDLES.0=关闭
+value.RAIN_PUDDLES.1=雨天有积水
+value.RAIN_PUDDLES.2=雨天全覆盖
+value.RAIN_PUDDLES.3=始终有积水
+value.RAIN_PUDDLES.4=始终全覆盖
+
+option.UNDERWATER_DISTORTION=水下畸变
+option.UNDERWATER_DISTORTION.comment=在摄像机位于水下时为屏幕添加微妙的折射效果。
+
+option.SELECT_OUTLINE=选区轮廓
+option.SELECT_OUTLINE.comment=决定方块选区的轮廓颜色。
+value.SELECT_OUTLINE.0=关闭
+value.SELECT_OUTLINE.1=默认
+value.SELECT_OUTLINE.3=选择颜色
+value.SELECT_OUTLINE.4=多功能
+
+option.SELECT_OUTLINE_AUTO_HIDE=隐藏选区轮廓
+option.SELECT_OUTLINE_AUTO_HIDE.comment=当玩家主手未持有任何物品时隐藏方块选区轮廓。
+
+option.SELECT_OUTLINE_I=亮度
+option.SELECT_OUTLINE_R=红色
+option.SELECT_OUTLINE_G=绿色
+option.SELECT_OUTLINE_B=蓝色
+
+option.MOON_PHASE_INF_LIGHT=月相照明
+option.MOON_PHASE_INF_LIGHT.comment=启用不同的月相来改变夜间照明亮度。
+
+option.MOON_PHASE_INF_ATMOSPHERE=月相天空
+option.MOON_PHASE_INF_ATMOSPHERE.comment=启用不同的月相来改变夜间氛围亮度。
+
+option.MOON_PHASE_INF_REFLECTION=月相反射
+option.MOON_PHASE_INF_REFLECTION.comment=启用不同的月相来改变月相反射的亮度。
+
+option.MOON_PHASE_FULL=满月
+option.MOON_PHASE_FULL.comment=调整满月期间月相的影响（最亮的月相）。
+
+option.MOON_PHASE_PARTIAL=半月
+option.MOON_PHASE_PARTIAL.comment=调整月相影响，在满月与暗月之间的所有月相阶段生效。这是你在 Minecraft 中最常看到的月相。
+
+option.MOON_PHASE_DARK=新月
+option.MOON_PHASE_DARK.comment=调整新月期间（最暗阶段）的月相影响。
+
+option.CONNECTED_GLASS_EFFECT=连接玻璃
+option.CONNECTED_GLASS_EFFECT.comment=连接兼容的玻璃照明。需要“质量”下的“彩色光”功能，并自动让步给 Continuity 模组。
+
+option.PORTAL_EDGE_EFFECT=发光门框
+option.PORTAL_EDGE_EFFECT.comment=为末地和地狱传送门添加发光边框。需要质量设置中的彩色光照和支持的系统。
+
+option.PUDDLE_VOXELIZATION=玻璃下的积水
+option.PUDDLE_VOXELIZATION.comment=防止玻璃屋顶下的积水。需要彩色光源和高特效质量。
+
+option.COLORED_CANDLE_LIGHT=彩色蜡烛
+option.COLORED_CANDLE_LIGHT.comment=使蜡烛发出的光与蜡烛的颜色相同。§e[*]§r 去饱和的蜡烛颜色变体将继续使用默认的火焰颜色。
+
+option.COLORED_LIGHT_SATURATION=彩色光照饱和度
+option.COLORED_LIGHT_SATURATION.comment=控制彩色光照的饱和度。推荐使用默认值。
+
+option.COLORED_LIGHT_FOG=彩色光雾
+option.COLORED_LIGHT_FOG.comment=在附近光源周围添加雾气，在夜间或地下时最明显。需要“质量”下的“彩色光”功能，并会消耗更多性能。
+
+option.COLORED_LIGHT_FOG_I=雾亮度
+option.COLORED_LIGHT_FOG_I.comment=控制彩色光雾的亮度。
+
+option.LIGHT_COLOR_MULTS=光照颜色
+option.LIGHT_COLOR_MULTS.comment=允许自定义所有表面的光照颜色。
+
+option.ATM_COLOR_MULTS=天空颜色
+option.ATM_COLOR_MULTS.comment=启用对主要出现在天空和雾气中的大气颜色的自定义。
+
+option.LIGHT_MORNING_R=红色
+option.LIGHT_MORNING_G=绿色
+option.LIGHT_MORNING_B=蓝色
+option.LIGHT_MORNING_I=亮度
+option.ATM_MORNING_R=红色
+option.ATM_MORNING_G=绿色
+option.ATM_MORNING_B=蓝色
+option.ATM_MORNING_I=亮度
+option.LIGHT_NOON_R=红色
+option.LIGHT_NOON_G=绿色
+option.LIGHT_NOON_B=蓝色
+option.LIGHT_NOON_I=亮度
+option.ATM_NOON_R=红色
+option.ATM_NOON_G=绿色
+option.ATM_NOON_B=蓝色
+option.ATM_NOON_I=亮度
+option.LIGHT_NIGHT_R=红色
+option.LIGHT_NIGHT_G=绿色
+option.LIGHT_NIGHT_B=蓝色
+option.LIGHT_NIGHT_I=亮度
+option.ATM_NIGHT_R=红色
+option.ATM_NIGHT_G=绿色
+option.ATM_NIGHT_B=蓝色
+option.ATM_NIGHT_I=亮度
+option.LIGHT_RAIN_R=红色
+option.LIGHT_RAIN_G=绿色
+option.LIGHT_RAIN_B=蓝色
+option.LIGHT_RAIN_I=亮度
+option.ATM_RAIN_R=红色
+option.ATM_RAIN_G=绿色
+option.ATM_RAIN_B=蓝色
+option.ATM_RAIN_I=亮度
+option.LIGHT_NETHER_R=红色
+option.LIGHT_NETHER_G=绿色
+option.LIGHT_NETHER_B=蓝色
+option.LIGHT_NETHER_I=亮度
+option.ATM_NETHER_R=红色
+option.ATM_NETHER_G=绿色
+option.ATM_NETHER_B=蓝色
+option.ATM_NETHER_I=亮度
+option.LIGHT_END_R=红色
+option.LIGHT_END_G=绿色
+option.LIGHT_END_B=蓝色
+option.LIGHT_END_I=亮度
+option.ATM_END_R=红色
+option.ATM_END_G=绿色
+option.ATM_END_B=蓝色
+option.ATM_END_I=亮度
+
+option.XLIGHT_R=红色
+option.XLIGHT_G=绿色
+option.XLIGHT_B=蓝色
+option.XLIGHT_I=亮度
+
+option.XLIGHT_CURVE=方块光对比度
+option.XLIGHT_CURVE.comment=调整方块光照的强度随距离远离光源时衰减的速度。
+
+#Complete menu guidance
+screen.VV_IDENTITY=鲜艳视野
+screen.VV_IDENTITY.comment=项目标识、作者信息、首次发布、许可协议，以及可选的屏幕创作者标记。
+screen.VV_ESSENTIALS=主设置
+screen.VV_ESSENTIALS.comment=主要控制项：阴影、云层、水面、颜色和性能。
+screen.WATER_COLOR_SETTINGS.comment=从水面以上观察时，红、绿、蓝颜色的缩放比例。
+screen.UNDERWATER_COLOR_SETTINGS.comment=水下观察时，红、绿、蓝颜色的缩放比例。
+screen.MORNING_LIGHT_MULTS.comment=日出日落时块上直射光的颜色和强度。
+screen.NOON_LIGHT_MULTS.comment=白天晴朗时块上直射光的颜色和强度。
+screen.NIGHT_LIGHT_MULTS.comment=夜晚月光和室内表面的颜色和强度。
+screen.RAIN_LIGHT_MULTS.comment=雨雪期间地表照明的颜色和强度。
+screen.NETHER_LIGHT_MULTS.comment=下界表面应用的光的颜色和强度。
+screen.END_LIGHT_MULTS.comment=末地表面应用的光的颜色和强度。
+screen.MORNING_ATM_MULTS.comment=日出日落时天空和雾气的颜色和强度。
+screen.NOON_ATM_MULTS.comment=白天晴朗时天空和雾气的颜色和强度。
+screen.NIGHT_ATM_MULTS.comment=夜空和远处雾气的颜色和强度。
+screen.RAIN_ATM_MULTS.comment=雨雪期间天空和雾气的颜色和强度。
+screen.NETHER_ATM_MULTS.comment=下界雾气和大气光的颜色和强度。
+screen.END_ATM_MULTS.comment=末地雾气和大气光的颜色和强度。
+
+option.VV_CREATOR_MARK_POSITION.comment=选择哪个屏幕角落包含可选的 Vibrant Vision 创作者标记。
+option.VV_CREATOR_MARK_SCALE.comment=更改可选创作者标记的文字大小。
+option.VV_CREATOR_MARK_INSET.comment=将创作者标记向内移动，远离选定的屏幕边缘。
+option.VV_CREATOR_MARK_OPACITY.comment=控制创作者标记在最终图像上的混合强度。
+option.VV_CLOUD_TINT_R.comment=调整方块云层色调的红色分量。
+option.VV_CLOUD_TINT_G.comment=调整方块云层色调的绿色分量。
+option.VV_CLOUD_TINT_B.comment=调整方块云层色调的蓝色分量。
+option.WATERCOLOR_R.comment=调整表面水体的红色分量。
+option.WATERCOLOR_G.comment=调整表面水体的绿色分量。
+option.WATERCOLOR_B.comment=调整表面水体的蓝色分量。
+option.UNDERWATERCOLOR_R.comment=调整水下视角的红色分量。
+option.UNDERWATERCOLOR_G.comment=调整水下视角的绿色分量。
+option.UNDERWATERCOLOR_B.comment=调整水下视角的蓝色分量。
+option.SELECT_OUTLINE_R.comment=设置方块选择边框的红色通道。
+option.SELECT_OUTLINE_G.comment=设置方块选择边框的绿色通道。
+option.SELECT_OUTLINE_B.comment=设置方块选择边框的蓝色通道。
+option.SELECT_OUTLINE_I.comment=设置方块选择边框的亮度。
+option.LIGHTSHAFT_DAY_I.comment=调整晴天时阳光穿透的可见度。
+option.LIGHTSHAFT_NIGHT_I.comment=调整夜晚时月光的可见度。
+option.LIGHTSHAFT_RAIN_I.comment=调整雨雪天气时阳光穿透的可见度。
+option.WB_DOF_I.comment=控制在启用景深时基于焦点的模糊效果。
+option.WB_DB_DAY_I.comment=设置在晴天时，景色保持清晰的距离，在该距离后开始模糊。
+option.WB_DB_NIGHT_I.comment=设置在夜晚和室内时，景色保持清晰的距离，在该距离后开始模糊。
+option.WB_DB_RAIN_I.comment=设置在雨雪天气时，景色保持清晰的距离。
+option.WB_DB_WATER_I.comment=设置在水下时，景色保持清晰的距离，在该距离后开始模糊。
+option.WB_DB_NETHER_I.comment=设置在下界时，景色保持清晰的距离，在该距离后开始模糊。
+option.WB_DB_END_I.comment=设置在末地时，景色保持清晰的距离，在该距离后开始模糊。
+option.XLIGHT_R.comment=调整方块发光体的红色通道。
+option.XLIGHT_G.comment=调整方块发光体的绿色通道。
+option.XLIGHT_B.comment=调整方块发光体的蓝色通道。
+option.XLIGHT_I.comment=调整方块发光体的整体强度。
+
+option.GR_RR.comment=将红色输入通道路由到红色输出通道。
+option.GR_RG.comment=将红色输入通道路由到绿色输出通道。
+option.GR_RB.comment=将红色输入通道路由到蓝色输出通道。
+option.GR_RC.comment=调整红色输入通道的响应曲线。
+option.GR_GR.comment=将绿色输入通道路由到红色输出通道。
+option.GR_GG.comment=将绿色输入通道路由到绿色输出通道。
+option.GR_GB.comment=将绿色输入通道路由到蓝色输出通道。
+option.GR_GC.comment=调整绿色输入通道的响应曲线。
+option.GR_BR.comment=将蓝色输入通道路由到红色输出通道。
+option.GR_BG.comment=将蓝色输入通道路由到绿色输出通道。
+option.GR_BB.comment=将蓝色输入通道路由到蓝色输出通道。
+option.GR_BC.comment=调整蓝色输入通道的响应曲线。
+
+option.GLOWING_ORE_IRON.comment=允许铁矿石发出其内置材质发光。
+option.GLOWING_ORE_GOLD.comment=允许金矿石发出其内置材质发光。
+option.GLOWING_ORE_COPPER.comment=允许铜矿石发出其内置材质发光。
+option.GLOWING_ORE_LAPIS.comment=允许青金石矿石发出其内置材质发光。
+option.GLOWING_ORE_EMERALD.comment=允许绿宝石矿石发出其内置材质发光。
+option.GLOWING_ORE_DIAMOND.comment=允许钻石矿石发出其内置材质发光。
+option.GLOWING_ORE_NETHERQUARTZ.comment=允许下界石英矿石发出其内置材质发光。
+option.GLOWING_ORE_NETHERGOLD.comment=允许下界金矿石发出其内置材质发光。
+option.GLOWING_ORE_GILDEDBLACKSTONE.comment=允许镀金黑石发出其内置材质发光。
+option.GLOWING_ORE_ANCIENTDEBRIS.comment=允许远古残骸发出其内置材质发光。
+option.GLOWING_AMETHYST.comment=控制紫水晶块和晶簇的内置发光处理。
+option.GLOWING_LICHEN.comment=控制发光地衣的内置发光处理。
+option.EMISSIVE_REDSTONE_BLOCK.comment=允许红石块发出受限的材质发光。
+option.EMISSIVE_LAPIS_BLOCK.comment=允许青金石块发出受限的材质发光。
+
+option.LIGHT_MORNING_R.comment=调整日出日落时地表光照的红色分量。
+option.LIGHT_MORNING_G.comment=调整日出日落时地表光照的绿色分量。
+option.LIGHT_MORNING_B.comment=调整日出日落时地表光照的蓝色分量。
+option.LIGHT_MORNING_I.comment=调整日出日落时地表光照的强度。
+option.ATM_MORNING_R.comment=调整日出日落时天空颜色的红色分量。
+option.ATM_MORNING_G.comment=调整日出日落时天空颜色的绿色分量。
+option.ATM_MORNING_B.comment=调整日出日落时天空颜色的蓝色分量。
+option.ATM_MORNING_I.comment=调整日出日落时天空颜色的强度。
+option.LIGHT_NOON_R.comment=调整晴天时地表光照的红色分量。
+option.LIGHT_NOON_G.comment=调整晴天时地表光照的绿色分量。
+option.LIGHT_NOON_B.comment=调整晴天时地表光照的蓝色分量。
+option.LIGHT_NOON_I.comment=调整晴天时地表光照的强度。
+option.ATM_NOON_R.comment=调整晴天时天空和雾气的红色分量。
+option.ATM_NOON_G.comment=调整晴天时天空和雾气的绿色分量。
+option.ATM_NOON_B.comment=调整晴天时天空和雾气的蓝色分量。
+option.ATM_NOON_I.comment=调整晴天时天空和雾气的强度。
+option.LIGHT_NIGHT_R.comment=调整夜间地表光照的红色分量。
+option.LIGHT_NIGHT_G.comment=调整夜间地表光照的绿色分量。
+option.LIGHT_NIGHT_B.comment=调整夜间地表光照的蓝色分量。
+option.LIGHT_NIGHT_I.comment=调整夜间地表光照的强度。
+option.ATM_NIGHT_R.comment=调整夜间天空和雾气的红色分量。
+option.ATM_NIGHT_G.comment=调整夜间天空和雾气的绿色分量。
+option.ATM_NIGHT_B.comment=调整夜间天空和雾气的蓝色分量。
+option.ATM_NIGHT_I.comment=调整夜间天空和雾气的强度。
+option.LIGHT_RAIN_R.comment=调整雨雪时地表光照的红色分量。
+option.LIGHT_RAIN_G.comment=调整雨雪时地表光照的绿色分量。
+option.LIGHT_RAIN_B.comment=调整雨雪时地表光照的蓝色分量。
+option.LIGHT_RAIN_I.comment=调整雨雪时地表光照的强度。
+option.ATM_RAIN_R.comment=调整雨雪时天空和雾气的红色分量。
+option.ATM_RAIN_G.comment=调整雨雪时天空和雾气的绿色分量。
+option.ATM_RAIN_B.comment=调整雨雪时天空和雾气的蓝色分量。
+option.ATM_RAIN_I.comment=调整雨雪时天空和雾气的强度。
+option.LIGHT_NETHER_R.comment=调整下界地表光照的红色分量。
+option.LIGHT_NETHER_G.comment=调整下界地表光照的绿色分量。
+option.LIGHT_NETHER_B.comment=调整下界地表光照的蓝色分量。
+option.LIGHT_NETHER_I.comment=调整下界地表光照的强度。
+option.ATM_NETHER_R.comment=调整下界雾气和大气光的红色分量。
+option.ATM_NETHER_G.comment=调整下界雾气和大气光的绿色分量。
+option.ATM_NETHER_B.comment=调整下界雾气和大气光的蓝色分量。
+option.ATM_NETHER_I.comment=调整下界雾气和大气光的强度。
+option.LIGHT_END_R.comment=调整末地表面光照的红色强度。
+option.LIGHT_END_G.comment=调整末地表面光照的绿色强度。
+option.LIGHT_END_B.comment=调整末地表面光照的蓝色强度。
+option.LIGHT_END_I.comment=调整末地表面光照的整体强度。
+option.ATM_END_R.comment=调整末地雾和大气光的红色强度。
+option.ATM_END_G.comment=调整末地雾和大气光的绿色强度。
+option.ATM_END_B.comment=调整末地雾和大气光的蓝色强度。
+option.ATM_END_I.comment=调整末地雾和大气光的整体强度。

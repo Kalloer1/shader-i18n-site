@@ -1,0 +1,194 @@
+# DreamFall Shaders Language Localization File (en_US)
+
+# Screens (Categories)
+screen.Atmosphere=恐怖氛围
+screen.Atmosphere.comment=配置灯光、雾气和分级设置，以自定义恐怖氛围。
+
+screen.Volumetric_Rays=体积光
+screen.Volumetric_Rays.comment=配置大气光学日照射射光的亮度、穿透灵敏度。
+
+screen.VHS_General=VHS 常规设置
+screen.VHS_General.comment=VHS 类胶片相机模拟的主设置及全局强度变量。
+
+screen.VHS_Lens_Colors=CRT 镜头 & 扫描线
+screen.VHS_Lens_Colors.comment=配置镜头畸变几何、色彩通道分离以及CRT扫描线。
+
+screen.VHS_Tape_Noise=磁带静电与噪声
+screen.VHS_Tape_Noise.comment=配置随机磁带撕裂故障、滚动轨迹带失真、静电噪声和颗粒效果。
+
+screen.VHS_Bloom_Flicker=泛光与相机抖动
+screen.VHS_Bloom_Flicker.comment=配置高光颜色溢出、曝光闪烁及信号中断。
+
+# Horror Settings
+option.HORROR_SATURATION=饱和度
+option.HORROR_SATURATION.comment=控制颜色强度。数值越低，画面越灰暗。
+value.HORROR_SATURATION.0.00=单色（黑白）
+value.HORROR_SATURATION.0.40=恐怖（推荐）
+value.HORROR_SATURATION.1.00=原版配色
+
+option.HORROR_EXPOSURE=曝光
+option.HORROR_EXPOSURE.comment=控制整体屏幕亮度。数值越低，阴影和暗角越浓重。
+value.HORROR_EXPOSURE.0.75=幽邪（推荐）
+
+option.HORROR_VIGNETTE=暗角强度
+option.HORROR_VIGNETTE.comment=切换或调整四角的暗角暗化程度。模拟狭窄的相机视野。
+
+option.HORROR_FOG_DENSITY=雾密度
+option.HORROR_FOG_DENSITY.comment=环境距离雾的厚度。
+value.HORROR_FOG_DENSITY.0.00=无雾
+value.HORROR_FOG_DENSITY.1.20=大气雾（推荐）
+
+option.HORROR_LIGHT_WARMTH=光温
+option.HORROR_LIGHT_WARMTH.comment=调整光源的色温。数值降低会使光线更冷色，数值提高会使光线更暖色。
+
+option.HORROR_SHADOWS=阴影质量
+option.HORROR_SHADOWS.comment=增强环境光遮蔽和顶点角落阴影的对比度。
+value.HORROR_SHADOWS.0=关闭 (原版)
+value.HORROR_SHADOWS.1=弱 (柔和阴影)
+value.HORROR_SHADOWS.2=高 (推荐暗色调)
+
+option.HORROR_SHADOW_DARKNESS=阴影对比度深度
+option.HORROR_SHADOW_DARKNESS.comment=控制阳光/月光照射方向相对的阴影区域中，背面方块的暗色程度。
+
+option.HORROR_AO_INTENSITY=环境光遮蔽 (AO)
+option.HORROR_AO_INTENSITY.comment=控制柔和凹陷和方块角落阴影的暗程度。
+
+option.HORROR_SHADOW_WRAP=阴影柔化包装
+option.HORROR_SHADOW_WRAP.comment=控制方向性阴影在方块角落处的平滑混合程度。
+
+option.HORROR_FILM_TINT=胶片分级色调
+option.HORROR_FILM_TINT.comment=应用复古电影风格的色调分级。
+value.HORROR_FILM_TINT.0=偏冷的蓝绿
+value.HORROR_FILM_TINT.1=中性灰
+value.HORROR_FILM_TINT.2=陈旧的褐色
+
+option.HORROR_CAVE_VOID=恶怪洞穴虚空
+option.HORROR_CAVE_VOID.comment=在洞穴和矿井深处切换一个紧贴玩家的全黑雾幕。
+
+option.HORROR_DARK_FLICKER=感应低光抖动
+option.HORROR_DARK_FLICKER.comment=在 pitch-black 未照明区域切换随机静态噪声和相机传感器曝光抖动。
+
+option.BLOCKLIGHT_COLOR=区块光照颜色主题
+option.BLOCKLIGHT_COLOR.comment=更改放置灯笼/蜡烛发出光线的全局颜色。
+value.BLOCKLIGHT_COLOR.0=暖橙色（默认）
+value.BLOCKLIGHT_COLOR.1=灵魂蓝（诡异）
+value.BLOCKLIGHT_COLOR.2=红石红（恐怖）
+value.BLOCKLIGHT_COLOR.3=工业白色
+
+# VHS General Settings
+option.VHS_ENABLED=VHS 效果套组
+option.VHS_ENABLED.comment=主开关。关闭后将禁用所有 VHS/模拟效果，但保留恐怖氛围。
+
+option.VHS_GLOBAL_INTENSITY=VHS 全局强度
+option.VHS_GLOBAL_INTENSITY.comment=所有激活的 VHS 效果的主缩放因子。
+
+# VHS Film Grain
+option.VHS_GRAIN=胶片颗粒
+option.VHS_GRAIN.comment=切换随机胶片颗粒覆盖层。
+option.VHS_GRAIN_INTENSITY=颗粒强度
+option.VHS_GRAIN_INTENSITY.comment=胶片颗粒的大小和可见度。
+
+# VHS Scanlines
+option.VHS_SCANLINES=扫描线
+option.VHS_SCANLINES.comment=切换水平 CRT 风格扫描线。
+option.VHS_SCANLINE_INTENSITY=扫描线暗度
+option.VHS_SCANLINE_INTENSITY.comment=扫描线图案的不透明度。
+
+# VHS Chromatic Aberration
+option.VHS_CHROMATIC=色差
+option.VHS_CHROMATIC.comment=切换 RGB 颜色通道分离。模拟一般质量的玻璃镜头对准问题。
+option.VHS_CHROMATIC_INTENSITY=色差范围
+option.VHS_CHROMATIC_INTENSITY.comment=RGB 分离效果的宽度。
+
+# VHS Lens Distortion
+option.VHS_DISTORTION=镜头畸变
+option.VHS_DISTORTION.comment=切换屏幕曲率几何，以模拟CRT显示器或弧形鱼眼镜头。
+option.VHS_DISTORTION_INTENSITY=曲率强度
+option.VHS_DISTORTION_INTENSITY.comment=镜头曲线的深度。
+
+# VHS Glitches
+option.VHS_GLITCHES=撕裂故障
+option.VHS_GLITCHES.comment=切换随机水平屏幕撕裂异常。
+option.VHS_GLITCH_FREQUENCY=故障频率
+option.VHS_GLITCH_FREQUENCY.comment=随机撕裂发生的频率。
+option.VHS_GLITCH_STRENGTH=故障位移
+option.VHS_GLITCH_STRENGTH.comment=撕裂故障期间的水平位移距离。
+
+# VHS Tracking
+option.VHS_TRACKING=跟踪畸变
+option.VHS_TRACKING.comment=切换水平坐标畸变的滚动带。
+option.VHS_TRACKING_INTENSITY=跟踪波强度
+option.VHS_TRACKING_INTENSITY.comment=跟踪波位移的振幅。
+option.VHS_TRACKING_SPEED=跟踪滚动速度
+option.VHS_TRACKING_SPEED.comment=跟踪带的垂直滚动速度。
+
+# VHS Noise
+option.VHS_NOISE=信号静态噪声
+option.VHS_NOISE.comment=切换模拟信号静态。
+option.VHS_NOISE_INTENSITY=噪声强度
+option.VHS_NOISE_INTENSITY.comment=信号噪声的不透明度。
+option.VHS_NOISE_SPEED=噪声速度
+option.VHS_NOISE_SPEED.comment=信号噪声的FPS更新频率。
+option.VHS_GRID_SCALE=VHS像素网格缩放
+option.VHS_GRID_SCALE.comment=VHS噪声单元和颗粒像素的密度缩放。更高的值（1.5倍 - 4.0倍）会使网格像素在天空中更小更细致。较低的值会使单元更大。静态帧率变化。
+
+# VHS Bloom
+option.VHS_BLOOM=模拟胶片泛光
+option.VHS_BLOOM.comment=切换亮光源周围发光的高光效果。
+option.VHS_BLOOM_INTENSITY=泛光强度
+option.VHS_BLOOM_INTENSITY.comment=光源溢出的扩散和发光程度。
+option.VHS_BLOOM_RADIUS=泛光模糊半径
+option.VHS_BLOOM_RADIUS.comment=发光模糊的宽度。
+
+# VHS Flicker
+option.VHS_FLICKER=屏幕闪烁
+option.VHS_FLICKER.comment=切换次要相机感光元件的曝光闪烁。
+option.VHS_FLICKER_INTENSITY=闪烁幅度
+option.VHS_FLICKER_INTENSITY.comment=曝光振荡的深度。
+
+# VHS Interference
+option.VHS_INTERFERENCE=信号干扰
+option.VHS_INTERFERENCE.comment=切换极少出现的戏剧性视频中断（失去颜色，暂时性的暗黑闪烁）。
+
+option.VHS_TEST_MODE=VHS 演示测试模式
+option.VHS_TEST_MODE.comment=切换调试模式，使所有 VHS 故障、卷帘、干扰、划痕和灰尘频繁发生，以便轻松测试。
+
+option.HORROR_GOD_RAYS=体积光
+option.HORROR_GOD_RAYS.comment=切换体积光穿透大气雾、云层和树木的光束效果。
+
+option.HORROR_GOD_RAYS_INTENSITY=体积光强度
+option.HORROR_GOD_RAYS_INTENSITY.comment=体积光（太阳/月亮）的亮度与密度。
+
+option.HORROR_GOD_RAYS_SENSITIVITY=体积光灵敏度
+option.HORROR_GOD_RAYS_SENSITIVITY.comment=体积光射线的光线步长和雾 Penetration 灵敏度。
+
+option.HORROR_MOB_STATIC_FACE=红色怪物面部静态
+option.HORROR_MOB_STATIC_FACE.comment=切换怪物面部上覆盖 animated white TV 静态噪声的效果，以营造神秘的恐怖 VHS 异常美学。
+
+option.HORROR_MOB_STATIC_INTENSITY=怪物面部电视噪声不透明度
+option.HORROR_MOB_STATIC_INTENSITY.comment=遮蔽实体面部的电视噪声的不透明度和密度。
+
+option.HORROR_CUSTOM_SKY=自定义恐怖天空
+option.HORROR_CUSTOM_SKY.comment=切换程序化恐怖天空渐变（板岩/金色白昼雾霭、宇宙深蓝夜幕、日月光环）
+
+option.HORROR_NIGHT_AURORA=幽灵北极光（极光）
+option.HORROR_NIGHT_AURORA.comment=切换夜空天顶处缓缓摆动的幽灵绿与紫色光带。
+
+option.HORROR_STARS=闪烁星云与星空
+option.HORROR_STARS.comment=切换夜空中程序化闪烁的星星和宇宙太空尘埃。
+
+# Underwater Settings
+screen.Underwater=水下恐怖氛围
+screen.Underwater.comment=配置水下深渊雾气、折射压力扭曲、漂浮气泡及阴影异常。
+
+option.HORROR_UNDERWATER_EFFECTS=水下恐怖套件
+option.HORROR_UNDERWATER_EFFECTS.comment=所有水下氛围和恐怖效果的主开关。
+
+option.HORROR_UNDERWATER_DISTORTION=水下折射波
+option.HORROR_UNDERWATER_DISTORTION.comment=切换潜水时屏幕上水压波浪折射失真效果。
+
+option.HORROR_UNDERWATER_BUBBLES=漂浮水下气泡与尘埃
+option.HORROR_UNDERWATER_BUBBLES.comment=切换水下漂浮气泡及水生微尘粒子缓慢向上漂浮的效果。
+
+option.HORROR_UNDERWATER_ANOMALY=深渊之影异常
+option.HORROR_UNDERWATER_ANOMALY.comment=切换在浑浊水底缓慢游动的阴森影柄的显现。

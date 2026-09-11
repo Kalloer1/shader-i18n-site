@@ -1,0 +1,122 @@
+#Shader_test Language File
+
+#Screens
+screen.LIGHTING=光照
+screen.SHADOW=阴影
+screen.CAVE=洞穴黑暗
+screen.FOG=雾
+screen.GODRAYS=体积光
+screen.COLOR=曝光
+screen.SKY=天空
+screen.SKY.comment=云配置
+
+#Lighting
+option.SUNLIGHT_I=太阳强度
+option.SUNLIGHT_I.comment=控制白天直射阳光的亮度。
+option.MOONLIGHT_I=月亮强度
+option.MOONLIGHT_I.comment=控制夜晚直射月光的亮度。
+option.AMBIENT_I=环境光 (白天)
+option.AMBIENT_I.comment=控制白天的环境填充光。
+option.AMBIENT_NIGHT_I=环境光 (夜晚)
+option.AMBIENT_NIGHT_I.comment=控制夜晚的环境填充光。
+option.SKYLIGHT_I=天空光
+option.SKYLIGHT_I.comment=控制天空光（skylight）的强度。
+option.BLOCKLIGHT_I=方块光
+option.BLOCKLIGHT_I.comment=控制方块发出的光的强度，如火把、岩浆等。
+option.NIGHT_DIM=夜间变暗
+option.NIGHT_DIM.comment=控制夜间场景变暗的程度。0 = 不变暗，1 = 完全黑暗。
+
+#Shadow
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=定义阴影贴图的质量。分辨率越高 = 阴影越清晰，但性能越差。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=定义阴影渲染的最大距离。
+value.shadowDistance.64=4 区块
+value.shadowDistance.128=8 区块
+value.shadowDistance.192=12 区块
+value.shadowDistance.256=16 区块
+value.shadowDistance.384=24 区块
+value.shadowDistance.512=32 区块
+value.shadowDistance.768=48 区块
+value.shadowDistance.1024=64 区块
+option.SHADOW_RANGE=阴影平滑
+option.SHADOW_RANGE.comment=控制用于平滑阴影边缘的采样数量。越高 = 越平滑，但更吃性能。
+option.SHADOW_RADIUS=平滑半径
+option.SHADOW_RADIUS.comment=控制阴影平滑的扩散半径。
+
+#Cave Darkness
+option.CAVE_THRESHOLD=洞穴黑暗阈值
+option.CAVE_THRESHOLD.comment=定义洞穴黑暗开始的亮度阈值。越高 = 洞穴越亮。
+option.CAVE_POWER=洞穴黑暗曲线
+option.CAVE_POWER.comment=控制向黑暗过渡的曲线。越高 = 过渡越急剧。
+option.CAVE_STRENGTH=洞穴黑暗强度
+option.CAVE_STRENGTH.comment=控制洞穴中暗化的强度。0 = 关闭，1 = 最大。
+option.NIGHT_CAVE_THRESHOLD=夜间洞穴阈值
+option.NIGHT_CAVE_THRESHOLD.comment=定义洞穴中额外夜间暗化的阈值。
+option.NIGHT_CAVE_POWER=夜间洞穴曲线
+option.NIGHT_CAVE_POWER.comment=控制夜间暗化的过渡曲线。
+option.NIGHT_CAVE_STRENGTH=夜间洞穴强度
+option.NIGHT_CAVE_STRENGTH.comment=控制额外夜间暗化的强度。0 = 关闭。
+
+#Fog
+option.FOG_DENSITY=雾密度 (白天)
+option.FOG_DENSITY.comment=控制白天的雾密度。
+option.FOG_DENSITY_NIGHT=雾密度 (夜晚)
+option.FOG_DENSITY_NIGHT.comment=控制夜晚的雾密度。
+option.WATER_FOG_DENSITY=水下雾
+option.WATER_FOG_DENSITY.comment=控制水下的雾密度。
+
+#Specular
+option.SPECULAR_POWER=高光强度
+option.SPECULAR_POWER.comment=控制高光（反射）的亮度。越大 = 越集中且明亮。
+option.SPECULAR_INTENSITY=高光强度
+option.SPECULAR_INTENSITY.comment=控制表面上高光反射的强度。
+
+#God Rays
+option.GOD_RAY_SAMPLES=体积光采样
+option.GOD_RAY_SAMPLES.comment=太阳光线（体积光）的采样数量。越大越精确，但越耗时。
+option.GOD_RAY_INTENSITY=体积光强度
+option.GOD_RAY_INTENSITY.comment=控制太阳光线（体积光）的强度。
+option.MOON_RAY_FACTOR=月光体积光因子
+option.MOON_RAY_FACTOR.comment=控制月光光线的强度。
+
+#Color / Exposure
+option.EXPOSURE_DAY=曝光 (白天)
+option.EXPOSURE_DAY.comment=调整白天的整体亮度。
+option.EXPOSURE_NIGHT=曝光 (夜晚)
+option.EXPOSURE_NIGHT.comment=调整夜晚的整体亮度。
+
+#Sky / Clouds
+option.CLOUD_STEPS=云阶数
+option.CLOUD_STEPS.comment=用于渲染云层的采样数量。越高=越细致，但更吃性能。
+option.CLOUD_DENSITY=云层密度
+option.CLOUD_DENSITY.comment=控制云层的密度。
+option.CLOUD_ABSORPTION=云层吸收
+option.CLOUD_ABSORPTION.comment=控制光线被云层吸收的程度。
+option.CLOUD_COVERAGE=云层覆盖
+option.CLOUD_COVERAGE.comment=控制天空中云层的覆盖量。
+option.CLOUD_HEIGHT_MIN=云层最低高度
+option.CLOUD_HEIGHT_MIN.comment=云层开始出现的最低高度。
+option.CLOUD_HEIGHT_MAX=云层最高高度
+option.CLOUD_HEIGHT_MAX.comment=云层结束的最高高度。
+
+#Coloured Lights
+screen.COLOURED_LIGHTS=彩色灯光
+screen.COLOURED_LIGHTS.comment=彩色灯光设置
+option.COLOUR_INTENSITY=颜色强度
+option.COLOUR_INTENSITY.comment=控制彩色灯光的颜色强度。
+option.BLOCK_LIGHTS=彩色方块灯光
+option.BLOCK_LIGHTS.comment=开启后，非自然方块（例如混凝土）也会发出彩色灯光。
+option.COLOURED_LIGHTS_RENDER_DISTANCE=渲染距离
+option.COLOURED_LIGHTS_RENDER_DISTANCE.comment=彩色灯光的渲染距离（直径）。
+option.COLOURED_LIGHTS_RENDER_DISTANCE_VERTICAL=垂直距离
+option.COLOURED_LIGHTS_RENDER_DISTANCE_VERTICAL.comment=彩色灯光的垂直渲染距离（直径）。
+option.MAX_COLOURED_LIGHTS=最大灯光数
+option.MAX_COLOURED_LIGHTS.comment=每个区块的最大彩色灯光数量。
+value.COLOUR_INTENSITY.0.0=关闭
+value.COLOUR_INTENSITY.0.33=低
+value.COLOUR_INTENSITY.0.66=中
+value.COLOUR_INTENSITY.1.0=正常
+value.COLOUR_INTENSITY.1.5=高
+value.COLOUR_INTENSITY.2.0=很高
+value.COLOUR_INTENSITY.4.0=极高

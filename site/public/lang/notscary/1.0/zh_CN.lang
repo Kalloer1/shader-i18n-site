@@ -1,0 +1,104 @@
+# NotScary - English
+
+screen.ATMOSPHERE=大气
+screen.LIGHTING=光照
+screen.CAMERA=相机
+screen.COLOR=颜色
+screen.GLITCH=故障效果
+
+# --- Atmosphere ---
+option.MOOD=情绪
+option.MOOD.comment=世界、雾和灯光的整体颜色。
+value.MOOD.0=Bunker
+value.MOOD.1=Rust
+value.MOOD.2=Rot
+value.MOOD.3=Void
+
+option.FOG_DISTANCE=雾距离
+option.FOG_DISTANCE.comment=在一切被雾淹没之前你能看多远。
+suffix.FOG_DISTANCE=m
+
+option.FOG_DENSITY=雾密度
+option.FOG_PATCHINESS=破碎雾成漂浮斑块而非平墙
+option.FOG_PATCHINESS.comment=破碎雾成漂浮斑块而非平墙
+
+option.VOID_DARKNESS=虚空暗度
+option.VOID_DARKNESS.comment=远处雾的漆黑程度。1.0 = 世界戛然而止。
+
+option.SKY_DARKNESS=天空暗度
+option.SKY_DARKNESS.comment=压暗天空、太阳、月亮和云朵。
+
+option.GROUND_MIST=地面薄雾
+option.MIST_HEIGHT=薄雾高度
+option.MIST_HEIGHT.comment=薄雾在此 Y 高度以下聚集。也会填充洞穴。
+suffix.MIST_HEIGHT=Y
+option.MIST_STRENGTH=薄雾强度
+option.UNDERWATER_MURK=水下浑浊
+
+# --- Lighting ---
+option.FLASHLIGHT_MODE=手电筒
+option.FLASHLIGHT_MODE.comment=头戴式光源，始终指向你观察的方向。
+value.FLASHLIGHT_MODE.0=关闭
+value.FLASHLIGHT_MODE.1=始终开启
+value.FLASHLIGHT_MODE.2=仅在手持光源时
+
+option.FLASHLIGHT_STRENGTH=手电筒功率
+option.FLASHLIGHT_RANGE=手电筒范围
+suffix.FLASHLIGHT_RANGE=m
+option.FLASHLIGHT_ANGLE=手电筒锥角
+suffix.FLASHLIGHT_ANGLE=deg
+option.FLASHLIGHT_FLICKER=手电筒闪烁
+option.FLASHLIGHT_FLICKER.comment=电量不足。偶尔会出现严重掉帧。
+option.FLASHLIGHT_DAY_FADE=白天淡化
+option.FLASHLIGHT_DAY_FADE.comment=在正午户外会降低手电筒亮度，以免显得奇怪。
+
+option.BLOCK_LIGHT_STRENGTH=火把亮度
+option.BLOCK_LIGHT_FALLOFF=火把衰减
+option.BLOCK_LIGHT_FALLOFF.comment=数值越高，意味着光线在更靠近光源的地方就衰减殆尽。
+option.SKY_LIGHT_STRENGTH=天空光照
+option.NIGHT_DARKNESS=夜间黑暗度
+option.NIGHT_DARKNESS.comment=1.0 表示夜晚户外与未点亮的洞穴一样黑。
+option.AMBIENT_LIGHT=环境光下限
+option.AMBIENT_LIGHT.comment=全局最低光照。如果完全无法游玩，请调高它。
+option.EMISSIVE_STRENGTH=自发光亮度
+option.TORCH_FLICKER=火把闪烁
+option.WET_SPECULAR=湿润表面
+
+# --- Camera ---
+option.PIXELATION=传感器分辨率
+option.PIXELATION.comment=以 1/N 分辨率渲染后处理堆栈。1 = 原生分辨率。
+suffix.PIXELATION=x
+option.CHROMATIC_ABERRATION=色差
+option.LENS_DISTORTION=镜头畸变
+option.VIGNETTE_STRENGTH=暗角
+option.GRAIN_STRENGTH=胶片颗粒
+option.GRAIN_DARK_BOOST=黑暗中更嘈杂
+option.GRAIN_DARK_BOOST.comment=在你需要看清的地方，颗粒会变得更糟。
+option.SCANLINES=扫描线
+option.MOTION_GHOST=运动残影
+option.MOTION_GHOST.comment=模糊上一帧画面。这是 VHS 拖影效果。
+option.CAMERA_SWAY=手持摇晃
+
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_RADIUS=泛光半径
+option.BLOOM_THRESHOLD=泛光阈值
+
+# --- Colour ---
+option.EXPOSURE=曝光
+option.CONTRAST=对比度
+option.SATURATION=饱和度
+option.BLACK_CRUSH=黑场
+option.POSTERIZE=色阶分层
+option.POSTERIZE.comment=每通道级数。0 = 关闭。数值低会导致明显色带。
+option.DITHER=抖动
+option.DITHER.comment=有序抖动图案，以复古方式隐藏色带。
+
+# --- Glitches ---
+option.VHS_JITTER=磁带抖动
+option.GLITCH_AMOUNT=掉帧错误
+option.GLITCH_AMOUNT.comment=画面撕裂条带的频率。
+option.HEARTBEAT=低血量恐慌
+option.HEARTBEAT.comment=接近死亡时出现红色脉冲和隧道视野。
+option.DARKNESS_STATIC=暗影静态
+option.DARKNESS_STATIC.comment=守望者暗影效果使画面变为静态。

@@ -1,0 +1,122 @@
+profile.white_on_black = 白底黑字  
+profile.black_on_white = 黑底白字  
+profile.comment = 快速切换整体配色风格。白底黑字使天空和方块变黑、实体变白；黑底白字则使天空和方块变白、实体变黑。白底黑字模式下星星将会消失。
+
+screen.general_settings = 通用设置
+screen.blocks = 方块颜色
+screen.entities = 实体颜色
+screen.sky = 天空颜色
+screen.particles = 粒子颜色
+screen.sun_and_moon = 太阳和月亮颜色
+screen.stars = 星星颜色
+screen.weather = 天气颜色
+screen.Translucent_blocks = 半透明方块颜色
+screen.hand = 手部颜色
+screen.clouds = 云朵颜色
+screen.beacon_beams = 信标和实体光束颜色
+screen.other = 其他颜色
+screen.blocks.comment = 控制方块的颜色
+screen.entities.comment = 控制实体的颜色
+screen.sky.comment = 控制天空的颜色。将其设置为非常亮的颜色会破坏星星渲染。
+screen.particles.comment = 控制粒子的颜色\n§c警告§r：仅适用于 Iris！
+screen.stars.comment = 控制星星的颜色
+screen.weather.comment = 控制天气的颜色（不包括雨滴粒子）
+screen.Translucent_blocks.comment = 控制半透明地形（包括水）的颜色
+screen.hand.comment = 控制手部的颜色
+screen.clouds.comment = 控制云朵的颜色
+screen.beacon_beams.comment = 控制信标和末端龙光束的颜色
+screen.other.comment = 控制我忘记的东西的颜色
+
+option.color_inversion_during_day_night = 白昼/夜晚颜色反转
+option.color_inversion_during_day_night.comment = 在白昼/夜智期间反转游戏颜色。目前缺少渐变效果，需注意癫痫警告。
+option.cutout_blocks_are_inverted = 反转剪切块颜色
+option.cutout_blocks_are_inverted.comment = §c警告§r：仅限 Iris！\n剪切块是指既有完全透明又有完全不透明部分的方块，如树叶和花朵。
+option.Do_DH_blocks_render = 远景峦块渲染
+option.Do_DH_blocks_render.comment = 此选项决定远景峦方块是否渲染，若已安装该模组且运行正常。
+value.color_inversion_during_day_night.0 = 关闭
+value.color_inversion_during_day_night.1 = 白昼
+value.color_inversion_during_day_night.2 = 夜晚
+value.cutout_blocks_are_inverted.0 = 否
+value.cutout_blocks_are_inverted.1 = 是
+value.Do_DH_blocks_render.1 = 是
+value.Do_DH_blocks_render.0 = 否
+
+option.blocks_red = 方块红色值
+option.blocks_green = 方块绿色值
+option.blocks_blue = 方块蓝色值
+
+option.entites_red = 实体红色值
+option.entites_green = 实体绿色值
+option.entites_blue = 实体蓝色值
+
+option.sun_and_moon_red = 太阳和月球红色值
+option.sun_and_moon_green = 太阳和月球绿色值
+option.sun_and_moon_blue = 太阳和月球蓝色值
+option.sun_and_moon_red.comment = §c警告§r：太阳和月球仅在夜晚出现！如果数值过亮，太阳和月球将无法显示。
+option.sun_and_moon_green.comment = §c警告§r：太阳和月球仅在夜晚出现！如果数值过亮，太阳和月球将无法显示。
+option.sun_and_moon_blue.comment = §c警告§r：太阳和月球仅在夜晚出现！如果数值过亮，太阳和月球将无法显示。
+
+option.sky_red = 天空红色值
+option.sky_green = 天空绿色值
+option.sky_blue = 天空蓝色值
+option.sky_red.comment = §c警告§r：星星仅在夜晚出现！如果数值过亮，星星将不显示。
+option.sky_green.comment = §c警告§r：星星仅在夜晚出现！如果数值过亮，星星将不显示。
+option.sky_blue.comment = §c警告§r：星星仅在夜晚出现！如果数值过亮，星星将不显示。
+
+option.particle_red = 粒子红色值
+option.particle_green = 粒子绿色值
+option.particle_blue = 粒子蓝色值
+
+option.star_red = 星光红色值
+option.star_green = 星光绿色值
+option.star_blue = 星光蓝色值
+option.star_red.comment = 随着星光变暗，星星会变得更透明
+option.star_green.comment = 随着星光变暗，星星会变得更透明
+option.star_blue.comment = 随着星光变暗，星星会变得更透明
+
+option.weather_red = 天气红色值
+option.weather_green = 天气绿色值
+option.weather_blue = 天气蓝色值
+
+option.Translucent_blocks_red = 半透明方块红色值
+option.Translucent_blocks_green = 半透明方块绿色值
+option.Translucent_blocks_blue = 半透明方块蓝色值
+option.Translucent_blocks_translusency_addition = 半透明方块透明度增量值
+option.Translucent_blocks_translusency_addition.comment = 想象半透明物体的透明度在 0 到 1 的比例中表示其透明程度，其中 1 代表完全不透明，0 代表完全透明。此选项修改该值。
+option.Translucent_blocks_invert_colors = 半透明方块反转颜色
+option.Translucent_blocks_invert_colors.comment = 此选项决定半透明方块是否反转其背后物体的颜色。
+value.Translucent_blocks_translusency_addition.-0.25 = -1
+value.Translucent_blocks_translusency_addition.-0.125 = -0.5
+value.Translucent_blocks_translusency_addition.2 = 0.5
+value.Translucent_blocks_translusency_addition.4 = 1
+value.Translucent_blocks_invert_colors.1 = False
+value.Translucent_blocks_invert_colors.0 = True
+
+option.hand_red = 手部红色值
+option.hand_green = 手部绿色值
+option.hand_blue = 手部蓝色值
+option.hand_invisible = 手部隐形
+value.hand_invisible.0 = 否
+value.hand_invisible.1 = 是
+option.hand_invisible.comment = 启用后，您的手将不可见
+
+option.clouds_red = 云彩红色值
+#nice (again not anymore lol)
+option.clouds_green = 云彩绿值
+option.clouds_blue = 云彩蓝值
+option.hide_clouds = 隐藏云彩
+value.hide_clouds.0 = 否
+value.hide_clouds.1 = 是
+option.hide_clouds.comment = 控制云彩可见性
+#I love we use 0 and 1 (black and white) for variables too :3 // :3 - Blurry
+
+option.beacon_beams_red = 信标与实体光束红色值
+option.beacon_beams_green = 信标与实体光束绿色值
+option.beacon_beams_blue = 信标与实体光束蓝色值
+
+option.other_red = 其他红色值
+option.other_green = 其他绿色值
+option.other_blue = 其他蓝色值
+#as far as I can tell this only applys to lines ie fishing rod/leads
+
+#hello there

@@ -1,0 +1,31 @@
+# WireSight 英文设置文本 🌐
+# 左侧是程序读取的固定键名，右侧是设置界面显示给用户的文字。
+screen=线框透视
+screen.CUSTOM_COLORS=自定义主题颜色
+option.THEME_PRESET=主题预设
+value.THEME_PRESET.0=线框透视绿色
+value.THEME_PRESET.1=青色值
+value.THEME_PRESET.2=琥珀色
+value.THEME_PRESET.3=单色
+value.THEME_PRESET.4=自定义
+option.WIREFRAME_SHADING=方向性面着色
+value.WIREFRAME_SHADING.0=关
+value.WIREFRAME_SHADING.1=开
+option.EDGE_WIDTH=边缘宽度
+option.EDGE_FADE_START=边缘淡出起始（方块）
+option.EDGE_FADE_LENGTH=边缘淡出长度（方块）
+option.CUSTOM_FACE_R=方块面 红
+option.CUSTOM_FACE_G=方块面 绿
+option.CUSTOM_FACE_B=方块面 蓝
+option.CUSTOM_WATER_R=水 红
+option.CUSTOM_WATER_G=水 绿
+option.CUSTOM_WATER_B=水 蓝
+option.CUSTOM_EDGE_R=方块边缘 红
+option.CUSTOM_EDGE_G=方块边缘 绿
+option.CUSTOM_EDGE_B=方块边缘 蓝
+option.CUSTOM_ENTITY_R=实体 红
+option.CUSTOM_ENTITY_G=实体 绿
+option.CUSTOM_ENTITY_B=实体 蓝
+option.CUSTOM_SKY_R=天空与天体 红
+option.CUSTOM_SKY_G=天空与天体 绿
+option.CUSTOM_SKY_B=天空与天体 蓝

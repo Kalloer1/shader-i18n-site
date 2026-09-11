@@ -1,0 +1,54 @@
+#shaders/lang/en_US.lang
+
+# Info button
+option.INFO=§aCRT显示器
+option.INFO.comment=由 Bartosz Kansy
+value.INFO.0=§6v1.0.3
+###
+
+# Title labels
+option.SWITCHES=开关
+option.SWITCHES.comment=所有可以开启/关闭的选项
+value.SWITCHES.0=§a开启 §r/ §c关闭
+
+option.MORE_OPTIONS=选项
+option.MORE_OPTIONS.comment=更多选项
+value.MORE_OPTIONS.0=§6更多
+
+option.OTHER_OPTIONS=选项
+option.OTHER_OPTIONS.comment=其他选项
+value.OTHER_OPTIONS.0=§9其他
+###
+
+## Switches
+option.PIXELATE=像素化
+option.ROLL=滚动
+option.DISCOLOR=失真
+option.CLIP_WARP=剪辑畸变
+###
+
+# Subscreens
+screen.ROLL_OPTIONS=选项 - 滚动
+screen.ROLL_OPTIONS.comment=更多选项 - 滚动
+
+screen.NOISE_OPTIONS=选项 - 噪声
+screen.NOISE_OPTIONS.comment=更多选项 - 噪声
+
+screen.VIGNETTE_OPTIONS=选项 - 暗角
+screen.VIGNETTE_OPTIONS.comment=更多选项 - 暗角
+###
+
+# Sliders
+option.roll_speed=速度
+option.roll_size=大小
+option.roll_variation=变异
+option.noise_opacity=不透明度
+option.noise_speed=速度
+option.static_noise_intensity=强度
+option.vignette_intensity=强度
+option.vignette_opacity=不透明度
+option.distort_intensity=畸变强度
+option.aberration=畸变
+option.brightness=亮度
+option.warp_amount=扭曲量
+###

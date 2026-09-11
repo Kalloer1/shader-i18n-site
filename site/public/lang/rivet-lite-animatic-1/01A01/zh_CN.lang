@@ -1,0 +1,14 @@
+option.ABOUT=River Lite v0.1
+value.ABOUT.0=by Korpolotoria
+screen.LIGHTING=照明
+screen.SHADOW=阴影
+screen.KAA=KAA (Korpolotoria 抗锯齿)
+screen.KAA.comment=基本上是 FXAA，但从零编写以提升性能。
+screen.DEBUG=调试
+screen.DEBUG.comment=除非用于调试目的，否则请不要修改此处的任何内容！
+
+option.SHADOW_BIAS=阴影偏移
+option.shadowMapResolution=阴影分辨率
+option.KAA_ENABLE=已启用
+option.KAA_EDGE_THRESHOLD=边缘阈值
+option.KAA_EDGE_THRESHOLD.comment=当设置为 0 时，禁用边缘检测。

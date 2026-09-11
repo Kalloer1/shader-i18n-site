@@ -1,0 +1,31 @@
+option.BLUR_TYPE=模糊类型
+value.BLUR_TYPE.0=月光客户端
+value.BLUR_TYPE.1=黑曜客户端
+value.BLUR_TYPE.2=干净
+value.BLUR_TYPE.3=PvP
+
+option.BLUR_STRENGTH=模糊强度
+
+option.HIGH_PERFORMANCE=高性能
+value.HIGH_PERFORMANCE.false=关闭
+value.HIGH_PERFORMANCE.true=开启
+
+option.CONTRAST_BOOST=对比度提升
+value.CONTRAST_BOOST.false=关闭
+value.CONTRAST_BOOST.true=开启
+
+option.COLOR_GRADE=色彩分级
+value.COLOR_GRADE.0=关闭
+value.COLOR_GRADE.1=电影
+value.COLOR_GRADE.2=冷色
+value.COLOR_GRADE.3=暖色
+
+option.HIT_COLOR_STRENGTH=击中闪光强度
+
+
+profile.Sword=⚔ 剑
+profile.Mace=🔨 锤
+profile.Crystal=💎 水晶
+profile.UHC=🏹 UHC
+profile.Bow=🎯 弓
+profile.Custom=✏ 自定义

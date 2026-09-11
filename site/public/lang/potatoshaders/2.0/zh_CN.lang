@@ -1,0 +1,46 @@
+# PotatoShade - shaders/lang/en_us.lang
+# Human-readable names, descriptions, and slider-value labels for the
+# in-game Shader Options menu. Purely cosmetic - editing this file changes
+# nothing about how the pack renders, only how the menu reads.
+
+# --- Sub-screen (category) names ---
+screen.COLOR=颜色与调色
+screen.LIGHTING=光照、体积光与火把
+screen.WATER_SKY=水与天空
+
+# --- Master ---
+option.SHADER_INTENSITY=整体光影强度
+option.comment.SHADER_INTENSITY=一次性缩放光影包中的大多数效果。0 = 原版外观，1 =  intended 默认值，2 = 最强效果。如果光影包显得「过于强烈」，请先调低此数值。
+
+# --- Color & Grading ---
+option.ENABLE_CONTRAST=对比度提升
+option.comment.ENABLE_CONTRAST=轻微增强明暗对比。
+option.ENABLE_SATURATION=饱和度提升
+option.comment.ENABLE_SATURATION=使颜色更鲜活，不至于像原版那样褪色。
+option.ENABLE_VIGNETTE=暗角
+option.comment.ENABLE_VIGNETTE=轻微的屏幕边缘暗化，营造不那么平坦的视觉效果。
+option.ENABLE_SHARPEN=锐化（会额外消耗 FPS）
+option.comment.ENABLE_SHARPEN=边缘增强滤镜。默认关闭 —  — 这是一种对低端 GPU 较为耗资源的开关，仅在有足够帧率时才可开启。
+
+# --- Lighting, Godrays & Torches ---
+option.ENABLE_GODRAYS=体积光（仅太阳）
+option.comment.ENABLE_GODRAYS=屏幕空间太阳光束 - 移除月光体积光（此前请求及更高效：光线样本数减半）。近似效果，非阴影映射 - 参见 README。忽略灯笼/灯火，允许部分光线穿透树叶林。除非直视太阳，否则开销几乎为零。
+option.GODRAY_STRENGTH=体积光强度
+option.comment.GODRAY_STRENGTH=光束表现的强度。此版本再次降低默认值（默认值降低，软上限收紧），针对反馈其仍显得过强。
+value.GODRAY_STRENGTH.0.0=关闭
+value.GODRAY_STRENGTH.0.15=几乎看不见
+value.GODRAY_STRENGTH.0.25=极细微
+value.GODRAY_STRENGTH.0.35=默认
+value.GODRAY_STRENGTH.0.5=可见
+value.GODRAY_STRENGTH.0.75=强烈
+value.GODRAY_STRENGTH.1.0=最大
+option.GODRAY_HIGH_QUALITY=体积光：高配（额外消耗 FPS）
+option.comment.GODRAY_HIGH_QUALITY=增加体积光样本数（8 至 16）以获得更光滑的光束。默认关闭 - 仅在体积光出现带状/粗糙现象且帧率充裕时启用。
+option.ENABLE_FAKE_SHADING=伪方向性照明
+option.comment.ENABLE_FAKE_SHADING=非真实阴影 - 使用面法线使阳光/月光下朝向的面发亮，背向的面暗化。无遮蔽，无阴影贴图。
+option.ENABLE_SUNMOON_GLOW=太阳 & 月亮光晕
+option.comment.ENABLE_SUNMOON_GLOW=在原有 vanilla 纹理之上添加太阳（暖色）和月亮（冷色）柔和彩 Halo。现在能正确遮挡地形/山脉，不再穿透发光。无法更改太阳/月亮的实际形状/图像 - 这需要资源包。
+
+# --- Water & Sky ---
+option.ENABLE_SKY_ENHANCE=天空润色
+option.comment.ENABLE_SKY_ENHANCE=小幅度天空/云彩颜色与柔和度处理。水面不再进行特殊渲染——已恢复为普通/默认渲染，此举是基于用户请求。几乎无额外开销——无需新的纹理读取。

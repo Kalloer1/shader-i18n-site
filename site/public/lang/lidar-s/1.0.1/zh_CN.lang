@@ -1,0 +1,11 @@
+option.FOG_END=§6激光雷达范围
+option.VOXEL_AREA=§6地图尺寸
+
+option.LANG=§6语言
+value.LANG.0=英语
+value.LANG.1=俄语
+
+option.PATREON=§6Patreon
+option.PATREON.comment=§fpatreon.com/lolip_p
+value.PATREON.0=§fpatreon.com/lolip_p
+value.PATREON.1=§fpatreon.com/lolip_p

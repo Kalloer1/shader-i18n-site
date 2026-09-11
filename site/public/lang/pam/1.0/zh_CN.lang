@@ -1,0 +1,434 @@
+option.COLOURED_SHADOWS=彩色阴影
+option.COLOURED_SHADOWS.comment=光线透过彩色玻璃到达时会变成彩色的。该光影包已有的三个缓冲区本未被读取，因此几乎免费：shadowtex0 存储每个阴影投射者，shadowtex1 是相同地图但不包含半透明物体的版本，shadowcolor0 存储阴影通道写入的内容——因此“从这一点到太阳之间唯一存在的障碍是否是一块玻璃”是通过比较两个深度贴图来判断的，而答案的颜色已经存储。过滤后的可见性从 shadowtex0 移动到 shadowtex1，这是在另一个地图中相同数量的采样，而色调是每个像素额外的一对采样，而不是每个采样，因为阴影的颜色在整个区域是平铺的，没有什么需要过滤的。
+option.COLOURED_SHADOW_STRENGTH=彩色阴影强度
+option.COLOURED_SHADOW_STRENGTH.comment=控制透过玻璃的光线的饱和度。1.0 是玻璃本身的颜色；较低的值会将其混合回白色。该设置在密度指数之后应用，而不是之前，因此降低此值会将最终颜色拉向白色，而不会使光线比白色更亮。
+option.COLOURED_SHADOW_DENSITY=玻璃厚度
+option.COLOURED_SHADOW_DENSITY.comment=控制玻璃的厚度，以其纹理暗示的厚度为倍数——这是一个指数，而不是一个调整值。通过吸收介质的传输公式为 exp(-sigma*d)，因此将存储的传输值提升到 k 次幂得到 exp(-sigma*k*d)：相同的玻璃，厚度增加了 k 倍。这意味着一个数字同时实现了更厚玻璃的两项功能，并且比例正确——颜色加深，通过的光线总量减少，因此玫瑰窗下的地板既呈彩色又比旁边更暗。饱和度控制无法实现后半部分。1.0 是纹理的字面表示，字面意义上 Minecraft 的彩色玻璃非常淡：蓝色通过约 85% 的蓝色通道和 60% 的红色通道，这看起来像一个淡淡着色的窗户，而不是彩色光线。2.0 是你可以从地板上看到颜色的玻璃。
+option.COLOURED_SHADOW_VOLUMETRIC=彩色光束
+option.COLOURED_SHADOW_VOLUMETRIC.comment=控制空气中的光束是否呈彩色，而不仅仅是它在地板上的投影。这个功能也修复了一个问题，而不是仅仅添加：体积光步进读取 shadowtex0，其中将玻璃板视为墙壁，因此没有这个功能时，通过彩色玻璃窗户的光束不仅不会出来白色——它会在玻璃处突然停止，而本应在地板下发光的彩色补丁却继续发光。每一步体积光步进需要额外的一个阴影贴图采样，因此成本随 VL 采样数量增加：阴影中的一步仍需一个采样，照明步骤两个，只有实际站在彩色光中的一步需要三个采样。
+option.COLOURED_SHADOW_GI=彩色反弹光
+option.COLOURED_SHADOW_GI.comment=控制路径追踪的太阳光线是否也携带颜色。这就是玫瑰窗能将整个房间涂成一种颜色而不是只涂一块地板的原因：反弹点从玻璃板拾取颜色，然后每一条反弹光线到达的表面都会被彩色光线而不是白色照亮。每条追踪到的反弹光线额外需要一对采样，并且仅适用于太阳可以实际到达的反弹——阴影中的反弹没有东西可以着色。超出阴影距离后，追踪器会回退到一个 voxel 射线，该射线只回答是或不是，因此光线在那里保持白色；没有东西足够靠近窗户以至于能显示出来。
+option.ATROUS_RADIUS=去噪器核半径
+option.ATROUS_RADIUS.comment=控制每个 a-trous 通量的宽度，以中心两侧的采样次数为单位。这是帧中最大的单一调节器：三个 5x5 通量占 1080p 全屏通量中 2.99 亿次纹理采样的 156 次，即 52%，而 3x3 通量则需要 9 次采样，而不是 25 次——每通量的工作量减少了 2.8 倍。代价是覆盖范围。通量在半径 r 和步长 s 时覆盖 r*s 个像素，因此半径 2 覆盖步长 1、2 和 4 时覆盖 14 个像素，而半径 1 覆盖 7 个像素，减少一半的支持意味着宽核本应平滑的低频噪声会以暗间接光中的缓慢斑点形式存活。增加通量次数到 3 可以恢复大部分噪声，并且仍然更优——27 次采样 versus 50 次。
+screen.SSR=屏幕空间反射
+option.SSR_ENABLED=屏幕空间反射
+option.SSR_ENABLED.comment=关闭时会恢复 voxel 追踪，这使该光影包与 PathMax a1 相同。开启时，反射光线会根据深度缓冲进行步进。所获得的优势是颜色：voxel 网格存储每个方块的平均值，由近似重照明，因此 voxel 反射是简化世界的图像，而颜色缓冲存储的是最终帧——因此屏幕空间反射反映了你实际看到的内容，包括全局照明、发射、雾等。代价是所有屏幕外的区域，最坏的情况也是最常见的情况：与摄像机成切线角度的反射会回溯到摄像机，而屏幕在那里停止。
+option.SSR_STEPS=SSR 采样次数
+option.SSR_STEPS.comment=控制步进的采样数量。这是质量调节器：采样太少时，光线会跳过薄几何体，导致反射出现孔洞，就像围栏或灯柱应该出现的地方一样。
+option.SSR_MAX_DIST=SSR 距离
+option.SSR_MAX_DIST.comment=控制反射光线允许在方块中移动的最大距离。
+option.SSR_STEP_GROWTH=SSR 步长增长
+option.SSR_STEP_GROWTH.comment=控制每一步比前一步长多少。光线已经 traveled 很长一段距离时，它看到的是远处的物体，一个给定的步长覆盖的像素更少——因此恒定步长将大部分预算花费在前两米上。1.0 是恒定步长。
+option.SSR_THICKNESS=SSR 表面厚度
+option.SSR_THICKNESS.comment=控制深度缓冲允许表面假定的厚度，以方块为单位。缓冲记录的是物体的前端位置，并不记录其深度，因此光线在前往距离 40 的墙壁时会经过距离 2 的围栏杆，后者会报告一个击中——墙壁的反射会带有围栏杆形状的孔洞。太大时，薄几何体会完全停止反射；太小时，每个表面都会泄漏。
+option.SSR_REFINE=SSR 精细调整
+option.SSR_REFINE.comment=光线击中后的二进制缩小次数。如果没有这些，反射会落在步进停止的位置，这在地板上看起来像是反射的世界距离物体一米远。四轮调整可以将其放在一个步长的十六分之一内，并需要四个纹理采样。
+option.SSR_EDGE_FADE=SSR 边缘淡化
+option.SSR_EDGE_FADE.comment=控制反射从帧边缘向内淡化的距离，以屏幕比例为单位。反射在直线垂直线上停止是最容易识别的屏幕空间伪影。
+option.SSR_FALLBACK=SSR 后备
+option.SSR_FALLBACK.comment=控制光线在找不到任何东西时回退到什么。天空是廉价的答案：云图，由表面实际能看到的 sky 量控制。Voxel 追踪是更好的图像，但也是昂贵的——它恢复了该光影包存在是为了避免的整个 voxel 步进，恰好在屏幕空间追踪失败的像素上，在湖面上成切线角度时，这些像素占大多数。
+value.SSR_FALLBACK.0=天空
+value.SSR_FALLBACK.1=体素追踪
+screen.PERFORMANCE=性能
+screen.PATHTRACER=路径追踪（反弹）
+screen.RAYTRACING=光线追踪（定向）
+screen.VOXELDETAIL=体素细节
+screen.MATERIALS=材质与 PBR
+screen.PARALLAX=视差（POM）
+screen.WATER=水
+screen.DENOISER=降噪器
+screen.ANTIALIAS=抗锯齿
+screen.LIGHTING=照明
+screen.ATMOSPHERE=大气
+screen.CLOUDS=体积云
+screen.WATERVOL=体积水
+screen.POST=后期处理
+screen.SHADOWS=阴影
+
+option.ENTITY_SHADOWS=实体阴影
+option.ENTITY_SHADOWS.comment=让生物、玩家和物品展示框阻挡追踪光线。体素网格由区块几何体构建而成，而生物不是区块几何体，因此直到现在，手电筒的光线会直接穿过世界中的每个玩家和牛——而同一生物在阳光下的阴影（来自阴影贴图）看起来却完全正确。实体会单独体素化，使用的是阴影通道的片段而不是顶点：生物的顶点是几十个分散的点，由它们构建的网格是射线可以直接穿过的点，而它的片段则覆盖了所有内容。每个方块单元保留八位比特，每个半方块一位，因此玩家的宽度约为一个单元，高度约为四个单元，而不是一个实心的立方米。这包括你——站在手电筒和墙壁之间时，你的阴影会出现在墙壁上，无论是在第一人称还是第三人称视角中。
+
+option.ENTITY_ALBEDO=实体反弹亮度
+option.ENTITY_ALBEDO.comment=实体对反弹光线的亮度设定。网格只存储轮廓和无颜色，因此光线从生物身上反弹时需要从某个地方获得亮度。中间灰色是诚实的平均值，可以防止从路过的牛身上反弹的光线看起来像是世界中的一个洞。该设置不影响阴影，只影响光线反弹回来时的情况。
+
+option.ENTITY_REFLECTIONS=反射中的实体
+option.ENTITY_REFLECTIONS.comment=让生物和玩家出现在水、冰和抛光表面中，包括你自己。实体被存储两次：一个八分之一方块的轮廓，范围为 64 个方块，用于阻挡光线和投射阴影；一个四分之一方块的颜色体积，范围为 32 个方块，用于反射读取。颜色被故意设置为较粗糙的版本——遮挡需要知道光线是位于生物内部还是旁边，而颜色只需要提供一个可识别的反射即可显示。在距离相机 16 个方块以外的地方，没有颜色，实体会反射为扁平的灰色，在这种距离下这只是几个像素。阴影是独立的设置，不受影响。
+
+option.HAND_AMBIENT=手部环境光
+option.HAND_AMBIENT.comment=手部获取房间自身光照的程度。手持几何体在相机下根据自身投影绘制，因此延迟渲染链无法触及它：没有世界位置可重建，没有体素网格条目，也没有降噪历史——每个像素仅一条阴影射线且无法平均，相当于手部全是噪点。因此，它会从已完成的不透明帧的五个固定点采样，并将该值用作环境光，这是相机处手持物体所受光照的合理估计。沙子会投射出温暖的光，雪会投射出白色，岩浆洞会投射出橙色。当值为零时，手部仅恢复为天空颜色，看起来像纸板剪影。
+
+option.PT_RAY_RATE=每帧追踪的像素数
+option.PT_RAY_RATE.comment=每帧投射光线的像素数量。这是光影包中最重要的调节项。路径追踪器的成本在于光线数量，而降噪器已经将每条光线的结果传播到其邻居处——因此每帧追踪每个像素都要付出全部代价，但滤波器会平均掉这些信息。设置为 2 时，追踪的像素形成一个每帧颜色互换的棋盘格，空白处由已追踪的邻居重建；设置为 4 时，每个 2x2 块中追踪一个像素。间接光频率较低，在硬切镜后约一帧内会观察到差异。在调整光线、反射次数或步数之前，先提高此值。
+value.PT_RAY_RATE.1=每个像素
+value.PT_RAY_RATE.2=一半（棋盘格）
+value.PT_RAY_RATE.4=四分之一
+
+option.VOXEL_SKIP=跳过空区域
+option.VOXEL_SKIP.comment=追踪器逐个区块遍历体素网格，户外几乎每个区块都是空的。第二个更粗糙的网格记录哪些 4x4x4 区域中有内容，因此穿过开阔天空的射线每次获取可以清除四个区块，而不是一个，只有在有目标时才退回到单个步进。射线访问的单元格与原本访问的完全相同，仅跳过那些被证明为空的单元格，因此图像不会发生任何变化——这纯粹是关于内存访问次数的问题。消耗 128 KB 视频内存和每个体素化顶点的存储图像。
+
+option.ATROUS_ADAPTIVE=跳过已收敛的像素
+option.ATROUS_ADAPTIVE.comment=自适应多孔滤波器会对每个像素运行其滤波过程，无论是否需要。历史较长且方差几乎为零的像素已经收敛，进一步滤波只会返回它已经有的数值——就像在明亮的房间里站立不动一样，这是屏幕上大部分区域的情况。无需担心接缝：测试仅通过在滤波前后结果一致的地方通过。
+
+option.PT_ROULETTE=剪枝耗尽路径
+option.PT_ROULETTE.comment=每次反弹都会乘以一个反照率，石头的反照率约为五分之一。三次回弹后，路径携带的能量不到原值的百分之一，而下一次反弹需要一次完整的体素遍历加上一束太阳光，才能产生一个低于除零之外任何可检测值的数字。以确定的方式而非随机的方式进行剪枝——无偏置的轮盘赌会以方差为代价来支付其所丢弃的能量，而方差是单采样每像素追踪器无法承受的唯一代价。
+
+option.PT_RAYS=每像素光线数
+option.PT_BOUNCES=反弹次数
+option.PT_MAX_STEPS=体素步数
+option.PT_MAX_DIST=光线距离
+option.PT_SUN_STEPS=太阳光线步数
+profile.POTATO=低配
+profile.FAST=中配
+profile.BALANCED=平衡
+profile.QUALITY=高质量
+profile.ULTRA=极高
+
+option.EMISSION_STRENGTH=自发光输出
+option.EMISSION_STRENGTH.comment=自发光方块向房间投射的光量。这是照亮场景的因素；它不会改变方块自身表面的绘制亮度。
+option.EMISSION_SURFACE=自发光表面亮度
+option.EMISSION_SURFACE.comment=自发光表面自身的绘制亮度，这是一个独立的问题，与它投射的光量无关。当值超过约1.5时，色调映射会将每个纹素压制为相同白色，海灯笼看起来不再像海灯笼——泛光效果才是“这很亮”的体现，而不是 clipping。
+option.EMISSION_TEX_CONTRAST=自发光纹理对比度
+option.EMISSION_TEX_CONTRAST.comment=自发光物体的纹理对比度有多少会显示在屏幕上。熔岩的纹理从最暗的外壳到最亮的核心，亮度比约为十二比一，这直接进入了自发光效果。没有 clipping——最亮的纹素达到 255 中的 222——但到达屏幕上的亮度范围是相邻纹素之间 147 个绿色等级。在一个 16x16 的纹理重复在天花板上时（这不是一个发光液体），它呈现出深红色和热黄色的棋盘图案。从物理角度来看，这种对比度也不属于那里：漫反射纹理的范围是反照率，而发射体发出的光是由其温度决定的，在一个熔岩块内温度变化要小。通过一个固定在 0.5 的幂曲线进行压缩——默认情况下，绿色亮度范围缩小约 40%，红色缩小约 60%，色调和纹素的顺序都得以保留，因为曲线是对亮度的比率，并且在每个设置下都是单调的。1.0 表示无压缩。
+option.GI_STRENGTH=GI 强度
+option.GI_CLAMP=萤火虫夹紧
+
+option.SPECULAR_GI=高光全局照明
+option.SPEC_GI_MAX_ROUGH=高光全局照明的最大粗糙度
+option.SPEC_GI_DISTANCE=高光全局照明距离
+option.SPEC_GI_ACCUM=高光全局照明的暂存帧数
+option.SPEC_GI_BLUR=高光模糊
+
+option.VOXEL_ALPHA_CUTOUT=反射中的镂空
+option.VOXEL_ALPHA_CUTOUT.comment=光线会穿过透明的纹素而不是在它们上停止，因此树叶反射时看起来是树叶而不是实心的绿色立方体。需要纹理化的体素。
+option.VOXEL_SHAPES=子立方体形状
+option.VOXEL_SHAPES.comment=火把、栅栏、地毯和轨道被追踪为它们真实大小的盒子，而不是填满整个单元。方块光不受影响：寻找发射器的光线仍然将每个体素视为完整的立方体，否则大多数光线会直接穿过火把。
+option.VOXEL_TEX_BLUR=反射纹理模糊
+option.VOXEL_TEX_BLUR.comment=反射纹理随距离模糊的速度。每个像素一条光线在比像素更精细的纹理上只是噪声，因此一些模糊在降噪器下更安静。0 保持每个纹素清晰。
+
+option.DEBUG_VOXEL=显示体素网格
+option.DEBUG_VOXEL.comment=用路径追踪器遍历体素网格时看到的内容替换屏幕。在最终帧中，你无法得知某个方块是否进入了网格，它最终穿上了哪种材质，或者它被归类在哪个形状下 - 错误的方块的反射仍然看起来像一个方块。
+value.DEBUG_VOXEL.0=关闭
+value.DEBUG_VOXEL.1=表面
+value.DEBUG_VOXEL.2=形状
+
+option.DEBUG_SHADING=显示一个阴影项
+option.DEBUG_SHADING.comment=显示不透明阴影的一个单独项，其他项全部关闭。一个项绘制的伪影在总和中是不可见的，因为其他项会将其掩盖，从完成的画面中猜测哪个项会导致你两次修复错误。
+value.DEBUG_SHADING.0=关闭
+value.DEBUG_SHADING.1=太阳可见性
+value.DEBUG_SHADING.2=直接阳光
+value.DEBUG_SHADING.3=追踪的间接光
+value.DEBUG_SHADING.4=原版光照贴图
+value.DEBUG_SHADING.5=反照率
+value.DEBUG_SHADING.6=天空可见性
+value.DEBUG_SHADING.7=最近射线
+
+option.POM_ENABLED=视差遮蔽
+option.POM_STEPS=视差步数
+option.POM_DEPTH=视差深度
+option.POM_DISTANCE=视差距离
+
+option.PBR_MODE=PBR 源
+value.PBR_MODE.0=集成
+value.PBR_MODE.1=labPBR + 后备
+option.SPECULAR_STRENGTH=高光强度
+option.INTEGRATED_ROUGHNESS=集成粗糙度
+option.SSS_STRENGTH=次表面强度
+option.SSS_RADIUS=次表面半径
+option.FOLIAGE_SSS=植被次表面
+
+option.WATER_WAVES=波浪
+option.WATER_WAVE_HEIGHT=波高
+option.WATER_WAVE_SCALE=波浪比例
+option.WATER_WAVE_SCALE.comment=波长的涌浪，而不是波高。小的像波涛汹涌的小池塘，大的像缓慢的海洋。
+option.WATER_DETAIL=涟漪细节
+option.WATER_DETAIL.comment=细小的波纹浮在涌浪之上。它们让近处的河流看起来像水，远处则变成闪烁的噪点——下面的淡入效果可以让它们消失。
+option.WATER_NORMAL_FADE=距离平滑
+option.WATER_NORMAL_FADE.comment=表面随距离快速平滑。真实的水也会这样：超过一定距离后，每个波纹都小于一个像素，只剩下平均值，这就是镜面效果。关闭此选项会让远处的河流恢复闪烁的静态效果。
+option.WATER_CLARITY=透明度
+option.WATER_HUE=蓝到青
+option.WATER_HUE.comment=海洋蓝色为0，热带青色为1。青色并非更蓝——它是在蓝色水平上保留了绿色——因此这会提升绿色并随着深度减少一些蓝色，而不是简单地使水变暗。
+option.WATER_TEXTURE=原版水纹理
+option.WATER_TEXTURE.comment=原版水纹理在表面显示的程度，从无到全部。它是照亮的，而不是粘贴的，因此它会接受与水体相同的天空和阳光，并且在未照亮的洞穴中不会发光。完全调高时，水看起来像原版，带有波浪和反射；你失去的是吸收提供的深度提示，因为纹理在任何地方都相同。折射无论如何都无法影响它——它在表面的自身 UV 上采样，这些标记在水上而不是水后。
+option.WATER_TEX_BUMP=水法线贴图
+option.WATER_TEX_BUMP.comment=资源包自身的水法线贴图对表面倾斜的影响程度。只有包自身的贴图：通过颜色纹理读取地形需要下一步到下一个纹素，而这一步落在相邻的图集瓦片边缘——图集瓦片每块对齐一个方块，因此错误总是表现为网格覆盖在水上，而流体没有可用的瓦片边界来限制。如果包不提供贴图，纹理仍然会通过原版纹理滑块驱动的高亮加权来捕捉阳光。
+option.WATER_SKY_TINT=天空色调
+option.WATER_SKY_TINT.comment=水体吸收了多少天空的颜色。水并非因为被染色而变蓝，它变蓝是因为吸收了红色——而反射回来的颜色带有天空的颜色。一个在日落和风暴时保持固定青绿色的湖泊，是使着色器水看起来像塑料的主要原因。
+option.WATER_REFL_ROUGH=反射粗糙度
+option.WATER_REFL_ROUGH.comment=反射随距离和入射角扩展的程度。完美的尖锐水看起来像抛光玻璃；一点扩展使其看起来像液体。
+option.WATER_GLINT=阳光闪烁
+option.WATER_GLITTER=阳光闪烁
+option.WATER_GLITTER.comment=第二个、更紧密的高光，解析为单独的点而不是光泽。上面的闪烁很宽，因此它会让整个表面略微发光，从不形成可看到的形状。真实的水面在低太阳下则相反——大部分保持黑暗，只有少数分散的 facets 返回几乎完整的太阳。这将光斑缩小到宽度的十分之一，并通过强度来补偿，这就是为什么发光变成了点阵；朝向太阳的明亮轨道随后会自行消失，因为紧致的光斑只在镜面方向附近响应。它只携带太阳的颜色，因此不影响水自身的蓝色。需要显示水纹理，因为它用于决定哪些纹素是 facets。
+option.WATER_REFLECTIONS=反射
+option.WATER_REFRACTION=折射
+option.WATER_REFRACT_AMOUNT=折射量
+option.WATER_FOAM=海岸泡沫
+option.WATER_CAUSTICS=焦散
+option.WATER_CAUSTIC_STRENGTH=焦散强度
+
+option.PT_MAX_ACCUM=时间采样帧数
+option.ATROUS_PASSES=A-trous 级数
+option.PHI_NORMAL=法线边缘权重
+option.PHI_DEPTH=深度边缘权重
+option.PHI_LUMA=亮度边缘权重
+
+option.TAA_ENABLED=TAA
+option.TAA_BLEND=TAA 历史混合
+option.TAA_SHARPEN=TAA 锐化
+option.ALPHA_SHARPEN=远处植被修复
+option.ALPHA_SHARPEN_BIAS=植被覆盖偏差
+
+option.SUN_STRENGTH=太阳强度
+option.MOON_STRENGTH=月亮强度
+option.SKY_STRENGTH=天空强度
+option.SUN_DISC_BRIGHTNESS=太阳亮度
+option.SUN_DISC_BRIGHTNESS.comment=太阳圆盘的绘制亮度，影响天空和所有反射它的物体。圆盘是方形的，而不是圆形的，因为 Minecraft 的太阳是——当反射显示一个清晰的圆圈，而天空显示一个方块时，水中的太阳看起来与头顶上的太阳不同。
+option.MOON_DISC_BRIGHTNESS=月亮亮度
+option.SUN_ANGULAR_SIZE=太阳大小
+option.SUN_ANGULAR_SIZE.comment=原版绘制太阳时，宽度为 30 单位，距离为 100，这是默认设置。它希望保持原样：天空通道仍然绘制真实的贴图在上方，任何更大的尺寸都会显示为光环从后面透出来。
+option.MOON_ANGULAR_SIZE=月亮大小
+option.STARS_ENABLED=星星
+option.STARS_ENABLED.comment=这是程序生成的，因为天空通道用我们自己的渐变替换了整个圆顶，原版的星星也随之替换。这样做还能让星星在屏幕上保持固定大小，而不会随着接近地平线而变大，并且它们会随太阳一起淡入，而不是突然出现。
+option.STAR_BRIGHTNESS=星星亮度
+option.STAR_DENSITY=星星密度
+
+screen.LIGHTPOLLUTION=光污染
+option.LIGHT_POLLUTION_ENABLED=光污染
+option.LIGHT_POLLUTION_ENABLED.comment=在夜幕中，山丘上有一座小镇。你看到的并不是灯光——那些灯光位于地平线以下——而是它们光线中从未逃出大气层、被再次散射回来的那一部分光线，这就是为什么天空辉光形成了一个矗立在地平线上的圆顶，而不是一个点。 本光影包中的其他所有元素都从游戏自身的统一色调中获取颜色，但这一个除外：Minecraft 没有城市，也没有提供任何表示城市位置的信息，因此这是唯一一个通过代码实现而非观察到的效果。它被添加到 getSkyColor 中，这意味着它同时作用于天空圆顶、环境光、距离雾、体积光、云层后的光线以及每一次反射——来自同一行代码——一种仅存在于天空而非其下方水体的辉光，正是这一点揭示了大多数实现的秘密。
+option.LIGHT_POLLUTION=光污染强度
+option.LIGHT_POLLUTION.comment=表示光污染的程度。 其比例基于夜空自身的亮度，而非任意单位：0.35 时，圆顶底部亮度与正上方天空亮度大致相同，正上方天空是黑暗的乡村夜空，远处有一座小镇。1.0 表示郊区，2.5 表示城市，4.0 表示天空只剩下约六颗星星。自动曝光在夜间提升整个画面，因此决定其显示效果的因素是该比例，而非绝对数值。
+option.LIGHT_POLLUTION_WARMTH=灯光颜色
+option.LIGHT_POLLUTION_WARMTH.comment=表示路灯的颜色。1.0 表示低压钠灯，这种琥珀色是 2015 年之前拍摄的城市照片中的照明色。0.0 表示 4000K LED 灯，这种灯已取代了大多数低压钠灯，它散射更多的蓝光，因此现代天空辉光在照片中呈现灰色而非橙色。无论此设置为何值，圆顶在上升时仍会冷却——瑞利散射与波长的倒数四次方成正比，因此从高处返回的光线在传播过程中已失去红色成分。
+option.LIGHT_POLLUTION_REACH=圆顶高度
+option.LIGHT_POLLUTION_REACH.comment=表示辉光在天空上升的高度，以其衰减到 1/e 时的海拔表示。由于空气是指数大气层，因此采用指数而非线性关系，发光柱的衰减方式相同；线性斜坡会将最亮部分置于天空的一半高度，此时下方没有物体可以进行照明。 小值表示紧凑的明亮带位于地平线上——可能是附近的城镇或清洁的空气。大值表示辉光延伸到接近天顶，这可能是非常大的城市或大量气溶胶。
+option.LIGHT_POLLUTION_SOURCES=城镇
+option.LIGHT_POLLUTION_SOURCES.comment=表示均匀分布在罗盘周围的独立辉光数量。方位角是编译时常量，因此每个辉光仅需一个点积计算，正弦和余弦完全可以省略。
+option.LIGHT_POLLUTION_SPREAD=方向性
+option.LIGHT_POLLUTION_SPREAD.comment=表示你所面对的方向对效果的影响程度。0 表示整个地平线是一个均匀的橙色环，这是该效果的廉价版本，表现为一种颜色等级，因为景观中的任何物体在方位角上都不是均匀的。1 表示紧凑的圆顶，圆顶之间是黑暗的天空，因此转身会改变你看到的内容，而行走则不会——这正是遥远城镇的真实表现。
+option.LIGHT_POLLUTION_BEARING=城镇方位
+option.LIGHT_POLLUTION_BEARING.comment=表示第一个城镇的方向，以南为 0 度，朝东为正向度数——因此 0 是南，90 是东，180 是北。其他城镇则均匀分布在周围。方位角在世界空间中是固定的，这就是为什么它表现为一个地点而非滤镜的原因：当你旅行时，圆顶保持原位，而当你转身时，圆顶会横跨天空。
+option.LIGHT_POLLUTION_OVERCAST=阴云倍增因子
+option.LIGHT_POLLUTION_OVERCAST.comment=云层会放大天空辉光而不是隐藏它。云层就像一个盖子：它会将原本会逃逸到太空的光线反射回地面，因此城市在多云的夜晚会比晴朗的夜晚亮几倍，且橙色更浓。这是本光影包中唯一一个夜间效果，其强度会随着雨强增加而增强，而不是随着雨强减弱而消失，弄反这一点是一个常见的错误。
+option.LIGHT_POLLUTION_AMBIENT=等方向地面光
+option.LIGHT_POLLUTION_AMBIENT.comment=表示辉光中那些散射次数过多、已忘记来源方向的部分，因此它们同时从整个天空到达，不针对任何城镇。两个后果：一是它阻止了被污染的夜晚变得完全黑暗；二是由于光影包从天顶读取环境光，因此这是唯一能为地面带来光线的部分。以满强度比例表示。
+option.LIGHT_POLLUTION_STARS=星光淹没
+option.LIGHT_POLLUTION_STARS.comment=表示辉光对星光的遮蔽程度。这是该效果的目的，而非其副作用。星星在比背景更亮时可见，因此提高背景亮度并不会使任何单个星星变暗——它会移除那些从未高悬于背景之上的星星，这些星星占大多数，且靠近地平线而非天顶。星星的亮度会除以辉光值，而非直接相减，这就是为什么 brightest 能免费获得排序：最亮的星星在任何污染下都能存活，而其他星星则按照应有的顺序落入色调映射的底部。0 表示在任何辉光下所有星星都保持满亮度，这是错误的，但仍然提供。
+option.BLOCKLIGHT_STRENGTH=方块光强度
+
+option.BLOCKLIGHT_VOXEL=区块光源体素化
+option.BLOCKLIGHT_VOXEL.comment=火把和灯笼的光直接从体素网格中读取，并对它们进行阴影射线追踪，因此光线从方块实际所在的方向照射，任何阻挡物都会投射阴影。关闭时，方块光会回退到原版光照贴图，该贴图会溢出到拐角处，且无法投射阴影。
+option.BLOCKLIGHT_DISTANCE=区块光源距离
+option.BLOCKLIGHT_DISTANCE.comment=追踪的方块光能到达的距离，以及它结束淡出的位置。原版方块光本身在 15 个方块处停止，无论此设置为何，因此 16 已涵盖游戏中的所有灯具。成本不是线性的：发射器搜索是一个 8 个方块单元的立方体，因此 8 个方块是每个像素 27 次获取，16 个是 125 次，24 个是 343 次。超过此距离时，平坦的光照贴图会自行接管，因此光不会在边缘结束——它会交接。
+option.BLOCKLIGHT_STEPS=区块光源阴影步数
+option.BLOCKLIGHT_STEPS.comment=一步是跨越一个体素边界，因此对角射线消耗的速度是直射线的三倍。设置得太低时，最远处的发射器会悄悄停止照明任何东西。
+option.BLOCKLIGHT_SOFTNESS=区块光源阴影柔和度
+option.BLOCKLIGHT_SOFTNESS.comment=射线允许在其上游过的发射器比例，相对于其大小。范围越大，半影越柔和。发射器的真实形状被使用，因此火把或灯笼的行为就像它们本身的小灯具，而不是像发光的一立方米立方体。
+option.BLOCKLIGHT_FALLBACK=光照贴图回退
+option.BLOCKLIGHT_FALLBACK.comment=当追踪的光在起作用时，保留多少平坦的原版光照贴图在下面——被压制，因为它的无阴影溢出否则会冲淡追踪的阴影。超出追踪距离时，它会自行上升到满值，因此追踪的光永远不会在可见的边缘结束。提高此值可以让照亮的洞穴看起来更柔和，降低此值可以让灯具附近的对比度更硬。
+
+option.CLOUDS_ENABLED=体积云
+option.CLOUDS_ENABLED.comment=穿过真实的云层，而不是简单地贴在天空上，因此它们会从阳光照射的一侧被照亮，在下方变暗，并在雨中变厚。只有天空像素会被遍历，地形和水不会造成额外开销——天空占据屏幕一半的情况是最坏的，而不是正常情况。
+option.CLOUD_REFLECTIONS=反射中的云
+option.CLOUD_REFLECTIONS.comment=如果为每个反射射线再次遍历云层，就会完全失去云层在这一设计中的优势。因此，天空每帧只绘制一次到一个按方向索引的小地图中，反射时直接查找结果——一次获取而不是遍历。由于云层频率较低，这种大小的地图不会丢失反射可能显示的任何细节。
+option.CLOUD_MAP_RES=反射贴图尺寸
+option.CLOUD_STEPS=云步数
+option.CLOUD_STEPS.comment=遍历云层的步数，也是最大的开销之一。切片积分是解析式的，因此降低此值会使云层变得更粗糙，但不会变薄。
+option.CLOUD_LIGHT_STEPS=云光步数
+option.CLOUD_LIGHT_STEPS.comment=每个云样本中朝向太阳的步数。这决定了从被照亮的顶部到阴影基部的渐变，而不是边缘阴影，因此需要的步数非常少。
+option.CLOUD_OCTAVES=云细节
+option.CLOUD_COVERAGE=云覆盖率
+option.CLOUD_DENSITY=云密度
+option.CLOUD_SCALE=云缩放
+option.CLOUD_SHAPE=云形状多样性
+option.CLOUD_SHAPE.comment=噪声场在读取之前被自身如何扰动。简单的 fbm 会产生圆形的均匀块，因为每个八度都位于相同的网格上；先对其进行扭曲才能产生波状、丝状和形状各异的云，而不是重复相同的云团。
+option.CLOUD_EROSION=3D 雕刻
+option.CLOUD_EROSION.comment=仅在平面视图中成型的云层在每个高度都有相同的轮廓——它的顶部就是底部——这就是为什么无论水平形状多么精细，它看起来都是一致的。使用真正的 3D 场进行雕刻可以产生云的悬垂、波状和卷曲边缘。只有视角遍历会为此付出代价；朝向太阳的遍历会跳过它，因为它决定的是从被照亮的顶部到阴影基部的渐变，而不需要每个云丝都能正确显示这一点。
+option.CLOUD_SKY_TINT=天空色调
+option.CLOUD_SKY_TINT.comment=云的周围光中来自其所在方向天空的光线比例，而不是直接来自头顶。低空的云层所在的空气颜色与头顶的空气不同，这就是为什么无论天空如何变化，云层都不会成为单一的灰白色。
+option.CLOUD_SPEED=云速度
+option.CLOUD_HEIGHT=云高度
+option.CLOUD_HEIGHT.comment=原版的云层平面位于 192 高度，看起来像一个遥远的天花板。当足够低时，相同的云层就会变成你脚下所处的天气，而不是地平线上的风景。
+option.CLOUD_THICKNESS=云厚度
+option.CLOUD_DISTANCE=云距离
+option.CLOUD_DISTANCE.comment=沿着射线遍历云层值的距离。向地平线方向，云层会无限延伸，几千个方块之后，每个步数都会落在相同的噪声中。
+
+option.WATER_VOLUMETRIC=体积光水
+option.WATER_VOLUMETRIC.comment=视野射线在水中的一段会进行阳光遍历，因此水面下的光束是真实几何形状而不是色调 - 它们携带着焦散模式，这就是为什么光束从平滑状态变成你看到的移动水下光束的原因。只有在半透明物体绘制完成后才能知道水的范围，因此这个过程发生在它们之后，而不是在水绘制阶段。
+option.WATER_VL_STEPS=水遍历步数
+option.WATER_VL_STRENGTH=水光束强度
+option.WATER_VL_DISTANCE=水遍历距离
+option.WATER_VL_DISTANCE.comment=水遍历的距离。超过此距离后光束已被完全吸收，因此步数将浪费在黑暗中。
+
+option.VL_BLOCKLIGHT=空气中的方块光
+option.VL_BLOCKLIGHT.comment=光影包中的体积光曾经只限于太阳，因此一支火把照亮了地板和墙壁，却让它们之间的空气完全黑暗。现在我们有了另一半：雨中的灯笼带有光晕，门口射出一束火把光照进洞穴，熔岩湖在雾气中闪烁。找到一个点周围的发射器需要搜索粗糙的网格，而光线追踪器希望每像素得到这个答案十六次，这就是为什么它不能简单地添加到循环中——相反，搜索每帧对每个 4x4x4 世界区域运行一次，总共有 32768 个区域，光线追踪器每步读取一个过滤后的纹素。由于数量足够，每个发射器也可以有一条阴影射线，因此光线被遮挡而不是穿过墙壁发光。
+option.VL_BLOCKLIGHT_STRENGTH=方块光雾
+option.VL_BLOCKLIGHT_MAX=每个区域的发射器数量
+option.VL_BLOCKLIGHT_MAX.comment=一个 4x4x4 区域内最多会累加多少个发射器，达到这个数量后就停止计数。洞穴内超过这个数量的灯在十六格内已经饱和；这个上限就是保持循环界限的原因。
+
+option.VL_ENABLED=体积光
+option.VL_STEPS=体积光步数
+option.VL_STRENGTH=体积光强度
+option.FOG_STRENGTH=雾强度
+option.FOG_DENSITY=空气密度
+option.FOG_DENSITY.comment=每区块空气的散射程度。这是大气透视效果，而非边缘雾：它从第一个区块开始呈指数级累积，这就是眼睛如何感知到山丘的距离。旧的雾效在渲染距离的55%之前不起作用，然后突然出现，就像一幅横跨世界的幕布。
+option.FOG_HEIGHT=雾幕高度
+option.FOG_HEIGHT.comment=空气随海拔升高而稀薄，因此谷地在清晨会保留雾气，而山顶则没有。高于此高度时密度会下降。采样自视线中点，因此从高处俯瞰峡谷时仍能捕捉到底部浓厚的空气。
+option.FOG_FALLOFF=雾衰减
+option.FOG_FALLOFF.comment=在雾幕高度以上多少区块内空气逐渐稀薄。小数值会在谷地形成 Sharp 层；大数值则使雾气均匀分布在所有地方。
+option.FOG_SUN_TINT=阳光散射
+option.FOG_SUN_TINT.comment=当你朝向太阳看时，雾气会变得如何温暖。光线向前散射的程度远大于向后散射，因此你与低垂的太阳之间的空气会发光，而你后方的空气则不会——这正是日落看起来像日落而不是中性景观上的橙色天空的主要原因。
+
+option.TONEMAP=色调映射
+option.TONEMAP.comment=如何将渲染出的亮度值转换为图像。路径追踪器产生的值通常远大于 1.0——灯光不是白色的，而是比它后面的墙壁亮四十倍——这个曲线决定了它在屏幕上的显示方式。ACES 是现代路径追踪器使用的一种方法：它在曲线之前进入 ACES 工作主色域，因此明亮饱和的颜色在上升时会向白色去饱和，而不是冲向其通道的边缘。红旗上的火炬光会变成暖白光，而不是荧光橙色。下面的近似值是每个通道单独适用的相同响应曲线——成本更低，但会使高光显得更鲜艳。
+value.TONEMAP.0=无（裁剪）
+value.TONEMAP.1=莱茵哈特
+value.TONEMAP.2=莱茵哈特亮度
+value.TONEMAP.3=哈勃胶片风格
+value.TONEMAP.4=ACES 近似值
+value.TONEMAP.5=ACES
+value.TONEMAP.6=AgX
+
+option.AGX_LOOK=AgX 外观
+option.AGX_LOOK.comment=AgX 上的分级，实际上并非可选——基础 AgX 故意设计为平坦的，因为它需要后续分级。Punchy 陡峭地提升了中间调并增加了饱和度，是三个选项中最接近列表中其他运算符效果的。Golden 将蓝色斜率拉低，使高光在上升时变得温暖，并减少了一些饱和度以弥补这一点。Neutral 是原始曲线，当您想查看追踪器生成的图像时使用。分级在 AgX 的压缩空间中应用，而非线性光，因此它会倾斜曲线而不是压碎阴影。
+value.AGX_LOOK.0=中性
+value.AGX_LOOK.1=强劲
+value.AGX_LOOK.2=金色
+
+screen.PORTALS=传送门
+screen.DIMENSIONS=下界与末地
+screen.WEATHER=风与雨
+
+option.WAVING_ENABLED=风
+option.WAVING_ENABLED.comment=移动草丛。完全静止的植被是图片是游戏的其中一个最明显特征，而这个功能是光影包中成本最低的——完全基于顶点运算，无需纹理读取和逐像素处理。采用两个频率而非一个：叶子自身的快速颤动和缓慢、范围更大的阵风在田野间移动，因为单一的正弦函数会使屏幕上的所有物体同步摆动，看起来像传送带。相位来自世界位置，因此相距一米的两个草丛已经处于不同步状态，无需采样即可实现。
+
+option.WAVING_PLANTS=植物摇摆
+option.WAVING_PLANTS.comment=草、花朵、作物和树苗。固定在地面上，权重为高度的平方，因此底部三分之一几乎不会移动——一簇植物被整体移出下方方块，产生经典的断裂摇摆效果。竹子和藤蔓的处理方式相同，乘以立方，因为它们是弯曲而不是颤动。
+
+option.WAVING_LEAVES=树叶飘动
+option.WAVING_LEAVES.comment=树叶作为完整的立方体无锚点，因为树叶方块是一个完整的立方体，没有特定的支撑。比植物更温和：一个可以自行撕裂并从树干上脱落的树冠。
+
+option.WAVING_SPEED=风速
+
+option.WETNESS_ENABLED=湿润表面
+option.WETNESS_ENABLED.comment=湿石比干石更暗、更光滑，这一事实几乎完全决定了雨景看起来是雨景，而不是干景上画几条痕迹。两者都是物理现象：水渗透到孔隙中，使散射回来的光线减少，它填满了粗糙度，因此反射回来的光线是反射而不是散射。只有当天空可以到达的地方——洞穴中不下雨，光照贴图已经知道哪些表面在下面——以及只有在向上朝向的表面上，因为墙壁会流失水，地板会积水。由湿润程度而非降雨强度驱动，因此雨后地面会保持一段时间湿润。
+
+option.WETNESS_DARKEN=湿润变暗
+option.WETNESS_DARKEN.comment=如何使浸湿的表面变暗。实测多孔材料上的数值在二分之一到三分之一之间；默认值是折衷方案，以保持 Minecraft 的反照率可读。
+
+option.WETNESS_GLOSS=湿润光泽
+option.WETNESS_GLOSS.comment=水会填满多少表面的粗糙度。当表面被水膜覆盖时，从光学上看，水膜表面是光滑的，因此 F0 从材料自身的数值上升到水的 0.02。
+
+option.WETNESS_PUDDLES=水坑
+option.WETNESS_PUDDLES.comment=水会汇聚形成水坑，而不仅仅是湿润表面。真正的积水需要地形高度数据，但我们没有，所以这是一个诚实的替代方案：使用世界空间中的平滑噪声进行阈值处理，仅作用于足够平坦的表面以容纳水体。当雨水持续时，阈值会后退，因此水坑会逐渐扩大而不是突然出现——如果水坑在雨开始时就已存在，那只是纹理效果；如果它逐渐扩大，则代表真实的天气变化。
+
+option.NETHER_FOG=下界雾气
+option.NETHER_FOG.comment=下界雾气的厚度是相对于上界的晴天密度来衡量的——它比上界厚四十倍，这不是错误。在上界，雾气是叠加在场景上的距离提示；而在下界，雾气几乎占据了你能看到的一切，因此原版在下界的渲染距离感觉比数值显示的要短得多。除了厚度不同外，下界雾气与上界的曲线还有两点不同：没有高度衰减，因为下界没有空气变稀薄的高度，只有一个天花板；并且它不受天空光照的限制，因为下界没有任何天空光照，如果限制的话，雾气就会在所有地方消失。
+
+option.NETHER_AMBIENT=下界环境音
+option.NETHER_AMBIENT.comment=下界空气和地面反射多少光。光影包中所有需要“无特定方向的光”（即环境光）的部分都请求天空光并乘以天空光照，而下界的 skylight 值在所有地方都是零，因此该项消失了，光线追踪器无法触及的每个表面都变得纯黑，只有靠近熔岩喷发出的顶部区域除外。取而代之的光照来自下方而非上方，因为熔岩就在下方：朝下的表面被照亮的程度大约是朝上的三倍，并逐渐向火焰方向变暖。颜色跟随雾色（fogColor）变化，因此绯红森林、扭曲森林和玄武岩三角洲各自拥有自己的颜色，无需额外配置。
+
+option.END_AMBIENT=末地环境光
+option.END_AMBIENT.comment=末地的微光无处不在却无固定来源，从上方略微更强，因为下方的虚空比上方的虚空更黑暗。
+
+option.END_SKY=自定义末地天空
+option.END_SKY.comment=用一个穿过虚空的星云来替换原版的末地天空——原版的末地天空由六个静态斑点纹理构成的四边形组成。这是游戏中唯一可以奇特的天空：没有太阳需要保持一致，没有地平线需要尊重，没有天气需要服从，没有时间需要追踪。按照眼睛阅读的顺序，叠加了三层元素：一个在地平线处最暗、向上下两端逐渐明亮的虚空（这与主世界天空相反，因为在末地地平线是岛屿所在之处）；一个被扭曲的星云；以及三层星光，在星云位于前方时变得暗淡。绘制时使用 gbuffers_skytextured 而不是 gbuffers_skybasic，因为原版在末地不绘制任何天空圆顶，这些四边形是唯一可以落地的几何体。
+
+option.END_SKY_STRENGTH=末地天空亮度
+option.END_SKY_WARP=星云细节
+option.END_SKY_WARP.comment=星云坐标在读取噪声前被噪声位移的轮数。普通 fBm 看起来像云——每个尺度都有柔和的blob，形状大致圆润——而星云则不是，因为它经过了搅拌。每轮搅拌都会让结构变得更细腻。两轮时，它不再像天气效果；三轮时效果提升不明显，但会多消耗三个天空像素的查找。
+
+option.END_SKY_STARS=末地星体密度
+
+option.NETHER_TINT=下界颜色饱和度
+option.NETHER_TINT.comment=控制保留生物群系雾气的饱和度多少。雾气颜色（fogColor）使得绯红森林呈现红色，扭曲森林呈现青绿色，而这些颜色并未在光影包中命名。字面理解上，这也是每个维度截图中只有红色通道的原因。下界废土提供的颜色为 (0.20, 0.03, 0.03)，在线性光下为 (0.029, 0.0005, 0.0005)：绿色和蓝色分别低于红色的 2%，同时环境光和雾气都会乘以这个值，因此每表面的三个通道中有两个在帧渲染前就被清零了。向颜色本身的亮度混合可以精确保留亮度，仅改变饱和度。1.0 是旧行为；0.0 则会产生一个忽略生物群系的中性灰色雾气。
+option.NETHER_HEAT=下界热度梯度
+option.NETHER_HEAT.comment=控制低处雾气比高处热多少。下界的地面是岩浆，顶部则不是，因此地表附近的空气确实包含更多橙色，而垂直梯度是这个维度唯一的形态——如果雾气的颜色和亮度在各个方向都相同，那就不是一种氛围，而是一种无论你看向哪个方向都同样遥远的墙壁。0 会恢复平坦的雾层。
+option.END_FOG=末地雾气
+option.END_FOG.comment=控制末地的雾气程度，几乎没有——足以让远处的岛屿位于某物之后，而不是直接从虚空中切出，且不超过此。没有高度项，因为没有可供测量的地面水平。
+
+option.PORTAL_LAYERS=视差步数
+option.PORTAL_LAYERS.comment=视差步数决定了视差光线穿过传送门的步数，以及末地传送门光束的采样数量。提高该值仅会增加传送门像素的纹理获取开销，而传送门框内屏幕上的像素数量有限，因此可以适当提高。传送门是一个带有动画纹理的四边形，无论动画效果多好，都看起来像一张挂在框架里的图片。这里通过从表面射入光线来实现：光线从高处开始下降，纹理自身的亮度会上升以形成高度场，光线与亮度场相交的位置就是该像素的表面。近处的漩涡部分会遮挡远处的部分，这就是有深度与多份自身拷贝的区别。光线步进会插值于最后一次未命中和一次命中的步数之间，因此低计数不会出现台阶。1 表示旧的平铺图片。
+
+option.PORTAL_DEPTH=视差深度
+option.PORTAL_DEPTH.comment=该值表示视差效果的深度，以区块自身纹理的比例表示。数值过大时，光线会偏离初始图案，导致表面出现漂移而不是静止于框架后方。地狱门会关闭此效果，当视角沿表面滑动时，类似真实凹槽的表现——从侧面看洞时，近边的边缘会横跨洞口，而不是显示更深处。末地门不会关闭此效果，因为它是一个没有地板的洞。
+
+option.PORTAL_CONTRAST=传送门对比度
+option.PORTAL_CONTRAST.comment=亮部更亮，暗部更暗。两个幂函数段拼接在纹理自身测量的均值处，这比听起来更重要：简单的线性对比度斜率没有界限，因此无论你如何放置枢轴，足够陡峭的斜率都会将一端推过零点，夹紧器会将其吃掉。最初的版本正是这样做的——它在线性光下枢轴于 0.42，而紫色是暗的，因此地狱门中的每个颜色都位于枢轴下方，整个东西渲染成黑色。两个幂函数段将范围映射到自身，精确固定枢轴，并在每种设置下保持单调性，因此任何东西都不会从两端掉落。1.0 表示无变化。
+
+option.PORTAL_SATURATION=丝状颜色
+option.PORTAL_SATURATION.comment=如何将明亮的丝状物推离灰色。对比只能使它们更亮，而缩放颜色无法使其饱和——因此它单独会使漩涡变为更浅的薰衣草色，而不是它们本应呈现的粉红色。这会将嵴从其自身亮度之外推离，也推离亮度之上。凹处则保持不变，因为深色饱和紫色正是两个丝状物之间的间隙所应呈现的颜色。
+
+option.PORTAL_STAR_BRIGHTNESS=末地之星
+option.PORTAL_STAR_BRIGHTNESS.comment=控制末地门中尘埃的亮度。原本这个设置是关于主题的，但那是错误的——数百个亚像素点在数百个深度中读取时会显得静态，即使经过仔细滤波。剩下的亮度仅为原来的十分之一，它们位于立方体后面，使虚空拥有一些纹理，而不会更多。场是如何构建的：末地门自身的纹理是一个由静态斑点组成的单个贴片，而使其有趣的方块实体渲染器并不是光影能看到的，因此场是生成的：每个单元格中都有恒定世界单位大小的星点，通过一个随深度旋转的光束进行采样，从末地的苍紫色逐渐过渡到青色，最终接近白色。由于单元格是固定的世界单位大小，而光线随深度侧向滑动，远处的层在屏幕上显得更小，整个场会收敛到你正视下方的点——因此走过传送门时会看到其消失点摇摆。
+
+option.PORTAL_WELL_DEPTH=末地传送门井深度
+option.PORTAL_WELL_DEPTH.comment=末地传送门井的深度，以方块为单位。层之间的间距是索引的平方，因此大多数层位于前几块方块中，只有最后两三层才能到达如此深处。
+option.PORTAL_STAR_FREQ=末地传送门星体密度
+option.PORTAL_STAR_FREQ.comment=每个方块的星体单元数。这是第一个版本错误设置了两个数量级的问题：它在井口运行了每块方块九十个单元，这远远超过了每像素一个样本的频率，而低于奈奎斯率采样的场不是小星星，而是静态——这正是传送门看起来的样子。任何不超过六个的值都是安全的，因为着色器会淡出屏幕无法解析的部分，但超过这个值时，近层会变成光芒而不是星星。
+option.PORTAL_SWIRL=末地传送门涡旋
+option.PORTAL_SWIRL.comment=井的旋转速度，以每秒弧度为单位。默认关闭，原因如下：一个围绕其中心旋转的场看起来像一个被旋转的纹理，而不是空间中移动的物体，而在立方体取代它之前，这是效果中最明显的变化。旋钮保留是因为它不需要成本，但动画现在是传送过程。
+option.PORTAL_BACKDROP=末地传送门背景
+option.PORTAL_BACKDROP.comment=末地天空在星体后方显示的比例。末地传送门实际上是一个洞，你可以通过它看到末地，所以站在传送门上方转动头部时，星云会像透过窗户看到后方的景色一样扫过。故意保持低值：传送门是通往空无一物的洞，里面的光是面对虚无发光的，所以如果虚无也被照亮，光就没有亮度对比的对象，整个效果就会变得乳白。这也是效果中最昂贵的一部分——一个域扭曲的 fBm——设置为 0 可以完全移除它。
+option.PORTAL_CUBES=末地传送门立方体
+option.PORTAL_CUBES.comment=沿井向上移动的立方体的亮度。它们是效果的主体：每个移动槽从井的远端走到井口，然后重新开始，因此任何时刻都有十个立方体在飞行。已经存在的视差效果免费完成了剩余工作——一个 z 值较小的槽在屏幕上既更大又移动得更快，因此近处的立方体迅速掠过，而远处的立方体缓慢移动，而无需额外指令。它们是等距的：一个六边形轮廓，三个面具有三种亮度，在相接处有一条发光接缝，这是一个没有透视感的立方体，在八像素宽时清晰可见，而阴影立方体则不可见。设置为 0 可以移除它们。
+option.PORTAL_CUBE_COUNT=末地传送门立方体数量
+option.PORTAL_CUBE_COUNT.comment=立方体数量。每个单元的概率，经过深度修正：井口下十六个方块处的槽显示的单元数是井口槽的十八倍，因此如果没有修正，远端会变成一条砂石路——第一个版本中包含三百六十个立方体，而不是十个。
+option.PORTAL_CUBE_FREQ=末地传送门立方体大小
+option.PORTAL_CUBE_FREQ.comment=每个方块的单元数，这决定了每个立方体的大小，而不是立方体的数量。数值越低，立方体越大，间距越远。
+option.PORTAL_TRAVEL=末地传送门传送速度
+option.PORTAL_TRAVEL.comment=立方体穿越整个井的速度，以每秒井数为单位。默认值为十个槽和 0.05，因此每两秒钟有一个立方体到达井口。设置为 0 可以将它们冻结在原地。
+option.PORTAL_GLOW=传送门亮度
+option.PORTAL_GLOW.comment=传送门燃烧的亮度。两个传送门都是发射体，但之前没有被当作发射体处理——它们被当作普通半透明方块着色，这意味着阳光和一个空间中孔洞的高光。一个高光在传送门上滑动是唯一能暴露它是一个四边形的东西，因此着色完全消失，现在所有内容都是发射。
+
+option.WATER_AQUA=水色洗涤
+option.WATER_AQUA.comment=在原版水纹理上叠加一种水色色调，采用图像编辑器中图层叠加而非混合的方式。区别在于：普通色调会使每个纹素按相同幅度移动，导致图案本身的明暗随色调一起移动，纹理变得扁平。叠加模式则对暗部进行乘法运算，对亮部进行筛网运算，使对比度得以保留，仅色调发生变化。该效果作用于纹理的伽马值，混合定义中的 0.5 基准值在线性光下对应 0.73 的绘制值，几乎整个纹理都会落在乘法侧并变暗。
+
+option.WATER_VL_ABOVE=水下阳光穿透
+option.WATER_VL_ABOVE.comment=水体内部的阳光穿透效果，从外部可见。默认关闭，启用前请阅读原因：在合成通道中查找水体时，需要询问相机和后方不透明表面之间是否存在半透明物体，而 Minecraft 将玻璃、冰、粘液块和整个玩家模型绘制为半透明。所有这些物体都通过了测试，因此它们都会被水体合成覆盖——沿着间隙的吸收加上被水色调着色的散射——这就是为什么玩家和玻璃变青色的原因。将水体与其他物体分离需要一个屏幕上当前没有携带的标志。从水下视角观察时，这个问题不会出现，因为 isEyeInWater 会直接回答，因此水下区域不受影响。
+
+option.WATER_UNDER_CLARITY=水下能见度
+option.WATER_UNDER_CLARITY.comment=水下能见距离。实际吸收系数限制在约十米，这虽然真实但无法游戏化——Minecraft 的海洋深度只有几格，而其中值得一看的东西有一半距离超过这个深度。特意与清晰度调节器分离：从上方看水和从水下透过水看东西是两个不同的问题，而它们之前被同一个数值同时影响。该数值除以消光系数，因此 2 表示能见度加倍，而非亮度加倍。
+
+option.WATER_UNDER_AMBIENT=水下雾气
+option.WATER_UNDER_AMBIENT.comment=控制水体从内部向你散射回多少光。正是这个效果让一切变得模糊：它会在几格内达到饱和状态，因此在最大强度下，远处的每个表面都会呈现相同的蓝色，场景失去了所有深度。它与吸收效果相互制约，两者互为补数，总和不会超过原本的光线。
+
+option.WATER_TEX_SURFACE=浅水区域的纹理
+option.WATER_TEX_SURFACE.comment=控制原版水纹理在水面而不是水体中的分布比例。水体部分会随着覆盖比例的增加而增加散射，这是适合水体的曲线，但对于绘制在表面的标记来说则不正确——沙洲和沟壑上的标记数量相同。纹理曾完全继承该曲线，因此在浅水区域会消失；当纹理强度达到最大时，会带上水体的颜色：测量显示，在0.15块深度的水体中，水占据了像素的1.3%，这相当于有色调的沙子，没有表面。这是一个位于该曲线下的下限，仅适用于曲线低于该值的位置，大致为第一块深度。深水在任何设置下都不会受到影响。0 会恢复旧行为；数值过高时，浅水区域会像盖子一样显示，而不是可以看到底部的透明水体。
+
+option.WATER_REFL_TRANSPARENCY=反射透明度
+option.WATER_REFL_TRANSPARENCY.comment=控制可以看到多少反射。菲涅尔已经决定了表面有多少是镜面反射，多少是水底的透射，两者在物理上是互补的——反射的越少，透射的越多。这会让反射变薄，但不会让光线变亮，因此这是一个偏好设置，而不是修正：菲涅尔项是正确的，这个设置回答的是你希望在 glancing 角度看到多少湖水（物理上几乎看不到多少）。0 表示反射强度不变，1 表示完全移除。水中时忽略此设置，因为相同的菲涅尔项会产生全内反射——超过临界角时，表面会变成镜面，因为光线无法透过，削弱反射会导致你能看到一个在物理上不可能穿透的表面。
+
+option.PT_SUN_SHADOWMAP=太阳阴影来自贴图
+option.PT_SUN_SHADOWMAP.comment=询问阴影贴图是否到达反弹点，而非通过体素网格遍历第二条射线来确定。 这种遍历占用了路径追踪器每次纹理获取的52%，在五个场景中测量结果显示——从室外表面发出的太阳光没有障碍物阻挡，因此它会运行完整的步数预算后才得出结论天空在上方，并且每条射线每反弹一次都会执行此操作。 阴影贴图在同一帧中更早地回答了直接可见表面的相同问题。 它也是更精细的：阴影纹素是区块的八分之一，而网格的整个区块单元则更大，并且阴影贴图包含实体和裁剪叶子，而体素化器只能近似表示。 超过85%阴影距离的反弹点仍然使用体素射线，因为贴图本身在那里会逐渐变亮。 关闭此选项可恢复遍历。
+
+option.BLOCKLIGHT_TINT=备用光照颜色
+option.BLOCKLIGHT_TINT.comment=这是原版平铺光照贴图的颜色，当它从追踪的方块光照中接管时生效。原版只告诉你某个点有多少方块光照到达，但不会告诉你光照来自何处，因此必须人为设定颜色——这就是“手电筒橙色”的由来。这种设定对手电筒和大多数 Minecraft 光源都有效，但对于那些错误的设定，你绝对不会错过：海灯笼的追踪光在灯附近是白色的，而更远处的平铺光照贴图是橙色的，因此在两种光照交接处会形成一个黄色的环，精确地位于两种光照融合的半径处。一个较弱的猜测错误得更少。根据亮度进行归一化，因此它只改变色调而不改变亮度。
+value.BLOCKLIGHT_TINT.0=白色
+value.BLOCKLIGHT_TINT.1=原版暖色
+value.BLOCKLIGHT_TINT.2=手电筒橙色
+
+option.PBR_GLOSS=资源包光滑度
+option.PBR_GLOSS.comment=关于平滑度的信任程度。labPBR 资源包每纹素一个平滑值，该着色器过去直接使用该值，导致草皮、树皮和石砖都呈现相同的湿润光泽——资源包作者会过度设定平滑度，因为这在简单着色器下看起来不错，而 labPBR 会将其平方，因此适中的 0.5 变为显著的 0.25 光滑度。该设置将资源包的答案与着色器对该方块的猜测混合，而不是将其限制在某个范围内，因此资源包作者的排序得以保留：在每个设置下，被标记为平滑的方块始终比未标记的方块更平滑。金属除外，因为粗糙度是区分抛光金和刷铁的唯一因素。1.0 表示完全信任资源包。
+option.TONEMAP_WHITE=白点
+option.TONEMAP_WHITE.comment=曲线的纯白点设置位置，适用于两个使用白点的运算符——Reinhard 亮度运算和 Hable 运算。较低的值会更快烧掉，高值则保留高光但压平中间调。其他运算符则忽略此设置。
+option.EXPOSURE=曝光
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE.comment=测量画面并进行调整，就像眼睛从洞穴出来时一样。测量方式为几何平均值而非算术平均值，因此一个微小的亮物——太阳或灯光——不会拖暗整个画面。上述的手动曝光设置仍会作为修饰层叠加应用。
+option.AE_TARGET=目标亮度
+option.AE_MIN=允许最暗值
+option.AE_MIN.comment=没有下限，洞穴会完全适应到白天的光线，失去洞穴感。
+option.AE_MAX=允许最亮值
+option.AE_MAX.comment=没有上限，雪原会完全适应到灰色。
+option.AE_SPEED=自适应时间
+option.AE_SPEED.comment=达到新曝光值的大部分变化需要多少秒。瞬间切换会让画面闪烁，而不是像眼睛调整那样平滑。
+option.SATURATION=饱和度
+option.BLOOM_STRENGTH=泛光
+option.BLOOM_RADIUS=泛光半径
+option.BLOOM_RADIUS.comment=发光范围是屏幕高度的比例，而不是像素数——因此在 1080p 和 4K 时覆盖画面相同部分。两个光斑从相同采样点累积：一个紧致的核心包裹高光，另一个宽阔的边缘横跨画面，这正是真实镜头的表现。一个高斯滤波器会产生硬质光环或平滑的羽化效果。
+option.BLOOM_THRESHOLD=泛光阈值
+option.BLOOM_THRESHOLD.comment=发光开始的位置，以场景亮度为单位。路径追踪器产生的值远大于 1.0，因此这是一个真实的亮度值，而非百分比。
+option.BLOOM_KNEE=泛光膝值
+option.BLOOM_KNEE.comment=阈值到达的渐进程度。设置为零时，效果如陡峭的 cliff：高光在阈值线上漂移时会在帧间切换开/关，而梯度穿过该线时会在其上绘制可见的轮廓。膝值将决策扩展到一个范围，使发光逐渐出现。
+
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.sunPathRotation=太阳路径旋转

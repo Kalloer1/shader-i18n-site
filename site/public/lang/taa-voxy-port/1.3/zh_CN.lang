@@ -1,0 +1,6 @@
+option.SHARPENING=锐化
+value.SHARPENING.0=关闭
+value.SHARPENING.1=未锐化面具
+value.SHARPENING.2=CAS
+
+option.CAS_AMOUNT=CAS 数量

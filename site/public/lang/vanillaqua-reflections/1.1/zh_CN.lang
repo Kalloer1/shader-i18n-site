@@ -1,0 +1,113 @@
+# =========================================================================
+# Shader Name: VanillAqua Reflections v1.1
+# Modified by: in2bubble
+# Based on Miniature Shader by Mateus A. Kreuch
+# License: MIT; see /LICENSE.txt
+# =========================================================================
+#shaders/lang/en_us.lang
+
+profile.LOWEST=低配
+profile.LOW=中配
+profile.NORMAL=高配
+profile.HIGH=极高
+
+screen.WATER_SCREEN=水
+option.WATER_BRIGHTNESS=水亮度
+option.WATER_B=水蓝度
+option.WATER_A=水透明度
+option.WATER_MIN_TEXTURE=水纹强度 §e[?]
+option.WATER_MIN_TEXTURE.comment=决定水体保留的纹理程度；流动水仍保留全部纹理
+option.WATER_WAVE_SIZE=波浪大小
+option.WATER_WAVE_SPEED=波浪速度
+option.WATER_QUALITY=水视觉质量
+value.WATER_QUALITY.0=经济
+value.WATER_QUALITY.1=平衡
+value.WATER_QUALITY.2=高
+value.WATER_QUALITY.3=电影
+option.AQUA_WAVE_HEIGHT=波浪高度
+option.AQUA_WAVE_CHOP=波浪浪嘴度
+option.AQUA_WAVE_LENGTH=波浪长度比例
+option.WATER_CLARITY=水清澈度
+option.WATER_REFRACTION=瀑布折射
+option.WATER_ROUGHNESS=表面粗糙度
+option.WATER_NORMAL_SCALE=细小涟漪比例
+option.WATER_FLOW_SPEED=表面流速
+option.WATER_CAUSTICS_STRENGTH=焦散强度
+option.WATER_SSS_STRENGTH=波浪穿透光
+option.WATER_FOAM_STRENGTH=岸边泡沫
+option.WATER_SHORE_FOAM=岸边/接触泡沫
+option.WATER_RAIN_RIPPLES=雨滴冲击
+value.WATER_RAIN_RIPPLES.0=关闭
+value.WATER_RAIN_RIPPLES.1=开启
+option.WATER_UNDERWATER=水下体积
+value.WATER_UNDERWATER.0=关闭
+value.WATER_UNDERWATER.1=开启
+option.WATER_UNDERWATER_FOG=水下雾密度
+option.WATER_SIMULATION_DISTANCE=水面几何距离
+
+screen.COLORS_SCREEN=颜色屏幕
+option.GRADE_EXPOSURE=场景曝光
+option.GRADE_SATURATION=颜色饱和度
+option.GRADE_VIGNETTE=边缘暗角
+option.TORCH_INNER_R=内侧火把 §rR
+option.TORCH_INNER_G=内侧火把 §2G
+option.TORCH_INNER_B=内侧火把 §9B
+option.TORCH_MIDDLE_R=中间火把 §rR
+option.TORCH_MIDDLE_G=中间火把 §2G
+option.TORCH_MIDDLE_B=中间火把 §9B
+option.TORCH_OUTER_R=外侧火把 §rR
+option.TORCH_OUTER_G=外侧火把 §2G
+option.TORCH_OUTER_B=外侧火把 §9B
+option.MOON_R=月亮 §rR
+option.MOON_G=月亮 §2G
+option.MOON_B=月亮 §9B
+
+screen.ATMOSPHERE_SCREEN=大气层
+option.ENABLE_FOG=启用雾
+option.WEATHER_OPACITY=天气不透明度
+option.ENABLE_SKY=启用天空 §e[?]
+option.ENABLE_SKY.comment=如果使用天空资源包，请禁用此选项
+option.OVERWORLD_FOG_MAX_SLIDER=世界末日过渡雾 §e[?]
+option.OVERWORLD_FOG_MAX_SLIDER.comment=日出日落时的雾浓度
+option.OVERWORLD_FOG_MIN_SLIDER=世界末日雾
+option.END_STARS_SPEED=终末星光速度
+option.END_STARS_AMOUNT=终末星光数量
+option.END_STARS_OPACITY=终末星光不透明度
+
+screen.SHADOWS_SCREEN=阴影
+option.SHADOW_BLUENESS=阴影蓝度
+option.shadowDistance=阴影距离
+option.shadowMapResolution=阴影分辨率
+option.shadowIntervalSize=阴影聚焦频率 §e[?]
+option.shadowIntervalSize.comment=决定阴影在玩家附近重新聚焦的方块数
+option.entityShadowDistanceMul=实体阴影距离 §e[?]
+option.entityShadowDistanceMul.comment=以阴影距离的百分比表示
+option.SHADOW_PIXEL=阴影像素化
+option.LIGHT_BRIGHTNESS=阳光亮度
+option.sunPathRotation=太阳路径角度 §e[!]
+option.sunPathRotation.comment=Miniature 设计时考虑了直射阳光，若更改可能产生渲染异常
+option.SHADOW_DARKNESS=阴影暗度
+option.FLAT_LIGHTING=使用平面照明 §e[?]
+option.FLAT_LIGHTING.comment=若不使用平面照明，方块阴影将不符合阳光位置，如同原版
+option.ENABLE_SHADOWS=启用阴影
+option.SHADOW_ENTITY=实体阴影
+value.SHADOW_ENTITY.-1=§a关闭
+value.SHADOW_ENTITY.0=§e玩家
+value.SHADOW_ENTITY.1=§e全部
+
+screen.REFLECTIONS_SCREEN=反射
+option.REFLECTIONS=反射不透明度
+option.BLOCK_REFLECTIONS=方块反射不透明度 §e[?]
+option.BLOCK_REFLECTIONS.comment=为石砖、石英等方块添加反射效果。
+option.SSR_MAX_STEPS=最大步数
+option.SSR_BINARY_STEPS=最大细化步数
+option.SSR_STEP_SIZE=步长
+
+screen.OTHER_SCREEN=其他
+option.HIGHLIGHT_WAXED=高亮蜂蜡块 §e[?]
+option.HIGHLIGHT_WAXED.comment=持有蜂蜜块时会高亮蜂蜡块
+option.GLOWING_ORES=发光矿石
+option.HAND_DYNAMIC_LIGHTING=手持动态灯光
+value.HAND_DYNAMIC_LIGHTING.-1=§a关闭
+value.HAND_DYNAMIC_LIGHTING.0=§e随手持
+value.HAND_DYNAMIC_LIGHTING.1=§e始终开启

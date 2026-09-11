@@ -1,0 +1,16 @@
+option.WORLD_OUTLINE=世界轮廓
+option.WORLD_OUTLINE.comment=描边效果的总开关。
+value.WORLD_OUTLINE.0=关
+value.WORLD_OUTLINE.1=开
+
+option.WORLD_OUTLINE_THICKNESS=厚度
+option.WORLD_OUTLINE_THICKNESS.comment=以像素为单位的采样偏移距离。值越高=描边越粗，检测半径略微增大。
+
+option.WORLD_OUTLINE_I=亮度
+option.WORLD_OUTLINE_I.comment=描边像素的增亮程度。1.5 与 Complementary 默认值一致。
+
+option.WORLD_OUTLINE_DISTANCE_FADE=淡出距离
+option.WORLD_OUTLINE_DISTANCE_FADE.comment=描边淡出的世界距离（方块）。保持远景整洁。
+
+option.WORLD_OUTLINE_MIN_DISTANCE=近距离裁切
+option.WORLD_OUTLINE_MIN_DISTANCE.comment=低于此世界距离则跳过描边。隐藏手持物品上的描边。

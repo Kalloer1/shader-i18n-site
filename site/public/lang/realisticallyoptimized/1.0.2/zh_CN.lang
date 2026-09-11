@@ -1,0 +1,8 @@
+option.BORDER_EXPERIMENTAL=边框（实验性）
+option.BORDER_EXPERIMENTAL.comment=切换白色卡通边框。
+option.OUTLINE_WIDTH=边框宽度
+option.OUTLINE_WIDTH.comment=边框线的厚度。
+option.OUTLINE_BRIGHTNESS=边框亮度
+option.OUTLINE_BRIGHTNESS.comment=白色边框线的强度。
+option.GLOWING_ORE_MULT=矿石发光强度
+option.GLOWING_ORE_MULT.comment=确定发光矿石的发光强度。

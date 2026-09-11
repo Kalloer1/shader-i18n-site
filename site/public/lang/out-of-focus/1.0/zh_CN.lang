@@ -1,0 +1,10 @@
+option.BLUR_RADIUS=模糊半径
+option.BLUR_RADIUS.comment=模糊有多强。数值越高 = 越模糊（并且略微更慢）。
+value.BLUR_RADIUS.3=微弱
+value.BLUR_RADIUS.5=有点模糊
+value.BLUR_RADIUS.7=模糊
+value.BLUR_RADIUS.10=更模糊
+value.BLUR_RADIUS.14=最模糊
+value.BLUR_RADIUS.30=太模糊了
+value.BLUR_RADIUS.50=先生，这里是温蒂汉堡
+value.BLUR_RADIUS.100=为什么？！

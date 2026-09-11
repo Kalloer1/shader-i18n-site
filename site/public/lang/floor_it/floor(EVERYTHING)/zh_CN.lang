@@ -1,0 +1,24 @@
+option.WORLD_FOG=世界雾
+
+option.SHIT_PRECISION=向下取整！
+option.SHIT_PRECISION.comment=是的！向下取整！
+
+option.CLOUD_FOG=云雾
+
+option.SKY_FOG=天空雾
+
+option.DIRECTIONAL_ENTITY_LIGHT=定向实体光
+
+option.DIRECTIONAL_BLOCK_LIGHT=方向性方块光
+option.DIRECTIONAL_BLOCK_LIGHT.comment=将坐标向下取整，同时禁用阴影引擎等功能！
+
+option.BLOCK_LIGHT_BRIGHTNESS_FIX=阳光亮度修复
+option.BLOCK_LIGHT_BRIGHTNESS_FIX.comment=查看 https://bugs.mojang.com/browse/MC/issues/MC-278012
+
+option.GLINT_STRENGTH=附魔光芒强度
+
+option.MIPMAP_TYPE=Mipmap 类型
+option.MIPMAP_TYPE.comment=将 Mipmap 类型从“精确”改为其他值后，关闭光影时 Iris 将不会重新加载所有区块，便于进行比较。
+value.MIPMAP_TYPE.0=精确
+value.MIPMAP_TYPE.1=所有内容
+value.MIPMAP_TYPE.2=仅固体

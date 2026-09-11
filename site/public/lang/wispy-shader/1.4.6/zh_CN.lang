@@ -1,0 +1,173 @@
+# Wispy Shaders - Language File
+
+# Main Screens
+screen.COLORS_AND_LIGHTING=颜色与光照
+screen.ATMOSPHERE=大气
+screen.EFFECTS=效果
+screen.POST_PROCESSING=后处理
+screen.ADVANCED=高级
+
+# ===== COLORS & LIGHTING =====
+option.EXPOSURE=Brightness
+option.SATURATION=Saturation
+option.VIBRANCE=Vibrance
+option.CONTRAST=Contrast
+option.COLOR_TEMPERATURE=Color Temperature
+option.COLOR_TEMPERATURE.comment=Warm (orange) or cool (blue) tint. §bImpact: None.
+value.COLOR_TEMPERATURE.-0.5=Very Cool
+value.COLOR_TEMPERATURE.0.0=Neutral
+value.COLOR_TEMPERATURE.0.5=Very Warm
+option.COLOR_TINT=Color Tint
+option.COLOR_TINT.comment=Magenta or green color cast. §bImpact: None.
+value.COLOR_TINT.-0.5=Magenta
+value.COLOR_TINT.0.0=Neutral
+value.COLOR_TINT.0.5=Green
+option.TONEMAP_OPERATOR=Tone Mapping
+option.MIN_LIGHT_AMOUNT=Minimum Light
+option.MIN_LIGHT_AMOUNT.comment=Prevents pitch darkness. §bImpact: None.
+option.LM_FALLOFF_CURVE=Light Falloff
+
+screen.LIGHTING_ENHANCEMENTS=灯光微调
+option.DIRECTIONAL_LIGHTMAP=方向光
+option.DIRECTIONAL_LIGHTMAP.comment=火把光照衰减更平滑。§b影响：无。
+option.DYNAMIC_HANDLIGHT=平滑手持光照
+option.DYNAMIC_HANDLIGHT.comment=持有的火把光照衰减更好。§b影响：无。
+option.SOFTEN_SHADOWS=软阴影过渡
+option.SOFTEN_SHADOWS.comment=阴影边缘更平滑。§b影响：无。
+option.SHADOW_SOFTNESS=阴影柔和程度
+
+screen.AMBIENT_STRENGTH=时光照明强度
+option.SUNRISE_AMBIENT=日出光照
+option.NOON_AMBIENT=正午光照
+option.SUNSET_AMBIENT=日落光照
+option.NIGHT_AMBIENT=夜间光照
+
+# ===== ATMOSPHERE =====
+screen.ATMOSPHERE=大气
+option.ATMOSPHERIC_FOG=大气雾
+option.ATMOSPHERIC_FOG.comment=为远处地形添加深度雾效。§e影响：低。
+option.ATM_FOG_STRENGTH=雾密度
+option.BORDER_FOG=世界边缘雾
+option.HORIZON_FOG_COLOR=地平线雾 blended
+option.HORIZON_FOG_STRENGTH=地平线 blended 强度
+option.WATER_FOG_STRENGTH=水下雾
+option.WATER_FOG_STRENGTH.comment=控制水下雾的密度。§b影响：无。
+
+screen.SKY=天空
+option.STAR_SIZE=星星大小
+option.STAR_STRENGTH=星星亮度
+option.SUNSET_HORIZON_BOOST=日落地平线发光
+option.SUNSET_BOOST_STRENGTH=日落发光强度
+
+screen.WEATHER_EFFECTS=天气
+option.RAIN_SKY_DESATURATION=雨天反饱和度
+option.RAIN_SKY_DARKENING=雨天暗化
+
+screen.CELESTIAL=太阳与月亮
+option.ROUND_SUN=圆形太阳/月亮
+option.sunPathRotation=太阳角度
+option.MOON_PHASE_INFLUENCE=月相效果
+
+# ===== EFFECTS =====
+screen.PLANT_ANIMATION=植物动画
+option.WAVY_PLANTS=摆动的植物
+option.WAVY_PLANTS.comment=使草草和花朵随风摇摆。§e影响：低。
+option.WAVE_LEAVES=摆动的叶子
+option.WAVE_LEAVES.comment=使树叶移动。§e影响：低。
+option.WAVE_AMPLITUDE=摆动强度
+option.WAVE_SPEED=摆动速度
+option.WAVE_SIZE=摆动比例
+
+screen.DISTORTION_FX=屏幕扭曲
+option.UNDERWATER_DISTORTION=水下扭曲
+option.UNDERWATER_DISTORTION.comment=水下时的细微屏幕扭曲。§b影响: 无。
+option.DISTORTION_STRENGTH=扭曲强度
+option.LAVA_DISTORTION= lava 热扭曲
+option.LAVA_DISTORTION_STRENGTH= lava 扭曲强度
+option.NETHER_HEAT_DISTORTION=地下室热雾
+option.NETHER_DISTORTION_STRENGTH=热雾强度
+
+screen.GAMEPLAY_FX=游戏特效
+option.FROST_EFFECT=冰霜叠加
+option.FROST_STRENGTH=冰霜强度
+
+screen.DIMENSION_FX=维度特效
+option.NETHER_AMBIENT_PULSE=地狱脉冲
+option.NETHER_PULSE_SPEED=脉冲速度
+option.NETHER_PULSE_STRENGTH=脉冲强度
+option.END_VOID_FOG=末地虚空雾
+option.END_FOG_DENSITY=虚空雾密度
+
+screen.CEL_SHADING_SETTINGS=单元格着色
+option.CEL_SHADING=单元格着色
+option.CEL_OUTLINE_THICKNESS=线条粗细
+option.CEL_OUTLINE_DEPTH_THRESHOLD=深度阈值
+option.CEL_OUTLINE_NORMAL_THRESHOLD=法线阈值
+option.CEL_OUTLINE_R=阴影红色
+option.CEL_OUTLINE_G=阴影绿色
+option.CEL_OUTLINE_B=阴影蓝色
+option.CEL_OUTLINE_TRANSPARENCY=透明度
+option.CEL_OUTLINE_PLANTS=遮蔽植物
+
+# ===== POST PROCESSING =====
+option.BLOOM=泛光
+option.BLOOM.comment=使明亮区域发光。§6影响程度：中等。
+screen.BLOOM_SETTINGS=泛光设置
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_CURVE=泛光曲线
+
+option.SSAO=环境光遮蔽
+option.SSAO.comment=为角落添加逼真的阴影。§c影响: 高。
+screen.SSAO_SETTINGS=环境光遮蔽设置
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_SCALE=环境光遮蔽比例
+
+option.FSR_UPSCALING=WSR 1.0 Upscaling
+option.FSR_UPSCALING.comment=Wispy shaders 自研 upscaling 以提升性能。§6影响: +5-30% FPS。
+
+screen.FSR_SETTINGS=WSR 设置
+option.FSR_QUALITY=WSR 画质模式
+option.FSR_QUALITY.comment=画质越低，FPS 越高。§6影响：显著。
+value.FSR_QUALITY.0=超高画质 (82%)
+value.FSR_QUALITY.1=高画质 (77%)
+value.FSR_QUALITY.2=均衡 (67%)
+value.FSR_QUALITY.3=性能 (59%)
+value.FSR_QUALITY.4=超性能 (50%)
+option.FSR_SHARPNESS=WSR 锐化
+option.FSR_SHARPNESS.comment=控制边缘锐化强度。§b影响：无。
+
+screen.ANTI_ALIASING=抗锯齿
+option.TAA_MODE=AA 模式
+option.TAA_MODE.comment=平滑锯齿边缘。§6影响程度：中等。
+value.TAA_MODE.0=关闭
+value.TAA_MODE.1=TAA 低配
+value.TAA_MODE.2=TAA 中配
+option.TAA_BLEND_FACTOR=TAA 混合因子
+option.TAA_OFFCENTER_REJECTION=TAA 锐化
+
+screen.CAMERA_EFFECTS=相机效果
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR_STRENGTH=运动模糊数量
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN_STRENGTH=颗粒数量
+option.VIGNETTE=暗角
+option.VIGNETTE_STRENGTH=暗角强度
+
+screen.SHARPENING=锐化
+option.IMAGE_SHARPENING=启用锐化
+option.SHARPENING=锐化强度
+
+# ===== ADVANCED =====
+screen.DISTANT_HORIZONS=Distant Horizons
+option.DH_NOISE=DH 噪声
+option.DH_CUTOFF=DH 过渡距离
+option.DH_NOISE_SIZE=DH 噪声比例
+screen.DEBUG=调试
+option.DEBUG_SHOW_BUFFER=显示缓冲区
+
+# Performance Profiles
+profile.ULTRA_PERFORMANCE=§b超快
+profile.PERFORMANCE=§a快速
+profile.BALANCED=§e平衡
+profile.QUALITY=§6品质
+profile.ULTRA_QUALITY=§c极致品质

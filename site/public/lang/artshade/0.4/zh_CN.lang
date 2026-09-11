@@ -1,0 +1,1456 @@
+# ============================================================================
+# ENGLISH LANGUAGE
+# ============================================================================
+
+# ============================================================================
+#   CREDITS & PRESETS
+# ============================================================================
+
+option.ABOUT=艺术着色
+value.ABOUT.0=§4亚提亚风格
+
+profile.HIGH=§b高
+profile.MEDIUM=§f中
+profile.LOW=§e低
+profile.POTATO=§6土豆
+profile.comment=光影性能影响配置
+
+# Style Presets
+option.STYLE_PRESET=视觉样式
+value.STYLE_PRESET.0=§f§o§l明亮§a§o奇幻
+value.STYLE_PRESET.1=§d柔和色调
+value.STYLE_PRESET.2=§a写实
+value.STYLE_PRESET.3=§7§o§l暗黑§2§o奇幻
+value.STYLE_PRESET.4=§e原版
+option.STYLE_PRESET.comment=光影视觉风格预设
+
+# ============================================================================
+#   SCREENS & CATEGORIES
+# ============================================================================
+
+screen.LIGHT=光照
+screen.LIGHT.comment=阴影与主要环境光/直接光照设置
+
+screen.SKY=天空与天体
+screen.SKY.comment=天空渐变、太阳、月亮与暮光设置
+
+screen.FOG=雾
+screen.FOG.comment=全局、边界及洞穴雾效设置
+
+screen.POST_PROCESSING=后期处理
+screen.POST_PROCESSING.comment=泛光、光束、色调映射与边缘光效果
+
+screen.CLOUDS=云
+screen.CLOUDS.comment=体积云形状、高度、速度与噪声设置
+
+screen.WEATHER=天气
+screen.WEATHER.comment=风速、雨云与湿润效果
+
+screen.NATURE=自然与植被
+screen.NATURE.comment=植物摆动、树叶动画与玩家交互效果
+
+screen.WATER=水
+screen.WATER.comment=水体颜色、纹理、波光及水下效果
+
+screen.REFLECTIONS=反射
+screen.REFLECTIONS.comment=屏幕空间反射与镜面反射设置
+
+screen.PARTICLES_DIMENSIONS=粒子与维度
+screen.PARTICLES_DIMENSIONS.comment=自定义粒子、大气视觉特效及维度特化设置
+
+screen.MISC=杂项与模组兼容性
+screen.MISC.comment=扩展设置与模组兼容性
+
+screen.DIMENSIONS=维度
+screen.DIMENSIONS.comment=维度特化视觉设置与自定义颜色
+
+screen.END_DIMENSION=末地
+screen.END_DIMENSION.comment=末地维度的自定义天空、瘴气、星场、雾效及环境设置
+
+screen.END_SKY_SCREEN=天空
+screen.END_SKY_SCREEN.comment=天空渐变颜色、变化效果与天顶天体光晕设置
+
+screen.END_MIASMA_SCREEN=瘴气
+screen.END_MIASMA_SCREEN.comment=3D体积暗色瘴气密度、速度、颜色与自上而下照明效果
+
+screen.END_STARS_SCREEN=星星
+screen.END_STARS_SCREEN.comment=星场颜色、密度与大小设置
+
+screen.END_FOG_SCREEN=雾
+screen.END_FOG_SCREEN.comment=末地维度雾效颜色与密度设置
+
+screen.END_AMB_SCREEN=环境光
+screen.END_AMB_SCREEN.comment=末地维度环境光照颜色
+
+option.END_SKY_ZENITH_R=末地天顶红
+option.END_SKY_ZENITH_G=末地天顶绿
+option.END_SKY_ZENITH_B=末地天顶蓝
+
+option.END_SKY_HORIZON_R=末地地平线红
+option.END_SKY_HORIZON_G=末地地平线绿
+option.END_SKY_HORIZON_B=末地地平线蓝
+
+option.END_SKY_VARIATION_BRIGHTNESS=天空变化亮度
+option.END_SKY_VARIATION_BRIGHTNESS.comment=动态星云波的亮度（负值将使其变暗）
+
+option.END_SKY_VARIATION_SPEED=天空变化速度
+option.END_SKY_VARIATION_SPEED.comment=控制移动天空变化波动的动画速度，设为0可冻结运动
+
+option.END_ZENITH_SUN_HEIGHT=3D天顶太阳高度
+option.END_ZENITH_SUN_HEIGHT.comment=控制3D天体太阳在中央末地岛世界空间上方的海拔高度
+
+option.END_ZENITH_SUN_SIZE=3D天顶太阳大小
+option.END_ZENITH_SUN_SIZE.comment=控制3D天体太阳的物理半径
+
+option.END_ZENITH_GLOW_INTENSITY=天顶光晕强度
+option.END_ZENITH_GLOW_INTENSITY.comment=控制天空天顶处天体光晕的亮度
+
+option.END_ZENITH_GLOW_SPREAD=天顶光晕扩散
+option.END_ZENITH_GLOW_SPREAD.comment=控制天顶天体光晕的聚集度与聚焦程度
+
+option.END_ZENITH_LIGHT_R=天顶光红
+option.END_ZENITH_LIGHT_G=天顶光绿
+option.END_ZENITH_LIGHT_B=天顶光蓝
+
+option.END_SUN_FLICKER_INTENSITY=光线不稳定性
+option.END_SUN_FLICKER_INTENSITY.comment=控制天顶太阳的强度/闪烁能量不稳定性
+
+option.END_SUN_FLICKER_SPEED=不稳定速度
+option.END_SUN_FLICKER_SPEED.comment=控制动态光照强度闪烁的可变速度
+
+option.END_SUN_DISTORT_INTENSITY=光线扭曲强度
+option.END_SUN_DISTORT_INTENSITY.comment=控制从天顶太阳发出的3D光线扭曲强度
+
+option.END_SUN_DISTORT_SPEED=光线扭曲速度
+option.END_SUN_DISTORT_SPEED.comment=控制3D光线扭曲的动画速度
+
+option.END_SUN_DISTORT_DETAIL=光线扭曲细节
+option.END_SUN_DISTORT_DETAIL.comment=控制3D光线扭曲的噪声比例与精细细节
+
+option.END_SUN_VAR_R=太阳变化红
+option.END_SUN_VAR_G=太阳变化绿
+option.END_SUN_VAR_B=太阳变化蓝
+
+option.END_SUN_VAR_INTENSITY=太阳变化强度
+option.END_SUN_VAR_INTENSITY.comment=控制从天顶太阳中心发出的径向颜色变化波的亮度和强度。
+
+option.END_SUN_VAR_SPEED=太阳变化速度
+option.END_SUN_VAR_SPEED.comment=控制径向颜色变化波的向外辐射速度。
+
+option.END_STARS_R=末地星星红色
+option.END_STARS_G=末地星星绿色
+option.END_STARS_B=末地星星蓝色
+
+option.END_STARS_DENSITY=末地星星密度
+option.END_STARS_DENSITY.comment=控制末地显示的星星总量和密度。
+
+option.END_STARS_SIZE=末地星星大小
+option.END_STARS_SIZE.comment=控制单个星星的缩放和大小。
+
+option.END_FOG_R=末地雾红色
+option.END_FOG_G=末地雾绿色
+option.END_FOG_B=末地雾蓝色
+option.END_FOG_DENSITY=末地雾密度
+
+option.END_AMB_R=末地环境光红色
+option.END_AMB_G=末地环境光绿色
+option.END_AMB_B=末地环境光蓝色
+
+option.ENABLE_END_MIASMA=3D黑暗瘴气
+option.ENABLE_END_MIASMA.comment=启用一个从底部到顶部环绕末地岛的3D体积黑暗瘴气烟雾。
+value.ENABLE_END_MIASMA.0=§c关
+value.ENABLE_END_MIASMA.1=§a开
+
+option.END_MIASMA_DENSITY=瘴气密度
+option.END_MIASMA_DENSITY.comment=控制3D黑暗瘴气的不透明度和厚度。
+
+option.END_MIASMA_SPEED=瘴气旋转速度
+option.END_MIASMA_SPEED.comment=控制黑暗瘴气的3D旋转动画速度。
+
+option.END_MIASMA_R=瘴气红色
+option.END_MIASMA_G=瘴气绿色
+option.END_MIASMA_B=瘴气蓝色
+
+option.END_MIASMA_LIGHT_INTENSITY=瘴气顶部照明
+option.END_MIASMA_LIGHT_INTENSITY.comment=控制天顶光照亮3D瘴气顶部的明亮程度。
+
+option.END_MIASMA_LIGHT_FALLOFF=瘴气光衰减
+option.END_MIASMA_LIGHT_FALLOFF.comment=控制顶部天顶光向下渗透到3D瘴气烟雾中的深度。
+screen.NETHER_DIMENSION=下界
+screen.NETHER_DIMENSION.comment=下界的调色板、雾、环境光、岩浆辉光和余烬设置。
+
+screen.NETHER_TINT_SCREEN=调色板
+screen.NETHER_TINT_SCREEN.comment=重新设计原版每个群系的下界色调，该色调驱动雾、天空和环境光。
+
+screen.NETHER_FOG_SCREEN=雾
+screen.NETHER_FOG_SCREEN.comment=下界雾亮度、密度以及熔岩海中额外的薄雾。
+
+screen.NETHER_AMB_SCREEN=环境光
+screen.NETHER_AMB_SCREEN.comment=方块光照不到的每个下界表面的基础照明。
+
+screen.NETHER_GLOW_SCREEN=岩浆辉光
+screen.NETHER_GLOW_SCREEN.comment=从熔岩海升起并照射到其上方地形的暖反弹光。
+
+screen.NETHER_EMBER_SCREEN=余烬
+screen.NETHER_EMBER_SCREEN.comment=漂浮的余烬在维度中向上漂浮。
+
+option.NETHER_SATURATION=调色板饱和度
+option.NETHER_SATURATION.comment=对原版群系色调的色彩增强。每个下界群系保持自己的颜色。
+
+option.NETHER_TINT_R=调色板推移红色
+option.NETHER_TINT_G=调色板推移绿色
+option.NETHER_TINT_B=调色板推移蓝色
+
+option.NETHER_TINT_MIX=调色板推移量
+option.NETHER_TINT_MIX.comment=将每个群系拉向色调颜色。0保持原版色调，1将整个维度涂成单一颜色。
+
+option.NETHER_FOG_BRIGHTNESS=下界雾亮度
+option.NETHER_FOG_BRIGHTNESS.comment=下界雾的亮度。还设置地形后面虚空的颜色。
+
+option.NETHER_FOG_DENSITY=下界雾气浓度
+option.NETHER_FOG_DENSITY.comment=对全局雾密度的乘数，仅在下界应用。
+
+option.NETHER_FOG_HEIGHT_FADE=高度分层
+option.NETHER_FOG_HEIGHT_FADE.comment=使雾在靠近熔岩海处变厚，从而地面呈现为发光的薄雾，而上层洞穴保持清晰。
+value.NETHER_FOG_HEIGHT_FADE.0=§c关
+value.NETHER_FOG_HEIGHT_FADE.1=§a开
+
+option.NETHER_FOG_HEIGHT_MULTIPLIER=地面雾乘数
+option.NETHER_FOG_HEIGHT_MULTIPLIER.comment=雾在维度底部变得多浓。
+
+option.NETHER_FOG_FLOOR=雾地面海拔
+option.NETHER_FOG_FLOOR.comment=雾达到其完整地面密度的海拔。
+
+option.NETHER_FOG_CEILING=雾天花板海拔
+option.NETHER_FOG_CEILING.comment=雾降回其正常密度的海拔。
+
+option.NETHER_AMBIENT_INTENSITY=下界环境光强度
+option.NETHER_AMBIENT_INTENSITY.comment=照亮方块光照漏掉的每个表面。在此维度中替代最低洞穴光。
+
+option.ENABLE_NETHER_GLOW=岩浆辉光
+option.ENABLE_NETHER_GLOW.comment=从熔岩海升起的暖反弹光。朝下的表面捕捉到最多，它随海拔升高而消失。
+value.ENABLE_NETHER_GLOW.0=§c关
+value.ENABLE_NETHER_GLOW.1=§a开
+
+option.NETHER_GLOW_R=岩浆辉光红色
+option.NETHER_GLOW_G=岩浆辉光绿色
+option.NETHER_GLOW_B=岩浆辉光蓝色
+
+option.NETHER_GLOW_INTENSITY=岩浆辉光强度
+option.NETHER_GLOW_INTENSITY.comment=从岩浆升起的反弹光的亮度。
+
+option.NETHER_GLOW_LEVEL=岩浆海海拔
+option.NETHER_GLOW_LEVEL.comment=辉光升起的岩浆海的海拔。原版池子位于y 31左右。
+
+option.NETHER_GLOW_RANGE=岩浆辉光范围
+option.NETHER_GLOW_RANGE.comment=辉光在消失前能覆盖岩浆海上方多远。
+
+option.NETHER_GLOW_FLICKER=岩浆辉光闪烁
+option.NETHER_GLOW_FLICKER.comment=辉光的缓慢摆动，就像下方的池子在翻腾。0使其完全稳定。
+
+option.NETHER_GLOW_SPEED=岩浆辉光闪烁速度
+option.NETHER_GLOW_SPEED.comment=辉光摆动的速度。
+
+option.ENABLE_NETHER_EMBERS=浮动余烬
+option.ENABLE_NETHER_EMBERS.comment=发光的余烬向上飘浮于下界中。替代下界中的主世界尘埃集群。
+value.ENABLE_NETHER_EMBERS.0=§c关
+value.ENABLE_NETHER_EMBERS.1=§a开
+
+option.NETHER_EMBER_COVERAGE=余烬覆盖范围
+option.NETHER_EMBER_COVERAGE.comment=实际承载余烬的生成单元格比例。
+
+option.NETHER_EMBER_DENSITY=余烬密度
+option.NETHER_EMBER_DENSITY.comment=每个生成单元格的余烬数量。数值越高对性能的影响越大。
+
+option.NETHER_EMBER_SIZE=余烬尺寸
+option.NETHER_EMBER_OPACITY=余烬不透明度
+
+option.NETHER_EMBER_BRIGHTNESS=余烬亮度
+option.NETHER_EMBER_BRIGHTNESS.comment=余烬自发光且不受环境光照影响。将此值调高至1以上可增强其泛光效果。
+
+option.NETHER_EMBER_SPEED=余烬上升速度
+option.NETHER_EMBER_SPEED.comment=余烬爬升的快慢。
+
+option.NETHER_EMBER_SWAY=余烬摆动幅度
+option.NETHER_EMBER_SWAY.comment=余烬上升时轨迹的横向波动宽度。设为0时将直线攀升。
+
+option.NETHER_EMBER_R=余烬红色值
+option.NETHER_EMBER_G=余烬绿色值
+option.NETHER_EMBER_B=余烬蓝色值
+
+option.NETHER_EMBER_BOX_WIDTH=余烬生成区域宽度
+option.NETHER_EMBER_BOX_WIDTH.comment=生成单元格的水平尺寸。更大的单元格会将相同数量的余烬分散到更广的区域。
+
+option.NETHER_EMBER_BOX_HEIGHT=余烬生成区域高度
+option.NETHER_EMBER_BOX_HEIGHT.comment=生成单元格的垂直尺寸。
+
+
+# ============================================================================
+#   1. LIGHT
+# ============================================================================
+
+# --- Shadows ---
+screen.SHADOWS=阴影
+option.ENABLE_SHADOWS=启用阴影
+value.ENABLE_SHADOWS.0=§c关
+value.ENABLE_SHADOWS.1=§a开
+option.ENABLE_SMOOTH_SHADOWS=平滑阴影
+value.ENABLE_SMOOTH_SHADOWS.0=§c关
+value.ENABLE_SMOOTH_SHADOWS.1=§a开
+option.PIXELATED_SHADOWS=像素化阴影
+option.PIXELATED_SHADOWS.comment=将阴影对齐到世界网格以呈现方块化的复古效果。云层阴影跟随云体体素分布。
+value.PIXELATED_SHADOWS.0=§c关
+value.PIXELATED_SHADOWS.1=§a开
+option.SHADOW_PIXEL_RESOLUTION=阴影像素网格
+option.SHADOW_PIXEL_RESOLUTION.comment=阴影查找所对齐的网格步长（单位：每方块步数）。16.0可与我的世界方块纹理精确对齐。
+option.SHADOW_ADAPTIVE_GRID=自适应阴影网格
+option.SHADOW_ADAPTIVE_GRID.comment=在远距离自动降低网格精度，避免因单个阴影纹素宽于方块纹素导致的单元格闪烁。
+value.SHADOW_ADAPTIVE_GRID.0=§c关
+value.SHADOW_ADAPTIVE_GRID.1=§a开
+option.SHADOW_CELL_SAMPLES=阴影单元格采样数
+option.SHADOW_CELL_SAMPLES.comment=每个阴影单元格的查找次数。多数情况下1次足够；4次与9次可显著平滑单元格边缘，但会消耗实际帧率。
+value.SHADOW_CELL_SAMPLES.1=1（4次采样）
+value.SHADOW_CELL_SAMPLES.4=4（16次采样）
+value.SHADOW_CELL_SAMPLES.9=9（36次采样）
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowMapResolution.comment=阴影图中的纹素数量。清晰度取决于此值除以阴影距离，调整时两者需同步变动。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=硬阴影延伸的最远距离（超过此范围由光照贴图与接触追踪接管）。性能消耗与距离平方成正比。
+option.shadowDistanceRenderMul=阴影剔除距离
+option.shadowDistanceRenderMul.comment=超出阴影距离后仍继续写入阴影图的区块范围。仅当远距离高大建筑丢失阴影时才需调高。
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BIAS.comment=调节自动深度偏移量。若受光表面出现闪烁请调高此值，若需消除阴影与投射体之间的间隙请调低。
+option.SHADOW_DISTORTION=阴影扭曲
+option.SHADOW_OPACITY=阴影不透明度
+option.SHADOW_ENTITY=阴影实体
+value.SHADOW_ENTITY.0=§c关
+value.SHADOW_ENTITY.1=§a开
+option.AMBIENT_OCCLUSION=环境光遮蔽
+value.AMBIENT_OCCLUSION.0=§c关
+value.AMBIENT_OCCLUSION.1=原版
+option.VANILLA_AO_INTENSITY=原版环境光遮蔽强度
+
+option.LOD_SHADOW_FALLOFF=远距离阴影衰减
+option.LOD_SHADOW_FALLOFF.comment=阴影图之外区域的天空光照阴影强度。调高可加深远距离阴影，设为0则保持均匀。
+option.ENABLE_SS_SHADOWS=屏幕空间阴影
+option.ENABLE_SS_SHADOWS.comment=在深度缓冲区中追踪接触阴影（仅在阴影图停止生效的区域生效）。两者永不重叠。
+value.ENABLE_SS_SHADOWS.0=§c关
+value.ENABLE_SS_SHADOWS.1=§a开
+option.SS_SHADOW_STRENGTH=屏幕空间阴影不透明度
+option.SS_SHADOW_STRENGTH.comment=追踪阴影的最大暗度。阴影表面仍能接收天空光照，与阴影图投射的阴影原理相同。
+option.SS_SHADOW_STEPS=屏幕空间阴影步进数
+option.SS_SHADOW_STEPS.comment=每条光线的采样次数。每次步进距离为前次的1.5倍，少量增加可显著提升覆盖范围。
+
+# --- Main Light ---
+option.SUN_R=太阳红色值
+option.SUN_G=太阳绿色值
+option.SUN_B=太阳蓝色值
+option.MOON_R=月球红色
+option.MOON_G=月球绿色
+option.MOON_B=月球蓝色
+option.TORCH_R=火把红色
+option.TORCH_G=火把绿色
+option.TORCH_B=火把蓝色
+option.TORCH_INTENSITY=火把强度
+option.MIN_CAVE_LIGHT=洞穴最低光照度
+option.CAVE_LIGHT_FALLOFF=洞穴光照衰减系数
+option.HAND_DYNAMIC_LIGHTING=动态手持光源
+value.HAND_DYNAMIC_LIGHTING.0=§c关
+value.HAND_DYNAMIC_LIGHTING.1=§a开
+option.DYNAMIC_LIGHT_RADIUS=动态光源半径
+option.AMBIENT_INTENSITY=日间环境光强度
+option.AMBIENT_NIGHT_INTENSITY=夜间环境光强度
+
+# ============================================================================
+#   2. SKY
+# ============================================================================
+
+# --- Sunrise ---
+screen.SUNRISE=日出
+option.SUN_SUNRISE_R=日出红
+option.SUN_SUNRISE_G=日出绿
+option.SUN_SUNRISE_B=日出蓝
+option.SUN_SUNRISE_SATURATION=日出饱和度
+option.SUNRISE_END=日出结束时间
+option.SUNRISE_FADE_SPEED=日出消退速度
+
+# --- Sky Day ---
+screen.SKY_DAY=白天天空
+option.SKY_ZENITH_R=天顶红色值（日间）
+option.SKY_ZENITH_G=天顶绿色值（日间）
+option.SKY_ZENITH_B=天顶蓝色值（日间）
+option.SKY_HORIZON_R=地平线红色值（日间）
+option.SKY_HORIZON_G=地平线绿色值（日间）
+option.SKY_HORIZON_B=地平线蓝色值（日间）
+
+# --- Sky Night ---
+screen.SKY_NIGHT=夜空
+option.SKY_NIGHT_ZENITH_R=天顶红色值（夜间）
+option.SKY_NIGHT_ZENITH_G=天顶绿色值（夜间）
+option.SKY_NIGHT_ZENITH_B=天顶蓝色值（夜间）
+option.SKY_NIGHT_HORIZON_R=地平线红色值（夜间）
+option.SKY_NIGHT_HORIZON_G=地平线绿色值（夜间）
+option.SKY_NIGHT_HORIZON_B=地平线蓝色值（夜间）
+option.NIGHT_START=夜晚开始时间
+
+# --- Sunset ---
+screen.SUNSET=日落
+option.SUN_SUNSET_R=日落红色值
+option.SUN_SUNSET_G=日落绿
+option.SUN_SUNSET_B=日落蓝
+option.SUN_SUNSET_SATURATION=日落饱和度
+option.SUNSET_START=日落开始时间
+option.SUNSET_FADE_SPEED=日落渐隐速度
+
+# --- Celestial ---
+screen.CELESTIAL=天体
+option.SUN_SIZE=太阳大小
+option.MOON_SIZE=月球大小
+option.SUN_GLOW_POWER=太阳光辉强度
+option.MOON_GLOW_POWER=月光强度
+option.SUN_GLOW_SPREAD=太阳光辉扩散
+option.MOON_GLOW_SPREAD=月光扩散范围
+option.CELESTIAL_TILT=天体倾斜度
+
+# --- Main Sky ---
+option.SKY_PRESET=天空预设
+value.SKY_PRESET.0=风格化
+value.SKY_PRESET.1=写实
+value.SKY_PRESET.2=柔和色调
+value.SKY_PRESET.3=原版
+option.SKY_GRADIENT=天空渐变高度
+option.SUNRISESET_Y_OFFSET=暮光垂直偏移
+option.SUNRISESET_SPREAD=暮光扩散范围
+option.SUNRISESET_STRETCH=暮光拉伸程度
+option.SUNRISESET_AMB_INTENSITY=暮光环境光强度
+option.SUNRISESET_LIGHT_MULTIPLIER=暮光光照倍率
+option.SUNRISESET_LIGHT_SATURATION=暮光光照饱和度
+
+# --- Biome Sky Colors ---
+screen.BIOME_COLORS=群系天空颜色
+option.ENABLE_BIOME_SKY_COLOR=启用群系天空颜色
+value.ENABLE_BIOME_SKY_COLOR.0=§c关
+value.ENABLE_BIOME_SKY_COLOR.1=§a开
+option.BIOME_TRANSITION_TIME=群系过渡时间
+option.BIOME_TRANSITION_TIME.comment=群系气候改变时天空与水体色调渐变过渡所需秒数。
+value.BIOME_TRANSITION_TIME.0.0=§c即时
+option.BIOME_COLD_R=寒冷群系天空红色
+option.BIOME_COLD_G=寒冷群系天空绿色
+option.BIOME_COLD_B=寒冷群系天空蓝色
+option.BIOME_COLD_INTENSITY=寒冷群系天空日间强度
+option.BIOME_NIGHT_COLD_INTENSITY=寒冷群系天空夜间强度
+option.BIOME_TEMPERATE_R=温带群系天空红色
+option.BIOME_TEMPERATE_G=温带群系天空绿色
+option.BIOME_TEMPERATE_B=温带群系天空蓝色
+option.BIOME_TEMPERATE_INTENSITY=温带群系天空日间强度
+option.BIOME_NIGHT_TEMPERATE_INTENSITY=温带群系天空夜间强度
+option.BIOME_WET_R=湿润群系天空红色
+option.BIOME_WET_G=湿润群系天空绿色
+option.BIOME_WET_B=湿润群系天空蓝色
+option.BIOME_WET_INTENSITY=湿润群系天空日间强度
+option.BIOME_NIGHT_WET_INTENSITY=湿润群系天空夜间强度
+option.BIOME_WARM_R=温暖群系天空红色
+option.BIOME_WARM_G=温暖群系天空绿色
+option.BIOME_WARM_B=温暖群系天空蓝色
+option.BIOME_WARM_INTENSITY=温暖群系天空日间强度
+option.BIOME_NIGHT_WARM_INTENSITY=温暖群系天空夜间强度
+option.BIOME_OCEAN_R=海洋群系天空红色
+option.BIOME_OCEAN_G=海洋群系天空绿色
+option.BIOME_OCEAN_B=海洋群系天空蓝色
+option.BIOME_OCEAN_INTENSITY=海洋群系天空日间强度
+option.BIOME_NIGHT_OCEAN_INTENSITY=海洋群系天空夜间强度
+
+
+# ============================================================================
+#   3. FOG
+# ============================================================================
+
+option.FOG_DENSITY=全局雾密度
+option.FOG_FALLOFF=雾衰减
+option.FOG_BRIGHTNESS=雾气亮度
+option.FOG_SATURATION=雾的饱和度
+option.FOG_SUNRISE_SATURATION=日出雾饱和度
+option.FOG_SUNSET_SATURATION=日落雾饱和度
+option.CAVE_FOG_R=洞穴雾红色
+option.CAVE_FOG_G=洞穴雾绿色
+option.CAVE_FOG_B=洞穴雾蓝色
+option.ENABLE_BORDER_FOG=启用边界雾
+value.ENABLE_BORDER_FOG.0=§c关
+value.ENABLE_BORDER_FOG.1=§a开
+option.BORDER_FOG_START=边界雾起始距离
+option.BORDER_FOG_FALLOFF=边缘雾效衰减
+option.BORDER_FOG_END=边界雾终止距离
+
+# ============================================================================
+#   4. POST PROCESSING
+# ============================================================================
+
+# --- Rim Light ---
+screen.RIM_LIGHT=边缘光
+option.ENABLE_RIM_LIGHT=启用边缘光
+value.ENABLE_RIM_LIGHT.0=§c关
+value.ENABLE_RIM_LIGHT.1=无植物
+value.ENABLE_RIM_LIGHT.2=全部
+option.RIM_COLOR_INFLUENCE=颜色影响
+option.RIM_THICKNESS=厚度
+option.RIM_STRENGTH=强度
+option.RIM_DEPTH_THRESHOLD=深度阈值
+option.RIM_MAX_DISTANCE=最大距离
+
+# --- Bloom ---
+screen.BLOOM=泛光
+option.ENABLE_BLOOM=启用泛光效果
+value.ENABLE_BLOOM.0=§c关
+value.ENABLE_BLOOM.1=§a开
+option.OBJECT_BLOOM_INTENSITY=物体泛光强度
+option.GLOBAL_BLOOM_INTENSITY=全局泛光强度
+option.GLOBAL_BLOOM_THRESHOLD=全局泛光阈值
+option.BLOOM_RADIUS=泛光半径
+option.BLOOM_STEPS=泛光步长
+option.BLOOM_COLOR_STRENGTH=颜色强度
+option.BLOOM_COLOR_DETECTION=颜色检测阈值
+
+# --- Godrays ---
+screen.GODRAYS=丁达尔光效
+option.ENABLE_GODRAYS=启用光束效果
+value.ENABLE_GODRAYS.0=§c关
+value.ENABLE_GODRAYS.1=§a开
+option.GODRAY_STEPS=质量（步长）
+option.GODRAY_INTENSITY=强度
+option.GODRAY_MAX_DISTANCE=最大距离
+option.GODRAY_CONTRAST=户外对比度
+option.GODRAY_INDOOR_BOOST=室内增强
+option.GODRAY_OUTDOOR_MASK_START=户外遮罩起始距离
+option.GODRAY_OUTDOOR_MASK_END=户外遮罩终止距离
+option.GODRAY_DISTANCE_FADE_START=距离淡出开始
+option.GODRAY_DISTANCE_FADE_END=距离淡出结束
+
+# --- Tonemap ---
+screen.TONEMAP=色调映射与色彩
+option.TONEMAP_OPERATOR=色调映射运算符
+value.TONEMAP_OPERATOR.0=原版
+value.TONEMAP_OPERATOR.1=色彩编码的电影级色调映射
+value.TONEMAP_OPERATOR.2=莱因哈德-乔迪映射
+option.EXPOSURE=曝光
+option.GAMMA=伽马
+option.DARKNESS_DESATURATION=暗部去饱和
+option.SATURATION=饱和度
+option.VIBRANCE=鲜艳度
+option.TINT_R=全局色调红色
+option.TINT_G=全局色调绿色
+option.TINT_B=全局色调蓝色
+option.TINT_INTENSITY=色调强度
+option.HUE_SHIFT_R=色相偏移红色
+option.HUE_SHIFT_G=色相偏移绿色
+option.HUE_SHIFT_B=色相偏移蓝色
+option.HUE_SHIFT_INTENSITY=色相偏移强度
+
+# --- Anti-Aliasing ---
+option.ENABLE_TAA=自适应时间抗锯齿
+value.ENABLE_TAA.0=§c关
+value.ENABLE_TAA.1=§a开
+option.TAA_STRENGTH=TAA 强度
+option.TAA_STRENGTH.comment=保留上一帧的程度。较低值使太阳移动时阴影边缘更快稳定，较高值则增强抗锯齿效果。
+option.SHARPENING=锐化
+value.SHARPENING.0=§c关
+value.SHARPENING.1=§a开
+option.SHARPEN_STRENGTH=锐化强度
+
+# ============================================================================
+#   5. CLOUDS
+# ============================================================================
+
+option.VANILLA_CLOUDS=原版云
+
+option.CLOUD_PRESET=云层预设
+option.CLOUD_PRESET.comment="风格化"保留精细体素、阴影底面与柔和边缘。"故事"模式更趋块状、扁平且更缓慢。
+value.CLOUD_PRESET.0=风格化
+value.CLOUD_PRESET.1=故事模式
+value.VANILLA_CLOUDS.0=§c关
+value.VANILLA_CLOUDS.1=§a开
+
+screen.CLOUD_SHADOWS=云层阴影
+screen.CLOUD_SHADOWS.comment=云层在阳光到达地面前将其遮挡。
+option.ENABLE_CLOUD_SHADOWS=启用云阴影
+value.ENABLE_CLOUD_SHADOWS.0=§c关
+value.ENABLE_CLOUD_SHADOWS.1=§a开
+option.ENABLE_SMOOTH_CLOUD_SHADOWS=平滑云阴影
+option.ENABLE_SMOOTH_CLOUD_SHADOWS.comment=使用比云层本身更精细的网格读取阴影数据。需开启像素化阴影。
+option.CLOUD_SHADOW_SUBDIV=阴影细节
+option.CLOUD_SHADOW_SUBDIV.comment=沿单个体素边缘的阴影单元数量。4将每个体素细分为4x4网格，16几乎完全平滑。
+value.ENABLE_SMOOTH_CLOUD_SHADOWS.0=§c关
+value.ENABLE_SMOOTH_CLOUD_SHADOWS.1=§a开
+option.CLOUD_SHADOW_STRENGTH=阴影强度
+option.CLOUD_SHADOW_STRENGTH.comment=云层遮挡直射阳光的比例。1.0即完全遮挡。
+option.CLOUD_SHADOW_AMBIENT=环境光减弱
+option.CLOUD_SHADOW_AMBIENT.comment=云层同时减弱天空环境光的程度。提高此值可实现真实的阴暗阴天地面效果。
+option.CLOUD_SHADOW_LAYERS=投影层
+option.CLOUD_SHADOW_LAYERS.comment=投射阴影的云层数（从最低层开始计算）。每增加一层，每像素需额外采样最多8次噪声。
+option.CLOUD_SHADOW_HORIZON_FADE=地平线淡出
+option.CLOUD_SHADOW_HORIZON_FADE.comment=阴影达到最大强度的太阳高度，低于此高度时阴影逐渐淡出。
+screen.CLOUDS_VISUAL=云层视觉效果
+option.CLOUD_SPEED_MULTIPLIER=云速乘数
+option.CLOUD_SKY_BLEND=云天空混合度
+option.CLOUD_BASE_DARKNESS=云层基底暗度
+option.CLOUD_NOISE_SMOOTHNESS=噪声平滑度
+option.CLOUD_HEIGHT=云层高度
+option.CLOUD_THICKNESS=云层厚度
+option.CLOUD_PIXEL_SIZE=云像素尺寸
+option.CLOUD_LAYER_SPACING=层间距
+option.CLOUD_DISTANCE=云层距离
+option.CLOUD_MORPH_SPEED=云层变形速度
+option.CLOUD_SHORE=云边缘柔和度
+option.CLOUD_SMOOTH_DOWN=全局向下淡出
+option.CLOUD_SMOOTH_UP=全局向上淡出
+option.CLOUD_SUN_GLOW=启用太阳辉光
+value.CLOUD_SUN_GLOW.0=§c关
+value.CLOUD_SUN_GLOW.1=§a开
+option.CLOUD_SUN_GLOW_POWER=太阳光辉强度
+option.CLOUD_SUN_GLOW_SPREAD=太阳光辉扩散
+option.CLOUD_SUN_GLOW_SMOOTHNESS=太阳辉光平滑度
+
+screen.CLOUDS_LAYER_1=第1层
+option.CLOUD_L1_COVERAGE=覆盖范围
+option.CLOUD_L1_MIX=纹理混合
+option.CLOUD_L1_NOISE_1=噪声纹理 A
+option.CLOUD_L1_NOISE_2=噪声纹理 B
+option.CLOUD_L1_SCALE_1=缩放 A
+option.CLOUD_L1_SCALE_2=缩放 B
+
+screen.CLOUDS_LAYER_2=第2层
+option.CLOUD_L2_COVERAGE=覆盖范围
+option.CLOUD_L2_MIX=纹理混合
+option.CLOUD_L2_NOISE_1=噪声纹理 A
+option.CLOUD_L2_NOISE_2=噪声纹理 B
+option.CLOUD_L2_SCALE_1=缩放 A
+option.CLOUD_L2_SCALE_2=缩放 B
+
+screen.CLOUDS_LAYER_3=第3层
+option.CLOUD_L3_COVERAGE=覆盖范围
+option.CLOUD_L3_MIX=纹理混合
+option.CLOUD_L3_NOISE_1=噪声纹理 A
+option.CLOUD_L3_NOISE_2=噪声纹理 B
+option.CLOUD_L3_SCALE_1=缩放 A
+option.CLOUD_L3_SCALE_2=缩放 B
+
+value.CLOUD_L1_NOISE_1.1=纹理 1
+value.CLOUD_L1_NOISE_1.2=纹理 2
+value.CLOUD_L1_NOISE_1.3=纹理 3
+value.CLOUD_L1_NOISE_1.4=纹理 4
+value.CLOUD_L1_NOISE_1.5=纹理 5
+value.CLOUD_L1_NOISE_1.6=纹理 6
+
+value.CLOUD_L1_NOISE_2.1=纹理 1
+value.CLOUD_L1_NOISE_2.2=纹理 2
+value.CLOUD_L1_NOISE_2.3=纹理 3
+value.CLOUD_L1_NOISE_2.4=纹理 4
+value.CLOUD_L1_NOISE_2.5=纹理 5
+value.CLOUD_L1_NOISE_2.6=纹理 6
+
+value.CLOUD_L2_NOISE_1.1=纹理 1
+value.CLOUD_L2_NOISE_1.2=纹理 2
+value.CLOUD_L2_NOISE_1.3=纹理 3
+value.CLOUD_L2_NOISE_1.4=纹理 4
+value.CLOUD_L2_NOISE_1.5=纹理 5
+value.CLOUD_L2_NOISE_1.6=纹理 6
+
+value.CLOUD_L2_NOISE_2.1=纹理 1
+value.CLOUD_L2_NOISE_2.2=纹理 2
+value.CLOUD_L2_NOISE_2.3=纹理 3
+value.CLOUD_L2_NOISE_2.4=纹理 4
+value.CLOUD_L2_NOISE_2.5=纹理 5
+value.CLOUD_L2_NOISE_2.6=纹理 6
+
+value.CLOUD_L3_NOISE_1.1=纹理 1
+value.CLOUD_L3_NOISE_1.2=纹理 2
+value.CLOUD_L3_NOISE_1.3=纹理 3
+value.CLOUD_L3_NOISE_1.4=纹理 4
+value.CLOUD_L3_NOISE_1.5=纹理 5
+value.CLOUD_L3_NOISE_1.6=纹理 6
+
+value.CLOUD_L3_NOISE_2.1=纹理 1
+value.CLOUD_L3_NOISE_2.2=纹理 2
+value.CLOUD_L3_NOISE_2.3=纹理 3
+value.CLOUD_L3_NOISE_2.4=纹理 4
+value.CLOUD_L3_NOISE_2.5=纹理 5
+value.CLOUD_L3_NOISE_2.6=纹理 6
+
+# ============================================================================
+#   6. WEATHER
+# ============================================================================
+
+option.WIND_BASE_ANGLE=风基础角度
+option.WIND_GLOBAL_SPEED=全局风速
+option.WIND_BASE_ANGLE_VARIATION=风变化频率
+option.RAIN_LIGHT_DIMMER=雨天光照减弱器
+option.LEAVES_RAIN_INTENSITY_MULTI=树叶雨水系数
+option.FOLIAGES_RAIN_INTENSITY_MULTI=植被雨水系数
+option.GODRAY_RAIN_DIMMER=雨天上帝光减弱器
+
+screen.RAIN_CLOUDS=雨云
+option.CLOUD_WIND_VARIATION_INTENSITY=云层阵风强度
+option.CLOUD_RAIN_COVERAGE=雨云覆盖率
+option.CLOUD_RAIN_DARKNESS=雨云暗度
+option.CLOUD_RAIN_SPEED_MULTIPLIER=雨云移动速度
+
+screen.RAIN_SKY=雨天天空
+option.SKY_RAIN_COVERAGE=雨天天空变暗
+option.RAIN_TWILIGHT_MIX=雨天黄昏可见度
+option.SKY_RAIN_HORIZON_R=雨天地平线红色
+option.SKY_RAIN_HORIZON_G=雨天地平线绿色
+option.SKY_RAIN_HORIZON_B=雨天地平线蓝色
+option.SKY_RAIN_NIGHT_HORIZON_R=夜间雨天地平线红色
+option.SKY_RAIN_NIGHT_HORIZON_G=夜间雨天地平线绿色
+option.SKY_RAIN_NIGHT_HORIZON_B=夜间雨天地平线蓝色
+
+screen.RAIN_FOG=雨雾
+option.FOG_RAIN_MULTIPLIER=雨雾乘数
+option.FOG_RAIN_FALLOFF=雨天雾气衰减
+option.BORDER_FOG_RAIN_START=雨天边界雾气起点
+option.BORDER_FOG_RAIN_FALLOFF=雨天边界雾气衰减
+
+screen.RAIN_WETNESS=雨的湿润度
+option.ENABLE_RAIN_REFLECTIONS=启用雨水反射
+value.ENABLE_RAIN_REFLECTIONS.0=§c关
+value.ENABLE_RAIN_REFLECTIONS.1=§a开
+option.RAIN_REFLECTION_STRENGTH=反射强度
+option.RAIN_SATURATION=雨滴粒子饱和度
+option.RAIN_WIND_SLANT=雨滴倾斜强度
+option.RAIN_WIND_SLANT.comment=风力使垂直下落的雨滴倾斜的程度。
+option.RAIN_PERSISTENCE=水洼持续时间
+option.RAIN_SSR_BLUR=雨天屏幕空间反射模糊
+value.RAIN_SSR_BLUR.0=§c关
+value.RAIN_SSR_BLUR.1=§a开
+
+# ============================================================================
+#   PARTICLES
+# ============================================================================
+screen.PARTICLES=粒子效果
+screen.PARTICLES.comment=风线、飞叶、鸟群与环境尘埃粒子。
+
+# --- Wind Lines ---
+screen.WIND_LINES=风线
+screen.WIND_LINES.comment=风掠过世界的风格化条纹。
+
+screen.VFX_QUALITY=视觉特效质量
+option.VFX_RESOLUTION=视觉特效分辨率
+option.VFX_RESOLUTION.comment=粒子绘制时的屏幕百分比。性能消耗随百分比平方降低；设为100时将跳过缓冲区。
+option.DUSTS_PUFF_COUNT=尘土次级喷涌
+option.DUSTS_PUFF_COUNT.comment=每个尘土公告牌周围环状喷涌的粒子，每粒子一次纹理采样。减少数量会使形状变粗糙但不会变稀薄。
+option.VFX_UPSAMPLE_SHARPNESS=边缘解析排除
+option.VFX_UPSAMPLE_SHARPNESS.comment=解析器在轮廓背面剔除采样的强度。数值越高，几何体后方的粒子保留越多。
+option.ENABLE_WIND_LINES=启用风线
+value.ENABLE_WIND_LINES.0=§c关
+value.ENABLE_WIND_LINES.1=§a开
+option.WIND_LINES_COVERAGE=生成概率
+option.WIND_LINES_DENSITY=密度倍增
+option.WIND_LINES_SPEED=风速
+option.WIND_LINES_BOX_WIDTH=生成框宽度
+option.WIND_LINES_BOX_HEIGHT=生成范围高度
+option.WIND_LINES_SPAWN_OFFSET_Y=生成垂直偏移
+option.WIND_LINES_LENGTH=条纹长度
+option.WIND_LINES_THICKNESS=条纹粗细
+option.WIND_LINES_CURVE_STRENGTH=曲线强度
+option.WIND_LINES_TRAIL_LENGTH=尾迹淡出长度
+option.WIND_LINES_OPACITY=不透明度
+option.WIND_LINES_R=红色调
+option.WIND_LINES_G=绿色色调
+option.WIND_LINES_B=蓝色色调
+option.WIND_LINES_RAIN_MULTIPLIER=雨速倍增器
+option.WIND_LINES_ILLUMINATION=光照增强
+option.WIND_LINES_NIGHT_BRIGHTNESS=夜间亮度
+
+screen.WIND_LINES_BIOME=风线适用群系
+option.ENABLE_BIOME_WIND_LINES=启用群系调节
+value.ENABLE_BIOME_WIND_LINES.0=§c关
+value.ENABLE_BIOME_WIND_LINES.1=§a开
+option.WIND_LINES_COLD_INTENSITY=寒冷群系强度
+option.WIND_LINES_TEMPERATE_INTENSITY=温带群系强度
+option.WIND_LINES_WET_INTENSITY=湿润群系强度
+option.WIND_LINES_WARM_INTENSITY=温暖群系强度
+option.WIND_LINES_OCEAN_INTENSITY=海洋群系强度
+
+# --- Wind Leaves ---
+screen.WIND_LEAVES=风动叶片
+screen.WIND_LEAVES.comment=风中的程序化飞行叶片。
+
+option.ENABLE_WIND_LEAVES=启用风动叶片
+value.ENABLE_WIND_LEAVES.0=§c关
+value.ENABLE_WIND_LEAVES.1=§a开
+option.WIND_LEAVES_COVERAGE=生成概率
+option.WIND_LEAVES_DENSITY=密度倍增
+option.WIND_LEAVES_SPEED=前进速度
+option.WIND_LEAVES_LIFETIME=叶片生命周期
+option.WIND_LEAVES_SIZE=叶片尺寸
+option.WIND_LEAVES_BOX_WIDTH=生成框宽度
+option.WIND_LEAVES_BOX_HEIGHT=生成范围高度
+option.WIND_LEAVES_SPAWN_OFFSET_Y=生成垂直偏移
+option.WIND_LEAVES_FLUTTER_AMP=颤振幅度
+option.WIND_LEAVES_TUMBLE_SPEED=翻滚/旋转速度
+option.WIND_LEAVES_R=红色调
+option.WIND_LEAVES_G=绿色色调
+option.WIND_LEAVES_B=蓝色色调
+option.WIND_LEAVES_RAIN_MULTIPLIER=雨速倍增器
+option.WIND_LEAVES_ILLUMINATION=光照增强
+option.WIND_LEAVES_NIGHT_BRIGHTNESS=夜间亮度
+
+screen.WIND_LEAVES_BIOME=风动叶片适用群系
+option.ENABLE_BIOME_WIND_LEAVES=启用群系调节
+value.ENABLE_BIOME_WIND_LEAVES.0=§c关
+value.ENABLE_BIOME_WIND_LEAVES.1=§a开
+option.WIND_LEAVES_COLD_INTENSITY=寒冷群系强度
+option.WIND_LEAVES_TEMPERATE_INTENSITY=温带群系强度
+option.WIND_LEAVES_WET_INTENSITY=湿润群系强度
+option.WIND_LEAVES_WARM_INTENSITY=温暖群系强度
+option.WIND_LEAVES_OCEAN_INTENSITY=海洋群系强度
+
+# --- Birds Flock ---
+screen.BIRDS=鸟群
+screen.BIRDS.comment=空中成群飞翔的鸟类。
+option.ENABLE_BIRDS=启用鸟类
+value.ENABLE_BIRDS.0=§c关
+value.ENABLE_BIRDS.1=§a开
+option.BIRDS_COVERAGE=生成概率
+option.BIRDS_FLOCK_CHANCE=群体生成概率
+option.BIRDS_DENSITY=群体密度
+option.BIRDS_SPEED=飞行速度
+option.BIRDS_ANGLE=飞行角度
+option.BIRDS_LIFETIME=鸟类存活时间
+option.BIRDS_SIZE=鸟类尺寸
+option.BIRDS_BOX_WIDTH=生成框宽度
+option.BIRDS_BOX_HEIGHT=海拔分布
+option.BIRDS_BOX_HEIGHT.comment=鸟类可偏离飞行高度的上下范围。数值越低，鸟群越贴近同一平面。
+option.BIRDS_HEIGHT=飞行高度
+option.BIRDS_HEIGHT.comment=鸟群飞行的世界高度，如同云层高度。固定值，鸟类不再随玩家升降。
+option.BIRDS_FLAP_SPEED=振翅速度
+option.BIRDS_R=红色调
+option.BIRDS_G=绿色色调
+option.BIRDS_B=蓝色色调
+option.BIRDS_ILLUMINATION=光照增强
+option.BIRDS_NIGHT_BRIGHTNESS=夜间亮度
+
+# --- Dust Fog ---
+screen.DUST=环境尘雾
+screen.DUST.comment=漂浮的尘埃粒子与雾点。
+option.ENABLE_DUSTS=启用尘雾
+value.ENABLE_DUSTS.0=§c关
+value.ENABLE_DUSTS.1=§a开
+option.DUSTS_COVERAGE=覆盖范围
+option.DUSTS_DENSITY=密度
+option.DUSTS_ELEVATION=海拔偏移
+option.DUSTS_SIZE=粒子尺寸
+option.DUSTS_SPEED=漂浮速度
+option.DUSTS_OPACITY=粒子不透明度
+option.DUSTS_R=红色调
+option.DUSTS_G=绿色色调
+option.DUSTS_B=蓝色色调
+option.DUSTS_ILLUMINATION=光照增强
+option.DUSTS_NIGHT_BRIGHTNESS=夜间亮度
+option.DUSTS_BOX_WIDTH=生成框宽度
+option.DUSTS_BOX_HEIGHT=生成范围高度
+
+screen.DUSTS_BIOME=尘雾适用群系
+option.ENABLE_BIOME_DUSTS=启用群系调节
+value.ENABLE_BIOME_DUSTS.0=§c关
+value.ENABLE_BIOME_DUSTS.1=§a开
+option.DUSTS_COLD_INTENSITY=寒冷群系强度
+option.DUSTS_TEMPERATE_INTENSITY=温带群系强度
+option.DUSTS_WET_INTENSITY=湿润群系强度
+option.DUSTS_WARM_INTENSITY=温暖群系强度
+option.DUSTS_OCEAN_INTENSITY=海洋群系强度
+
+# --- Pale Garden ---
+screen.PALE_GARDEN=苍白花园
+screen.PALE_GARDEN.comment=在苍白花园内应用的覆盖参数，叠加于正常群系气候之上。
+option.ENABLE_PALE_GARDEN=启用苍白花园覆盖
+value.ENABLE_PALE_GARDEN.0=§c关
+value.ENABLE_PALE_GARDEN.1=§a开
+option.PALE_SKY_R=苍白天穹红
+option.PALE_SKY_G=苍白天穹绿
+option.PALE_SKY_B=苍白天穹蓝
+option.PALE_SKY_INTENSITY=苍白天穹日间强度
+option.PALE_SKY_NIGHT_INTENSITY=苍白天穹夜间强度
+option.PALE_WATER_SATURATION=苍白水域饱和度
+option.PALE_WATER_SATURATION.comment=降低水域色彩浓度。设为1.0时保持正常饱和度。
+option.PALE_FOG_MULTIPLIER=苍白雾气密度
+option.PALE_FOG_MULTIPLIER.comment=该群系内全局雾气密度的乘数。
+option.PALE_BORDER_FOG_START=苍白边界雾起始距离
+option.PALE_BORDER_FOG_START.comment=覆盖边界雾起始距离。数值越小，世界边缘收缩越紧。
+option.PALE_BORDER_FOG_FALLOFF=苍白边界雾衰减
+
+
+# ============================================================================
+#   7. NATURE
+# ============================================================================
+
+option.ENABLE_WIND=启用风效
+value.ENABLE_WIND.0=§c关
+value.ENABLE_WIND.1=§a开
+option.FOLIAGE_WIND_VARIATION_INTENSITY=风力阵风强度
+option.PLANT_SHADING=植物着色模式
+value.PLANT_SHADING.0=§c关
+value.PLANT_SHADING.1=仅3D草
+value.PLANT_SHADING.2=全部
+option.WIND_MODEL_ANCHORING=3D模型锚定
+option.WIND_MODEL_ANCHORING.comment=每方块采样一次风力，使精细植物模型整体摇摆。关闭则为旧版行为。
+value.WIND_MODEL_ANCHORING.0=§c关
+value.WIND_MODEL_ANCHORING.1=§a开
+option.WIND_ANCHOR_STIFFNESS=弯曲曲线形状
+option.WIND_ANCHOR_STIFFNESS.comment=弯曲形态而非弯曲幅度。高数值使基部保持挺立，曲线集中于顶端。
+option.WIND_DEBUG_VIEW=风力调试视图
+option.WIND_DEBUG_VIEW.comment=以风力代码读取的数据渲染地形。正常游戏请保持关闭。
+value.WIND_DEBUG_VIEW.0=§a关
+value.WIND_DEBUG_VIEW.1=§b方块ID
+value.WIND_DEBUG_VIEW.2=§b茎秆高度
+value.WIND_DEBUG_VIEW.3=§b位移量
+value.WIND_DEBUG_VIEW.4=§bUV顶部测试
+option.ENABLE_INDOOR_WIND_MASK=室内风力遮罩
+value.ENABLE_INDOOR_WIND_MASK.0=§c关
+value.ENABLE_INDOOR_WIND_MASK.1=§a开
+option.GRASS_3D_WIND=3D草风效
+
+screen.FOLIAGES=植被（植物与草）
+option.FOLIAGE_NOISE_TYPE=植被噪波纹理
+value.FOLIAGE_NOISE_TYPE.1=纹理 1
+value.FOLIAGE_NOISE_TYPE.2=纹理 2
+value.FOLIAGE_NOISE_TYPE.3=纹理 3
+value.FOLIAGE_NOISE_TYPE.4=纹理 4
+value.FOLIAGE_NOISE_TYPE.5=纹理 5
+value.FOLIAGE_NOISE_TYPE.6=纹理 6
+option.FOLIAGE_NOISE_SMOOTHNESS=植被噪波平滑度
+option.FOLIAGE_WIND_INTENSITY=植被风力强度
+option.FOLIAGE_NOISE_SCALE=植被噪波缩放
+option.FOLIAGE_WIND_SPEED_MULTIPLIER=植被风速
+option.FOLIAGE_FLUTTER_INTENSITY=突风摆动
+option.FOLIAGE_FLUTTER_INTENSITY.comment=叠加在弯曲效果上的颤动，强度由突风大小决定，因此仅在风吹时才会显现。
+option.FOLIAGE_FLUTTER_SPEED=突风摆动速度
+option.FOLIAGE_BEND_ANGLE=茎干卷曲
+option.FOLIAGE_BEND_ANGLE.comment=茎干的卷曲幅度。植物会绕着根部旋转，因此会像真实茎秆一样弯曲并降低高度。
+option.FOLIAGE_TALL_BEND=高大植物卷曲度
+option.FOLIAGE_TALL_BEND.comment=两格高植物的额外卷曲，因力臂加倍而更明显。设为1.0时弯曲效果与单格植物相同。
+option.FOLIAGE_BEND_STRENGTH=植被弯曲限制
+screen.GRASS_GUST=草丛突风光照
+option.GRASS_BLOCK_WIND_LIGHT=草方块受光亮度
+value.GRASS_BLOCK_WIND_LIGHT.0=§c关
+value.GRASS_BLOCK_WIND_LIGHT.1=§a开
+option.GRASS_BASE_LIGHT=草丛基础光照
+option.WIND_GUST_INTENSITY=突风光照强度
+option.WIND_GUST_R=突风光照红色通道
+option.WIND_GUST_G=突风光照绿色通道
+option.WIND_GUST_B=突风光照蓝色通道
+
+screen.GRASS_VARIATION=草丛色彩变化
+option.ENABLE_GRASS_VARIATION=启用草丛色彩变化
+value.ENABLE_GRASS_VARIATION.0=§c关
+value.ENABLE_GRASS_VARIATION.1=§a开
+option.GRASS_VARIATION_NOISE_TYPE=草丛变化噪波纹理
+value.GRASS_VARIATION_NOISE_TYPE.1=纹理 1
+value.GRASS_VARIATION_NOISE_TYPE.2=纹理 2
+value.GRASS_VARIATION_NOISE_TYPE.3=纹理 3
+value.GRASS_VARIATION_NOISE_TYPE.4=纹理 4
+value.GRASS_VARIATION_NOISE_TYPE.5=纹理 5
+value.GRASS_VARIATION_NOISE_TYPE.6=纹理 6
+option.GRASS_VARIATION_NOISE_SCALE=草丛变化缩放
+option.GRASS_VARIATION_NOISE_CONTRAST=草丛变化对比度
+option.GRASS_VARIATION_NOISE_SMOOTHNESS=草丛变化平滑度
+option.GRASS_VARIATION_R=草丛变化红色通道
+option.GRASS_VARIATION_G=草丛变化绿色通道
+option.GRASS_VARIATION_B=草丛变化蓝色通道
+
+screen.LEAVES=树叶
+option.LEAVES_NOISE_TYPE=叶片噪波纹理
+value.LEAVES_NOISE_TYPE.1=纹理 1
+value.LEAVES_NOISE_TYPE.2=纹理 2
+value.LEAVES_NOISE_TYPE.3=纹理 3
+value.LEAVES_NOISE_TYPE.4=纹理 4
+value.LEAVES_NOISE_TYPE.5=纹理 5
+value.LEAVES_NOISE_TYPE.6=纹理 6
+option.LEAVES_NOISE_SMOOTHNESS=叶片噪波平滑度
+option.LEAVES_WIND_INTENSITY=叶片风力强度
+option.LEAVES_NOISE_SCALE=叶片噪波缩放
+option.LEAVES_WIND_SPEED_MULTIPLIER=叶片风速
+option.VINES_WIND_INTENSITY_DIVISOR=藤蔓风力系数
+screen.LEAVES_SSS=叶片次表面散射
+option.ENABLE_LEAVES_SSS=次表面散射
+value.ENABLE_LEAVES_SSS.0=§c关
+value.ENABLE_LEAVES_SSS.1=§a开
+option.SSS_INTENSITY=次表面散射强度
+option.SSS_POWER=次表面散射强度
+option.SSS_THICKNESS=次表面散射厚度
+option.SSS_SATURATION=次表面散射饱和度
+
+screen.PLAYER=玩家交互
+option.PLAYER_INTERACTION=启用玩家交互
+value.PLAYER_INTERACTION.0=§c关
+value.PLAYER_INTERACTION.1=§a开
+option.PLAYER_INTERACTION_INTENSITY=交互强度
+option.PLAYER_INTERACTION_INTENSITY.comment=穿行时推挤植被的力度。数值过高会快速达到上限，因此范围止于推挤效果仍随距离减弱的区间。
+option.PLAYER_INTERACTION_RADIUS=交互半径
+
+# ============================================================================
+#   8. WATER
+# ============================================================================
+
+option.VANILLA_WATER=原版水
+value.VANILLA_WATER.0=§c关
+value.VANILLA_WATER.1=§a开
+
+option.WATER_PRESET=水体预设
+value.WATER_PRESET.0=风格化
+value.WATER_PRESET.1=写实
+value.WATER_PRESET.2=柔和玫瑰色
+value.WATER_PRESET.3=原版
+
+# --- Water Global ---
+option.WATER_GLOBAL_SCALE=全局缩放
+option.WATER_DISTORTION_SPEED=扭曲速度
+option.WATER_WAVE_SPEED=波浪速度
+option.PIXELATED_WATER=像素化水面
+option.PIXELATED_WATER.comment=将法线、泡沫、海岸线与焦散效果统一对齐至方块纹理像素的世界坐标网格。
+value.PIXELATED_WATER.0=§c关
+value.PIXELATED_WATER.1=§a开
+option.WATER_PIXEL_RESOLUTION=水面像素网格
+option.WATER_PIXEL_RESOLUTION.comment=水体特效对齐的网格密度（每方块步长）。16.0与《我的世界》方块纹理对齐。
+option.WATER_RAIN_SPEED_MULTIPLIER=雨天波浪速度
+option.WATER_RAIN_SPEED_MULTIPLIER.comment=雨天时加快表面运动。
+option.WATER_RAIN_BUMP_MULTIPLIER=雨波纹强度
+option.WATER_RAIN_BUMP_MULTIPLIER.comment=雨天时加深表面法线效果。
+option.WATER_SCATTER_INTENSITY=散射强度
+option.WATER_ABSORPTION_INTENSITY=吸收强度
+option.WATER_A=水不透明度
+option.WATER_ALPHA_FADE_DISTANCE=不透明度渐隐距离
+option.WATER_NORMAL_STRENGTH=法线贴图强度
+option.WATER_SPECULAR_STRENGTH=镜面反射强度
+
+# --- Water Colors ---
+screen.WATER_COLORS=水体颜色
+option.WATER_SHALLOW_R=浅水红色通道
+option.WATER_SHALLOW_G=浅水绿色通道
+option.WATER_SHALLOW_B=浅水蓝色通道
+option.WATER_DEEP_R=深水红色通道
+option.WATER_DEEP_G=深水绿色通道
+option.WATER_DEEP_B=深水蓝色通道
+option.WATER_SHALLOW_NIGHT_R=浅水红色通道（夜间）
+option.WATER_SHALLOW_NIGHT_G=浅水绿色通道（夜间）
+option.WATER_SHALLOW_NIGHT_B=浅水蓝色通道（夜间）
+option.WATER_DEEP_NIGHT_R=深水红色通道（夜间）
+option.WATER_DEEP_NIGHT_G=深水绿色通道（夜间）
+option.WATER_DEEP_NIGHT_B=深水蓝（夜间）
+
+# --- Water Foam ---
+screen.WATER_FOAM=水面泡沫
+option.WATER_FOAM_SCALE=泡沫比例
+option.WATER_FOAM_EDGE_DISTANCE=泡沫边缘距离
+option.WATER_FOAM_CAP_THRESHOLD=波峰阈值
+option.WATER_FOAM_SOFTNESS=泡沫柔和度
+option.WATER_FOAM_SOFTNESS.comment=数值越低则效果越强，非常适合塞尔达风格。
+option.WATER_FOAM_OPACITY=泡沫不透明度
+option.WATER_SHORE_PULSE_SPEED=海岸脉冲速度
+option.WATER_SHORE_PULSE_AMPLITUDE=海岸脉冲幅度
+option.WATER_SHORE_ALPHA=海岸不透明度
+
+# --- Waves & WPO ---
+screen.WATER_WPO=波浪与WPO
+option.WATER_WPO_HEIGHT=物理波浪高度
+option.WATER_WPO_SPEED=物理波浪速度
+option.WATER_WPO_FREQUENCY=物理波浪频率
+
+# --- Underwater ---
+screen.UNDERWATER=水下
+option.UNDERWATER_DEPTH_BRIGHTNESS=深水亮度
+option.UNDERWATER_HORIZON_BRIGHTNESS=水下地平线亮度
+option.UNDERWATER_BOTTOM_MULTIPLIER=水下底部暗化
+option.UNDERWATER_FOG_DENSITY=水下雾气密度
+option.UNDERWATER_FOG_FALLOFF=水下雾衰减
+option.UNDERWATER_BORDER_FOG_END=水下雾不透明距离
+option.UNDERWATER_BORDER_FOG_FALLOFF=水下水幕硬度
+
+# --- Underwater Bloom ---
+option.BLOOM_UNDERWATER_FADE_START=水下泛光淡入起点
+option.BLOOM_UNDERWATER_FADE_END=水下泛光淡入终点
+
+# --- Water Surface Overlay ---
+screen.CAUSTICS=焦散
+screen.CAUSTICS.comment=明亮的网格阳光在河床上绘制。从阴影贴图读取，因此需要开启阴影。
+
+option.ENABLE_CAUSTICS=焦散
+option.ENABLE_CAUSTICS.comment=照亮阳光穿过水面后能到达的区域。需要开启阴影，影响范围与阴影距离一致。
+value.ENABLE_CAUSTICS.0=§c关
+value.ENABLE_CAUSTICS.1=§a开
+
+option.CAUSTICS_TEXTURE=焦散图案
+option.CAUSTICS_TEXTURE.comment=构建网格所使用的叠加单元纹理。3是柔和网格，1是硬遮罩以获得图形化效果。
+value.CAUSTICS_TEXTURE.1=纹理 1
+value.CAUSTICS_TEXTURE.2=纹理 2
+value.CAUSTICS_TEXTURE.3=纹理 3
+value.CAUSTICS_TEXTURE.4=纹理 4
+
+option.CAUSTICS_SCALE=焦散比例
+option.CAUSTICS_SCALE.comment=网格在世界空间中的尺寸。数值越低，单元格在地面上的分布越宽。
+
+option.CAUSTICS_SPEED=焦散速度
+option.CAUSTICS_SPEED.comment=网格的游动速度。两份副本会错开漂移，使图案在原地重组而非滑动。
+
+option.CAUSTICS_SHARPNESS=焦散清晰度
+option.CAUSTICS_SHARPNESS.comment=使细丝变细并加深其间的间隙。高数值呈现为清晰线条，低数值则表现为弥漫光晕。
+
+option.CAUSTICS_INTENSITY=焦散强度
+option.CAUSTICS_INTENSITY.comment=网格落在表面时的亮度。它与表面颜色相乘，因此深色海底能保持暗调。
+
+option.CAUSTICS_UNDERWATER_MULTIPLIER=水下增强
+option.CAUSTICS_UNDERWATER_MULTIPLIER.comment=当摄像机浸没在水下时额外提升亮度，此时相同光线也正穿过眼前水面。
+
+option.CAUSTICS_R=焦散红色
+option.CAUSTICS_G=焦散绿色
+option.CAUSTICS_B=焦散蓝色
+
+option.CAUSTICS_FADE_START=焦散淡出起点
+option.CAUSTICS_FADE_START.comment=网格开始变淡的位置。超过此处后单元格小于单像素，会产生噪点状锯齿。
+
+option.CAUSTICS_FADE_END=焦散淡出终点
+option.CAUSTICS_FADE_END.comment=网格完全消失的位置。
+
+screen.WATER_OVERLAY=水面叠加层
+option.ENABLE_WATER_OVERLAY=启用水面叠加
+value.ENABLE_WATER_OVERLAY.0=§c关
+value.ENABLE_WATER_OVERLAY.1=§a开
+option.WATER_OVERLAY_TEXTURE1=叠加纹理1
+value.WATER_OVERLAY_TEXTURE1.1=纹理 1
+value.WATER_OVERLAY_TEXTURE1.2=纹理 2
+value.WATER_OVERLAY_TEXTURE1.3=纹理 3
+value.WATER_OVERLAY_TEXTURE1.4=纹理 4
+option.WATER_OVERLAY_TEXTURE2=叠加纹理2
+value.WATER_OVERLAY_TEXTURE2.1=纹理 1
+value.WATER_OVERLAY_TEXTURE2.2=纹理 2
+value.WATER_OVERLAY_TEXTURE2.3=纹理 3
+value.WATER_OVERLAY_TEXTURE2.4=纹理 4
+option.WATER_OVERLAY_VARIATION=叠加噪波变化
+option.WATER_OVERLAY_SCALE1=叠加1比例
+option.WATER_OVERLAY_SCALE2=叠加2比例
+option.WATER_OVERLAY_OPACITY1=叠加1不透明度
+option.WATER_OVERLAY_OPACITY2=叠加2不透明度
+
+# --- Biome Water Colors ---
+screen.BIOME_WATER_COLORS=群系水体色调
+screen.BIOME_WATER_COLORS.comment=原版按群系变化的水体颜色强度，该颜色会随地形延伸至远方。
+option.ENABLE_BIOME_WATER_TINT=启用群系水体色调
+value.ENABLE_BIOME_WATER_TINT.0=§c关
+value.ENABLE_BIOME_WATER_TINT.1=§a开
+option.WATER_BIOME_TINT_SATURATION=色彩饱和度
+option.WATER_BIOME_TINT_SATURATION.comment=在水体接收光线前调整原版色调。0.0表示完全移除群系颜色。
+option.WATER_BIOME_TINT_SHALLOW=浅水强度
+option.WATER_BIOME_TINT_SHALLOW.comment=0.0保持自定义水色，1.0完全采用群系色调。亮度始终保持。
+option.WATER_BIOME_TINT_DEEP=深水强度
+option.WATER_BIOME_TINT_NIGHT_SHALLOW=浅水强度（夜间）
+option.WATER_BIOME_TINT_NIGHT_DEEP=深水强度（夜间）
+
+
+# ============================================================================
+#   9. REFLECTIONS
+# ============================================================================
+
+option.ENABLE_SSR=启用屏幕空间反射
+value.ENABLE_SSR.0=§c关
+value.ENABLE_SSR.1=§a开
+option.SSR_STRENGTH=SSR强度
+option.ENABLE_SSR_BLOCK=启用方块SSR
+value.ENABLE_SSR_BLOCK.0=§c关
+value.ENABLE_SSR_BLOCK.1=§a开
+option.SSR_BLOCK_STRENGTH=方块SSR强度
+option.SSR_BLUR=SSR模糊模式
+value.SSR_BLUR.0=§c关
+value.SSR_BLUR.1=方块
+value.SSR_BLUR.2=方块与水面
+value.SSR_BLUR.3=水
+option.SSR_BLUR_STRENGTH=SSR模糊强度
+option.REFLECTION_THRESHOLD=反射阈值
+option.FRESNEL_EXPONENT=菲涅尔指数
+option.SSR_STEPS=SSR光线步长
+option.SSR_REFINEMENT_STEPS=SSR细化步长
+option.SSR_BORDER_FADE_START=边界淡出起点
+option.SSR_BORDER_FADE_END=边界淡出终点
+
+option.ENABLE_SPECULAR=启用镜面反射
+value.ENABLE_SPECULAR.0=§c关
+value.ENABLE_SPECULAR.1=§a开
+option.SPECULAR_PROPAGATION=镜面反射传播
+option.SPECULAR_STRENGTH=镜面反射强度
+option.SPECULAR_DETECTION=镜面反射检测
+option.SPECULAR_METALLIC_STRENGTH=金属感强度
+option.SPECULAR_METALLIC_DETECTION=金属感检测
+option.SPECULAR_POLISHED_STRENGTH=抛光强度
+option.SPECULAR_POLISHED_DETECTION=抛光检测
+
+# ============================================================================
+#   10. MISC
+# ============================================================================
+# Voxy Screens
+screen.VOXY=voxy设置
+screen.VOXY.comment=为VOXY LOD地形进行雾效调整。自动检测，无模组则不生效。
+
+option.VOXY_AUTO_FOG=匹配雾与细节层次距离范围
+option.VOXY_AUTO_FOG.comment=基于VOXY渲染距离设置雾效。关闭后，世界边缘将在所有LOD层级产生雾化效果。
+value.VOXY_AUTO_FOG.0=§c关
+value.VOXY_AUTO_FOG.1=§a开
+
+option.VOXY_FOG_DENSITY=细节层次雾密度
+option.VOXY_FOG_DENSITY.comment=绘制细节层次地形时的雾密度倍增器。较低值可保持远处细节层次清晰可辨。
+
+option.VOXY_FOG_FALLOFF=细节层次雾衰减
+option.VOXY_FOG_FALLOFF.comment=细节层次距离范围内的雾曲线。较低值将淡出效果分散到整个距离，而非集中在摄像机附近堆积。
+
+option.VOXY_BORDER_FOG_START=细节层次边界雾起点
+option.VOXY_BORDER_FOG_START.comment=边界雾的起始位置，占细节层次距离的比例。
+
+option.VOXY_BORDER_FOG_FALLOFF=细节层次边界雾衰减
+option.VOXY_BORDER_FOG_FALLOFF.comment=细节层次世界边缘的锐利度。较高值使地形在更长时间内保持清晰，然后快速淡出。
+
+# Distant Horizons Screens
+screen.DH=远距离视野设置
+screen.DH.comment=来自“远距离视野”模组的LOD地形，其着色方式与近处地形一致。自动检测。
+
+option.DH_AUTO_FOG=匹配雾与细节层次距离范围
+option.DH_AUTO_FOG.comment=基于“远距离视野”渲染距离设置雾效。关闭后，将在原版边界后的所有LOD层级产生雾化效果。
+value.DH_AUTO_FOG.0=§c关
+value.DH_AUTO_FOG.1=§a开
+
+option.DH_FOG_DENSITY=细节层次雾密度
+option.DH_FOG_DENSITY.comment=绘制细节层次地形时的雾密度倍增器。较低值可保持远处细节层次清晰可辨。
+
+option.DH_FOG_FALLOFF=细节层次雾衰减
+option.DH_FOG_FALLOFF.comment=细节层次距离范围内的雾曲线。较低值将淡出效果分散到整个距离，而非集中在摄像机附近堆积。
+
+option.DH_BORDER_FOG_START=细节层次边界雾起点
+option.DH_BORDER_FOG_START.comment=边界雾的起始位置，占细节层次距离的比例。
+
+option.DH_BORDER_FOG_FALLOFF=细节层次边界雾衰减
+option.DH_BORDER_FOG_FALLOFF.comment=细节层次世界边缘的锐利度。较高值使地形在更长时间内保持清晰，然后快速淡出。
+
+option.DH_SHADOW=LOD阴影
+option.DH_SHADOW.comment=允许LOD地形投射阴影至阴影贴图。默认关闭：LOD副本会与真实区块及受阴影照亮的地面产生冲突。
+value.DH_SHADOW.0=§c关
+value.DH_SHADOW.1=§a开
+
+option.DH_DEBUG=LOD调试视图
+option.DH_DEBUG.comment=仅渲染LOD片段，因此任何正常着色的部分都是真实区块。正常游戏时请关闭。
+value.DH_DEBUG.0=§c关
+value.DH_DEBUG.1=LOD遮罩
+value.DH_DEBUG.2=LOD天空光
+value.DH_DEBUG.3=细节层次阴影
+
+option.DH_GRASS_TREATMENT=LOD草地样式
+option.DH_GRASS_TREATMENT.comment=将草地的颜色和光照应用于朝上的LOD顶面。关闭时，远处的草地将保持其原始颜色。
+value.DH_GRASS_TREATMENT.0=§c关
+value.DH_GRASS_TREATMENT.1=§a开
+
+# RenoDX Screens
+screen.RENODX=renodx
+
+option.HDR_ENABLED=RenodX HDR
+value.HDR_ENABLED.0=§c否
+value.HDR_ENABLED.1=§a是
+
+screen.renodx =renodx
+screen.renodx_reinhard =分段Reinhard设置
+screen.renodx_reinhard.comment =逐渐衰减高光至峰值。
+screen.renodx_aces =ACES 设置
+screen.renodx_aces.comment =通过ACES色彩空间调整对比度与过曝。
+screen.renodx_gt =《GT赛车：竞速》设置
+screen.renodx_gt.comment =类似ACES的对比度，包含一个完全线性的区段，截断感强。
+screen.renodx_gt7 =《GT赛车7》设置
+screen.renodx_gt7.comment =与《GT赛车：竞速》类似，但基于BT.2020色彩空间进行感知调整。
+screen.renodx_hermite =Hermite样条设置
+screen.renodx_hermite.comment =可缩放的样条。
+screen.renodx_hable =《神秘海域2》/Hable设置
+screen.renodx_hable.comment =来自John Hable为《神秘海域2》设计的色调映射，包含趾部，线性扩展至HDR。
+screen.renodx_exproll =指数衰减设置
+screen.renodx_exproll.comment =由DICE设计，采用激进的肩部衰减。
+screen.renodx_neutwo =Neutwo设置
+screen.renodx_neutwo.comment =基于2的幂次（平方/平方根）的中性色调映射器。
+screen.renodx_frostbite =寒霜引擎设置
+screen.renodx_frostbite.comment =DICE的感知色调映射器，具有饱和度提升与色相保持功能。
+
+# RenoDX Main
+option.RENODX_ENABLED =已启用
+option.RENODX_ENABLED.comment =启用HDR。
+
+option.RENODX_BRIGHTNESS_USEREPORTED =使用报告亮度
+option.RENODX_BRIGHTNESS_USEREPORTED.comment =使用来自报告显示器能力的模组提供的数值，自动配置亮度值。（如果滑块无效，则使用找到的数值。）
+value.RENODX_BRIGHTNESS_USEREPORTED.RENODX_BRIGHTNESS_USEREPORTED_ON =如果可用
+value.RENODX_BRIGHTNESS_USEREPORTED.RENODX_BRIGHTNESS_USEREPORTED_OFF =关
+
+option.RENODX_UI_BRIGHTNESS =UI亮度
+option.RENODX_UI_BRIGHTNESS.comment =单位为尼特。需要在UI之后应用着色器才能生效（即ReShade，请同步数值）。
+
+option.RENODX_GAME_BRIGHTNESS =游戏亮度
+option.RENODX_GAME_BRIGHTNESS.comment =单位为尼特，也称为纸白。
+
+option.RENODX_PEAK_BRIGHTNESS =峰值亮度
+option.RENODX_PEAK_BRIGHTNESS.comment =最大亮度（单位为尼特）。
+
+option.RENODX_SHOULDER_START =肩部起始点
+option.RENODX_SHOULDER_START.comment =色调映射肩部开始处的尼特值。
+
+option.RENODX_WHITE_CLIP =白色截断阈值
+option.RENODX_WHITE_CLIP.comment =即预期用于色调映射的最大颜色值。
+
+option.RENODX_CLAMP_COLORSPACE =色彩空间限制
+option.RENODX_CLAMP_COLORSPACE.comment =在最终输出处进行限制。
+value.RENODX_CLAMP_COLORSPACE.RENODX_CS_NONE    =无
+value.RENODX_CLAMP_COLORSPACE.RENODX_CS_BT709   =bt709
+value.RENODX_CLAMP_COLORSPACE.RENODX_CS_BT2020  =bt2020
+value.RENODX_CLAMP_COLORSPACE.RENODX_CS_AP1     =ap1
+
+option.RENODX_GAMMACORRECTION =伽马校正
+option.RENODX_GAMMACORRECTION.comment =在色调映射前应用EOTF/伽马校正。这是后备解决方案，因为UI不包含在内！
+value.RENODX_GAMMACORRECTION.RENODX_GAMMA_NONE =关
+value.RENODX_GAMMACORRECTION.RENODX_GAMMA_22  = 2.2
+value.RENODX_GAMMACORRECTION.RENODX_GAMMA_24 = 2.4
+
+option.RENODX_COLORGRADE_CONTRAST =对比度
+option.RENODX_COLORGRADE_CONTRAST.comment =围绕中灰双向拉伸亮度。
+option.RENODX_COLORGRADE_CONTRAST_MID =中灰对比度
+option.RENODX_COLORGRADE_CONTRAST_MID.comment =效果作用的中心点。
+
+option.RENODX_COLORGRADE_HIGHLIGHTS =高光
+option.RENODX_COLORGRADE_HIGHLIGHTS.comment =高于中灰时拉伸亮度。
+option.RENODX_COLORGRADE_HIGHLIGHTS_MID =中灰高光
+option.RENODX_COLORGRADE_HIGHLIGHTS_MID.comment =效果作用的中心点。
+
+option.RENODX_COLORGRADE_SHADOWS =阴影
+option.RENODX_COLORGRADE_SHADOWS.comment =低于中灰时拉伸亮度。
+option.RENODX_COLORGRADE_SHADOWS_MID =中灰阴影
+option.RENODX_COLORGRADE_SHADOWS_MID.comment =效果作用的中心点。
+
+option.RENODX_COLORGRADE_SATURATION =饱和度
+option.RENODX_COLORGRADE_SATURATION.comment =Oklab饱和度，以百分比表示。100为禁用。
+
+option.RENODX_RCAS =RCAS
+option.RENODX_RCAS.comment =健壮（4采样）对比度自适应锐化
+
+option.RENODX_RCAS_DENOISE =RCAS降噪
+option.RENODX_RCAS_DENOISE.comment =开启RCAS的额外降噪。
+
+# RenoDX Debug
+option.RENODX_DEBUG =调试输出
+value.RENODX_DEBUG.RENODX_DEBUG_NONE =无
+value.RENODX_DEBUG.RENODX_DEBUG_UNTONEMAPPED =未色调映射
+value.RENODX_DEBUG.RENODX_DEBUG_TONEMAPPED =已色调映射
+value.RENODX_DEBUG.RENODX_DEBUG_SPLIT =未色调映射/已色调映射
+
+option.RENODX_WORKINGCOLORSPACE =工作色彩空间
+option.RENODX_WORKINGCOLORSPACE.comment =着色器包渲染管线所使用的色彩空间。
+
+# RenoDX Upgrade
+option.RENODX_UPGRADE_ENABLED =升级色调映射
+option.RENODX_UPGRADE_ENABLED.comment =（BT.709截断，可能不可用。）直接将SDR色度映射到HDR亮度上。这保留了所有SDR调色，但容易过曝。
+
+option.RENODX_UPGRADE_AMOUNT =升级强度
+option.RENODX_UPGRADE_AMOUNT.comment =HDR颜色应受SDR影响的程度
+
+option.RENODX_UPGRADE_AUTO =升级自动校正
+option.RENODX_UPGRADE_AUTO.comment =HDR颜色应受SDR校正的程度
+
+option.RENODX_APPC_AMOUNT =逐通道校正量
+option.RENODX_APPC_AMOUNT.comment =（配合升级色调映射）尝试逆转SDR色调映射器导致的过曝。
+option.RENODX_APPC_POW =仅校正高光的逐通道校正
+option.RENODX_APPC_POW.comment =（配合升级色调映射）增加以仅针对高光。
+
+# RenoDX HDR Tone Map
+option.RENODX_EXPOSURE =曝光
+option.RENODX_EXPOSURE.comment =HDR色调映射器前颜色的乘数
+
+value.RENODX_SCALING.RENODX_SCALING_Y =亮度
+value.RENODX_SCALING.RENODX_SCALING_PERCHANNEL =逐通道或感知模式
+value.RENODX_SCALING.RENODX_SCALING_MAXCHANNEL =最大通道
+value.RENODX_SCALING.RENODX_SCALING_AUTO =自动
+option.RENODX_SCALING =缩放
+option.RENODX_SCALING.comment =对所有RGB通道运行色调映射器（会过曝）还是基于枢轴点（亮度或最大通道）？
+
+option.RENODX_HDRTONEMAP_TYPE =HDR色调映射类型
+option.RENODX_HDRTONEMAP_TYPE.comment =请阅读每个选项的提示说明！
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_OFF =关
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_REINHARD =分段Reinhard
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_ACES =色彩编码的电影级色调映射
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_GT =《GT赛车：运动》
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_HERMITE =Hermite样条
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_GT7 =《GT赛车7》
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_HABLE =《神秘海域2》/Hable
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_EXPROLL =指数衰减
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_NEUTWO =Neutwo
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_FROSTBITE =霜寒引擎
+value.RENODX_HDRTONEMAP_TYPE.RENODX_HDRTONEMAP_TYPE_DEFAULT =默认
+
+option.RENODX_WORKINGCS_HDRTONEMAP =HDR色调映射工作色彩空间
+option.RENODX_WORKINGCS_HDRTONEMAP.comment =色调映射器的工作色彩空间。色域越宽，过曝可能越多，且可能出现色相偏移。
+value.RENODX_WORKINGCS_HDRTONEMAP.RENODX_CS_BT709   =bt709
+value.RENODX_WORKINGCS_HDRTONEMAP.RENODX_CS_BT2020  =bt2020
+value.RENODX_WORKINGCS_HDRTONEMAP.RENODX_CS_AP1     =ap1
+
+# RenoDX ACES
+option.RENODX_ACES_RGC =色域压缩过曝
+option.RENODX_ACES_RGC.comment =压缩色域导致的ACES色相偏移过曝。
+
+option.RENODX_ACES_RRT =参考渲染变换
+option.RENODX_ACES_RRT.comment =为输出设备准备颜色。
+
+option.RENODX_ACES_MIDGRAY =中灰
+option.RENODX_ACES_MIDGRAY.comment =中灰输出目标。
+
+# RenoDX GT
+option.RENODX_GT_A =对比度
+option.RENODX_GT_A.comment =实际效果为 pow(颜色, 对比度)。
+
+option.RENODX_GT_M =线性区间起点（中灰）
+option.RENODX_GT_M.comment =即暗部区间终点。
+
+option.RENODX_GT_L =线性段长度
+option.RENODX_GT_L.comment =肩部前的线性段长度。
+
+option.RENODX_GT_C =趾部对比度
+option.RENODX_GT_C.comment =暗部区间将颜色拉向黑色的力度应多大？
+
+option.RENODX_GT_B =黑色电平提升
+option.RENODX_GT_B.comment =提升黑色电平。
+
+# RenoDX GT7
+option.RENODX_GT7_A =白色裁切强度
+option.RENODX_GT7_A.comment =用于裁切高光的蒙版。
+
+option.RENODX_GT7_M =灰点
+option.RENODX_GT7_M.comment =暗部区间终点的灰点。
+
+option.RENODX_GT7_L =线性段长度
+option.RENODX_GT7_L.comment =肩部前的线性段长度。
+
+option.RENODX_GT7_C =趾部对比度
+option.RENODX_GT7_C.comment =暗部区间将颜色拉向黑色的力度应多大。
+
+option.RENODX_GT7_BLOW_AMOUNT =过曝量
+option.RENODX_GT7_BLOW_AMOUNT.comment =色度过曝的混合强度。
+
+option.RENODX_GT7_BLOW_START =过曝起点
+option.RENODX_GT7_BLOW_START.comment =色度过曝的起点。
+
+option.RENODX_GT7_BLOW_END =过曝终点
+option.RENODX_GT7_BLOW_END.comment =色度过曝的终点。
+
+#Hable
+option.RENODX_HABLE_A =肩部强度
+option.RENODX_HABLE_B =线性区间强度
+option.RENODX_HABLE_C =线性角度
+option.RENODX_HABLE_D =暗部区间强度
+option.RENODX_HABLE_E =暗部区间分子
+option.RENODX_HABLE_F =暗部分母
+option.RENODX_HABLE_W =白点
+
+#Frostbite
+option.RENODX_FROSTBITE_SAT =饱和度增强
+option.RENODX_FROSTBITE_HUE =色相保持
+
+#RenderIntermediatePass
+option.RENODX_INTER_MODE =中间处理模式
+option.RENODX_INTER_MODE.comment =将颜色编码（EOTF与色彩空间）为最终输出要求的格式。除非出现严重问题，否则保持sRGB！
+value.RENODX_INTER_MODE.RENODX_INTER_MODE_SRGB =sRGB (BT.709)
+value.RENODX_INTER_MODE.RENODX_INTER_MODE_SCRGB =scRGB @ 203尼特 (BT.709)
+value.RENODX_INTER_MODE.RENODX_INTER_MODE_HDR10 =HDR10 @ 203尼特 (BT.2020)

@@ -1,0 +1,5 @@
+option.TYPE_AA=§6抗锯齿类型
+option.TYPE_AA.comment=§2快速近似抗锯齿（§ff§6x§faa）。它通过分析屏幕上的像素并应用模糊滤镜来减少锯齿边缘的外观，而无需消耗大量计算能力。§2时间性抗锯齿§f§6（§ftaa）。结合过去帧和当前帧的信息以消除当前帧中的锯齿
+value.TYPE_AA.0=快速近似抗锯齿
+value.TYPE_AA.1=自适应时间抗锯齿
+option.d=帕尼尼投影

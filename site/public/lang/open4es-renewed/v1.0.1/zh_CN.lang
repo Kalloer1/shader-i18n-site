@@ -1,0 +1,28 @@
+# Options & Value Lang
+option.CILOKG=CilokGaming
+value.CILOKG.0=光影
+option.CILOKG.comment=由 §5@CilokGaming05§r 制作。祝你玩得开心！
+
+option.SHADOW=阴影
+option.SHADOW.comment=动态阴影映射
+
+option.shadowMapResolution=阴影贴图质量
+option.shadowMapResolution.comment=调整阴影贴图大小。§e[*]§r更高分辨率使阴影更锐利，但会降低性能。
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整阴影距离。
+
+option.ENABLE_SSAO=环境光遮蔽
+option.ENABLE_SSAO.comment=在表面接触或交叉处添加柔和阴影。
+
+option.WAVING_TERRAIN=摇曳地形
+option.WAVING_TERRAIN.comment=允许地形摇曳
+
+option.PARALLAX=视差遮蔽映射
+option.PARALLAX.comment=使用高度图为表面添加位移效果。
+
+option.TONEMAP=色调映射
+option.TONEMAP.comment=赋予 Minecraft 颜色
+
+option.REFLECTION=反射
+option.REFLECTION.comment=允许水面反射与雨水反射

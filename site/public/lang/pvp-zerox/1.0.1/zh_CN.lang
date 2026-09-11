@@ -1,0 +1,69 @@
+#Profiles
+profile.PVP=§cPVP
+profile.PVP_Classic=§ePVP & 经典
+profile.Classic=§a经典
+
+option.PATREON=§6Patreon
+option.PATREON.comment=§fpatreon.com/lolip_p
+value.PATREON.0=§fpatreon.com/lolip_p
+value.PATREON.1=§fpatreon.com/lolip_p
+
+#Settings
+option.BY=§6悬停提示我
+option.BY.comment=§9Discord: §fdiscord.com/invite/65CkSpxrmm. §4YouTube: §fyoutube.com/@lolip_p.
+value.BY.0=§f制作: LoLip_p
+value.BY.1=§f制作: LoLip_p
+
+screen.PP=后处理
+screen.EFFECTS=效果
+screen.PVP_SETTINGS=PVP 设置
+screen.SKY=天空
+screen.EMISSION=高光
+
+option.TYPE_AA=§6抗锯齿
+option.TYPE_AA.comment=§2基于时间的抗锯齿 §f(§6TAA§f)。将过去的帧与当前帧的信息组合，以消除当前帧中的锯齿
+value.TYPE_AA.0=关闭
+value.TYPE_AA.1=TAA
+
+#Motion Blur
+option.MOTION_BLUR=§6运动模糊
+option.MOTION_BLUR.comment=在旋转相机时对画面进行模糊处理（使游戏体验更加愉悦和流畅）。数值越高，模糊效果越强。建议保持开启状态，仅根据个人偏好调整 §2运动模糊强度 §f 参数。
+value.MOTION_BLUR.0=关闭
+value.MOTION_BLUR.1=开启
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+option.MOTION_BLURRING_STRENGTH.comment=调整模糊强度。§4过高的值可能导致部分玩家感到头晕和晕动症。
+
+option.FOG=雾
+value.FOG.0=关闭
+value.FOG.1=开启
+
+option.SATURATION=饱和度
+option.CONTRAST=对比度
+option.SHARPNESS_STRENGTH=锐化强度
+
+option.TERRAIN_SATURATION=地形饱和度
+option.TRANSPARENT_STRENGTH=透明粒子强度
+
+option.FULL_BRIGHT=全亮
+value.FULL_BRIGHT.0=关闭
+value.FULL_BRIGHT.1=开启
+
+option.BLACK_SKY=黑天空
+value.BLACK_SKY.0=关闭
+value.BLACK_SKY.1=开启
+option.SUN_MOON=太阳与月亮
+value.SUN_MOON.0=关闭
+value.SUN_MOON.1=开启
+option.CLOUDS=云彩
+value.CLOUDS.0=关闭
+value.CLOUDS.1=开启
+
+option.PLAYER_EMISSION=玩家高亮
+value.PLAYER_EMISSION.0=关闭
+value.PLAYER_EMISSION.1=开启
+option.MOBS_EMISSION=生物高亮
+value.MOBS_EMISSION.0=关闭
+value.MOBS_EMISSION.1=开启
+option.ARROY_EMISSION=Arroys 高亮
+value.ARROY_EMISSION.0=关闭
+value.ARROY_EMISSION.1=开启

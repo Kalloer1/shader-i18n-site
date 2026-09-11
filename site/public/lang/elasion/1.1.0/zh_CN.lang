@@ -1,0 +1,100 @@
+option.RENDER_DISTANCE = 渲染距离
+option.BRIGHTNESS = 亮度
+option.RED = 红色
+option.GREEN = 绿色
+option.BLUE = 蓝色
+option.SATURATION = 饱和度
+option.GAMMA = 伽马校正
+option.CONTRAST = 对比度
+option.GRAPHICS = 图形
+
+option.FOLIAGE_RED = 叶子红色调
+option.FOLIAGE_GREEN = 叶子绿色调
+option.FOLIAGE_BLUE = 叶子蓝色调
+option.FOLIAGE_TINT = 叶子色调因子
+option.LEAVES_RED = 树叶红色调
+option.LEAVES_GREEN = 树叶绿色调
+option.LEAVES_BLUE = 树叶蓝色调
+option.LEAVES_TINT = 树叶色调因子
+option.CHERRY_RED = 樱花叶红色调
+option.CHERRY_GREEN = 樱花叶绿色调
+option.CHERRY_BLUE = 樱花叶蓝色调
+option.CHERRY_TINT = 樱花叶色调因子
+option.STEM_RED = 花茎红色调
+option.STEM_GREEN = 花茎绿色调
+option.STEM_BLUE = 花茎蓝色调
+option.STEM_TINT = 花茎色调因子
+
+option.WATER_RED = 水红色调
+option.WATER_GREEN = 水绿色调
+option.WATER_BLUE = 水蓝色调
+option.WATER_TINT = 水色调因子
+option.WATER_TRANSPARENCY = 水透明度
+
+option.FOG_RED = 白天雾红色值
+option.FOG_NIGHT_RED = 夜晚雾红色值
+option.FOG_GREEN = 白天雾绿色值
+option.FOG_NIGHT_GREEN = 夜晚雾绿色值
+option.FOG_BLUE = 白天雾蓝色值
+option.FOG_NIGHT_BLUE = 夜晚雾蓝色值
+option.FOG_TINT = 雾色混合系数
+option.FOG_WEATHER = 雾天气变暗系数
+option.Y_FOG_AMOUNT = 世界深度雾强度
+
+option.FOG_NETHER_RED = 雾红值
+option.FOG_NETHER_GREEN = 雾绿值
+option.FOG_NETHER_BLUE = 雾蓝值
+option.FOG_NETHER_TINT = 雾色混合因数
+
+option.FOG_END_RED = 雾的红色值
+option.FOG_END_GREEN = 雾的绿色值
+option.FOG_END_BLUE = 雾的蓝色值
+option.FOG_END_TINT = 雾的颜色混合因子
+
+option.SKY_RED = 日 skies 红色值
+option.SKY_NIGHT_RED = 夜 skies 红色值
+option.SKY_GREEN = 日 skies 绿色值
+option.SKY_NIGHT_GREEN = 夜 skies 绿色值
+option.SKY_BLUE = 日 skies 蓝色值
+option.SKY_NIGHT_BLUE = 夜 skies 蓝色值
+option.SKY_TINT = 天空颜色混合因子
+option.SKY_WEATHER = 天气降低天空亮度因子
+option.Y_SKY_AMOUNT = 世界深度天空强度
+
+option.SKY_NETHER_RED = 天空红色
+option.SKY_NETHER_GREEN = 天空绿色
+option.SKY_NETHER_BLUE = 天空蓝色
+option.SKY_NETHER_TINT = 天空颜色混合
+
+option.SKY_END_RED = 天空红色值
+option.SKY_END_GREEN = 天空绿色值
+option.SKY_END_BLUE = 天空蓝色值
+option.SKY_END_TINT = 天空颜色混合因子
+
+option.STARS_RED = 星光红色值
+option.STARS_GREEN = 星光绿色值
+option.STARS_BLUE = 星光蓝色值
+option.STARS_TINT = 星光颜色混合因子
+
+option.ENTITY_SHADOW = 实体阴影透明度
+
+value.RENDER_DISTANCE.0 = 微小
+value.RENDER_DISTANCE.1 = 较短
+value.RENDER_DISTANCE.2 = 正常
+value.RENDER_DISTANCE.3 = 远距
+
+value.GRAPHICS.0 = 快速
+value.GRAPHICS.1 = 精致
+
+screen.Screen = 屏幕颜色选项
+screen.Foliage = 树叶颜色选项
+screen.Fog = 雾选项
+screen.FogMain = 主世界雾选项
+screen.FogNether = 南瓜关卡雾选项
+screen.FogEnd = 末关卡雾选项
+screen.Sky = 天空选项
+screen.SkyMain = 主世界天空选项
+screen.SkyNether = 南瓜关卡天空选项
+screen.SkyEnd = 末关卡天空选项
+screen.Stars = 星星选项
+screen.Water = 水选项

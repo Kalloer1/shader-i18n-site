@@ -1,0 +1,537 @@
+
+
+
+option.TITLE=标题
+
+profile.Low=低配
+profile.Medium=中配
+profile.High=高配（推荐）
+profile.Ultra=极高
+profile.Extreme=极限
+
+
+
+
+
+screen.LIGHTING=§e§l照明
+
+
+screen.LIGHT_SOURCE=§a 光源设置
+option.sunPathRotation=太阳路径旋转
+option.SUNLIGHT_INTENSITY=阳光强度
+option.SKYLIGHT_INTENSITY=天光强度
+option.NIGHT_BRIGHTNESS=夜晚亮度
+option.COLD_MOONLIGHT=冷月光
+option.TORCHLIGHT_BRIGHTNESS=方块照明亮度
+option.TORCHLIGHT_COLOR_TEMPERATURE=方块照明色温
+suffix.TORCHLIGHT_COLOR_TEMPERATURE= K
+option.DIRECTIONAL_BLOCKLIGHT=方向性方块照明
+option.DIRECTIONAL_BLOCKLIGHT_STRENGTH=方向权重
+option.NOLIGHT_BRIGHTNESS=基础亮度
+option.NETHER_BRIGHTNESS=地下城环境亮度
+
+
+screen.HELDLIGHT=§e持久光源设置
+option.HELDLIGHT_MODE=§e持久光源模式
+value.HELDLIGHT_MODE.0=火把
+value.HELDLIGHT_MODE.1=手电筒
+option.SPECULAR_HELDLIGHT=效果高光
+option.HELDLIGHT_SHADOW=启用阴影
+option.HELDLIGHT_BRIGHTNESS=亮度
+option.HELDLIGHT_FALLOFF=火把衰减
+option.FLASHLIGHT_HELDLIGHT_FALLOFF=手电筒衰减
+
+screen.FLASHLIGHT=手电筒模式设置
+option.FLASHLIGHT_FOV=手电筒光束角度
+option.FLASHLIGHT_CAMERA_SMOOTH=手电筒面向平滑
+option.FLASHLIGHT_CAMERA_SMOOTH_TIME=过渡时间
+option.FLASHLIGHT_COLOR_R=手电筒颜色红色
+option.FLASHLIGHT_COLOR_G=手电筒颜色绿色
+option.FLASHLIGHT_COLOR_B=手电筒颜色蓝色
+option.FLASHLIGHT_POS_L_X=水平位置左
+option.FLASHLIGHT_POS_L_Y=垂直位置左
+option.FLASHLIGHT_POS_R_X=水平位置右
+option.FLASHLIGHT_POS_R_Y=垂直位置右
+
+
+screen.SHADOW=§6阴影设置
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowDistance=阴影距离
+value.shadowDistance.64.0=4 区块
+value.shadowDistance.96.0=6 区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.192.0=12 区块
+value.shadowDistance.256.0=16 区块
+value.shadowDistance.384.0=24 区块
+value.shadowDistance.512.0=32 区块
+value.shadowDistance.768.0=48 区块
+value.shadowDistance.1024.0=64 区块
+value.shadowDistance.1536.0=96 区块
+value.shadowDistance.2048.0=128 区块
+option.SHADOW_MAP_BIAS=阴影贴图偏移
+option.SHADOW_BASIC_BLUR=阴影基础模糊
+option.VARIABLE_PENUMBRA_SHADOWS=可变阴影半影
+option.VPS_QUALITY=阴影质量
+option.VPS_SPREAD=模糊半径
+option.COLORED_SHADOWS=彩色阴影
+option.CAUSTICS=水面焦散
+option.SCREEN_SPACE_SHADOWS=屏幕空间阴影
+option.SUNLIGHT_LEAK_FIX=阳光漏光修复
+
+
+screen.GI=§cGI 设置
+option.GI_RSM=§cRSM
+option.GI_QUALITY=质量
+option.GI_RENDER_RESOLUTION=渲染分辨率
+value.GI_RENDER_RESOLUTION.0.25=25%
+value.GI_RENDER_RESOLUTION.0.5=50%
+option.GI_RADIUS=半径
+option.GI_BRIGHTNESS=强度
+option.GI_FALLOFF=衰减
+option.GI_SKYLIGHT_FALLOFF=天光衰减
+
+
+screen.AO=§4环境光遮蔽 设置
+option.GTAO=§4GTAO
+option.GTAO_QUALITY=采样质量
+option.GTAO_SLICE_QUALITY=几何采样质量
+option.GTAO_RADIUS_MODE=半径参考
+value.GTAO_RADIUS_MODE.0=地形距离
+value.GTAO_RADIUS_MODE.1=屏幕比例
+option.GTAO_WORLD_RADIUS=距离参考半径
+option.GTAO_MAX_RADIUS=距离参考最大半径
+option.GTAO_SCREEN_RADIUS=屏幕参考半径
+option.GTAO_FALLOFF_START=衰减起始点
+option.GTAO_STRENGTH=强度
+option.GTAO_MULTIBOUNCE=多次反弹匹配
+
+
+
+
+
+screen.SURFACE=§a§l纹理
+
+option.TEXTURE_RESOLUTION=方块纹理分辨率
+value.TEXTURE_RESOLUTION.0=自动
+option.ENTITIES_TEXTURE_RESOLUTION=实体纹理分辨率
+option.ANISOTROPIC_FILTERING_QUALITY=各向异性过滤
+value.ANISOTROPIC_FILTERING_QUALITY.0=关闭
+value.ANISOTROPIC_FILTERING_QUALITY.2=2x
+value.ANISOTROPIC_FILTERING_QUALITY.4=4x
+value.ANISOTROPIC_FILTERING_QUALITY.8=8x
+value.ANISOTROPIC_FILTERING_QUALITY.16=16x
+value.ANISOTROPIC_FILTERING_QUALITY.32=32x
+option.ANISOTROPIC_FILTERING_NORMAL_SPECULAR=应用于法线 & 高光
+
+
+screen.POM=§6视差设置
+option.PARALLAX_MODE=§6模式
+value.PARALLAX_MODE.0=关闭
+value.PARALLAX_MODE.1=清晰
+value.PARALLAX_MODE.2=平滑
+option.ENTITIES_PARALLAX=实体视差
+option.PARALLAX_DEPTH=视差深度
+option.PARALLAX_SHADOW=视差自阴影
+option.PARALLAX_QUALITY=质量
+option.PARALLAX_SHADOW_QUALITY=自阴影质量
+option.PARALLAX_BASED_NORMAL=视差基法线
+value.PARALLAX_BASED_NORMAL.0=关闭
+value.PARALLAX_BASED_NORMAL.1=仅侧向
+value.PARALLAX_BASED_NORMAL.2=全部
+option.PARALLAX_FADE=视差淡化
+
+
+screen.PBR=§ePBR 纹理设置
+option.ENABLE_PBR=§e启用 PBR
+option.TEXTURE_PBR_FORMAT=PBR 格式
+value.TEXTURE_PBR_FORMAT.0=labPBR
+value.TEXTURE_PBR_FORMAT.1=labPBR（无预设）
+value.TEXTURE_PBR_FORMAT.2=PTGI
+
+screen.REFLECTION=反射设置
+option.SKY_IMAGE_RESOLUTION=天空盒分辨率
+option.ROUGHNESS_CLAMP= clamping 高粗糙度
+option.TERRAIN_NORMAL_CLAMP=地形法线 clamping
+option.HAND_NORMAL_CLAMP=手持物品法线 clamping
+option.ENTITIES_NORMAL_CLAMP=实体法线 clamping
+
+screen.SSS=次表面散射设置
+option.SSS_QUALITY=质量
+option.SSS_STRENGTH=强度乘数
+option.SSS_STRENGTH_OFFSET=强度偏移
+option.SSS_BRIGHTNESS=亮度
+option.SSS_NORMAL=效果法线
+
+screen.EMISSIVE=Emissive Setting
+option.TEXTURE_EMISSIVENESS_MODE=Emissive Texture Mode
+value.TEXTURE_EMISSIVENESS_MODE.0=Hardcoded Only
+value.TEXTURE_EMISSIVENESS_MODE.1=PBR Only
+value.TEXTURE_EMISSIVENESS_MODE.2=PBR + Hardcoded
+option.TEXTURE_BRIGHTNESS=Hardcoded Brightness
+option.EMISSIVENESS_BRIGHTNESS=PBR Brightness
+option.EMISSIVENESS_GAMMA=Gamma
+
+screen.POROSITY=孔隙度设置
+option.TEXTURE_PBR_POROSITY=labPBR 孔隙度
+option.TEXTURE_DEFAULT_POROSITY=默认孔隙度
+option.POROSITY_ABSORPTION==湿度反射吸收
+option.SURFACE_WETNESS=表面湿度覆盖
+
+
+screen.WATER_RAIN=§a水与天气设置
+option.WATER_PARALLAX=水面视差
+option.WAVE_SCALE=波浪尺度
+option.WAVE_HEIGHT=波浪高度
+option.RAIN_SHADOW=雨天阴影
+option.RAIN_SPLASH_EFFECT=雨滴溅落
+option.drynessHalflife=干>>湿 半衰时间
+option.wetnessHalflife=湿>>干 半衰时间
+option.RAIN_VISIBILITY=雨滴可见度
+option.RAIN_WIND_X=雨滴风向（X轴）
+option.RAIN_WIND_Z=雨滴风向（Z轴）
+option.RAIN_DISTURBANCE=雨滴随机扰动强度
+option.DISABLE_LOCAL_PRECIPITATION=禁用局部降雨检测
+
+
+screen.SKY_TEXTURE=§b天空纹理设置
+option.STAR_TYPE=星星类型
+value.STAR_TYPE.0=关闭
+value.STAR_TYPE.1=点状
+value.STAR_TYPE.2=原版
+option.SKY_TEXTURE_BRIGHTNESS=纹理亮度
+option.MOON_TEXTURE=月亮纹理
+option.BILINEAR_MOON_TEXTURE=月亮纹理平滑
+option.SKYBOX_TEXTURE=天空盒纹理
+option.BILINEAR_SKYBOX_TEXTURE=天空盒纹理平滑
+
+
+screen.END_SKY=§d末地天空设置
+option.END_PLANET_CYCLE=末地循环周期
+suffix.END_PLANET_CYCLE=分钟
+option.END_MANUAL_PLANET_CYCLE=手动相位控制
+option.END_MANUAL_PLANET_ANGLE=相位角
+suffix.END_MANUAL_PLANET_ANGLE=°
+option.ACCRETIONDISC_DETAIL_ALONG_LONGTITUDE=尘埃吸积盘
+option.ACCRETIONDISC_DOPPLER_EFFECT=吸积盘多普勒效应
+
+
+screen.SURFMISC=杂项
+option.ENTITIES_STATUS_COLOR=实体状态颜色
+option.EYES_LIGHTING=实体眼睛光照
+option.WAVING_PLANTS=摆动的植物
+option.SHADOW_WAVING_PLANTS=阴影贴图中的摆动植物
+option.GENERAL_GRASS_FIX=通用草地修复
+option.LINE_IMAGE_OUTPUT=禁用选择框深度写入
+option.SELECTION_BOX_COLOR_R=选择框颜色 红
+option.SELECTION_BOX_COLOR_G=选择框颜色 绿
+option.SELECTION_BOX_COLOR_B=选择框颜色 蓝
+option.HAND_FOV_MODE=手部视野模式
+value.HAND_FOV_MODE.0=默认
+value.HAND_FOV_MODE.1=跟随游戏设置
+value.HAND_FOV_MODE.2=跟随光影设置
+option.HAND_FOV=手部视野
+option.ENTITIES_VS_TBN=实体顶点法线平滑
+option.TERRAIN_VS_TBN=方块顶点法线平滑
+
+
+
+
+
+screen.VOL=§b§l体积光效
+
+option.VFOG_REFLECTION=在反射中渲染
+option.VFOG_REFRACTION=在折射中渲染
+option.LANDSCATTERING_REFLECTION=在反射中渲染
+option.LANDSCATTERING_REFRACTION=在折射中渲染
+option.INDOOR_FOG=禁用天光衰减
+
+
+option.PLANAR_CLOUDS=§b平面云
+screen.PC=设置
+option.PC_COVERAGE=覆盖度
+option.PC_NOISE_SCALE=噪声尺度
+option.PC_ALTITUDE=高度
+
+
+option.VOLUMETRIC_CLOUDS=§b体积云
+option.VOLUMETRIC_CLOUDS.comment=§9████████§f████§9██████. §9█████§f█████████§9████. §9███§f██████§7█§f████§7█§9███. §9███§f██████§7█§f████§7██§9██. §9████§f█§7████§f███§7███§9███. §9███████§f██§7███§9██████.
+screen.VC=设置
+option.CLOUD_QUALITY=云样本质量
+option.CLOUD_FADE=距离淡化
+option.CLOUD_SPEED=云速度
+option.CLOUD_SHADOW=云阴影
+
+option.CLOUD_DETAILED_NOISE_STRENGTH=详细噪声强度
+option.CLOUD_BASE_NOISE_SCALE=基准噪声尺度
+option.CLOUD_DETAILED_NOISE_SCALE=详细噪声尺度
+option.CLOUD_COVERAGE_NOISE_OFFSET=覆盖噪声偏移
+option.CLOUD_BOTTOM_BRIGHTNESS=底部亮度
+option.CLOUD_OUTSCATTER_FACTOR=散射因素
+
+screen.CLEAR_SETTING=清除设置
+option.CLOUD_CLEAR_ALTITUDE=高度
+option.CLOUD_CLEAR_THICKNESS=厚度
+option.CLOUD_CLEAR_COVERY=覆盖
+option.CLOUD_CLEAR_DENSITY=密度
+option.CLOUD_CLEAR_SUNLIGHTING=阳光强度
+option.CLOUD_CLEAR_SKYLIGHTING=天光强度
+option.CLOUD_CLEAR_SCALE=比例
+
+screen.RAIN_SETTING=降雨设置
+option.CLOUD_RAIN_ALTITUDE=高度
+option.CLOUD_RAIN_THICKNESS=厚度
+option.CLOUD_RAIN_COVERY=覆盖
+option.CLOUD_RAIN_DENSITY=密度
+option.CLOUD_RAIN_SUNLIGHTING=阳光强度
+option.CLOUD_RAIN_SKYLIGHTING=天光强度
+option.CLOUD_RAIN_SCALE=比例
+
+screen.CLOUD_SHADOW_SETTING=云影设置
+option.CLOUD_SHADOW_FADE=云影淡入淡出
+option.CLOUD_SHADOW_RANGE=云影范围
+value.CLOUD_SHADOW_RANGE.2048.0=64 区块
+value.CLOUD_SHADOW_RANGE.3072.0=96 区块
+value.CLOUD_SHADOW_RANGE.4096.0=128 区块
+value.CLOUD_SHADOW_RANGE.6144.0=192 区块
+value.CLOUD_SHADOW_RANGE.8192.0=256 区块
+value.CLOUD_SHADOW_RANGE.12288.0=384 区块
+value.CLOUD_SHADOW_RANGE.16384.0=512 区块
+option.CLOUD_SHADOWTEX_SIZE=云影纹理分辨率
+
+
+option.VFOG=§e体积雾
+screen.VFOG=设置
+option.VFOG_NOISE_TYPE=噪声类型
+value.VFOG_NOISE_TYPE.0=高度淡化
+value.VFOG_NOISE_TYPE.1=聚集
+option.VFOG_QUALITY=质量
+option.VFOG_DENSITY=密度
+option.VFOG_DENSITY_BASE=基准密度
+option.VFOG_SUNLIGHT_DENSITY=阳光强度
+option.VFOG_FOG_DENSITY=天光强度
+option.VFOG_HEIGHT=中点高度
+option.VFOG_HEIGHT_2=中点高度
+option.VFOG_FALLOFF=衰减距离
+option.VFOG_IGNORE_WORLDTIME=忽略世界时间
+option.VFOG_STAINED=染色透明
+option.VFOG_CLOUD_SHADOW=云层阴影
+option.VFOG_VOLUMETRIC_LIGHTING=体积光照
+option.VFOG_SUNLIGHT_ABSORPTION=体积光照吸收
+option.UNDERWATER_VFOG=水下体积雾
+option.UNDERWATER_VFOG_DENSITY=水下雾密度
+
+
+option.LANDSCATTERING=§a群系扩散
+screen.LANDSCATTERING=设置
+option.LANDSCATTERING_STRENGTH=强度
+option.LANDSCATTERING_SHADOW=阴影启用
+option.LANDSCATTERING_SHADOW_QUALITY=阴影质量
+
+
+screen.VOL_MISC=杂项
+option.UNDERWATER_FOG=水下雾
+option.WATERFOG_DENSITY=密度
+option.NETHERFOG_DENSITY=地下城雾密度
+option.ATMO_HORIZON=天空地平线
+option.ATMO_REFLECTION_HORIZON=天空盒子地平线
+
+
+
+
+
+screen.POSTPROCESSING=§d§l后期特效
+
+
+screen.TAA_SETTING=时间抗锯齿
+option.TAA=TAA
+option.TAA_BLENDWEIGHT=混合权重
+option.TAA_AGGRESSION=裁剪 aggression
+
+
+screen.FIDELITY_FX_SETTING=§4AMD FidelityFX
+option.FSR=§4FSR 1.0
+option.FSR_SHARPNESS=FSR 锐化
+option.FSR_DENOISE=FSR 降噪锐化
+option.CAS_SHARPNESS=CAS 锐化
+value.CAS_SHARPNESS.0=off
+option.CAS_DENOISE=CAS 降噪锐化
+
+
+screen.DOF_SETTING=§d景深
+option.DOF=§d景深
+option.DOF_BLUR=模糊量
+option.DOF_QUALITY=质量
+option.DOF_COCSPREAD_QUALITY=前景 COC 扩散 质量
+option.DOF_MAX_COC=最大模糊半径
+option.DOF_CATSEYE=猫眼效果
+option.DOF_CATSEYE_STRENGTH=强度
+option.DOF_CATSEYE_MIDPOINT=中点
+option.CAMERA_FOCUS_MODE=焦点模式
+value.CAMERA_FOCUS_MODE.0=自动
+value.CAMERA_FOCUS_MODE.1=手动
+option.CAMERA_FOCAL_POINT=手动焦点
+suffix.CAMERA_FOCAL_POINT= m
+option.CAMERA_APERTURE=光圈
+option.DOF_DEPTH_SMMOOTH_HALFLIFE=焦点平滑半衰期
+option.DOF_FOCUS_IGNORE_HAND_PARTICLE=聚焦忽略手部或粒子
+
+
+screen.EXPOSURE_SETTING=§b曝光
+option.AE_MODE=§bAE 模式
+value.AE_MODE.0=默认
+value.AE_MODE.1=均衡-weighted
+value.AE_MODE.2=中心仅
+value.AE_MODE.3=屏幕平均
+option.AE_CURVE=AE 曲线
+option.AE_OFFSET=AE 偏移
+suffix.AE_OFFSET= EV
+option.LUMINANCE_WEIGHT_MODE=亮度加权模式
+value.LUMINANCE_WEIGHT_MODE.0=关闭
+value.LUMINANCE_WEIGHT_MODE.1=预设 1
+value.LUMINANCE_WEIGHT_MODE.2=预设 2
+value.LUMINANCE_WEIGHT_MODE.3=阴影优先
+value.LUMINANCE_WEIGHT_MODE.4=高光优先
+option.LUMINANCE_WEIGHT_STRENGTH=加权强度
+option.SMOOTH_EXPOSURE=平滑曝光
+option.EXPOSURE_TIME=AE 过渡时间
+option.MANUAL_EXPOSURE=§b手动曝光
+option.EV_VALUE=精确 EV 值
+suffix.EV_VALUE= EV
+
+
+screen.MOTION_BLUR_SETTING=§a运动模糊
+option.MOTION_BLUR=§a运动模糊
+option.MOTION_BLUR_DITHER=抖动启用
+option.MOTION_BLUR_QUALITY=质量
+option.MOTION_BLUR_SUTTER_ANGLE=Sutter 角度
+suffix.MOTION_BLUR_SUTTER_ANGLE=°
+
+
+screen.VIGNETTE_SETTING=§eVignette
+option.VIGNETTE=§eVignette
+option.VIGNETTE_FALLOFF=Falloff
+option.VIGNETTE_ROUNDNESS=Roundness
+option.SNEAKING_VIGNETTE=Sneaking Vignette Enabled
+
+
+screen.BLOOM_SETTING=§6泛光
+option.BLOOM=§6泛光
+option.BLOOM_AMOUNT=泛光强度
+option.NETHER_END_BLOOM_BOOST=南洞末日泛光提升
+option.VFOG_BLOOM=体积雾散射泛光
+option.LENS_GLARE=§6镜头光晕
+option.LENS_FLARE=§6镜头光斑
+option.GLARE_BRIGHTNESS=光晕与太阳星辰亮度
+option.FLARE_BRIGHTNESS=光斑亮度
+option.FLARE_GHOSTING=残影
+option.GLARE_FLARE_SHADOWBASED=基于阴影
+
+
+screen.COLOR=§c颜色调整
+option.TONEMAP_OPERATOR=§c色调映射
+value.TONEMAP_OPERATOR.None=None
+option.AGX_EV=AgX 动态范围
+suffix.AGX_EV=EV
+option.ABNEY_EFFECT_CORRECTION=Abney 效应校正
+option.ADVANCED_COLOR=高级颜色调整
+screen.ADVANCED_COLOR=设置
+option.SATURATION=饱和度
+option.GAMMA=伽马
+option.LUMA_GAMMA=亮度伽马
+option.WHITE_CLIP=白色裁剪
+
+
+screen.POSTMISC=其他
+option.SEREEN_RATIO=宽高比
+value.SEREEN_RATIO.0.0=原始
+value.SEREEN_RATIO.1.333333=4:3
+value.SEREEN_RATIO.1.435052=IMAX
+value.SEREEN_RATIO.1.5=35mm 胶片
+value.SEREEN_RATIO.1.6=16:10
+value.SEREEN_RATIO.1.777778=16:9
+value.SEREEN_RATIO.2.0=18:9
+value.SEREEN_RATIO.2.333333=21:9
+value.SEREEN_RATIO.2.39=35mm 宽银幕
+option.PURKINJE_EFFECT=Purkinje 效应
+option.PURKINJE_EFFECT_THRESHOLD=阈值
+option.PURKINJE_EFFECT_STRENGTH=强度
+
+
+
+
+
+screen.MOD_SUPPORT=§l支持的模组选项
+
+
+screen.DH_SETTING=§6Distant Horizons§r 设置
+option.DH_SHADOW=渲染至阴影贴图
+option.DH_SHADOW_FIX=阴影修复
+option.DH_TERRAIN_CULLING=地形剔除
+option.DH_SHADOW_CULLING=阴影剔除
+option.DH_TEXTURE_NOISE=应用纹理噪声
+option.DH_TEXTURE_NOISE_STEPS=缩放
+option.DH_TEXTURE_NOISE_STRENGTH=强度
+option.DH_LIMIT_VFOG_DIST=有限体积雾距离
+
+
+screen.TACZ_SETTING=§bTACZ§r 设置
+option.DISABLE_HAND_TAA=禁用手部 TAA
+option.DISABLE_HAND_GI=禁用手部 GI
+option.DISABLE_HAND_GI_VELOCITY=禁用手部 GI 中的速度
+option.DISABLE_HAND_SPECULAR=禁用手部 高光
+
+
+screen.YSM_SETTING=§b是的，Steve 模型§r 设置  
+option.DISABLE_PLAYER_TAA_MOTION_BLUR=禁用玩家 TAA 与运动模糊  
+option.DISABLE_PLAYER_GI=禁用玩家间接光照  
+option.DISABLE_PLAYER_GI_VELOCITY=禁用 GI 中的玩家速度  
+option.DISABLE_PLAYER_SPECULAR=禁用玩家高光  
+option.DISABLE_PLAYER_SCREEN_SPACE_SHADOWS=禁用玩家屏幕空间阴影
+
+
+
+
+
+screen.SHORTCUT=快捷键
+
+option.CAVE_MODE=洞穴模式
+
+
+
+
+
+screen.DEBUG=§7调试
+
+# Unified Realism merge marker
+
+# Unified Realism v0.3
+option.UR_REALISM_MODE=统一写实核心
+option.UR_LIGHTING_BALANCE=光照平衡
+option.UR_SHADOW_LIFT=阴影细节
+option.UR_HIGHLIGHT_ROLLOFF=高光 rolloff
+option.UR_COLOR_SATURATION=自然饱和度
+option.UR_ATMOSPHERE_STRENGTH=大气强度
+option.UR_CLOUD_CONTRAST=云层清晰度
+option.UR_RAIN_DARKENING=雨雾暗化
+option.UR_WATER_SPEED=水面波动速度
+option.UR_WATER_CHOPPINESS=水面不平缓度
+option.UR_GRASS_SWAY=植被摆动
+option.UR_GRASS_RAIN_DAMPING=雨中摆动减缓
+option.UR_VIGNETTE_STRENGTH=边缘衰减
+option.UR_DITHER_STRENGTH=梯度抖动
+
+# Unified Realism v0.3.1
+option.UR_DYNAMIC_BLOCKLIGHT_SHADOWS=动态方块光影阴影
+option.UR_DYNAMIC_BLOCKLIGHT_SHADOWS.comment=移动的前景几何体通过屏幕空间接触遮蔽使背后被光照表面的阴影加深。
+option.UR_BLOCKLIGHT_SHADOW_STRENGTH=方块光影阴影强度
+option.UR_BLOCKLIGHT_SHADOW_RADIUS=方块光影阴影半径
+
+screen.UNIFIED_REALISM=§b§l统一写实
+screen.UR_LIGHTING=§e§l光照
+screen.UR_MATERIALS=§a§l材质与纹理
+screen.UR_ATMOSPHERE=§b§l大气与体积
+screen.UR_WATER_WEATHER=§3§l水体与天气
+screen.UR_POST=§d§l后期处理
+screen.UR_COMPAT=§6§l兼容性
+screen.UR_ADVANCED=§7§l高级
+profile.UNIFIED_REALISM=Unified Realism v0.3.1 Stable

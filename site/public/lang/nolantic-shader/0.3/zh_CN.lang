@@ -1,0 +1,4 @@
+option.WATER_STYLE=水质
+option.WATER_STYLE.comment=Nolantic：青绿色水，快速变不透明。Clear：Complementary 风格清澈水 - 底部可见，微妙蓝调，宽广阳光反光。
+value.WATER_STYLE.1=Nolantic
+value.WATER_STYLE.2=清澈

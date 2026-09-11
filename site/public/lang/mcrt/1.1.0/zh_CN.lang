@@ -1,0 +1,59 @@
+profile.default = §cC§aR§9T
+profile.dread = §3Watcher
+profile.nvg = §aNVG
+profile.vapor = §6Vapor
+profile.insanity = §4Insanity
+
+option.MASK_SIZE = 像素大小
+option.MASK_BORDER = 像素边框大小
+
+option.SETTINGS_BYLINE = 由 Shader 制作
+value.SETTINGS_BYLINE.1 = meerkatx
+
+option.COLOR_OVERRIDE = 叠加颜色
+value.COLOR_OVERRIDE.0 = 无
+value.COLOR_OVERRIDE.1 = 灰度
+value.COLOR_OVERRIDE.2 = 红橙
+value.COLOR_OVERRIDE.3 = 黄色
+value.COLOR_OVERRIDE.4 = 绿色
+value.COLOR_OVERRIDE.5 = 蓝色
+value.COLOR_OVERRIDE.6 = 深蓝
+value.COLOR_OVERRIDE.7 = 紫色
+value.COLOR_OVERRIDE.8 = 粉色
+
+value.MASK_SIZE.1.0 = 无像素化
+
+screen.SCREEN = 屏幕设置
+
+option.OFFSET_PIXELS = 错位像素
+value.OFFSET_PIXELS.true = 开启
+value.OFFSET_PIXELS.false = 关闭
+option.SCREEN_CURVATURE = 屏幕曲率
+option.ENABLE_BORDER = 屏幕边框
+value.ENABLE_BORDER.true = 开启
+value.ENABLE_BORDER.false = 关闭
+option.BORDER_SOFTNESS = 屏幕边框柔和度
+value.BORDER_SOFTNESS.0.05 = 0.0
+option.s_ABERRATION_OFFSET = 色差强度
+
+option.SCREEN_STATIC = 屏幕静态
+option.SCREEN_STATIC.comment = §4此选项需要禁用像素化！
+value.SCREEN_STATIC.-0.75 = 完全光照
+value.SCREEN_STATIC.-0.5 = 中等光照
+value.SCREEN_STATIC.-0.25 = 轻微光照
+value.SCREEN_STATIC.0.0 = 无
+value.SCREEN_STATIC.0.25 = 轻微暗影
+value.SCREEN_STATIC.0.5 = 中等暗影
+value.SCREEN_STATIC.0.75 = 完全暗影
+
+screen.FLICKER Pulse Settings
+
+option.PULSE_INTENSITY = 脉冲强度
+option.PULSE_WIDTH = 脉冲宽度
+option.PULSE_RATE = 脉冲速度
+value.PULSE_RATE.10 = 1
+value.PULSE_RATE.20 = 2
+value.PULSE_RATE.30 = 3
+value.PULSE_RATE.40 = 4
+value.PULSE_RATE.50 = 5
+value.PULSE_RATE.60 = 6

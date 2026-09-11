@@ -1,0 +1,30 @@
+option.INFO = Loé的夜视
+option.INFO.comment = 由Loé（Louis）BERTRAND @louisgjbertrand  proudly developped 开发
+value.INFO.1 = BETA
+
+option.shaderLitType = 着色器照亮类型
+option.shaderLitType.comment = 着色器如何渲染光照
+value.shaderLitType.0 = 原版
+value.shaderLitType.1 = 未实现
+value.shaderLitType.2 = 未实现
+
+option.autoExposure = 自动曝光
+option.autoExposure.comment = 此功能尚未实现
+value.autoExposure.0 = 否
+value.autoExposure.1 = 是
+
+option.onlyNightVision = 仅在夜视激活时启用
+value.onlyNightVision.0 = 否
+value.onlyNightVision.1 = 是
+
+option.nightVisionMethod = 夜视方式
+value.nightVisionMethod.0 = 标准
+value.nightVisionMethod.1 = 热成像
+value.nightVisionMethod.1.comment = 注意：仍处于开发中
+
+option.screenColR = 屏幕红色
+option.screenColG = 屏幕绿色
+option.screenColB = 屏幕蓝色
+
+option.bloomIntensity = 泛光强度
+option.bloomIntensity.comment = 如果数值等于 0，泛光将被禁用

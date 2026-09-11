@@ -1,0 +1,54 @@
+# === 构建产物 ===
+node_modules/
+dist/
+site/.vitepress/cache/
+site/.vitepress/dist/
+.vitepress/cache/
+.vitepress/dist/
+.wrangler/
+package-lock.json
+
+# === 密钥与凭证 ===
+*.key
+*token*
+*secret*
+.env
+.env.*
+
+# === Agent/编辑器工作区 ===
+.pi/
+.venv/
+.claude/
+.zcode/
+.cursor/
+.vscode/
+.idea/
+
+# === 源 shader 文件（太大，不入库）===
+sources/
+
+# === 本地翻译实验/临时文件 ===
+docs/translate-chunks/
+docs/missing-en-values.json
+docs/translate-progress.json
+docs/translate-prompt.txt
+site/data/translation-cache.json
+run-translate.bat
+scripts/push-to-frontend.mjs
+scripts/check-update.mjs
+scripts/rebuild-clean.py
+scripts/gen-site-index.mjs
+
+# === 生成的架构图 ===
+project-architecture.html
+project-arch.json
+architecture.json
+pelican-bicycle.svg
+
+# === 其他 ===
+*.zip
+*.bak
+*.tmp
+todo.json
+already-done.json
+translate-summary.json

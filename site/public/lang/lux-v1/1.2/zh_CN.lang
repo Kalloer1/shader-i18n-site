@@ -1,0 +1,643 @@
+#shaders/lang/zh_CN.lang
+# Lux V1 v1.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Lux_v1.2.zip 的 shaders/lang/en_US.lang
+# shaders/lang/en_us.lang
+
+# Profiles
+profile.LOW=§e低配
+profile.MEDIUM=§a中配
+profile.HIGH=§b高配
+profile.ULTRA=§d极高
+profile.comment=§e低配§r: 低阴影，无额外效果。 §a中配§r: 中等阴影，无额外效果。 §b高配§r: 中等阴影，环境光遮蔽和体积光。 §d极高§r: 高阴影，环境光遮蔽和体积光。
+
+# Screens
+screen.CAMERA=相机设置
+screen.ATMOSPHERICS=大气效果
+screen.SURFACE=表面设置
+screen.MISC=杂项
+screen.SURFACE_WAVING=表面波动
+screen.POST_PROCESS=后期处理
+screen.COLOR_GRADING=色彩校正
+screen.CG_R=红色通道
+screen.CG_G=绿色通道
+screen.CG_B=蓝色通道
+screen.CG_T=色调
+
+screen.SHADOWS=阴影
+
+screen.COLOR=颜色
+screen.LIGHT_COLOR=光照颜色
+screen.LIGHT_M=光照（早晨）
+screen.AMBIENT_M=环境光（早晨）
+screen.LIGHT_D=光照（白天）
+screen.AMBIENT_D=环境光（白天）
+screen.LIGHT_E=光照（傍晚）
+screen.AMBIENT_E=环境光（傍晚）
+screen.LIGHT_N=光照（夜晚）
+screen.AMBIENT_N=环境光（夜晚）
+screen.BLOCKLIGHT_COLOR=方块光颜色
+screen.SKY_COLOR=天空颜色
+screen.WATER_COLOR=水颜色
+screen.WEATHER_COLOR=天气颜色
+screen.WEATHER_R=雨（普通）
+screen.WEATHER_C=降雪
+screen.WEATHER_D=沙漠沙暴
+screen.WEATHER_B=台地沙暴
+screen.WEATHER_S=沼泽雨
+screen.WEATHER_M=蘑菇岛雨
+screen.WEATHER_V=热带草原多云
+screen.DIMENSION_COLOR=维度颜色
+screen.NETHER_COLOR=下界颜色
+screen.NETHER_N=下界荒地
+screen.NETHER_V=灵魂沙峡谷
+screen.NETHER_C=绯红森林
+screen.NETHER_W=诡异森林
+screen.NETHER_B=玄武岩三角洲
+screen.END_COLOR=末地颜色
+screen.AURORA=极光配置
+
+screen.SKY=天空
+screen.CLOUDS=云朵配置
+
+screen.WATER=水
+
+screen.TERRAIN=波动方块
+
+screen.WORLD=世界
+
+screen.DOF=景深配置
+screen.CHROMATIC_ABBERATION=色差配置
+
+screen.VOLUMETRICS=体积雾配置
+
+screen.MATERIAL_NORMAL_SUPPORT=材质法线配置
+screen.MATERIAL_REFLECTION_SUPPORT=材质反射配置
+
+# Settings
+option.ABOUT=Lux Shaders
+option.ABOUT.comment=§a[+]§r 由Tech制作 (github.com/TechDevOnGitHub).     §e[*]§r 基于Capt Tatsu (bitslablab.com)
+value.ABOUT.0=by Tech
+
+option.AO=环境光遮蔽
+option.AO.comment=在表面接触或交叉处添加柔和阴影。
+
+option.AO_STRENGTH=环境光遮蔽强度
+option.AO_STRENGTH.comment=调整环境光遮蔽强度。
+
+option.VOLUMETRIC_FOG=体积雾
+option.VOLUMETRIC_FOG.comment=添加体积雾光线。§a[+]§r 此效果受益于 TAA。§e[*]§r 性能取决于阴影贴图分辨率。
+
+option.VOLUMETRIC_FOG_TYPE=体积雾类型
+option.VOLUMETRIC_FOG_TYPE.comment=在旧版体积效果与其更新后的新外观之间切换。
+value.VOLUMETRIC_FOG_TYPE.0=混合
+value.VOLUMETRIC_FOG_TYPE.1=旧版
+
+option.VOLUMETRIC_FOG_STRENGTH=体积雾强度
+option.VOLUMETRIC_FOG_STRENGTH.comment=调整体积雾强度。
+
+option.DESATURATION=去饱和度
+option.DESATURATION.comment=减少饱和度，同时在较暗区域添加一些色调。
+
+option.DESATURATION_FACTOR=最大去饱和度因子
+option.DESATURATION_FACTOR.comment=调整应用的最大去饱和度量。
+value.DESATURATION_FACTOR.2.0=极低
+value.DESATURATION_FACTOR.1.5=低
+value.DESATURATION_FACTOR.1.0=中
+value.DESATURATION_FACTOR.0.5=高
+value.DESATURATION_FACTOR.0.0=极高
+
+option.REFLECTION=反射
+option.REFLECTION.comment=启用屏幕空间反射。§e[*]§r 此开关仅影响水和半透明反射，雨水和高光反射不受影响。
+
+option.REFLECTION_TRANSLUCENT=半透明反射
+option.REFLECTION_TRANSLUCENT.comment=允许在半透明表面上渲染反射，如染色玻璃、冰、粘液块等。
+
+option.FORCE_REFLECTION=强制反射
+option.FORCE_REFLECTION.comment=强制在所有表面上渲染反射，包括粗糙和低反射率的表面。
+
+option.MATERIAL_SUPPORT=材质支持
+option.MATERIAL_SUPPORT.comment=启用 PBR 资源包的使用。§e[*]§r 此选项需要包含高光和/或法线贴图的资源包，如果不使用则禁用。
+
+option.WHITE_WORLD=白色世界
+option.WHITE_WORLD.comment=用纯白色替换纹理。
+
+option.MATERIAL_FORMAT=材质格式
+option.MATERIAL_FORMAT.comment=确定资源包使用的高光和法线贴图格式。§e[*]§r 纹理艺术家通常会说明其资源包中使用了哪种格式，使用错误的格式可能导致奇怪的结果。
+value.MATERIAL_FORMAT.0=labPBR 1.3
+value.MATERIAL_FORMAT.1=旧版 PBR + 自发光
+
+option.REFLECTION_SPECULAR=高光反射
+option.REFLECTION_SPECULAR.comment=在光滑或金属表面启用反射。
+
+option.REFLECTION_RAIN=雨水反射
+option.REFLECTION_RAIN.comment=允许表面在下雨时变湿。§e[*]§r 需要高光反射。
+
+option.REFLECTION_RAIN_TYPE=雨水反射类型
+option.REFLECTION_RAIN_TYPE.comment=确定雨水反射的施加方式。当前不可用。
+value.REFLECTION_RAIN_TYPE.0=水坑
+value.REFLECTION_RAIN_TYPE.1=全覆盖
+
+option.REFLECTION_ROUGH=粗糙反射
+option.REFLECTION_ROUGH.comment=允许光滑度较低的表面渲染模糊反射。§c[-]§r 可能包含轻微瑕疵。
+
+option.REFLECTION_PREVIOUS=前一帧反射
+option.REFLECTION_PREVIOUS.comment=允许使用前一帧信息反射半透明物体。§c[-]§r 可能导致截图时反射缺失（由截图尺寸设置引起）。§c[-]§r 与某些 GPU 不兼容。
+
+option.PARALLAX=视差遮蔽映射
+option.PARALLAX.comment=使用高度图在表面上添加位移。
+
+option.PARALLAX_DEPTH=视差深度
+option.PARALLAX_DEPTH.comment=调整视差深度。
+
+option.SELF_SHADOW=视差阴影
+option.SELF_SHADOW.comment=允许表面使用高度图向自身投射阴影。
+
+option.SELF_SHADOW_ANGLE=视差阴影角度
+option.SELF_SHADOW_ANGLE.comment=调整自阴影角度，较高值允许阴影延伸更远。
+
+option.PARALLAX_QUALITY=视差质量
+option.PARALLAX_QUALITY.comment=调整视差遮蔽映射和自阴影的质量。
+
+option.PARALLAX_DISTANCE=视差距离
+option.PARALLAX_DISTANCE.comment=调整视差遮蔽映射和自阴影的渲染距离。
+
+option.DIRECTIONAL_LIGHTMAP=方向性光照贴图
+option.DIRECTIONAL_LIGHTMAP.comment=为原版光照添加法线贴图。§c[-]§r 启用此效果可能导致光照贴图出现异常。
+
+option.DIRECTIONAL_LIGHTMAP_STRENGTH=方向性光照贴图强度
+option.DIRECTIONAL_LIGHTMAP_STRENGTH.comment=调整方向性光照贴图的强度。
+value.DIRECTIONAL_LIGHTMAP_STRENGTH.2.0=非常低
+value.DIRECTIONAL_LIGHTMAP_STRENGTH.1.4=低
+value.DIRECTIONAL_LIGHTMAP_STRENGTH.1.0=中等
+value.DIRECTIONAL_LIGHTMAP_STRENGTH.0.7=高
+value.DIRECTIONAL_LIGHTMAP_STRENGTH.0.5=非常高
+
+option.CAMERA_FOCUS_MODE=相机对焦模式
+option.CAMERA_FOCUS_MODE.comment=调整相机对焦模式。
+value.CAMERA_FOCUS_MODE.0=自动
+value.CAMERA_FOCUS_MODE.1=手动
+
+option.CAMERA_FOCUS_DISTANCE=对焦距离
+option.CAMERA_FOCUS_DISTANCE.comment=调整相机对焦距离。§e[*]§r 仅在“相机对焦模式”设置为“手动”时有效。
+
+option.DOF=景深
+option.DOF.comment=启用相机对焦效果。
+
+option.DOF_TYPE=景深类型
+option.DOF_TYPE.comment=确定景深的类型。
+value.DOF_TYPE.0=写实
+value.DOF_TYPE.1=卡通
+
+option.DOF_STRENGTH=景深强度
+option.DOF_STRENGTH.comment=调整对焦强度，数值越高，模糊出现得越快。
+
+option.DOF_SAMPLE_REJECTION=景深采样拒绝
+option.DOF_SAMPLE_REJECTION.comment=尝试拒绝因缺失场景数据而错误获得模糊的采样。§c[-]§r 图像模糊部分可能出现视觉伪影。
+
+option.DOF_SAMPLE_REJECTION_RESPONSE=拒绝响应
+option.DOF_SAMPLE_REJECTION_RESPONSE.comment=调整采样拒绝的强度。§c[-]§r 过高的数值可能引入更多潜在的视觉伪影。
+
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR.comment=启用基于相机运动的模糊效果。
+
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_STRENGTH.comment=调整运动模糊强度。
+
+option.BLOOM=泛光
+option.BLOOM.comment=允许明亮区域发光。
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=调整泛光强度。
+
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE.comment=启用镜头光晕。
+
+option.LENS_FLARE_STRENGTH=镜头光晕强度
+option.LENS_FLARE_STRENGTH.comment=调整镜头光晕强度。
+
+option.AA=抗锯齿
+option.AA.comment=启用抗锯齿。FXAA：更快，截图尺寸下工作正常。TAA：更慢，捕获亚像素细节并改善部分效果。§e[*]§r 启用此选项时，请禁用着色器菜单中的抗锯齿。
+value.AA.0=§c关闭
+value.AA.1=FXAA
+value.AA.2=TAA
+
+option.SHARPEN=图像锐化
+option.SHARPEN.comment=添加锐化滤镜。§a[+]§r 非常适合不喜欢因抗锯齿而使图像变柔和的用户。§c[-]§r 过度锐化会导致抖动伪影和部分锯齿重新出现。
+
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE.comment=启用自动调整整体亮度。
+
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=使屏幕边缘渐变为黑色。§e[*]§r 用于360度拍摄时请禁用此选项。
+
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE_STRENGTH.comment=控制暗角效果的强度。
+
+option.DIRTY_LENS=脏镜头
+option.DIRTY_LENS.comment=为泛光添加灰尘粒子效果。§e[*]§r 需要启用泛光。
+
+option.COLOR_GRADING=颜色分级
+option.COLOR_GRADING.comment=启用颜色分级。§e[*]§r 更改色调映射、饱和度和自然饱和度滑块无需启用此选项。
+
+option.TONEMAP_EXPOSURE=色调映射曝光
+option.TonemapExposure.comment=调整整体亮度。
+
+option.SATURATION=饱和度
+option.SATURATION.comment=调整所有颜色的饱和度。
+
+option.VIBRANCE=自然饱和度
+option.VIBRANCE.comment=调整饱和度较低的颜色的饱和度，饱和度较高的颜色受影响较小。
+
+option.CG_RR=红色 - 红色值
+option.CG_RG=红色 - 绿色值
+option.CG_RB=红色 - 蓝色值
+option.CG_RI=红色强度值
+option.CG_RM=最小红色值
+option.CG_RC=红色曲线值
+
+option.CG_GR=绿色 - 红色值
+option.CG_GG=绿色 - 绿色值
+option.CG_GB=绿色 - 蓝色值
+option.CG_GI=绿色强度值
+option.CG_GM=最小绿色值
+option.CG_GC=绿色曲线值
+
+option.CG_BR=蓝色 - 红色值
+option.CG_BG=蓝色 - 绿色值
+option.CG_BB=蓝色 - 蓝色值
+option.CG_BI=蓝色强度值
+option.CG_BM=最小蓝色值
+option.CG_BC=蓝色曲线值
+
+option.CG_TR=色调 - 红色值
+option.CG_TG=色调 - 绿色值
+option.CG_TB=色调 - 蓝色值
+option.CG_TI=色调强度值
+option.CG_TM=色调混合值
+
+option.shadowMapResolution=阴影贴图质量
+option.shadowMapResolution.comment=调整阴影贴图大小。§e[*]§r 更高的分辨率提供更锐利的阴影，但降低性能。
+value.shadowMapResolution.1024=低配 (1024)
+value.shadowMapResolution.2048=中配 (2048)
+value.shadowMapResolution.3072=高配 (3072)
+value.shadowMapResolution.4096=极高 (4096)
+value.shadowMapResolution.8192=超高 (8192)
+
+option.shadowDistance=阴影距离
+option.shadowDIstance.comment=调整阴影距离。
+
+option.SHADOW_COLOR=彩色阴影
+option.SHADOW_COLOR.comment=启用来自半透明物体的着色阴影。§a[+]§r 用于彩色体积光。§c[-]§r 使用阴影过滤时性能成本略高。
+
+option.SHADOW_FILTER=阴影过滤
+option.SHADOW_FILTER.comment=启用阴影过滤。§a[+]§r 此效果得益于 TAA。
+
+option.SHADOW_ADVANCED_FILTER=过滤类型
+option.SHADOW_ADVANCED_FILTER.comment=调整阴影过滤类型。
+value.SHADOW_ADVANCED_FILTER.0=简单
+value.SHADOW_ADVANCED_FILTER.1=VPS
+
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=调整太阳角度。
+
+option.SHADOW_SUBSURFACE=次表面散射
+option.SHADOW_SUBSURFACE.comment=允许光线穿透并散射通过植被。
+
+option.ENTITY_SHADOWS=实体阴影
+option.ENTITY_SHADOWS.comment=切换实体的阴影。§e[*]§r 在实体很多的场景中禁用可显著提升性能。
+
+option.BLOCKLIGHT_R=红色
+option.BLOCKLIGHT_G=绿色
+option.BLOCKLIGHT_B=蓝色
+option.BLOCKLIGHT_I=强度
+
+option.SKY_R=红色
+option.SKY_G=绿色
+option.SKY_B=蓝色
+option.SKY_I=强度
+
+option.WATER_R=红色
+option.WATER_G=绿色
+option.WATER_B=蓝色
+option.WATER_I=强度
+option.WATER_A=透明度
+option.WATER_F=雾距离
+
+option.WEATHER_RR=红色
+option.WEATHER_RG=绿色
+option.WEATHER_RB=蓝色
+option.WEATHER_RI=强度
+
+option.WEATHER_CR=红色
+option.WEATHER_CG=绿色
+option.WEATHER_CB=蓝色
+option.WEATHER_CI=强度
+
+option.WEATHER_DR=红色
+option.WEATHER_DG=绿色
+option.WEATHER_DB=蓝色
+option.WEATHER_DI=强度
+
+option.WEATHER_BR=红色
+option.WEATHER_BG=绿色
+option.WEATHER_BB=蓝色
+option.WEATHER_BI=强度
+
+option.WEATHER_SR=红色
+option.WEATHER_SG=绿色
+option.WEATHER_SB=蓝色
+option.WEATHER_SI=强度
+
+option.WEATHER_MR=红色
+option.WEATHER_MG=绿色
+option.WEATHER_MB=蓝色
+option.WEATHER_MI=强度
+
+option.NETHER_NR=红色
+option.NETHER_NG=绿色
+option.NETHER_NB=蓝色
+option.NETHER_NI=强度
+
+option.NETHER_VR=红色
+option.NETHER_VG=绿色
+option.NETHER_VB=蓝色
+option.NETHER_VI=强度
+
+option.NETHER_CR=红色
+option.NETHER_CG=绿色
+option.NETHER_CB=蓝色
+option.NETHER_CI=强度
+
+option.NETHER_WR=红色
+option.NETHER_WG=绿色
+option.NETHER_WB=蓝色
+option.NETHER_WI=强度
+
+option.NETHER_BR=红色
+option.NETHER_BG=绿色
+option.NETHER_BB=蓝色
+option.NETHER_BI=强度
+
+option.END_R=红色
+option.END_G=绿色
+option.END_B=蓝色
+option.END_I=强度
+
+option.SKY_VANILLA=原版天空
+option.SKY_VANILLA.comment=使用原版天空颜色。
+
+option.WATER_MODE=水面模式
+option.WATER_MODE.comment=确定是否使用原版水面纹理。默认：光影包的纯色水面，无纹理。原版：原版纹理。染色原版：原版纹理与光影包的水色混合。
+value.WATER_MODE.0=默认
+value.WATER_MODE.1=原版
+value.WATER_MODE.2=染色原版
+
+option.CLOUDS=云层
+option.CLOUDS.comment=启用云层。§a[+]§r 此效果受益于TAA。
+
+option.STARS=星星
+option.STARS.comment=启用星星。
+
+option.AURORA=极光
+option.AURORA.comment=启用极光效果。§a[+]§r 此效果受益于TAA抗锯齿。
+
+option.AURORA_SAMPLES_SKY=天空采样数
+option.AURORA_SAMPLES_SKY.comment=更高的采样数能提升质量，但会降低性能。
+
+option.AURORA_SAMPLES_REFLECTION=反射采样数
+option.AURORA_SAMPLES_REFLECTION.comment=更高的采样数能提升质量，但会降低性能。
+
+option.AURORA_BRIGHTNESS=亮度
+option.AURORA_BRIGHTNESS.comment=调整极光的亮度。
+
+option.AURORA_HEIGHT=高度
+option.AURORA_HEIGHT.comment=调整极光出现的高度。
+value.AURORA_HEIGHT.2.5 =Very Low
+value.AURORA_HEIGHT.7.5=低
+value.AURORA_HEIGHT.12.5=中
+value.AURORA_HEIGHT.17.5=高
+value.AURORA_HEIGHT.22.5=极高
+
+option.AURORA_PERBIOME=群系检查
+option.AURORA_PERBIOME.comment=仅在积雪群系启用极光。
+
+option.AURORA_COLORING_TYPE=着色类型
+value.AURORA_COLORING_TYPE.0=循环着色
+value.AURORA_COLORING_TYPE.1=§a绿色§r/§9蓝色
+value.AURORA_COLORING_TYPE.2=§c红色§r/§9蓝色
+value.AURORA_COLORING_TYPE.3=自定义
+option.AURORA_COLORING_TYPE.comment=调整极光的着色方式。
+
+option.AURORA_COLOR_ONE_R=颜色一 红色
+option.AURORA_COLOR_TWO_R=颜色二 红色
+option.AURORA_COLOR_ONE_G=颜色一 绿色
+option.AURORA_COLOR_TWO_G=颜色二 绿色
+option.AURORA_COLOR_ONE_B=颜色一 蓝色
+option.AURORA_COLOR_TWO_B=颜色二 蓝色
+
+option.AURORA_PROBABILITY=极光概率
+value.AURORA_PROBABILITY.0.0=0%
+value.AURORA_PROBABILITY.0.05=5%
+value.AURORA_PROBABILITY.0.10=10%
+value.AURORA_PROBABILITY.0.15=15%
+value.AURORA_PROBABILITY.0.20=20%
+value.AURORA_PROBABILITY.0.25=25%
+value.AURORA_PROBABILITY.0.30=30%
+value.AURORA_PROBABILITY.0.35=35%
+value.AURORA_PROBABILITY.0.40=40%
+value.AURORA_PROBABILITY.0.45=45%
+value.AURORA_PROBABILITY.0.50=50%
+value.AURORA_PROBABILITY.0.55=55%
+value.AURORA_PROBABILITY.0.60=60%
+value.AURORA_PROBABILITY.0.65=65%
+value.AURORA_PROBABILITY.0.70=70%
+value.AURORA_PROBABILITY.0.75=75%
+value.AURORA_PROBABILITY.0.80=80%
+value.AURORA_PROBABILITY.0.85=85%
+value.AURORA_PROBABILITY.0.90=90%
+value.AURORA_PROBABILITY.0.95=95%
+value.AURORA_PROBABILITY.1.0=100%
+
+option.ROUND_SUN_MOON=圆形太阳与月亮
+option.ROUND_SUN_MOON.comment=启用基于着色器的太阳与月亮。§e[*]§r 请在视频设置 > 细节 > 太阳与月亮中禁用原版太阳与月亮。
+
+option.SKY_DESATURATION=天空去饱和
+option.SKY_DESATURATION.comment=在夜晚降低饱和度并为天空盒增添色调。
+
+option.SKYBOX_BRIGHTNESS=天空盒亮度
+option.SKYBOX_BRIGHTNESS.comment=调整天空盒亮度。§e[*]§r 当存在减法天空盒时，请设置为1.00。
+
+option.CLOUD_THICKNESS=厚度
+option.CLOUD_THICKNESS.comment=调整云层厚度，更高的厚度会使瑕疵更明显。
+value.CLOUD_THICKNESS.1 =Very Low
+value.CLOUD_THICKNESS.2 =Low
+value.CLOUD_THICKNESS.4 =Medium
+value.CLOUD_THICKNESS.8 =High
+value.CLOUD_THICKNESS.16=极高
+
+option.CLOUD_AMOUNT=数量
+option.CLOUD_AMOUNT.comment=调整云的数量。
+value.CLOUD_AMOUNT.13.0=极低
+value.CLOUD_AMOUNT.12.0=低配
+value.CLOUD_AMOUNT.11.0=中配
+value.CLOUD_AMOUNT.10.0=高配
+value.CLOUD_AMOUNT.9.0 =Very High
+
+option.CLOUD_HEIGHT=高度
+option.CLOUD_HEIGHT.comment=调整云的高度。
+value.CLOUD_HEIGHT.5.0 =Very Low
+value.CLOUD_HEIGHT.10.0=低配
+value.CLOUD_HEIGHT.15.0=中配
+value.CLOUD_HEIGHT.20.0=高配
+value.CLOUD_HEIGHT.25.0=极高
+
+option.CLOUD_SPEED=速度
+option.CLOUD_SPEED.comment=调整云的速度。
+
+option.CLOUD_OPACITY=不透明度
+option.CLOUD_OPACITY.comment=调整云的不透明度。
+
+option.CLOUD_BRIGHTNESS=亮度
+option.CLOUD_BRIGHTNESS.comment=调整云的亮度。
+
+option.WATER_NORMALS=法线
+option.WATER_NORMALS.comment=启用水的实时生成法线贴图。
+value.WATER_NORMALS.0=§c关闭
+value.WATER_NORMALS.1=默认
+value.WATER_NORMALS.2=自定义
+
+option.WATER_PARALLAX=视差
+option.WATER_PARALLAX.comment=启用水的位移。
+
+option.WAVE_SPEED=波浪速度
+option.WAVE_SPEED.comment=调整波浪速度。
+
+option.GERSTNER_WAVE_LENGTH=Gerstner 波长
+option.GERSTNER_WAVE_LENGTH.comment=更改 Gerstner 波浪的波长。
+
+option.GERSTNER_WAVE_LACUNARITY=Gerstner 波浪间隙度
+option.GERSTNER_WAVE_LACUNARITY.comment=更改 Gerstner 波浪的间隙度。
+
+option.GERSTNER_WAVE_PERSISTANCE=Gerstner 波浪持续性
+option.GERSTNER_WAVE_PERSISTANCE.comment=更改 Gerstner 波浪的持续性。
+
+option.GERSTNER_WAVE_AMPLITUDE=Gerstner 波浪振幅
+option.GERSTNER_WAVE_AMPLITUDE.comment=更改 Gerstner 波浪的振幅。
+
+option.GERSTNER_WAVE_DIR_SPREAD=方向分布
+option.GERSTNER_WAVE_DIR_SPREAD.comment=更改 Gerstner 波浪的方向分布。
+
+option.GERSTNER_WAVE_ITERATIONS=Gerstner 波浪迭代次数
+option.GERSTNER_WAVE_ITERATIONS.comment=更改 Gerstner 波浪的迭代次数。
+
+option.NOISE_WAVE_SCALE=噪声波浪尺度
+option.NOISE_WAVE_SCALE.comment=更改噪声层的尺度。
+
+option.NOISE_WAVE_LACUNARITY=噪声波浪间隙度
+option.NOISE_WAVE_LACUNARITY.comment=更改噪声层的间隙度。
+
+option.NOISE_WAVE_AMPLITUDE=噪声波浪振幅
+option.NOISE_WAVE_AMPLITUDE.comment=更改噪声层的振幅。
+
+option.NOISE_WAVE_PERSISTANCE=噪声波浪持续性
+option.NOISE_WAVE_PERSISTANCE.comment=更改噪声层的持续性。
+
+option.NOISE_WAVE_ITERATIONS=噪声波浪迭代次数
+option.NOISE_WAVE_ITERATIONS.comment=更改噪声层的迭代次数。
+
+option.SCENE_AWARE_WAVING=场景感知摆动
+option.WAVING_GRASS=草
+option.WAVING_CROPS=庄稼
+option.WAVING_PLANT=植物
+option.WAVING_TALL_PLANT=高大植物
+option.WAVING_LEAVES=树叶
+option.WAVING_VINES=藤蔓
+option.WAVING_LILYPAD=睡莲叶
+option.WAVING_FIRE=火焰
+option.WAVING_WATER=水流
+option.WAVING_LAVA=熔岩
+option.WAVING_LANTERN=灯笼
+
+option.EMISSIVE_BRIGHTNESS=自发光亮度
+option.EMISSIVE_BRIGHTNESS.comment=调整自发光方块的亮度。
+
+option.WEATHER=天气
+option.WEATHER.comment=启用降雨和降雪。
+
+option.WEATHER_OPACITY=天气不透明度
+option.WEATHER_OPACITY.comment=调整天气不透明度。
+
+option.BORDER_FOG=边界雾
+option.BORDER_FOG.comment=启用边界雾。
+
+option.FOG=雾
+option.FOG.comment=启用雾。
+
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY.comment=调整雾密度。§e[*]§r 此选项在下界无效。
+
+option.WORLD_CURVATURE=世界曲率
+option.WORLD_CURVATURE.comment=启用世界曲率。§e[*]§r 仅在主世界有效。§e[*]§r 缺失区块由 Minecraft 本身处理，我无法修复。
+
+option.WORLD_CURVATURE_SIZE=世界曲率大小
+option.WORLD_CURVATURE_SIZE.comment=调整世界曲率大小。负值会使世界向上弯曲。
+
+option.WORLD_TIME_ANIMATION=世界时间动画
+option.WORLD_TIME_ANIMATION.comment=使用游戏内时间控制移动对象。§e[*]§r 此选项主要用于制作动画。
+
+option.ANIMATION_SPEED=动画速度
+option.ANIMATION_SPEED.comment=调整动画速度。
+
+option.WEATHER_PERBIOME=群系天气
+option.WEATHER_PERBIOME.comment=为不同群系使用不同的天气颜色。§c[-]§r 在未知条件下可能无效。
+
+option.SOFT_PARTICLES=柔和粒子
+option.SOFT_PARTICLES.comment=允许粒子与周围环境平滑混合。§a[+]§r 此效果受益于 TAA。
+
+screen.SHOOTING_STARS=流星配置
+
+option.SHOOTING_STARS=流星
+option.SHOOTING_STARS.comment=启用流星。
+
+option.SHOOTING_STARS_SCALE=缩放
+option.SHOOTING_STARS_SCALE.comment=改变流星的缩放，值越大越小。
+
+option.SHOOTING_STARS_SPEED=速度
+option.SHOOTING_STARS_SPEED.comment=改变流星的速度。
+
+option.SHOOTING_STARS_AMOUNT=数量
+option.SHOOTING_STARS_AMOUNT.comment=改变流星的数量。
+
+option.SHOOTING_STARS_ROTATION_ITERATIONS=旋转迭代次数
+option.SHOOTING_STARS_ROTATION_ITERATIONS.comment=定义流星的旋转次数，值越大越慢。
+
+option.CHROMATIC_ABBERATION=色差
+option.CHROMATIC_ABBERATION.comment=启用色差。
+
+option.CHROMATIC_ABBERATION_STRENGTH=色差强度
+option.CHROMATIC_ABBERATION_STRENGTH.comment=改变色差强度 §b[!]§r 自动适应景深强度。
+
+option.CHROMATIC_ABBERATION_MODE=色差模式
+option.CHROMATIC_ABBERATION_MODE.comment=改变色差模式。
+value.CHROMATIC_ABBERATION_MODE.0=聚焦
+value.CHROMATIC_ABBERATION_MODE.1=静态
+value.CHROMATIC_ABBERATION_MODE.2=聚焦与静态
+
+option.CHROMATIC_ABBERATION_STATIC_STRENGTH=静态色差强度
+option.CHROMATIC_ABBERATION_STATIC_STRENGTH.comment=如果启用，改变静态部分的色差强度。
+
+option.CHROMATIC_ABBERATION_ADAPTIVE_STRENGTH=自适应色差强度
+option.CHROMATIC_ABBERATION_ADAPTIVE_STRENGTH.comment=在不应出现色散的区域隐藏视觉伪影。
+
+option.CHROMATIC_ABBERATION_ADAPTIVE_STRENGTH_RESPONSE=自适应响应
+option.CHROMATIC_ABBERATION_ADAPTIVE_STRENGTH_RESPONSE.comment=调整自适应强度的响应。
+
+option.DYNAMIC_HANDLIGHT=动态手持光源
+
+option.MINLIGHT_FACTOR=最低光照因子
+
+option.GLOWING_ORES=发光矿石
+
+option.TONEMAP=色调映射
+value.TONEMAP.1=旧版 (2022)
+value.TONEMAP.2=现代

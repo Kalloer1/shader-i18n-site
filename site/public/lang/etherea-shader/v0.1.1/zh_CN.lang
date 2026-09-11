@@ -1,0 +1,218 @@
+# Etherea
+option.ETHEREA =以太着色器
+value.ETHEREA.0 =作§b者：fozy style
+
+# Lighting
+screen.LIGHTING =光照
+    option.SHADOW_DISTANCE =阴影距离
+        value.SHADOW_DISTANCE.64  =§24区块
+        value.SHADOW_DISTANCE.96  =§26区块
+        value.SHADOW_DISTANCE.128 =§28 区块
+        value.SHADOW_DISTANCE.160 =§a10区块
+        value.SHADOW_DISTANCE.192 =§a12区块
+        value.SHADOW_DISTANCE.224 =§e14区块
+        value.SHADOW_DISTANCE.256 =§e16区块
+        value.SHADOW_DISTANCE.288 =§c18 区块
+        value.SHADOW_DISTANCE.320 =§c20区块
+    option.SHADOW_DISTANCE.comment =调整阴影渲染范围。极端§c数值可能显著影响性能。
+
+    option.SUN_ANGLE =太阳/月亮角度
+    option.SUN_ANGLE.comment =调整太阳与月亮在天空中的运行轨迹。! 以§e§f太着色器中默认的日/月角度为 -40。§e§f! 原版日/月角度为 0。
+
+    option.ENTITY_SHADOWS =实体阴影
+        value.ENTITY_SHADOWS.0 =§f关
+        value.ENTITY_SHADOWS.1 =开§4启 §c[-]
+    option.ENTITY_SHADOWS.comment =允许实体与方块实体投射阴影§c。启用此设置可能显著影响性能。
+
+    option.SSAO =环境光遮蔽（SSAO）
+        value.SSAO.0 =§f关
+        value.SSAO.1 =§a开
+    option.SSAO.comment =为角落和缝隙中的环境光添加阴§e影§f效果。! 建议保持启用
+
+    option.HANDHELD_LIGHTING =手持光源
+        value.HANDHELD_LIGHTING.0 =§f关
+        value.HANDHELD_LIGHTING.1 =§a开
+    option.HANDHELD_LIGHTING.comment =允许手持光源照亮周围环境
+
+    option.SHADOW_SOFTNESS =阴影柔和度
+    option.SHADOW_SOFTNESS.comment =调整阴影柔和度。! 较§e§f低数值可能导致阴影边缘呈现锯齿或像素化
+
+# Atmospherics
+screen.ATMOSPHERE =大气效果
+    option.SUN_STYLE =太阳样式
+        value.SUN_STYLE.0 =半写实
+        value.SUN_STYLE.1 =原版
+    option.SUN_STYLE.comment =决定太阳样式。!§e §f半写实 - 圆形，更逼真。!§e§f 原版 - 根据资源包呈现。
+    
+    option.MOON_STYLE =月亮样式
+        value.MOON_STYLE.0 =半写实
+        value.MOON_STYLE.1 =原版
+    option.MOON_STYLE.comment =决定月亮样式。! §e§f半写实 - 圆形，更逼真。!§e§f 原版 - 根据资源包呈现。
+
+    screen.CLOUDS =云
+        option.VL_CLOUDS =体积云
+            value.VL_CLOUDS.1 =§a开
+            value.VL_CLOUDS.0 =§f关
+        option.VL_CLOUDS.comment =添加原版风格的体积云，对性能影响较小。
+
+        option.CLOUD_THICKNESS =云层厚度
+        option.CLOUD_THICKNESS.comment =调整云层垂直厚度。! §e§f较低数值时更多光线能穿透云层
+        
+        option.CLOUD_HEIGHT =云层高度
+        option.CLOUD_HEIGHT.comment =决定云层出现的海拔高度。! §e§f默认与原版云层高度均为 192
+
+        option.CLOUD_SCALE =云层缩放
+        option.CLOUD_SCALE.comment =调整云层水平比例。数值越大 → 云层越宽
+
+    screen.STARS =星星
+        option.STAR_SCALE =星星缩放
+        option.STAR_SCALE.comment =调整星星大小。!§e§f 修改此项同时会影响可见星星数量
+
+        option.STAR_AMOUNT =星星数量
+        option.STAR_AMOUNT.comment =调整天空中的星星数量。!§e §f修改此项可能影响星星亮度
+        
+        option.STAR_BRIGHTNESS =星星亮度
+        option.STAR_BRIGHTNESS.comment =调整星星亮度
+    
+    screen.FOG =雾
+        option.LIGHTSHAFTS =体积光束
+            value.LIGHTSHAFTS.1 =§a开
+            value.LIGHTSHAFTS.0 =§f关
+        option.LIGHTSHAFTS.comment =添加体积光线效果§e§f。! 该效果在日出日落、水下或从地下观察时最为明显。
+
+        option.NETHER_SMOKE =下界烟雾
+            value.NETHER_SMOKE.1 =§a开
+            value.NETHER_SMOKE.0 =§f关
+        option.NETHER_SMOKE.comment =为下界添加体积烟雾效果。
+
+# Post Processing
+screen.POST_PROCESSING =后期处理
+    option.FXAA =抗锯齿 (快速近似抗锯齿)
+        value.FXAA.0 =§f关
+        value.FXAA.1 =§e开
+    option.FXAA.comment =解决边缘锯齿问题，使图像更平滑。!§e §f对部分人而言此效果可能使游戏画面显模糊
+        
+    option.BLOOM_STRENGTH =泛光强度
+        value.BLOOM_STRENGTH.-1 =§c关
+    option.BLOOM_STRENGTH.comment =调整泛光强度，该效果可柔化场景并使明亮物体§e§f发光。! 建议保持启用
+    
+    option.IMAGE_SHARPENING =图像锐化
+        value.IMAGE_SHARPENING.-1 =§c关
+    option.IMAGE_SHARPENING.comment =通过应用后处理滤镜人为调整图像锐度。
+
+    option.UNDERWATER_DISTORTION =水下扭曲
+        value.UNDERWATER_DISTORTION.-1 =§c关
+    option.UNDERWATER_DISTORTION.comment =调整水下扭曲强度
+
+    screen.WORLD_OUTLINE =世界轮廓
+        option.WORLD_OUTLINE =世界轮廓
+            value.WORLD_OUTLINE.1 =§a开
+            value.WORLD_OUTLINE.0 =§f关
+        option.WORLD_OUTLINE.comment =在方块边缘添加亮色轮廓
+
+        option.WORLD_OUTLINE_THICKNESS =世界轮廓线粗细
+        option.WORLD_OUTLINE_THICKNESS.comment =调整世界轮廓线粗细
+
+        option.WORLD_OUTLINE_BRIGHTNESS =世界轮廓线亮度
+        option.WORLD_OUTLINE_BRIGHTNESS.comment =调整世界轮廓线亮度
+
+    screen.COLOR_GRADING =颜色分级
+        option.COLOR_CONTRAST =对比度
+        option.COLOR_CONTRAST.comment =调整色彩对比度。较高数值增强明暗色彩差异，较低数值则减弱差异
+
+        option.COLOR_BRIGHTNESS =亮度
+        option.COLOR_BRIGHTNESS.comment =调整色彩亮度
+
+        option.COLOR_SATURATION =饱和度
+        option.COLOR_SATURATION.comment =调整色彩饱和度。决定色彩的鲜艳或灰暗程度
+
+# Materials
+screen.MATERIALS =材质
+    option.REFLECTION_QUALITY =反射质量
+        value.REFLECTION_QUALITY.0 =仅天空
+        value.REFLECTION_QUALITY.1 =§e中
+        value.REFLECTION_QUALITY.2 =§6高
+        value.REFLECTION_QUALITY.3 =§c极高
+    option.REFLECTION_QUALITY.comment =调整屏幕空间反射质量。"仅§9天空§f"模式表示仅反射天空。
+
+    option.PBR_MODE =PBR模式
+        value.PBR_MODE.0 =L§eabPBR
+        value.PBR_MODE.1 =§b集成PBR
+        value.PBR_MODE.2 =§7基础
+    option.PBR_MODE.comment =决定着色器使用的PBR模式。l§eab§fPBR——从当前加载的资源包读取材质数据。§b集成PB§fR——使用内置的、经过精细调整的着色器材质，兼容大多数原版风格资§7源§f包。基础模式——提供有限的材质支持，仅水、树叶和植被具有专用材质。
+    
+    screen.IPBR_FEATURES =集成PBR特性
+        option.GLOWING_ORES =发光矿石
+            value.GLOWING_ORES.1 =§a开
+            value.GLOWING_ORES.0 =§f关
+        option.GLOWING_ORES.comment =为矿石方块添加发光效果。！P§e§fBR模式必须设置为§b“集成PB§fR”此功能才能生效
+
+        option.GLOWING_ARMOR_TRIMS =发光盔甲纹饰
+            value.GLOWING_ARMOR_TRIMS.1 =§a开
+            value.GLOWING_ARMOR_TRIMS.0 =§f关
+        option.GLOWING_ARMOR_TRIMS.comment =为盔甲纹饰添加发光效果。！P§e§fBR模式必须设置为§b“集成PB§fR”此功能才能生效
+
+        option.PARTICLE_MATERIALS =粒子材质
+            value.PARTICLE_MATERIALS.1 =§a开
+            value.PARTICLE_MATERIALS.0 =§f关
+        option.PARTICLE_MATERIALS.comment =为粒§b子添加§f集成PBR材§e质§f。！若使用资源包时遇到粒子问题，可尝试禁用此设置
+
+    screen.EXTRAS =附加选项
+        option.SELECTION_OUTLINE =选择轮廓
+            value.SELECTION_OUTLINE.0 =默认
+            value.SELECTION_OUTLINE.1 =§c§e彩§a§b§9虹§1§5
+            value.SELECTION_OUTLINE.2 =§f白色
+        option.SELECTION_OUTLINE.comment =决定方块选择轮廓的颜色
+
+        option.BIOME_COLORED_NETHER_PORTALS =群系着色下界传送门
+            value.BIOME_COLORED_NETHER_PORTALS.1 =§a开
+            value.BIOME_COLORED_NETHER_PORTALS.0 =§f关
+        option.BIOME_COLORED_NETHER_PORTALS.comment =在下界内根据群系颜色为传送门着色
+
+# Color Multipliers
+screen.COLOR_MULTS =颜色乘数
+    screen.NOON_COLOR_MULTS =中午时间
+        option.NOON_SKY_MULT_R =天空乘数（红）
+        option.NOON_SKY_MULT_G =天空乘数（绿）
+        option.NOON_SKY_MULT_B =天空乘数（蓝）
+
+        option.NOON_LIGHT_MULT_R =光照乘数（红）
+        option.NOON_LIGHT_MULT_G =光照乘数（绿）
+        option.NOON_LIGHT_MULT_B =光照乘数（蓝）
+
+    screen.NIGHT_COLOR_MULTS =夜晚时间
+        option.NIGHT_SKY_MULT_R =天空乘数（红）
+        option.NIGHT_SKY_MULT_G =天空乘数（绿）
+        option.NIGHT_SKY_MULT_B =天空乘数（蓝）
+
+        option.NIGHT_LIGHT_MULT_R =光照乘数（红）
+        option.NIGHT_LIGHT_MULT_G =光照乘数（绿）
+        option.NIGHT_LIGHT_MULT_B =光照乘数（蓝）
+
+    screen.SUNSET_COLOR_MULTS =日落/日出时间
+        option.SUNSET_SKY_MULT_R =天空乘数（红）
+        option.SUNSET_SKY_MULT_G =天空乘数（绿）
+        option.SUNSET_SKY_MULT_B =天空乘数（蓝）
+
+        option.SUNSET_LIGHT_MULT_R =光照乘数（红）
+        option.SUNSET_LIGHT_MULT_G =光照乘数（绿）
+        option.SUNSET_LIGHT_MULT_B =光照乘数（蓝）
+
+    screen.NETHER_COLOR_MULTS =下界维度
+        option.NETHER_SKY_MULT_R =天空/光照乘数（红）
+        option.NETHER_SKY_MULT_G =天空/光照乘数（绿）
+        option.NETHER_SKY_MULT_B =天空/光照乘数（蓝）
+
+    screen.END_COLOR_MULTS =末地维度
+        option.END_SKY_MULT_R =天空乘数（红）
+        option.END_SKY_MULT_G =天空乘数（绿）
+        option.END_SKY_MULT_B =天空乘数（蓝）
+
+        option.END_LIGHT_MULT_R =光照乘数（红）
+        option.END_LIGHT_MULT_G =光照乘数（绿）
+        option.END_LIGHT_MULT_B =光照乘数（蓝）
+
+    screen.BLOCKLIGHT_COLOR_MULTS =方块光颜色
+        option.BLOCKLIGHT_MULT_R =方块光源乘数（红）
+        option.BLOCKLIGHT_MULT_G =方块光源乘数（绿）
+        option.BLOCKLIGHT_MULT_B =方块光源乘数（蓝）

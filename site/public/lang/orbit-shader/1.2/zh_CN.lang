@@ -1,0 +1,8 @@
+profile.LOW=低配（流畅）
+profile.MEDIUM=中配（标准）
+profile.HIGH=高配（电影级）
+
+option.FOG_INTENSITY=雾密度
+option.BLOOM_INTENSITY=泛光强度
+option.LEAVES_SPEED=植被风速
+option.WATER_SPEED=水波速度

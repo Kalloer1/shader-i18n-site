@@ -1,0 +1,30 @@
+option.FSR2_SCALE=AMD FSR 2.3.3 缩放
+option.FSR2_SCALE.comment=选择 FSR 2.3.3 使用的输出相对源文件的线性缩放比例。1.0 为原生抗锯齿；更大的值会在时域重建前降低最终合成分辨率。Minecraft G-buffer 保持全分辨率，以兼容 Distant Horizons 和 Voxy。
+value.FSR2_SCALE.0.0=关闭
+value.FSR2_SCALE.1.0=1.0x
+value.FSR2_SCALE.1.5=1.5x
+value.FSR2_SCALE.1.75=1.75x
+value.FSR2_SCALE.2.0=2.0x
+value.FSR2_SCALE.3.0=3.0x
+
+option.OFFLINE_MODE=离线模式
+option.OFFLINE_MODE.comment=当相机静止时，使用每帧 16 次 GI 采样，禁用 GI 时间和空间去噪，并对最终合成帧应用无上限等权平均。
+value.OFFLINE_MODE.0=关闭
+value.OFFLINE_MODE.1=开启
+
+option.GI_SAMPLES=实时 GI 每帧样本数
+option.GI_SAMPLES.comment=控制相机移动时或禁用离线模式时的每像素每帧追踪的 GI 样本数量。设为 0 可禁用实时 GI。相机静止且启用离线模式时始终使用 16 个样本，与此设置无关。
+value.GI_SAMPLES.0=关闭
+value.GI_SAMPLES.1=每帧 1 个样本
+value.GI_SAMPLES.2=每帧 2 个样本
+value.GI_SAMPLES.4=每帧 4 个样本
+value.GI_SAMPLES.6=每帧 6 个样本
+value.GI_SAMPLES.8=每帧 8 个样本
+
+option.GI_BOUNCES=路径追踪反弹次数
+option.GI_BOUNCES.comment=控制扩散间接光照和GGX镜面反射的最大反弹次数，范围为1到5。数值越高可捕获更多间接反弹，但性能开销显著增加。
+value.GI_BOUNCES.1=1 次反弹
+value.GI_BOUNCES.2=2 次反弹
+value.GI_BOUNCES.3=3 次反弹
+value.GI_BOUNCES.4=4 次反弹
+value.GI_BOUNCES.5=5 次反弹

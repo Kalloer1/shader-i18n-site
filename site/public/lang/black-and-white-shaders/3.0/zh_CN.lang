@@ -1,0 +1,7 @@
+screen.root=Shader Options
+option.CONTRAST=对比度
+option.BRIGHTNESS=亮度
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE_ROUNDNESS=暗角圆润度
+option.FILM_GRAIN=颗粒感
+option.BLUR_STRENGTH=模糊强度

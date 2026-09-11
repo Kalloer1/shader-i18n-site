@@ -1,0 +1,33 @@
+option.AMBIENT = 环境光
+
+
+screen.LIGHT_COLORS=光照颜色
+screen.BLOCK_LIGHT=方块光照颜色
+option.BLOCK_LIGHT_COLOR_R=红色
+option.BLOCK_LIGHT_COLOR_G=绿色
+option.BLOCK_LIGHT_COLOR_B=蓝色
+option.BLOCK_LIGHT_BRIGHTNESS=亮度
+
+screen.SKY_LIGHT=天空光照颜色
+option.CUSTOM_SKY_COLOR=使用自定义天空颜色？
+option.SKY_LIGHT_COLOR_R=红色
+option.SKY_LIGHT_COLOR_G=绿色
+option.SKY_LIGHT_COLOR_B=蓝色
+option.SKY_LIGHT_BRIGHTNESS=亮度
+
+screen.SUN_LIGHT=太阳光颜色
+option.SUN_LIGHT_COLOR_R=红色
+option.SUN_LIGHT_COLOR_G=绿色
+option.SUN_LIGHT_COLOR_B=蓝色
+option.SUN_LIGHT_BRIGHTNESS=亮度
+
+screen.SHADOWS=阴影
+option.SHADOWS_ENABLED=启用阴影
+option.SHADOW_BRIGHTNESS = 阴影亮度
+option.shadowMapResolution = 阴影贴图分辨率
+option.SHADOW_BIAS = 阴影偏置
+option.SHADOW_DISTORT_FACTOR = 阴影畸变因素
+
+screen.SKY=天空
+option.USE_FOG_COLOR_FOR_SKY=使用雾色作为天空
+option.SOLID_COLOR_CLOUDS=纯色云层

@@ -1,0 +1,15 @@
+option.chromaticAbberation =色差
+option.abberationAmount =色差强度
+option.noiseToggle =噪声
+option.noiseSize =噪点尺寸
+option.vignetteAmount =暗角大小
+option.vignette =暗角
+option.fogToggle =雾
+option.fogStrenth =雾气强度
+option.oldFoliageGreen =旧版鲜艳绿色树叶
+option.foliageGreenAmount =树叶绿色强度
+option.noWaterTransparency =无水体透明度
+option.waterBlueness =水体蓝度调节
+option.fogSkyOverlap =雾天重叠效果
+option.starBrightness =星星亮度
+option.sunMoonBrightness =日月亮度

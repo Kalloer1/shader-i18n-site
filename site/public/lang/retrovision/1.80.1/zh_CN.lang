@@ -1,0 +1,256 @@
+///// Advanced and Other Options /////
+
+option.INFO=RetroVision
+value.INFO.0=1.80.1
+
+screen.C=§6RetroVision 1.80.1
+option.C.comment=§fYouTube：MarcTGamer https://modrinth.com/shader/retrovision
+value.C.0=§f由 MarcTGamer 制作
+value.C.1=§6由 MarcTGamer 制作
+
+
+///// Screen Names (Display) /////
+screen.Retro_Effects=复古效果
+screen.Retro_Effects.comment=调整各种能营造复古或怀旧效果的效果。
+
+screen.CRT_Display=CRT 显示
+screen.CRT_Display.comment=屏幕曲率和像素化设置。
+
+screen.Distortion=失真
+screen.Distortion.comment=桶形失真和镜头效果
+
+screen.Film_Grain=胶片颗粒
+screen.Film_Grain.comment=高级胶片颗粒设置，分别控制亮度和色度噪点。
+
+screen.Post_Processing=后处理
+screen.Post_Processing.comment=后处理是指在初步制作完成后进行最终调整的过程。
+
+screen.Motion_Effects=运动效果
+screen.Motion_Effects.comment=运动模糊和相机移动设置。
+
+screen.Bloom_Settings=光照泛光设置
+screen.Bloom_Settings.comment=调整光照泛光效果的设置。
+
+screen.Image_Enhancement=图像增强
+screen.Image_Enhancement.comment=锐化和细节增强控制。
+
+screen.Color_Grading=色彩分级
+screen.Color_Grading.comment=专业的色彩校正设置，类似于电影剪辑软件。
+
+screen.Atmosphere=大气
+screen.Atmosphere.comment=雾和环境效果。
+
+screen.Animations=动画
+screen.Animations.comment=方块和手持物品的挥动效果。
+
+
+///// Bloom Options /////
+option.BLOOM_TOGGLE=泛光
+option.BLOOM_TOGGLE.comment=开启或关闭泛光效果。
+
+value.BLOOM_TOGGLE.BLOOM_OFF = 关闭
+value.BLOOM_TOGGLE.BLOOM_ON = 开启
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=调整泛光效果的强度。
+
+option.GAMMA_ADJUSTMENT=伽马调整
+option.GAMMA_ADJUSTMENT.comment=调整图像的整体亮度。
+
+///// Noise and Distortion Options /////
+option.SCANLINE_INTENSITY=电视扫描线
+option.SCANLINE_INTENSITY.comment=添加类似旧电视屏幕的水平扫描线。数值越高，扫描线越明显。
+
+option.NOISE_INTENSITY=胶片颗粒
+option.NOISE_INTENSITY.comment=为图像添加颗粒状质感，模拟旧胶片。数值越高，颗粒越明显。
+
+option.CHROMATIC_ABERRATION_INTENSITY=色偏
+option.CHROMATIC_ABERRATION_INTENSITY.comment=在边缘产生轻微的色彩分离效果，模仿老式相机镜头。数值越高，效果越明显。
+
+option.NOISE_SPEED=颗粒动画
+option.NOISE_SPEED.comment=调整胶片颗粒效果移动的速度。数值越高，效果越活跃。
+
+///// Film Noise (Luma/Chroma) /////
+option.LUMA_NOISE=亮度噪声
+option.LUMA_NOISE.comment=添加亮度噪点以模拟胶片颗粒。仅影响亮度（亮度）通道。
+
+option.CHROMA_NOISE=色噪声
+option.CHROMA_NOISE.comment=添加色度噪点以模拟胶片颗粒。仅影响色度（颜色）通道。
+
+///// CRT Display /////
+option.CRT_CURVATURE=CRT 曲率
+option.CRT_CURVATURE.comment=模拟旧式 CRT 显示器的曲面屏幕。
+
+option.CRT_CORNER_DARKENING=屏幕角落暗化
+option.CRT_CORNER_DARKENING.comment=使屏幕角落像旧式 CRT 显示器一样变暗。
+
+option.PIXELATION_ENABLED=像素化
+option.PIXELATION_ENABLED.comment=添加像素化效果，模拟低分辨率显示器。
+
+value.PIXELATION_ENABLED.0=关闭
+value.PIXELATION_ENABLED.1=开启
+
+option.PIXEL_SIZE=像素尺寸
+option.PIXEL_SIZE.comment=控制像素化效果的大小。
+
+///// Additional Effects /////
+option.BLACK_AND_WHITE_TOGGLE=黑白
+option.BLACK_AND_WHITE_TOGGLE.comment=将图像切换为黑白，以获得经典外观。
+
+
+value.BLACK_AND_WHITE_TOGGLE.BLACK_AND_WHITE_OFF = 关
+value.BLACK_AND_WHITE_TOGGLE.BLACK_AND_WHITE_ON = 开
+
+
+option.ASPECT_RATIO=宽高比
+option.ASPECT_RATIO.comment=调整图像的宽高比，模拟不同的电视或显示器形状。
+
+value.ASPECT_RATIO.0=关闭
+value.ASPECT_RATIO.1=开启
+
+option.ASPECT_RATIO_FACTOR=宽高比强度
+option.ASPECT_RATIO_FACTOR.comment=微调宽高比调整的强度。
+
+option.MOTION_BLUR_ENABLED=运动模糊
+option.MOTION_BLUR_ENABLED.comment=启用移动物体的模糊效果.
+
+value.MOTION_BLUR_ENABLED.0=关闭
+value.MOTION_BLUR_ENABLED.1=开启
+
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_STRENGTH.comment=调整运动模糊效果的强度。
+
+option.MOTION_BLUR_SAMPLES=运动模糊质量
+option.MOTION_BLUR_SAMPLES.comment=影响运动模糊效果的平滑度。数值越高效果越好，但可能影响性能。
+
+option.SHADOW=阴影
+option.SHADOW.comment=阴影 - 控制界面元素的阴影效果。调整此设置可增强深度感和视觉美感。
+
+option.WAVING_HAND=挥手动画
+option.WAVING_HAND.comment=为手持物品启用挥手动画。
+
+value.WAVING_HAND.0=关闭
+value.WAVING_HAND.1=开启
+
+option.VIGNETTE_ENABLED=暗角
+option.VIGNETTE_ENABLED.comment=在屏幕边缘添加暗淡效果。
+
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE_STRENGTH.comment=调整暗角效果的强度。数值越高，屏幕边缘的暗化效果越明显。
+
+value.VIGNETTE_ENABLED.0=关闭
+value.VIGNETTE_ENABLED.1=开启
+
+
+///// CELSHADING /////
+option.TOGGLE_CELSHADING=赛璐珞着色
+option.TOGGLE_CELSHADING.comment=切换到黑色轮廓
+
+
+value.TOGGLE_CELSHADING.DISABLE_CELSHADING = 关
+value.TOGGLE_CELSHADING.ENABLE_CELSHADING = 开
+
+
+///// Additional Effects /////
+option.WAVING_BLOCKS=波浪方块
+option.WAVING_BLOCKS.comment=使植物、树叶和树叶随风摇曳。
+
+value.WAVING_BLOCKS.0=关闭
+value.WAVING_BLOCKS.1=开启
+
+///// Animation Parameters /////
+option.YAXIS=Y 轴移动
+option.YAXIS.comment=垂直方向动画波动的强度
+
+option.XAXIS=X 轴移动
+option.XAXIS.comment=水平方向波浪动画的移动强度。
+
+option.FRAMETIME1=动画速度 1
+option.FRAMETIME1.comment=第一个动画速度乘数。
+
+option.FRAMETIME2=动画速度 2
+option.FRAMETIME2.comment=第二个动画速度倍数
+
+///// Distortion /////
+option.DISTORTION_OPTION=畸变
+option.DISTORTION_OPTION.comment=启用或禁用桶形失真效果.
+
+option.BARREL_POWER=畸变强度
+option.BARREL_POWER.comment=调整桶形畸变效果的强度。
+
+value.DISTORTION_OPTION.0=关闭
+value.DISTORTION_OPTION.1=开启
+
+///// VHS Effects /////
+option.VHS_ENABLED=复古磁带效果
+option.VHS_ENABLED.comment=启用或禁用所有 VHS/复古效果，包括扫描线、CRT 失真、色差和胶片噪点。
+
+value.VHS_ENABLED.0=关
+value.VHS_ENABLED.1=开
+
+///// Sharpening (Unsharp Mask) /////
+option.UNSHARP_MASK_ENABLED=不锐化蒙版
+option.UNSHARP_MASK_ENABLED.comment=启用不锐化蒙版效果，采用 Premiere Pro 风格，可增强细节并使 VHS 效果看起来更好。
+
+value.UNSHARP_MASK_ENABLED.0=关闭
+value.UNSHARP_MASK_ENABLED.1=开启
+
+option.UNSHARP_AMOUNT=锐化程度
+option.UNSHARP_AMOUNT.comment=控制应用的锐化程度。100 为标准值，数值越高锐化效果越强。
+
+option.UNSHARP_RADIUS=锐化半径
+option.UNSHARP_RADIUS.comment=控制用于锐化的区域大小。数值越高影响更大的细节。
+
+option.UNSHARP_THRESHOLD=锐化阈值
+option.UNSHARP_THRESHOLD.comment=锐化所需的最小差异值，有助于避免噪点被锐化。
+
+///// Exposure & Sky /////
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=调整整体图像亮度。降低值会使图像变暗。
+
+option.SKY_BRIGHTNESS=天空亮度
+option.SKY_BRIGHTNESS.comment=单独调整天空亮度。降低数值会使天空更具氛围感。
+
+///// Atmospheric Fog /////
+option.ATMOSPHERE_FOG_ENABLED=大气雾
+option.ATMOSPHERE_FOG_ENABLED.comment=启用蓝色色调的大气雾效果，营造更具电影感的视觉效果。
+
+value.ATMOSPHERE_FOG_ENABLED.0=关闭
+value.ATMOSPHERE_FOG_ENABLED.1=开启
+
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY.comment=控制大气雾的浓密程度。
+
+option.FOG_BLUE_TINT=雾的蓝色色调
+option.FOG_BLUE_TINT.comment=为雾气增添微妙的蓝色色调以营造氛围效果。
+
+///// Color Grading /////
+option.COLOR_CORRECTION_ENABLED=色彩校正
+option.COLOR_CORRECTION_ENABLED.comment=启用专业色彩校正，营造电影般的视觉效果。
+
+value.COLOR_CORRECTION_ENABLED.0=关闭
+value.COLOR_CORRECTION_ENABLED.1=开启
+
+option.CC_CONTRAST=对比度
+option.CC_CONTRAST.comment=调整图像对比度。数值大于 1.0 时增加对比度。
+
+option.CC_SATURATION=饱和度
+option.CC_SATURATION.comment=调整颜色的强度。数值低于 1.0 时颜色会变得更暗淡。
+
+option.CC_LIFT=提升 (阴影)
+option.CC_LIFT.comment=调整阴影亮度。正值会使阴影变亮。
+
+option.CC_GAMMA=伽马 (中间调)
+option.CC_GAMMA.comment=调整中间调亮度。数值大于 1.0 时使中间调变亮。
+
+option.CC_GAIN=增益 (高光)
+option.CC_GAIN.comment=调整高光亮度。数值低于 1.0 会降低亮度。
+
+option.CC_SHADOWS_BLUE=阴影蓝色色调
+option.CC_SHADOWS_BLUE.comment=为阴影添加细微的蓝色色调，营造电影般的视觉效果。
+
+option.CC_HIGHLIGHTS_WARMTH=高光色温
+option.CC_HIGHLIGHTS_WARMTH.comment=为高光添加色温。负值则使高光更凉爽。
+
+///// Profile Names /////
+profile.Clean_Modern=清新现代 (无 VHS)

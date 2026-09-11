@@ -1,0 +1,14 @@
+option.DIFFERENCE=差值
+option.DIFFERENCE.comment=像素亮度与施加其上的描边的比率
+value.DIFFERENCE.0.00=§f仅亮区域
+value.DIFFERENCE.1.00=§f仅暗区域
+option.BOOST_UP=亮区域
+option.BOOST_UP.comment=屏幕亮像素周围的描边
+value.BOOST_UP.255=§f白色描边
+value.BOOST_UP.-1.0=§f黑色描边
+value.BOOST_UP.0=§c无描边
+option.BOOST_DOWN=暗区域
+option.BOOST_DOWN.comment=屏幕暗像素周围的描边
+value.BOOST_DOWN.-1.0=§f黑色描边
+value.BOOST_DOWN.255=§f白色描边
+value.BOOST_DOWN.0=§c无描边

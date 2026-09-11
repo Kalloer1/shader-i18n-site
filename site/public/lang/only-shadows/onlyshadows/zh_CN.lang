@@ -1,0 +1,49 @@
+# ==========================================
+# MENÚ PRINCIPAL DEL SHADER
+# ==========================================
+
+# Niebla
+option.FOG_DISTANCE=雾距离
+
+# Iluminación
+option.SHADING=§6阴影
+option.SHADING.comment=为不在阳光照射下的平面着色。
+value.SHADING.0=关
+value.SHADING.1=开
+
+option.LIGHT_ABSORPTION=光吸收
+option.LIGHT_ABSORPTION.comment=调节白天从太阳下光源的光吸收。
+
+# Sombras
+option.SHADOW_TRANSPARENCY=阴影透明度
+
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=调整太阳角度。
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整阴影距离。
+value.shadowDistance.64.0=§a4 区块
+value.shadowDistance.80.0=§a5 区块
+value.shadowDistance.96.0=§a6 区块
+value.shadowDistance.112.0=§a7 区块
+value.shadowDistance.128.0=§a8 区块
+value.shadowDistance.160.0=§e10 区块
+value.shadowDistance.192.0=§e12 区块
+value.shadowDistance.224.0=§e14 区块
+value.shadowDistance.256.0=§c16 区块
+value.shadowDistance.320.0=§c20 区块
+value.shadowDistance.384.0=§c24 区块
+value.shadowDistance.512.0=§c32 区块
+value.shadowDistance.768.0=§c48 区块
+value.shadowDistance.1024.0=§c64 区块
+
+option.shadowMapResolution=阴影质量
+option.shadowMapResolution.comment=调整阴影贴图尺寸。§e[*]§r更高的分辨率能提供更清晰的阴影，但会降低性能。
+value.shadowMapResolution.512=极低 (512)
+value.shadowMapResolution.768=低配 (768)
+value.shadowMapResolution.1024=中低 (1024)
+value.shadowMapResolution.1536=中配 (1536)
+value.shadowMapResolution.2048=中高 (2048)
+value.shadowMapResolution.3072=高配 (3072)
+value.shadowMapResolution.4096=极高 (4096)
+value.shadowMapResolution.8192=超高 (8192)

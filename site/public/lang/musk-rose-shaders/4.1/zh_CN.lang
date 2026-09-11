@@ -1,0 +1,108 @@
+screen.COLS=调整颜色
+screen.LIGHTS=调整光照
+screen.SKY=天空
+screen.WATER=水
+screen.FOG=雾
+screen.POSTPROCESS=后处理
+screen.MISC=杂项
+
+value.FOG_QUALITY.FOG_LINEAR=低配
+value.FOG_QUALITY.FOG_EXP=高配
+
+value.PBR_TEXTURE.AUTO_GENERATION=自动生成
+value.PBR_TEXTURE.LAB_PBR=读取 LabPBR
+
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowDistance=阴影渲染距离
+option.sunPathRotation=太阳/月亮角度
+
+option.ENABLE_SHADER_CLOUDS=光影生成云
+option.ENABLE_VANILLA_CLOUDS=启用原版云
+option.ENABLE_CLOUD_SHADE=启用云阴影
+option.CHEAP_CLOUD_SHADE=廉价云阴影
+
+option.ENABLE_SUN=启用太阳
+option.ENABLE_MOON=启用月亮
+option.ENABLE_STARS=启用星星
+
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BIAS.comment=如果你看到阴影有噪点，请尝试调整此值。
+
+option.COL_POINTLIGHT_R=点光源颜色 §c红§f
+option.COL_POINTLIGHT_G=点光源颜色 §a绿§f
+option.COL_POINTLIGHT_B=点光源颜色 §9蓝§f
+
+option.COL_MOONLIGHT_R=§1月光颜色§f §c红§f
+option.COL_MOONLIGHT_G=§1月光颜色§f §a绿§f
+option.COL_MOONLIGHT_B=§1月光颜色§f §9蓝§f
+
+option.COL_SUNLIGHT_DAY_R=§e阳光颜色§f §c红色§f
+option.COL_SUNLIGHT_DAY_G=§e阳光颜色§f §a绿色§f
+option.COL_SUNLIGHT_DAY_B=§e阳光颜色§f §9蓝色§f
+
+option.COL_SUNLIGHT_SET_R=§6黄昏/黎明阳光颜色§f §c红色§f
+option.COL_SUNLIGHT_SET_G=§6黄昏/黎明阳光颜色§f §a绿色§f
+option.COL_SUNLIGHT_SET_B=§6黄昏/黎明阳光颜色§f §9蓝色§f
+
+option.COL_SKYLIGHT_R=§b天光颜色§f §c红色§f
+option.COL_SKYLIGHT_G=§b天光颜色§f §a绿色§f
+option.COL_SKYLIGHT_B=§b天光颜色§f §9蓝色§f
+
+option.UNLIT_AREA_BRIGHTNESS=未照明区域亮度
+
+option.AMBIENTLIGHT_INTENSITY=环境光强度
+option.POINTLIGHT_INTENSITY=点光强度
+option.SUNLIGHT_INTENSITY=阳光强度
+option.SKYLIGHT_INTENSITY=天光强度
+option.MOONLIGHT_INTENSITY=月光强度
+
+option.AO_VANILLA_INTENSITY=原版环境光遮蔽强度
+option.AO_SHADER_INTENSITY=光影生成环境光遮蔽强度
+
+option.TRANSLUCENT_BLUR_INTENSITY=半透明模糊强度
+
+option.ENABLE_WATER_WAVES=启用水波
+option.ENABLE_WATER_CAUSTICS=启用水焦散
+option.ENABLE_WATER_PARALLAX=启用水视差
+option.WATER_PARALLAX_STEPS=水视差步数
+option.WATER_WAVE_HEIGHT=水波高度
+
+option.COL_WATER_R=水颜色 §c红§f
+option.COL_WATER_G=水颜色 §a绿§f
+option.COL_WATER_B=水颜色 §9蓝§f
+
+option.WATER_TRANSPARENCY=水透明度
+option.WATER_REFLECTANCE=水面反射
+
+option.ENABLE_RAIN_RIPPLES=启用雨涟漪
+
+option.ENABLE_SSR=启用屏幕空间反射
+option.SSR_RAYTRACING=启用SSR光线追踪
+
+option.REFLECTRION_BLUR_INTENSITY=反射模糊强度
+option.ROUGHNESS_BLUR_INTENSITY=粗糙度模糊强度
+
+option.PBR_TEXTURE=PBR 纹理
+option.PBR_TEXTURE.comment=“自动生成”仅适用于未应用 PBR 纹理的玩家。
+
+option.ENABLE_BLOCKY_CLOUDS=启用方块云
+
+option.ENABLE_COLED_RAYS=启用彩色阳光射线
+option.ENABLE_COLED_RAYS.comment=如果阳光射线被染色玻璃等半透明物体阻挡，它们就会被染色。
+
+option.FOG_QUALITY=雾质量
+option.FOG_QUALITY.comment=这些选项之间的视觉差异不大，但可以预期会有小幅的性能提升。
+option.FOG_HEIGHT=雾高度
+option.FOG_DISTANCE=雾距离
+option.FOG_DISTANCE_UNDERWATER=水下雾距离
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY_UNDERWATER=水下雾密度
+
+option.ENABLE_WAVING_FOLIAGE=启用摇曳树叶
+option.WIND_POWER=风力强度
+option.WIND_POWER_RAINY=雨天风力强度
+
+option.ENABLE_BLOOM=启用泛光
+option.ENABLE_BLOOM.comment=漏光让光线看起来更好。
+option.ENABLE_DOF=启用景深
+option.ENABLE_DOF.comment=模糊未对焦的物体。

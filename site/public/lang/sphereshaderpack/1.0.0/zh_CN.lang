@@ -1,0 +1,739 @@
+profile.SHADER_VERSION_LABEL =b4sti 的 Shaderpack v7
+profile.OLD_BLISS_TONEMAP =b4sti 的 Shaderpack v7
+
+# if you're here to translate, this is a joke, these don't do what they say
+profile.QUALITY=质量
+profile.PERFORMANCE=性能
+
+screen.Misc_Settings =§c调试§r/实验性设置
+screen.Sun_and_Moon_Colors =太阳/月亮颜色
+option.sunPathRotation =太阳角度
+option.sun_illuminance =太阳照度
+option.moon_illuminance =月球照度
+option.MOONPHASE_BASED_MOONLIGHT =月相亮度级别
+
+screen.Mod_support =支持模组的设置
+
+option.RESOURCEPACK_SKY =资源包天空
+    value.RESOURCEPACK_SKY.0 =不使用
+    value.RESOURCEPACK_SKY.1 =天空+光影日/月
+    value.RESOURCEPACK_SKY.2 =完整天空
+    value.RESOURCEPACK_SKY.3 =光影天空+资源包日/月
+
+screen.Waving_Stuff =摆动效果
+    option.WAVY_PLANTS =植物摆动
+    option.WAVY_STRENGTH =波动强度
+    option.WAVY_SPEED =摆动速度
+
+screen.Direct_Light =直射光
+    screen.Shadows =阴影
+        option.TRANSLUCENT_COLORED_SHADOWS =彩色阴影
+        option.SCREENSPACE_CONTACT_SHADOWS =屏幕空间阴影
+        option.RENDER_ENTITY_SHADOWS =实体阴影
+        option.RENDER_PLAYER_SHADOWS =玩家阴影
+        option.shadowMapResolution =阴影分辨率
+        option.shadowDistance =阴影距离
+            value.shadowDistance.32.0 =2 区块
+            value.shadowDistance.48.0 =3 区块
+            value.shadowDistance.64.0 =4区块
+            value.shadowDistance.80.0 =5 区块
+            value.shadowDistance.96.0 =6区块
+            value.shadowDistance.112.0 =7区块
+            value.shadowDistance.128.0 =8 区块
+            value.shadowDistance.144.0 =9个区块
+            value.shadowDistance.160.0 =10区块
+            value.shadowDistance.176.0 =11个区块
+            value.shadowDistance.192.0 =12区块
+            value.shadowDistance.208.0 =13个区块
+            value.shadowDistance.224.0 =14区块
+            value.shadowDistance.240.0 =15个区块
+            value.shadowDistance.256.0 =16区块
+            value.shadowDistance.272.0 =17 区块
+            value.shadowDistance.288.0 =18 区块
+            value.shadowDistance.304.0 =19 区块
+            value.shadowDistance.320.0 =20区块
+            value.shadowDistance.336.0 =21 区块
+            value.shadowDistance.352.0 =22 区块
+            value.shadowDistance.368.0 =23 区块
+            value.shadowDistance.384.0 =24区块
+            value.shadowDistance.512.0 =32 区块
+            value.shadowDistance.768.0 =48个区块
+            value.shadowDistance.1024.0 =64个区块
+            value.shadowDistance.1536.0 =96区块
+            value.shadowDistance.2048.0 =128区块
+            value.shadowDistance.4096.0 =256区块
+            value.shadowDistance.8192.0 =512区块
+
+        option.OPTIMIZED_SHADOW_DISTANCE =最大阴影边界
+            value.OPTIMIZED_SHADOW_DISTANCE.-1.0 =未优化
+            value.OPTIMIZED_SHADOW_DISTANCE.1.0 =已优化
+        option.entityShadowDistanceMul =实体阴影距离
+            value.entityShadowDistanceMul.0.01 =阴影距离的1%
+            value.entityShadowDistanceMul.0.02 =阴影距离的2%
+            value.entityShadowDistanceMul.0.03 =阴影距离的3%
+            value.entityShadowDistanceMul.0.04 =阴影距离的4%
+            value.entityShadowDistanceMul.0.05 =阴影距离的5%
+            value.entityShadowDistanceMul.0.10 =阴影距离的10%
+            value.entityShadowDistanceMul.0.15 =阴影距离的15%
+            value.entityShadowDistanceMul.0.20 =阴影距离的20%
+            value.entityShadowDistanceMul.0.25 =阴影距离的25%
+            value.entityShadowDistanceMul.0.30 =阴影距离的30%
+            value.entityShadowDistanceMul.0.35 =阴影距离的35%
+            value.entityShadowDistanceMul.0.40 =40% 阴影距离
+            value.entityShadowDistanceMul.0.45 =45% 阴影距离
+            value.entityShadowDistanceMul.0.50 =50% 阴影距离
+            value.entityShadowDistanceMul.0.75 =75% 阴影距离
+            value.entityShadowDistanceMul.1.00 =100% 阴影距离
+
+    screen.Filtering =阴影过滤设置
+        option.SHADOW_FILTER_SAMPLE_COUNT =基础阴影过滤采样
+        option.Min_Shadow_Filter_Radius =最小阴影过滤半径
+        option.Variable_Penumbra_Shadows =可变半影阴影
+        option.VPS_Search_Samples =VPS 过滤采样
+        option.Max_Shadow_Filter_Radius =最大阴影过滤半径
+        option.Max_Filter_Depth =太阳尺寸因子
+        
+    screen.LPV =泛光填充 - §c需要 Iris§r
+        option.LPV_ENABLED =已启用
+        option.LPV_SIZE =尺寸
+            value.LPV_SIZE.6 =小 [64]
+            value.LPV_SIZE.7 =中 [128]
+            value.LPV_SIZE.8 =大 [256]
+        option.LPV_SATURATION =光照饱和度
+            suffix.LPV_SATURATION=%
+        option.LPV_TINT_SATURATION =色彩饱和度
+            suffix.LPV_TINT_SATURATION=%
+        option.LPV_NORMAL_STRENGTH =法线强度
+            suffix.LPV_NORMAL_STRENGTH = %
+            value.LPV_NORMAL_STRENGTH.0 =关
+        option.LPV_ENTITY_LIGHTS =实体光源
+        option.LPV_REDSTONE_LIGHTS =红石灯
+        option.LPV_COLORED_CANDLES =彩色蜡烛
+        option.LPV_NOSHADOW_HACK =Iris ≤ 1.7.0 修复
+        option.LPV_VL_FOG_ILLUMINATION =雾气光照扩散
+        option.LPV_VL_FOG_ILLUMINATION_BRIGHTNESS =雾光传播亮度
+            suffix.LPV_VL_FOG_ILLUMINATION_BRIGHTNESS=%
+
+screen.Subsurface_Scattering =次表面散射
+    option.LabSSS_Curve =实验室次表面散射曲线
+    option.MISC_BLOCK_SSS =随机方块的次表面散射
+    option.MOB_SSS =生物的次表面散射
+    option.Ambient_SSS =天空次表面散射
+    option.ambientsss_brightness =天空次表面散射亮度
+    option.SSS_TYPE =模式
+        value.SSS_TYPE.0 =无
+        value.SSS_TYPE.1 =仅限硬编码
+        value.SSS_TYPE.2 =硬编码 + 实验室次表面散射
+        value.SSS_TYPE.3 =仅实验室次表面散射
+
+
+screen.Ambient_light =环境光
+    option.AO_Strength =环境光遮蔽乘数
+    option.GI_Strength =全局光照乘数
+    option.HQ_SSGI =远程行进 (SSRT)
+    option.UseQuarterResDepth =采样 1/4 分辨率深度 (SSRT)
+    option.Hand_Held_lights =手持光源
+    option.SKY_CONTRIBUTION_IN_SSRT =高质量环境光 (SSRT)
+    option.ambientOcclusionLevel =原版环境光遮蔽强度
+    option.ambient_brightness =环境光亮度
+    option.MIN_LIGHT_AMOUNT =最小光照亮度
+    option.indirect_effect =间接光照
+        value.indirect_effect.0 =原版环境光遮蔽
+            value.indirect_effect.1 =屏幕空间环境光遮蔽
+            value.indirect_effect.2 =全局光照环境光遮蔽
+            value.indirect_effect.3 =SSRT (仅环境光§c遮蔽) - 视觉噪点较多§r
+            value.indirect_effect.4 =SSRT (环境光遮蔽 +§c 全局光照) - 视觉噪点较多§r
+
+    screen.Ambient_Colors =环境光颜色
+        option.AmbientLight_R =红色量
+        option.AmbientLight_G =绿色量
+        option.AmbientLight_B =蓝色量
+        option.ambient_colortype =着色类型
+            value.ambient_colortype.0 =色温
+            value.ambient_colortype.1 =RGB
+    
+    screen.Torch_Colors =火把颜色
+        option.TORCH_AMOUNT =火把光乘数
+        option.TORCH_R =红色量
+        option.TORCH_G =绿色量
+        option.TORCH_B =蓝色量
+    
+
+screen.Fog =雾效设置
+    option.VL_RENDER_RESOLUTION =雾分辨率缩放
+    option.VL_SAMPLES =雾气采样数
+    option.BLOOMY_FOG =泛光雾乘数
+    option.Haze_amount =大气薄雾密度
+    option.RainFog_amount =雨雾乘数
+    option.RAYMARCH_CLOUDS_WITH_FOG =将云渲染为雾（§c请阅读说明）§r
+    option.BorderFog =区块边界雾
+
+    screen.TOD_fog =按时间变化的雾
+        option.TOD_Fog_mult =雾密度乘数
+        option.Morning_Uniform_Fog =晨雾浓度
+        option.Noon_Uniform_Fog =正午雾密度
+        option.Evening_Uniform_Fog =傍晚雾密度
+        option.Night_Uniform_Fog =夜间雾密度
+        option.Morning_Cloudy_Fog =多云早晨雾密度
+        option.Noon_Cloudy_Fog =多云正午雾密度
+        option.Evening_Cloudy_Fog =多云傍晚雾密度
+        option.Night_Cloudy_Fog =多云夜晚雾密度
+
+        option.PER_BIOME_ENVIRONMENT =按群系环境变化
+
+    screen.Cave_Fog =洞穴雾
+        option.Cave_Fog =洞穴雾
+        option.CaveFogFallOff =雾衰减
+        option.CaveFogColor_R =雾 R 值
+        option.CaveFogColor_G =雾 G 值
+        option.CaveFogColor_B =雾 B 值
+
+    screen.END_AND_NETHER_FOG =下界/末地雾
+        option.END_STORM_DENSTIY =末地风暴密度
+        option.NETHER_PLUME_DENSITY =下界烟雾密度
+
+screen.Clouds =云朵设置
+    option.VOLUMETRIC_CLOUDS =体积云
+    option.CLOUDS_QUALITY =云层分辨率缩放
+    option.CLOUDS_SHADOWS =云层阴影
+    option.Cloud_Speed =云速乘数
+    option.Rain_coverage =下雨时覆盖度
+    option.Daily_Weather =每日天气
+
+    option.CloudLayer0          =小积云
+    option.CloudLayer0_coverage =覆盖范围
+    option.CloudLayer0_density  =密度
+    option.CloudLayer0_height   =高度
+
+    option.CloudLayer1          =大积云
+    option.CloudLayer1_coverage =覆盖范围
+    option.CloudLayer1_density  =密度
+    option.CloudLayer1_height   =高度
+
+    option.CloudLayer2          =高层云
+    option.CloudLayer2_coverage =覆盖范围
+    option.CloudLayer2_density  =密度
+    option.CloudLayer2_height   =高度
+
+screen.DAILY_WEATHER =每日天气设置
+option.CHOOSE_RANDOM_WEATHER_PROFILE =随机天气档案
+    screen.DAY0_WEATHER =第 0 天天气档案
+        option.DAY0_l0_coverage =小积云覆盖范围
+        option.DAY0_l0_density =小积云密度
+        option.DAY0_l1_coverage =大积云覆盖范围
+        option.DAY0_l1_density =大积云密度
+        option.DAY0_l2_coverage =高层云覆盖范围
+        option.DAY0_l2_density =高层云密度
+        option.DAY0_ufog_density =均匀雾密度
+        option.DAY0_cfog_density =多云雾密度
+        
+    screen.DAY1_WEATHER =第 1 天天气档案
+        option.DAY1_l0_coverage =小积云覆盖范围
+        option.DAY1_l0_density =小积云密度
+        option.DAY1_l1_coverage =大积云覆盖范围
+        option.DAY1_l1_density =大积云密度
+        option.DAY1_l2_coverage =高层云覆盖范围
+        option.DAY1_l2_density =高层云密度
+        option.DAY1_ufog_density =均匀雾密度
+        option.DAY1_cfog_density =多云雾密度
+        
+    screen.DAY2_WEATHER =第 2 天天气档案
+        option.DAY2_l0_coverage =小积云覆盖范围
+        option.DAY2_l0_density =小积云密度
+        option.DAY2_l1_coverage =大积云覆盖范围
+        option.DAY2_l1_density =大积云密度
+        option.DAY2_l2_coverage =高层云覆盖范围
+        option.DAY2_l2_density =高层云密度
+        option.DAY2_ufog_density =均匀雾密度
+        option.DAY2_cfog_density =多云雾密度
+
+    screen.DAY3_WEATHER =第 3 天天气档案
+        option.DAY3_l0_coverage =小积云覆盖范围
+        option.DAY3_l0_density =小积云密度
+        option.DAY3_l1_coverage =大积云覆盖范围
+        option.DAY3_l1_density =大积云密度
+        option.DAY3_l2_coverage =高层云覆盖范围
+        option.DAY3_l2_density =高层云密度
+        option.DAY3_ufog_density =均匀雾密度
+        option.DAY3_cfog_density =多云雾密度
+
+    screen.DAY4_WEATHER =第 4 天天气档案
+        option.DAY4_l0_coverage =小积云覆盖范围
+        option.DAY4_l0_density =小积云密度
+        option.DAY4_l1_coverage =大积云覆盖范围
+        option.DAY4_l1_density =大积云密度
+        option.DAY4_l2_coverage =高层云覆盖范围
+        option.DAY4_l2_density =高层云密度
+        option.DAY4_ufog_density =均匀雾密度
+        option.DAY4_cfog_density =多云雾密度
+
+    screen.DAY5_WEATHER =第 5 天天气档案
+        option.DAY5_l0_coverage =小积云覆盖范围
+        option.DAY5_l0_density =小积云密度
+        option.DAY5_l1_coverage =大积云覆盖范围
+        option.DAY5_l1_density =大积云密度
+        option.DAY5_l2_coverage =高层云覆盖范围
+        option.DAY5_l2_density =高层云密度
+        option.DAY5_ufog_density =均匀雾密度
+        option.DAY5_cfog_density =多云雾密度
+
+    screen.DAY6_WEATHER =第 6 天天气档案
+        option.DAY6_l0_coverage =小积云覆盖范围
+        option.DAY6_l0_density =小积云密度
+        option.DAY6_l1_coverage =大积云覆盖范围
+        option.DAY6_l1_density =大积云密度
+        option.DAY6_l2_coverage =高层云覆盖范围
+        option.DAY6_l2_density =高层云密度
+        option.DAY6_ufog_density =均匀雾密度
+        option.DAY6_cfog_density =多云雾密度
+
+    screen.DAY7_WEATHER =第 7 天天气档案
+        option.DAY7_l0_coverage =小积云覆盖范围
+        option.DAY7_l0_density =小积云密度
+        option.DAY7_l1_coverage =大积云覆盖范围
+        option.DAY7_l1_density =大积云密度
+        option.DAY7_l2_coverage =高层云覆盖范围
+        option.DAY7_l2_density =高层云密度
+        option.DAY7_ufog_density =均匀雾密度
+        option.DAY7_cfog_density =多云雾密度
+
+    screen.DAY8_WEATHER =第 8 天天气档案
+        option.DAY8_l0_coverage =小积云覆盖范围
+        option.DAY8_l0_density =小积云密度
+        option.DAY8_l1_coverage =大积云覆盖范围
+        option.DAY8_l1_density =大积云密度
+        option.DAY8_l2_coverage =高层云覆盖范围
+        option.DAY8_l2_density =高层云密度
+        option.DAY8_ufog_density =均匀雾密度
+        option.DAY8_cfog_density =多云雾密度
+
+    screen.DAY9_WEATHER =第 9 天天气档案
+        option.DAY9_l0_coverage =小积云覆盖范围
+        option.DAY9_l0_density =小积云密度
+        option.DAY9_l1_coverage =大积云覆盖范围
+        option.DAY9_l1_density =大积云密度
+        option.DAY9_l2_coverage =高层云覆盖范围
+        option.DAY9_l2_density =高层云密度
+        option.DAY9_ufog_density =均匀雾密度
+        option.DAY9_cfog_density =多云雾密度
+        
+
+screen.Climate =气候设置
+    option.Seasons =季节色彩
+    option.Season_Length =季节长度（天数）
+	option.Start_Season =初始季节
+		value.Start_Season.0 =夏季（默认）
+		value.Start_Season.1 =秋季
+		value.Start_Season.2 =冬季
+		value.Start_Season.3 =春季
+    option.Snowy_Winter =冬季降雪
+    screen.Summer_colors =夏季颜色
+        option.Summer_R =红色量
+        option.Summer_G =绿色量
+        option.Summer_B =蓝色量
+        option.Summer_Leaf_R =红色量（用于树叶）
+        option.Summer_Leaf_G =绿色量（用于树叶）
+        option.Summer_Leaf_B =蓝色量（用于树叶）
+
+    screen.Fall_colors =秋季颜色
+        option.Fall_R =红色量
+        option.Fall_G =绿色量
+        option.Fall_B =蓝色量
+        option.Fall_Leaf_R =红色量（用于树叶）
+        option.Fall_Leaf_G =绿色量（用于树叶）
+        option.Fall_Leaf_B =蓝色量（用于树叶）
+
+    screen.Winter_colors =冬季颜色
+        option.Winter_R =红色量
+        option.Winter_G =绿色量
+        option.Winter_B =蓝色量
+        option.Winter_Leaf_R =红色量（用于树叶）
+        option.Winter_Leaf_G =绿色量（用于树叶）
+        option.Winter_Leaf_B =蓝色量（用于树叶）
+
+    screen.Spring_colors =春季颜色
+        option.Spring_R =红色量
+        option.Spring_G =绿色量
+        option.Spring_B =蓝色量
+        option.Spring_Leaf_R =红色量（用于树叶）
+        option.Spring_Leaf_G =绿色量（用于树叶）
+        option.Spring_Leaf_B =蓝色量（用于树叶）
+        
+    screen.SWAMP =沼泽群系
+        option.SWAMP_ENV =沼泽环境
+        option.SWAMP_UNIFORM_DENSITY =均匀雾密度
+        option.SWAMP_CLOUDY_DENSITY =多云雾密度
+        option.SWAMP_R =红色量
+        option.SWAMP_G =绿色量
+        option.SWAMP_B =蓝色量
+
+    screen.JUNGLE =丛林
+        option.JUNGLE_ENV =丛林环境
+        option.JUNGLE_UNIFORM_DENSITY =均匀雾密度
+        option.JUNGLE_CLOUDY_DENSITY =多云雾密度
+        option.JUNGLE_R =红色量
+        option.JUNGLE_G =绿色量
+        option.JUNGLE_B =蓝色量
+
+    screen.DARKFOREST =黑森林
+        option.DARKFOREST_ENV =黑暗森林环境
+        option.DARKFOREST_UNIFORM_DENSITY =均匀雾密度
+        option.DARKFOREST_CLOUDY_DENSITY =多云雾密度
+        option.DARKFOREST_R =红色量
+        option.DARKFOREST_G =绿色量
+        option.DARKFOREST_B =蓝色量
+
+screen.World =世界
+    screen.Water =水体设置
+        option.WATER_REFLECTIONS =水面镜面反射
+        option.SCREENSPACE_REFLECTIONS =屏幕空间反射
+        option.SSR_STEPS =屏幕空间反射质量
+        option.WATER_SUN_SPECULAR =太阳/月亮反射
+        option.WATER_BACKGROUND_SPECULAR =天空/雾反射
+        option.Refraction =水/玻璃折射效果
+        option.Dirt_Amount =泥土数量
+        option.Water_Top_Layer =海洋Y坐标
+        option.WATER_WAVE_STRENGTH =波浪强度
+        option.SNELLS_WINDOW =斯涅尔窗
+        
+        screen.Water_fog_color =水下雾效设置
+            option.Dirt_Scatter_R =红色散射（泥土）
+            option.Dirt_Scatter_G =绿色散射（泥土）
+            option.Dirt_Scatter_B =蓝色散射（泥土）
+            option.Dirt_Absorb_R =红色吸收（泥土）
+            option.Dirt_Absorb_G =绿色吸收（泥土）
+            option.Dirt_Absorb_B =蓝色吸收（泥土）
+            option.Water_Absorb_R =红色吸收（水）
+            option.Water_Absorb_G =绿色吸收（水）
+            option.Water_Absorb_B =蓝色吸收（水）
+
+
+screen.Post_Processing =后期处理
+    screen.Tonemapping =色调映射/颜色设置
+    screen.Exposure =曝光设置
+    screen.DepthOfField =景深设置
+    screen.Purkinje_effect =普尔钦效应设置
+    option.SHARPENING =锐化强度
+    option.BLOOM_STRENGTH =泛光强度倍增
+    screen.TAA_OPTIONS =抗锯齿设置
+        option.SCREENSHOT_MODE =截图模式
+        option.TAA =自适应时间抗锯齿
+        option.BLEND_FACTOR =混合因子
+        option.TAA_UPSCALING =时间性分辨率增强
+        option.SCALE_FACTOR =缩放因子
+	screen.COLOR_GRADING =颜色分级
+		option.LUMINANCE_CURVE =色调曲线
+		option.LOWER_CURVE =暗部曲线
+		option.UPPER_CURVE =亮部曲线
+		option.COLOR_GRADING_ENABLED=颜色分级
+		option.SHADOWS_GRADE_R =阴影§c红
+		option.SHADOWS_GRADE_G =阴影§a绿
+		option.SHADOWS_GRADE_B =阴影§9蓝
+		option.SHADOWS_GRADE_MUL =阴影亮度
+		option.MIDS_GRADE_R =中间调§c红
+		option.MIDS_GRADE_G =中间调§a绿
+		option.MIDS_GRADE_B =中间调§9蓝
+		option.MIDS_GRADE_MUL =中间调亮度
+		option.HIGHLIGHTS_GRADE_R =高光§c红
+		option.HIGHLIGHTS_GRADE_G =高光§a绿
+		option.HIGHLIGHTS_GRADE_B =高光§9蓝
+		option.HIGHLIGHTS_GRADE_MUL =高光亮度
+
+
+screen.Resource_Pack_Support =资源包支持
+    screen.Reflections =镜面反射
+        option.Specular_Reflections =镜面反射
+        option.Screen_Space_Reflections =屏幕空间反射
+        option.Rough_reflections =详细粗糙度
+        option.Sky_reflection =反射中的天空/雾
+        option.Dynamic_SSR_quality =动态 SSR 质量
+        option.Roughness_Threshold =反射阈值
+        option.Sun_specular_Strength =太阳反射倍增器
+        option.reflection_quality =屏幕空间反射质量
+
+    screen.Emissives =自发光
+        option.Emissive_Brightness =自发光乘数
+        option.Emissive_Curve =发光曲线
+        option.EMISSIVE_TYPE =模式
+            value.EMISSIVE_TYPE.0 =无发光
+            value.EMISSIVE_TYPE.1 =仅限硬编码
+            value.EMISSIVE_TYPE.2 =硬编码 + 实验室发光
+            value.EMISSIVE_TYPE.3 =仅实验室发光
+
+
+screen.POM =视差遮蔽映射 / POM
+    option.POM =视差遮蔽映射
+    option.MAX_ITERATIONS =质量
+    option.POM_DEPTH =深度
+    option.MAX_DIST =最大距离
+    option.Adaptive_Step_length =动态质量
+    option.Horrible_slope_normals =劣质坡度法线
+
+
+screen.Porosity =孔隙率 / 积水效果
+    option.Porosity =多孔度
+    option.Puddles =水坑
+    option.Puddle_Size =水洼大小倍率
+
+option.MATERIAL_AO =材质环境光遮蔽
+
+option.DOF_QUALITY=景深
+    value.DOF_QUALITY.-1=关
+    value.DOF_QUALITY.0=六边形
+    value.DOF_QUALITY.1=低
+    value.DOF_QUALITY.2=中
+    value.DOF_QUALITY.3=高
+    value.DOF_QUALITY.4=超高
+    value.DOF_QUALITY.5=抖动
+	option.MANUAL_FOCUS=焦点
+    option.DOF_ANAMORPHIC_RATIO=变形宽高比
+    value.MANUAL_FOCUS.-2=自动对焦
+	value.MANUAL_FOCUS.-1=亮度滑块
+
+	screen.JITTER_DOF=抖动景深设置
+		option.JITTER_STRENGTH=抖动强度
+		option.FOCUS_LASER_COLOR=焦点
+		value.FOCUS_LASER_COLOR.0=红
+		value.FOCUS_LASER_COLOR.1=绿
+		value.FOCUS_LASER_COLOR.2=蓝
+		value.FOCUS_LASER_COLOR.3=粉色
+		value.FOCUS_LASER_COLOR.4=黄色
+		value.FOCUS_LASER_COLOR.5=白色
+
+option.AEROCHROME_MODE=航空摄影模式
+option.AEROCHROME_PINKNESS=航空摄影红:粉比例
+option.AEROCHROME_WOOL_ENABLED=航空摄影羊毛
+
+option.AEROCHROME_MODE.comment =红外胶片效果。可通过搜索"aerochrome"了解其效果。
+option.AEROCHROME_PINKNESS.comment =数值越高越偏粉，越低越偏红
+option.AEROCHROME_WOOL_ENABLED.comment =理论上羊毛材质应受影响，但会破坏建筑效果。启用后可更符合技术规范。
+
+
+
+
+
+screen.Misc_Settings.comment =用于调试或其他创意效果的随机设置。
+screen.Sun_and_Moon_Colors.comment =调整太阳或月亮的颜色。
+option.sunPathRotation.comment =调整太阳或月亮的角度
+option.sun_illuminance.comment =调整太阳亮度
+option.moon_illuminance.comment =调整月亮亮度
+
+screen.Direct_Light.comment =调整与太阳和阴影相关的设置。
+
+screen.Shadows.comment =自定义太阳阴影效果。
+    option.SCREENSPACE_CONTACT_SHADOWS.comment =§b这是什§r么？针对远处物体和近处细节的阴影。性能§a消耗：低§r到中等；高分辨率下消耗更高。
+    option.RENDER_ENTITY_SHADOWS.comment =这§b是什么？§r适用于所有实体类型（如生物、箱子、旗帜或告示牌§a）的阴影。性§r能消耗：低到极高；附近实体较多时消耗显著增加。
+    option.shadowMapResolution.comment =由世界中物体投射的太阳阴影的质量。性§a能开销：§r中到极高；阴影必须从太阳视角重新渲染3D世界，这就是它会使性能减半的原因。
+    option.shadowDistance.comment =阴影贴图可渲染的最大距离。设置为“非优化”时，距离不以区块为单位线性测量。§a性能成本：§r中等至极高；如果区块渲染距离较高，阴影将变得更加消耗性能。
+    option.OPTIMIZED_SHADOW_DISTANCE.comment =仅在你周围的球形范围内渲染阴影，限制为最大区块距离。“非优化”不会在球形范围内渲染阴影，也不锁定到区块；它可以在相同的距离设置下覆盖更大的区域。设置为“非优化”时，距离不以区块为单位测量。§a性能成本：§r低到中等。优化模式更快，非优化模式更慢。
+    screen.Filtering.comment =配置应用于阴影的滤镜效果。
+        option.SHADOW_FILTER_SAMPLE_COUNT.comment =基础阴影滤镜的质量。此滤镜仅用于柔化阴影。性§a能开销：§r低到中；提高此项应能减少阴影边缘的一些噪点。
+        option.Min_Shadow_Filter_Radius.comment =基础阴影滤镜的最大柔和度。
+        option.Variable_Penumbra_Shadows.comment =此效果会使阴影随着距离投射源越远而变得越来越柔和。此效果用于创建更高质量的阴影和次表面散射。性§a能开销：低§r到高。
+        option.VPS_Search_Samples.comment =可变半影阴影滤镜的质量。性能§a开销：低到§r高；提高此项应能减少次表面散射和非常柔和阴影中的一些噪点。
+        option.Max_Shadow_Filter_Radius.comment =阴影在远离投射源时能达到的最大柔和度。
+        option.Max_Filter_Depth.comment =配置太阳的大小。如果太阳更大，阴影在靠近投射物时会变得更柔和。
+
+screen.Ambient_light.comment =配置与阴影区域光照相关的设置。
+    option.AO_Strength.comment =配置由 SSAO、GTAO、RTAO 和 SSGI 创建的环境光§b遮蔽的强度§r。这是什么？环境光遮蔽是角落等处的柔和小阴影。
+    option.GI_Strength.comment =配置由 SSGI 创建的全局光照的强度§b。这是§r什么？此场景中的全局光照特指从表面反弹并照射到其他区域的光线。
+    option.HQ_SSGI.comment =切换远程屏幕空间全局光照。§a性能成本：§r极高
+    option.Hand_Held_lights.comment =开关着色器端手持光源。性§a能开销：极§r低。
+    option.SKY_CONTRIBUTION_IN_SSRT.comment =允许 RTAO 或 SSGI 将整个天空和雾纳入考虑，为阴影区域创建高质量的光照。这可能会引入更多噪点§a。性能成本：§r中等
+
+    option.ambientOcclusionLevel.comment =配置原版我的世界中环境光遮蔽的强度。这是什么？这§b个环境光§r遮蔽即使在未启用着色器时也存在于我的世界中。
+    option.ambient_brightness.comment =配置阴影区域的光照亮度。
+    option.MIN_LIGHT_AMOUNT.comment =配置阴影区域中可存在的最小光量。
+    option.indirect_effect.comment =切换不同类型的效果以提高阴影区域的光照质量。性能成本：原版环境§a光遮蔽：极低§r。SSAO：低到中等。GTAO：中到高。RTAO 或 SSGI：高到极高
+
+    screen.Ambient_Colors.comment =配置阴影区域的光照颜色。
+    screen.Torch_Colors.comment =配置火把或其他放置光源的光照颜色。
+
+    option.LPV_SIZE.comment =配置彩色光照的体积大小（以方块为单位）。
+    option.LPV_SATURATION.comment =配置彩色光照的强度。
+    option.LPV_TINT_SATURATION.comment =配置半透明方块对彩色光照进行染色的强度。
+    option.LPV_NORMAL_STRENGTH.comment =配置表面法线影响光照方向的程度。
+    option.LPV_ENTITY_LIGHTS.comment =允许实体为彩色光照提供贡献。
+    option.LPV_REDSTONE_LIGHTS.comment =允许红石块为彩色光照提供贡献。
+    option.LPV_COLORED_CANDLES.comment =允许彩色蜡烛发出匹配颜色的光照。
+    option.LPV_NOSHADOW_HACK.comment =修复适用于 Iris 1.7.0 及更低版本！允许泛光填充在下界和末地工作，但禁用实体和掉落物品的光照。
+    option.LPV_VL_FOG_ILLUMINATION.comment =允许有色光源照亮周围空气。
+    option.LPV_VL_FOG_ILLUMINATION_BRIGHTNESS.comment =配置发光雾的亮度。
+    
+screen.Resource_Pack_Support.comment =一些使用资源包提供信息的效果。
+    screen.Reflections.comment =配置使用 labpbr 资源包所提供信息的反射效果。
+        option.Specular_Reflections.comment =切换所有 labpbr 资源包的反射效果。这将启用太阳反射，并允许启用下方的其他设置§a。性能消耗：§r低
+        option.Screen_Space_Reflections.comment =切换屏幕空间反射。§a性能消耗§r：中
+        option.Rough_reflections.comment =切换更精细的粗糙度以获得更高质量的反射。这会产生大量可见噪点§a。性能消耗§r：中到高
+        option.Sky_reflection.comment =切换天空和雾的反射效果。§a性能消耗：§r低到中。
+        option.Dynamic_SSR_quality.comment =此选项会根据屏幕空间反射的可见程度降低其质量。它可以提升性能，但会降低画质。
+        option.Roughness_Threshold.comment =若粗糙度达到此阈值，除太阳外的所有反射将不会渲染。它可以提升性能。
+        option.Sun_specular_Strength.comment =配置太阳反射的亮度。
+        option.reflection_quality.comment =配置屏幕空间反射的质量。
+
+screen.Subsurface_Scattering.comment =§b这是什么§r？次表面散射就是当把强光放在手上时，手开始发光的现象。太阳实际上对植物、布料、皮肤和其他物体也起着同样的作用。
+    option.SSS_TYPE.comment =配置次表面散射如何应用于世界。硬编码：由着色器§b决定哪§r些物体获得它。labss§bs：§r由资源包决定哪些物体获得它§a。性能开销：§r极低。
+    option.MOB_SSS.comment =开关为生物（包括玩家）启用的次表面散射。§a性能开销：§r极低。
+    option.MISC_BLOCK_SSS.comment =开关为可能不太合适的随机方块启用的次表面散射。这主要针对草和沙子。§a性能开销：§r极低。
+    option.Ambient_SSS.comment =§b这是什么？§r来自天空而非太阳的光线产生的次表面散射。性能开销：极低§a到中；如果§r启用了 SSAO，此开销非常小，但如果 SSAO 关闭则开销更大。
+    option.ambientsss_brightness.comment =配置来自天空光照的次表面散射的亮度。
+
+screen.Emissives.comment =§b这是什§r么？自发光就是物体发出多少光，或者物体有多亮。
+    option.Emissive_Brightness.comment =配置纹理发光的亮度。
+    option.EMISSIVE_TYPE.comment =配置纹理发光如何应用于世界。硬编码：由着§b色器决定§r哪些物体获得它。labs§bss§r：由资源包决定哪些物体获得它§a。性能开销：§r极低。
+    option.Emissive_Curve.comment =这决定了发光纹理达到最亮点的速度。1.0 是线性的。
+
+screen.POM.comment =配置与视差遮蔽映射相关的设置，该映射使用资源包提供的信息。
+    option.POM.comment =§b这是什么§r？此效果尝试使用资源包中的特殊图像，在原本没有的地方创建 3D 几何体。此效果基本上只向内推，因此在观察陡峭角度时可能存在一些瑕疵§a。性能成本§r：中到高
+    option.MAX_ITERATIONS.comment =配置视差遮蔽映射效果的质量。如果近距离观察时看到单独的层，增加此设置会生成更多层，因此它们将变得难以看到。§a性能成本：§r高
+    option.POM_DEPTH.comment =视差遮蔽映射效果可以深入表面的程度。§a性能成本：§r极低
+    option.MAX_DIST.comment =视差遮蔽映射效果可以渲染的最大相机距离。性§a能成本：§r高
+    option.Adaptive_Step_length.comment =这将提高视觉质量，而无需增加实际质量。如果近距离观察或高度图非常繁忙且高度变化尖锐，这会导致一些瑕疵。
+    option.Horrible_slope_normals.comment =这是一个实现不佳的方法，用于为视差遮蔽映射的侧面提供表面。我不推荐这个。§a性能成本：§r低
+    
+screen.Porosity.comment =配置与湿度和水坑相关的设置
+    option.Porosity.comment =§b这是什么§r？孔隙率是描述某种材料的多孔程度，或者本质上它可以容纳多少水。例如，海绵非常有孔隙；水被容纳在内并因此变暗。§a性能成本：§r低
+    option.Puddles.comment =在下雨时切换水坑。§a性能成本：§r低
+    option.Puddle_Size.comment =配置水坑的大小。
+
+screen.Fog.comment =配置与光线行进体积雾或基于距离的雾相关的设置。
+    option.VL_RENDER_RESOLUTION.comment =配置体积雾的分辨率。性§a能消耗：§r高
+    option.VL_SAMPLES.comment =配置体积雾的质量。性§a能成本：§r高
+    option.BLOOMY_FOG.comment =配置应用于雾的泛光强度。这是什么§b？此效果§r使雾看起来柔和，也有助于隐藏一些噪音。会在详细边缘上导致一些可见的闪烁。§a性能成本§r：极低
+    option.Haze_amount.comment =配置周围大气的密度。这是什§b么？这是§r你在远处看到的蓝色薄雾。
+    option.RainFog_amount.comment =配置下雨时雾的密度。
+    option.RAYMARCH_CLOUDS_WITH_FOG.comment =§c警告§r：此设置是实验性的，并且制作不佳！你需要增加雾采样以使其与正常云匹配。当你进入或围绕云时切换详细雾。性§a能成本：§r高。
+    option.BorderFog.comment =§b这是什么§r？切换一个试图隐藏区块加载的雾。但因为天空无处不在，所以很难做好。§a性能成本§r：极极低
+
+    screen.TOD_fog.comment =配置在一天中特定时间出现的雾的密度。
+        option.TOD_Fog_mult.comment =配置在一天中特定时间出现的总雾量。这不影响大气薄雾。
+
+    screen.Cave_Fog.comment =配置当你在非常黑暗的地方（如洞穴）时出现的雾的设置。
+        option.Cave_Fog.comment =切换在黑暗地方出现的雾。无法准确判断当你在着色器中时是否在洞穴中，因此此雾可能出现在不是洞穴的地方。§a性能成本：§r低
+        option.CaveFogFallOff.comment =配置雾梯度达到最亮部分的速度。
+
+screen.Clouds.comment =配置与光线行进体积云相关的设置。
+    option.VOLUMETRIC_CLOUDS.comment =切换云。性§a能成本：§r中到高
+    option.CLOUDS_QUALITY.comment =配置体积云的分辨率。性§a能成本：§r高
+    option.CLOUDS_SHADOWS.comment =切换从云投射到地面的阴影，以及它们下方的雾。§a性能成本§r：低到中
+    option.Daily_Weather.comment =开关每日轮换天气。这是什§b么？共§r有十种天气配置，着色器每天会循环使用。启用此选项后无法修改任何云层覆盖设置。§a性能开销：§r低
+    option.CHOOSE_RANDOM_WEATHER_PROFILE.comment =§b这是什么§r？将着色器设置为从以下日期中随机选择天气。关闭此选项后，着色器将按顺序选择日期。
+    option.Cloud_Speed.comment =配置云层随时间推移的移动速度。
+    option.Rain_coverage.comment =配置下雨时云层覆盖天空的程度。
+
+screen.World.comment =配置世界中各类事物的相关设置，包括摇曳的植物及水体相关参数。
+    screen.Water.comment =配置与水体相关的设置。
+        option.WATER_REFLECTIONS.comment =切换所有半透明物体的反射效果。这将允许启用下方的其他设置。§a性能消耗：§r低-高
+        option.SCREENSPACE_REFLECTIONS.comment =切换半透明物体的屏幕空间反射。§a性能消耗§r：中
+        option.SSR_STEPS.comment =配置半透明物体屏幕空间反射的质量。性§a能消耗：§r中到高
+        option.WATER_SUN_SPECULAR.comment =切换半透明物体上的太阳和月亮反射。§a性能消耗：§r低
+        option.WATER_BACKGROUND_SPECULAR.comment =切换半透明物体上的天空和雾反射。§a性能消耗§r：低到中
+        option.Refraction.comment =切换半透明物体的折射效果。§b这是什么§r？当你观察水面时，可以看到光线折射会扭曲水下的景物§a。性能消耗：§r低
+        option.Dirt_Amount.comment =配置水中污浊度。此选项控制水体内部的雾气浓度。
+        option.Water_Top_Layer.comment =配置世界中海洋所在的Y坐标高度。
+        
+        screen.Water_fog_color.comment =配置水雾的颜色。
+
+screen.Climate.comment =配置与气候相关的设置，包括季节色彩、每日天气及群系专属雾气。
+    screen.Seasons.comment =循环变化的季节色彩：夏、秋、冬、春。
+        option.Seasons.comment =循环变化的季节色彩：夏、秋、冬、春。性§a能开销：§r低
+        option.Season_Length.comment =控制单个季节持续时间（以我的世界天数为单位）。
+        option.Snowy_Winter.comment =开关冬季降雪效果。§a性能开销：§r低
+        screen.Summer_colors.comment =配置夏季植被的颜色。
+        screen.Fall_colors.comment =配置秋季植被的颜色。
+        screen.Winter_colors.comment =配置冬季植被的颜色。
+        screen.Spring_colors.comment =配置春季植被的颜色。
+    
+    option.PER_BIOME_ENVIRONMENT.comment =开关所有仅出现在特定群系的特殊环境效果。§a性能开销：§r低
+
+        screen.SWAMP.comment =配置此群系类型的环境。
+            option.SWAMP_ENV.comment =仅为当前群系类型切换环境。即使禁用当前环境，其他群系环境仍保持启用。
+
+        screen.JUNGLE.comment =配置此群系类型的环境。
+            option.JUNGLE_ENV.comment =仅为当前群系类型切换环境。即使禁用当前环境，其他群系环境仍保持启用。
+
+        screen.DARKFOREST.comment =配置此群系类型的环境。
+            option.DARKFOREST_ENV.comment =仅为当前群系类型切换环境。即使禁用当前环境，其他群系环境仍保持启用。
+
+
+screen.Waving_Stuff.comment =配置与摇摆物体相关的设置。
+    option.WAVY_PLANTS.comment =开关植物摇曳效果§a。性能开销§r：极低
+    option.WAVY_STRENGTH.comment =配置植物摇曳幅度。
+    option.WAVY_SPEED.comment =配置植物摇曳速度。
+
+screen.Post_Processing.comment =配置所有后期处理效果，包括抗锯齿与色调映射。
+    screen.Tonemapping.comment =配置与色彩和色调映射相关的设置。
+    screen.Exposure.comment =配置与曝光相关的设置。
+    screen.DepthOfField.comment =配置与景深相关的设置。
+    screen.Purkinje_effect.comment =配置与浦肯野效应相关的设置。
+    option.SHARPENING.comment =配置应用于图像的对比度自适应锐化强度。此功能可显著恢复因抗锯齿或放大处理而丢失的细节。
+    option.BLOOM_STRENGTH.comment =配置应用于图像的泛光强度。这是什么§b？泛光§r是物体表面的柔和光晕，用于表现物体的明亮程度。
+    screen.TAA_OPTIONS.comment =配置与抗锯齿相关的设置。
+        option.SCREENSHOT_MODE.comment =切换帧累积以获得低噪点、高质量图像§b。这是§r什么？它将当前帧与下一帧叠加累积，类似于长曝光摄影。
+        option.TAA.comment =开关时域抗锯齿。此功能可消除物体边缘锯齿，柔化图像，并帮助消除多种效果产生的噪点。由于会使用历史帧数据获取世界额外信息，可能产生残影或拖尾现象。§a性能开销：§r低
+        option.BLEND_FACTOR.comment =配置历史帧信息的使用比例。数值越高对历史帧依赖越低，可能导致画面闪烁且噪点明显；数值越低对历史帧依赖越高，噪点减少但可能产生更多污迹与拖尾。
+        option.TAA_UPSCALING.comment =切换时序升级。此功能在从低分辨率图像升级时能保留大量画质细节。因此相比传统上采样，你可以在保持更好性能的同时获得更高视觉分辨率。
+        option.SCALE_FACTOR.comment =配置从原始分辨率的多大比例开始进行升级。不建议设置低于 0.5，我仅将其作为选项保留，因为这样很有趣 :p
+	screen.COLOR_GRADING.comment =高级色彩分级选项
+		option.LUMINANCE_CURVE.comment =开启色调曲线。此功能独立于色彩分级，优先应用。
+		option.COLOR_GRADING_ENABLED.comment =开启色彩分级。RGB滑块不会影响亮度。此功能在色调曲线之后应用。
+
+option.RESOURCEPACK_SKY.comment =切换资源包天空支持。配置设置以使用资源包的完整天空，或保留着色器的太阳和月亮§a。性能消耗§r：极低
+option.SKY_GROUND =大气层地面效果
+
+option.MATERIAL_AO.comment =开关基于资源包提供的环境光遮蔽效果。性§a能开销：§r极低
+option.WATER_WAVE_STRENGTH.comment =配置波浪的显现强度。
+option.MOONPHASE_BASED_MOONLIGHT.comment =§b这是什么§r？每晚月亮的光照都会不同。此设置根据月亮发光部分的比例调整月光亮度。性§a能消耗：§r几乎为零
+
+option.END_STORM_DENSTIY.comment =这§b是什么§r？这是末地中深色的浓云雾气。配置末地风暴的浓度。
+option.NETHER_PLUME_DENSITY.comment =§b这是什么§r？这是下界中厚重发光的烟柱。配置下界烟雾的浓度。
+
+option.CloudLayer0.comment          =开关小型云层图层。性§a能开销§r：中
+option.CloudLayer0_coverage.comment =配置这些云层覆盖天空的范围。
+option.CloudLayer0_density.comment  =配置这些云层的密度或厚度。
+option.CloudLayer0_height.comment   =配置这些云层的飞行高度。
+
+option.CloudLayer1.comment          =开启大体积云层。性§a能消耗：§r中
+option.CloudLayer1_coverage.comment =配置这些云层覆盖天空的范围。
+option.CloudLayer1_density.comment  =配置这些云层的密度或厚度。
+option.CloudLayer1_height.comment   =设置大体积云层的飞行高度。其§c高度不可低于小型云层。§r
+
+option.CloudLayer2.comment          =开启高空薄云层。性能§a消耗：§r低
+option.CloudLayer2_coverage.comment =配置这些云层覆盖天空的范围。
+option.CloudLayer2_density.comment  =配置这些云层的密度或厚度。
+option.CloudLayer2_height.comment   =设置高空薄云层的飞行高度。其§c高度不可低于大型云层。§r
+
+option.SKY_GROUND.comment =§b这是什么？§r此为天空的暗色下半部分——若《我的世界》拥有无限渲染距离，此处本应为地§a面。性能消耗§r：极极低。§c关闭此项会因额外计算而略显卡顿，开启反而更流畅。§r
+option.SNELLS_WINDOW.comment =§b这是什§r么？此为水下所见的暗色反光圈。这是对现实世界中"全内反射"现象的近似模拟。性§a能消耗：§r极极极小。
+option.entityShadowDistanceMul.comment =§b这是什§r么？设置实体阴影的渲染距离。此功能可在实体密集区域保持阴影效果并提升性能。
+
+screen.DISTANT_HORIZONS_SETTINGS =远距视野 - 需§c要 Iris§r
+option.DH_OVERDRAW_PREVENTION =防过度绘制
+option.OVERDRAW_MAX_DISTANCE =防过度绘制最大距离
+    value.OVERDRAW_MAX_DISTANCE.0 =无限
+    value.OVERDRAW_MAX_DISTANCE.32 =2 区块
+    value.OVERDRAW_MAX_DISTANCE.48 =3 区块
+    value.OVERDRAW_MAX_DISTANCE.64 =4区块
+    value.OVERDRAW_MAX_DISTANCE.80 =5 区块
+    value.OVERDRAW_MAX_DISTANCE.96 =6区块
+    value.OVERDRAW_MAX_DISTANCE.112 =7区块
+    value.OVERDRAW_MAX_DISTANCE.128 =8 区块
+    value.OVERDRAW_MAX_DISTANCE.144 =9个区块
+    value.OVERDRAW_MAX_DISTANCE.160 =10区块
+    value.OVERDRAW_MAX_DISTANCE.176 =11个区块
+    value.OVERDRAW_MAX_DISTANCE.192 =12区块
+    value.OVERDRAW_MAX_DISTANCE.208 =13个区块
+    value.OVERDRAW_MAX_DISTANCE.224 =14区块
+    value.OVERDRAW_MAX_DISTANCE.240 =15个区块
+    value.OVERDRAW_MAX_DISTANCE.256 =16区块
+
+option.DH_AMBIENT_OCCLUSION =LOD区块环境光遮蔽
+option.DH_SUBSURFACE_SCATTERING =LOD区块次表面散射
+option.DH_SCREENSPACE_REFLECTIONS =LOD区块屏幕空间反射
+
+option.DISTANT_HORIZONS_SHADOWMAP =§c（若不了解此功能请勿启用）D§rH阴影贴图支持
+option.DISTANT_HORIZONS_SHADOWMAP.comment =此§c设置将严重降低性能，导致阴影呈现块状、闪烁且细节缺失。请将阴影距离§r设为32区块（或更高），阴影分辨率设为4096（或更高）。
+option.TOGGLE_VL_FOG =开启体积雾
+option.TOGGLE_VL_FOG.comment =一键关闭所有雾效
+
+option.TRANSLUCENT_COLORED_SHADOWS.comment =§b这是什§r么？此效果允许染色玻璃等半透明物体为透过的阳光着色。§a性能消耗§r：中

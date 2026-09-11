@@ -1,0 +1,438 @@
+### =========================================================================
+###  MOTION BLUR FX v2.0 -- English (en_US)
+###
+###  THIS FILE IS THE KEY MASTER. Every other lang/*.lang file must contain
+###  exactly the same keys in the same order. A missing key shows the raw
+###  identifier to the player; a misspelled key shows nothing at all.
+###
+###  Colour tier on every option NAME (legend is in README.md):
+###    §7neutral §aleave on §bcomfort §9quality §ecosts FPS
+###    §dbeautiful §5experimental §6strong §cextreme §4§ldangerous§r
+###
+###  Tooltip style: one sentence saying what it does, then the default, then a
+###  cost or requirement only if there is one. Short on purpose.
+###
+###  Encoding: UTF-8, no BOM, LF. A literal percent sign must be written twice.
+### =========================================================================
+
+### Screens
+
+screen.BLUR=§6运动模糊
+screen.BLUR_SHAPE=§d形状
+screen.BLUR_MASK=§9遮罩
+screen.BLUR_COMFORT=§b舒适度
+screen.BLUR_FUN=§5效果
+screen.BLUR_DEBUG=§7调试
+screen.LOOK=§d视角
+screen.COLOR=§d颜色
+screen.TONE=§d色调
+screen.LENS=§d镜头
+screen.FILM=§d胶片
+screen.WORLD=§a世界
+screen.SHADOWS=§e阴影
+screen.SHADOW_TUNE=§7阴影微调
+screen.SKY=§b天空
+screen.FOG=§9雾
+screen.PERF=§c性能
+
+### Motion Blur -- Core
+
+option.MOTION_BLUR=§a运动模糊
+option.MOTION_BLUR.comment=模糊的主开关。关闭后会保留阴影和颜色的运动效果。
+
+option.MOTION_BLUR_STRENGTH=§6运动模糊强度
+option.MOTION_BLUR_STRENGTH.comment=整体运动模糊长度。§a0.35§r 竞技，§d1.00§r 电影，§c4.00+§r 无法游玩。
+
+option.MOTION_BLUR_SAMPLES=§e运动模糊样本数
+option.MOTION_BLUR_SAMPLES.comment=每像素的采样点数。光影包的主要性能消耗。§a6§r 开启抖动即可满足需求。
+
+option.MOTION_BLUR_SHUTTER=§6快门角度
+option.MOTION_BLUR_SHUTTER.comment=虚拟快门开启的时长。 §a90§r 清晰， §d180§r 电影标准， §c720§r 不可能。
+
+option.MOTION_BLUR_SHUTTER_PHASE=§5快门相位
+option.MOTION_BLUR_SHUTTER_PHASE.comment=曝光位置。§a0.0§r居中，§c-1.0§r落后，§c+1.0§r领先。
+
+option.MOTION_BLUR_MAX=§a最大模糊长度
+option.MOTION_BLUR_MAX.comment=运动模糊的硬上限，单位为屏幕宽度。防止滑动瞬间将屏幕整页擦除。
+
+option.MOTION_BLUR_CLAMP_MODE=§7压限模式
+option.MOTION_BLUR_CLAMP_MODE.comment=如何强制执行上限。§a硬性§r保持运动痕迹直线；§5柔和§r在边缘曲线化。
+value.MOTION_BLUR_CLAMP_MODE.0=硬性
+value.MOTION_BLUR_CLAMP_MODE.1=柔和
+
+option.MOTION_BLUR_TRANSLATION=§b运动模糊
+option.MOTION_BLUR_TRANSLATION.comment=行走和落地时的模糊效果。§a0.00§r表示仅在转动时启用，这是舒适的设置。
+
+option.MOTION_BLUR_FPS_NORMALIZE=§9帧率独立
+option.MOTION_BLUR_FPS_NORMALIZE.comment=在任意帧率下保持模糊效果不变。若不勾选，较快的电脑会显示更少的模糊。
+
+option.MOTION_BLUR_TARGET_FPS=§7参考 FPS
+option.MOTION_BLUR_TARGET_FPS.comment=运动模糊的帧率参考值。需要 §9Framerate Independent§r。
+
+### Motion Blur -- Shape
+
+option.MOTION_BLUR_FALLOFF=§dTap Falloff
+option.MOTION_BLUR_FALLOFF.comment=如何对 Tap 进行加权。§aBox§r 是真实快门的行为；其他选项会使两端淡化。
+value.MOTION_BLUR_FALLOFF.0=Box
+value.MOTION_BLUR_FALLOFF.1=Triangle
+value.MOTION_BLUR_FALLOFF.2=Gaussian
+
+option.MOTION_BLUR_TAIL_BOOST=§5尾部加强
+option.MOTION_BLUR_TAIL_BOOST.comment=§5尾部加强§r，使尾部更重，类似彗星尾巴。§a0§r时为对称。
+
+option.MOTION_BLUR_AXIS=§d运动模糊轴向
+option.MOTION_BLUR_AXIS.comment=哪个方向会产生拖影。§d水平§r是经典的平移镜头效果。
+value.MOTION_BLUR_AXIS.0=双向
+value.MOTION_BLUR_AXIS.1=水平
+value.MOTION_BLUR_AXIS.2=垂直
+
+option.MOTION_BLUR_DITHER=§a抖动采样
+option.MOTION_BLUR_DITHER.comment=为每个采样点抖动处理，使稀疏采样看起来更平滑。§a建议保持开启。
+
+option.MOTION_BLUR_NOISE=§7噪声图案
+option.MOTION_BLUR_NOISE.comment=§a渐变§r游戏时最佳。 §9Bayer§r不爬纹，录制更好。
+value.MOTION_BLUR_NOISE.0=渐变
+value.MOTION_BLUR_NOISE.1=Bayer 8
+value.MOTION_BLUR_NOISE.2=Bayer 64
+value.MOTION_BLUR_NOISE.3=无
+
+option.MOTION_BLUR_JITTER_AMOUNT=§7抖动数量
+option.MOTION_BLUR_JITTER_AMOUNT.comment= taps 可漂移的距离。数值降低会恢复可见的分块。需要 §aDithered Sampling§r。
+
+### Motion Blur -- Masking
+
+option.MOTION_BLUR_HAND_MASK=§a保持手部清晰
+option.MOTION_BLUR_HAND_MASK.comment=从模糊效果中排除你的手部，并停止将其 smearing  onto the world。 §a推荐开启。
+
+option.MOTION_BLUR_HAND_DEPTH=§7手部深度截止
+option.MOTION_BLUR_HAND_DEPTH.comment=手部与世界交界处。§a0.56§r 为原版正确值。
+
+option.MOTION_BLUR_HAND_STRENGTH=§5手部模糊数量
+option.MOTION_BLUR_HAND_STRENGTH.comment=让手部在移动后轻微模糊化。§a0§r为免费选项；数值越高消耗的tap越多。
+
+option.MOTION_BLUR_SKY_SHARP=§b保持天空清晰
+option.MOTION_BLUR_SKY_SHARP.comment=保留天空和太阳不变。更便宜，防止地平线变得模糊。
+
+option.MOTION_BLUR_SKY_STRENGTH=§5天空模糊数量
+option.MOTION_BLUR_SKY_STRENGTH.comment=让天空在模糊后稍微保持一点清晰。需要 §b保持天空锐利§r。
+
+option.MOTION_BLUR_DEPTH_REJECT=§9深度感知 taps
+option.MOTION_BLUR_DEPTH_REJECT.comment=在靠近边缘处停止背景拖影。若 §aKeep Hand Sharp§r 开启则免费。
+
+option.MOTION_BLUR_DEPTH_REJECT_THRESHOLD=§7深度剔除阈值
+option.MOTION_BLUR_DEPTH_REJECT_THRESHOLD.comment=每次拾合的深度差异必须达到多少才会被丢弃。数值越低干净度越高，但模糊效果越弱。
+
+option.MOTION_BLUR_DEPTH_FADE=§5距离淡化
+option.MOTION_BLUR_DEPTH_FADE.comment=对远处的事物模糊化程度更高。将结束值设为低于开始值可反转效果。
+
+option.MOTION_BLUR_DEPTH_FADE_NEAR=§7模糊起始位置
+option.MOTION_BLUR_DEPTH_FADE_NEAR.comment=模糊开始出现的地方。需要§5距离淡出§r。
+
+option.MOTION_BLUR_DEPTH_FADE_FAR=§7淡化终点
+option.MOTION_BLUR_DEPTH_FADE_FAR.comment=模糊效果到达完全强度的位置。需要 §5距离淡化§r。
+
+### Motion Blur -- Comfort
+
+option.MOTION_BLUR_ROTATION=§b转动模糊
+option.MOTION_BLUR_ROTATION.comment=视角转动产生的模糊。会导致晕动 sickness，建议优先调低。需要 §bSeparate Turn Gain§r。
+
+option.MOTION_BLUR_CENTER_FOCUS=§b中心聚焦
+option.MOTION_BLUR_CENTER_FOCUS.comment=保持屏幕中间清晰，这样你的眼睛就有something to hold on to。
+
+option.MOTION_BLUR_FOCUS_RADIUS=§7聚焦半径
+option.MOTION_BLUR_FOCUS_RADIUS.comment=数值越大，锐利区域越小。需将 §b中心聚焦§r 设为大于 0。
+
+option.MOTION_BLUR_FOCUS_CURVE=§7聚焦曲线
+option.MOTION_BLUR_FOCUS_CURVE.comment=锐利中间区域转变为模糊边缘的突然程度。
+value.MOTION_BLUR_FOCUS_CURVE.0=线性
+value.MOTION_BLUR_FOCUS_CURVE.1=平滑
+value.MOTION_BLUR_FOCUS_CURVE.2=锐利点
+
+option.MOTION_BLUR_DEADZONE=§b运动死区
+option.MOTION_BLUR_DEADZONE.comment=以下速度以下的运动将跳过模糊。这正是让站立时不模糊的原因。
+
+### Motion Blur -- Effects
+
+option.MOTION_BLUR_SPEED_RAMP=§5速度坡缓
+option.MOTION_BLUR_SPEED_RAMP.comment=模糊随速度增长。行走保持可读，鹸翼飞行出现拉伸。
+
+option.MOTION_BLUR_SPEED_RAMP_AMOUNT=§5速度坡度数量
+option.MOTION_BLUR_SPEED_RAMP_AMOUNT.comment=模糊随速度增长的坡度程度。需要 §5速度坡度§r。
+
+option.MOTION_BLUR_RADIAL=§5径向（缩放）模糊
+option.MOTION_BLUR_RADIAL.comment=从十字准星指向远处的速度线。当你移动时触发，而非转身时。
+
+option.MOTION_BLUR_RADIAL_AMOUNT=§5径向数量
+option.MOTION_BLUR_RADIAL_AMOUNT.comment=缩放 streaks 的强度。需要 §5径向（缩放）模糊§r。
+
+option.MOTION_BLUR_SPIN=§c旋转 (螺旋) 模糊
+option.MOTION_BLUR_SPIN.comment=将画面在十字准星周围以圆形方式拉伸。此效果毫无物理学依据。
+
+option.MOTION_BLUR_SPIN_AMOUNT=§c旋转强度
+option.MOTION_BLUR_SPIN_AMOUNT.comment=旋转力度。负数则逆向旋转。需要 §c旋转（旋涡）模糊§r。
+
+option.MOTION_BLUR_CHROMA=§e色散晕影
+option.MOTION_BLUR_CHROMA.comment=快速移动时产生彩色色差。§c会增加双倍或三倍的采样点§r，请降低模糊采样次数。
+
+option.MOTION_BLUR_CHROMA_AMOUNT=§5色差数量
+option.MOTION_BLUR_CHROMA_AMOUNT.comment=彩色通道被拉开的距离。需要 §eChromatic Smear§r。
+
+option.MOTION_BLUR_CHROMA_MODE=§7色差模式
+option.MOTION_BLUR_CHROMA_MODE.comment=§a双击制式§r更便宜且几乎视觉相同。需要§e色差拖尾§r。
+value.MOTION_BLUR_CHROMA_MODE.0=三击制式
+value.MOTION_BLUR_CHROMA_MODE.1=双击制式
+
+option.MOTION_BLUR_TINT=§5运动模糊染色
+option.MOTION_BLUR_TINT.comment=为运动模糊效果着色，而不影响锐利图像的颜色。静态帧保持不变。
+
+option.MOTION_BLUR_TINT_R=§7Smear Tint Red
+option.MOTION_BLUR_TINT_R.comment=Smear 色调的红色分量。需要 §5Smear Tint§r。
+
+option.MOTION_BLUR_TINT_G=§7Smear Tint Green
+option.MOTION_BLUR_TINT_G.comment=Smear 色调绿色。需要 §5Smear Tint§r。
+
+option.MOTION_BLUR_TINT_B=§7运动模糊蓝色染色
+option.MOTION_BLUR_TINT_B.comment=运动模糊中的蓝色成分。需要 §5运动模糊染色§r。
+
+### Motion Blur -- Debug
+
+option.MOTION_BLUR_DEBUG=§7调试视图
+option.MOTION_BLUR_DEBUG.comment=显示模糊处理的内部状态。§a速度§r：色相为运动方向，亮度为长度；§0黑色§r表示无模糊，§f白色§r表示达到§a最大模糊长度§r。§a采样权重§r：§agreen§r使用的采样，§cred§r超出屏幕，§9blue§r被遮罩拒绝。
+value.MOTION_BLUR_DEBUG.0=关闭
+value.MOTION_BLUR_DEBUG.1=速度
+value.MOTION_BLUR_DEBUG.2=采样权重
+value.MOTION_BLUR_DEBUG.3=深度
+value.MOTION_BLUR_DEBUG.4=手部遮罩
+
+### Color
+
+option.SATURATION=§7饱和度
+option.SATURATION.comment=颜色强度。§a1.0§r为原版。推高后会裁剪天空；改用§dVibrance§r。
+
+option.POST_COLOR=§d自然饱和度 / 白平衡
+option.POST_COLOR.comment=启用下方的三个滑块。关闭时不消耗资源。
+
+option.VIBRANCE=§d饱和度
+option.VIBRANCE.comment=仅对颜色暗淡的区域进行饱和，保持已有鲜艳颜色的原状。需要 §d饱和度 / 白平衡§r。
+
+option.TEMPERATURE=§d温度
+option.TEMPERATURE.comment=温暖的橙色（正向）到凉爽的蓝色（负向）。需要§dVibrance / White Balance§r。
+
+option.TINT=§d染色
+option.TINT.comment=绿色（正值）至洋红色（负值）。需要§dVibrance / 白平衡§r。
+
+option.POST_LGG=§d提升 / 伽马 / 增益
+option.POST_LGG.comment=启用下方的三路色调控制。关闭后不耗费任何资源。
+
+option.LIFT=§7提升（暗部）
+option.LIFT.comment=提升或降低最暗的部分。需要 §d提升 / Gamma / Gain§r。
+
+option.GAMMA=§7伽玛 (中)
+option.GAMMA.comment=弯曲中间调色段，保留两端。需要 §d提升 / 伽玛 / 增益§r。
+
+option.GAIN=§7提升（高光）
+option.GAIN.comment=缩放最亮的部分。需要 §d提升/伽马/提升§r。
+
+### Tone
+
+option.POST_TONE=§7曝光 / 对比度
+option.POST_TONE.comment=启用下方的两个滑块。关闭时不消耗资源。
+
+option.EXPOSURE=§7曝光 (EV)
+option.EXPOSURE.comment=摄影 stops 单位的亮度。§a+1.0§r 表示亮度翻倍。需要 §7曝光 / 对比度§r。
+
+option.CONTRAST=§7对比度
+option.CONTRAST.comment=推移暗部与亮部，使其围绕中灰度。需要 §7曝光 / 对比度§r。
+
+option.TONEMAP=§d色调映射
+option.TONEMAP.comment=卷曲高光而非将其裁剪。§dACES§r是现代游戏画面风格。
+value.TONEMAP.0=None
+value.TONEMAP.1=Reinhard
+value.TONEMAP.2=ACES
+value.TONEMAP.3=Punchy
+value.TONEMAP.4=Filmic
+
+option.BLOOM=§e泛光
+option.BLOOM.comment=亮物发光。利用 mipmap 复用成本较低，但永远不算廉价。
+
+option.BLOOM_STRENGTH=§7泛光强度
+option.BLOOM_STRENGTH.comment=辉光的强度如何。需要§eBloom§r。
+
+option.BLOOM_THRESHOLD=§7泛光阈值
+option.BLOOM_THRESHOLD.comment=某物体必须多亮才会发光。数值越低越模糊。需要 §eBloom§r。
+
+option.BLOOM_RADIUS=§7泛光半径
+option.BLOOM_RADIUS.comment=辐射范围有多远。需要 §eBloom§r。
+
+option.POSTERIZE=§5色阶化
+option.POSTERIZE.comment=将颜色 snapping 到少量固定的阶梯上。类似海报艺术，而非写实。
+
+option.POSTERIZE_LEVELS=§7色阶分级
+option.POSTERIZE_LEVELS.comment=每个颜色通道的步骤数。步骤越少效果越极端。需要§5Posterize§r。
+
+option.OUTPUT_DITHER=§a抗分带
+option.OUTPUT_DITHER.comment=隐藏平滑渐变中可见的分段。几乎不耗性能，修复真实的伪影。
+
+### Lens
+
+option.SHARPEN=§e锐化
+option.SHARPEN.comment=为像素艺术纹理恢复锐利感。每个像素额外消耗4次采样。
+
+option.SHARPEN_STRENGTH=§7锐化强度
+option.SHARPEN_STRENGTH.comment=边缘被推进的程度。§c0.75§r以上将显示轮廓。需要§eSharpen§r。
+
+option.SHARPEN_RADIUS=§7锐化半径
+option.SHARPEN_RADIUS.comment=边缘检测的范围有多远。需要 §e锐化§r。
+
+option.LENS_DISTORTION=§c镜头畸变
+option.LENS_DISTORTION.comment=将整幅图像弯曲如宽角镜头。§c强烈的设置会导致运动病。
+
+option.LENS_DISTORTION_AMOUNT=§c畸变数量
+option.LENS_DISTORTION_AMOUNT.comment=正值使凸起，负值使凹陷。需要 §c镜头畸变§r。
+
+option.CHROMATIC_ABERRATION=§d色差
+option.CHROMATIC_ABERRATION.comment=颜色向屏幕边缘倾斜，类似廉价玻璃。始终存在，unlike §eChromatic Smear§r。
+
+option.CA_AMOUNT=§7色差数量
+option.CA_AMOUNT.comment=颜色分裂的范围多远。需要 §d镜头色差§r。
+
+option.VIGNETTE=§d暗角
+option.VIGNETTE.comment=暗化四周。几乎不耗性能。
+
+option.VIGNETTE_STRENGTH=§7暗角强度
+option.VIGNETTE_STRENGTH.comment=角落的暗化程度。§c1.0§r 为全黑。需要§dVignette§r。
+
+option.VIGNETTE_ROUNDNESS=§7暗角圆润度
+option.VIGNETTE_ROUNDNESS.comment=§a1.0§r 为圆形。数值越低越接近显示器形状。需要 §dVignette§r。
+
+option.VIGNETTE_SOFTNESS=§7暗角柔和度
+option.VIGNETTE_SOFTNESS.comment=暗角暗化开始的渐变程度。需要 §dVignette§r。
+
+option.LETTERBOX=§d字母黑条
+option.LETTERBOX.comment=顶部和底部的黑条，用于实现电影宽高比。
+
+option.LETTERBOX_RATIO=§7宽屏比例
+option.LETTERBOX_RATIO.comment=裁剪到的宽高比。比例越宽，条纵向越粗。需要 §d宽屏§r。
+value.LETTERBOX_RATIO.0=2.39:1
+value.LETTERBOX_RATIO.1=2.35:1
+value.LETTERBOX_RATIO.2=1.85:1
+value.LETTERBOX_RATIO.3=16:9
+value.LETTERBOX_RATIO.4=4:3
+
+### Film
+
+option.FILM_GRAIN=§d胶片颗粒
+option.FILM_GRAIN.comment=类似真实胶片的动画噪点，阴影处更浓。几乎不耗性能。
+
+option.GRAIN_STRENGTH=§7颗粒强度
+option.GRAIN_STRENGTH.comment=§a0.03§r 轻微，§c0.30§r 类似 found footage 风格。需要 §dFilm Grain§r。
+
+option.GRAIN_SIZE=§7颗粒大小
+option.GRAIN_SIZE.comment=颗粒每像素数。数值越大显得越像快速胶片。需要 §d颗粒噪点§r。
+
+option.GRAIN_COLOR=§7彩色颗粒
+option.GRAIN_COLOR.comment=使用彩色颗粒代替灰色。需要§dFilm Grain§r。
+
+option.DOF=§4§l景深
+option.DOF.comment=§c模糊你当前注视之外的任何内容。60 次采样并独立渲染 pass —— 这是最耗资源的选项之一。
+
+option.DOF_STRENGTH=§7景深强度
+option.DOF_STRENGTH.comment=景深模糊程度。需要 §4§lDepth of Field§r。
+
+### Shadows
+
+option.SHADOW_ENABLED=§e阴影
+option.SHADOW_ENABLED.comment=主开关。关闭可跳过世界的第二次绘制，这是此处最大的性能节省。
+
+option.shadowMapResolution=§e阴影分辨率
+option.shadowMapResolution.comment=阴影贴图大小。开启 §9柔和阴影§r 时，§a1024§r 已足够看起来不错了。
+
+option.shadowDistance=§e阴影距离
+option.shadowDistance.comment=阴影绘制的范围。§a降低可提升性能。
+
+option.SHADOW_FILTER=§9柔和阴影 (PCF)
+option.SHADOW_FILTER.comment=将方块化的阴影边缘转化为柔和的渐变。成本低。
+
+option.SHADOW_FILTER_SAMPLES=§e滤波样本数
+option.SHADOW_FILTER_SAMPLES.comment=柔和内核中的采样点数。§a8§r为最佳值。需要§9柔和阴影§r。
+
+option.SHADOW_SOFTNESS=§7阴影柔和度
+option.SHADOW_SOFTNESS.comment=阴影边缘的柔和程度。过高且样本数较少时会出现噪点。需要 §9Soft Shadows§r。
+
+option.SHADOW_BRIGHTNESS=§7阴影亮度
+option.SHADOW_BRIGHTNESS.comment=阴影区域中表面仍然发光的程度。§c0.00§r为纯黑。
+
+option.EXCLUDE_FOLIAGE=§a树叶不投射阴影
+option.EXCLUDE_FOLIAGE.comment=树叶和草地跳过阴影贴图，运行更快，也能避免杂乱的树叶阴影。
+
+option.COLORED_SHADOWS=§9彩色阴影
+option.COLORED_SHADOWS.comment=玻璃窗阻挡的光线会呈现色彩。§9彩色阴影§r需要额外一次查找。
+value.COLORED_SHADOWS.0=普通
+value.COLORED_SHADOWS.1=彩色
+value.COLORED_SHADOWS.2=无
+
+option.SHADOW_TINT_STRENGTH=§7阴影色调强度
+option.SHADOW_TINT_STRENGTH.comment=玻璃颜色对阴影的影响程度。需要将 §9Colored Shadows§r 设置为 Colored 才能使用。
+
+### Shadow Tuning
+
+option.SHADOW_BIAS=§7深度偏移
+option.SHADOW_BIAS.comment=若在平坦地面上看到条纹状阴影痘痕，请调高。若阴影脱离，请调低。
+
+option.SHADOW_NORMAL_BIAS=§7法线偏置
+option.SHADOW_NORMAL_BIAS.comment=如果阴影从脚部和树干上漂浮，降低此数值。
+
+option.SHADOW_DISTORT_FACTOR=§7扭曲（近距离细节）
+option.SHADOW_DISTORT_FACTOR.comment=集中细节在近处。数值越低，近距离阴影越锐利，远距离阴影越模糊。
+
+### Sky
+
+option.SUN_PATH_ROTATION=§d太阳轨道旋转
+option.SUN_PATH_ROTATION.comment=太阳弧线的倾斜角度。§a30§r会让阴影在地面上来回扫过；§c0§r则让阴影在正午时固定不动。
+
+option.SKY_SATURATION=§d天空饱和度
+option.SKY_SATURATION.comment=仅调整天空的颜色。不影响地形和云朵。
+
+### Fog
+
+option.UNDERWATER_FOG=§e水下 /  lava 雾
+option.UNDERWATER_FOG.comment=水下和 lava 区域的雾效。每帧都要额外渲染一次 §eevery frame§r 即使在陆地上也耗费资源。§a如果从不游泳可免费提升 FPS。
+
+option.WATER_FOG_DENSITY=§7水雾密度
+option.WATER_FOG_DENSITY.comment=水体中的雾气吞噬视野的速度。需要§e§ underwater / Lava Fog§r。
+
+option.WATER_FOG_R=§7水雾红色
+option.WATER_FOG_R.comment=水下雾霾的红色分量。需要§e§r§7 underwater / lava fog§r。
+
+option.WATER_FOG_G=§7水雾绿色
+option.WATER_FOG_G.comment=水下雾霾的绿色分量。需要 §eUnderwater / Lava Fog§r。
+
+option.WATER_FOG_B=§7水雾蓝色
+option.WATER_FOG_B.comment=水下雾的蓝色。需要 §e§r underwater / lava fog §r。
+
+option.LAVA_FOG_DENSITY=§7 lava 雾密度
+option.LAVA_FOG_DENSITY.comment=在 lava 中会有多么Blind。需要 §eUnderwater / Lava Fog§r。
+
+option.LAVA_FOG_R=§7 lava 雾 红色
+option.LAVA_FOG_R.comment= lava 雾 中的 红色 分量。需要 §e  underwater / lava fog §r 选项。
+
+option.LAVA_FOG_G=§7Lava Fog Green
+option.LAVA_FOG_G.comment=绿浪在熔岩雾霭中的颜色。需要 §eUnderwater / Lava Fog§r。
+
+option.LAVA_FOG_B=§7 lava 雾蓝
+option.LAVA_FOG_B.comment=lava 雾中的蓝色。需要 §eUnderwater / Lava Fog§r。
+
+### Performance
+
+option.MB_ASSUME_PERSPECTIVE=§a快速投影数学
+option.MB_ASSUME_PERSPECTIVE.comment=在正常相机上跳过始终为零的数学运算。除非某个模组改变了模糊方向，否则保持 §a开启 §r。
+
+### Presets
+###
+###  Shown by the <profile> picker at the top of the main screen. The names must
+###  match the profile.* keys in shaders.properties exactly.
+
+profile.Performance=§a性能
+profile.Balanced=§e平衡
+profile.High=§9高级
+profile.Cinematic=§d电影

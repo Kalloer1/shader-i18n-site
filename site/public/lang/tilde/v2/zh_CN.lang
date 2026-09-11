@@ -1,0 +1,11 @@
+option.STYLE=风格
+
+value.STYLE.0=默认
+value.STYLE.1=增强动态效果
+value.STYLE.2=减弱动态效果
+value.STYLE.3=_-
+value.STYLE.4=~-
+value.STYLE.5=~+
+value.STYLE.6=-,_,-
+value.STYLE.7=\\._./
+value.STYLE.8=./\\.

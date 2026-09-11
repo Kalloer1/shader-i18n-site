@@ -1,0 +1,34 @@
+//█▀█ █░░ █░█ █ █▀█ █▄▀
+//█▄█ █▄▄ ▀▄▀ █ █▀▄ █░█
+// By OlvirkMC - The art of reverse engineering
+
+
+## Olvirk Mod Settings
+screen.OLVIRK_MOD_SETTINGS =o§b§llvirk§f§l§4§lmc§d§l-yt 模组设置
+screen.OLVIRK_MOD_SETTINGS.comment =§6由olvirkmc-y§bt模组添§f§4加§d的§r自定义设置，包括实体轮廓选项。
+screen.SELECT_OUTLINE_SETTINGS =轮廓设置
+screen.SELECT_OUTLINE_SETTINGS.comment =§e实体轮廓选项，如轮廓类型、速度、强度和自定义颜色。
+    option.SELECT_OUTLINE =实体轮廓
+    option.SELECT_OUTLINE.comment =启用实体轮廓。设为"方框"以生成简单方框轮廓，或设为"彩虹"以生成彩色动态轮廓。
+        value.SELECT_OUTLINE.0 =关
+        value.SELECT_OUTLINE.1 =默认
+        value.SELECT_OUTLINE.2 =§c§6彩§e§a§b虹§9§d
+        value.SELECT_OUTLINE.3 =自定义颜色
+
+    option.SELECT_OUTLINE_SCALE =轮廓缩放
+    option.SELECT_OUTLINE_SCALE.comment =更改轮廓的粗细。
+
+    option.SELECT_OUTLINE_SPEED =轮廓速度
+    option.SELECT_OUTLINE_SPEED.comment =更改彩虹轮廓动画的速度。
+
+    option.SELECT_OUTLINE_I =轮廓强度
+    option.SELECT_OUTLINE_I.comment =更改轮廓的亮度。
+
+    option.SELECT_OUTLINE_RED =轮廓红§4色
+    option.SELECT_OUTLINE_RED.comment =自定义轮廓颜色的红色通道。
+
+    option.SELECT_OUTLINE_GREEN =轮廓§a绿
+    option.SELECT_OUTLINE_GREEN.comment =自定义轮廓颜色的绿色通道。
+
+    option.SELECT_OUTLINE_BLUE =轮廓蓝§9色
+    option.SELECT_OUTLINE_BLUE.comment =自定义轮廓颜色的蓝色通道。

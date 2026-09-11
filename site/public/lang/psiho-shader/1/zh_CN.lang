@@ -1,0 +1,2 @@
+option.MESS_INTENSITY=强度滑块
+option.MESS_INTENSITY.comment=改变混乱强度！（0 - 极差，50 - 非常差，100 - 完全不可玩）

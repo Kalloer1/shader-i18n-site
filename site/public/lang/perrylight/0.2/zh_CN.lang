@@ -1,0 +1,54 @@
+screen.PERRY_INFO=PerryLight - 由 AnzelaArc 制作
+screen.ATMOSPHERE=大气与雾
+screen.LIGHTING=照明
+screen.COLORS=颜色
+screen.WATER=水
+screen.POST_PROCESSING=后处理
+screen.DIMENSIONS=维度
+screen.OTHER=其他
+
+option.PERRY_QUALITY_PRESET=渲染配置
+value.PERRY_QUALITY_PRESET.-1=Android
+value.PERRY_QUALITY_PRESET.0=低配
+value.PERRY_QUALITY_PRESET.1=中配
+value.PERRY_QUALITY_PRESET.2=高配
+value.PERRY_QUALITY_PRESET.3=极高
+option.PERRY_QUALITY_PRESET.comment=内部工作负载等级，由配置文件选择器控制。
+profile.comment=安卓 - Pojav 和移动级显卡。低配 - 弱机。 中配 - 平衡。 高配 - 推荐默认值。 极高 - 强大台式显卡。
+
+option.PERRY_SHADOWS=实时阴影
+option.PERRY_SHADOWS.comment=当关闭时禁用所有着色器阴影采样。建议在 Android 上关闭。
+option.PERRY_CLOUDS=PerryLight 云层
+option.PERRY_CLOUDS.comment=启用 PerryLight 的程序化天空云层。禁用以获得显著的移动设备性能提升。
+
+option.PERRY_VOLUMETRIC_FOG=体积光雾
+option.PERRY_VOLUMETRIC_FOG.comment=射线遍历的大气雾和薄雾。禁用以获得最大的性能提升。
+option.PERRY_SOFT_MIST=柔和地面雾
+option.PERRY_SOFT_MIST.comment=添加柔和的低空雾和距离融合。
+option.PERRY_SOFT_MIST_STRENGTH=雾的数量
+option.PERRY_RENDER_DISTANCE_FOG=渲染距离雾
+option.PERRY_RENDER_DISTANCE_FOG.comment=将已加载世界的边缘与大气融合。
+option.PERRY_FOG_STRENGTH=大气雾的数量
+option.PERRY_HORIZON_HAZE=地平线雾霾
+
+option.PERRY_AO=地面真实环境光遮蔽
+option.PERRY_AO.comment=使用弯曲方向光照的蓝噪声地平线环境光遮蔽，具有稳定的历史记录和边缘感知降噪。
+option.PERRY_AO_STRENGTH=AO 强度
+option.PERRY_LIGHT_SHAFTS=太阳与月光光束
+option.PERRY_LIGHT_SHAFTS.comment=在太阳与月球周围添加定向大气散射效果。
+option.PERRY_CLOUD_SHADOWS=云层阴影
+option.PERRY_CLOUD_SHADOWS.comment=让云层柔和地为世界和体积雾提供阴影。
+option.PERRY_CAVE_LIFT=洞穴亮度
+
+option.PERRY_WATER_REFLECTIONS=水面反射
+option.PERRY_WATER_REFLECTIONS.comment=启用 PerryLight 的天空、太阳和月亮在水面上的反射。
+option.PERRY_WATER_WAVE_STRENGTH=波浪强度
+option.PERRY_BLOOM=泛光
+option.PERRY_BLOOM.comment=在明亮光源和反射周围添加适度的发光效果。
+option.PERRY_BLOOM_STRENGTH=泛光强度
+option.PERRY_EXPOSURE=亮度 / 曝光
+option.PERRY_SATURATION=色彩饱和度
+option.PERRY_CONTRAST=对比度
+option.PERRY_NIGHT_LIFT=夜间亮度
+option.PERRY_END_SATURN_RING=末界行星环
+option.PERRY_END_SATURN_RING.comment=在末界显示 PerryLight 的环状天体特征。

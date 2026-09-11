@@ -1,0 +1,38 @@
+# Vanilla Camera — settings screen labels
+# Every #define exposed in lib/settings.glsl must have an entry here, or Iris
+# shows the raw key name. Keep this in the same commit as the setting.
+#
+# Any new key added here must also be added to ja_jp.lang: Iris does not fall back
+# to en_us per key, so a missing translation shows the raw key instead.
+
+profile.comment=起始点。选择一个，然后自行调整——配置文件会自动切换为自定义模式。
+profile.NEUTRAL=中性
+profile.CINEMATIC=电影
+profile.OFF=关闭（直通）
+
+option.EXPOSURE_BASE=曝光 (EV)
+option.EXPOSURE_BASE.comment=基准曝光值（以 stops 为单位）。+1.0 增亮一倍，-1.0 减亮一半（ISO100 = 0 EV）。已被原版裁剪的高光区域无法恢复，因此实际有效范围大约为 -3 到 +1.5 EV。
+
+option.EXPOSURE_SLIDER=曝光滑块 = 亮度滑块
+option.EXPOSURE_SLIDER.comment=将原版亮度滑块转化为实时曝光调节器。这是唯一无需重新编译着色器即可生效的控制项，因此在拍摄时应使用它。关闭后，亮度滑块将毫无作用。
+
+option.EXPOSURE_SLIDER_RANGE=滑块范围（± EV）
+option.EXPOSURE_SLIDER_RANGE.comment=亮度滑块的有效范围，以 stops 为单位。滑块中心始终为 0 EV。
+
+option.TEMPERATURE=白平衡 (K)
+option.TEMPERATURE.comment=您正在校正的色温。类似真实相机，校正方向相反：低值假设为暖光并冷却图像，高值则使其变暖。6500K 表示无校正。亮度不变。
+
+option.TINT=调色（绿 ↔ 洋红）
+option.TINT.comment=第二个白平衡轴。负值将图像偏向绿色，正值将图像偏向洋红。亮度不变。
+
+option.SATURATION=饱和度
+option.SATURATION.comment=0.0 为单色，1.0 保持原状，2.0 为原值的两倍。亮度不变。极端数值会使颜色超出范围并被裁剪，这是预期的行为。
+
+option.DOF_ENABLED=景深
+option.DOF_ENABLED.comment=对焦平面之外的东西进行模糊化。焦点跟随屏幕中心；安装 Focus Revolution 可手动控制焦点。关闭此选项会完全移除模糊 passes，因此不会产生额外性能开销。
+
+option.DOF_STRENGTH=景深强度
+option.DOF_STRENGTH.comment=模糊的程度决定了多少保持清晰。聚焦距离的平方会让锐利区域变大，因此聚焦在靠近的物体时总是非常浅，而远处聚焦则相反——这与真实镜头的特性一致。
+
+option.DOF_QUALITY=景深质量（样本数）
+option.DOF_QUALITY.comment=模糊样本数量。数值越低性能越好且略显柔和，但应避免 banding：模糊会根据样本间距选择其 mip 级别。

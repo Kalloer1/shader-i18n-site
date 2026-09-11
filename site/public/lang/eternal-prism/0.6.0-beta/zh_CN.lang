@@ -1,0 +1,73 @@
+# ===== Screens =====
+screen.IMAGE=图像与后处理
+screen.EFFECTS=效果
+screen.LIGHTING=光照与阴影
+screen.WATER=水
+screen.SKY_ATMOS=天空与大气
+screen.NIGHT_SKY=夜空
+screen.WORLD=世界动画
+screen.RAIN=雨与积水
+
+# ===== Profiles =====
+profile.POTATO=土豆
+profile.BALANCED=平衡
+profile.CINEMATIC=电影
+profile.MAXIMUM=极致
+
+# ===== Quality =====
+option.SHADER_QUALITY=光影质量
+value.SHADER_QUALITY.0=低配
+value.SHADER_QUALITY.1=高配
+value.SHADER_QUALITY.2=极高
+value.SHADER_QUALITY.3=极致
+option.SHADER_QUALITY.comment=整体质量等级。影响阴影、云彩、环境光遮蔽、反射等项目。
+
+# ===== Image =====
+option.BRIGHTNESS=亮度
+option.SATURATION=饱和度
+option.CONTRAST=对比度
+option.TONEMAP_EXPOSURE=曝光
+option.TONEMAP_EXPOSURE.comment=Lower = darker and moodier. Higher = brighter.
+
+# ===== Effects =====
+option.ENABLE_VOLUMETRIC=体积光
+option.ENABLE_VOLUMETRIC.comment=通过树木和地形产生光束效果。
+option.VOLUMETRIC_STRENGTH=光束强度
+option.ENABLE_SSAO=环境光遮蔽
+option.ENABLE_SSAO.comment=在角落和缝隙中产生柔和的接触阴影。
+option.ENABLE_SSR=水面反射
+option.ENABLE_SSR.comment=屏幕空间反射在水面上。
+option.ENABLE_BLOOM=泛光
+option.ENABLE_DOF=景深
+option.ENABLE_DOF.comment=远处地形的电影式模糊。
+option.ENABLE_GRAIN=胶片颗粒
+option.ENABLE_CHROMATIC=色差
+option.ENABLE_CHROMATIC.comment=屏幕边缘的细微镜头颜色移色。
+
+# ===== Water =====
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_OPACITY=水的透明度
+option.WATER_CAUSTICS=焦散
+option.WATER_CAUSTICS.comment=水面闪烁的光影纹理。
+option.ENABLE_IRIDESCENCE=虹彩
+option.ENABLE_IRIDESCENCE.comment=微妙的彩虹折射 — 棱镜的触击。
+option.ENABLE_UNDERWATER_DISTORT=水下扭曲
+
+# ===== Sky =====
+option.ENABLE_CLOUDS=云彩
+option.SKY_SATURATION=天空饱和度
+option.FOG_DENSITY=雾密度
+option.ENABLE_AURORA=极光
+option.AURORA_BRIGHTNESS=极光亮度
+option.ENABLE_STARS=星星与银河
+option.STAR_BRIGHTNESS=星星亮度
+option.MOON_LIGHT=月光强度
+
+# ===== World =====
+option.WAVING_LEAVES=摇摆的树叶
+option.WAVING_PLANTS=摇摆的草地与花朵
+option.WAVING_LAVA=摇摆的熔岩
+option.WAVING_SPEED=风速
+option.ENABLE_WETNESS=湿润的表面
+option.ENABLE_PUDDLES=雨水水坑
+option.PUDDLE_AMOUNT=水坑数量

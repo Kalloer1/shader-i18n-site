@@ -1,0 +1,440 @@
+screen.DEBUG_OPTIONS=弧形光影
+screen.DEBUG_OPTIONS.comment=由 NULL 提供
+
+profile.POTATO=土豆
+profile.POTATO.comment=土豆：适用于比土豆功率更低的机器。
+
+profile.LOW=低配
+profile.LOW.comment=低配：适用于低端设备、集成显卡等。
+
+profile.MEDIUM=中配
+profile.MEDIUM.comment=中配：适用于中等性能的显卡。
+
+profile.HIGH=高配
+profile.HIGH.comment=高配：适用于高端/现代显卡。
+
+profile.ULTRA=超高
+profile.ULTRA.comment=超高：简直太多了...
+
+
+screen.WORLD_OPTIONS=世界
+
+option.BLOCKLIGHT_TEMP=方块光照温度
+option.BLOCKLIGHT_TEMP.comment=调整世界中方块光照的颜色，基于开尔文温度尺度。
+suffix.BLOCKLIGHT_TEMP=°k
+
+option.BLOCK_OUTLINE=方块轮廓
+value.BLOCK_OUTLINE.0=无
+value.BLOCK_OUTLINE.1=黑
+value.BLOCK_OUTLINE.2=白
+value.BLOCK_OUTLINE.3=精细
+
+option.WAVING_MODE=摇曳植物
+option.WAVING_MODE.comment=树叶（及其他类似方块）将使用人工风来摇曳。
+value.WAVING_MODE.0=关闭
+value.WAVING_MODE.1=顶点
+value.WAVING_MODE.2=方块
+
+option.DIRECTIONAL_LIGHTMAP_STRENGTH=DLM 强度
+option.DIRECTIONAL_LIGHTMAP_STRENGTH.comment=控制方向光贴图的强度。目前已损坏！
+suffix.DIRECTIONAL_LIGHTMAP_STRENGTH=%
+
+option.HANDLIGHT_ENABLED=手持光源
+option.HANDLIGHT_ENABLED.comment=手持物品将使用光影效果进行照明，而非原版的方块光照等级。
+
+option.LIGHTLEAK_FIX=光漏修复
+option.LIGHTLEAK_FIX.comment=帮助防止阳光泄漏到洞穴和其他黑暗区域；但在某些场景中可能会导致过度阴影。
+
+option.WETNESS_MODE=湿润度
+option.WETNESS_MODE.comment=当启用且正在下雨时，表面会显得更湿并形成积水。
+value.WETNESS_MODE.0=无
+value.WETNESS_MODE.1=仅天空
+value.WETNESS_MODE.2=全部
+
+option.SNOW_MODE=雪堆积
+option.SNOW_MODE.comment=当启用且下雪时，表面会显示向上面的朝向堆积的雪。
+value.SNOW_MODE.0=无
+value.SNOW_MODE.1=仅天空
+value.SNOW_MODE.2=全部
+
+option.LAVA_TYPE=岩浆类型
+option.LAVA_TYPE.comment=高级岩浆使用着色器渲染动态岩浆。默认使用原版/资源包纹理。
+value.LAVA_TYPE.0=默认
+value.LAVA_TYPE.1=高级
+
+
+screen.WATER_OPTIONS=水面
+
+option.WATER_WAVE_ENABLED=水波
+
+option.REFRACTION_STRENGTH=折射距离
+suffix.REFRACTION_STRENGTH=%
+
+option.WATER_VL_ENABLED=体积光
+
+option.WATER_VL_SAMPLES=水体积光样本
+
+option.WATER_VL_NOISE=VL 噪声
+
+option.WATER_FOAM_ENABLED=泡沫/泥土
+
+option.WATER_WAVE_DEPTH=水波深度
+suffix.WATER_WAVE_DEPTH=％
+
+option.WATER_CAMERA_BLUR=水下模糊
+value.WATER_CAMERA_BLUR.0=关闭
+value.WATER_CAMERA_BLUR.1=低
+value.WATER_CAMERA_BLUR.2=高
+
+
+screen.MATERIAL_OPTIONS=材质选项
+screen.MATERIAL_OPTIONS.comment=PBR 材质的选项。
+
+option.MATERIAL_FORMAT=格式
+option.MATERIAL_FORMAT.comment=指定当前加载的资源包的格式。建议使用支持 PBR 的资源包，但如果您偏好默认的游戏纹理，可以使用“原版”格式。
+value.MATERIAL_FORMAT.0=原版
+value.MATERIAL_FORMAT.1=Lab PBR
+value.MATERIAL_FORMAT.2=旧版 PBR
+value.MATERIAL_FORMAT.3=Patrix PBR
+
+option.REFLECTION_MODE=反射
+value.REFLECTION_MODE.0=无
+value.REFLECTION_MODE.1=仅天空
+value.REFLECTION_MODE.2=屏幕空间反射
+
+option.SSR_QUALITY=SSR 质量
+value.SSR_QUALITY.2=低
+value.SSR_QUALITY.1=中
+value.SSR_QUALITY.0=高
+
+screen.MATERIAL_SSS_OPTIONS=次表面散射
+screen.MATERIAL_SSS_OPTIONS.comment=允许光线透过表面散射
+
+option.SSS_ENABLED=已启用
+option.SSS_ENABLED.comment=当启用时，具有 SSS 的表面将允许光线散射通过。
+
+option.SSS_STRENGTH=强度
+option.SSS_STRENGTH.comment=用于调整次表面散射光强度的倍数。
+suffix.SSS_STRENGTH=%
+
+option.SSS_MAXDIST=距离
+option.SSS_MAXDIST.comment=次表面光穿过介质的最大距离
+
+option.SSS_PCF_SIZE=半径
+option.SSS_PCF_SIZE.comment=PCF 模糊滤镜的最大半径，单位为区块。
+
+option.SSS_PCF_SAMPLES=采样数量
+option.SSS_PCF_SAMPLES.comment=应用 PCF 模糊时使用的深度采样数量。
+
+option.SSS_NORMALIZE_ALBEDO=标准化
+option.SSS_NORMALIZE_ALBEDO.comment=防止 SSS 因反照率而变暗。效果可能因使用的资源包而有所不同。
+
+option.SSS_BLUR=模糊
+option.SSS_BLUR.comment=启用时应用后处理模糊以平滑化 SSS。
+
+option.EMISSIVE_POWER=自发光曲线
+option.EMISSIVE_POWER.comment=调整自发光纹理的可选曲线。
+
+option.MATERIAL_WET_DARKEN=湿润变暗
+suffix.MATERIAL_WET_DARKEN=%
+
+
+screen.MATERIAL_PARALLAX_OPTIONS=视差
+screen.MATERIAL_PARALLAX_OPTIONS.comment=视差遮蔽贴图 (POM) 的选项。
+
+option.PARALLAX_ENABLED=已启用
+
+option.PARALLAX_SHAPE=形状
+value.PARALLAX_SHAPE.0=默认
+value.PARALLAX_SHAPE.1=平滑
+value.PARALLAX_SHAPE.2=锐利
+
+option.PARALLAX_SHADOWS_ENABLED=阴影
+option.PARALLAX_SHADOWS_ENABLED.comment=当启用时，位移像素将投射阴影。
+
+option.PARALLAX_DEPTH=深度
+option.PARALLAX_DEPTH.comment=最大位移量
+
+option.PARALLAX_SAMPLES=采样次数
+option.PARALLAX_SAMPLES.comment=当定位位移表面时，追踪的最大深度采样次数。
+
+option.PARALLAX_SHADOW_SAMPLES=阴影采样
+option.PARALLAX_SHADOW_SAMPLES.comment=用于确定位移表面阴影时，最多可以追踪的深度采样数量。
+
+option.PARALLAX_DEPTH_WRITE=深度写入
+option.PARALLAX_DEPTH_WRITE.comment=当启用时，表面深度也会被 POM 位移；从而实现更精确的阴影和交点。
+
+option.MATERIAL_SMOOTH_NORMALS=平滑法线
+option.MATERIAL_SMOOTH_NORMALS.comment=当启用时，法线将被线性滤波以获得平滑的角度。
+
+
+screen.SKY_OPTIONS=天空
+
+option.sunPathRotation=太阳角度
+suffix.sunPathRotation=°
+
+option.SKY_CLOUD_LEVEL=云层高度
+value.SKY_CLOUD_LEVEL.-1=关闭
+
+option.WEATHER_OPACITY=天气不透明度
+option.WEATHER_OPACITY.comment=控制天气粒子（雨、雪）的透明度。数值越低，效果越不明显。
+suffix.WEATHER_OPACITY=%
+
+option.SKY_SUN_TYPE=太阳类型
+value.SKY_SUN_TYPE.0=默认
+value.SKY_SUN_TYPE.1=精细
+
+
+screen.ATMOSPHERE_OPTIONS=大气层
+
+option.SKY_VL_ENABLED=体积光
+
+option.SKY_VL_SAMPLES=VL 采样
+option.SKY_VL_SAMPLES.comment=增加采样数量可提高质量；减少采样数量将更快。
+
+option.SKY_VL_NOISE=VL Noise
+
+option.SMOKE_ENABLED=下界烟雾
+option.SMOKE_ENABLED.comment=在没有天空的世界中（如下界、末地等）启用体积光雾/烟雾效果。
+
+
+screen.SHADOW_OPTIONS=阴影
+
+option.SHADOW_TYPE=类型
+option.SHADOW_TYPE.comment=阴影贴图的类型。级联阴影需要 Iris 1.6+！
+value.SHADOW_TYPE.0=无
+value.SHADOW_TYPE.2=扭曲
+value.SHADOW_TYPE.3=级联
+
+option.SHADOW_FILTER=阴影过滤
+option.SHADOW_FILTER.comment=应用到阴影采样的过滤器类型。
+value.SHADOW_FILTER.0=无
+value.SHADOW_FILTER.1=PCF
+value.SHADOW_FILTER.2=PCF+PCSS
+
+option.shadowMapResolution=分辨率
+option.shadowMapResolution.comment=阴影贴图的分辨率。数值越高意味着阴影越精确。
+
+option.shadowDistance=距离
+option.shadowDistance.comment=阴影渲染的最大距离。
+
+option.SHADOW_PCF_SIZE=PCF 半径
+option.SHADOW_PCF_SIZE.comment=阴影模糊半径，使用方块大小的缩放。
+suffix.SHADOW_PCF_SIZE=%
+
+option.SHADOW_PCF_SAMPLES=PCF 采样
+option.SHADOW_PCF_SAMPLES.comment=模糊时使用的采样点数量
+
+option.SHADOW_COLOR=彩色
+option.SHADOW_COLOR.comment=启用时，太阳/月亮光线穿过透明物体时会变色。
+
+option.SHADOW_PARTICLES=粒子
+option.SHADOW_PARTICLES.comment=当启用时，粒子将接收阴影。
+
+option.SHADOW_CONTACT=接触
+option.SHADOW_CONTACT.comment=启用短程屏幕空间阴影贴图以提升阴影质量。- 远处：仅适用于超出阴影贴图范围的对象。
+value.SHADOW_CONTACT.0=无
+value.SHADOW_CONTACT.1=远处
+value.SHADOW_CONTACT.2=全部
+
+
+screen.SHADOW_ADV_OPTIONS=高级
+
+option.SHADOW_EXCLUDE_ENTITIES=隐藏实体
+option.SHADOW_EXCLUDE_ENTITIES.comment=如果启用，实体将不会投射阴影。
+
+option.SHADOW_EXCLUDE_FOLIAGE=隐藏植被
+option.SHADOW_EXCLUDE_FOLIAGE.comment=如果为真，植被将不会投射阴影。
+
+option.SHADOW_DISTORT_FACTOR=失真
+option.SHADOW_DISTORT_FACTOR.comment=阴影贴图的失真因子。仅适用于失真阴影。
+
+option.SHADOW_BIAS_SCALE=阴影偏移比例
+option.SHADOW_BIAS_SCALE.comment=如果出现阴影锯齿，请增大此值。出现佩特潘效应，请减小此值。
+suffix.SHADOW_BIAS_SCALE=%
+value.SHADOW_BIAS_SCALE.0.1=10
+value.SHADOW_BIAS_SCALE.0.2=20
+value.SHADOW_BIAS_SCALE.0.3=30
+value.SHADOW_BIAS_SCALE.0.4=40
+value.SHADOW_BIAS_SCALE.0.5=50
+value.SHADOW_BIAS_SCALE.0.6=60
+value.SHADOW_BIAS_SCALE.0.7=70
+value.SHADOW_BIAS_SCALE.0.8=80
+value.SHADOW_BIAS_SCALE.0.9=90
+value.SHADOW_BIAS_SCALE.1.0=100
+value.SHADOW_BIAS_SCALE.1.1=110
+value.SHADOW_BIAS_SCALE.1.2=120
+value.SHADOW_BIAS_SCALE.1.3=130
+value.SHADOW_BIAS_SCALE.1.4=140
+value.SHADOW_BIAS_SCALE.1.5=150
+value.SHADOW_BIAS_SCALE.1.6=160
+value.SHADOW_BIAS_SCALE.1.7=170
+value.SHADOW_BIAS_SCALE.1.8=180
+value.SHADOW_BIAS_SCALE.1.9=190
+value.SHADOW_BIAS_SCALE.2.0=200
+value.SHADOW_BIAS_SCALE.2.1=210
+value.SHADOW_BIAS_SCALE.2.2=220
+value.SHADOW_BIAS_SCALE.2.3=230
+value.SHADOW_BIAS_SCALE.2.4=240
+value.SHADOW_BIAS_SCALE.2.5=250
+
+
+screen.CAMERA_OPTIONS=相机
+
+option.CAMERA_EXPOSURE_MODE=曝光
+option.CAMERA_EXPOSURE_MODE.comment=控制相机曝光的方法。-手动：使用固定的用户指定值。-自动：使用相机位置的光照等级。-快速：使用可见场景的平均亮度。
+value.CAMERA_EXPOSURE_MODE.0=手动
+value.CAMERA_EXPOSURE_MODE.1=自动
+value.CAMERA_EXPOSURE_MODE.2=快速
+# value.CAMERA_EXPOSURE_MODE.3=Fancy
+
+option.CAMERA_EXPOSURE=曝光
+
+option.TONEMAP=色调映射
+value.TONEMAP.0=无
+value.TONEMAP.1=海尔-伯格斯
+value.TONEMAP.2=ACES 电影
+value.TONEMAP.3=莱茵哈德
+value.TONEMAP.4=莱茵哈德-乔迪
+value.TONEMAP.5=未知暗区 2
+value.TONEMAP.6=ACES 拟合
+value.TONEMAP.7=ACES 拟合 2
+value.TONEMAP.8=电影风格 海尔 2015
+value.TONEMAP.9=伯格斯
+value.TONEMAP.10=伯格斯 修改版
+value.TONEMAP.11=莱茵哈德 扩展亮度
+value.TONEMAP.12=技术
+
+option.CAMERA_BRIGHTNESS=亮度
+suffix.CAMERA_BRIGHTNESS=亮度
+
+option.CAMERA_SATURATION=饱和度
+suffix.CAMERA_SATURATION=%
+
+
+screen.EFFECT_OPTIONS=效果选项
+
+screen.EFFECT_COLORED_LIGHTING=彩色照明
+screen.EFFECT_COLORED_LIGHTING.comment=需要 Iris 1.6+！
+
+option.LIGHT_COLOR_ENABLED=已启用
+option.LIGHT_COLOR_ENABLED.comment=需要 Iris 1.6 或更高版本！
+
+option.LIGHT_FLICKER_ENABLED=闪烁
+option.LIGHT_FLICKER_ENABLED.comment=当启用时会导致基于火焰的光源闪烁。
+
+option.LIGHT_BIN_SIZE=分组大小
+
+option.LIGHT_BIN_MAX_COUNT=最大灯光数
+
+option.LIGHT_SIZE_XZ=水平范围
+option.LIGHT_SIZE_XZ.comment=彩色光照区域在水平/XZ 方向上的范围。
+
+option.LIGHT_SIZE_Y=垂直范围
+option.LIGHT_SIZE_Y.comment=彩色光体在垂直/Y 方向上的范围。
+
+option.LIGHT_LAVA_ENABLED=岩浆
+option.LIGHT_LAVA_ENABLED.comment=岩浆默认禁用，因为大片岩浆湖会迅速突破光照限制。
+
+option.LIGHT_COLOR_PBR=PBR
+option.LIGHT_COLOR_PBR.comment=启用物理光照渲染，用于动态/彩色光源。禁用时将使用简单的光照模型，性能更佳。
+
+option.LIGHT_COLOR_NORMAL_CHECK=减少泄漏
+option.LIGHT_COLOR_NORMAL_CHECK.comment=通过考虑几何法线，减少光线通过墙壁泄漏的数量。
+
+option.LIGHT_FALLBACK=后备
+option.LIGHT_FALLBACK.comment=决定如何处理超出着色范围的灯光。
+
+
+screen.EFFECT_BLOOM_OPTIONS=泛光
+
+option.BLOOM_ENABLED=已启用
+option.BLOOM_ENABLED.comment=启用后，屏幕上的亮物会发光，以更清晰地显示亮度。
+
+option.BLOOM_STRENGTH=强度
+option.BLOOM_STRENGTH.comment=效果的强度/可见度。
+suffix.BLOOM_STRENGTH=%
+
+option.BLOOM_SMOOTH=平滑
+option.BLOOM_SMOOTH.comment=使泛光效果更平滑，但会略微消耗性能。
+
+option.BLOOM_POWER=强度
+option.BLOOM_POWER.comment=调整泛光光的曝光曲线。
+
+option.BLOOM_THRESHOLD=缩放
+option.BLOOM_POWER.comment=调整泛光亮度的亮度缩放。
+
+
+screen.EFFECT_AO_OPTIONS=环境光遮蔽
+
+option.AO_TYPE=类型
+option.AO_TYPE.comment=用于环境光遮蔽的方法。快速：原版 Minecraft 的 AO。精细：基于着色器的 SSAO。
+value.AO_TYPE.0=无
+value.AO_TYPE.1=快速
+value.AO_TYPE.2=精细
+
+option.SSAO_INTENSITY=强度
+
+option.SSAO_RADIUS=半径
+
+option.SSAO_SAMPLES=采样数量
+
+
+screen.EFFECT_GI_OPTIONS=全球光照
+
+option.SSGI_ENABLED=已启用
+
+option.SSGI_STRENGTH=强度
+
+
+screen.EFFECT_DOF_OPTIONS=景深
+
+option.DOF_ENABLED=已启用
+
+option.DOF_SCALE=缩放
+
+option.DOF_STEP_SIZE=步长
+option.DOF_STEP_SIZE.comment=较小的值将提供更高质量的模糊效果，但会牺牲性能。
+
+option.DOF_MAX_SIZE=最大尺寸
+
+option.AA_TYPE=抗锯齿
+value.AA_TYPE.0=无
+value.AA_TYPE.1=FXAA
+
+
+option.IS_IRIS=使用 Iris？
+option.IS_IRIS.comment=如果您使用的是 Iris 或 Oculus，请开启此选项；如果使用的是 Optifine，请关闭此选项。
+
+
+option.DEBUG_VIEW=显示
+option.DEBUG_VIEW.comment=配置将哪个缓冲区绘制到屏幕上。
+value.DEBUG_VIEW.0=无
+value.DEBUG_VIEW.1=G 缓冲区颜色
+value.DEBUG_VIEW.2=G 缓冲区法线
+value.DEBUG_VIEW.3=G 缓冲区遮蔽
+value.DEBUG_VIEW.4=G 缓冲区高光
+value.DEBUG_VIEW.5=G 缓冲区发射
+value.DEBUG_VIEW.6=G 缓冲区光照
+value.DEBUG_VIEW.7=G 缓冲区阴影
+value.DEBUG_VIEW.8=延迟阴影
+value.DEBUG_VIEW.9=延迟全局光照
+value.DEBUG_VIEW.10=延迟环境光遮蔽
+value.DEBUG_VIEW.11=阴影颜色
+value.DEBUG_VIEW.12=阴影深度 [0]
+value.DEBUG_VIEW.13=阴影深度 [1]
+value.DEBUG_VIEW.14=高动态范围
+value.DEBUG_VIEW.15=亮度
+value.DEBUG_VIEW.16=上一帧颜色
+value.DEBUG_VIEW.17=上一帧亮度
+value.DEBUG_VIEW.18=上一帧深度
+value.DEBUG_VIEW.19=上一帧深度瓦片
+value.DEBUG_VIEW.20=泛光瓦片
+value.DEBUG_VIEW.21=太阳透射 LUT
+value.DEBUG_VIEW.22=辐照度 LUT
+value.DEBUG_VIEW.23=天空 LUT
+value.DEBUG_VIEW.24=BRDF LUT
+value.DEBUG_VIEW.25=白世界
+
+option.DEBUG_EXPOSURE_METERS=曝光仪
+option.DEBUG_EXPOSURE_METERS.comment=启用后，屏幕左侧会显示两条条形。- 平均亮度为第一条红色条形。- EV 值为第二条绿色条形。

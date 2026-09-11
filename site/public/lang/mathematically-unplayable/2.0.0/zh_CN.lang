@@ -1,0 +1,8 @@
+option.MESS_INTENSITY=强度滑块 :3
+option.MESS_INTENSITY.comment=更改混乱强度!! (0 - 正常, 50 - 糟糕, 100 - 完全无法游玩)
+option.ENABLE_TERRAIN_MESS=地形混乱
+option.ENABLE_TERRAIN_MESS.comment=开关地形效果
+option.ENABLE_COMPOSITE_MESS=复合混乱
+option.ENABLE_COMPOSITE_MESS.comment=开关复合效果
+option.ENABLE_SKY_MESS=天空基础混乱
+option.ENABLE_SKY_MESS.comment=开关天空效果

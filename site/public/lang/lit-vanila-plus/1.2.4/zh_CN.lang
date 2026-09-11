@@ -1,0 +1,19 @@
+screen.RAIN=雨
+option.LVP_RAIN_GROUP=雨霾 Aerosol
+
+
+option.LVP_SHADOW_MODE=阴影
+value.LVP_SHADOW_MODE.0=开启
+value.LVP_SHADOW_MODE.1=默认原版
+value.LVP_SHADOW_MODE.2=关闭
+option.LVP_SHADOW_MODE.comment=On: LVP 实时阴影贴图。Default Vanilla: 原生 Minecraft 圆形实体阴影。Off: 禁用阴影。
+option.LVP_BRIGHT_DAY_STRENGTH=明亮白昼强度
+option.LVP_BRIGHT_DAY_STRENGTH.comment=控制现有明亮白昼校正的程度。
+option.LVP_CLOUD_BRIGHTER=云朵更亮
+value.LVP_CLOUD_BRIGHTER.true=开启
+value.LVP_CLOUD_BRIGHTER.false=关闭
+option.LVP_CLOUD_BRIGHTER.comment=在低阳光清晨/黄昏条件下，柔和补充现有云朵照亮光照。
+option.LVP_CLOUD_BRIGHTER_STRENGTH=云朵更亮强度
+
+
+option.LVP_CLOUD_BRIGHTER_STRENGTH.comment=控制补充低太阳云层亮度的强度。

@@ -1,0 +1,56 @@
+# Options
+option.ShadowMapping=阴影映射
+option.ShadowSamples=阴影采样
+option.Brightness=亮度
+option.Saturation=饱和度
+option.Exposure=曝光
+option.Bloom=泛光
+option.BloomQuality=泛光质量
+option.ChromaticAberration=色差
+option.ChromaticAberrationQuality=色差质量
+option.Lensflare=镜头光晕
+option.CinematicBars=电影黑边
+option.Red=红色
+option.Green=绿色
+option.Blue=蓝色
+option.WavingPlants=植物摇曳
+option.WavingPlantsSpeed=植物摇曳速度
+option.WavingLeaves=树叶摇曳
+option.WavingLeavesSpeed=树叶摇曳速度
+option.WaterWave=水波
+option.UnderWaterCaustics=水下焦散
+option.CloudToggle=云切换
+option.FoliageWave=植被摇曳
+option.VignetteIntensity=暗角强度
+option.ToneMapPreset=色调映射
+option.RainPuddles=雨坑
+
+# Screen Layout
+screen=[信息] [摇曳设置] [阴影设置] [后期处理] [效果设置]
+
+# INFO Section
+screen.INFO=ShaderTra
+
+# Waving Settings
+screen.WavingSettings=[植物摇曳] [树叶摇曳] [水摇曳]
+screen.WavingSettings.columns=1
+
+screen.WavingPlants=摇曳植物 摇曳植物速度
+screen.WavingLeaves=摇曳树叶 摇曳树叶速度
+screen.WavingWater=水波 水下焦散
+
+# Shadow Settings
+screen.ShadowSettings=阴影贴图 阴影采样
+
+# Post-Processing Settings
+screen.PostProcessing=[世界颜色] 亮度 饱和度 曝光 泛光 泛光质量 色差 色差质量 镜头光晕 电影黑边
+screen.WorldColor=红 绿 蓝
+
+# Effects Settings
+screen.EffectsSettings=暗角强度 色调映射预设 雨坑
+
+# Sliders
+sliders=摇曳树叶速度 摇曳植物速度 阴影采样 色差质量 红 绿 蓝 亮度 饱和度 曝光 泛光质量 暗角强度
+
+# Columns
+screen.columns=1

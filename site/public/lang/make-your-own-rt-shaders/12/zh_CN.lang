@@ -1,0 +1,60 @@
+option.DEBUG_ALIGHNMENT.comment = 纹理读取。覆盖其他可视化
+option.VISUALIZED_DATA.comment = 0-平均颜色。1-位置。2-单个像素的颜色。3-光发射。4-方块类型（ID）。5-近似场景。6-位压缩PBR数据
+option.VOXEL_POSITION_RECONSTRUCTION_METHOD.comment 1-passed from vertex shader. 2-reconstructed with foot position & face normals
+option.WHERE_TO_VOXELIZE.comment = 1-区块GBuffers。2-阴影 passes
+screen.help=帮助 (悬停鼠标)
+screen.help.comment = shader.zip 中的 READ ME 文件会解释所有内容。基本上，请访问 patreon.com/timetravelbeard 在 YouTube 或其网站观看免费视频系列，视频会解释一切。有疑问可在两者链接的 Discord 上提问。玩得开心！
+
+value.RT_API.1 = 1 直接法
+value.RT_API.2 = 2 DDA
+value.RT_API.3 = 3 DDA - 带纹理
+value.RT_API.4 = 4 DDA - 带 LOD 位掩码
+value.RT_API.5 = 5 DDA / LOD / PBR 重建
+value.RT_API.6 = 6 DDA/LOD/PBR/阴影
+value.RT_API.7 = 7 DDA/LOD/PBR/阴影/色调
+
+value.RT_API.111 = 111 Koteinik's Modded Quad Tracing
+
+
+
+value.TEXTURES_IN_RT.2 = 反射率
+value.TEXTURES_IN_RT.3 = 反射率 + 法线
+value.TEXTURES_IN_RT.5 = 完整PBR
+
+value.VISUALIZED_DATA.0 = 颜色 - 平均值
+value.VISUALIZED_DATA.1 = 位置
+value.VISUALIZED_DATA.2 = 颜色 - 单个像素
+value.VISUALIZED_DATA.3 = 光照发射
+value.VISUALIZED_DATA.4 = 方块类型
+value.VISUALIZED_DATA.5 = 近似场景
+value.VISUALIZED_DATA.6 = 密集 PBR
+
+
+value.SHADOWS_USED_ON_SCREEN.0 = 无
+value.SHADOWS_USED_ON_SCREEN.1 = RT
+value.SHADOWS_USED_ON_SCREEN.2 = 阴影贴图
+
+value.SHADOWS_IN_VOXEL_SCENE.0 = 无
+value.SHADOWS_IN_VOXEL_SCENE.1 = RT
+value.SHADOWS_IN_VOXEL_SCENE.2 = 阴影贴图
+
+value.GLOBAL_ILLUMINATION.0 = 无
+value.GLOBAL_ILLUMINATION.2 = RT
+
+value.RAYTRACING_VIEW.0 = 关闭
+value.RAYTRACING_VIEW.1 = 右半屏
+value.RAYTRACING_VIEW.2 = 全屏
+
+value.DITHER_TYPE.1 = 蓝色 (64)
+value.DITHER_TYPE.2 = 噪声
+value.DITHER_TYPE.3 = 蓝色 (256)
+
+
+value.EXPOSURE.0 = 自动 - 基于光照图
+
+value.TEMPORAL_ACCUMULATION.0 = 关闭
+value.TEMPORAL_ACCUMULATION.1 = 隐藏 GUI (F1)
+value.TEMPORAL_ACCUMULATION.2 = 始终开启
+
+option.RT_DENOISING_KERNEL_SIZE = 去噪核大小（半）
+option.RT_DENOISING_KERNEL_SIZE.comment = 去噪核大小为此值的两倍加一。2 表示 5x5，3 表示 7x7，5 表示 11x11

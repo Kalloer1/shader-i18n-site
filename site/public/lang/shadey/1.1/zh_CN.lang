@@ -1,0 +1,27 @@
+profile.PERFORMANCE = 低配
+profile.BALANCED    = 中配
+profile.HIGH        = 高配
+profile.ULTRA       = 极高
+
+option.FOG_DISTANCE     = 雾距离 (区块)
+option.PASTEL_STRENGTH  = 淡彩强度
+option.FOG_COLOR_PRESET = 雾颜色
+option.BLOOM            = 泛光效果
+option.BLOOM_STRENGTH   = 泛光强度
+option.SATURATION       = 饱和度
+option.BRIGHTNESS       = 亮度
+option.SOFT_SHADOWS     = 柔和阴影
+option.SHADOW_BIAS      = 阴影偏移
+
+screen.GORSEL   = 视觉设置
+screen.GELISMIS = 高级设置
+
+value.FOG_COLOR_PRESET.0 = 粉色薄雾
+value.FOG_COLOR_PRESET.1 = 薰衣草
+value.FOG_COLOR_PRESET.2 = 桃色
+value.FOG_COLOR_PRESET.3 = 薄荷
+
+value.PASTEL_STRENGTH.0 = 关闭
+value.PASTEL_STRENGTH.1 = 微弱
+value.PASTEL_STRENGTH.2 = 中等
+value.PASTEL_STRENGTH.3 = 强烈

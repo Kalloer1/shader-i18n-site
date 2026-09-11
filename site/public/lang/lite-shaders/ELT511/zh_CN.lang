@@ -1,0 +1,672 @@
+#Profiles American English # Review by tasxatzial
+############################
+profile.no_effects=§l最低
+profile.shadowless_low=§l无阴影 §b§l低配
+profile.shadowless_medium=§l无阴影 §a§l中配
+profile.shadowless_high=§l无阴影 §5§l极高
+profile.very_low=§9§l极低
+profile.low=§b§l低配
+profile.medium=§a§l中配 (默认)
+profile.high=§e§l高配
+profile.extreme=§4§l极端
+profile.max=§5§l极高
+
+profile.comment=「无阴影」配置专为低配机器设计，忽略阴影效果。传统配置逐步添加更高质量的阴影及高级特效。请尝试各种可用选项，找到最适合您的组合。
+
+#About
+#############################
+option.ACERCADE=§lE-LITE§r by §lEntokito
+option.ACERCADE.comment=感谢使用此光影包！:) 为获得更好的质量，请将 Iris 或 OptiFine 原生质量控制设置为 normal 或 default 值。Modified by: @Entokito, revision on this language by tasxatzial。
+value.ACERCADE.1=§f§lELT511
+value.ACERCADE.2=§9§lELT511
+value.ACERCADE.3=§b§lELT511
+value.ACERCADE.4=§a§lELT511
+value.ACERCADE.5=§e§lELT511
+value.ACERCADE.6=§5§lELT511
+
+#Style
+option.STYLE=§l风格
+value.STYLE.1=§6§l自然
+value.STYLE.2=§b§l原版
+
+option.STYLE.comment=自然：侧重视觉，提升美观。原版：保留原始 Minecraft 美学。
+
+#Options
+#############################
+option.SHADOW_CASTING=§6▶§r 阴影
+
+option.SHADOW_ENTITIES=§6▶§r 实体阴影
+option.SHADOW_ENTITIES.comment=启用实体和玩家的阴影投射。关闭此选项可提升最高 30% 的性能。
+
+option.OMNI_MUL=光照乘数
+suffix.OMNI_MUL=x
+option.OMNI_MUL.comment=调整阴影亮度和光线颜色。数值越低，阴影越暗。
+
+option.SHARP_FORCE=锐化
+option.SATURATION=饱和度
+option.CONTRAST=对比度
+option.BRIGHTNESS=亮度
+option.GAMMA=伽玛
+option.VIBRANCE=自然饱和度
+option.VIBRANCE.comment=类似于饱和度，但不会改变非常亮元素的饱和度。
+
+suffix.SHARP_FORCE=x
+suffix.SATURATION=x
+suffix.CONTRAST=x
+suffix.BRIGHTNESS=x
+suffix.VIBRANCE=x
+suffix.GAMMA=x
+
+option.PS1_LIKE=PS1 风格
+option.PS1_LIKE.comment=对屏幕应用像素滤镜。
+option.RED=红色
+option.GREEN=绿色
+option.BLUE=蓝色
+option.EXPOSURE=曝光
+
+suffix.RED=x
+suffix.GREEN=x
+suffix.BLUE=x
+suffix.EXPOSURE=x
+
+option.RAYMARCH_STEPS=§a▶§r 射线数量
+value.RAYMARCH_STEPS.10=§5§lMAX
+option.RAYMARCH_STEPS.comment=调整§a§l射线追踪§r的射线数量。更多射线=更高质量。降低此设置可提升性能。
+
+option.TONEMAPPING=色调映射算子
+option.TONEMAPPING.comment=选择色调映射算子，用于调整颜色以获得更好的视觉效果（除去 Psychedelic）。
+value.TONEMAPPING.0=Legacy
+value.TONEMAPPING.1=Lottes
+value.TONEMAPPING.2=ACES Filmic
+value.TONEMAPPING.3=Psychedelic
+value.TONEMAPPING.4=Uchimura
+
+screen.HDR_SCREEN= 颜色/色调映射
+
+option.HDR=§b▶§r 更广的色彩范围
+option.HDR.comment=在高光区域保留更好的画质。禁用此选项可提升性能，但图像在亮部会失去细节。
+
+option.DOF_HDR=§b▶§r 景深中增强颜色范围
+option.DOF_HDR.comment=增强景深（Depth of Field）中的颜色表现。关闭此选项可在使用景深时提升性能，但可能导致颜色分带。
+
+option.COLOR_BITS=§b▶§r 颜色位数
+option.COLOR_BITS.comment=调整屏幕可显示的颜色位数。位数越高：颜色越丰富。降低此选项可提升性能，但可能导致色带。仅在“关闭更广色域”时有效。
+
+option.FOLIAGE_V=§9▶§r 逼真植被
+option.FOLIAGE_V.comment=为树叶和植物激活轻微透明度和风效。
+
+option.SHADOW_DISTANCE_SLIDER=§a▶§r 阴影距离
+option.SHADOW_DISTANCE_SLIDER.comment=建议配置：为获得最佳性能/质量比例，建议将其设置为渲染距离的80%以上。
+value.SHADOW_DISTANCE_SLIDER.1=§9§l极低 §0§9(4 区块)
+value.SHADOW_DISTANCE_SLIDER.2=§9§l极低 §0§9(5 区块)
+value.SHADOW_DISTANCE_SLIDER.3=§b§l低 §0§b(6 区块)
+value.SHADOW_DISTANCE_SLIDER.4=§a§l中 §0§a(8 区块)
+value.SHADOW_DISTANCE_SLIDER.5=§a§l中 §0§a(10 区块)
+value.SHADOW_DISTANCE_SLIDER.6=§e§l高 §0§e(12 区块)
+value.SHADOW_DISTANCE_SLIDER.7=§4§l极端 §0§4(14 区块)
+value.SHADOW_DISTANCE_SLIDER.8=§5§lMAX §0§5(16 区块)
+
+option.SHADOW_QTY_SLIDER=§c▶§r 阴影数量
+option.SHADOW_QTY_SLIDER.comment=请谨慎选择，因为此选项对性能影响大。中档在画质与性能之间达到平衡。
+value.SHADOW_QTY_SLIDER.0=None
+value.SHADOW_QTY_SLIDER.1=§9§l极低
+value.SHADOW_QTY_SLIDER.2=§b§l低
+value.SHADOW_QTY_SLIDER.3=§a§l中等
+value.SHADOW_QTY_SLIDER.4=§e§l高
+value.SHADOW_QTY_SLIDER.5=§4§l极致
+value.SHADOW_QTY_SLIDER.6=§5§lMAX
+
+option.SHADOW_LOCK=像素锁定阴影
+value.SHADOW_LOCK.0=关闭
+value.SHADOW_LOCK.8=8x
+value.SHADOW_LOCK.16=16x
+value.SHADOW_LOCK.32=32x
+value.SHADOW_LOCK.64=64x
+value.SHADOW_LOCK.128=128x
+
+option.REFLECTION_SLIDER=§a▶§r 屏幕空间反射
+option.REFLECTION_SLIDER.comment=§b§l低配§r：使用更简单的方法通过翻转图像来模拟反射。 §e§l高配§r：使用 §a§lRaymarching§r，更准确，但更慢。
+value.REFLECTION_SLIDER.0=关闭
+value.REFLECTION_SLIDER.1=§b§l低配
+value.REFLECTION_SLIDER.2=§e§l高配
+
+option.SHADOW_TYPE=§9▶§r 阴影类型
+option.SHADOW_TYPE.comment=简单模式：无过滤。过滤模式：为阴影添加模糊效果，提升观感。升级模式：使阴影边缘更锐利 §l（可能引入伪影）。
+value.SHADOW_TYPE.0=简单
+value.SHADOW_TYPE.1=过滤
+value.SHADOW_TYPE.2=升级
+
+option.SHADOW_BLUR=阴影模糊强度
+
+option.COLORED_SHADOW=§b▶§r 彩色阴影
+option.COLORED_SHADOW.comment=为彩色玻璃和冰块启用彩色阴影（需焦散）。
+option.VOL_LIGHT=§e▶§r 体积光
+option.VOL_LIGHT.comment=深度模式：基于深度的体积光；在阴影距离很短时效果更好。体积模式：精准且更快，但需要启用阴影才能工作。
+value.VOL_LIGHT.0=禁用
+value.VOL_LIGHT.1=深度模式
+value.VOL_LIGHT.2=体积模式
+
+option.CAUSTICS=§9▶§r 焦散
+option.CAUSTICS_INTENSITY=焦散强度
+suffix.CAUSTICS_INTENSITY=x
+option.CAUSTICS.comment=使水面根据波浪实时投射阴影。§l(需要启用彩色阴影)。
+
+option.GODRAY_STEPS=§b▶§r 体积光数量
+value.GODRAY_STEPS.2=§9§l极低
+value.GODRAY_STEPS.3=§b§l低
+value.GODRAY_STEPS.4=§a§l中
+value.GODRAY_STEPS.5=§e§l高
+value.GODRAY_STEPS.6=§4§l极高
+value.GODRAY_STEPS.7=§5§lMAX
+
+option.DOF=§a▶§r 景深
+option.DOF.comment=启用基于景深的模糊效果。中等性能开销。
+
+option.DOF_STRENGTH=景深强度
+value.DOF_STRENGTH.1.0=§5§lMAX
+
+option.DOF_SAMPLES_FACTOR=景深采样因子
+
+option.VANILLA_AO=§1▶§r 原版环境光遮蔽
+option.VANILLA_AO.comment=使用 Minecraft 的环境光遮蔽；比标准模式快得多。
+value.VANILLA_AO.0=关闭
+value.VANILLA_AO.1=开启
+
+option.AO=§a▶§r 环境光遮蔽
+value.AO.0=关闭
+value.AO.1=开启
+
+option.AOSTEPS=环境光遮蔽采样对数
+value.AOSTEPS.2.0=§l最低
+value.AOSTEPS.3.0=§9§l极低
+value.AOSTEPS.4.0=§b§l低
+value.AOSTEPS.5.0=§a§l中等
+value.AOSTEPS.6.0=§e§l高
+value.AOSTEPS.7.0=§c§l极高
+value.AOSTEPS.8.0=§4§l极致
+value.AOSTEPS.10.0=§5§lMAX
+
+option.AO_STRENGTH=环境光遮蔽强度
+suffix.AO_STRENGTH=x
+
+option.AA_TYPE=§b▶§r 抗锯齿
+option.AA_TYPE.comment=开启抗锯齿。Denoise 没有抗锯齿功能，但具备抗抖动特性。§b§lSmart TAA§r 使用自适应对比度提升锐度。普通 TAA 不推荐使用，可能会显得过于模糊。
+value.AA_TYPE.0=关闭
+value.AA_TYPE.1=Denoise
+value.AA_TYPE.2=TAA §c(!)
+value.AA_TYPE.3=§b§lSmart TAA
+
+option.RENDER_SCALE_INT=§c§lFSR§r 模式
+suffix.RENDER_SCALE_INT=%
+option.RENDER_SCALE_INT.comment=调整渲染分辨率。50% 缩放适用于 4K。§c§l§oFSR 1§r 将在低分辨率下放大图像。
+
+value.RENDER_SCALE_INT.100=§5§l§o原生
+value.RENDER_SCALE_INT.85=§4§l超高画质
+value.RENDER_SCALE_INT.76=§e§l画质
+value.RENDER_SCALE_INT.67=§a§l平衡
+value.RENDER_SCALE_INT.58=§b§l性能
+value.RENDER_SCALE_INT.50=§9§l超高性能
+
+screen.FSR_SCREEN=§c§lAMD FidelityFX
+option.FSR=§c§lFSR 1§r
+option.FSR.comment=启用 §c§lAMD FSR 1§r；在渲染缩放较低时提升画面质量。请在降低渲染缩放前启用此功能。
+option.FXAA=§9▶§r FXAA
+option.FXAA.comment=启用 FXAA；在渲染缩放较低时有帮助。
+
+option.MOTION_BLUR=§b▶§r 运动模糊
+option.MOTION_BLUR.comment=启用运动模糊。
+
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_SAMPLES=运动模糊样本数
+option.MOTION_BLUR_SAMPLES.comment=调整运动模糊的质量。
+
+value.MOTION_BLUR_SAMPLES.2.0=§9§l极低
+value.MOTION_BLUR_SAMPLES.3.0=§b§l低
+value.MOTION_BLUR_SAMPLES.4.0=§a§l中
+value.MOTION_BLUR_SAMPLES.5.0=§e§l高
+value.MOTION_BLUR_SAMPLES.6.0=§c§l极高
+value.MOTION_BLUR_SAMPLES.7.0=§4§l极致
+value.MOTION_BLUR_SAMPLES.8.0=§5§lMAX
+
+option.VANILLA_WATER=类似原版的水
+
+option.USE_WATER_TEXTURE=水纹纹理
+value.USE_WATER_TEXTURE.-1=使用风格
+value.USE_WATER_TEXTURE.0=否
+value.USE_WATER_TEXTURE.1=是
+
+option.WATER_COLOR_SOURCE=水色
+value.WATER_COLOR_SOURCE.0=着色器方案
+value.WATER_COLOR_SOURCE.1=资源包
+
+option.REFLECTION=反射
+value.REFLECTION.0=关闭
+value.REFLECTION.1=开启
+
+option.REFRACTION=§9▶§r 折射
+option.REFRACTION.comment=在水中启用光的扭曲效果。
+value.REFRACTION.0=关闭
+value.REFRACTION.1=开启
+
+option.SSR_TYPE=反射类型
+value.SSR_TYPE.0=翻转图像
+value.SSR_TYPE.1=§a§lRaymarching§r
+
+option.SUN_REFLECTION=§b▶§r 太阳反射
+option.SUN_REFLECTION.comment=使太阳和月亮在玻璃和水面上产生反射。
+value.SUN_REFLECTION.0=关闭
+value.SUN_REFLECTION.1=圆形
+value.SUN_REFLECTION.2=方形
+
+option.CLOUD_REFLECTION=§b▶§r 体积云反射
+option.CLOUD_REFLECTION.comment=使体积云在水面创建反射效果。
+
+option.WAVING=§9▶§r 摆动的植物
+option.WAVING.comment=让树叶或草地随风摆动。
+value.WAVING.0=否
+value.WAVING.1=是
+
+option.CHROMA_ABER=§1▶§r 色差
+option.CHROMA_ABER_STRENGTH=色差强度
+suffix.CHROMA_ABER_STRENGTH=x
+
+option.WATER_ABSORPTION=水光吸收指数
+option.WATER_ABSORPTION.comment=设置水体吸收光线的程度。数值越低，水越透明；数值越高，水越不透明。
+suffix.WATER_ABSORPTION=%
+option.WATER_FOG= 水雾
+suffix.WATER_FOG=x
+
+option.USE_WATER_TURBULENCE=Waves strength
+value.USE_WATER_TURBULENCE.-1=Use Style
+value.USE_WATER_TURBULENCE.0=Very low
+value.USE_WATER_TURBULENCE.1=Low
+value.USE_WATER_TURBULENCE.2=Medium
+value.USE_WATER_TURBULENCE.3=High
+
+option.COLOR_SCHEME=§l配色方案
+option.COLOR_SCHEME.comment=New Shoka: 对经典的重新诠释（MakeUp）。 §b§lRealistic+: 逼真的天空色调。 LITE Legacy: LITE 3.3 色调。 Vanilla: 原版色调。 Cursed: 暗黑恐怖色调。 Realistic (Simple): 简约色调。 Custom: 在效果 -> 自定义色调中选择您的颜色。 Realistic (Pollution): 逼真，但模拟污染。
+value.COLOR_SCHEME.1=New Shoka
+value.COLOR_SCHEME.2=§b§lRealistic+
+value.COLOR_SCHEME.3=§6§lLegacy (LITE)
+value.COLOR_SCHEME.4=§f§lVanilla
+value.COLOR_SCHEME.5=§4§lCursed
+value.COLOR_SCHEME.6=§lRealistic (Simple)
+value.COLOR_SCHEME.7=§lRealistic (Pol)
+value.COLOR_SCHEME.99=Custom
+
+option.LIGHT_SUNSET_COLOR_R=日落光 R
+option.LIGHT_SUNSET_COLOR_G=日落光 G
+option.LIGHT_SUNSET_COLOR_B=日落光 B
+
+option.LIGHT_DAY_COLOR_R=日光 R
+option.LIGHT_DAY_COLOR_G=日光 G
+option.LIGHT_DAY_COLOR_B=日光 B
+
+option.LIGHT_NIGHT_COLOR_R=夜间灯光 R
+option.LIGHT_NIGHT_COLOR_G=夜间灯光 G
+option.LIGHT_NIGHT_COLOR_B=夜间灯光 B
+
+option.ZENITH_SUNSET_COLOR_R=天际线日落红
+option.ZENITH_SUNSET_COLOR_G=天际线日落绿
+option.ZENITH_SUNSET_COLOR_B=天际线日落蓝
+
+option.ZENITH_DAY_COLOR_R=天际线日照 R
+option.ZENITH_DAY_COLOR_G=天际线日照 G
+option.ZENITH_DAY_COLOR_B=天际线日照 B
+
+option.ZENITH_NIGHT_COLOR_R=天际线夜色红
+option.ZENITH_NIGHT_COLOR_G=天际线夜色绿
+option.ZENITH_NIGHT_COLOR_B=天际线夜色蓝
+
+option.HORIZON_SUNSET_COLOR_R=地平线日落 R
+option.HORIZON_SUNSET_COLOR_G=地平线日落 G
+option.HORIZON_SUNSET_COLOR_B=地平线日落 B
+
+option.HORIZON_DAY_COLOR_R=天空日落 R 色
+option.HORIZON_DAY_COLOR_G=天空日落 G 色
+option.HORIZON_DAY_COLOR_B=天空日落 B 色
+
+option.HORIZON_NIGHT_COLOR_R=天际线夜色 R
+option.HORIZON_NIGHT_COLOR_G=天际线夜色 G
+option.HORIZON_NIGHT_COLOR_B=天际线夜色 B
+
+option.WATER_COLOR_R=水色 R
+option.WATER_COLOR_G=水色 G
+option.WATER_COLOR_B=水色 B
+
+option.NV_COLOR_R=夜视 R 乘数
+option.NV_COLOR_G=夜视 G 乘数
+option.NV_COLOR_B=夜视 B 乘数
+
+option.OMNI_TINT_CUSTOM=Omni 色彩
+
+option.AVOID_DARK_LEVEL=最低光照
+option.AVOID_DARK_LEVEL.comment=最低光照强度（百分比）。
+suffix.AVOID_DARK_LEVEL = %
+value.AVOID_DARK_LEVEL.50.0=FULLBRIGHT
+
+option.NIGHT_BRIGHT=夜间亮度
+suffix.NIGHT_BRIGHT=x
+option.NIGHT_BRIGHT_RANGE=月相影响
+option.NIGHT_BRIGHT_RANGE.comment=控制夜间亮度在不同月相下变化的幅度。
+suffix.NIGHT_BRIGHT_RANGE=x
+
+option.V_CLOUDS=§a▶§r 云彻
+option.V_CLOUDS.comment=体积静态云：云彻保持形状。体积动态云：云彻随时间变化形状（中等性能消耗）。原版：原始云彻。
+value.V_CLOUDS.-1=关闭
+value.V_CLOUDS.0=原版 + 更好云彻
+value.V_CLOUDS.1=体积静态
+value.V_CLOUDS.2=体积动态
+
+option.SUN_MUL=太阳亮度
+suffix.SUN_MUL=x
+
+option.MOON_MUL=月亮亮度
+suffix.MOON_MUL=x
+
+option.ASTRO_POWER=太阳/月亮能量
+option.ASTRO_POWER.comment=根据数值调节太阳和月亮的颜色。1.0 为默认值。
+prefix.ASTRO_POWER=^
+
+option.CLOUD_DENSITY=云层密度
+option.CLOUD_DENSITY.comment=调整云层密度。数值越大，密度越低。
+suffix.CLOUD_DENSITY=d
+
+option.CIRRUS=§b▶§r 云霞云
+option.CIRRUS.comment=启用天空中云层的第二层。
+
+option.USE_CLOUD_VOL_STYLE=体积云风格
+value.USE_CLOUD_VOL_STYLE.-1=使用风格
+value.USE_CLOUD_VOL_STYLE.0=自然
+value.USE_CLOUD_VOL_STYLE.1=方块
+
+option.CLOUD_SPEED=云层速度
+value.CLOUD_SPEED.0=正常
+value.CLOUD_SPEED.1=快进1
+value.CLOUD_SPEED.2=快进2
+
+option.END_CLOUDS=末地之云
+
+option.CLOUD_STEPS_AVG=§e▶§r 云质量
+value.CLOUD_STEPS_AVG.3=§b§l低配
+value.CLOUD_STEPS_AVG.4=§a§l中配
+value.CLOUD_STEPS_AVG.5=§e§l高配
+value.CLOUD_STEPS_AVG.10=§c▶§r §5§lMAX
+
+option.CIRRUS_STEPS_AVG=§e▶§r 云层质量
+value.CIRRUS_STEPS_AVG.3=§b§l低配
+value.CIRRUS_STEPS_AVG.4=§a§l中配
+value.CIRRUS_STEPS_AVG.5=§e§l高配
+value.CIRRUS_STEPS_AVG.10=§c▶§r §5§lMAX
+
+option.SIMPLE_SKY=§b▶§r 天空类型
+option.SIMPLE_SKY.comment=仅在 Realistic+ 配色方案下使用，或用于旧版 LITE 天空，或提升性能。
+value.SIMPLE_SKY.0=§5§lE-LITE 5
+value.SIMPLE_SKY.1=LITE 4.1
+
+option.BLOOM=§b▶§r 泛光
+option.BLOOM.comment=在亮块周围启用模糊效果。
+
+option.COLOR_BLINDNESS=色盲
+
+option.COLOR_BLIND_MODE=色盲模式类型
+value.COLOR_BLIND_MODE.0=双色盲（红绿）
+value.COLOR_BLIND_MODE.1=黄绿盲
+value.COLOR_BLIND_MODE.2=蓝黄盲
+
+option.CB_STRENGTH=色盲强度
+
+option.DEBUG_MODE=调试模式
+
+option.BLOOM_SAMPLES=§a▶§r 泛光质量
+value.BLOOM_SAMPLES.2.0=§l最低
+value.BLOOM_SAMPLES.3.0=§9§l极低
+value.BLOOM_SAMPLES.4.0=§b§l低
+value.BLOOM_SAMPLES.5.0=§a§l中
+value.BLOOM_SAMPLES.6.0=§e§l高
+value.BLOOM_SAMPLES.7.0=§4§l极端
+value.BLOOM_SAMPLES.8.0=§5§lMAX
+
+option.BLOOM_STRENGTH=泛光强度
+value.BLOOM_STRENGTH.2.0=§5§lMAX
+
+option.BLACK_ENTITY_FIX=黑色实体修复
+value.BLACK_ENTITY_FIX.0=关闭
+value.BLACK_ENTITY_FIX.1=开启
+
+option.FOG_ACTIVE=§9▶§r 雾已启用
+option.FOG_ACTIVE.comment=启用雾。
+
+option.FOG_ADJUST=雾强度
+value.FOG_ADJUST.20.0=无雾
+value.FOG_ADJUST.10.0=最低
+value.FOG_ADJUST.8.0=极低
+value.FOG_ADJUST.4.0=低
+value.FOG_ADJUST.2.0=中等
+value.FOG_ADJUST.1.5=高
+value.FOG_ADJUST.1.0=§5§lMAX
+
+option.NETHER_FOG_DISTANCE=下界雾距离
+value.NETHER_FOG_DISTANCE.0=渲染距离
+value.NETHER_FOG_DISTANCE.1=原版
+
+option.BLOCKLIGHT_TEMP=区块光照温度
+value.BLOCKLIGHT_TEMP.-1=最暖
+value.BLOCKLIGHT_TEMP.0=较暖
+value.BLOCKLIGHT_TEMP.1=暖
+value.BLOCKLIGHT_TEMP.2=黄
+value.BLOCKLIGHT_TEMP.3=淡黄
+value.BLOCKLIGHT_TEMP.4=白光
+value.BLOCKLIGHT_TEMP.5=蓝
+
+option.sunPathRotation=太阳角度
+suffix.sunPathRotation= °
+
+option.USE_BASIC_SH=自定义维度着色器
+option.USE_BASIC_SH.comment=在来自模组的自定义维度中启用着色器。
+
+option.MATERIAL_GLOSS=§a▶§r 方块反射
+value.MATERIAL_GLOSS.0=关闭
+value.MATERIAL_GLOSS.1=高光
+value.MATERIAL_GLOSS.2=屏幕反射(SSR)
+value.MATERIAL_GLOSS.3=§5§lMAX
+option.MATERIAL_GLOSS.comment=为某些方块（如金属材质）添加反射效果。SSR 模式采用极快但不够准确的方法。§5§lMAX§r 合并高光和 SSR，并使用 §a§lRaymarching§r 进行更精确的计算。
+
+option.SIMPLE_AUTOEXP=§1▶§r 更简洁的曝光
+option.SIMPLE_AUTOEXP.comment=关闭自动曝光。
+
+option.EMISSIVE_ORE=§b▶§r 发光矿石
+option.EMISSIVE_ORE.comment=为钻石、金属、铁等矿石启用发光效果。
+
+option.EMISSIVE_MATERIAL=§b▶§r 发光材质
+option.EMISSIVE_MATERIAL.comment=启用发光附魔台、红石器等自发光材质。
+
+option.DYN_HAND_LIGHT=§1▶§r 假动态手灯
+
+option.FAKE_BLOOM=§1▶§r 假泛光
+option.FAKE_BLOOM.comment=增加发光方块的亮度。
+option.VIGNETTE=§1▶§r 暗角
+option.VIGNETTE.comment=在屏幕上添加暗角效果。
+option.FILM_GRAIN=§1▶§r 胶片颗粒
+option.FILM_GRAIN.comment=在屏幕上添加胶片颗粒效果。
+option.VIGNETTE_FACTOR=暗角强度
+option.GRAIN_FACTOR=颗粒强度
+
+suffix.GRAIN_FACTOR=x
+suffix.VIGNETTE_FACTOR=x
+
+option.WIND_FORCE= 风力强度
+
+option.BIOME_SKY=§b▶§r 群系天空
+option.BIOME_SKY.comment=更改特定群系中的天空颜色。（仅在真实派（Realistic+）和诅咒（Cursed）方案中有效。）
+
+option.BIOME_FOG=§b▶§r 群系雾
+option.BIOME_FOG.comment=在特定群系中增加雾的密度。
+
+option.STAR_SLIDER=§a▶§r 星星
+option.STAR_SLIDER.comment=调整星星质量。§5§lMAX§r 可能根据分辨率影响性能。
+value.STAR_SLIDER.0=关闭
+value.STAR_SLIDER.1=§b§l原版
+value.STAR_SLIDER.2=§5§lMAX
+
+option.END_STARS=§9▶§r 末地星星
+option.END_STARS.comment=启用在末地显示星星。
+
+option.STARS_BRIGHTNESS=星光亮度
+option.STARS_BRIGHTNESS.comment=星光亮度乘数。
+suffix.STARS_BRIGHTNESS=x
+
+option.STARS_COVERAGE=星星覆盖率
+option.STARS_COVERAGE.comment=星星的覆盖系数。仅影响 §5§lMAX§r 星星。
+suffix.STARS_COVERAGE=x
+
+option.CUSTOM_SKYFIX=自定义天空修复
+option.CUSTOM_SKYFIX.comment=修复自定义天空的颜色。
+
+option.SANDSTORM=§9▶§r 沙暴
+option.SANDSTORM.comment=在干旱群系中启用沙暴。（需要群系雾）
+
+option.NEAR_FOG=§9▶§r 近距离雾
+option.NEAR_FOG.comment=在玩家附近添加雾效，以提升深度感和沉浸感。
+
+option.FOG_TINT=雾色
+option.FOG_TINT.comment=调整雾的色调颜色。
+value.FOG_TINT.0=中性
+value.FOG_TINT.1=凉色
+value.FOG_TINT.2=暖色
+
+option.AURORA=§b▶§r 极光
+option.AURORA.comment=在夜晚添加极光效果。
+value.AURORA.0=关闭
+value.AURORA.1=仅限雪地群系
+value.AURORA.2=全图
+
+option.ROUND_SUN=§9▶§r 太阳类型
+option.ROUND_SUN.comment=设置太阳类型。
+value.ROUND_SUN.0=§b§l原版
+value.ROUND_SUN.1=§6§l圆形
+value.ROUND_SUN.2=§l旧版
+
+option.SELECTION_LINE=选择框轮廓
+value.SELECTION_LINE.0=关闭
+value.SELECTION_LINE.1=默认
+value.SELECTION_LINE.2=白色
+value.SELECTION_LINE.3=RGB
+
+option.SELECTION_LINE.comment=设置选中线条的颜色。"关闭"将禁用它。RGB 模式会让线条发出类似 RGB LED 的光芒。
+
+
+option.SEASONS=§b▶§r 季节
+option.SEASONS.comment=添加动态季节系统，影响草地与植被。
+
+option.SEASON_LENGTH=季节长度
+option.SEASON_LENGTH.comment=设置游戏中季节的持续天数。
+
+option.TITLE=标题
+option.TITLE.comment=在光影包启动时显示标题和配置档。
+
+option.END_PORTAL=§9▶§r 自定义终末门
+option.END_PORTAL.comment=启用光影包的自定义终末门。
+
+option.LabPBR=§6▶§r LabPBR
+option.LabPBR.comment=启用 LabPBR 支持，并将其应用于方块反射和一般照明。启用此选项以使用 POM（需要支持 LabPBR 的资源包）。
+option.POM=§e▶§r POM
+option.POM.comment=亦称视差遮挡映射（Parallax Occlusion Mapping），此选项启用 LabPBR 的表面凹凸效果。
+option.POM_DEPTH=POM 深度
+option.POM_DEPTH.comment=调整 POM 深度。过高的值可能导致视觉瑕疵。
+option.POM_SHADOW=§b▶§r POM 阴影
+option.POM_SHADOW.comment=启用 POM 像素的自阴影。
+option.LabEMISSIVE=§1▶§r LabPBR 发光
+option.LabEMISSIVE.comment=启用 LabPBR 发光纹理。此选项可能与发光矿石/材料启用时产生冲突或过曝。
+option.POM_STEPS=§c▶§r POM 质量
+option.SS_SAMPLES=§9▶§r POM 阴影数量
+
+suffix.POM_DEPTH=x
+suffix.POM_STEPS=x
+suffix.SS_SAMPLES=x
+
+#Screens
+screen.BASIC_SCREEN=§l基本 ●
+screen.EFFECTS_SCREEN=§l效果 ✦
+screen.LIGHTING_SCREEN=§l照明 ☀
+screen.MISC_SCREEN=§l杂项 ✚
+screen.LabPBR=§l材质 💎
+
+# Info
+screen.INFO_SCREEN=§l信息 ?
+screen.INFO_SCREEN.comment=可能有用的信息。
+
+option.HOVER=悬停查看
+option.HOVER.comment=你好！这里是 E-LITE 光影包的信息！
+value.HOVER.0=
+
+option.VERSION=版本信息
+option.VERSION.comment=名称：§lE-LITE §r光影 §5§l5.1.1§r。构建：RELEASE。代码：§5§lELT511§r。日期：2026年6月24日。基于 MakeUp Ultrafast 9.5b。
+value.VERSION.0=
+
+option.PROFILES=图形配置档
+option.PROFILES.comment=无效果：纯光影。无阴影：关闭阴影的常规配置档。Very Low - MAX：性能代价下逐步提升画质。
+value.PROFILES.0=
+
+option.STYLES=风格
+option.STYLES.comment=在自然（写实）和原版（原生美学）之间切换。
+value.STYLES.0=
+
+option.PERF_IMPACT=性能影响
+option.PERF_IMPACT.comment=§6▶ 可变。 §1▶ 零。 §9▶ 极低。 §b▶ 低。 §a▶ 中等。 §e▶ 高。 §c▶ 极高。
+value.PERF_IMPACT.0=
+
+option.CREDITS=致谢
+option.CREDITS.comment=Entokito：修改者与翻译者。Javier Garduño：MakeUp Ultrafast 的创作者。
+value.CREDITS.0=
+
+# End of info
+screen.RENDER_SCREEN=渲染
+screen.RENDER_SCREEN.comment=设置渲染选项。
+
+screen.CAMERA_SCREEN=相机
+screen.CAMERA_SCREEN.comment=设置相机选项。
+
+screen.COMPATIBILITY_SCREEN=兼容性
+screen.COMPATIBILITY_SCREEN.comment=设置兼容性选项。
+
+screen.SHADOWS_SCREEN=阴影
+screen.SHADOWS_SCREEN.comment=设置阴影选项。
+
+screen.BLOOM_SCREEN=泛光
+screen.BLOOM_SCREEN.comment=设置泛光选项。
+
+screen.AO_SCREEN=环境光遮蔽
+screen.AO_SCREEN.comment=设置环境光遮蔽选项。
+
+screen.WATER_SCREEN=水
+screen.WATER_SCREEN.comment=设置水的选项。
+
+screen.POST_SCREEN= 后处理效果
+screen.POST_SCREEN.comment= 设置后处理选项。
+
+screen.LIGHT_SCREEN=光线
+screen.LIGHT_SCREEN.comment=设置光线选项。
+
+screen.CLOUDS_SCREEN=太阳与云彩
+screen.CLOUDS_SCREEN.comment=设置太阳与云彩选项。
+
+screen.SKY_SCREEN=天空
+screen.SKY_SCREEN.comment=设置天空选项。
+
+screen.MOTION_BLUR_SCREEN=运动模糊
+screen.MOTION_BLUR_SCREEN.comment=设置运动模糊选项。
+
+screen.ACCESIBILITY_SCREEN=无障碍
+screen.ACCESIBILITY_SCREEN.comment=设置无障碍选项。
+
+screen.TEXT_RENDER_SCREEN=文本渲染
+screen.TEXT_RENDER_SCREEN.comment=设置文本渲染选项。
+
+screen.CUSTOM_COLORS_SCREEN=自定义颜色
+screen.CUSTOM_COLORS_SCREEN.comment=设置自定义颜色（需要“Custom”颜色方案）。
+screen.CUSTOM_COLORS_DAY=白天自定义颜色
+screen.CUSTOM_COLORS_SUNSET=日落/黎明自定义颜色
+screen.CUSTOM_COLORS_NIGHT=夜晚自定义颜色
+screen.CUSTOM_COLORS_WATER=水面自定义颜色
+screen.CUSTOM_COLORS_NV=夜视自定义颜色

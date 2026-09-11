@@ -1,0 +1,152 @@
+option.Chromatic_Aberration = 色差
+option.Chromatic_Aberration.comment = 使颜色聚焦发生畸变。数值 0.0 表示该功能已关闭，数值越大则效果强度越高。
+option.CAType = 色差类型
+value.Chromatic_Aberration.0.0 = 关闭
+value.CAType.1.0 = 真实
+value.CAType.0.0 = 旧版
+
+option.Noise.comment = 模拟胶片颗粒。
+value.Noise.1.0 = 开
+value.Noise.0.0 Off
+option.Noise_Strength.comment = 控制颗粒的可见度。数值越大，颗粒越不明显。推荐值是 4 或更高。
+option.Noise_Strength = 噪点透明度
+
+option.Scan_Lines = 扫描线
+option.Scan_Lines.comment = 添加扫描线。
+value.Scan_Lines.0.0 = 关闭
+value.Scan_Lines.1.0 = 开启
+option.Scan_Lines_Strength = 扫描线强度
+option.Scan_Lines_Strength.comment = 控制扫描线的可见度。数值越高，扫描线越明显。必须启用扫描线选项才能生效。
+option.Scan_Lines_Count = 扫描线数量
+option.Scan_Lines_Count.comment = 要显示的扫描线数量。推荐值为 900 或 1000。
+option.Scan_Speed = 扫描速度
+option.Scan_Speed.commont = 垂直扫描线的移动速度。
+
+option.bw = 黑白
+option.bw.comment = 使屏幕变为黑白。启用后，某些效果可能会显得奇怪（主要是色差）。
+
+option.vignette = 暗角
+option.vignette.comment = 使屏幕边缘变暗。
+option.vignetteStrength = 暗角强度
+option.vignetteStrength.comment = 控制暗角的强度。当暗角被禁用时，此效果将不生效。
+
+option.flicker = 闪烁
+option.flicker.comment = 随机突然改变屏幕亮度。
+option.flickerstrength = 闪烁强度
+option.flickerstrength.comment = 闪烁的强度。如果禁用闪烁，则此效果将不生效。
+
+option.pixel = 像素化
+option.pixel.comment = 使屏幕像素化。
+option.pixel_strength = 像素大小
+option.pixel_strength.comment = 每个像素的大小。0.5 时效果极其明显。如果像素化已禁用，则此效果将不生效。
+
+option.grain_artifact = 颗粒伪影
+option.grain_artifact.comment = 在屏幕上添加随机颗粒伪影，类似于暴风雪。
+
+option.colordistort_strength = 电影风格
+option.colordistort_strength.comment = 为屏幕添加电影风格的效果，利用对比度、一些色彩分级和轻微的色彩色调。
+value.colordistort_strength.0.0 = 关闭
+
+option.desat = 去饱和度 数量
+option.desat.comment = 使屏幕去饱和。数值 0.0 表示此功能已禁用。数值越高，去饱和效果越强。如果您想要复古效果，请使用此功能。
+value.desat.0.0 = 关闭
+
+option.Wave_Strength = 波纹
+option.Wave_Strength.comment = 如果设置为大于 0.0，则会使屏幕水平方向产生波浪形扭曲。
+value.Wave_Strength.0.0 = 关闭
+option.Wave_Speed = 波纹速度
+
+option.lines = 随机线条
+option.lines.comment = 在屏幕上添加随机水平线条。
+option.animatedLines = 动画线条
+option.animatedLines.comment = 随机线条不再是静态的，而是动态的。
+value.animatedLines.1.0 = 已启用
+value.animatedLines.0.0 = 已禁用
+option.lineStrength = 随机线条强度
+option.lineStrength.comment = 控制随机线条的强度。数值越低线条越透明，数值越高线条越明显。如果随机线条已禁用，则此效果将不生效。
+option.direction = 线条方向
+option.direction.comment = 随机线条的方向。
+value.direction.1.0 = 水平
+value.direction.2.0 = 垂直
+option.lineDensity = 线条密度
+option.lineDensity.comment = 可视化的随机线条数量。
+value.lineDensity.7.9 = 少
+value.lineDensity.1.0 = 满
+
+option.edgedistort = 底部边缘失真
+option.edgedistort.comment = 使屏幕底部产生失真效果
+
+option.grunge = 随机斑点
+option.grunge.comment = 屏幕上随机出现的白色斑点。
+
+option.blur = 低画质
+option.blur.comment = 模拟远处物体的模糊/噪点以达到低质量效果。数值越高，质量越低。设置为 0.0 时则禁用此效果。
+value.blur.0.0 = 关闭
+
+option.auto_exp = 自动曝光
+option.auto_exp.comment = 调整屏幕亮度，当屏幕过亮或过暗时生效。
+option.exp_speed = 亮度调整速度
+option.exp_speed.comment = 屏幕调整亮度变化的速度，以刻为单位。推荐值为 8.0。如果自动曝光已禁用，此效果将不生效。
+option.maxExposure = 最大曝光
+option.maxExposure.comment = 自动曝光可达到的最大亮度等级。更高的值会使亮部更加明亮。推荐值为 0.5，因为更高的值基本相当于拥有夜视 superpowers。
+
+option.sharpness = 锐化程度
+option.sharpness.comment = 控制屏幕的锐化程度。当值为 0.0 或锐化被禁用时，此效果将不生效。
+option.sharp = 锐化
+option.sharp.comment = 使屏幕变得清晰锐利，但也会引入一些伪影。非常适合 VHS 风格。
+value.sharpness.0.0 = 关闭
+
+option.brightness = 亮度
+option.contrast = 对比度
+
+value.brightness.1.0 = 无变化
+value.contrast.1.0 = 无变化
+
+option.LumaNoiseStrength = 亮度噪声强度
+option.ChromaNoiseStrength = 色度噪声强度
+option.NoiseMin = 淡入开始（你可能不需要更改此项）
+option.NoiseMax = 淡入结束（你可能不需要更改此项）
+option.NoiseSpeed = 噪声速度
+value.LumaNoiseStrength.0.0 = 关闭
+value.ChromaNoiseStrength.0.0 = 关闭
+
+option.cameraMovementIdleSpeed = 静止速度
+option.cameraMovementIdleStrength = 静止强度
+option.cameraMovementTiltStrength = 倾斜强度
+
+option.cameraMovementIdleSpeed = 空闲时摄像机移动速度。
+option.cameraMovementIdleStrength = 空闲时摄像机移动强度。
+option.cameraMovementTiltStrength = 摄像机侧移倾斜强度。
+option.placeHolderWarning.comment = 摄像机倾斜功能仍在实验阶段。请不要启用，除非您能接受潜在的问题。
+option.placeHolderWarning = 注意
+
+value.placeHolderWarning.0.0 = 
+value.cameraMovementIdleSpeed.0.0 = 关闭
+value.cameraMovementIdleStrength.0.0 = 关闭
+value.cameraMovementTiltStrength.0.0 = 关闭
+
+option.barrel = 桶形失真
+option.barrel.comment = 使屏幕产生类似鱼眼镜头般的失真。数值越高，效果越强，但高数值会使屏幕边缘产生扭曲。
+option.fillColor = 越界填充颜色
+option.fillColor.comment = 设置在应用桶形失真时，超出边界的区域所填充的颜色。强烈建议将其设置为黑色或白色，因为扭曲效果可能看起来很奇怪。
+value.fillColor.0.0 = 扭曲
+value.fillColor.1.0 = 黑色
+value.fillColor.2.0 = 白色
+value.barrel.0.0 = 关闭
+
+option.sepia = 复古色调
+option.sepia.comment = 为屏幕添加复古色调，使其呈现出温暖的棕褐色调。数值 0.0 表示此功能已禁用。数值越高，复古效果越强。
+value.sepia.0.0 = 关闭
+value.sepia.1.0 = 完全
+
+screen.Scan_Lines = 扫描线
+screen.Noise = 噪点/磨砂
+screen.Auto_Exposure = 自动曝光
+screen.Random_Lines = 随机线条
+screen.Chroma_Noise = 色噪
+
+profile.Black_and_White = 黑白胶片
+profile.Bad_Camera = 低品质相机
+profile.Base = 基础（默认设置）
+profile.CRT = CRT 显示器
+profile.TV = 电视广播

@@ -1,0 +1,193 @@
+#Profiles
+profile.STANDARD=§e标准
+profile.STANDARD_FAST=§e§o标准快
+profile.MIMIMALISM=§b极简主义
+
+option.PATREON=§6Patreon
+option.PATREON.comment=§fpatreon.com/lolip_p
+value.PATREON.0=§fpatreon.com/lolip_p
+value.PATREON.1=§fpatreon.com/lolip_p
+
+screen.Cam=相机
+screen.BC=镜头
+screen.CC=色彩校正
+screen.LT=光照
+screen.NVG=夜视护目镜
+
+option.BY=§6悬停于我
+option.BY.comment=§9Discord: §fhttps://discord.com/invite/65CkSpxrmm. §4YouTube: §fhttps://www.youtube.com/@lolip_p.
+value.BY.0=§f作者 LoLip_p
+value.BY.1=§f作者 LoLip_p
+
+option.MOTION_BLUR=§6运动模糊
+option.MOTION_BLUR.comment=旋转相机时模糊图像（使游戏体验更愉悦和流畅）。数值越高，平滑效果越强。建议保持开启，并仅根据您的偏好更改 §2运动模糊强度 §f 参数。
+value.MOTION_BLUR.0=关
+value.MOTION_BLUR.1=开
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+option.MOTION_BLURRING_STRENGTH.comment=调整模糊强度。§4高数值可能会使部分人感到头晕和晕动症。
+
+#FXAA
+option.ANTI_ALIASING=抗锯齿
+option.ANTI_ALIASING.comment=使物体边界更平滑，去除出现的任何“锯齿”。
+value.ANTI_ALIASING.0=关
+value.ANTI_ALIASING.1=开
+
+option.BIT=16位
+value.BIT.0=关
+value.BIT.1=开
+
+option.SSR=§6屏幕空间反射
+value.SSR.0=关
+value.SSR.1=开
+
+option.RED_FILTER=§6红色滤镜
+value.RED_FILTER.0=关
+value.RED_FILTER.1=开
+
+option.PBR=§6PBR
+value.PBR.0=关
+value.PBR.1=开
+
+option.WAVES=波浪
+value.WAVES.0=关
+value.WAVES.1=开
+
+option.SWAYING_FOLIAGE=树叶摇曳
+value.SWAYING_FOLIAGE.0=关
+value.SWAYING_FOLIAGE.1=开
+
+option.GRAIN=§6颗粒
+value.GRAIN.0=关
+value.GRAIN.1=开
+option.GRAIN_STRENGTH=颗粒强度
+
+option.SCANLINE=§6扫描线
+value.SCANLINE.0=关
+value.SCANLINE.1=开
+option.SCANLINE_STRENGTH=扫描线强度
+option.SCANLINE_WIDTH=扫描线宽度
+
+option.COLOR_DIST=§6色彩扭曲
+value.COLOR_DIST.0=关
+value.COLOR_DIST.1=开
+option.COLOR_DIST_STRENGTH=色彩扭曲强度
+
+option.BLACK_STRIPES=§6黑线
+value.BLACK_STRIPES.0=关闭
+value.BLACK_STRIPES.1=开启
+
+option.DOF=§6景深 (DoF)
+value.DOF.0=关
+value.DOF.1=开
+option.DOF_STRENGTH=模糊强度
+option.TONEMAP_WHITE=色调映射白
+
+option.EXPOSURE=曝光度
+option.AUTO_EXPOSURE=§6自动曝光
+value.AUTO_EXPOSURE.0=关
+value.AUTO_EXPOSURE.1=开
+option.AUTO_EXPOSURE_SPEED=曝光速度
+option.AUTO_EXPOSURE_RADIUS=曝光半径
+
+option.VIGNETTE=§6暗角
+value.VIGNETTE.0=关
+value.VIGNETTE.1=开
+
+option.CHROMATIC_ABERRATION=色差
+option.ZOOM=缩放
+option.DIST_STRENGTH=§6畸变强度
+option.INTENSITY_CAM_SHAKE=镜头抖动强度
+option.VIGNETTE_RADIUS=暗角半径
+option.VIGNETTE_STRENGTH=暗角强度
+option.BLACK_STRIPES_WIDTH=黑线宽度
+option.BLACK_STRIPES_SOFT=黑线柔化
+
+option.SATURATION=饱和度
+option.BRIGHTNESS=亮度
+option.CONTRAST=对比度
+
+
+
+option.CRT_MASK=CRT 遮罩
+value.CRT_MASK.0=关闭
+value.CRT_MASK.1=开启
+
+option.CRT_SCALE=CRT 缩放
+
+option.R_DIRECTION=胶片伪影
+value.R_DIRECTION.0=关
+value.R_DIRECTION.1=开
+
+option.INTERLACED_SCAN=隔行扫描
+value.INTERLACED_SCAN.0=关
+value.INTERLACED_SCAN.1=开
+
+option.FOG_DISTANCE=雾距离
+option.DIRECTION_STRENGTH=伪影数量
+
+option.CLOUDS=云
+value.CLOUDS.0=关
+value.CLOUDS.1=开
+value.CLOUDS.2=仅白天
+
+option.FLICKERING_LIGHT=闪烁光
+value.FLICKERING_LIGHT.0=关
+value.FLICKERING_LIGHT.1=开
+
+#Lighting
+option.SOFT=§6柔和阴影
+value.SOFT.1=关
+value.SOFT.2=开
+
+option.SHADING=§6着色
+option.SHADING.comment=为不受太阳光线照射的平面着色。
+value.SHADING.0=关闭
+value.SHADING.1=开启
+option.NEW_LIGHTING=「新」光照
+option.NEW_LIGHTING.comment=「新」MINECRAFT 光照模式。
+value.NEW_LIGHTING.0=关闭
+value.NEW_LIGHTING.1=开启
+option.CLASSIC_NIGHT=经典夜晚
+option.CLASSIC_NIGHT.comment=此光影包提供更新的夜晚光照效果。
+value.CLASSIC_NIGHT.0=关闭
+value.CLASSIC_NIGHT.1=开启
+option.SHADOW_TRANSPARENCY=阴影透明度
+option.degree_night_darkness=夜晚黑暗程度
+option.SUN_ANGLE=太阳角度
+option.LIGHT_ABSORPTION=光线吸收
+option.LIGHT_ABSORPTION.comment=调节白天太阳下方光源对光线的吸收程度。
+
+// Shadow
+option.ENABLE_SHADOW=§6阴影
+value.ENABLE_SHADOW.0=关
+value.ENABLE_SHADOW.1=开
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=调整太阳角度。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整阴影距离。
+
+value.shadowDistance.64.0=§a4 区块
+value.shadowDistance.80.0=§a5 区块
+value.shadowDistance.96.0=§a6 区块
+value.shadowDistance.112.0=§a7 区块
+value.shadowDistance.128.0=§a8 区块
+value.shadowDistance.160.0=§e10 区块
+value.shadowDistance.192.0=§e12 区块
+value.shadowDistance.224.0=§e14 区块
+value.shadowDistance.256.0=§c16 区块
+value.shadowDistance.320.0=§c20 区块
+value.shadowDistance.384.0=§4§l24 区块
+value.shadowDistance.512.0=§4§l32 区块
+value.shadowDistance.768.0=§4§k-§r§4§l§n§o48 区块§r§4§k-
+value.shadowDistance.1024.0=§4§k-§r§4§l§n§o64 区块§r§4§k-
+
+option.shadowMapResolution=质量
+option.shadowMapResolution.comment=调整阴影贴图大小。§e[*]§r 更高的分辨率能带来更清晰的阴影，但会降低性能。
+value.shadowMapResolution.256=极低 (256)
+value.shadowMapResolution.512=低 (512)
+value.shadowMapResolution.768=中低 (768)
+value.shadowMapResolution.1024=中 (1024)
+value.shadowMapResolution.1536=中高 (1536)
+value.shadowMapResolution.2048=高 (2048)
+value.shadowMapResolution.3072=极高 (3072)
+value.shadowMapResolution.4096=超极高 (4096)

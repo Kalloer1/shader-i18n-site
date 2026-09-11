@@ -1,0 +1,13 @@
+option.SATURATION=饱和度
+option.SATURATION.comment=设置游戏的饱和度。性能影响: §6无影响
+
+option.VIBRANCE=自然饱和度
+option.VIBRANCE.comment=对低饱和度颜色的选择性饱和度提升。性能影响: §6无影响
+
+profile.BLACKWHITE=§0黑 §7& §f白
+profile.HORROR=§c恐怖
+profile.LESSDOPA=§e少 多巴胺
+profile.SUBTLE=§a细微
+profile.BALANCED=§b平衡
+profile.EXAGGERATED=§d夸张
+profile.MAXDOPA=§5极 多巴胺

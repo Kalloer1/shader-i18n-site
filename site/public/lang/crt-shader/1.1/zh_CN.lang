@@ -1,0 +1,17 @@
+option.PIXEL_AREA=像素大小
+option.BLACK_OUT_OF_BOUNDS=黑色边框
+option.DISTORTION_STRENGTH=扭曲强度
+option.ZOOM_FACTOR=缩放因子
+option.MAX_CHROMATIC_ABERRATION=色差
+option.MAX_COLOR_BLEED=颜色溢出
+option.RED_STRENGTH=红色像素强度
+option.GREEN_STRENGTH=绿色像素强度
+option.BLUE_STRENGTH=蓝色像素强度
+option.POSTERIZATION=分级化
+option.POSTERIZATION_STEPS=分级化步数/带宽
+option.BORDER_THICKNESS=边框厚度
+option.SCAN_LINES=扫描线
+option.SCAN_LINE_HEIGHT=扫描线厚度
+option.SCAN_LINE_SPEED=扫描线速度
+option.SCAN_LINE_INTENSITY=扫描线强度
+screen.SCAN_LINES=扫描线

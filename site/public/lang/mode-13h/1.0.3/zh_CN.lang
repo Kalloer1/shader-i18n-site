@@ -1,0 +1,104 @@
+# DOSGL-13h — Iris/Oculus language file
+
+# ===== Main Screen =====
+
+option.DOS_SCALE=像素缩放
+option.DOS_SCALE.comment=最终图像的下采样因子。分辨率为1280x800时，若缩放为4，输出为320x200（模式13h）。
+
+option.AMBIENT_FLOOR=环境光地面
+option.AMBIENT_FLOOR.comment=最低光照贴图亮度。防止在未受光照的区域出现纯黑。
+
+option.DOS_LIGHT_STEPS=光照层数
+option.DOS_LIGHT_STEPS.comment=离散光照等级的数量。模拟DOS时代引擎中分带色彩映射的光照效果。0禁用量化。
+
+# ===== Color Reduction =====
+
+screen.COLOR=颜色压缩
+screen.COLOR.comment=调色板模式和色彩分级旁路。
+
+option.DOS_PALETTE_256=调色板模式
+option.DOS_PALETTE_256.comment=在最终渲染步骤中选择应用的颜色缩减方法。
+value.DOS_PALETTE_256.0=216 色调色板（6x6x6）
+value.DOS_PALETTE_256.1=256 色调色板（RGB332）
+
+option.DOS_PALETTE_BYPASS=绕过
+option.DOS_PALETTE_BYPASS.comment=完全禁用色彩分级和调色板量化。用于调试或截图。
+value.DOS_PALETTE_BYPASS.0=关闭
+value.DOS_PALETTE_BYPASS.1=开启
+
+# ===== Affine Mapping =====
+
+screen.AFFINE=仿射映射
+screen.AFFINE.comment=仿射（非透视正确）纹理扭曲，类似 PS1 和 DOS 软件渲染器中看到的效果。
+
+option.DOS_AFFINE_ENABLE=仿射映射
+option.DOS_AFFINE_ENABLE.comment=在世界几何上启用仿射纹理失真。
+value.DOS_AFFINE_ENABLE.0=关闭
+value.DOS_AFFINE_ENABLE.1=开启
+
+option.DOS_AFFINE_NEAR=近距离
+option.DOS_AFFINE_NEAR.comment=距离该值更近的表面会混合到透视校正映射。
+
+option.DOS_AFFINE_RANGE=淡化范围
+option.DOS_AFFINE_RANGE.comment=从正确透视淡化到完全仿射的混合发生的距离。
+
+# ===== Fog Tuning =====
+
+screen.FOG=雾调校
+screen.FOG.comment=调整原版雾的距离和密度，以营造更浓稠、更有氛围的环境。
+
+option.FOG_TUNE_ENABLE=雾调校
+option.FOG_TUNE_ENABLE.comment=启用下方雾参数覆盖。关闭时保留原版雾行为。
+value.FOG_TUNE_ENABLE.0=关闭
+value.FOG_TUNE_ENABLE.1=开启
+
+option.FOG_START_SCALE=起始比例
+option.FOG_START_SCALE.comment=雾开始距离的乘数。
+
+option.FOG_START_ADD=雾起始偏移
+option.FOG_START_ADD.comment=添加到雾起始距离的值，单位为区块。
+
+option.FOG_END_SCALE=雾末端比例
+option.FOG_END_SCALE.comment=雾末端距离的乘数。
+
+option.FOG_END_ADD=结束距离偏移
+option.FOG_END_ADD.comment=添加到雾结束距离的值，单位为区块。
+
+option.FOG_DENSITY_SCALE=密度比例
+option.FOG_DENSITY_SCALE.comment=EXP/EXP2 雾密度的乘数。
+
+option.FOG_MIN_RANGE=最小范围
+option.FOG_MIN_RANGE.comment=线性雾范围的安全下限，当起始值和结束值彼此过近时的安全底线。
+
+# ===== Hands =====
+
+screen.HANDS=手部与持有物件
+screen.HANDS.comment=关于第一人称视角下手部和持有的物件渲染调整，用于实现更平坦的 DOS 精灵风格。
+
+option.HAND_FLATTEN=平面化手持精灵
+option.HAND_FLATTEN.comment=移除第一人称手部及持有物品的光照阴影，使其呈现类似绘画风格的二维精灵。
+value.HAND_FLATTEN.0=关闭
+value.HAND_FLATTEN.1=开启
+
+option.HAND_DITHER=视角模型抖动
+option.HAND_DITHER.comment=在第一人称手部和持有的物品应用细微有序抖动，以补偿最终调色板处理前的颜色深度。
+value.HAND_DITHER.0=关闭
+value.HAND_DITHER.1=开启
+
+option.HAND_DITHER_STRENGTH=抖动强度
+option.HAND_DITHER_STRENGTH.comment=第一人称手部及持有物品上有序抖动图案的强度。
+
+# ===== Add-ons =====
+
+screen.ADDONS=附加功能
+screen.ADDONS.comment=需要配套模组或资源包的可选功能。
+
+option.FLATTER_SIGNS=平整文字牌
+option.FLATTER_SIGNS.comment=将立摆和悬挂式文字牌渲染为平面精灵。§e需要Flatter Signs添加组！
+value.FLATTER_SIGNS.0=关闭
+value.FLATTER_SIGNS.1=开启
+
+option.BILLY_BOARDING=Billy Boarding
+option.BILLY_BOARDING.comment=装载蛋糕、花盆、蜡烛、海洋小苗果、酿造台、砖块、铁铆、铃铛、仙人掌、作物、火焰和灵魂火焰。§e需要Billy Boarding添加组件！
+value.BILLY_BOARDING.0=关闭
+value.BILLY_BOARDING.1=开启

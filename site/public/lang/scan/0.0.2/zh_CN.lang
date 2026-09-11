@@ -1,0 +1,8 @@
+option.GRAIN_SIZE=颗粒大小
+option.SCAN_SPEED=扫描速度
+option.NOISE_MASK=噪波遮罩
+
+option.PATREON=§6Patreon
+option.PATREON.comment=§fpatreon.com/lolip_p
+value.PATREON.0=§fpatreon.com/lolip_p
+value.PATREON.1=§fpatreon.com/lolip_p

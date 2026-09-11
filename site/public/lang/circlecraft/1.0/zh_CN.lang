@@ -1,0 +1,13 @@
+option.CIRCLE_SIZE=圆圈大小
+option.CIRCLE_SIZE.comment=每个圆圈的直径（以像素为单位）。较大的圆圈更块状且运行更快。
+option.CIRCLE_FILL=圆圈填充
+option.CIRCLE_FILL.comment=每个网格单元格中圆圈填充的程度。1.0 使圆圈相互接触。
+option.GAP_BRIGHTNESS=间隙亮度
+option.GAP_BRIGHTNESS.comment=圆圈之间间隙的亮度。0 = 纯黑色网格。
+option.HALFTONE=半色调模式
+option.HALFTONE.comment=点大小跟随亮度以呈现漫画风格。关闭 = 实心彩色圆圈。
+
+profile.PERFORMANCE=性能
+profile.BALANCED=均衡
+profile.DETAILED=精细
+profile.HALFTONE=半色调

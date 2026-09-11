@@ -1,0 +1,603 @@
+profile.ONE=§f原版 +§b
+profile.CONTENT_ONE=§f主播 +§b
+profile.TWO=§f原版 +§b+
+profile.CONTENT_TWO=§f主播 +§b+
+profile.THREE=§f原版 +§b++
+profile.CONTENT_THREE=§f主播 +§b++
+
+screen.POST_PROCESSING=后期处理
+    screen.POST_PROCESSING.comment=图像渲染后应用的所有效果
+
+    screen.AA_BUFFET=抗锯齿选项集
+
+        option.TAA_MODE=自适应时间抗锯齿
+            option.TAA_MODE.comment=减少所有锐利边缘上的锯齿像素。启用 ➤ 对性能影响较小
+            value.TAA_MODE.0=§c关
+            value.TAA_MODE.1=快速
+            value.TAA_MODE.2=花哨
+
+        option.TEXTURE_FILTERING=纹理过滤
+            option.TEXTURE_FILTERING.comment=类似于抗锯齿，但仅减少纹理上的锯齿而非几何形状。感谢YouTube用户@t3ssel8r提供的概念和实现。启用 ➤ 对性能影响较小
+            value.TEXTURE_FILTERING.true=开
+            value.TEXTURE_FILTERING.false=关
+
+    option.CONTRAST=对比度
+        option.CONTRAST.comment=较高的对比度会增强颜色和白色/黑色电平，而较低的对比度会降低它们。过高的对比度可能导致颜色裁剪，而过低则会使一切看起来灰暗。无性能影响
+
+    option.LUMINANCE_CONTRAST=对比度
+        option.LUMINANCE_CONTRAST.comment=较高的对比度会增强白色和黑色电平，而较低的对比度会降低它们。过高的对比度可能导致颜色裁剪，而过低则会使一切看起来灰暗。无性能影响
+
+    option.EXPOSURE=曝光
+        option.EXPOSURE.comment=在保留暗部区域的同时提高图像亮度。无性能影响
+
+    option.POST_SATURATION=鲜艳度
+        option.POST_SATURATION.comment=也称为饱和度。增强您世界中颜色的强度
+
+    option.DITHERING_MODE=抖动
+        option.DITHERING_MODE.comment=略微随机化像素颜色，以消除因显示器无法精确显示颜色而形成的难看色带（例如天空中可见的色带）。当渲染质量大于1倍时无效。开启 ➤ 对性能影响较小
+        value.DITHERING_MODE.0=§c关
+        value.DITHERING_MODE.1=开
+
+screen.LIGHTING=光照
+
+    option.VANILLA_LIGHTING=光照模式
+        value.VANILLA_LIGHTING.1=原版
+        value.VANILLA_LIGHTING.0=optifine
+        value.VANILLA_LIGHTING.2=着色器
+
+    option.CUTOUT_ALIGN_STRENGTH=草地透明度
+        option.CUTOUT_ALIGN_STRENGTH.comment=使草地着色更柔和，更接近原版。无性能影响
+
+    option.BORDER_FOG=边界雾
+        option.BORDER_FOG.comment=切换隐藏区块边界的雾。无性能影响
+        value.BORDER_FOG.true=开
+        value.BORDER_FOG.false=关
+
+    option.ATMOSPHERIC_FOG_USER=大气雾
+        value.ATMOSPHERIC_FOG_USER.true=开
+        value.ATMOSPHERIC_FOG_USER.false=关
+
+    option.ATMOSPHERIC_FOG_DENSITY=大气雾密度
+
+    option.SECONDARY_FOG=次级雾
+        option.SECONDARY_FOG.comment=添加一层可自定义的次级雾，类似于“简单雾控制”模组
+        option.SECONDARY_FOG.true=开
+        option.SECONDARY_FOG.false=关
+
+    option.SECONDARY_FOG_START=次级雾起始距离
+        value.SECONDARY_FOG_START.0.0=0
+        value.SECONDARY_FOG_START.0.1=10
+        value.SECONDARY_FOG_START.0.2=20
+        value.SECONDARY_FOG_START.0.3=30
+        value.SECONDARY_FOG_START.0.4=40
+        value.SECONDARY_FOG_START.0.5=50
+        value.SECONDARY_FOG_START.0.6=60
+        value.SECONDARY_FOG_START.0.7=70
+        value.SECONDARY_FOG_START.0.8=80
+        value.SECONDARY_FOG_START.0.9=90
+        value.SECONDARY_FOG_START.1.0=100
+        suffix.SECONDARY_FOG_START=%
+
+    option.SECONDARY_FOG_END=次级雾结束距离
+        value.SECONDARY_FOG_END.0.9=90
+        value.SECONDARY_FOG_END.1.0=100
+        value.SECONDARY_FOG_END.1.1=110
+        value.SECONDARY_FOG_END.1.2=120
+        value.SECONDARY_FOG_END.1.3=130
+        value.SECONDARY_FOG_END.1.4=140
+        value.SECONDARY_FOG_END.1.5=150
+        value.SECONDARY_FOG_END.1.6=160
+        value.SECONDARY_FOG_END.1.7=170
+        value.SECONDARY_FOG_END.1.8=180
+        value.SECONDARY_FOG_END.1.9=190
+        value.SECONDARY_FOG_END.2.0=200
+        value.SECONDARY_FOG_END.2.1=210
+        value.SECONDARY_FOG_END.2.2=220
+        value.SECONDARY_FOG_END.2.3=230
+        value.SECONDARY_FOG_END.2.4=240
+        value.SECONDARY_FOG_END.2.5=250
+        value.SECONDARY_FOG_END.2.6=260
+        value.SECONDARY_FOG_END.2.7=270
+        value.SECONDARY_FOG_END.2.8=280
+        value.SECONDARY_FOG_END.2.9=290
+        value.SECONDARY_FOG_END.3.0=300
+        value.SECONDARY_FOG_END.3.5=350
+        value.SECONDARY_FOG_END.4.0=400
+        value.SECONDARY_FOG_END.4.5=450
+        value.SECONDARY_FOG_END.5.0=500
+
+        suffix.SECONDARY_FOG_END=%
+
+    option.FAST_GI=伪全局光照
+        option.FAST_GI.comment=通过将视图图像的模糊版本应用为“光照”来模拟全局光照（光线追踪）
+        value.FAST_GI.true=开
+        value.FAST_GI.false=关
+
+    option.PANORAMIC_WORLD=全景世界
+        option.PANORAMIC_WORLD.comment=用于曲面屏幕。轻微弯曲您的世界，以避免在更高视场角下屏幕边缘看到的拉伸。并非真正的全景图
+        value.PANORAMIC_WORLD.0=关
+        value.PANORAMIC_WORLD.1=混合模式
+        value.PANORAMIC_WORLD.2=全景模式
+
+    screen.SSAO_BETA=环境光遮蔽
+    
+    screen.SSAO=环境光遮蔽（§c实验性）§r
+
+        option.AO_MODE=模式
+            option.AO_MODE.comment=屏幕空间 ➤ 对性能影响中等
+            value.AO_MODE.0=关
+            value.AO_MODE.1=原版
+            value.AO_MODE.2=屏幕空间§c（实验性）
+
+        option.AO_INTENSITY=强度
+            option.AO_INTENSITY.comment=环境光遮蔽的明显程度（即它§r使缝隙变暗的程度）。无性能影响
+
+    screen.LIGHT_STRENGTH=光照亮度
+        screen.LIGHT_STRENGTH.comment=控制单个光源的亮度
+
+        option.MIN_LIGHT_MULT=最小光照
+            option.MIN_LIGHT_MULT.comment=设置必须维持的最低光照等级。例如，最低光照强度为0将导致洞穴完全漆黑
+
+        option.AMBIENT_LIGHT_MULT=环境光
+            option.AMBIENT_LIGHT_MULT.comment=设置环境光照等级。这类似于最低光照，但影响游戏中的所有区域，而不仅仅是最暗的区域
+
+        option.DYNAMIC_EXPOSURE_LIGHTING=高动态范围曝§c光（实验性）
+            option.DYNAMIC_EXPOSURE_LIGHTING.comment=§c实验性功能！此功能为实验性内容，效果可能不尽如人意。将光照等级设置为真实世界数值，对性能无影响。
+            value.DYNAMIC_EXPOSURE_LIGHTING.true=开
+            value.DYNAMIC_EXPOSURE_LIGHTING.false=关
+
+        option.SUN_LIGHT_MULT_USER=阳光
+            option.SUN_LIGHT_MULT_USER.comment=白天直射阳光的强度。
+
+        option.SKY_LIGHT_MULT_USER=天空光
+            option.SKY_LIGHT_MULT_USER.comment=白天间接天空光的强度。
+
+        option.SKY_LIGHT_MULT_OVERCAST_USER=天空光（多云）
+            option.SKY_LIGHT_MULT_OVERCAST_USER.comment=极度多云/雨天中间接天空光的强度。
+
+        option.NIGHT_SKY_LIGHT_MULT_USER=天空光（夜间）
+            option.NIGHT_SKY_LIGHT_MULT_USER.comment=夜间间接天空光的强度。
+
+        option.MOON_LIGHT_MULT_USER=月光
+            option.MOON_LIGHT_MULT_USER.comment=夜间直射月光的强度。
+
+        option.BLOCK_LIGHT_MULT_USER=方块光照
+            option.BLOCK_LIGHT_MULT_USER.comment=方块光源（火把、海晶灯、萤石等）的强度。
+
+screen.SHADOWS=阴影
+    screen.SHADOWS.comment=控制实时阴影贴图的阴影。
+
+    option.SHADOWS_ENABLED_USER=已启用
+        value.SHADOWS_ENABLED_USER.true=开
+        value.SHADOWS_ENABLED_USER.false=关
+
+    option.PIXELATED_SHADOWS_USER=像素化阴影覆盖
+        option.PIXELATED_SHADOWS_USER.comment=使阴影像素化以与方块上的像素匹配。灵感来源于Complementary的像素化阴影，但实现方式为独立开发。启用后➤轻微性能下降。
+        value.PIXELATED_SHADOWS_USER.0=关
+        value.PIXELATED_SHADOWS_USER.8=8×8
+        value.PIXELATED_SHADOWS_USER.16=16×16
+        value.PIXELATED_SHADOWS_USER.32=32×32
+        value.PIXELATED_SHADOWS_USER.64=64×64
+        value.PIXELATED_SHADOWS_USER.128=128×128
+        value.PIXELATED_SHADOWS_USER.256=256×256
+        value.PIXELATED_SHADOWS_USER.512=512×512
+        value.PIXELATED_SHADOWS_USER.1024=1024×1024
+
+    option.shadowDistance=阴影距离
+        option.shadowDistance.comment=阴影可显示的最远距离（以方块为单位）。由于提高距离意味着相同的阴影图像会覆盖更多方块，距离增加时阴影细节会降低。提高距离➤对性能无影响。
+
+    option.entityShadowDistanceMul=实体阴影距离
+        option.entityShadowDistanceMul.comment=实体停止投射阴影前的最远距离。与阴影距离不同，此设置不会改变阴影质量。提高距离➤轻微性能下降（取决于世界中的实体数量）。
+
+    option.shadowMapResolution=阴影分辨率
+        option.shadowMapResolution.comment=控制阴影贴图（阴影图像）的分辨率。更高分辨率的阴影贴图会增加阴影细节并使其更清晰。但更高分辨率需要更长计算时间，会降低性能。提高分辨率➤性能大幅下降。
+
+    option.SHADOW_SUPERSAMPLE=阴影时域超分辨率
+        option.SHADOW_SUPERSAMPLE.comment=阴影时域超分辨率通过多帧更新阴影来提升性能。此设置提高时，部分阴影可能不会立即更新。阴影更新速度取决于帧率，因此建议在4×设置下保持60+ FPS。提高设置➤性能大幅提升。
+        value.SHADOW_SUPERSAMPLE.0=关
+        value.SHADOW_SUPERSAMPLE.1=2×
+        value.SHADOW_SUPERSAMPLE.2=4×
+
+    option.SHADOW_DISTORTION=阴影扭曲
+        option.SHADOW_DISTORTION.comment=由于远处物体显得更小，阴影贴图（阴影图像）会进行扭曲，使靠近玩家的区域拥有更高分辨率。较低扭曲度会使分辨率显得降低，而较高分辨率可能产生异常效果。提高设置➤对性能无影响。
+
+    option.SHADOW_FILTERING=滤镜
+        option.SHADOW_FILTERING.comment=通过模糊处理使阴影更美观。PCF➤中等至大幅性能下降（取决于采样数量）。双线性滤波➤轻微性能下降。
+        value.SHADOW_FILTERING.0=关
+        value.SHADOW_FILTERING.1=百分比接近过滤
+        value.SHADOW_FILTERING.2=VP精简§c版（实验性功能）
+        value.SHADOW_FILTERING.3=VP§c（实验性功能）
+        value.SHADOW_FILTERING.4=双线性
+        value.SHADOW_FILTERING.5=像素化
+
+    option.SHADOW_FILTERING_RADIUS=滤波半径
+        option.SHADOW_FILTERING_RADIUS.comment=阴影模糊程度（若启用滤波）。提高数值➤对性能无影响。
+
+    option.SHADOW_FILTERING_SAMPLES=采样数量
+        option.SHADOW_FILTERING_SAMPLES.comment=更多采样可使阴影模糊更柔和（若启用滤波）。提高采样数量➤性能大幅下降。
+        
+    option.GRASS_CASTS_SHADOWS=草地阴影
+        option.GRASS_CASTS_SHADOWS.comment=控制草丛是否投射阴影。启用后➤对性能无影响。
+        value.GRASS_CASTS_SHADOWS.true=开
+        value.GRASS_CASTS_SHADOWS.false=关
+
+    option.SHADOW_AFFECTED_BY_LIGHTMAP=原版光照影响阴影
+        option.SHADOW_AFFECTED_BY_LIGHTMAP.comment=为避免“阴影泄漏”并模拟水或染色玻璃等物体的吸光效果，基于原版天空光等级增强阴影。对性能无影响。
+        value.SHADOW_AFFECTED_BY_LIGHTMAP.true=开
+        value.SHADOW_AFFECTED_BY_LIGHTMAP.false=关
+
+screen.COLORS=颜色
+
+    option.BOSS_BATTLE_COLORS=Boss战斗色彩
+        option.BOSS_BATTLE_COLORS.comment=为末影龙、凋灵和突袭战斗应用自定义色彩分级。启用后➤对性能无影响。此效果仅适用于Optifine。§c不兼容Iris！
+        value.BOSS_BATTLE_COLORS.true=开
+        value.BOSS_BATTLE_COLORS.false=关
+
+    option.SUN_TEMP=阳光色温
+        option.SUN_TEMP.comment=阳光色温（开尔文）。默认值为物理最精确值。色温越低颜色越红，色温越高则偏白。
+        suffix.SUN_TEMP=k
+
+    option.TORCH_TEMP=方块光照温度
+        option.TORCH_TEMP.comment=方块光源色温（开尔文）。默认值为物理最精确值。色温越低颜色越红，色温越高则偏白。
+        suffix.TORCH_TEMP=k
+
+    option.SKY_SATURATION=天空鲜艳度
+
+    option.SKY_COLOR_BLEND=天空雾效混合
+        option.SKY_COLOR_BLEND.comment=控制地平线天空相对于直视天空时的去饱和程度。
+
+    option.SKY_BRIGHTNESS_USER=增亮天空
+        option.SKY_BRIGHTNESS_USER.comment=控制天空与其他元素相比的亮度。不影响方块光照（前往“光照亮度”屏幕进行控制）。
+
+    option.STAR_WEIGHTS=提亮星空
+        option.STAR_WEIGHTS.comment=控制夜空中的星星与其他元素相比的亮度。
+
+    option.POST_TEMP=场景色温
+        option.POST_TEMP.comment=也称为白平衡。数值越高画面越冷，数值越低画面越暖。使用黑体辐射估算，以开尔文为单位测量。
+        suffix.POST_TEMP=k
+
+    option.VANILLA_COLORS=原版色彩
+        option.VANILLA_COLORS.comment=§c仅在光照§o模式设为§r§c自定§o义§r时生效。影响方块光源（如海晶灯）的颜色。
+        value.VANILLA_COLORS.0.0=鲜艳模式
+        value.VANILLA_COLORS.1.0=近似原版
+
+    screen.REALISTIC_COLORS_PREFS=写实色彩
+        screen.REALISTIC_COLORS_PREFS.comment=Minecraft 的默认图形并不总是最写实的。此选项子集允许将 Minecraft 材质调整至物理准确的水平。若不喜欢其效果或正在使用写实资源包，请随时关闭。
+
+        option.REALISTIC_COLORS=已启用
+            option.REALISTIC_COLORS.comment=若不喜欢其效果或正在使用写实资源包，请随时关闭。
+            value.REALISTIC_COLORS.true=开
+            value.REALISTIC_COLORS.false=关
+
+        option.COLORS_SATURATION=饱和度
+
+        option.COLORS_CONTRAST=对比度
+
+        option.COLORS_CONTRAST_BRIGHT_BIAS=对比度亮度偏移
+        
+        screen.COLORS_SATURATION_WEIGHTS_PREFS=颜色控制
+            option.COLORS_SATURATION_WEIGHTS_RED=绯红
+
+            option.COLORS_SATURATION_WEIGHTS_GREEN=繁茂
+
+            option.COLORS_SATURATION_WEIGHTS_BLUE=水生
+    
+    screen.TONEMAPPING=颜色管理
+        option.USE_LUT=使用查找表（LUT）
+            option.USE_LUT.comment=若要使用自定义调色，请解压本着色器文件夹，将.cube 文件放入[解压文件夹]/shaders/luts 目录。运行同文件夹内的 Python 脚本即可将您的文件设为默认查找表。
+            value.USE_LUT.true=开
+            value.USE_LUT.false=关
+
+        option.USER_GAMMA_CORRECT=伽马校正
+            option.USER_GAMMA_CORRECT.comment=若不了解此项，请勿禁用。启用“使§c用查找表”后可能失效！
+            value.USER_GAMMA_CORRECT.true=开
+            value.USER_GAMMA_CORRECT.false=关
+
+        screen.ACES=色彩编码的电影级色调映射
+            screen.ACES.comment=学院色彩编码系统。
+            
+            option.USER_OUTPUT_COLORSPACE=输出色彩空间
+                option.USER_OUTPUT_COLORSPACE.comment=变换屏幕所使用的色彩空间。与 Iris 的色彩空间设置独立。选择“线性 AP1”不会变换图像，因为这是着色器的内部色彩空间。不确定时请使用§b sRGB。启§c用“使用查找表”后可能失效！
+                value.USER_OUTPUT_COLORSPACE.0=sRGB（默认）
+                value.USER_OUTPUT_COLORSPACE.1=线性 sRGB
+                value.USER_OUTPUT_COLORSPACE.2=Gamma 2.2 sRGB
+                value.USER_OUTPUT_COLORSPACE.3=线性 AP1（ACEScg）
+                value.USER_OUTPUT_COLORSPACE.4=Gamma 2.2 AP1（ACEScg）
+                value.USER_OUTPUT_COLORSPACE.5=线性 AP0（ACES2065-1）
+                value.USER_OUTPUT_COLORSPACE.6=Gamma 2.2 AP0（ACES2065-1）
+                value.USER_OUTPUT_COLORSPACE.7=线性 XYZ
+
+            option.USER_LMT_MODE=色调映射
+                option.USER_LMT_MODE.comment=将游戏的“写实”光照值压缩为显示器可呈现的范围（并以美观的方式实现）。启用“§c使用查找表”后可能失效！
+                value.USER_LMT_MODE.0=§c无（不推荐）
+                value.USER_LMT_MODE.1=§6reinhard
+                value.USER_LMT_MODE.2=§6混合对数伽马（HLG）
+                value.USER_LMT_MODE.3=Hable（神秘海域2）
+                value.USER_LMT_MODE.4=Hill ACES（虚幻引擎）
+                value.USER_LMT_MODE.5=像素完美（改进型 Hill ACES）
+
+screen.RESOURCEPACK=资源包设置
+    screen.RESOURCEPACK.comment=启用资源包时请务必查看这些设置。
+    
+    option.TEX_RENDER=像素完美
+        option.TEX_RENDER.comment=通过为每个 Minecraft 材质像素使用单一颜色实现真实的像素完美观感。关闭 ➤ 性能损耗可能变化。
+        value.TEX_RENDER.true=开
+        value.TEX_RENDER.false=关
+    
+    option.TEX_RES=资源包分辨率
+        suffix.TEX_RES=×
+
+screen.MISC=附加选项
+
+    screen.STREAMER_SETTINGS=主播设置
+
+        option.STREAMER_MODE=暗度
+            option.STREAMER_MODE.comment=主播模式：适合内容创作者——兼容压缩但画质非最佳。普通模式：适合普通玩家——终极体验。午夜模式：适合高端显示器用户——黑暗从未如此深邃。硬核黑暗：感受虚空。
+            value.STREAMER_MODE.3=硬核黑暗
+            value.STREAMER_MODE.2=午夜
+            value.STREAMER_MODE.1=普通
+            value.STREAMER_MODE.0=主播模式
+            value.STREAMER_MODE.-1=全亮模式
+
+        option.BRIGHT_NETHER=明亮下界
+            value.BRIGHT_NETHER.true=开
+            value.BRIGHT_NETHER.false=关
+
+        option.INVISIBILITY_DISTORTION=隐身时扭曲屏幕
+            option.INVISIBILITY_DISTORTION.comment=饮用隐身药水时添加色彩扭曲效果。此效果为 Iris 独有。与 Opti§cFine 不兼容！
+            value.INVISIBILITY_DISTORTION.true=开
+            value.INVISIBILITY_DISTORTION.false=关
+
+        option.LIGHTNING_FLASHES=闪电闪光强度
+            option.LIGHTNING_FLASHES.comment=闪电击中时照亮环境。若原版辅助功能设置中开启“隐藏闪电闪光”则会禁用。可§c能引发癫痫！
+            value.LIGHTNING_FLASHES.0.0=§c关
+
+    screen.RIMLIGHT=物体轮廓
+
+        option.RIMLIGHT_ENABLED=启用轮廓
+            value.RIMLIGHT_ENABLED.true=开
+            value.RIMLIGHT_ENABLED.false=关
+
+        option.RIMLIGHT_MULT=轮廓亮度
+        
+        option.RIMLIGHT_PIXEL_RADIUS=轮廓宽度
+            # TODO: Test this on Optifine
+            suffix.RIMLIGHT_PIXEL_RADIUS=像素化
+
+        option.RIMLIGHT_DIST=轮廓分离度
+            option.RIMLIGHT_DIST.comment=调整两个物体之间需间隔多远才会显示轮廓。
+        
+        option.RIMLIGHT_DYNAMIC_RADIUS=动态轮廓大小
+            option.RIMLIGHT_DYNAMIC_RADIUS.comment=启用后，靠近物体时会增大其轮廓尺寸。
+            value.RIMLIGHT_DYNAMIC_RADIUS.true=开
+            value.RIMLIGHT_DYNAMIC_RADIUS.false=关
+
+        option.RIMLIGHT_OUTLINE=全部描边（§c实验性）§r
+            option.RIMLIGHT_OUTLINE.comment=为物体的边角和边缘都添加轮廓，类似 Minecraft 官方宣传材料中的描边效果。
+            value.RIMLIGHT_OUTLINE.true=开
+            value.RIMLIGHT_OUTLINE.false=关
+        
+        
+    option.NOISY_LAVA=岩浆变化
+        option.NOISY_LAVA.comment=使熔岩的部分区域变暗，其他区域变亮。有助于打破熔岩纹理的单调性，特别是在下界等大型熔岩池中效果显著。
+        value.NOISY_LAVA.0=§c无
+        value.NOISY_LAVA.1=微妙
+        value.NOISY_LAVA.2=强烈
+
+    option.SMOOTH_LAVA=平滑熔岩变化
+        option.SMOOTH_LAVA.comment=作用类似平滑光照，使熔岩的变化过渡更柔和。启用或禁用此项不影响性能——此选项仅为偏好更锐利视觉风格的用户准备。
+        value.SMOOTH_LAVA.true=开
+        value.SMOOTH_LAVA.false=关
+
+    option.END_WARPING=末地扭曲强度
+        value.END_WARPING.0.0=关
+
+    option.OUTLINE_THROUGH_BLOCKS=显示完整选区轮廓
+        option.OUTLINE_THROUGH_BLOCKS.comment=穿透方块显示选区轮廓。
+        value.OUTLINE_THROUGH_BLOCKS.true=开
+        value.OUTLINE_THROUGH_BLOCKS.false=关
+
+    option.OUTLINE_COLOR=选区轮廓颜色
+        value.OUTLINE_COLOR.-1=§k§r|反相|§k§r
+        value.OUTLINE_COLOR.0=默认
+        value.OUTLINE_COLOR.1=§7白色
+        value.OUTLINE_COLOR.2=§4红
+        value.OUTLINE_COLOR.3=§a绿
+        value.OUTLINE_COLOR.4=§9蓝
+        value.OUTLINE_COLOR.5=维度主题化
+
+    option.WATER_STYLE=水样式
+        value.WATER_STYLE.0=原版
+        value.WATER_STYLE.1=晴朗
+
+    screen.FADEOUT=淡出近距离物体
+        screen.FADEOUT.comment=淡出距离摄像机过近的实体与粒子。
+    
+        option.CLOSE_FADE_OUT=已启用
+            option.CLOSE_FADE_OUT.comment=淡出距离摄像机过近的实体与粒子。
+            value.CLOSE_FADE_OUT.true=开
+            value.CLOSE_FADE_OUT.false=关
+
+        option.CLOSE_FADE_OUT_FULL=完全淡出
+            option.CLOSE_FADE_OUT_FULL.comment=不仅部分淡出物体，而是使其完全不可见。
+            value.CLOSE_FADE_OUT_FULL.true=开
+            value.CLOSE_FADE_OUT_FULL.false=关
+
+        option.FADE_OUT_RADIUS=淡出半径
+            option.FADE_OUT_RADIUS.comment=物体与镜头距离超过多远时开始淡出。
+            suffix.FADE_OUT_RADIUS=×
+
+    screen.WEATHER=天气
+
+        screen.WIND=风
+
+            option.WAVING_ENABLED=启用风力
+                value.WAVING_ENABLED.true=开
+                value.WAVING_ENABLED.false=关
+            
+            option.WAVING_WATER_ENABLED=水波荡漾
+                value.WAVING_WATER_ENABLED.true=开
+                value.WAVING_WATER_ENABLED.false=关
+            
+            option.WAVING_RAIN_ENABLED=波浪状降雨
+                value.WAVING_RAIN_ENABLED.true=开
+                value.WAVING_RAIN_ENABLED.false=关
+
+            option.WAVING_FULL_BLOCKS_ENABLED=波浪状完整方块
+                option.WAVING_FULL_BLOCKS_ENABLED.comment=波浪状完整方块（如树叶）与本光影的风力系统兼容性欠佳。若仍需启用，请在此设置。
+                value.WAVING_FULL_BLOCKS_ENABLED.true=开
+                value.WAVING_FULL_BLOCKS_ENABLED.false=关
+
+            option.WIND_STRENGTH_CONSTANT_USER=风力强度
+
+            option.WAVE_STRENGTH_CONSTANT_USER=波浪强度
+                option.WAVE_STRENGTH_CONSTANT_USER.comment=调节风力造成的波浪强度。
+
+            option.LEAVE_WAVING_WAKE=运动影响风力
+                option.LEAVE_WAVING_WAKE.comment=启用后，玩家奔跑时身后会产生轻微气流。
+
+        screen.RAIN=雨
+
+            option.NOISY_RAIN=离散降雨
+                option.NOISY_RAIN.comment=现实中降雨并非完全均匀。此选项尝试通过调整降雨密度分布来模拟真实效果。
+                value.NOISY_RAIN.true=开
+                value.NOISY_RAIN.false=关
+
+            option.RAIN_THICKNESS=雨水密度
+                option.RAIN_THICKNESS.comment=较大数值产生更多细雨滴，较小数值增大雨滴尺寸并减少数量。
+
+            option.RAIN_AMOUNT_USER=离散降雨量
+                option.RAIN_AMOUNT_USER.comment=调节离散降雨模式开启时的雨区大小。若关闭离散降雨，此设置作用类似于降雨不透明度。
+                
+            option.RAIN_TRANSPARENCY=雨水不透明度
+                option.RAIN_TRANSPARENCY.comment=调节雨水的通透度。数值越低，雨越透明。
+                value.RAIN_TRANSPARENCY.0.0=无降雨
+
+
+        screen.FOG=雾
+
+            option.FOG_ENABLED_USER=雾天
+                option.FOG_ENABLED_USER.comment=新增自定义天气效果。雾天为纯视觉效果，若不喜欢视野受限可关闭。
+                value.FOG_ENABLED_USER.true=开
+                value.FOG_ENABLED_USER.false=关
+
+            option.RAIN_FOG=雨雾
+                option.RAIN_FOG.comment=模拟远处雨滴的吸收效应，使远景地形略显朦胧。
+                value.RAIN_FOG.true=开
+                value.RAIN_FOG.false=关
+
+
+        screen.DIMENSION_WEATHER=分维度控制
+            screen.DIMENSION_WEATHER.comment=调整各原版维度的天气设置。目前仅包含下界天气。
+
+            option.OVERWORLD_FOGGY_WEATHER=主世界雾天
+                option.OVERWORLD_FOGGY_WEATHER.comment=仅在启用雾天时生效。
+                value.OVERWORLD_FOGGY_WEATHER.true=开
+                value.OVERWORLD_FOGGY_WEATHER.false=关
+                
+            option.NETHER_FOGGY_WEATHER=下界雾天
+                option.NETHER_FOGGY_WEATHER.comment=仅在启用雾天时生效。
+                value.NETHER_FOGGY_WEATHER.true=开
+                value.NETHER_FOGGY_WEATHER.false=关
+
+            option.END_FOGGY_WEATHER=末地雾天
+                option.NETHER_FOGGY_WEATHER.comment=仅在启用雾天时生效。
+                value.END_FOGGY_WEATHER.true=开
+                value.END_FOGGY_WEATHER.false=关
+
+
+
+screen.ADVANCED=高级
+
+    option.SHADOW_TRANSITION_MIXING=日落阴影混合
+        option.SHADOW_TRANSITION_MIXING.comment=为提升性能，阴影仅针对太阳或月§o§r亮计算，不会同时计算两者。为防止阴影切换时出现突兀的"跳变"效果，日落期间会短暂切换至无阴影光照。此设置控制此时地形是否处于阴影中。
+        value.SHADOW_TRANSITION_MIXING.1=无阴影
+        value.SHADOW_TRANSITION_MIXING.0=有阴影
+
+    option.END_SKY_RESOLUTION=末地天空分辨率
+        option.END_SKY_RESOLUTION.comment=由于末地天空使用自定义渲染器以避免重复纹理效果，我们可控制其分辨率。
+
+    option.HDR_TEX_LIGHT_BRIGHTNESS=光源转为HDR
+        option.HDR_TEX_LIGHT_BRIGHTNESS.comment=使用特殊算法增强发光方块的对比度与亮度。尽管启用后通常效果更佳，但部分纹理可能导致如蛙明灯等超亮方块出现过曝。
+        value.HDR_TEX_LIGHT_BRIGHTNESS.true=开
+        value.HDR_TEX_LIGHT_BRIGHTNESS.false=关
+        
+    option.CLOUD_EXTENSION=扩展云层
+        option.CLOUD_EXTENSION.comment=建议保持§a默§b认值0。降低数值可扩展雾化距离。默认云雾距离与环境雾距离匹配。
+
+    option.INVISIBILITY_DISTORT_STRENGTH=隐身扭曲强度
+        option.INVISIBILITY_DISTORT_STRENGTH.comment=控制"隐身时扭曲屏幕"选项的强度。
+
+    option.TEXTURE_FILTER_EVERYTHING=全局纹理过滤
+        option.TEXTURE_FILTER_EVERYTHING.comment=默认仅对地形应用纹理过滤。此选项允许对所有内容启用过滤。
+        value.TEXTURE_FILTER_EVERYTHING.true=开
+        value.TEXTURE_FILTER_EVERYTHING.false=关
+
+
+    screen.DEBUG=调试
+        screen.DEBUG.comment=调试专用视图修改
+
+        option.DEBUG_VIEW=调试视图
+            option.DEBUG_VIEW.comment=禁用所有现有反照率写入，允许开发者（及您在许可证范围内）创建自定义调试用途。
+            value.DEBUG_VIEW.true=开
+            value.DEBUG_VIEW.false=关
+
+        option.SHADOW_DEBUG=调试阴影
+            option.SHADOW_DEBUG.comment=在最终渲染阶段用阴影纹理覆盖反照率。
+            value.SHADOW_DEBUG.true=开
+            value.SHADOW_DEBUG.false=关
+
+        option.ISOLATE_RENDER_STAGE=独立显示
+            option.ISOLATE_RENDER_STAGE.comment=§c隔离红色物品被视为作弊！在服务器上§c使用此功能可能会导致你被封禁！
+            value.ISOLATE_RENDER_STAGE.-1=关
+            value.ISOLATE_RENDER_STAGE.0=未知
+            value.ISOLATE_RENDER_STAGE.1=天空
+            value.ISOLATE_RENDER_STAGE.2=日落
+            value.ISOLATE_RENDER_STAGE.3=自定义天空
+            value.ISOLATE_RENDER_STAGE.4=太阳
+            value.ISOLATE_RENDER_STAGE.5=月亮
+            value.ISOLATE_RENDER_STAGE.6=星星
+            value.ISOLATE_RENDER_STAGE.7=虚空
+            value.ISOLATE_RENDER_STAGE.8=实体地形
+            value.ISOLATE_RENDER_STAGE.9=剪裁贴图地形
+            value.ISOLATE_RENDER_STAGE.10=剪裁地形
+            value.ISOLATE_RENDER_STAGE.11=§c实体
+            value.ISOLATE_RENDER_STAGE.12=§c方块实体
+            value.ISOLATE_RENDER_STAGE.13=方块破坏动画
+            value.ISOLATE_RENDER_STAGE.14=方块选择轮廓
+            value.ISOLATE_RENDER_STAGE.15=调试轮廓
+            value.ISOLATE_RENDER_STAGE.16=不透明手持物品
+            value.ISOLATE_RENDER_STAGE.17=透明地形
+            value.ISOLATE_RENDER_STAGE.18=绊线
+            value.ISOLATE_RENDER_STAGE.19=粒子效果
+            value.ISOLATE_RENDER_STAGE.20=云
+            value.ISOLATE_RENDER_STAGE.21=天气
+            value.ISOLATE_RENDER_STAGE.22=世界边界
+            value.ISOLATE_RENDER_STAGE.23=透明手持物品
+
+        option.DISABLE_WATER=禁用透明渲染
+            option.DISABLE_WATER.comment=移除透明层的混合。
+
+        option.WATER_FOG=水雾
+            value.WATER_FOG.true=开
+            value.WATER_FOG.false=关
+
+
+    screen.AUTO_ADDED=自动设置
+        screen.AUTO_ADDED.comment=OptiFine/Iris 自动添加的设置。这些设置大多不能保证能正常工作，甚至可能完全无效。
+
+    screen.EXPERIMENTAL=实验性功能
+
+        option.VANILLA_SHADOWS=原版阴影
+            option.VANILLA_SHADOWS.comment=无需实际计算即可产生阴影效果。由于此效果使用原版光照贴图，在某些场景下可能看起来会出错。此效果会覆盖所有其他阴影效果。
+        value.VANILLA_SHADOWS.true=开
+        value.VANILLA_SHADOWS.false=关
+
+        screen.FORCED_PERSPECTIVE=强制透视
+            option.FORCED_PERSPECTIVE_POWER=功能
+            
+            option.FORCED_PERSPECTIVE_BIAS=偏移
+
+            option.FORCED_PERSPECTIVE_SHAPE=形状
+                value.FORCED_PERSPECTIVE_SHAPE.0.0=球形
+                value.FORCED_PERSPECTIVE_SHAPE.1.0=平面模式

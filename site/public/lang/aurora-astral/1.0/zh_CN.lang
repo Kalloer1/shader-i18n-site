@@ -1,0 +1,100 @@
+# Aurora Astral 1.0 - Clean public interface
+
+profile.BALANCED=§a§l平衡
+profile.BALANCED.comment=具备合理性能设置的完整定制功能集。
+profile.EXTREME=§c§l极限
+profile.EXTREME.comment=针对强力 GPU 的最高定制质量。
+
+screen.QUALITY_SCREEN=§l质量与性能
+screen.QUALITY_SCREEN.comment=在配置档之外仍有用的仅有的两个手动画质控制项。
+screen.LIGHTING_SCREEN=§l光照
+screen.LIGHTING_SCREEN.comment=基础光照特性，其内部画质由配置档管理。
+screen.SKY_SCREEN=§l天空与宇宙
+screen.SKY_SCREEN.comment=编写的 Aurora Astral 天空现象。移动、色彩、缩放和细节均为自动。
+screen.WATER_SCREEN=§l水体与天气
+screen.WATER_SCREEN.comment=基础水体与潮湿天气特性。反射画质和动画均为自动。
+screen.EFFECTS_SCREEN=§l效果
+screen.EFFECTS_SCREEN.comment=可选的电影级效果和世界效果。
+
+option.SHADOW_QTY_SLIDER=阴影质量
+option.SHADOW_QTY_SLIDER.comment=阴影贴图分辨率。所选配置档会设定一个推荐的默认值。
+value.SHADOW_QTY_SLIDER.1=极低
+value.SHADOW_QTY_SLIDER.2=低
+value.SHADOW_QTY_SLIDER.3=平衡
+value.SHADOW_QTY_SLIDER.4=高
+value.SHADOW_QTY_SLIDER.5=极高
+value.SHADOW_QTY_SLIDER.6=超高
+value.SHADOW_QTY_SLIDER.7=疯狂
+value.SHADOW_QTY_SLIDER.8=8192
+
+option.SHADOW_DISTANCE_SLIDER=阴影距离
+option.SHADOW_DISTANCE_SLIDER.comment=实时阴影渲染的距离。
+value.SHADOW_DISTANCE_SLIDER.1=4 区块
+value.SHADOW_DISTANCE_SLIDER.2=5 区块
+value.SHADOW_DISTANCE_SLIDER.3=6 区块
+value.SHADOW_DISTANCE_SLIDER.4=8 区块
+value.SHADOW_DISTANCE_SLIDER.5=10 区块
+value.SHADOW_DISTANCE_SLIDER.6=12 区块
+value.SHADOW_DISTANCE_SLIDER.7=14 区块
+value.SHADOW_DISTANCE_SLIDER.8=16 区块
+
+option.SHADOW_CASTING=阴影
+option.SHADOW_CASTING.comment=启用实时阴影通道。
+option.AO=环境光遮蔽
+option.AO.comment=在角落和缝隙中添加接触阴影。
+option.VOL_LIGHT=光束
+option.VOL_LIGHT.comment=太阳和月亮穿过大气的光束。
+value.VOL_LIGHT.0=关闭
+value.VOL_LIGHT.1=快速
+value.VOL_LIGHT.2=体积光
+option.DYN_HAND_LIGHT=手持光源
+option.DYN_HAND_LIGHT.comment=手持发光物品照亮附近的方块。
+option.NIGHT_BRIGHT=夜晚亮度
+option.NIGHT_BRIGHT.comment=调整室外夜晚的可见度，而不改变预设的宇宙色调。
+option.FOG_ACTIVE=大气雾
+option.FOG_ACTIVE.comment=启用距离和天气雾。
+
+option.COSMIC_RIFT=星夜裂痕
+option.COSMIC_RIFT.comment=主世界夜空中动态的双带状宇宙裂痕。
+option.ASTRAL_COLOSSUS_PLANET=巨型行星
+option.ASTRAL_COLOSSUS_PLANET.comment=白昼太阳背后动态的巨型行星。
+option.ASTRAL_DAY_HALO=日晕
+option.ASTRAL_DAY_HALO.comment=日光轨道焦散与大气光晕。
+option.ASTRAL_SUN_LENS_FLARE=太阳镜头光晕
+option.ASTRAL_SUN_LENS_FLARE.comment=可见白昼太阳周围的自适应电影级光学效果。
+option.ASTRAL_END_COSMOS=末地宇宙
+option.ASTRAL_END_COSMOS.comment=末地之中动态的星系与嵌入的裂痕。
+option.CLOUD_REFLECTION=云层反射
+option.CLOUD_REFLECTION.comment=在水面反射制作的体积云。
+option.BIOME_SKY=群系氛围
+option.BIOME_SKY.comment=根据群系气候调整天空色调。
+
+option.ASTRAL_LIVING_WATER=活水
+option.ASTRAL_LIVING_WATER.comment=根据时间变化的动画奇幻水，具有精心设计的昼夜配色。
+option.REFRACTION=水折射
+option.REFRACTION.comment=透过水面扭曲水下几何体。
+option.CAUSTICS=水焦散
+option.CAUSTICS.comment=投影动画水光图案。
+option.WATER_FOAM=岸边泡沫
+option.WATER_FOAM.comment=在水与固体地形交汇处添加泡沫。
+option.COSMIC_RIFT_REFLECTIONS=宇宙反射
+option.COSMIC_RIFT_REFLECTIONS.comment=在水面和湿地上反射夜晚星空裂隙。
+option.RAIN_PUDDLES=雨水坑
+option.RAIN_PUDDLES.comment=启用湿地、水坑波纹、雨圈和反射。
+
+option.BLOOM=泛光
+option.BLOOM.comment=明亮的自发光与灯光周围的柔和辉光。
+option.MATERIAL_GLOSS=材质光泽
+option.MATERIAL_GLOSS.comment=抛光和金属材质上的高光响应。
+option.FANTASY_LIFE_SYSTEM=魔法生命
+option.FANTASY_LIFE_SYSTEM.comment=启用世界锚定的萤火虫及其环境光。
+option.FANTASY_NIGHT_FLORA=夜间植物
+option.FANTASY_NIGHT_FLORA.comment=特定花卉和叶片上的微弱生物发光。
+option.WAVING=摇曳植被
+option.WAVING.comment=为草、叶子、作物及其他植被添加动画。
+option.ASTRAL_EMISSIVE_LIGHTS=发光材质
+option.ASTRAL_EMISSIVE_LIGHTS.comment=同时启用指定的自发光矿石和发光方块。
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR.comment=应用电影级相机运动模糊。
+option.DOF=景深
+option.DOF.comment=应用电影级聚焦模糊。

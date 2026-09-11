@@ -1,0 +1,6 @@
+option.SHARPENING=锐化
+value.SHARPENING.0=关
+value.SHARPENING.1=反锐化遮罩
+value.SHARPENING.2=CAS（对比度自适应锐化）
+
+option.CAS_AMOUNT=CAS 强度

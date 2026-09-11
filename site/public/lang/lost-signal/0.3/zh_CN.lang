@@ -1,0 +1,101 @@
+screen.FLASHLIGHT =手电筒
+screen.VISUALS =视觉效果
+
+option.FLICKER_ON_HIT =受击闪烁
+option.FLICKER_ON_HIT.comment =启用后，当玩家受到伤害时手电筒会闪烁。光敏性患者请禁用此项
+
+option.FLICKER_DURATION =闪烁持续时间
+option.FLICKER_DURATION.comment =受击后闪烁效果持续的秒数
+
+option.FLICKER_STRENGTH =闪烁强度
+option.FLICKER_STRENGTH.comment =闪烁亮度降低的强度百分比
+
+option.FLICKER_CHANCE =闪烁测试概率
+option.FLICKER_CHANCE.comment =每半秒触发随机闪烁的概率，与实际受击无关。设为高于0可测试闪烁效果是否正常；保持0则仅在受击时触发
+
+option.PURE_DARKNESS =纯粹黑暗
+option.PURE_DARKNESS.comment =开启时，夜晚与无光源区域将呈现完全漆黑、无环境光的状态；关闭时，夜晚昏暗但仍可辨识。中等/强烈配置自动开启，默认/轻度配置自动关闭，但可在此处手动覆盖
+
+option.FLASHLIGHT_AUTO_DARK =亮处自动调光
+option.FLASHLIGHT_AUTO_DARK.comment =当处于明亮区域时自动调暗手电筒亮度，避免在户外或火把旁出现刺眼强光
+
+option.BATTERY_DRAIN_ENABLED =电量消耗
+option.BATTERY_DRAIN_ENABLED.comment =手电筒使用时间越长闪烁越频繁（约5-10分钟后开始），10-15分钟左右会短暂断电数秒后恢复重置。禁用此功能可使手电筒保持稳定光照
+
+option.VIGNETTE_STRENGTH =暗角
+option.VIGNETTE_STRENGTH.comment =暗化屏幕边角
+
+option.SURFACE_DARKNESS =表面暗度
+option.SURFACE_DARKNESS.comment =降低数值可使主世界/露天区域更暗，昼夜均有效。不影响洞穴/室内区域（该区域由火把与纯粹黑暗控制）
+
+option.NOISE_AMOUNT =胶片颗粒
+option.NOISE_AMOUNT.comment =磁带风格胶片颗粒/噪点
+
+option.SCANLINE_STRENGTH =扫描线
+option.SCANLINE_STRENGTH.comment =水平扫描线暗化
+
+option.INTERLACE_STRENGTH =隔行扫描
+option.INTERLACE_STRENGTH.comment =逐帧交替的隔行线暗化效果
+
+option.SHARPEN_AMOUNT =锐化
+option.SHARPEN_AMOUNT.comment =应用于图像的边缘锐化
+
+option.CHROMA_BLUR =色彩渗透
+option.CHROMA_BLUR.comment =色彩通道的模糊/压缩效果，模拟真实磁带的带宽限制
+
+option.TAPE_WARMTH =暖色调
+option.TAPE_WARMTH.comment =黄色/暖色偏色效果，类似老旧磁带质感
+
+option.WOBBLE_STRENGTH =磁带抖动
+option.WOBBLE_STRENGTH.comment =逐行水平抖动
+
+screen.ADVANCED =高级
+
+option.HEAD_SWITCH_ENABLED =磁头切换伪影
+option.HEAD_SWITCH_ENABLED.comment =沿屏幕底部边缘的VHS磁带追踪失真效果
+screen.PANIC =恐慌效果
+screen.RAIN =雨
+screen.FEAR =恐惧
+screen.FOG =雾
+
+option.FOG_ENABLED =雾
+option.FOG_ENABLED.comment =距离雾与地面薄雾。如希望获得清晰的远距离视野，请关闭此选项。
+
+option.FOG_DENSITY =雾密度
+option.FOG_DENSITY.comment =距离雾随物体远离而增厚的程度
+
+option.GROUND_MIST_STRENGTH =地面薄雾强度
+option.GROUND_MIST_STRENGTH.comment =靠近地面的低层薄雾浓度
+
+option.PANIC_ENABLED =恐慌效果
+option.PANIC_ENABLED.comment =当生命值较低或无火炬/灯笼手持在黑暗中冲刺时，屏幕会轻微晃动并模糊以营造恐慌感。完全可选——如不喜欢请关闭。
+
+option.PANIC_SHAKE =屏幕晃动
+option.PANIC_SHAKE.comment =在恐慌事件中晃动屏幕。关闭此项将仅保留模糊效果。
+
+option.PANIC_MOTIONBLUR =动态模糊
+option.PANIC_MOTIONBLUR.comment =在恐慌事件中使屏幕模糊。关闭此项将仅保留晃动效果。
+
+option.PANIC_MOTIONBLUR_INTENSITY =恐慌模糊强度
+option.PANIC_MOTIONBLUR_INTENSITY.comment =恐慌动态模糊的强度
+
+option.RAIN_BLUR_ENABLED =雨雾模糊
+option.RAIN_BLUR_ENABLED.comment =开始下雨且你处于露天环境时，短暂模糊摄像机镜头，模拟水滴击中镜面的效果。进入室内或地下后自动关闭。如不需要请关闭。
+
+option.RAIN_BLUR_DURATION =雨雾模糊持续时间
+option.RAIN_BLUR_DURATION.comment =下雨开始后模糊效果的持续秒数
+
+option.RAIN_BLUR_STRENGTH =雨雾模糊强度
+option.RAIN_BLUR_STRENGTH.comment =雨雾模糊的强度
+
+option.FEAR_PULSE_ENABLED =恐惧脉冲
+option.FEAR_PULSE_ENABLED.comment =生命值较低时，屏幕四角会随心跳节奏泛红脉冲。《我的世界》本身在低血量时已有心跳音效——此功能仅为视觉匹配效果（着色器无法添加新音效）。可选功能，如不需要请关闭。
+
+option.FEAR_PULSE_INTENSITY =恐惧脉冲强度
+option.FEAR_PULSE_INTENSITY.comment =红色心跳脉冲的强度
+
+suffix.FLICKER_CHANCE = %
+
+suffix.FLICKER_DURATION = s
+suffix.FLICKER_STRENGTH = %
+suffix.RAIN_BLUR_DURATION = s

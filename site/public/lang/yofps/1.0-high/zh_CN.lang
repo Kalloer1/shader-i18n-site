@@ -1,0 +1,17 @@
+screen.C=§cYoFPS §b光影包
+screen.S=设置
+screen.S.comment=管理视觉设置
+screen.WAVING=摆动物体
+screen.WAVING.comment=切换摆动的植物、花等
+screen.EFFECTS=效果
+screen.EFFECTS.comment=切换镜头光晕等效果
+
+option.RAIN_DROPS=雨滴
+option.RAIN_DROPS.comment=开/关雨滴贴射影
+
+option.WAVING_FIRE=摇曳火焰
+option.WAVING_WATER=3D 水波
+option.WAVING_GRASS=摇曳草地
+option.WAVING_WHEAT=摇曳小麦
+option.WAVING_FLOWERS=摇曳花朵
+option.WAVING_VINES=摇曳藤蔓

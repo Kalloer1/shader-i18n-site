@@ -1,0 +1,91 @@
+option.PIXEL_SIZE =像素密度
+value.PIXEL_SIZE.16.0 =超像素化
+value.PIXEL_SIZE.512.0 =平滑
+
+option.SAMPLING_MODE =采样模式
+value.SAMPLING_MODE.0 =单像素
+value.SAMPLING_MODE.1 =平均
+
+option.SAMPLE_STEP =平均质量
+value.SAMPLE_STEP.1.0 =完美
+value.SAMPLE_STEP.2.0 =高
+value.SAMPLE_STEP.4.0 =中
+value.SAMPLE_STEP.6.0 =低
+value.SAMPLE_STEP.8.0 =土豆
+
+option.DITHER_STRENGTH =抖动强度
+
+option.COLOR_LEVELS =色深
+value.COLOR_LEVELS.-1.0 =单色
+value.COLOR_LEVELS.2.0 =1位色（8种颜色）
+value.COLOR_LEVELS.4.0 =2位色（64种颜色）
+value.COLOR_LEVELS.8.0 =3位色（512种颜色）
+value.COLOR_LEVELS.16.0 =4位色（4096种颜色）
+value.COLOR_LEVELS.32.0 =5位色（32,768种颜色）
+value.COLOR_LEVELS.64.0 =6位色（262,144种颜色）
+value.COLOR_LEVELS.128.0 =7位色（2,097,152种颜色）
+value.COLOR_LEVELS.256.0 =8位色（全彩）
+
+option.MONO_THRESHOLD =单色阈值
+
+option.SQUARE_PIXELS =方形像素
+
+option.PIXEL_ROUNDNESS =像素圆度
+
+option.CLEAR_LINES =清晰线条
+
+option.LINE_THICKNESS =方块轮廓粗细
+value.LINE_THICKNESS.-1.0 =自动
+
+option.GRID_GAP =像素间隙
+
+option.CONTRAST =对比度
+
+option.SATURATION =饱和度
+
+option.DITHER_MODE =抖动模式
+value.DITHER_MODE.0 =拜耳（有序）
+value.DITHER_MODE.1 =白噪声
+
+option.CRT_SCANLINES =CRT扫描线
+option.CRT_SCANLINES.comment =添加水平暗化以模拟老式显像管显示器。
+
+option.CRT_STRENGTH =扫描线强度
+
+option.VIGNETTE =暗角
+
+option.VIGNETTE_STRENGTH =暗角强度
+
+option.IGNORE_HAND =忽略手部
+
+option.IGNORE_CLOUDS =忽略云层
+option.IGNORE_CLOUDS.comment =与更好的云不兼容
+
+option.IGNORE_ENTITIES =忽略实体
+
+option.IGNORE_PARTICLES =忽略粒子
+
+option.IGNORE_WATER =忽略液体
+
+option.IGNORE_TERRAIN =忽略方块
+
+option.IGNORE_SKY =忽略天空
+
+option.IGNORE_WEATHER =忽略天气
+option.IGNORE_WEATHER.comment =与粒子雨不兼容
+
+# Screens
+
+screen.PIXEL_SHAPE =像素形状
+screen.RESOLUTION =分辨率与采样
+screen.DITHERING =抖动
+screen.EFFECTS =颜色与效果
+screen.OVERLAY =覆盖层
+screen.IGNORES =忽略中
+
+# Profiles
+
+profile.DEFAULT =默认
+profile.ROUND_MONOCHROME =圆形单色
+profile.GAMEBOY =游戏机模式
+profile.RETRO_PC =复古电脑模式

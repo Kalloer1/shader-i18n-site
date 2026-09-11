@@ -1,0 +1,30 @@
+profile.DEFAULT = §a默认
+
+screen.EFFECTS_CATEGORY = 后处理
+screen.NETHER_CATEGORY = 下界
+screen.WATER_CATEGORY = 水
+
+option.AMBIENT_OCCLUSION = 环境光遮蔽
+option.AMBIENT_OCCLUSION.comment = 启用时，方块边缘会显得更暗。 §d注意：该效果可能会影响性能。
+
+option.BLOOM = 泛光
+option.BLOOM.comment = 当启用时，亮色会开始发光。
+
+option.CREDITS_LABEL = 作者：
+option.CREDITS_LABEL.comment = §eBewitchedFlora \n§r§f感谢您的下载！
+value.CREDITS_LABEL.0 = §eBewitchedFlora
+
+option.WATER_SURFACE_FOG = 2D 波纹贴图
+option.WATER_SURFACE_FOG.comment = 启用时，一个波纹贴图会缓慢地漂浮在水面上。
+
+option.WATER_WAVES = 3D 水波
+option.WATER_WAVES.comment = 启用时，水会缓慢上下起伏。
+
+option.WATER_CAUSTICS = 水下光栅
+option.WATER_CAUSTICS.comment = 启用时，光会透过水面照射。§d注意：关闭此设置也会禁用下界光栅。
+
+option.NETHER_LIGHT_CAUSTICS = 下界光焦散
+option.NETHER_LIGHT_CAUSTICS.comment = 启用后，下界的光线会产生光焦散效果。
+
+option.NETHER_BREATHING = 热量失真
+option.NETHER_BREATHING.comment = 当启用时，下界的方块会明显失真。

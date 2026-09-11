@@ -1,0 +1,131 @@
+# ============================================================
+#  Sublime Visuals - en_US.lang
+#  Author: Dark_PixelForge
+# ============================================================
+
+option.SUBLIME_VISUALS_BY_DARK_PIXELFORGE=光影视觉 by Dark_PixelForge
+value.SUBLIME_VISUALS_BY_DARK_PIXELFORGE.true=§a已启用
+
+# ---- Profile ----
+profile.LITE=轻量
+profile.BALANCED=平衡
+profile.ULTRA=极致
+
+# ---- Atmosphere ----
+screen.SV_ATMOSPHERE=大气层
+screen.SV_SKY_CFG=天空设置
+screen.SV_FOG_CFG=雾设置
+screen.SV_CLOUDS_CFG=云设置
+screen.SV_SUN_MOON_CFG=太阳与月亮
+
+option.SV_STARS=星星
+option.SV_STAR_COUNT=星星数量
+option.SV_STAR_BRIGHTNESS=星星亮度
+option.SV_MILKY_BAND=银河带
+option.SV_MILKY_BAND_BRIGHTNESS=银河亮度
+option.SV_SUNRISE_GLOW=日出光晕
+option.SV_HORIZON_BLEND=地平线混合
+
+option.SV_VOLUMETRIC_FOG=体积雾
+option.SV_FOG_DENSITY=雾密度
+option.SV_FOG_HEIGHT=雾高度
+option.SV_FOG_DISTANCE=雾距离
+option.SV_UNDERGROUND_FOG=地下雾
+
+option.SV_CLOUD_TYPE=云类型
+option.SV_CLOUD_COVERAGE=云覆盖
+option.SV_CLOUD_HEIGHT=云高度
+option.SV_CLOUD_SPEED=云速度
+option.SV_CLOUD_SHADOW=云阴影
+option.SV_CLOUD_BRIGHTNESS=云亮度
+
+option.SV_SUN_RADIUS=太阳大小
+option.SV_MOON_RADIUS=月亮大小
+option.SV_SUN_BRIGHTNESS=太阳亮度
+option.SV_MOON_BRIGHTNESS=月亮亮度
+option.SV_CUSTOM_SUN=自定义太阳纹理
+option.SV_LENS_FLARE=镜头光晕
+option.SV_LENS_FLARE_STRENGTH=镜头光晕强度
+
+# ---- Lighting ----
+screen.SV_LIGHTING=光照
+screen.SV_SHADOW_CFG=阴影设置
+screen.SV_AO_CFG=环境光遮蔽
+screen.SV_BLOCKLIGHT_CFG=区块光颜色
+option.SV_SUBSURFACE=次表面散射
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.SV_SHADOW_FILTER=阴影过滤 (PCF)
+option.SV_SHADOW_FILTER_QUALITY=PCF 采样数
+option.SV_SHADOW_COLOR=彩色阴影
+option.SV_SSAO=屏幕空间环境光遮蔽
+option.SV_AO_RADIUS=环境光遮蔽半径
+option.SV_AO_STRENGTH=环境光遮蔽强度
+option.SV_AO_SAMPLES=环境光遮蔽采样数
+option.SV_BLOCKLIGHT_R=区块光 红
+option.SV_BLOCKLIGHT_G=区块光 绿
+option.SV_BLOCKLIGHT_B=区块光 蓝
+option.SV_BLOCKLIGHT_INTENSITY=区块光强度
+option.SV_HANDLIGHT=手持光
+option.SV_HANDLIGHT_STRENGTH=手持光强度
+
+# ---- Water ----
+screen.SV_WATER=水
+option.SV_WATER_NORMALS=水法线
+option.SV_WATER_REFRACTION=水折射
+option.SV_WATER_REFLECTIONS=水反射
+option.SV_WATER_CAUSTICS=水焦散
+option.SV_WATER_CAUSTICS_STRENGTH=焦散强度
+option.SV_WATER_OPACITY=水透明度
+option.SV_UNDERWATER_DISTORTION=水下扭曲
+
+# ---- Color ----
+screen.SV_COLOR=颜色
+screen.SV_DAYLIGHT_COL=日光颜色
+screen.SV_NIGHTLIGHT_COL=夜光颜色
+screen.SV_SUNRISE_COL=日出/日落颜色
+screen.SV_TONEMAP_CFG=色调映射
+option.SV_DAY_R=日光 红
+option.SV_DAY_G=日光 绿
+option.SV_DAY_B=日光 蓝
+option.SV_DAY_INTENSITY=日光 强度
+option.SV_NIGHT_R=夜光 红
+option.SV_NIGHT_G=夜光 绿
+option.SV_NIGHT_B=夜光 蓝
+option.SV_NIGHT_INTENSITY=夜光 强度
+option.SV_SUNRISE_R=日出 红
+option.SV_SUNRISE_G=日出 绿
+option.SV_SUNRISE_B=日出 蓝
+option.SV_SUNRISE_INTENSITY=日出 强度
+option.SV_EXPOSURE=曝光
+option.SV_CONTRAST=对比度
+option.SV_SATURATION=饱和度
+option.SV_VIBRANCE=自然饱和度
+option.SV_GAMMA=伽马
+option.SV_HIGHLIGHT_ROLL=高光衰减
+option.SV_SHADOW_ROLL=阴影提升
+
+# ---- Post ----
+screen.SV_POST=后处理
+option.SV_BLOOM=泛光
+option.SV_BLOOM_STRENGTH=泛光强度
+option.SV_BLOOM_SPREAD=泛光扩散
+option.SV_DOF=景深
+option.SV_DOF_STRENGTH=景深强度
+option.SV_DOF_DISTANCE=景深焦距
+option.SV_MOTION_BLUR=运动模糊
+option.SV_MOTION_BLUR_STRENGTH=运动模糊强度
+option.SV_CHROMATIC_ABERRATION=色差
+option.SV_CA_STRENGTH=色差强度
+option.SV_VIGNETTE=暗角
+option.SV_VIGNETTE_STRENGTH=暗角强度
+option.SV_FILM_GRAIN=胶片颗粒
+option.SV_FILM_GRAIN_STRENGTH=胶片颗粒强度
+
+# ---- Misc ----
+screen.SV_MISC=杂项
+option.SV_WAVING=摆动植物与叶子
+option.SV_WAVING_SPEED=摆动速度
+option.SV_WAVING_AMPLITUDE=摆动幅度
+option.SV_EMISSIVE_ORES=自发光矿石
+option.SV_EMISSIVE_STRENGTH=发光强度

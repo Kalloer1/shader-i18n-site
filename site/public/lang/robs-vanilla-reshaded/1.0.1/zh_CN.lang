@@ -1,0 +1,69 @@
+# ── Colors ───────────────────────────────────────────────────────────────────
+option.COLOR_CONTRAST = 颜色对比度
+option.COLOR_CONTRAST.comment = 调整颜色远离中间值。高于 1.0 的值会增加对比度；低于 1.0 的值会降低对比度。
+option.COLOR_CONTRAST_MIDPOINT = 对比度中间值
+option.COLOR_CONTRAST_MIDPOINT.comment = 当应用对比度时保持不变的亮度水平。0.0 = 黑色，1.0 = 白色。
+
+# ── Fog ──────────────────────────────────────────────────────────────────────
+option.FOG_START_FACTOR = 主世界雾开始
+option.FOG_START_FACTOR.comment = 主世界雾开始的距离，作为渲染距离的比例。负值会使雾开始的位置位于摄像机后方。
+option.FOG_END_FACTOR = 主世界雾结束
+option.FOG_END_FACTOR.comment = 主世界雾完全不透明的距离，作为渲染距离的比例。
+
+option.CLOUD_FOG_DISTANCE = 云雾距离
+option.CLOUD_FOG_DISTANCE.comment = 用于计算云雾的绝对参考距离（以区块×16为单位）。数值越小，远处云雾消失得越快。
+option.CLOUD_FOG_START_FACTOR = 云雾起始
+option.CLOUD_FOG_START_FACTOR.comment = 云雾距离中开始淡出的比例。
+option.CLOUD_FOG_END_FACTOR = 云雾结束
+option.CLOUD_FOG_END_FACTOR.comment = 云雾完全消失时的距离比例。
+
+option.NETHER_FOG_START_FACTOR = 下界雾开始
+option.NETHER_FOG_START_FACTOR.comment = 下界雾开始出现的距离，作为渲染距离的比例。
+option.NETHER_FOG_END_FACTOR = 下界雾结束
+option.NETHER_FOG_END_FACTOR.comment = 下界雾完全不透明时的距离，作为渲染距离的比例。
+
+option.END_FOG_START_FACTOR = 末地雾开始
+option.END_FOG_START_FACTOR.comment = 末地雾开始的距离，占渲染距离的比例。
+option.END_FOG_END_FACTOR = 末地雾结束
+option.END_FOG_END_FACTOR.comment = 末地雾完全不透明的距离，占渲染距离的比例。
+
+# ── Sky ──────────────────────────────────────────────────────────────────────
+option.SKY_AXIAL_TILT = 太阳轴向倾角
+option.SKY_AXIAL_TILT.comment = 使太阳/月亮的运行轨道偏离赤道。90° = 垂直上弧（原版）。较低的值会产生更倾斜、更接近真实世界的弧度。
+
+option.END_SKY_GRADIENT_SHARPNESS = 末地天空锐度
+option.END_SKY_GRADIENT_SHARPNESS.comment = 控制末地天空从地平线到天顶的过渡锐度。数值越高，地平线附近的色彩带越窄。
+
+# ── Glow / Bloom ─────────────────────────────────────────────────────────────
+option.GLOW_ENABLED = 发光
+option.GLOW_ENABLED.comment = 在自发光方块和星体上启用泛光/辉光效果。
+
+option.GLOW_STRENGTH = 发光强度
+option.GLOW_STRENGTH.comment = 在模糊后应用的加法混合因子。数值越高，泛光越亮。
+
+option.GLOW_RADIUS = 发光半径
+option.GLOW_RADIUS.comment = 模糊采样间距（单位：纹素）。控制发光扩散的宽度。
+
+option.STAR_GLOW_BOOST = 星光增强
+option.LAVA_GLOW_BOOST = 岩浆光增强
+option.END_PORTAL_GLOW_BOOST = 末地门光增强
+option.NETHER_PORTAL_GLOW_BOOST = 下界门光增强
+
+# ── Waving ───────────────────────────────────────────────────────────────────
+option.WAVING_WATER = 水波荡漾
+option.WAVING_WATER.comment = 启用顶点动画化的水面波浪效果
+
+option.WAVING_PLANTS = 植物摆动
+option.WAVING_PLANTS.comment = 启用草、树叶和藤蔓的顶点动画摆动效果。
+
+option.WATER_WAVING_SPEED = 水波速度
+option.WATER_WAVING_SPEED.comment = 水面动画的整体速度倍数
+
+option.WATER_WAVE_AMPLITUDE = 水波高度
+option.WATER_WAVE_AMPLITUDE.comment = 水面波浪的峰值高度（单位：方块）
+
+option.PLANT_WAVING_SPEED = 植物摇摆速度
+option.PLANT_WAVING_SPEED.comment = 草、树叶和藤蔓动画的总体速度倍数
+
+option.PLANT_WAVE_AMPLITUDE = 植物摆动数量
+option.PLANT_WAVE_AMPLITUDE.comment = 草、树叶和藤蔓摆动的幅度。数值越高，摆动幅度越大，效果更明显。

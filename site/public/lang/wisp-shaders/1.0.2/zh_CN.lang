@@ -1,0 +1,5 @@
+screen.GENERAL = 通用
+screen.LIGHTING = 照明
+screen.SKY = 天空
+screen.WATER = 水
+screen.FOG = 雾

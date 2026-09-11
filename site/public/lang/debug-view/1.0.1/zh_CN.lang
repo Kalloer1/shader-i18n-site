@@ -1,0 +1,19 @@
+option.MODE=§6模式
+value.MODE.0=线框
+value.MODE.1=反照率
+value.MODE.2=光照图
+value.MODE.3=视角法线
+value.MODE.4=世界法线
+value.MODE.5=深度
+value.MODE.6=视角位置
+value.MODE.7=玩家脚部位置
+value.MODE.8=世界位置
+value.MODE.9=视角法线贴图
+value.MODE.10=PBR 测试
+
+option.ambientOcclusionLevel=环境光遮蔽
+
+option.PATREON=§6Patreon
+option.PATREON.comment=§fpatreon.com/lolip_p
+value.PATREON.0=§fpatreon.com/lolip_p
+value.PATREON.1=§fpatreon.com/lolip_p

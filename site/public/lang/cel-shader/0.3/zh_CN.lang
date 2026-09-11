@@ -1,0 +1,7 @@
+option.STEPS=亮度步长
+option.CHROMA_ADD=饱和度增加
+option.SMOOTH=平滑边缘
+option.HARDNESS=边缘硬度
+option.HARDNESS.comment=仅在平滑边缘开启时生效
+option.BACKGROUND=背景
+option.BACKGROUND.comment=提亮并降低背景的饱和度

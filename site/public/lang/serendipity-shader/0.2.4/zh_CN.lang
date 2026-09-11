@@ -1,0 +1,104 @@
+option.INFOMATION = 进行中 | 此光影包
+value.INFOMATION.A = 制作：Coldnight || 由 fujimichi 修改
+
+screen.ATMOSPHERE = 大气
+
+screen.CLOUDS = 云层
+screen.VL = 体积云
+option.CLOUD_QUALITY = 云层质量
+
+screen.VL_CLEAR = 清除设置
+option.CLOUD_CLEAR_ALTITUDE = 高度
+option.CLOUD_CLEAR_THICKNESS = 厚度
+option.CLOUD_CLEAR_COVERAGE = 覆盖率
+option.CLOUD_CLEAR_DENSITY = 密度
+option.CLOUD_CLEAR_SCALE = 比例
+
+screen.VL_RAIN = 雨设置
+option.CLOUD_RAIN_ALTITUDE = 高度
+option.CLOUD_RAIN_THICKNESS = 厚度
+option.CLOUD_RAIN_COVERAGE = 覆盖率
+option.CLOUD_RAIN_DENSITY = 密度
+otion.CLOUD_RAIN_SCALE = 比例
+
+screen.PL = 平面云
+option.CLOUD_CIRRUS = 散云
+option.CLOUD_CI_COVERAGE = 散云覆盖
+option.CLOUD_CIRROCUMULUS = 层云
+option.CLOUD_CC_COVERAGE = 层云覆盖
+
+screen.END = 黑洞
+option._vc1 = 缩放
+option._vc2 = 亮度
+option._vc3 = 角度
+suffix._vc3 = °
+
+screen.FOG = 体积雾
+option.VFOG = 雾
+option.REFLECTED_FOG = 雾面反射
+option.FOG_QUALITY = 质量
+option.FOG_DENSITY = 密度
+option.FOG_NOISE_SCALE = 噪声尺度
+option.FOG_HEIGHT = 高度
+option.FOG_FALLOFF = 衰减
+
+screen.LIGHTING = 照明
+
+option.COLORED_LIGHTS = 彩色灯光
+
+option.LIGHT_MODE = 光照模式
+value.LIGHT_MODE.1 = 反射阴影图 (默认)
+value.LIGHT_MODE.2 = 屏幕空间路径追踪
+option.SSPT_INTENSITY = PT 强度
+option.SSPT_MAX_FRAMES = 时间累积最大帧数
+
+screen.SURFACE = 表面
+
+option.SPECULAR_REFLECTION = 高光
+
+screen.POM = POM
+option.PARALLAX = 视差
+option.ITEM_PARALLAX = 物品视差
+option.ENTITY_PARALLAX = 实体视差
+option.POM_STEPS = POM 步数
+option.POM_REFINEMENT_STEPS = POM 细化步数
+option.POM_DEPTH_SCALE = POM 深度
+option.PARALLAX_SHADOW = 视差阴影
+option.POM_SHADOW_STEPS = POM 阴影步数
+option.POM_SHADOW_SOFTNESS = POM 阴影柔和度
+
+screen.RAIN = 雨
+option.RAIN_PUDDLES = 雨水积水
+option.RAIN_SPLASH = 雨滴溅起
+option.RIPPLE_SCALE = 雨滴溅起尺度
+option.RIPPLE_SPEED = 雨滴溅起速度
+
+screen.WATER = 水
+option.WAVE_SPEED = 波浪速度
+option.WAVE_SCALE = 波浪比例
+option.WAVE_PARALLAX_HEIGHT = 波浪视差高度
+option.WAVE_PARALLAX_MIN_SAMPLES = 波浪视差最小样本数
+option.WAVE_PARALLAX_MAX_SAMPLES = 波浪视差最大样本数
+
+screen.POST = 后处理
+
+screen.FLARE = 镜头光晕
+option.LENS_FLARE = 镜头光晕
+option.FLARE_BRIGHTNESS = 亮度
+
+screen.DOF = 景深
+option.DOF = 景深
+option.DOF_BLUR_SKY = 模糊天空
+option.DOF_SAMPLES = 采样数
+option.DOF_FOCUS_MODE = 对焦模式
+value.DOF_FOCUS_MODE.0 = 自动对焦
+value.DOF_FOCUS_MODE.1 = 手动
+option.DOF_MANUAL_DIST = 手动距离
+option.DOF_BOKEH_SHAPE = 散景形状
+
+screen.MOTION_BLUR = 运动模糊
+option.MOTION_BLUR = 运动模糊
+option.MOTION_BLUR_SKY = 模糊天空
+option.MOTION_BLUR_STRENGTH = 强度
+option.MOTION_BLUR_MAX_PX = 最大像素
+option.MOTION_BLUR_SAMPLES = 采样数

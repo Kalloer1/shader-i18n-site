@@ -1,0 +1,307 @@
+#Profiles
+############################
+profile.no_effects=无效果
+profile.shadowless_low=低阴影
+profile.shadowless_medium=中阴影
+profile.shadowless_high=高阴影
+profile.low=低
+profile.medium=中
+profile.high=高
+profile.extremeplus=高 (景深)
+
+profile.comment=“无阴影”配置档是为低性能机器设计的，忽略阴影。传统配置档逐步添加更高质量的阴影和更高级的繁重效果。请尝试可用的选项，找到最适合您的组合。
+
+#About
+#############################
+option.ACERCADE=版本
+option.ACERCADE.comment=感谢使用此光影！将 Optifine 原生质量控制设置在默认或标准值以获得更好质量。
+value.ACERCADE.0=AquaReal 1.2.0
+
+#Options
+#############################
+option.SHADOW_CASTING=阴影
+
+option.SHADOW_DISTANCE_SLIDER=阴影距离
+value.SHADOW_DISTANCE_SLIDER.0=短
+value.SHADOW_DISTANCE_SLIDER.1=中
+value.SHADOW_DISTANCE_SLIDER.2=远
+
+option.SHADOW_QTY_SLIDER=阴影质量
+value.SHADOW_QTY_SLIDER.0=无
+value.SHADOW_QTY_SLIDER.1=低
+value.SHADOW_QTY_SLIDER.2=中
+value.SHADOW_QTY_SLIDER.3=高
+
+option.REFLECTION_SLIDER=反射
+value.REFLECTION_SLIDER.0=关闭
+value.REFLECTION_SLIDER.1=翻转图像
+value.REFLECTION_SLIDER.2=光线跟踪
+
+option.SHADOW_TYPE=阴影类型
+value.SHADOW_TYPE.0=简单
+value.SHADOW_TYPE.1=过滤
+
+option.SHADOW_BLUR=阴影模糊强度
+
+option.COLORED_SHADOW=彩色阴影
+
+option.VOL_LIGHT=体积光
+option.GODRAY_SUBTLE=体积光柔和
+value.VOL_LIGHT.0=已禁用
+value.VOL_LIGHT.1=基于深度
+value.VOL_LIGHT.2=体积
+
+option.DOF=景深
+
+option.DOF_STRENGTH=景深强度
+
+option.DOF_SAMPLES_FACTOR=景深采样因子
+
+option.AO=环境光遮蔽
+value.AO.0=关闭
+value.AO.1=开启
+
+option.AOSTEPS=AO 采样对
+
+option.AO_STRENGTH=AO 强度
+
+option.AA_TYPE=时间采样
+value.AA_TYPE.0=关闭
+value.AA_TYPE.1=去噪
+value.AA_TYPE.2=TAA
+value.AA_TYPE.3=TAA+
+
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_SAMPLES=运动模糊采样数
+
+option.VANILLA_WATER=Vanilla 像水
+
+option.WATER_TEXTURE=水纹理
+value.WATER_TEXTURE.0=否
+value.WATER_TEXTURE.1=是
+
+option.WATER_COLOR_SOURCE=水色
+value.WATER_COLOR_SOURCE.0=着色方案
+value.WATER_COLOR_SOURCE.1=资源包
+
+option.REFLECTION=反射
+value.REFLECTION.0=关闭
+value.REFLECTION.1=开启
+
+option.REFRACTION=折射
+value.REFRACTION.0=关闭
+value.REFRACTION.1=开启
+
+option.SSR_TYPE=反射类型
+value.SSR_TYPE.0=翻转的图像
+value.SSR_TYPE.1=光线折叠
+
+option.SUN_REFLECTION=阳光反射
+value.SUN_REFLECTION.0=关闭
+value.SUN_REFLECTION.1=开启
+
+option.CLOUD_REFLECTION=体积云反射
+
+option.WAVING=植物摆动
+value.WAVING.0=否
+value.WAVING.1=是
+
+option.CHROMA_ABER=色差
+value.CHROMA_ABER.0=否
+value.CHROMA_ABER.1=是
+
+option.CHROMA_ABER_STRENGTH=色差强度
+
+option.WATER_ABSORPTION=水吸收指数
+
+option.WATER_TURBULENCE=波浪强度
+value.WATER_TURBULENCE.7.0=极低
+value.WATER_TURBULENCE.1.75=低
+value.WATER_TURBULENCE.0.9=中
+value.WATER_TURBULENCE.0.5=高
+
+option.COLOR_SCHEME=颜色方案
+value.COLOR_SCHEME.0=空灵
+value.COLOR_SCHEME.1=新蕾卡
+value.COLOR_SCHEME.2=蕾卡
+value.COLOR_SCHEME.3=老式
+value.COLOR_SCHEME.4=船长
+value.COLOR_SCHEME.5=幻彩
+value.COLOR_SCHEME.6=可可
+value.COLOR_SCHEME.7=Testigo
+value.COLOR_SCHEME.99=自定义
+
+option.LIGHT_SUNSET_COLOR_R=日落光 R
+option.LIGHT_SUNSET_COLOR_G=日落光 G
+option.LIGHT_SUNSET_COLOR_B=日落光 B
+
+option.LIGHT_DAY_COLOR_R=白天光 R
+option.LIGHT_DAY_COLOR_G=白天光 G
+option.LIGHT_DAY_COLOR_B=白天光 B
+
+option.LIGHT_NIGHT_COLOR_R=夜光 R
+option.LIGHT_NIGHT_COLOR_G=夜光 G
+option.LIGHT_NIGHT_COLOR_B=夜光 B
+
+option.ZENITH_SUNSET_COLOR_R=天顶日落 R
+option.ZENITH_SUNSET_COLOR_G=天顶日落 G
+option.ZENITH_SUNSET_COLOR_B=天顶日落 B
+
+option.ZENITH_DAY_COLOR_R=天顶日光 R
+option.ZENITH_DAY_COLOR_G=天顶日光 G
+option.ZENITH_DAY_COLOR_B=天顶日光 B
+
+option.ZENITH_NIGHT_COLOR_R=夜间顶点 红色
+option.ZENITH_NIGHT_COLOR_G=夜间顶点 绿色
+option.ZENITH_NIGHT_COLOR_B=夜间顶点 蓝色
+
+option.HORIZON_SUNSET_COLOR_R=地平线日落 R
+option.HORIZON_SUNSET_COLOR_G=地平线日落 G
+option.HORIZON_SUNSET_COLOR_B=地平线日落 B
+
+option.HORIZON_DAY_COLOR_R=地平线白天 R
+option.HORIZON_DAY_COLOR_G=地平线白天 G
+option.HORIZON_DAY_COLOR_B=地平线白天 B
+
+option.HORIZON_NIGHT_COLOR_R=夜间地平线 R
+option.HORIZON_NIGHT_COLOR_G=夜间地平线 G
+option.HORIZON_NIGHT_COLOR_B=夜间地平线 B
+
+option.WATER_COLOR_R=水 R
+option.WATER_COLOR_G=水 G
+option.WATER_COLOR_B=水 B
+
+option.NV_COLOR_R=夜视 R 倍率
+option.NV_COLOR_G=夜视 G 倍率
+option.NV_COLOR_B=夜视 B 倍率
+
+option.OMNI_TINT_CUSTOM=全局色调
+
+option.AVOID_DARK_LEVEL=洞穴亮度
+
+option.NIGHT_BRIGHT=夜间亮度
+
+option.V_CLOUDS=云层
+value.V_CLOUDS.0=原版
+value.V_CLOUDS.1=体积静态
+value.V_CLOUDS.2=体积动态
+
+option.CLOUD_VOL_STYLE=体积云样式
+value.CLOUD_VOL_STYLE.0=自然
+value.CLOUD_VOL_STYLE.1=方形
+
+option.CLOUD_SPEED=云层速度
+value.CLOUD_SPEED.0=正常
+value.CLOUD_SPEED.1=时间流逝 1
+value.CLOUD_SPEED.2=时间流逝 2
+
+option.END_CLOUDS=末地云层
+
+option.CLOUD_STEPS_AVG=云采样
+
+option.BLOOM=泛光
+
+option.COLOR_BLINDNESS=色盲
+
+option.COLOR_BLIND_MODE=CB 类型
+value.COLOR_BLIND_MODE.0=红盲
+value.COLOR_BLIND_MODE.1=绿盲
+value.COLOR_BLIND_MODE.2=蓝黄盲
+
+option.DEBUG_MODE=调试模式
+
+option.BLOOM_SAMPLES=泛光样本对
+
+option.BLACK_ENTITY_FIX=黑色实体错误修复
+value.BLACK_ENTITY_FIX.0=关闭
+value.BLACK_ENTITY_FIX.1=打开
+
+option.FOG_ACTIVE=雾已启用
+
+option.FOG_ADJUST=雾强度
+value.FOG_ADJUST.20.0=无雾
+value.FOG_ADJUST.10.0=极低
+value.FOG_ADJUST.8.0=很低
+value.FOG_ADJUST.4.0=低
+value.FOG_ADJUST.2.0=中等
+value.FOG_ADJUST.1.0=高
+
+option.NETHER_FOG_DISTANCE=下界雾距离
+value.NETHER_FOG_DISTANCE.0=渲染距离
+value.NETHER_FOG_DISTANCE.1=原版
+
+option.BLOCKLIGHT_TEMP=区块光照温度
+value.BLOCKLIGHT_TEMP.0=更热
+value.BLOCKLIGHT_TEMP.1=温暖
+value.BLOCKLIGHT_TEMP.2=黄色
+value.BLOCKLIGHT_TEMP.3=淡黄色
+value.BLOCKLIGHT_TEMP.4=白光
+
+option.sunPathRotation=太阳角度
+
+option.USE_BASIC_SH=自定义维度基本着色器
+
+option.MATERIAL_GLOSS=湿润材质光泽
+
+option.DYN_HAND_LIGHT=假动态光
+
+#Screens
+screen.ADVANCED_SCREEN=高级
+screen.ADVANCED_SCREEN.comment=设置高级选项
+
+screen.COMPATIBILITY_SCREEN=兼容性
+screen.COMPATIBILITY_SCREEN.comment=设置兼容性选项
+
+screen.SHADOWS_SCREEN=阴影 & 光照
+screen.SHADOWS_SCREEN.comment=设置阴影选项
+
+option.SHADOW_LOCK=像素锁定阴影
+value.SHADOW_LOCK.0=已禁用
+value.SHADOW_LOCK.16=16x16
+value.SHADOW_LOCK.32=32x32
+value.SHADOW_LOCK.64=64x64
+value.SHADOW_LOCK.128=128x128
+value.SHADOW_LOCK.256=256x256
+
+screen.DOF_SCREEN=景深
+screen.DOF_SCREEN.comment=设置景深选项
+
+screen.AO_SCREEN=环境光遮蔽
+screen.AO_SCREEN.comment=设置环境光遮蔽选项
+
+screen.WATER_SCREEN=水面 & 湿表面
+screen.WATER_SCREEN.comment=设置水面选项。
+
+screen.POST_SCREEN=后期处理
+screen.POST_SCREEN.comment=设置后期效果选项。
+
+screen.LIGHT_SCREEN=光照
+screen.LIGHT_SCREEN.comment=设置光照选项。
+
+screen.CLOUDS_SCREEN=天空 & 云层
+screen.CLOUDS_SCREEN.comment=设置日出和云层选项。
+
+screen.FOG_SCREEN=雾
+screen.FOG_SCREEN.comment=设置雾选项
+
+screen.MOTION_BLUR_SCREEN=运动模糊
+screen.MOTION_BLUR_SCREEN.comment=设置运动模糊选项
+
+screen.ACCESIBILITY_SCREEN=可访问性
+screen.ACCESIBILITY_SCREEN.comment=设置可访问性选项
+
+screen.CUSTOM_COLORS_SCREEN=自定义颜色
+screen.CUSTOM_COLORS_SCREEN.comment=设置自定义颜色
+screen.CUSTOM_COLORS_DAY=白天自定义颜色
+screen.CUSTOM_COLORS_SUNSET=日落/黎明自定义颜色
+screen.CUSTOM_COLORS_NIGHT=夜晚自定义颜色
+screen.CUSTOM_COLORS_WATER=水面自定义颜色
+screen.CUSTOM_COLORS_NV=夜视自定义颜色
+
+# AquaReal UI
+screen.AQUAREAL_ADVANCED=AquaReal 高级
+screen.AQUAREAL_ADVANCED.comment=微调光照, 水, 云和后处理。
+
+option.IMAGE_SHARPENING=图像锐化
+option.SHARPENING=锐化强度

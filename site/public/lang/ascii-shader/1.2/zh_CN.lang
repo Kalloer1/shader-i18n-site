@@ -1,0 +1,60 @@
+option.MODE=线条边缘检测
+value.MODE.0=§e基础
+value.MODE.1=§6深度
+value.MODE.2=§4DoG
+
+option.MAGNITUDE=线条边缘阈值
+
+option.SUPER_SAMPLING=超采样步骤
+
+option.LINE=线检测
+value.LINE.1=§2 true
+value.LINE.0=§4 false
+
+screen.POST_PROCESS=后处理
+
+option.BLOOM=泛光
+value.BLOOM.true=§2True
+value.BLOOM.false=§4False
+option.BLOOM_STRENGTH=泛光强度
+
+option.SHARPNESS=锐化
+value.SHARPNESS.true=§2true
+value.SHARPNESS.false=§4false
+option.SHARPNESS_STRENGTH=锐化强度
+
+option.TONEMAPPING=色调映射
+value.TONEMAPPING.true=§2True
+value.TONEMAPPING.false=§4False
+
+screen.COLORS=颜色
+
+option.LIGHT_RED=§c红色 (轻量颜色)
+option.LIGHT_GREEN=§a绿色 (轻量颜色)
+option.LIGHT_BLUE=§9蓝色 (轻量颜色)
+
+option.DARK_RED=§c暗红
+option.DARK_GREEN=§a暗绿
+option.DARK_BLUE=§9暗蓝
+
+option.COLOR_THRESHOLD=颜色混合阈值/因子
+option.OG_COLOR=使用原始颜色
+value.OG_COLOR.true=§2True
+value.OG_COLOR.false=§4False
+
+option.BACK_RED=§c红色（背景颜色）
+option.BACK_GREEN=§a绿色（背景颜色）
+option.BACK_BLUE=§9蓝色（背景颜色）
+
+screen.FALLOFF=Falloff 设置
+
+option.FALLOFF=Falloff
+value.FALLOFF.true=§2True
+value.FALLOFF.false=§4False
+
+option.FALLOFF_AMOUNT=Falloff 强度
+
+option.MIX_LUMINANCE=混合最终颜色的亮度
+value.MIX_LUMINANCE.true=§2True
+value.MIX_LUMINANCE.false=§4False
+option.MIX_LUMINANCE_AMOUNT=混合亮度因子

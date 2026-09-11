@@ -1,0 +1,283 @@
+option.GLIMMER_SHADERS=微光光影
+value.GLIMMER_SHADERS.1=§dBy jbritain
+value.GLIMMER_SHADERS.2=§dBy jbritain
+
+option.WEBSITE=https://
+value.WEBSITE.1=§djbritain.net
+value.WEBSITE.2=§djbritain.net
+
+screen.LIGHTING=光照与阴影
+screen.SHADOWS=阴影
+screen.ATMOSPHERICS=天空与雾
+screen.WATER=水
+screen.POST=后期处理
+screen.WORLD=世界
+screen.MATERIALS=材质
+screen.PARALLAX=视差(POM)
+screen.DH=Distant Horizons/Voxy
+screen.MISC=杂项
+screen.BLOCK_OUTLINE=方块选择轮廓
+screen.DEBUG=开发
+
+profile.potato=§c土豆
+profile.toaster=§6烤面包机
+profile.igpu=§a集成显卡
+profile.dgpu=§b独立显卡
+
+option.DEBUG_ENABLE=调试模式
+option.DEBUG_ENABLE.comment=将 show() 函数调用的内容渲染到屏幕上。
+
+option.FREEZE_TIME=冻结时间
+option.FREEZE_TIME.comment=禁用光影内置的所有动画，例如水波。
+
+option.CONTRAST=对比度
+option.CONTRAST.comment=§9无性能影响！
+option.SATURATION=饱和度
+option.SATURATION.comment=§9无性能影响！
+
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=控制屏幕的最终亮度。如果启用了§e自动曝光§f，则忽略此设置。§9无性能影响！
+
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE.comment=根据场景亮度自动调整曝光。§a性能影响极低。
+
+option.AMBIENT_STRENGTH=环境光强度
+option.AMBIENT_STRENGTH.comment=任何情况下的最低光照量。§9无性能影响！
+
+option.OLD_LIGHTING=旧版光照
+option.OLD_LIGHTING.comment=启用基于朝向的原版光照。§9无性能影响！
+
+option.FLOODFILL=彩色区块光
+option.FLOODFILL.comment=使方块发出的光与其颜色匹配。需要启用§e阴影§f。§6中等性能影响。
+
+option.EMISSION_STRENGTH=自发光强度
+option.EMISSION_STRENGTH.comment=自发光有多亮。§9对性能无影响！
+
+option.BLOCKLIGHT_STRENGTH=方块光强度
+option.BLOCKLIGHT_STRENGTH.comment=方块发出的光有多亮。§9无性能影响！
+
+option.ambientOcclusionLevel = 环境光遮蔽强度
+option.ambientOcclusionLevel.comment=在方块交汇处加深角落以模拟环境阴影。§9无性能影响！§f关闭会影响 §eDistant Horizons Ambient Occlusion。
+
+option.SHADOWS=阴影
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=玩家周围能够投射阴影的半径。§c对性能影响极高！
+value.shadowDistance.16.0=1 区块
+value.shadowDistance.32.0=2 区块
+value.shadowDistance.48.0=3 区块
+value.shadowDistance.64.0=4 区块
+value.shadowDistance.80.0=5 区块
+value.shadowDistance.96.0=6 区块
+value.shadowDistance.112.0=7 区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.144.0=9 区块
+value.shadowDistance.160.0=10 区块
+value.shadowDistance.176.0=11 区块
+value.shadowDistance.192.0=12 区块
+value.shadowDistance.208.0=13 区块
+value.shadowDistance.224.0=14 区块
+value.shadowDistance.240.0=15 区块
+value.shadowDistance.256.0=16 区块
+value.shadowDistance.272.0=17 区块
+value.shadowDistance.288.0=18 区块
+value.shadowDistance.304.0=19 区块
+value.shadowDistance.320.0=20 区块
+value.shadowDistance.336.0=21 区块
+value.shadowDistance.352.0=22 区块
+value.shadowDistance.368.0=23 区块
+value.shadowDistance.384.0=24 区块
+value.shadowDistance.400.0=25 区块
+value.shadowDistance.416.0=26 区块
+value.shadowDistance.432.0=27 区块
+value.shadowDistance.448.0=28 区块
+value.shadowDistance.464.0=29 区块
+value.shadowDistance.480.0=30 区块
+value.shadowDistance.496.0=31 区块
+value.shadowDistance.512.0=32 区块
+
+option.entityShadowDistanceMul=实体阴影距离
+option.entityShadowDistanceMul.comment=实体将在该阴影距离的此比例范围内投射阴影。设置为0将完全禁用实体阴影。§6中等性能影响。
+suffix.entityShadowDistanceMul=x
+
+option.shadowMapResolution=阴影质量
+option.shadowMapResolution.comment=阴影贴图的分辨率（有多模糊）。§c极高的性能影响！
+value.shadowMapResolution.128=128x
+value.shadowMapResolution.256=256x
+value.shadowMapResolution.512=512x
+value.shadowMapResolution.1024=1024x
+value.shadowMapResolution.2048=2048x
+value.shadowMapResolution.4096=4096x
+value.shadowMapResolution.8192=8192x
+
+option.SHADOW_SAMPLES=阴影采样
+option.SHADOW_SAMPLES.comment=每个像素采样的阴影数量。数值越高，噪点越少。§c对性能影响极大！
+
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=阴影的柔和程度。较高的柔和值能更好地隐藏像素化阴影，代价是产生更多噪点。§9无性能影响！
+
+option.sunPathRotation=太阳角度
+option.sunPathRotation.comment=太阳和月亮在天空中运行的路径角度。§9无性能影响！
+
+option.DIRECTIONAL_LIGHTMAPS=定向光照映射
+option.DIRECTIONAL_LIGHTMAPS.comment=尝试猜测方块和天光来自的方向。搭配带有法线贴图的资源包效果最佳。§2几乎不可察觉的性能影响。
+
+option.DYNAMIC_HANDLIGHT=动态手持光源
+option.DYNAMIC_HANDLIGHT.comment=手持光源时，照亮玩家周围的区域。§2性能影响不可察觉。
+
+option.PBR_MODE=PBR支持
+option.PBR_MODE.comment=LabPBR需要受支持的资源包。§6中等性能影响。
+value.PBR_MODE.0=关
+value.PBR_MODE.1=LabPBR 1.3
+
+option.CLOUDS=云
+option.CLOUDS.comment=§a极低性能消耗。
+
+option.BLOCKY_CLOUDS=方块云
+option.BLOCKY_CLOUDS.comment=使云呈现清晰的方块形状。这原本是个缺陷，但大家喜欢，所以现在成了特性！§9无性能影响！
+
+option.ATMOSPHERIC_FOG=氛围雾
+option.ATMOSPHERIC_FOG.comment=使地形渐隐至远方。§a极低性能影响。
+
+option.CLOUDY_FOG=精致雾
+option.CLOUDY_FOG.comment=添加一层覆盖地面的薄雾。在早晨和下雨时更为明显。§6中等性能影响。
+
+option.BASE_FOG_DENSITY=基础雾密度
+option.BASE_FOG_DENSITY.comment=§e高级雾§f的密度。§9无任何性能影响！
+
+option.MORNING_FOG_DENSITY=晨雾密度
+option.MORNING_FOG_DENSITY.comment=§e高级雾§f的密度在早晨增加多少。§9无性能影响！
+
+option.GODRAYS=体积光 (VL)
+option.GODRAYS.comment=使物体看起来透过§e高级雾§f。§f§e屏幕空间§f模式精度较低，如果太阳不在屏幕上则会消失。§e体积光§f模式§f需要§e阴影§f处于启用状态，并且在较低的§e阴影质量/距离§f设置下效果会很差。§a极小的性能影响。
+value.GODRAYS.0=关闭
+value.GODRAYS.1=屏幕空间
+value.GODRAYS.2=体积光
+
+option.GODRAYS_SAMPLES=体积光采样数
+option.GODRAYS_SAMPLES.comment=渲染体积光时采样的数量。较高的数值能减少噪点，但会降低性能。§6中等性能影响。
+
+option.CLOUD_SHADOWS=云阴影
+option.CLOUD_SHADOWS.comment=使云投射阴影。§a性能影响极小。
+
+option.BORDER_FOG=边界雾
+option.BORDER_FOG.comment=地形在渲染距离边缘向天空逐渐淡出。§2性能影响微乎其微。
+
+option.REFLECTION_MODE=反射
+option.REFLECTION_MODE.comment=为水面添加反射。"fast"选项会猜测反射可能的位置，但通常不准确，而SSR会遍历场景以找到交点。§c高性能影响！
+value.REFLECTION_MODE.0=关
+value.REFLECTION_MODE.1=快速
+value.REFLECTION_MODE.2=SSR
+
+option.ROUGH_SKY_REFLECTIONS=粗糙天空反射
+option.ROUGH_SKY_REFLECTIONS.comment=为 PBR 材质添加天空反射。§a极低性能影响。
+option.VANILLA_WATER=原版水
+option.PIXEL_LOCKED_LIGHTING=像素锁定光照
+option.PIXEL_SIZE=像素锁定大小
+option.RAIN_PUDDLES=雨坑
+option.RAIN_PUDDLES.comment=§a极低性能影响。
+
+option.SSR_STEPS=SSR 步数
+option.SSR_STEPS.comment=较高的数值将减少水面反射中的噪点/阶梯状瑕疵 §e启用 SSR 时 §f以性能为代价。§6中等性能影响。§7注意每一步需要 4 个采样。
+
+option.FADE_REFLECTIONS=反射边缘淡出
+option.FADE_REFLECTIONS.comment=当反射接近屏幕边缘时，向天空淡出以避免原本生硬的截断。§2几乎不可察觉的性能影响。
+
+option.SSR_JITTER=SSR 抖动
+option.SSR_JITTER.comment=启用时，§eSSR §f反射会出现噪点，但不会有“台阶效应”。§2性能影响微乎其微。
+
+option.REFRACTION=折射
+option.REFRACTION.comment=光在进入或离开水面时发生弯曲。§a性能影响极小。
+
+option.WATER_SCATTERING_MOD=水散射强度
+option.WATER_SCATTERING_MOD.comment=控制水中光线的散射程度，使水看起来更加浓雾。§9无性能影响！
+
+option.WATER_ABSORPTION_MOD=水吸收强度
+option.WATER_ABSORPTION_MOD.comment=控制水吸收多少光，这会导致透过水看到的物体带有蓝色色调。§9无性能影响！
+
+option.WAVE_DEPTH=波浪高度
+
+option.CAUSTICS=焦散
+option.CAUSTICS.comment=模拟光线穿过水面时投下的阴影。需要§e阴影§f被启用，且在较低的§e阴影质量§f设置下看起来会很差。§a极小的性能影响。
+
+option.BLOOM=泛光
+option.BLOOM.comment=使明亮物体看起来发光。§6中等性能影响。
+
+option.BLOOM_RADIUS=泛光半径
+option.BLOOM_RADIUS.comment=泛光在屏幕上扩散的范围。§9无任何性能影响！
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=泛光对屏幕最终颜色的影响程度。§9对性能没有任何影响！
+
+option.BLOOM_QUALITY=泛光质量
+option.BLOOM_QUALITY.comment=以屏幕分辨率的百分比运行泛光。§6中等性能影响。
+
+option.TEMPORAL_FILTER=时间滤波
+option.TEMPORAL_FILTER.comment=使用前一帧的数据来减少噪点。可能会导致模糊和鬼影。§2几乎不可察觉的性能影响。§7请不要相信 Threat Interactive 的反 TAA 宣传。§7他确实说得对，许多现代游戏将其作为依赖，但它缺乏可信度，也不了解图形编程。§7真正的问题是，大多数工作室没有给开发者足够的时间来正确优化他们的游戏。
+
+option.FXAA=FXAA
+option.FXAA.comment=抗锯齿 - 消除锯齿边缘。§a极小的性能影响。
+
+option.WAVING_BLOCKS=摇曳方块
+option.WAVING_BLOCKS.comment=使植物在微风中摇曳。§a极低性能影响。
+
+option.PATCHY_LAVA=斑驳岩浆
+option.PATCHY_LAVA.comment=为岩浆亮度增加一些变化。§2不可察觉的性能影响。
+
+option.INFINITE_OCEAN=无限海洋
+option.INFINITE_OCEAN.comment=添加一个延伸至无限的海洋。§6中度性能影响。
+
+option.SEA_LEVEL=海平面
+option.SEA_LEVEL.comment=无限海洋渲染的海拔高度。§9无性能影响！§7如果你需要这里没有的海平面，请告诉我！
+
+option.DH_AO=环境光遮蔽
+option.DH_AO.comment=使远处地形的方块边缘更加清晰。§6适中的性能影响。
+
+option.DH_AO_SAMPLES=AO 样本数
+option.DH_AO_SAMPLES.comment=数值越高性能越差但能减少噪点。§6中等性能影响。
+
+option.PARALLAX=视差
+option.PARALLAX.comment=让方块和实体看起来有深度。§6中等性能影响。
+
+option.PARALLAX_HEIGHT=视差高度
+option.PARALLAX_HEIGHT.comment=深度为 1.0 时应深入方块多远。§9无性能影响！
+
+option.PARALLAX_DISTANCE=视差渲染距离
+option.PARALLAX_DISTANCE.comment=视差停止渲染的距离。§6中等性能影响。
+
+option.PARALLAX_SAMPLES=视差采样数
+option.PARALLAX_SAMPLES.comment=计算视差时应取多少采样数。较高的数值可减少锯齿边缘，但会带来性能开销。§6中等性能影响。
+
+option.PARALLAX_SHADOW=视差自阴影
+option.PARALLAX_SHADOW.comment=允许视差投射阴影。§6中等性能影响。
+
+option.PARALLAX_SHADOW_SAMPLES=自阴影采样
+option.PARALLAX_SHADOW_SAMPLES.comment=计算视差阴影时应取多少采样。§6适中的性能影响。
+
+option.WATER_PARALLAX=水视差
+option.WATER_PARALLAX.comment=为水波增加深度。§6中等性能影响。
+
+option.CAVE_SKY_DARKENING=洞穴天空变暗
+option.CAVE_SKY_DARKENING.comment=当游戏判定你在地下时，使天空变暗并减少雾。§9无性能影响！
+
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR.comment=相机移动时模糊画面。可以在低帧率时让游戏感觉更流畅。§a性能影响极小。
+
+option.BLOCK_OUTLINE_MODE=方块选择轮廓
+option.BLOCK_OUTLINE.comment=控制当前选中方块的轮廓。当设为 §eoff§f 时不可见。当设为 §eon§f 时，颜色由下方滑块配置。当设为 §erainbow§f 时，颜色会随时间变化。
+value.BLOCK_OUTLINE_MODE.0=关闭
+value.BLOCK_OUTLINE_MODE.1=开启
+value.BLOCK_OUTLINE_MODE.2=§cR§6a§ei§an§bb§9o§dw
+
+option.BLOCK_OUTLINE_R=轮廓红
+option.BLOCK_OUTLINE_G=轮廓绿
+option.BLOCK_OUTLINE_B=轮廓蓝
+
+option.tonemap=色调映射运算符
+option.tonemap.comment=最终颜色的分级方式。§2几乎无性能影响。
+value.tonemap.agxTonemap=AGX (强烈)
+value.tonemap.jodieReinhardTonemap=Jodie-Reinhard
+value.tonemap.uncharted2FilmicTonemap=Hable
+value.tonemap.hejlBurgessTonemap=Hejl-Burgess
+value.tonemap.ACESTonemap=ACES 近似
+value.tonemap.lottesTonemap=Lottes

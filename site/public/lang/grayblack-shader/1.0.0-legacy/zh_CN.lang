@@ -1,0 +1,5 @@
+# test Language File
+# English (US)
+
+option.GRAYSCALE=灰度效果
+option.GRAYSCALE.comment=启用灰度后处理效果

@@ -1,0 +1,14 @@
+
+option.WATER_WAVE_SCALE=水波幅度
+option.WATER_WAVE_SPEED=水波速度
+option.WATER_WAVE_STRENGTH=水波强度
+value.WATER_WAVE_STRENGTH.0.0=0.0（无波纹）
+option.WATER_TRANSPARENCY=水透明度
+option.WATER_BRIGHTNESS=水亮度
+option.RAYTRACE_STEP=反射质量
+value.RAYTRACE_STEP.200=§a低配
+value.RAYTRACE_STEP.400=§e中配
+value.RAYTRACE_STEP.600=§c高配
+option.WATER_REFLECTANCE=水反射率
+option.ENABLE_FOG=边缘雾
+option.ENABLE_REFRACTION=折射

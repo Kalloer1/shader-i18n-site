@@ -1,0 +1,23 @@
+option.INFO=水体光影透明度
+value.INFO.0=v1.4
+
+option.STYLE=水面样式
+value.STYLE.1=§bNecrowizzard
+value.STYLE.2=§bSuperbomb17
+
+option.PLANES=可用的同时水平面数量
+option.PLANES.comment=为反射处理不同高度的水面块数。
+value.PLANES.1=§a 1 - 低配
+value.PLANES.2=§e 2 - 中配
+value.PLANES.3=§c 3 - 高配
+value.PLANES.4=§4 4 - 极高
+
+option.SKYTEXTURED=太阳与月亮反射（§c实验性）
+value.SKYTEXTURED.0=§c关闭
+value.SKYTEXTURED.1=§a开启
+
+option.REFLECTION_RESOLUTION=反射纹理分辨率（解决闪烁瑕疵）
+option.REFLECTION_RESOLUTION.comment=反射阴影贴图分辨率可能过小以适应您的屏幕。如果在反射处看到闪烁问题，请增大此数值。
+value.REFLECTION_RESOLUTION.1=§a 1024 - 低配
+value.REFLECTION_RESOLUTION.2=§e 2048 - 中配
+value.REFLECTION_RESOLUTION.3=§c 4096 - 高配

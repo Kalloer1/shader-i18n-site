@@ -1,0 +1,49 @@
+# Options
+option.ShadowMapping=阴影贴图
+option.ShadowSamples=阴影采样
+option.Brightness=亮度
+option.Bloom=泛光
+option.BloomQuality=泛光质量
+option.ChromaticAberration=色差
+option.ChromaticAberrationQuality=色差质量
+option.Saturation=饱和度
+option.Exposure=曝光
+option.CinematicBars=电影遮幅
+option.Lensflare=镜头光晕
+option.Red=红
+option.Green=绿
+option.Blue=蓝
+option.WavingPlants=植物摇摆
+option.WavingPlantsSpeed=植物摇摆速度
+option.WavingLeaves=树叶摇摆
+option.WavingLeavesSpeed=树叶摇摆速度
+option.WaterWave=水波
+option.UnderWaterCaustics=水下焦散
+
+# Screen Layout
+screen=[信息] <空> [波动设置] [阴影设置] [后期处理]
+
+# INFO Section
+screen.INFO=Open4ES-Shader-Android
+screen.INFO.comment=制作：§5@FryedCheese§r
+
+# Waving Settings
+screen.WavingSettings=[波动植物] <empty> [波动叶子] <empty> [波动水]
+screen.WavingSettings.columns=1
+
+screen.WavingPlants=植物摇摆 植物摇摆速度
+screen.WavingLeaves=树叶摇摆 树叶摇摆速度
+screen.WavingWater=水波 水下焦散
+
+# Shadow Settings
+screen.ShadowSettings=阴影贴图 阴影采样
+
+# Post-Processing Settings
+screen.PostProcessing=[世界颜色] 亮度 泛光 泛光质量 色差 色差质量 镜头光晕
+screen.WorldColor=红 绿 蓝
+
+# Sliders
+sliders=叶片摆动速度 植物摆动速度 阴影采样数 色差质量 红 绿 蓝 亮度 泛光质量
+
+# Columns
+screen.columns=1

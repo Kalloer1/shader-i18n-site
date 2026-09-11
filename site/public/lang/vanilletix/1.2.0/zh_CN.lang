@@ -1,0 +1,290 @@
+## Language format v1.2.0
+## All other .lang files must update to the latest language format version on this main .lang file
+
+## Performance Indicator Legend
+## §c◆ High | §6◆ Medium | §e◆ Low | §a◆ Zero | §d◇ Variable
+## Values colored: §cOFF §f= disabled, §aRecommended §f= optimal setting.
+
+## Profiles
+    profile.Potato =§4超快
+    profile.Low =§c低
+    profile.Medium =§e中
+    profile.Classic =§d经典 (默认)
+    profile.High =§a高
+    
+screen.PERFORMANCE =§e性能设置
+	screen.PERFORMANCE.comment =§2对渲染性能有显著影响的核心设置。请首先调整这些选项以获得最佳帧率。
+
+option.CLOUDS_IN_REFLECTIONS =§c◆§f 云层反射
+
+screen.DEBUG =v§9§lani§b§lltix§d .2.0§8 [保]
+    screen.DEBUG.comment =由 eldesto§3n 开发，§f§rflamerende§9r (c) stud§9ios 呈现，\n\n由 _§3mat_ofc 编辑§f。\n\n请确保从受信任的来源下载 - modrinth 和 curseforge
+
+option.SHADER_STYLE =色调映射风格
+    value.SHADER_STYLE.0 =§e自定义
+    value.SHADER_STYLE.1 =§a清新
+    value.SHADER_STYLE.2 =§d写实
+
+
+screen.COLOR_PROFILE =§d视觉样式
+    screen.COLOR_PROFILE.comment =§2水体外观、色彩分级与大气色调控制。
+    option.COLOR_MODE =§c◆§f 颜色模式
+        value.COLOR_MODE.0 =§c关
+        value.COLOR_MODE.1 =白色模式
+        value.COLOR_MODE.2 =黑色模式
+        value.COLOR_MODE.3 =植被模式
+    option.ENTITY_BLOCK_TRANSPARENCY =§6◆§f 实体透明度
+    option.NOISE_SPEED =§a◆§f 噪声时间速度
+
+screen.POST =§b后期处理
+    option.OUTLINES =§e◆§f 轮廓样式
+        value.OUTLINES.0 =§c关
+        value.OUTLINES.1 =标准
+        value.OUTLINES.2 =地牢
+    option.OUTLINE_BRIGHTNESS =§a◆§f 轮廓亮度
+    option.OUTLINE_PIXEL_SIZE =§a◆§f 轮廓粗细
+    option.RETRO_FILTER =§e◆§f 复古滤镜
+    option.ANTI_ALIASING =§c◆§f 抗锯齿方法
+        value.ANTI_ALIASING.0 =§c关
+        value.ANTI_ALIASING.1 =快速近似抗锯齿
+        value.ANTI_ALIASING.2 =自适§a应时间抗锯齿
+        value.ANTI_ALIASING.3 =轻量 TAA + FXAA
+    option.SHARPEN_FILTER =§e◆§f 锐化滤镜
+
+    screen.CAMERA =§d相机效果
+        option.DOF =§c§f◆ 景深
+        option.DOF_STRENGTH =景深强度
+        option.CHROMATIC_ABERRATION =§e§f◆ 色差
+        option.ABERRATION_PIXEL_SIZE =像差缩放
+        option.BLOOM =§6◆§f 泛光效果
+        option.BLOOM_STRENGTH =泛光强度
+        option.LENS_FLARE =§a◆§f 镜头光晕样式
+            value.LENS_FLARE.0 =§a现代
+            value.LENS_FLARE.1 =§c关
+        option.LENS_FLARE_STRENGTH =镜头光晕强度
+        option.VIGNETTE =§e◆§f 暗角
+        option.VIGNETTE_STRENGTH =暗角强度
+        option.MOTION_BLUR =§d◇§f 动态模糊
+        option.comment.MOTION_BLUR =推§2荐用于 GTX 950 或更高型号的显卡。
+        option.MOTION_BLUR_STRENGTH =动态模糊强度
+        option.comment.MOTION_BLUR_STRENGTH =§2值 ≤§a0.§250 以保持稳定性。
+
+    screen.CLOUDS_SETTINGS =§b云层配置
+    screen.WAVE_STUFFS =§9动态波浪效果
+
+    screen.TONEMAP =§7色调映射控制
+        option.CONTRAST =§a◆§f 对比度
+        option.SATURATION =§a◆§f 饱和度
+        option.WHITE_POINT =§a◆§f 白点
+        option.SHOULDER_STRENGTH =§a◆§f 肩部强度
+        option.AUTO_EXPOSURE =§e◆§f 自动曝光
+        option.AUTO_EXPOSURE_SPEED =§a◆§f 曝光适应速度
+        option.EXPOSURE =§a◆§f 手动曝光
+        option.MINIMUM_EXPOSURE =§a◆§f 最小曝光阈值
+        option.TINT_R =§a◆§f 红色通道色调
+        option.TINT_G =§a◆§f 绿色通道色调
+        option.TINT_B =§a◆§f 蓝色通道色调
+
+screen.LIGHTING =§f光照与阴影
+    option.SHADOW_MAPPING =§c◆§f 启用阴影贴图
+    option.SHADOW_COLOR =§e◆§f 彩色阴影透明度
+    option.SHADOW_FILTER =§6◆§f 柔化阴影过滤
+    option.ENTITY_SHADOWS =§6◆§f 实体阴影
+    option.BLOCK_ENTITY_SHADOWS =§6◆§f 方块实体阴影
+    option.shadowMapResolution =§c◆§f 阴影贴图分辨率
+    option.shadowDistance =§e◆§f 阴影渲染距离
+        value.shadowDistance.64.0 =§a4区块
+        value.shadowDistance.96.0 =§a6区块
+        value.shadowDistance.128.0 =§68 区块
+        value.shadowDistance.160.0 =§68 区块
+        value.shadowDistance.192.0 =§c12区块
+        value.shadowDistance.224.0 =§c14区块
+        value.shadowDistance.256.0 =§416区块
+    option.sunPathRotation =§a◆§f 日月路径角度
+    option.UNDERWATER_CAUSTICS =§6◆§f 水下焦散
+        value.UNDERWATER_CAUSTICS.0 =§c关
+        value.UNDERWATER_CAUSTICS.1 =仅限水下
+        value.UNDERWATER_CAUSTICS.2 =§a完整
+    option.SSAO =◆§c §f环境光遮蔽
+    option.AMBIENT_LIGHTING =§a◆§f 环境光等级
+
+    screen.RAY_TRACING =§d光线追踪效果
+        option.SSGI =◆§c 屏§f幕空间全局光照
+        option.SSR =§c◆§f 反射
+            option.SSR.comment =屏幕空间反射
+        option.RAYTRACER_STEPS =◆§c§f 光线追踪步进次数
+        option.RAYTRACER_BISTEPS =§6◆§f 精修迭代次数
+        option.ROUGH_REFLECTIONS =§6◆§f 粗糙反射
+        option.PREVIOUS_FRAME =◆§c§f 使用上一帧数据
+
+    option.SUN_MOON_INTENSITY =太阳/月亮强度
+    option.VOLUMETRIC_LIGHTING =§c◆§f 体积光照
+    option.VOLUMETRIC_LIGHTING_STRENGTH =§a◆§f 体积光强度
+    option.BORDER_FOG =§e◆§f 世界边缘雾效
+    option.GROUND_FOG_STRENGTH =§e◆§f 地面雾密度
+    option.SKYBOX_BRIGHTNESS =§a◆§f 天空盒亮度
+
+screen.WORLD =§a世界动态效果
+    option.TERRAIN_ANIMATION =§e◆§f 地形摇摆动画
+    option.WATER_ANIMATION =§6◆§f 水波
+    option.WEATHER_ANIMATION =§e§f◆ 降水动画
+    option.TIMELAPSE_MODE =§e◆§f 时间流逝同步
+        value.TIMELAPSE_MODE.0 =§c关
+        value.TIMELAPSE_MODE.1 =仅天空与水面
+        value.TIMELAPSE_MODE.2 =§a推荐完整场景
+    option.WIND_SPEED =§a§f◆ 风速
+    option.CURRENT_SPEED =§a◆§f 液体流速
+    option.WIND_FREQUENCY =§a◆§f 风力振荡频率
+    option.CURRENT_FREQUENCY =§a◆§f 液体流动频率
+    option.WORLD_CURVATURE =§6◆§f 启用世界曲率
+    option.WORLD_CURVATURE_SIZE =§e◆§f 曲率半径
+
+screen.WATER_PAGE =§b水体设置
+screen.CLOUDS_PAGE =§b云设置
+
+screen.PBR =基于§d物理的渲染
+    option.PBR_MODE =◆§c §f基于物理的渲染模式
+        value.PBR_MODE.0 =§c关
+        value.PBR_MODE.1 =集§a成式基于物理的渲染
+        value.PBR_MODE.2 =labpbr 1.3 标准
+    option.WATER_STYLE =§d◇§f 水面样式
+        value.WATER_STYLE.0 =§b像素化
+        value.WATER_STYLE.1 =§b写实
+        option.WATER_STYLE.comment =§b§l像素（体素§f）- 受体素游戏与像素艺术启发的着色器水体可视化新方式
+    option.CLOUDS_STYLE =§d◇§f 云朵样式
+        value.CLOUDS_STYLE.0 =§b故事模式（分层）
+        value.CLOUDS_STYLE.1 =§b单层
+        value.CLOUDS_STYLE.2 =§b体素（体积化）
+        option.CLOUDS_STYLE.comment =§b§l选择偏好的云朵美学风格
+    option.STORY_MODE_CLOUDS =◆§c§f 着色器生成云朵
+    option.SUN_MOON_TYPE =§a◆§f 太阳样式
+        value.SUN_MOON_TYPE.0 =§b超级原版增强
+        value.SUN_MOON_TYPE.1 =§b现代
+        value.SUN_MOON_TYPE.2 =§b原版[§a默认]
+
+screen.FOG_SETTINGS =§b雾效配置
+screen.WAVE_SETTINGS =§9风与波浪
+screen.VISUAL_SETTINGS =§7世界：§b高级视觉效果
+screen.ATMOSPHERICS =大气：视觉§b效果
+screen.SUN_MOON_SETTINGS =§b日月：§f高级参数
+screen.CLOUDS_SETTINGS_ADV =§b云朵§f：高级配置
+
+screen.VOLUMETRIC_SETTINGS =§b体积云：高级§f设置
+    option.SHADOW_STEPS =§c◆§f 阴影光线步数
+    option.SHADOW_STEPS.comment =§2更高数值会产生更柔和的云影，但会显著增加渲染成本
+    option.MARCH_STEPS =§c◆§f 初始步进次数
+    option.MARCH_STEPS.comment =§2控制云朵细节精度。数值越高边缘越锐利，数值越低性能越好
+    option.INTERIOR_STEPS =§c◆§f 内部渲染步进次数
+    option.INTERIOR_STEPS.comment =§2摄像机位于云层内部时使用的步进次数
+    option.CLOUD_CELL_SIZE =§6◆§f 云朵单元格大小
+    option.CLOUD_CELL_SIZE.comment =§2云朵基础噪声缩放
+    option.CLOUD_VOXEL_SIZE =§6◆§f 体素缩放
+    option.CLOUD_VOXEL_SIZE.comment =§2云朵精细细节分辨率
+    option.CLOUD_SPEED =◆§a§f 云朵移动速度
+    option.CLOUD_SPEED.comment =§2云朵移动速度乘数
+
+screen.LAYERED_SETTINGS =§b分层云：§f高级
+    option.DOUBLE_LAYERED_CLOUDS =§6§f◆ 双云层
+    option.DOUBLE_LAYERED_CLOUDS.comment =§2启用位于不同高度的第二层云。增加大气深度，但提高渲染成本。
+    option.FADE_SPEED =§a◆§f 层间过渡速度
+    option.FADE_SPEED.comment =§2控制云层在层边界处的淡入/淡出速度。纯视觉效果，无性能影响。
+    option.SECOND_CLOUD_HEIGHT =§a◆§f 次级层高度
+    option.SECOND_CLOUD_HEIGHT.comment =§2第二层云的垂直位置（单位：米）。正值 = 位于主层上方，负值 = 位于主层下方。
+
+option.SPECULAR_HIGHLIGHTS =§6◆§f 镜面高光
+    value.SPECULAR_HIGHLIGHTS.0 =§2具体
+    value.SPECULAR_HIGHLIGHTS.1 =§a均匀
+    value.SPECULAR_HIGHLIGHTS.2 =§d§l复杂
+    value.SPECULAR_HIGHLIGHTS.3 =§c关
+    option.SPECULAR_HIGHLIGHTS.comment =§2具体 -§f 高光仅应用于金属表面。\n统一（§a快速） - §f以简单方式将镜面反射应用于所有表面。\§dn复杂（推荐） -§f 以复杂方式将镜面反射应用于所有表面
+
+option.ENVIRONMENT_PBR =§6◆§f 环境PBR
+option.NORMAL_GENERATION =§6◆§f 生成法线
+option.NORMAL_GENERATION_RESOLUTION =§e◆§f 法线贴图分辨率
+option.SUBSURFACE_SCATTERING =§c◆§f 次表面散射
+option.EMISSIVE_INTENSITY =自发光贴图强度
+option.SLOPE_NORMALS =§e◆§f 坡度调整法线
+option.NORMAL_STRENGTH =法线贴图强度
+option.DIRECTIONAL_LIGHTMAPS =§6◆§f 方向性光照贴图
+option.DIRECTIONAL_LIGHTMAP_STRENGTH =§a◆§f 光照贴图方向性
+
+screen.POM_SETTINGS =§d视差遮蔽映射
+    option.PARALLAX_OCCLUSION =◆§c§f 启用POM
+    option.PARALLAX_DEPTH =§e◆§f 深度位移
+    option.PARALLAX_STEPS =§c◆§f 光线步进数
+    option.PARALLAX_SHADOW =§6◆§f 自阴影
+    option.PARALLAX_SHADOW_STEPS =§6◆§f 阴影光线步数
+
+screen.WATER_SETTINGS =§b水：§f高级材质
+    option.WATER_NOISE =§e◆§f 表面噪声调制
+    option.WATER_BRIGHTNESS =§a◆§f 基础反照率亮度
+    option.WATER_NORMAL =§e◆§f 法线贴图应用
+    option.WATER_BLUR_SIZE =§a◆§f 法线贴图模糊半径
+    option.WATER_DEPTH_SIZE =§a◆§f 波浪深度缩放
+    option.WATER_TILE_SIZE =§a◆§f 平铺频率
+    option.WATER_STYLIZE_ABSORPTION =§e◆§f 基于深度的吸收
+    option.WATER_FOAM =◆§6§f 泡沫
+    option.WATER_FLAT =§e◆§f 统一水体反照率
+
+screen.LAVA_SETTINGS =§6岩浆§f：材质属性
+    option.LAVA_BRIGHTNESS =§a◆§f 基础亮度
+    option.LAVA_NOISE =§e◆§f 表面扰动
+    option.LAVA_TILE_SIZE =§a◆§f 平铺频率
+
+screen.CONFIGURATION =§7维度配置
+    screen.OVERWORLD_SETTINGS =主世界参数
+        screen.DAY_SETTINGS =白天光照
+            option.LIGHT0_DR =光照红色通道
+            option.LIGHT0_DG =光照绿色通道
+            option.LIGHT0_DB =光照蓝色通道
+            option.LIGHT0_DI =光照强度
+            option.SKY0_DR =天空红色通道
+            option.SKY0_DG =天空绿色通道
+            option.SKY0_DB =天空蓝色通道
+            option.SKY0_DI =天空强度
+        screen.NIGHT_SETTINGS =夜晚光照
+            option.LIGHT0_NR =光照红色通道
+            option.LIGHT0_NG =光照绿色通道
+            option.LIGHT0_NB =光照蓝色通道
+            option.LIGHT0_NI =光照强度
+            option.SKY0_NR =天空红色通道
+            option.SKY0_NG =天空绿色通道
+            option.SKY0_NB =天空蓝色通道
+            option.SKY0_NI =天空强度
+        screen.TWILIGHT_SETTINGS =黄昏光照
+            option.LIGHT0_TR =光照红色通道
+            option.LIGHT0_TG =光照绿色通道
+            option.LIGHT0_TB =光照蓝色通道
+            option.LIGHT0_TI =光照强度
+            option.SKY0_TR =天空红色通道
+            option.SKY0_TG =天空绿色通道
+            option.SKY0_TB =天空蓝色通道
+            option.SKY0_TI =天空强度
+        screen.FOG_SETTINGS0 =雾密度参数
+            option.FOG0_VERTICAL_DENSITY_D =白天垂直密度
+            option.FOG0_VERTICAL_DENSITY_N =夜晚垂直密度
+            option.FOG0_VERTICAL_DENSITY_T =黄昏垂直密度
+            option.FOG0_TOTAL_DENSITY =§a◆§f 基础雾效密度
+    screen.NETHER_SETTINGS =下界参数
+        option.FOGn1_VERTICAL_DENSITY =§a◆§f 垂直雾密度
+        option.FOGn1_TOTAL_DENSITY =§a◆§f 基础雾效密度
+        option.WORLDn1_VANILLA_FOGCOLI =§a◆§f 天空强度覆盖
+    screen.END_SETTINGS =末地参数
+        option.LIGHT1_CR =光照红色通道
+        option.LIGHT1_CG =光照绿色通道
+        option.LIGHT1_CB =光照蓝色通道
+        option.LIGHT1_CI =光照强度
+        option.SKY1_CR =天空红色通道
+        option.SKY1_CG =天空绿色通道
+        option.SKY1_CB =天空蓝色通道
+        option.SKY1_CI =天空强度
+        option.FOG1_VERTICAL_DENSITY =§a◆§f 垂直雾密度
+        option.FOG1_TOTAL_DENSITY =§a◆§f 基础雾效密度
+    screen.BLOCK_LIGHT_COLOR =§7方块光照染色
+        option.BLOCKLIGHT_R =红色通道
+        option.BLOCKLIGHT_G =绿色通道
+        option.BLOCKLIGHT_B =蓝色通道
+        option.BLOCKLIGHT_I =强度乘数
+    screen.VISUAL_STYLE =§c§k色彩配置 ◇§f§d
+        screen.VISUAL_STYLE.comment =§c功能待实现。 ◇ = §d§f可变/无消耗限制。
+    screen.NORMAL_SETTINGS =§d法线贴图生成 ◆§f§6

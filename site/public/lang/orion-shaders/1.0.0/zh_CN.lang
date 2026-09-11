@@ -1,0 +1,108 @@
+# English Language File
+
+# Profiles
+profile.PERFORMANCE=低配
+profile.BALANCED=中配
+profile.QUALITY=高配
+profile.CINEMATIC=极高
+
+# Main Settings
+screen.LIGHTING=光照设置
+screen.POST_PROCESSING=后期处理
+screen.ATMOSPHERE=大气与天空
+
+# Shadow Settings
+option.SHADOW_QUALITY=阴影质量
+option.SHADOW_QUALITY.comment=质量越高 = 阴影越锐利且细节越丰富。1=低配, 2=中配, 3=高配, 4=极高
+value.SHADOW_QUALITY.1=低配
+value.SHADOW_QUALITY.2=中配
+value.SHADOW_QUALITY.3=高配
+value.SHADOW_QUALITY.4=极高
+
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=阴影边缘的柔和程度
+
+# Bloom Settings
+option.BLOOM_ENABLED=泛光
+option.BLOOM_ENABLED.comment=在明亮区域周围添加柔和的泛光效果
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=泛光效果的强度
+option.BLOOM_QUALITY=泛光质量
+option.BLOOM_THRESHOLD=泛光阈值
+option.BLOOM_THRESHOLD.comment=像素需要多亮才能产生泛光效果
+
+# Depth of Field
+option.DOF_ENABLED=景深
+option.DOF_ENABLED.comment=模糊不在焦点上的物体以获得电影效果（保持较高以获得更好观感）
+option.DOF_STRENGTH=景深强度
+option.DOF_STRENGTH.comment=模糊效果的强度
+option.DOF_FOCAL_LENGTH=焦距
+option.DOF_APERTURE=光圈
+
+# Lighting
+option.SUNLIGHT_STRENGTH=阳光强度
+option.SUNLIGHT_STRENGTH.comment=直射阳光的亮度
+option.AMBIENT_STRENGTH=环境光
+option.AMBIENT_STRENGTH.comment=间接/环境光照的亮度
+option.COLORED_LIGHTING=彩色方块光
+option.COLORED_LIGHTING.comment=火把发出温暖的橙色光
+option.AO_ENABLED=环境光遮蔽
+option.AO_ENABLED.comment=暗淡角落和缝隙
+option.AO_STRENGTH=环境光遮蔽强度
+
+# Post Processing
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=整体图像亮度
+option.SATURATION=饱和度
+option.SATURATION.comment=颜色强度
+option.CONTRAST=对比度
+option.CONTRAST.comment=明暗差异
+option.GAMMA=伽马
+
+option.TONEMAPPER=色调映射
+option.TONEMAPPER.comment=HDR 到 LDR 的转换方法
+value.TONEMAPPER.0=无
+value.TONEMAPPER.1=Reinhard
+value.TONEMAPPER.2=ACES
+value.TONEMAPPER.3=Uncharted
+
+option.VIGNETTE_ENABLED=暗角
+option.VIGNETTE_ENABLED.comment=使屏幕边缘变暗
+option.VIGNETTE_STRENGTH=Vignette 强度
+
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN.comment=添加微噪以呈现电影感（试试看）
+option.FILM_GRAIN_STRENGTH=颗粒强度
+
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION.comment=彩色边缘镜头效果
+option.CHROMATIC_ABERRATION_STRENGTH=色差强度
+
+# Atmosphere
+option.FOG_ENABLED=距离雾
+option.FOG_ENABLED.comment=远处的氛围薄雾
+option.FOG_DENSITY=雾密度
+option.FOG_HEIGHT_FALLOFF=雾高度衰减
+
+option.VOLUMETRIC_FOG=体积雾
+option.VOLUMETRIC_FOG.comment=与光交互的3D雾（开销大）
+option.VOLUMETRIC_FOG_QUALITY=体积雾质量
+
+option.GOD_RAYS=体积光
+option.GOD_RAYS.comment=来自太阳的体积光柱
+option.GOD_RAYS_QUALITY=体积光质量
+option.GOD_RAYS_DENSITY=体积光密度
+
+option.SKY_QUALITY=天空质量
+option.SKY_QUALITY.comment=天空渲染质量
+value.SKY_QUALITY.1=简单
+value.SKY_QUALITY.2=大气
+value.SKY_QUALITY.3=完整
+
+# Water
+option.WATER_WAVES=水波
+option.WATER_WAVES.comment=动画水面
+option.WATER_WAVE_AMPLITUDE=波高
+option.WATER_WAVE_SPEED=波速
+option.WATER_CAUSTICS=水焦散
+option.WATER_FOAM=泡沫

@@ -1,0 +1,233 @@
+#shaders/lang/zh_CN.lang
+# Body Camera v1.6.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Body Camera Shader - V1.6.1.zip 的 shaders/lang/en_US.lang
+#Profiles
+profile.REALISM=§e真实感
+profile.REALISM_FAST=§e§o快速真实感
+profile.GREY_W=§7灰色天气
+profile.GREEN_NVG=§a绿色夜视仪
+profile.BLUE_NVG=§b蓝色夜视仪
+profile.THERMAL_IMAGER=§f热成像仪
+
+screen.Cam=相机
+screen.BC=镜头
+screen.CC=色彩校正
+screen.LT=光照
+screen.NVG=夜视仪
+screen.AO=§6环境光遮蔽
+screen.BLM=§6泛光
+screen.AE=§6自动曝光
+
+option.BY=§6悬停查看
+option.BY.comment=§fPatreon: §fpatreon.com/lolip_p. §9Discord: §fdiscord.gg/Cz2sCWz5Wh. §4YouTube: §fyoutube.com/@lolip_p.
+value.BY.0=§f由 LoLip_p 制作
+value.BY.1=§f由 LoLip_p 制作
+
+option.PATREON=§6RTX 版本 →
+value.PATREON.0=§fpatreon.com/lolip_p
+value.PATREON.1=§fpatreon.com/lolip_p
+
+
+
+screen.FLASHLIGHT=手电筒
+option.FLASHLIGHT_IS_SNEAKING=§6潜行时开关
+value.FLASHLIGHT_IS_SNEAKING.0=关闭
+value.FLASHLIGHT_IS_SNEAKING.1=开启
+value.FLASHLIGHT_IS_SNEAKING.2=始终开启
+option.FLASHLIGHT_STRENGTH=手电筒强度
+option.FLASHLIGHT_INNER=手电筒内圈
+option.FLASHLIGHT_OUTER=手电筒外圈
+
+
+#4:3
+option.FORCE_4_3_RATIO=§64:3 比例
+value.FORCE_4_3_RATIO.0=关闭
+value.FORCE_4_3_RATIO.1=开启
+
+#AO
+option.AO=§6环境光遮蔽 (AO)
+value.AO.0=关闭
+value.AO.1=开启
+option.SAMPLES=采样数
+option.INTENSITY=强度
+option.SCALE=缩放
+option.SAMPLE_RAD=采样半径
+option.MAX_DISTANCE=最大距离
+option.ambientOcclusionLevel=原版 (AO)
+
+#FXAA
+option.ANTI_ALIASING=抗锯齿
+option.ANTI_ALIASING.comment=使物体边缘更平滑，消除出现的锯齿。
+value.ANTI_ALIASING.0=关闭
+value.ANTI_ALIASING.1=开启
+
+option.BIT=16 位
+value.BIT.0=关闭
+value.BIT.1=开启
+
+option.SSR=§6屏幕反射
+value.SSR.0=关闭
+value.SSR.1=开启
+
+option.PBR=§6PBR
+value.PBR.0=关闭
+value.PBR.1=开启
+
+option.WAVES=波浪
+value.WAVES.0=关闭
+value.WAVES.1=开启
+
+option.SWAYING_FOLIAGE=摇曳植被
+value.SWAYING_FOLIAGE.0=关闭
+value.SWAYING_FOLIAGE.1=开启
+
+option.GREY_WEATHER=灰色天气
+value.GREY_WEATHER.0=关闭
+value.GREY_WEATHER.1=开启
+
+option.MOTION_BLUR=§6运动模糊
+option.MOTION_BLUR.comment=当旋转相机时模糊图像（使游戏更享受和流畅）。值越高，平滑效果越强。建议保持开启，仅根据偏好调整 §2运动模糊强度 §f 参数。
+value.MOTION_BLUR.0=关闭
+value.MOTION_BLUR.1=开启
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+option.MOTION_BLURRING_STRENGTH.comment=调整模糊强度。§4高值可能导致某些人头晕和晕动症。
+
+option.GRAIN=§6颗粒
+value.GRAIN.0=关闭
+value.GRAIN.1=开启
+option.GRAIN_STRENGTH=颗粒强度
+
+option.SCANLINE=§6扫描线
+value.SCANLINE.0=关闭
+value.SCANLINE.1=开启
+option.SCANLINE_STRENGTH=扫描线强度
+option.SCANLINE_WIDTH=扫描线宽度
+
+option.COLOR_DIST=§6颜色失真
+value.COLOR_DIST.0=关闭
+value.COLOR_DIST.1=开启
+option.COLOR_DIST_STRENGTH=颜色失真强度
+
+option.BLACK_STRIPES=§6黑色线条
+value.BLACK_STRIPES.0=关闭
+value.BLACK_STRIPES.1=开启
+
+option.DOF=§6景深 (DOF)
+value.DOF.0=关闭
+value.DOF.1=开启
+option.DOF_STRENGTH=模糊强度
+option.TONEMAP_WHITE=色调映射白点
+
+option.LENS_FLARE_ENABLE=§6镜头光晕
+value.LENS_FLARE_ENABLE.0=关闭
+value.LENS_FLARE_ENABLE.1=开启
+
+option.EXPOSURE=曝光
+option.AUTO_EXPOSURE=§6自动曝光
+value.AUTO_EXPOSURE.0=关闭
+value.AUTO_EXPOSURE.1=开启
+option.AUTO_EXPOSURE_SPEED=曝光速度
+option.AUTO_EXPOSURE_RADIUS=曝光半径
+
+option.VIGNETTE=§6暗角
+value.VIGNETTE.0=关闭
+value.VIGNETTE.1=开启
+
+option.CHROMATIC_ABERRATION=色差
+option.ZOOM=缩放
+option.DIST_STRENGTH=§6扭曲强度
+option.INTENSITY_CAM_SHAKE=相机抖动强度
+option.VIGNETTE_RADIUS=暗角半径
+option.VIGNETTE_STRENGTH=暗角强度
+option.BLACK_STRIPES_WIDTH=黑色线条宽度
+option.BLACK_STRIPES_SOFT=黑色线条柔和度
+option.SHARPNESS_STRENGTH=锐度
+
+option.SATURATION=饱和度
+option.BRIGHTNESS=亮度
+option.CONTRAST=对比度
+
+option.LUT=§6LUT 支持
+value.LUT.0=关闭
+value.LUT.1=开启
+
+option.ENABLE_NVG_IsSneaking=§6潜行时激活夜视仪
+value.ENABLE_NVG_IsSneaking.0=关闭
+value.ENABLE_NVG_IsSneaking.1=开启
+
+option.R=红
+option.G=绿
+option.B=蓝
+
+option.TI=§6热成像仪
+value.TI.0=关闭
+value.TI.1=开启
+option.NVG=§6夜视仪 (NVG)
+value.NVG.0=关闭
+value.NVG.1=开启
+option.degree_brightness_increase=亮度增加程度
+
+
+#Lighting
+option.FOG=§6雾
+value.FOG.0=关闭
+value.FOG.1=开启
+option.FOG_DISTANCE=雾距
+
+option.SOFT=§6软阴影
+value.SOFT.1=关闭
+value.SOFT.2=开启
+
+option.degree_night_darkness=夜间阴影程度
+
+option.SHADING=§6着色
+option.SHADING.comment=对未受阳光直射的平面进行着色。
+value.SHADING.0=关闭
+value.SHADING.1=开启
+option.NEW_LIGHTING=“新”光照
+option.NEW_LIGHTING.comment=“新”的MINECRAFT光照模式。
+value.NEW_LIGHTING.0=关闭
+value.NEW_LIGHTING.1=开启
+option.CLASSIC_NIGHT=经典夜晚
+option.CLASSIC_NIGHT.comment=此光影包提供了更新的夜间光照。
+value.CLASSIC_NIGHT.0=关闭
+value.CLASSIC_NIGHT.1=开启
+option.SHADOW_TRANSPARENCY=阴影透明度
+option.SUN_ANGLE=太阳角度
+option.LIGHT_ABSORPTION=光吸收
+option.LIGHT_ABSORPTION.comment=调节来自太阳下方光源的白天光吸收。
+
+// Shadow
+option.ENABLE_SHADOW=§6阴影
+value.ENABLE_SHADOW.0=关闭
+value.ENABLE_SHADOW.1=开启
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=调节太阳角度。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调节阴影距离。
+
+value.shadowDistance.64.0=§a4 区块
+value.shadowDistance.80.0=§a5 区块
+value.shadowDistance.96.0=§a6 区块
+value.shadowDistance.112.0=§a7 区块
+value.shadowDistance.128.0=§a8 区块
+value.shadowDistance.160.0=§e10 区块
+value.shadowDistance.192.0=§e12 区块
+value.shadowDistance.224.0=§e14 区块
+value.shadowDistance.256.0=§c16 区块
+value.shadowDistance.320.0=§c20 区块
+value.shadowDistance.384.0=§4§l24 区块
+value.shadowDistance.512.0=§4§l32 区块
+value.shadowDistance.768.0=§4§k-§r§4§l§n§o48 区块§r§4§k-
+value.shadowDistance.1024.0=§4§k-§r§4§l§n§o64 区块§r§4§k-
+
+option.shadowMapResolution=质量
+option.shadowMapResolution.comment=调节阴影贴图大小。§e[*]§r 更高的分辨率提供更清晰的阴影，但会降低性能。
+value.shadowMapResolution.512=极低 (512)
+value.shadowMapResolution.768=低 (768)
+value.shadowMapResolution.1024=低中配 (1024)
+value.shadowMapResolution.1536=中配 (1536)
+value.shadowMapResolution.2048=中高配 (2048)
+value.shadowMapResolution.3072=高配 (3072)
+value.shadowMapResolution.4096=极高 (4096)
+value.shadowMapResolution.8192=超高 (8192)

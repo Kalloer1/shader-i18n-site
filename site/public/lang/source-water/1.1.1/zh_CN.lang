@@ -1,0 +1,67 @@
+option.WATER_PRESET=源材质
+option.WATER_PRESET.comment=选择预设的水体源材质。每个预设定义水面与水下颜色、雾气范围、折射、反射及流动效果。
+value.WATER_PRESET.0=ep2 河床 01
+value.WATER_PRESET.1=ep2 河床 02
+value.WATER_PRESET.2=ep2 储罐
+value.WATER_PRESET.3=ep2 隧道
+value.WATER_PRESET.4=荒海岸 ati
+value.WATER_PRESET.5=半条命2 运河 03
+value.WATER_PRESET.6=半条命2 运河 清澈
+value.WATER_PRESET.7=ep1 河床 01
+value.WATER_PRESET.8=军团要塞2 民兵
+
+option.WATER_NORMAL_MODE=法线贴图动画
+option.WATER_NORMAL_MODE.comment=选择水体的法线动画来源。2007版混合三个滚动法线贴图层以实现更平滑的运动；2004版使用原始29帧动画法线贴图及单个滚动层。
+value.WATER_NORMAL_MODE.0=source 2007（橙盒）
+value.WATER_NORMAL_MODE.1=source 2004（经典版）
+
+option.WATER_QUALITY=source 水体细节层次
+option.WATER_QUALITY.comment=控制source风格的高精度/低精度水体细节层次。在所选距离处自动从高精度路径（折射与可选屏幕空间反射）混合至低精度路径（雾颜色与天空回退）。
+value.WATER_QUALITY.0=自动
+value.WATER_QUALITY.1=强制高精度
+value.WATER_QUALITY.2=强制低精度
+
+option.SSR_QUALITY=屏幕空间反射质量
+option.SSR_QUALITY.comment=控制替代source平面反射的屏幕空间反射。关闭屏幕空间反射将保留source风格的天空回退；关闭所有反射将禁用所有表面反射。
+value.SSR_QUALITY.0=性能
+value.SSR_QUALITY.1=平衡
+value.SSR_QUALITY.2=高
+value.SSR_QUALITY.3=屏幕空间反射关闭（仅天空）
+value.SSR_QUALITY.4=关闭所有反射
+
+option.SSR_RESOLUTION=屏幕空间反射分辨率
+option.SSR_RESOLUTION.comment=设置屏幕空间反射使用的分辨率。较低值可提升性能并减少反射细节；1.0倍使用全屏分辨率。
+value.SSR_RESOLUTION.0=0.25倍
+value.SSR_RESOLUTION.1=0.5倍
+value.SSR_RESOLUTION.2=0.75 倍
+value.SSR_RESOLUTION.3=1.0倍
+
+option.EXPENSIVE_WATER_DISTANCE=高精度水体距离（区块数）
+option.EXPENSIVE_WATER_DISTANCE.comment=在自动模式下，高精度水体在最后一个区块处开始混合为低精度水体，并在此距离完全变为低精度。
+
+option.CHEAP_WATER_FRESNEL_F0=低精度水体菲涅尔基准值
+option.CHEAP_WATER_FRESNEL_F0.comment=设置法线入射时的最小天空反射。0.0遵循source的菲涅尔公式；默认值0.04确保无立方体贴图回退时的可读性。
+
+option.REFRACTION_MULTIPLIER=折射缩放
+option.REFRACTION_MULTIPLIER.comment=缩放所选source材质的折射量。1.0保留材质原始值。
+
+option.REFLECTION_MULTIPLIER=反射缩放
+option.REFLECTION_MULTIPLIER.comment=缩放所选source材质的反射量。1.0保留材质原始值。
+
+option.WATER_NORMAL_SCALE=法线贴图缩放
+option.WATER_NORMAL_SCALE.comment=缩放表面法线贴图。更高值产生更小更密的波纹。
+
+option.WATER_SPEED_MULTIPLIER=水体动画速度
+option.WATER_SPEED_MULTIPLIER.comment=缩放法线贴图滚动与帧动画。1.0保留所选材质与动画模式的基础速率。
+
+option.REFLECTION_OVERBRIGHT=反射过曝
+option.REFLECTION_OVERBRIGHT.comment=当表面折射模糊激活时，对反射应用source风格的过曝效果。1.0遵循原始实现。
+
+option.SURFACE_REFRACTION_BLUR=表面折射模糊
+option.SURFACE_REFRACTION_BLUR.comment=模糊透过水面看到的折射场景。内置source材质未启用此效果。此设置基于引擎的布尔参数$blurrefract，但实现为可调节的适应性方案；0.0保留原始清晰图像。
+
+option.UNDERWATER_OVERLAY_MULTIPLIER=水下扭曲强度
+option.UNDERWATER_OVERLAY_MULTIPLIER.comment=改变摄像机处于水下时的全屏折射强度。是否启用取决于所选材质与source版本；例如河床02在source 2007模式下禁用此效果。
+
+option.UNDERWATER_OVERLAY_SCALE=水下扭曲缩放
+option.UNDERWATER_OVERLAY_SCALE.comment=在屏幕空间缩放水下扭曲法线贴图。更高值产生更小更密的扭曲图案。

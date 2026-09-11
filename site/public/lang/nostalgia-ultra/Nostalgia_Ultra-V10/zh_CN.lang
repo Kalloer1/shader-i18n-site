@@ -1,0 +1,176 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#                            NOSTALGIA ULTRA
+#                         English Language File
+# ═══════════════════════════════════════════════════════════════════════════
+
+# --- Profiles ---
+profile.ULTRA=§6§lULTRA §7- 最高画质
+profile.HIGH=§eHIGH §7- 推荐
+profile.MEDIUM=§aMEDIUM §7- 均衡
+profile.LOW=§cLOW §7- 性能
+
+# --- Menu Titles ---
+screen.NOSTALGIA=§6★ 怀旧风格
+screen.NOSTALGIA.comment=复古效果与金色时代的温暖色彩
+
+screen.WATER=§b◆ 水 & 海浪
+screen.WATER.comment=海浪、反射和透明度
+
+screen.SKY=§9☀ 天空
+screen.SKY.comment=太阳、星星和云朵
+
+screen.LIGHTING=§e✦ 照明
+screen.LIGHTING.comment=阴影与照明
+
+screen.POST=§d✧ 效果
+screen.POST.comment=泛光、雾以及后处理
+
+screen.ADVANCED=§c⚙ 高级设置
+screen.ADVANCED.comment=调试及高级选项
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                         NOSTALGIC OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.NOSTALGIA_MODE=怀旧模式
+option.NOSTALGIA_MODE.comment=选择您的怀旧时代
+value.NOSTALGIA_MODE.0=禁用
+value.NOSTALGIA_MODE.1=Beta 1.7
+value.NOSTALGIA_MODE.2=Release 1.2.5
+value.NOSTALGIA_MODE.3=Release 1.5
+
+option.CRT_ENABLED=CRT 屏幕效果
+option.CRT_ENABLED.comment=模拟旧式 CRT 显示器
+
+option.CRT_CURVE=屏幕曲率
+option.CRT_CURVE.comment=CRT 屏幕曲率的程度
+
+option.CRT_SCANLINE=扫描线
+option.CRT_SCANLINE.comment=水平 CRT 扫描线
+
+option.SATURATION=饱和度
+option.SATURATION.comment=颜色强度
+
+option.WARMTH=颜色温暖度
+option.WARMTH.comment=类似旧显示器的橙黄色调
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                              WATER OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.WAVE_ENABLED=动画水波
+option.WAVE_ENABLED.comment=启用动画水波
+
+option.WAVE_HEIGHT=波浪高度
+option.WAVE_HEIGHT.comment=波浪运动的高度
+
+option.WAVE_SPEED=波浪速度
+option.WAVE_SPEED.comment=波浪动画的速度
+
+option.WATER_COLOR=水色
+option.WATER_COLOR.comment=水色风格
+value.WATER_COLOR.0=原版
+value.WATER_COLOR.1=青绿色
+value.WATER_COLOR.2=深蓝色
+value.WATER_COLOR.3=热带色
+
+option.WATER_ALPHA=透明度
+option.WATER_ALPHA.comment=水的透明度等级
+
+option.FOAM_ENABLED=海浪
+option.FOAM_ENABLED.comment=岸边海浪效果
+
+option.CAUSTIC_ENABLED=焦散
+option.CAUSTIC_ENABLED.comment=水下光影纹理
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                              SKY OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.SKY_COLOR_MODE=天空风格
+option.SKY_COLOR_MODE.comment=天空颜色类型
+value.SKY_COLOR_MODE.0=原版
+value.SKY_COLOR_MODE.1=电蓝
+value.SKY_COLOR_MODE.2=Alpha 经典
+
+option.SUN_SIZE=太阳大小
+option.SUN_SIZE.comment=太阳的大小
+
+option.SUN_BLOOM=阳光晕光
+option.SUN_BLOOM.comment=阳光周围的光晕强度
+
+option.STAR_ENABLED=星星
+option.STAR_ENABLED.comment=在夜晚显示星星
+
+option.STAR_SIZE=星星大小
+option.STAR_SIZE.comment=星星的大小
+
+option.STAR_BRIGHT=星光亮度
+option.STAR_BRIGHT.comment=星星的亮度
+
+option.CLOUD_ENABLED=云层
+option.CLOUD_ENABLED.comment=显示云层
+
+option.CLOUD_SPEED=云速度
+option.CLOUD_SPEED.comment=云的移动速度
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                            LIGHTING OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.SHADOW_ENABLED=阴影
+option.SHADOW_ENABLED.comment=启用动态阴影
+
+option.SHADOW_RES=阴影质量
+option.SHADOW_RES.comment=阴影分辨率
+value.SHADOW_RES.0=禁用
+value.SHADOW_RES.1=低配
+value.SHADOW_RES.2=高配
+
+option.SHADOW_SOFT=阴影柔和度
+option.SHADOW_SOFT.comment=阴影边缘更柔和
+
+option.GODRAY_ENABLED=体积光
+option.GODRAY_ENABLED.comment=体积阳光射 rays
+
+option.GODRAY_STRENGTH=体积光强度
+option.GODRAY_STRENGTH.comment=阳光射线的强度
+
+option.TORCH_BRIGHT=火把亮度
+option.TORCH_BRIGHT.comment=火把光照强度
+
+option.TORCH_TEMP=色温
+option.TORCH_TEMP.comment=烛火光源的颜色温度
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                            EFFECTS OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.BLOOM_ENABLED=泛光
+option.BLOOM_ENABLED.comment=光源发光效果
+
+option.BLOOM_AMOUNT=泛光强度
+option.BLOOM_AMOUNT.comment=泛光效果的强度
+
+option.FOG_ENABLED=雾
+option.FOG_ENABLED.comment=距离雾
+
+option.FOG_AMOUNT=雾密度
+option.FOG_AMOUNT.comment=雾的厚度
+
+option.VIGNETTE_ENABLED=暗角
+option.VIGNETTE_ENABLED.comment=暗淡屏幕边缘
+
+option.VIGNETTE_AMOUNT=暗角强度
+option.VIGNETTE_AMOUNT.comment=暗角强度
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                              ADVANCED
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.DEBUG_MODE=调试模式
+option.DEBUG_MODE.comment=显示调试信息
+value.DEBUG_MODE.0=禁用
+value.DEBUG_MODE.1=法线
+value.DEBUG_MODE.2=深度
+value.DEBUG_MODE.3=光图

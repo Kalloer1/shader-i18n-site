@@ -1,0 +1,71 @@
+screen.Sky = 天空
+screen.Sky.comment = 控制虚空、星辰、太阳和月亮。
+screen.World = 世界
+screen.World.comment = 控制方块、水体/流体和云层。
+screen.Entities = 实体
+screen.Entities.comment = 控制生物和玩家。
+
+option.ENABLE_SKY_CHROMA = 色键天空
+option.ENABLE_SKY_CHROMA.comment = 将天空变为平铺的色键颜色。关闭以查看真实天空。
+option.SKY_PRESET = 天空颜色
+option.SKY_PRESET.comment = 选择一个预设的色键颜色，或选择自定义以在下方设置自己的颜色。
+option.SKY_R = 自定义天空红色
+option.SKY_G = 自定义天空绿色
+option.SKY_B = 自定义天空蓝色
+option.SKY_R.comment = 仅当天空颜色设置为自定义时使用。
+option.SKY_G.comment = 仅当天空颜色设置为自定义时使用。
+option.SKY_B.comment = 仅当天空颜色设置为自定义时使用。
+
+option.ENABLE_WORLD_CHROMA = 色度键世界
+option.ENABLE_WORLD_CHROMA.comment = 将方块、水和云变成单一的色度键颜色。关闭以查看真实世界。
+option.WORLD_PRESET = 世界颜色
+option.WORLD_PRESET.comment = 选择一个预设的色度键颜色，或选择自定义以在下方设置自己的颜色。
+option.WORLD_R = 自定义世界红色
+option.WORLD_G = 自定义世界绿色
+option.WORLD_B = 自定义世界蓝色
+option.WORLD_R.comment = 仅当世界颜色设置为自定义时使用。
+option.WORLD_G.comment = 仅当世界颜色设置为自定义时使用。
+option.WORLD_B.comment = 仅当世界颜色设置为自定义时使用。
+
+option.ENABLE_ENTITY_CHROMA = 色键实体
+option.ENABLE_ENTITY_CHROMA.comment = 将生物转换为单一的色键颜色。关闭后可查看真实纹理。
+option.ENTITY_EXCLUDE_PLAYERS = 排除玩家
+option.ENTITY_EXCLUDE_PLAYERS.comment = 启用时，玩家永远不会被色键处理。由于 Minecraft 无法区分所有玩家（包括你的第三人称视角中的自己和任何其他玩家），此设置对所有玩家均适用。无论此设置如何，你的第一人称手部都会被排除在外。
+option.ENTITY_PRESET = 实体颜色
+option.ENTITY_PRESET.comment = 选择一个预设的色键颜色，或选择“自定义”在下方设置自己的颜色。
+option.ENTITY_R = 自定义实体红色
+option.ENTITY_G = 自定义实体绿色
+option.ENTITY_B = 自定义实体蓝色
+option.ENTITY_R.comment = 仅当实体颜色设置为自定义时使用。
+option.ENTITY_G.comment = 仅当实体颜色设置为自定义时使用。
+option.ENTITY_B.comment = 仅当实体颜色设置为自定义时使用。
+
+value.SKY_PRESET.Custom = 自定义
+value.SKY_PRESET.Green = 绿色
+value.SKY_PRESET.Magenta = 洋红色
+value.SKY_PRESET.Cyan = 青色
+value.SKY_PRESET.Blue = 蓝色
+value.SKY_PRESET.Red = 红色
+value.SKY_PRESET.Yellow = 黄色
+value.SKY_PRESET.White = 白色
+value.SKY_PRESET.Black = 黑色
+
+value.WORLD_PRESET.Custom = 自定义
+value.WORLD_PRESET.Green = 绿色
+value.WORLD_PRESET.Magenta = 洋红色
+value.WORLD_PRESET.Cyan = 青色
+value.WORLD_PRESET.Blue = 蓝色
+value.WORLD_PRESET.Red = 红色
+value.WORLD_PRESET.Yellow = 黄色
+value.WORLD_PRESET.White = 白色
+value.WORLD_PRESET.Black = 黑色
+
+value.ENTITY_PRESET.Custom = 自定义
+value.ENTITY_PRESET.Green = 绿色
+value.ENTITY_PRESET.Magenta = 洋红色
+value.ENTITY_PRESET.Cyan = 青色
+value.ENTITY_PRESET.Blue = 蓝色
+value.ENTITY_PRESET.Red = 红色
+value.ENTITY_PRESET.Yellow = 黄色
+value.ENTITY_PRESET.White = 白色
+value.ENTITY_PRESET.Black = 黑色

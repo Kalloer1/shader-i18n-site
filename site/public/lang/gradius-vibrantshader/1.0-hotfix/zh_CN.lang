@@ -1,0 +1,7 @@
+option.SHARPENING=锐利度
+option.SHARPENING.comment=启用临时抗锯齿
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=使屏幕边缘变黑
+
+screen.AA_SCREEN=后处理
+screen.EFFECTS_SCREEN=效果

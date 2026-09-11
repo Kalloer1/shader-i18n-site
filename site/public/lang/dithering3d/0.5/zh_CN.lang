@@ -1,0 +1,245 @@
+# ============================================================================
+# DITHER3D SHADER - English Localization
+# ============================================================================
+
+# ============================================================================
+# MAIN SCREEN CATEGORIES
+# ============================================================================
+
+screen.DITHER_SETTINGS=§6⚙§r 抖动设置
+screen.DITHER_SETTINGS.comment=配置点大小、对比度、亮度和平滑度
+
+screen.PALETTE_SETTINGS=§b🎨§r 调色板设置
+screen.PALETTE_SETTINGS.comment=颜色匹配和自定义调色板选项
+
+screen.DEBUG_OPTIONS=§c🔧§r 调试选项
+screen.DEBUG_OPTIONS.comment=调试与开发工具
+
+screen.CUSTOM_COLORS=§e🎨§r 自定义调色板
+screen.CUSTOM_COLORS.comment=为 Custom 模式定义自己的 2 色或 4 色调色板
+
+# ============================================================================
+# CUSTOM COLOR SUBMENUS
+# ============================================================================
+
+screen.PALETTE_CUSTOM_COLOR1=§0■§r 颜色 1（最暗）
+screen.PALETTE_CUSTOM_COLOR1.comment=自定义调色板中的第一个颜色（通常是最暗的）
+
+screen.PALETTE_CUSTOM_COLOR2=§f■§r 颜色 2（最亮）
+screen.PALETTE_CUSTOM_COLOR2.comment=自定义调色板中的第二个颜色（通常是最亮的颜色）
+
+screen.PALETTE_CUSTOM_COLOR3=§8■§r 颜色 3（中暗）
+screen.PALETTE_CUSTOM_COLOR3.comment=第三颜色（仅在自定义 4 色模式中使用）
+
+screen.PALETTE_CUSTOM_COLOR4=§7■§r 颜色 4（中浅）
+screen.PALETTE_CUSTOM_COLOR4.comment=第四种颜色（仅用于自定义 4 色模式）
+
+# ============================================================================
+# RENDER STYLE (Main unified selector)
+# ============================================================================
+
+option.RENDER_STYLE=§d🖌§r 渲染风格
+option.RENDER_STYLE.comment=选择您的抖动风格 —  — 从经典灰度到复古调色板，应有尽有！
+
+# Color Modes
+value.RENDER_STYLE.0=§cR§aG§9B§r 全彩
+value.RENDER_STYLE.1=§7■§r 灰度
+value.RENDER_STYLE.2=§bC§dM§eY§0K§r 半色调
+
+# Retro Palettes
+value.RENDER_STYLE.3=§f⬤§0 1 位单色§r
+value.RENDER_STYLE.4=§2⬤§a 游戏机黄绿§r
+value.RENDER_STYLE.5=§d⬤§b CGA 模式 1§r
+value.RENDER_STYLE.6=§4⬤§c 虚拟男孩§r
+value.RENDER_STYLE.7=§6⬤§e 褐色§r
+
+# Multi-color Palettes
+value.RENDER_STYLE.8=§c⬤§f 像素风 §7(16)§r
+value.RENDER_STYLE.9=§b⬤§f 北极星 §7(8)§r
+value.RENDER_STYLE.10=§3⬤§f 太阳化 §7(8)§r
+
+# Custom Palettes
+value.RENDER_STYLE.11=§e⬤§f 自定义 §7(2)§r
+value.RENDER_STYLE.12=§e⬤§f 自定义 §7(4)§r
+value.RENDER_STYLE.13=§e⬤§f 自定义 §7(8)§r
+
+# Special Palettes
+value.RENDER_STYLE.14=§5⬤§8 黑暗幻想 §7(16)§r
+
+# ============================================================================
+# DOT SETTINGS
+# ============================================================================
+
+option.DITHER_DOT_SCALE=点尺度
+option.DITHER_DOT_SCALE.comment=指数级缩放点大小。数值越大，点越大。
+value.DITHER_DOT_SCALE.2.0=微小
+value.DITHER_DOT_SCALE.3.0=极小
+value.DITHER_DOT_SCALE.4.0=小
+value.DITHER_DOT_SCALE.5.0=默认
+value.DITHER_DOT_SCALE.6.0=大
+value.DITHER_DOT_SCALE.7.0=巨大
+value.DITHER_DOT_SCALE.8.0=逼真
+value.DITHER_DOT_SCALE.9.0=庞大
+value.DITHER_DOT_SCALE.10.0=最大
+
+option.DITHER_SIZE_VARIABILITY=尺寸变异
+option.DITHER_SIZE_VARIABILITY.comment=控制阴影对图案的影响方式。§e0§r = Bayer 式（点数变化）。§e1§r = 半色调式（点大小变化）。
+value.DITHER_SIZE_VARIABILITY.0.0=Bayer 式
+value.DITHER_SIZE_VARIABILITY.0.5=混合
+value.DITHER_SIZE_VARIABILITY.1.0=半色调式
+
+option.DITHER_DOT_CONTRAST=点状抗锯齿对比度
+option.DITHER_DOT_CONTRAST.comment=控制点状边缘锐利度。§e1.0§r = 完美抗锯齿（推荐）。
+value.DITHER_DOT_CONTRAST.0.0=模糊
+value.DITHER_DOT_CONTRAST.0.5=柔和
+value.DITHER_DOT_CONTRAST.1.0=抗锯齿（默认）
+value.DITHER_DOT_CONTRAST.1.5=锐利
+value.DITHER_DOT_CONTRAST.2.0=非常锐利
+
+option.DITHER_STRETCH_SMOOTH=拉伸平滑度
+option.DITHER_STRETCH_SMOOTH.comment=在浅角度下拉伸的各向异性点（圆点）平滑程度。
+value.DITHER_STRETCH_SMOOTH.0.0=None
+value.DITHER_STRETCH_SMOOTH.1.0=Default
+value.DITHER_STRETCH_SMOOTH.2.0=Maximum
+
+# ============================================================================
+# BRIGHTNESS SETTINGS
+# ============================================================================
+
+option.DITHER_EXPOSURE=曝光
+option.DITHER_EXPOSURE.comment=在 dithering 之前，对输入亮度应用的曝光乘数。
+value.DITHER_EXPOSURE.0.0=黑
+value.DITHER_EXPOSURE.0.5=极暗
+value.DITHER_EXPOSURE.1.0=默认
+value.DITHER_EXPOSURE.2.0=亮
+value.DITHER_EXPOSURE.5.0=极亮
+
+option.DITHER_OFFSET=偏移量
+option.DITHER_OFFSET.comment=添加到输入亮度的偏移量。负数 = 变暗，正数 = 变亮。
+value.DITHER_OFFSET.-1.0=最暗
+value.DITHER_OFFSET.-0.5=更暗
+value.DITHER_OFFSET.0.0=默认
+value.DITHER_OFFSET.0.5=更亮
+value.DITHER_OFFSET.1.0=最亮
+
+# ============================================================================
+# OPTIONS
+# ============================================================================
+
+option.PALETTE_COLOR_MATCH=颜色匹配
+option.PALETTE_COLOR_MATCH.comment=如何将颜色映射到调色板。§e亮度§r = 按亮度 (清晰)。§e色彩感知§r = 按相似度 (保留色调)。
+value.PALETTE_COLOR_MATCH.0=§7亮度§r
+value.PALETTE_COLOR_MATCH.1=§b色彩感知§r
+
+option.DITHER_INVERSE_DOTS=颗粒点反转
+option.DITHER_INVERSE_DOTS.comment=交换点状颜色。§e关闭§r = 亮色点在暗色上。§e开启§r = 暗色点在亮色上。
+
+option.DITHER_RADIAL_COMP=径向补偿
+option.DITHER_RADIAL_COMP.comment=在相机旋转时稳定点密度。
+
+option.DITHER_QUANTIZE_LAYERS=量化层数
+option.DITHER_QUANTIZE_LAYERS.comment=防止渐变点形变。创建更锐利的过渡效果。
+
+option.DITHER_DEBUG_FRACTAL=调试 分形
+option.DITHER_DEBUG_FRACTAL.comment=显示每个像素正在使用的分形层。
+
+# ============================================================================
+# CUSTOM PALETTE COLOR SLIDERS
+# ============================================================================
+
+# Color 1 RGB Sliders
+option.PALETTE_CUSTOM_1_R=§c█§r 红色
+option.PALETTE_CUSTOM_1_R.comment=颜色1的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_1_G=§a█§r 绿色
+option.PALETTE_CUSTOM_1_G.comment=颜色1的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_1_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_1_B.comment=颜色1的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Color 2 RGB Sliders
+option.PALETTE_CUSTOM_2_R=§c█§r 红色
+option.PALETTE_CUSTOM_2_R.comment=颜色 2 的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_2_G=§a█§r 绿色
+option.PALETTE_CUSTOM_2_G.comment=颜色 2 的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_2_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_2_B.comment=颜色 2 的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Color 3 RGB Sliders
+option.PALETTE_CUSTOM_3_R=§c█§r 红色
+option.PALETTE_CUSTOM_3_R.comment=颜色 3 的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_3_G=§a█§r 绿色
+option.PALETTE_CUSTOM_3_G.comment=颜色 3 的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_3_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_3_B.comment=颜色 3 的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Color 4 RGB Sliders
+option.PALETTE_CUSTOM_4_R=§c█§r 红色
+option.PALETTE_CUSTOM_4_R.comment=颜色 4 的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_4_G=§a█§r 绿色
+option.PALETTE_CUSTOM_4_G.comment=颜色 4 的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_4_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_4_B.comment=颜色 4 的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Color 5 RGB Sliders
+option.PALETTE_CUSTOM_5_R=§c█§r 红色
+option.PALETTE_CUSTOM_5_R.comment=颜色 5 的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_5_G=§a█§r 绿色
+option.PALETTE_CUSTOM_5_G.comment=颜色 5 的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_5_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_5_B.comment=颜色 5 的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Color 6 RGB Sliders
+option.PALETTE_CUSTOM_6_R=§c█§r 红色
+option.PALETTE_CUSTOM_6_R.comment=Color 6 的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_6_G=§a█§r 绿色
+option.PALETTE_CUSTOM_6_G.comment=Color 6 的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_6_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_6_B.comment=Color 6 的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Color 7 RGB Sliders
+option.PALETTE_CUSTOM_7_R=§c█§r 红色
+option.PALETTE_CUSTOM_7_R.comment=颜色 7 的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_7_G=§a█§r 绿色
+option.PALETTE_CUSTOM_7_G.comment=颜色 7 的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_7_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_7_B.comment=颜色 7 的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Color 8 RGB Sliders
+option.PALETTE_CUSTOM_8_R=§c█§r 红色
+option.PALETTE_CUSTOM_8_R.comment=颜色 8 的红色通道。§c0.0§r = 无，§c1.0§r = 最大红色
+option.PALETTE_CUSTOM_8_G=§a█§r 绿色
+option.PALETTE_CUSTOM_8_G.comment=颜色 8 的绿色通道。§a0.0§r = 无，§a1.0§r = 最大绿色
+option.PALETTE_CUSTOM_8_B=§9█§r 蓝色
+option.PALETTE_CUSTOM_8_B.comment=颜色 8 的蓝色通道。§90.0§r = 无，§91.0§r = 最大蓝色
+
+# Custom Color Screens
+screen.PALETTE_CUSTOM_COLOR5=§5■§r 颜色 5
+screen.PALETTE_CUSTOM_COLOR5.comment=第五种颜色（仅在自定义 8 色模式中使用）
+
+screen.PALETTE_CUSTOM_COLOR6=§6■§r 颜色 6
+screen.PALETTE_CUSTOM_COLOR6.comment=第六颜色（仅在自定义 8 色模式中使用）
+
+screen.PALETTE_CUSTOM_COLOR7=§2■§r 颜色 7
+screen.PALETTE_CUSTOM_COLOR7.comment=第七种颜色（仅在自定义 8 色模式下使用）
+
+screen.PALETTE_CUSTOM_COLOR8=§e■§r 颜色 8
+screen.PALETTE_CUSTOM_COLOR8.comment=第八种颜色（仅在自定义 8 色模式下使用）
+
+# ============================================================================
+# PROFILES
+# ============================================================================
+
+profile.POTATO=§8马铃薯§r
+profile.LOW=§7低配§r
+profile.MEDIUM=§f中配§r
+profile.HIGH=§a高配§r
+profile.ULTRA=§6极高§r
+profile.GAMEBOY=§2游戏机§r
+profile.CGA=§dCGA§r
+
+profile.comment.POTATO=1 位单色。最小影响。
+profile.comment.LOW=灰度抖动。最佳性能。
+profile.comment.MEDIUM= Pico-8 16 色调色板。均衡。
+profile.comment.HIGH=全 RGB 色彩分离。
+profile.comment.ULTRA=CMYK 半色调印刷模拟。
+profile.comment.GAMEBOY=§a经典 Game Boy§r 绿色调色板。
+profile.comment.CGA=§dCGA 模式 1§r 青色/洋红色。

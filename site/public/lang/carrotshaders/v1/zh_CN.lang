@@ -1,0 +1,189 @@
+#Screens
+screen.CC=§6颜色校正
+screen.LT=§6光照
+screen.AO=§6环境光遮蔽
+screen.CAM=§6相机
+screen.POST=§6后期处理
+screen.BLM=§6泛光
+screen.AE=§6自动曝光
+
+#Profiles
+profile.CLEAN=§6干净
+
+#4:3
+option.FORCE_4_3_RATIO=§64:3
+value.FORCE_4_3_RATIO.0=关闭
+value.FORCE_4_3_RATIO.1=开启
+
+#AO
+option.AO=§6环境光遮蔽 (AO)
+value.AO.0=关闭
+value.AO.1=开启
+option.SAMPLES=样本数
+option.INTENSITY=强度
+option.SCALE=比例
+option.SAMPLE_RAD=半径
+option.MAX_DISTANCE=最大距离
+option.ambientOcclusionLevel=原版 (AO)
+
+#FXAA
+option.ANTI_ALIASING=抗锯齿
+option.ANTI_ALIASING.comment=使物体的边界更平滑，移除出现的锯齿。
+value.ANTI_ALIASING.0=关闭
+value.ANTI_ALIASING.1=开启
+
+option.BIT=16 位
+value.BIT.0=关闭
+value.BIT.1=开启
+
+option.SSR=§6屏幕反射
+value.SSR.0=关闭
+value.SSR.1=开启
+
+option.PBR=§6PBR
+value.PBR.0=关闭
+value.PBR.1=开启
+
+option.WAVES=Waves
+value.WAVES.0=关闭
+value.WAVES.1=开启
+
+option.SWAYING_FOLIAGE=摇曳的植物
+value.SWAYING_FOLIAGE.0=关闭
+value.SWAYING_FOLIAGE.1=开启
+
+option.GREY_WEATHER=灰色天气
+value.GREY_WEATHER.0=关闭
+value.GREY_WEATHER.1=开启
+
+option.MOTION_BLUR=§6运动模糊
+option.MOTION_BLUR.comment=旋转相机时对画面进行模糊处理（使游戏玩法更加愉悦顺畅）。数值越高，模糊效果越明显。建议保持开启状态，仅根据个人偏好调整 §2运动模糊强度 §f 参数。
+value.MOTION_BLUR.0=关闭
+value.MOTION_BLUR.1=开启
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+option.MOTION_BLURRING_STRENGTH.comment=调整模糊强度。§4过高的数值可能对某些人导致头晕和动作不适。
+
+option.GRAIN=§6颗粒
+value.GRAIN.0=关闭
+value.GRAIN.1=开启
+option.GRAIN_STRENGTH=颗粒强度
+
+option.COLOR_DIST=§6颜色失真
+value.COLOR_DIST.0=关闭
+value.COLOR_DIST.1=开启
+option.COLOR_DIST_STRENGTH=颜色失真强度
+
+option.BLACK_STRIPES=§6黑线
+value.BLACK_STRIPES.0=关闭
+value.BLACK_STRIPES.1=开启
+
+option.DOF=§6景深 (DOF)
+value.DOF.0=关闭
+value.DOF.1=开启
+option.DOF_STRENGTH=模糊强度
+option.TONEMAP_WHITE=色调映射白点
+
+option.LENS_FLARE_ENABLE=§6镜头光晕
+value.LENS_FLARE_ENABLE.0=关闭
+value.LENS_FLARE_ENABLE.1=开启
+
+option.EXPOSURE=曝光
+option.AUTO_EXPOSURE=§6自动曝光
+value.AUTO_EXPOSURE.0=关闭
+value.AUTO_EXPOSURE.1=开启
+option.AUTO_EXPOSURE_SPEED=曝光速度
+option.AUTO_EXPOSURE_RADIUS=曝光半径
+
+option.VIGNETTE=§6暗角
+value.VIGNETTE.0=关闭
+value.VIGNETTE.1=开启
+
+option.CHROMATIC_ABERRATION=色差
+option.ZOOM=缩放
+option.DIST_STRENGTH=§6扭曲强度
+option.INTENSITY_CAM_SHAKE=相机晃动强度
+option.VIGNETTE_RADIUS=暗角半径
+option.VIGNETTE_STRENGTH=暗角强度
+option.BLACK_STRIPES_WIDTH=黑线宽度
+option.BLACK_STRIPES_SOFT=黑线柔和度
+option.SHARPNESS_STRENGTH=锐化
+
+option.SATURATION=饱和度
+option.BRIGHTNESS=亮度
+option.CONTRAST=对比度
+
+option.LUT=§6LUT 支持
+value.LUT.0=关闭
+value.LUT.1=开启
+
+#Lighting
+option.FOG=§6雾
+value.FOG.0=关闭
+value.FOG.1=开启
+option.FOG_DISTANCE=雾距离
+
+option.SOFT=§6柔和阴影
+value.SOFT.1=关闭
+value.SOFT.2=开启
+
+option.degree_night_darkness=夜间阴影暗度
+
+option.SHADING=§6阴影
+option.SHADING.comment=为不受阳光照射的平面着色。
+value.SHADING.0=关闭
+value.SHADING.1=开启
+option.NEW_LIGHTING="New" lighting
+option.NEW_LIGHTING.comment="New" MINECRAFT lighting mode.
+value.NEW_LIGHTING.0=Off
+value.NEW_LIGHTING.1=On
+option.CLASSIC_NIGHT=Classic night
+option.CLASSIC_NIGHT.comment=This shader provides updated lighting at night.
+value.CLASSIC_NIGHT.0=Off
+value.CLASSIC_NIGHT.1=On
+option.SHADOW_TRANSPARENCY=Shadow transparency
+option.LIGHT_ABSORPTION=Light absorption
+option.LIGHT_ABSORPTION.comment=Regulates the absorption of light during the day from lighting sources located under the sun.
+
+# Shadow
+option.ENABLE_SHADOW=§6阴影
+value.ENABLE_SHADOW.0=关闭
+value.ENABLE_SHADOW.1=开启
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=调整太阳角度。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整阴影距离。
+
+value.shadowDistance.64.0=§a4 区块
+value.shadowDistance.80.0=§a5 区块
+value.shadowDistance.96.0=§a6 区块
+value.shadowDistance.112.0=§a7 区块
+value.shadowDistance.128.0=§a8 区块
+value.shadowDistance.160.0=§e10 区块
+value.shadowDistance.192.0=§e12 区块
+value.shadowDistance.224.0=§e14 区块
+value.shadowDistance.256.0=§c16 区块
+value.shadowDistance.320.0=§c20 区块
+value.shadowDistance.384.0=§4§l24 区块
+value.shadowDistance.512.0=§4§l32 区块
+value.shadowDistance.768.0=§4§k-§r§4§l§n§o48 区块§r§4§k-
+value.shadowDistance.1024.0=§4§k-§r§4§l§n§o64 区块§r§4§k-
+
+option.shadowMapResolution=质量
+option.shadowMapResolution.comment=调整阴影贴图大小。§e[*]§r 分辨率越高，阴影越锐利，但性能消耗越高。
+value.shadowMapResolution.512=极低 (512)
+value.shadowMapResolution.768=低 (768)
+value.shadowMapResolution.1024=低中 (1024)
+value.shadowMapResolution.1536=中 (1536)
+value.shadowMapResolution.2048=中高 (2048)
+value.shadowMapResolution.3072=高 (3072)
+value.shadowMapResolution.4096=极高 (4096)
+value.shadowMapResolution.8192=极致 (8192)
+
+#Flashlight
+option.FLASHLIGHT_IS_SNEAKING=§6Flashlight is Sneaking
+value.FLASHLIGHT_IS_SNEAKING.0=关闭
+value.FLASHLIGHT_IS_SNEAKING.1=开启
+value.FLASHLIGHT_IS_SNEAKING.2=始终
+option.FLASHLIGHT_STRENGTH=手电筒强度
+option.FLASHLIGHT_INNER=手电筒内侧
+option.FLASHLIGHT_OUTER=手电筒外侧

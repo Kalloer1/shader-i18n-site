@@ -1,0 +1,18 @@
+screen.QUALITY = 质量
+screen.ATMOSPHERE = 氛围
+screen.WATER = 水
+option.shadowMapResolution = 阴影贴图分辨率
+option.ShadowFilter = 阴影过滤
+option.SSAOQuality = SSAO 质量
+option.BloomQuality = 泛光质量
+option.GodRays = 体积光
+option.GodRaySteps = 体积光采样数
+option.GodRayStrength = 体积光强度
+option.FogStrength = 雾强度
+option.Exposure = 曝光
+option.WaterWaves = 水波
+option.WaterWaveAmount = 水波数量
+option.WaterSpecular = 水面高光
+
+option.DynamicHandLight = 动态手持物品光
+option.HandLightStrength = 手持物品光强度

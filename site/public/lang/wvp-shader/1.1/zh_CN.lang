@@ -1,0 +1,5 @@
+option.QUALITY_LEVEL=§b质量等级
+value.QUALITY_LEVEL.0=§a低配
+value.QUALITY_LEVEL.1=§3中配
+value.QUALITY_LEVEL.2=§e高配
+value.QUALITY_LEVEL.3=§c电影

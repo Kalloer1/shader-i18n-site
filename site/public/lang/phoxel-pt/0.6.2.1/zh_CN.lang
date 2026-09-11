@@ -1,0 +1,232 @@
+#-- Expense --#
+# Low (Green)           : §2
+# Medium (Orange)       : §6
+# High (Red)            : §c
+# Extreme (Dark Red)    : §4
+# Dependant (Purple)    : §5
+
+#-- Colors --#
+# Black                 : §0
+# Blue                  : §1
+# Green (Emphasis)      : §2
+# Cyan                  : §3
+# Dark Red              : §4
+# Purple (Variables)    : §5
+# Orange                : §6
+# Gray                  : §7
+# Dark Gray             : §8
+# Light Blue            : §9
+# Lime                  : §a
+# Aqua                  : §b
+# Red (Warnings)        : §c
+# Magenta               : §d
+# Yellow                : §e
+# white (normal)        : §f
+
+#-- Formatting --#
+# Bold                  : §l
+# Italic                : §o
+# Reset                 : §r
+
+#-- profiles --#
+
+#-- About --#
+screen.About.comment =关于着色器及其设置的有用信息
+
+value.HowTo.0 =
+option.HowTo =将鼠标悬停在按钮上
+option.HowTo.comment =此页面上的按钮旨在帮助您获得最佳体验，并提供有用信息
+
+value.AboutShader.0 =
+option.AboutShader =关于
+option.AboutShader.comment =§6由de§fspatra制§o作的p§rhoxel。缺陷较多且功能不足，更多是一个概念验证，我将来想制作一个正式的着色器
+
+#-- Template Junk --#
+screen.screen = 
+screen.screen.comment = 
+option.option = 
+option.option.comment = 
+value.option.value =
+prefix.option = 
+suffix.option = 
+
+#-- Pathtracing --#
+screen.Pathtracing.comment =直接影响渲染的设置
+
+screen.Pathtracing_TestDists =交叉距离
+screen.Pathtracing_TestDists.comment =每种光线类型在声明未命中前允许行进的最大距离
+
+option.Pathtracing_Bounces =最大反弹次数
+option.Pathtracing_Bounces.comment =路径在停止前在场景中反弹的最大次数
+
+    #- Test Distances -#
+    option.Pathtracing_TestDists_Shadow =阴影
+    option.Pathtracing_TestDists_Shadow.comment =在每个交叉点向光源发送阴影光线。§8光线数量由光源采§5样决定
+    suffix.Pathtracing_TestDists_Shadow = m
+
+    option.Pathtracing_TestDists_Rough =粗糙度
+    option.Pathtracing_TestDists_Rough.comment =粗糙光线从粗糙表面反射
+    suffix.Pathtracing_TestDists_Rough = m
+
+    option.Pathtracing_TestDists_Specular =镜面反射
+    option.Pathtracing_TestDists_Specular.comment =镜面光线从光滑表面反射
+    suffix.Pathtracing_TestDists_Specular = m
+
+option.Pathtracing_LightSamples =阴影采样数
+option.Pathtracing_LightSamples.comment =在每个交叉点直接对光源采样的次数。目§8前仅包括太阳、月亮和末地闪光
+
+option.Pathtracing_VolumeSamples =体积采样
+option.Pathtracing_VolumeSamples.comment =当我们与一个体积相交时，将测试多少个入射光点§8。体积包括大气、水和熔岩
+
+#-- Post Processing --#
+screen.Post_Processing =后期处理
+screen.Post_Processing.comment =影响渲染图像的设置
+
+screen.Post_Denoising =降噪
+
+screen.Post_DOF =景深
+screen.Post_DOF.comment =在屏幕中被认为失焦的区域进行模糊处理
+
+option.Post_TA =时间累积
+option.Post_TA.comment =我们累积的最大帧数。§c这§5可§c能会导致鬼影伪影
+value.Post_TA.1 =§c关
+
+option.Post_Renderscale =放大
+option.Post_Renderscale.comment =以较低的分辨率渲染屏幕并放大
+value.Post_Renderscale.0.5 =4x
+value.Post_Renderscale.0.577 =3倍
+value.Post_Renderscale.0.707 =2x
+value.Post_Renderscale.0.816 =1.5倍
+value.Post_Renderscale.1.0 =§7关
+
+    #- Denoising -#
+    screen.Post_Denoising_Volumes =体积效果
+    screen.Post_Denoising_Volumes.comment =包括大气、水和熔岩
+
+    option.Post_Denoising_Volumes =体积降噪
+    option.Post_Denoising_Volumes.comment =降噪初始体积光照
+
+        #- Volume Denoising -#
+        option.Post_Denoising_Volumes_Radius =采样半径
+
+        option.Post_Denoising_Volumes_Samples =采样数量
+
+    #- Depth of Field -#
+    option.Post_DOF =景深
+    option.Post_DOF.comment =在屏幕中被认为失焦的区域进行模糊处理
+
+    option.Post_DOF_Strength =强度
+    option.Post_DOF_Strength.comment =我们模糊失焦区域的强度
+    value.Post_DOF_Strength.0.1 = 10%
+    value.Post_DOF_Strength.0.2 = 20%
+    value.Post_DOF_Strength.0.3 = 30%
+    value.Post_DOF_Strength.0.4 = 40%
+    value.Post_DOF_Strength.0.5 = 50%
+    value.Post_DOF_Strength.0.6 = 60%
+    value.Post_DOF_Strength.0.7 = 70%
+    value.Post_DOF_Strength.0.8 = 80%
+    value.Post_DOF_Strength.0.9 = 90%
+    value.Post_DOF_Strength.1.0 = 100%
+
+    option.Post_DOF_Samples =采样数
+    option.Post_DOF_Samples.comment =我们采样多少个点进行模糊
+
+#-- Meshing --#
+screen.Meshing.comment =着色器如何组合世界
+screen.Meshing_Voxels =体素化
+
+    #-- Voxels --#
+    option.Meshing_Voxels_AreaExp =距离
+    option.Meshing_Voxels_AreaExp.comment =我们体素化的区域大小
+    value.Meshing_Voxels_AreaExp.6 =2 区块
+    value.Meshing_Voxels_AreaExp.7 =4区块
+    value.Meshing_Voxels_AreaExp.8 =8 区块
+
+#-- Materials --#
+screen.Materials.comment =影响纹理渲染方式的设置
+
+screen.Materials_POM =视差遮蔽映射
+screen.Materials_POM.comment =使用高度图为平面表面增加深度感
+
+option.Materials_Emission =自发光强度
+option.Materials_Emission.comment =自发光纹理渲染的亮度
+
+option.Materials_NormalStrength =法线贴图强度
+option.Materials_NormalStrength.comment =法线贴图影响表面的强度
+
+    #- Parallax Occlusion Mapping -#
+    option.Materials_POM =视差遮蔽映射
+    option.Materials_POM.comment =使用高度图为平面表面增加深度感
+
+    option.Materials_POM_Distance =渲染距离
+    option.Materials_POM_Distance.comment =我们关心视差映射的渲染距离有多远
+
+    option.Materials_POM_Depth =深度
+    option.Materials_POM_Depth.comment =高度图中最低点应该深入方块多深
+    suffix.Materials_POM_Depth = m
+
+    option.Materials_POM_Samples =采样数
+    option.Materials_POM_Samples.comment =最多采§7样高§f度图多少次
+
+#-- Lighting --#
+
+#-- Atmosphere --#
+screen.Atmosphere.comment =改变天空、太阳、月亮、末地闪光和大气层的渲染方式
+
+screen.Atmosphere_Sun =太阳
+screen.Atmosphere_Moon =月亮
+screen.Atmosphere_End_Flash =末地闪光
+screen.Atmosphere_Volumes =体积效果
+
+option.Atmosphere_SunPathRotation =太阳路径旋转
+option.Atmosphere_SunPathRotation.comment =调整太阳和月亮的角度
+
+    #- Sun -#
+    option.Atmosphere_Sun_Tempurature =温度
+    option.Atmosphere_Sun_Tempurature.comment =影响太阳颜色（红 → 白 → 青）
+    
+    option.Atmosphere_Sun_Brightness =亮度
+
+    option.Atmosphere_Sun_Penumbra =半影
+    option.Atmosphere_Sun_Penumbra.comment =影响太阳阴影的清晰度。1是实际《我的世界》尺寸
+
+    #- Moon -#
+    option.Atmosphere_Moon_Tempurature =温度
+    option.Atmosphere_Moon_Tempurature.comment =影响月亮颜色（红 → 白 → 青）
+
+    option.Atmosphere_Moon_Brightness =亮度
+
+    option.Atmosphere_Moon_Penumbra =半影
+    option.Atmosphere_Moon_Penumbra.comment =影响月亮阴影的清晰度。1是实际《我的世界》尺寸
+
+    #- End Flash -#
+    option.Atmosphere_EndFlash_Brightness =亮度
+
+    option.Atmosphere_EndFlash_Penumbra =半影
+    option.Atmosphere_EndFlash_Penumbra.comment =影响末地闪光阴影的清晰度。1是实际《我的世界》尺寸
+
+    #- Volumes -#
+    option.Atmosphere_Volumes_Threshold =概率阈值
+    option.Atmosphere_Volumes_Threshold.comment =考虑光线能通过的最低概率值
+    value.Atmosphere_Volumes_Threshold.0.05 = 5%
+    value.Atmosphere_Volumes_Threshold.0.075 = 7.5%
+    value.Atmosphere_Volumes_Threshold.0.1 = 10%
+    value.Atmosphere_Volumes_Threshold.0.125 = 12.5%
+    value.Atmosphere_Volumes_Threshold.0.15 = 15%
+
+    option.Atmosphere_Volumes_FogDensity =雾密度
+    option.Atmosphere_Volumes_FogDensity.comment =默认密度的乘数
+    suffix.Atmosphere_Volumes_FogDensity = x
+
+#-- Camera --#
+screen.Camera.comment =影响虚拟相机如何接收光线
+
+option.Camera_Gamma =伽马
+option.Camera_Gamma.comment =光线吸收的伽马曲线
+
+#-- Test Features --#
+screen.TestFeatures =测试功能
+screen.TestFeatures.comment =切换未完成/未打磨的功能
+
+option.POMAffectsDepth =物理视差映射
+option.POMAffectsDepth.comment =纹理深度影响片段在真实世界中的位置

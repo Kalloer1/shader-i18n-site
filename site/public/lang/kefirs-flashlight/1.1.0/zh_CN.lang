@@ -1,0 +1,47 @@
+option.FLASHLIGHT_FLICKER = 手电筒闪烁
+option.FLASHLIGHT_FLICKER.comment = 随机闪烁手电筒以营造恐怖效果
+option.GRAY_FOG.comment = 灰色雾
+option.GRAY_FOG.comment = 让雾中的事物更灰
+option.AMBIENT_BRIGHTNESS=雾亮度
+option.AMBIENT_BRIGHTNESS.comment=雾的亮度
+option.FLASHLIGHT_RANGE = 手电筒范围
+screen.FLASHLIGHT_CONFIG=手电筒自定义
+screen.CORE_SETTINGS = 核心设置
+screen.CORE_SETTINGS.comment = 中心点自定义
+screen.HALO_SETTINGS = 光晕设置
+screen.HALO_SETTINGS.comment = 外环自定义
+screen.SPILL_SETTINGS = 溢出设置
+screen.SPILL_SETTINGS.comment = 大气辉光自定义
+
+
+option.CORE_BRIGHTNESS=强度
+option.CORE_BRIGHTNESS.comment=中心白点的亮度
+
+option.HALO_BRIGHTNESS=强度
+option.HALO_BRIGHTNESS.comment=外环亮度
+
+option.SPILL_BRIGHTNESS=强度
+option.SPILL_BRIGHTNESS.comment=光束周围大气辉光的亮度
+
+option.CORE_SIZE=大小
+option.CORE_SIZE.comment=中心热点的宽度
+
+option.HALO_SIZE=尺寸
+option.HALO_SIZE.comment=外环的宽度
+
+option.VOLUMETRIC_INTENSITY=雾密度
+option.VOLUMETRIC_INTENSITY.comment=空气中光束的可见度。0.0 = 真实的清洁空气。
+
+option.CORE_RED = 红色值
+option.CORE_GREEN = 绿色值
+option.CORE_BLUE = 蓝色值
+option.HALO_RED = 红色值
+option.HALO_GREEN = 绿色值
+option.HALO_BLUE = 蓝色值
+option.SPILL_RED = 红色值
+option.SPILL_GREEN = 绿色值
+option.SPILL_BLUE = 蓝色值
+
+option.CORE_SATURATION = 颜色饱和度
+option.HALO_SATURATION = 颜色饱和度
+option.SPILL_SATURATION = 颜色饱和度

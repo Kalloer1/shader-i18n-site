@@ -1,0 +1,171 @@
+screen.LIGHTING =光照
+screen.POST_PROCCESSING =后期处理
+screen.FOG =雾
+screen.SKY =天空
+screen.FOGCOLOR =雾颜色
+screen.WATER =水
+screen.COLOR =颜色
+screen.SHADOWS =阴影
+screen.SUNLIGHTCOLOR =阳光颜色
+screen.SKYLIGHTCOLOR =天空光颜色
+screen.BLOCKLIGHTCOLOR =方块光颜色
+screen.SKYMULTIPLIERS =天空颜色乘数
+
+option.INFO =像素化 v0.6
+value.INFO.0 =作者：dvimidh
+option.INFO.comment =https://dvimidh.com
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整阴影距离。
+value.shadowDistance.32.0=2 区块
+value.shadowDistance.64.0=4区块
+value.shadowDistance.96.0=6区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.192.0=12区块
+value.shadowDistance.256.0=16区块
+value.shadowDistance.384.0=24区块
+value.shadowDistance.512.0=32 区块
+value.shadowDistance.768.0=48个区块
+value.shadowDistance.1024.0=64个区块
+
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowMapResolution.comment=调整阴影贴图尺寸。§e[§r*]更高分辨率能提供更清晰的阴影，但会降低性能。
+value.shadowMapResolution.512=512 (0.5k)
+value.shadowMapResolution.1024=1024 (1k)
+value.shadowMapResolution.2048=2048 (2k)
+value.shadowMapResolution.3072=3072 (3k)
+value.shadowMapResolution.4096=4096 (4k)
+value.shadowMapResolution.8192=8192 (8k)
+value.shadowMapResolution.16384=163842 (16k)
+
+option.SHADOW_INTENSITY =日光/月光强度
+option.SHADOW_INTENSITY.comment =日光和月光的强度
+
+option.DISTORTION_STRENGTH =阴影贴图扭曲强度
+option.DISTORTION_STRENGTH.comment =阴影贴图的扭曲程度。数值越高，玩家附近的阴影分辨率越高，但远处阴影质量会降低
+
+option.AMBIENT_INTENSITY =方块光强度
+option.AMBIENT_INTENSITY.comment =方块光亮度
+
+option.BLOCKLIGHTSPREAD =方块光扩散范围
+option.BLOCKLIGHTSPREAD.comment =方块光的扩散距离（会影响感知到的最低光照值）
+
+option.SKYLIGHT_INTENSITY=天空光强度
+option.SKYLIGHT_INTENSITY.comment =调节环境光强度。可与日光/月光强度配合使用，获得多种不同的光照效果
+
+option.HALO_STRENGTH =光环强度
+option.HALO_STRENGTH.comment =太阳周围的光晕
+
+option.AMB_AO_STRENGTH =环境光遮蔽强度
+option.AMB_AO_STRENGTH.comment =角落的暗影
+
+option.SUN_AO_STRENGTH =日光下的环境光遮蔽强度
+option.SUN_AO_STRENGTH.comment =处于直射阳光下角落的暗影
+
+option.MINIMUMLIGHT =最小光照倍增器
+option.MINIMUMLIGHT.comment =无光照时的黑暗程度
+
+option.PIXEL_LOCKED_SHADOWS=像素化光照
+option.PIXEL_LOCKED_SHADOWS.comment =将阴影锁定到纹理网格（类似动态视觉效果）
+
+option.PIXEL_LOCKED_SHADOWS_RES =像素分辨率
+option.PIXEL_LOCKED_SHADOWS_RES.comment =像素化光照所对齐的纹理网格分辨率
+option.SHADOW_FILTERING=阴影过滤
+option.SHADOW_FILTERING.comment =轻微柔化阴影
+
+option.FOG_INTENSITY=雾气强度
+option.FOG_INTENSITY.comment =调节雾气强度
+
+option.RAIN_FOG_INTENSITY=雨雾强度
+option.RAIN_FOG_INTENSITY.comment =调节雨天或雪天时的雾气强度
+
+option.FOG_DECAY_START=雾气衰减起始高度
+option.FOG_DECAY_START.comment=雾气密度开始随高度下降的高度
+
+option.FOG_DECAY_END=雾气衰减结束高度
+option.FOG_DECAY_END.comment=零密度雾气所在高度
+
+option.CHUNK_FADE=边界雾
+option.CHUNK_FADE.comment =添加边界雾以掩盖区块加载现象
+
+option.WATER_STYLE=水样式
+value.WATER_STYLE.1 =着色器
+value.WATER_STYLE.2 =原版
+option.WATER_TRANSLUCENCY_MULTIPLIER=着色器水面透光性
+option.WATER_ROUGHNESS=水面粗糙度
+option.WATER_ROUGHNESS.comment =太阳/月亮在水面上的反射扩散范围
+option.WATER_SHININESS=水面反射强度
+option.WATER_ROUGHNESS.comment =太阳/月亮在水面上的反射强度
+option.WATER_TEXTURE =水面纹理
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment =调节泛光强度
+
+option.BLOOM_SPREAD =泛光半径
+option.BLOOM_SPREAD.comment =调节泛光扩散范围
+
+option.BLOOM =泛光
+option.BLOOM.comment =亮部周围的光晕
+
+option.EXPOSURE =曝光
+option.EXPOSURE.comment =达到白色的容易程度。较低数值能更好地处理过亮物体
+
+option.SKY_SATURATION =天空饱和度
+option.SKY_SATURATION.comment =天空中色彩的强度。数值越高色彩越鲜艳
+
+option.SKY_INTENSITY =天空强度
+option.SKY_INTENSITY.comment =天空亮度
+
+option.SATURATION =饱和度
+option.SATURATION.comment =色彩强度。数值越高色彩越鲜艳
+
+option.SUNRISECOLR =日出红
+option.SUNRISECOLG =日出绿
+option.SUNRISECOLB =日出蓝
+
+option.SUNDAYCOLR =日光红色
+option.SUNDAYCOLG =日光绿色
+option.SUNDAYCOLB =日光蓝色
+
+option.SUNNIGHTCOLR =夜晚红色
+option.SUNNIGHTCOLG =夜晚绿色
+option.SUNNIGHTCOLB =夜晚蓝色
+
+option.AMBRISECOLR =日出红
+option.AMBRISECOLG =日出绿
+option.AMBRISECOLB =日出蓝
+
+option.AMBDAYCOLR =日光红色
+option.AMBDAYCOLG =日光绿色
+option.AMBDAYCOLB =日光蓝色
+
+option.AMBNIGHTCOLR =夜晚红色
+option.AMBNIGHTCOLG =夜晚绿色
+option.AMBNIGHTCOLB =夜晚蓝色
+
+option.FOGRISECOLR =日出红
+option.FOGRISECOLG =日出绿
+option.FOGRISECOLB =日出蓝
+
+option.FOGDAYCOLR =日光红色
+option.FOGDAYCOLG =日光绿色
+option.FOGDAYCOLB =日光蓝色
+
+option.FOGNIGHTCOLR =夜晚红色
+option.FOGNIGHTCOLG =夜晚绿色
+option.FOGNIGHTCOLB =夜晚蓝色
+
+option.BLOCKCOLR =方块光源红色
+option.BLOCKCOLG =方块光源绿色
+option.BLOCKCOLB =方块光源蓝色
+
+option.SKYRISECOLR =日出红
+option.SKYRISECOLG =日出绿
+option.SKYRISECOLB =日出蓝
+
+option.SKYDAYCOLR =日光红色
+option.SKYDAYCOLG =日光绿色
+option.SKYDAYCOLB =日光蓝色
+
+option.SKYNIGHTCOLR =夜晚红色
+option.SKYNIGHTCOLG =夜晚绿色
+option.SKYNIGHTCOLB =夜晚蓝色

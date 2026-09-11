@@ -1,0 +1,19 @@
+option.PIXELATION =像素化程度
+value.PIXELATION.1 =关
+value.PIXELATION.2 = 1/2
+value.PIXELATION.3 = 1/3
+value.PIXELATION.4 = 1/4
+value.PIXELATION.5 = 1/5
+value.PIXELATION.6 = 1/6
+value.PIXELATION.7 = 1/7
+value.PIXELATION.8 = 1/8
+
+option.SCALELINES =标尺线数量
+value.SCALELINES.1 =关
+value.SCALELINES.2 = 1/2
+value.SCALELINES.3 = 1/3
+value.SCALELINES.4 = 1/4
+value.SCALELINES.5 = 1/5
+value.SCALELINES.6 = 1/6
+value.SCALELINES.7 = 1/7
+value.SCALELINES.8 = 1/8

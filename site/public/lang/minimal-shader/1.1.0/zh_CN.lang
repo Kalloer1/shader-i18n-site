@@ -1,0 +1,34 @@
+
+option.ENABLE_COLORED_SHADOW=彩色阴影
+option.ENABLE_FOG=边界雾
+
+profile.NORMAL=标准
+profile.MINIMAL=最低
+
+option.shadowMapResolution=阴影分辨率
+value.shadowMapResolution.512=§b低配 (512p)
+value.shadowMapResolution.1024=§a中配 (1K)
+value.shadowMapResolution.2048=§e高配 (2K)
+value.shadowMapResolution.4096=§6极高 (4K)
+value.shadowMapResolution.8192=§c最高 (8K)
+
+option.shadowDistance=阴影距离
+value.shadowDistance.64.0=4 区块
+value.shadowDistance.96.0=6 区块
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.160.0=10 区块
+value.shadowDistance.192.0=12 区块
+value.shadowDistance.224.0=14 区块
+value.shadowDistance.256.0=16 区块
+value.shadowDistance.288.0=18 区块
+value.shadowDistance.320.0=20 区块
+value.shadowDistance.352.0=22 区块
+value.shadowDistance.384.0=24 区块
+value.shadowDistance.416.0=26 区块
+value.shadowDistance.448.0=28 区块
+value.shadowDistance.480.0=30 区块
+value.shadowDistance.512.0=32 区块
+
+option.sunPathRotation=太阳路径旋转
+option.PCF_SAMPLE=PCF 采样
+option.PCF_BLUR_RADIUS=阴影模糊半径
