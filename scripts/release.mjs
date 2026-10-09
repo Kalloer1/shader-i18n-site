@@ -2,11 +2,11 @@
 /**
  * 发布脚本：翻译完成后一键发布到站点。
  *
- * 用法：node scripts/release.mjs <shader-id> [--skip-quark]
+ * 用法：node scripts/release.mjs <shader-id>
  *
  * 流程：
  * 1. 验证 lang 文件存在
- * 2. git add + commit
+ * 2. 暂存当前仓库全部变更并 commit
  * 3. git push 触发 Cloudflare Pages 部署
  *
  * 环境变量：无必填

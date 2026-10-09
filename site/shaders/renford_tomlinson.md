@@ -79,7 +79,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -90,29 +90,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/yofps">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xM96NJmk/images/c60dea96a53d40a9cc70216f121749fd467b5c17_350.webp" alt="YoFPS" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">YoFPS</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/cursed-fog">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sAZ9WsJP/images/165d9ca8f9a1255d9cb5a582bdba5ec00204fe00_350.webp" alt="Cursed Fog" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Cursed Fog</span><span class="sp-similar__dl">⬇ 61.7 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/daybreak-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/lite-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LTvf5Tji/images/20136478b4568176829c5af5b16b2f7a32dc8540_350.webp" alt="E-LITE shaders (MakeUp edit)" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">E-LITE shaders (MakeUp edit)</span><span class="sp-similar__dl">⬇ 136.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/i-like-vanilla">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DoODk4HD/images/9028a07e88871c018c344d36c1b8876ccdaf8431_350.webp" alt="I Like Vanilla" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">I Like Vanilla</span><span class="sp-similar__dl">⬇ 218.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/amethyst-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LypdYQ63/images/cdceb457e26f38db8d2ff5263578b1a2d23f2814_350.webp" alt="Amethyst Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Amethyst Shaders</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/body-camera-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/by2i3tnt/images/3be877330d71e58a1b2941356fa5fd02a8db7a29_350.webp" alt="Body Camera" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Body Camera</span><span class="sp-similar__dl">⬇ 132.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/kappa-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simplicissimus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/retrovision">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BWnGghPW/images/016eb0db0389597b8b929c5724f371335badc2f1_350.webp" alt="RetroVision" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">RetroVision</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/mello">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EJ1dyMxD/images/7e21cd75f6a6a13397ecf0d40364870b7d1347f6_350.webp" alt="Mello" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Mello</span><span class="sp-similar__dl">⬇ 25.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/lethal-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kih5VmNo/images/e63a18a1090c530b29f789a55c947addeb08843e_350.webp" alt="Lethal Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Lethal Shaders</span><span class="sp-similar__dl">⬇ 20.1 万</span></div>
 </a>
 </div>
 </div>

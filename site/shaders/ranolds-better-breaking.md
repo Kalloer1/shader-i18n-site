@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/fantasy-shader-unbound">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1ICdkzj/images/883834b76c9fbc5fc54dac9850c200ea9a1582ba_350.webp" alt="Fantasy Shaders Unbound" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Unbound</span><span class="sp-similar__dl">⬇ 100.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/simply-upscaled">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bliss-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/vector">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/a8nz2nHG/images/1098ccfbcdb1087427848718266f2459c0b93f81_350.webp" alt="VECTOR" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">VECTOR</span><span class="sp-similar__dl">⬇ 24.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/nostalgia-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xEItlMn3/images/2cd00df04e86c74ca7095235a83ea558bd7f2c54_350.webp" alt="Nostalgia Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Nostalgia Shader</span><span class="sp-similar__dl">⬇ 416.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/btb-back-to-basics">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/jiOSfcba/images/729b94891981617672e24c74edcff4cc65e96a15_350.webp" alt="[BTB] Back To Basics" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">[BTB] Back To Basics</span><span class="sp-similar__dl">⬇ 18.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/auroras-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2_350.webp" alt="Aurora's Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Aurora's Shaders</span><span class="sp-similar__dl">⬇ 89.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/arc-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yY9oI7oz/images/723643aee7ba0ae7f68f6fd2e8c382d1a4c27bbb_350.webp" alt="Arc" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Arc</span><span class="sp-similar__dl">⬇ 89.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/ushader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UDDa70lE/images/8526bf02177fa84d413e52ae460a311f8456bdd6_350.webp" alt="UShader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">UShader</span><span class="sp-similar__dl">⬇ 64.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/makeup-ultra-fast-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/izsIPI7a/images/7fad6f7be5d313e9cd9c2dc4378250299ea29950_350.webp" alt="MakeUp - Ultra Fast" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">MakeUp - Ultra Fast</span><span class="sp-similar__dl">⬇ 1241.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/eclipseshaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/s8ZCVd1a/images/3177d7afe9048dd413191eb09cb0c294c1be6cb7_350.webp" alt="Eclipse" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Eclipse</span><span class="sp-similar__dl">⬇ 39.4 万</span></div>
 </a>
 </div>
 </div>

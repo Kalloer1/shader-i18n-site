@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/solas-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EpQFjzrQ/images/ce6ca2fab6173e6fcf4454487e320c041291fecd_350.webp" alt="Solas Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Solas Shader</span><span class="sp-similar__dl">⬇ 1656.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/amethyst-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LypdYQ63/images/cdceb457e26f38db8d2ff5263578b1a2d23f2814_350.webp" alt="Amethyst Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Amethyst Shaders</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/nostalgia-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xEItlMn3/images/2cd00df04e86c74ca7095235a83ea558bd7f2c54_350.webp" alt="Nostalgia Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Nostalgia Shader</span><span class="sp-similar__dl">⬇ 416.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/lite-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LTvf5Tji/images/20136478b4568176829c5af5b16b2f7a32dc8540_350.webp" alt="E-LITE shaders (MakeUp edit)" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">E-LITE shaders (MakeUp edit)</span><span class="sp-similar__dl">⬇ 136.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/shrimple">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BS9T99lD/images/f52cd76af3aad866abbe4c9b60a9665b3804aa57_350.webp" alt="Shrimple" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Shrimple</span><span class="sp-similar__dl">⬇ 208.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/spring-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/68DAChCV/images/31664077a0e0c9643596e6d1efcc0f3ff326d215_350.webp" alt="Spring Shaders (Chun)" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Spring Shaders (Chun)</span><span class="sp-similar__dl">⬇ 28.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/fantasy-shader-unbound">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1ICdkzj/images/883834b76c9fbc5fc54dac9850c200ea9a1582ba_350.webp" alt="Fantasy Shaders Unbound" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Unbound</span><span class="sp-similar__dl">⬇ 100.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/auroras-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2_350.webp" alt="Aurora's Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Aurora's Shaders</span><span class="sp-similar__dl">⬇ 89.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bloop-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/glimmer-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PgdT4v4a/images/9327833ebb17d41e7831dc887d506062d9cb8284_350.webp" alt="Glimmer" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Glimmer</span><span class="sp-similar__dl">⬇ 49.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/psx-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/5FTpbyBl/images/056b70713c35a14001d5b918e11b04ddbb70117e_350.webp" alt="PSX Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">PSX Shader</span><span class="sp-similar__dl">⬇ 22.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/phoxel-pt">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/m9mH4vjB/images/813eadc9bf2637504db994587c7dda6c147229c9_350.webp" alt="Phoxel PT" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Phoxel PT</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
 </div>
 </div>

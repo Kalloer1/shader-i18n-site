@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/phoxel-pt">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/m9mH4vjB/images/813eadc9bf2637504db994587c7dda6c147229c9_350.webp" alt="Phoxel PT" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Phoxel PT</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/drdestens-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/4kHmJd4i/images/15e0bf5a8b8aff5d2f7384815e6d75c43dda9e52_350.webp" alt="DrDestens Minecraft Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">DrDestens Minecraft Shaders</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/kappa-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/lethal-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kih5VmNo/images/e63a18a1090c530b29f789a55c947addeb08843e_350.webp" alt="Lethal Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Lethal Shaders</span><span class="sp-similar__dl">⬇ 20.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/complementary-reimagined">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9_350.webp" alt="Complementary Shaders - Reimagined" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Complementary Shaders - Reimagined</span><span class="sp-similar__dl">⬇ 6494.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/lux-v1">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DiGQENDV/images/e472939aa358364e86be01986c4c1d8075c5e64c_350.webp" alt="Lux V1" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Lux V1</span><span class="sp-similar__dl">⬇ 120.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/cursed-fog">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sAZ9WsJP/images/165d9ca8f9a1255d9cb5a582bdba5ec00204fe00_350.webp" alt="Cursed Fog" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Cursed Fog</span><span class="sp-similar__dl">⬇ 61.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/ebin-resurrected">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/VP9picRm/images/13114a13b9883a129b12b7188207580565fd218a_350.webp" alt="Ebin Resurrected" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Ebin Resurrected</span><span class="sp-similar__dl">⬇ 59.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/vanilla-plus-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EPsIYDj1/images/9afa8d27a50792f2c2ad779bf5c14fe2faa25085_350.webp" alt="Vanilla Plus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Vanilla Plus Shader</span><span class="sp-similar__dl">⬇ 206.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/renderpearl">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BrRak9pu/images/ca4c103984c68ebd3706560e472201e85fd56c62_350.webp" alt="RenderPearl" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">RenderPearl</span><span class="sp-similar__dl">⬇ 131.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/epoch">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/IsJZJfNT/images/0518e0dca1fd30a85efe334f6986b4c5b41a6488_350.webp" alt="Epoch" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Epoch</span><span class="sp-similar__dl">⬇ 21.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/insanity-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EQWX2WiO/images/293677d965339398965a5addeb1fd7d4117282b1_350.webp" alt="Insanity Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Insanity Shader</span><span class="sp-similar__dl">⬇ 724.7 万</span></div>
 </a>
 </div>
 </div>

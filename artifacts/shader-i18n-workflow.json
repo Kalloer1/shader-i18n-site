@@ -1,0 +1,305 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "shader-i18n-site 当前运行流程",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "artifacts/shader-i18n-workflow.html",
+    "viewBox": [
+      1240,
+      760
+    ]
+  },
+  "lanes": [
+    {
+      "id": "usersite",
+      "label": "用户与网站"
+    },
+    {
+      "id": "automation",
+      "label": "GitHub 自动化"
+    },
+    {
+      "id": "datapipeline",
+      "label": "数据与翻译"
+    },
+    {
+      "id": "external",
+      "label": "外部服务"
+    }
+  ],
+  "phases": [
+    {
+      "id": "discover",
+      "label": "目录发现与同步",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "translate",
+      "label": "翻译与校验",
+      "fromCol": 2,
+      "toCol": 3,
+      "variant": "emphasis"
+    },
+    {
+      "id": "publish",
+      "label": "提交与部署",
+      "fromCol": 4,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "groups": [
+    {
+      "id": "daily_sync",
+      "label": "自动：定时 / workflow_dispatch",
+      "lane": "automation",
+      "fromCol": 0,
+      "toCol": 2,
+      "variant": "dashed"
+    },
+    {
+      "id": "manual_translation",
+      "label": "手动：npm run translate",
+      "lane": "datapipeline",
+      "fromCol": 2,
+      "toCol": 4,
+      "variant": "emphasis"
+    },
+    {
+      "id": "manual_release",
+      "label": "手动 release，推送后自动部署",
+      "lane": "automation",
+      "fromCol": 4,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "source",
+    "sync",
+    "data",
+    "translate_llm",
+    "validate",
+    "release",
+    "deploy",
+    "site"
+  ],
+  "nodes": [
+    {
+      "id": "visitor",
+      "lane": "usersite",
+      "col": 0,
+      "type": "external",
+      "label": "访客",
+      "sublabel": "浏览、下载、提交请求",
+      "width": 150
+    },
+    {
+      "id": "site",
+      "lane": "usersite",
+      "col": 5,
+      "type": "frontend",
+      "label": "VitePress 站点",
+      "sublabel": "Cloudflare Pages 静态站",
+      "tag": "构建已验证",
+      "width": 170
+    },
+    {
+      "id": "download",
+      "lane": "usersite",
+      "col": 4,
+      "type": "frontend",
+      "label": "版本下载",
+      "sublabel": "GitHub 主下载 / 夸克镜像",
+      "width": 170
+    },
+    {
+      "id": "source",
+      "lane": "external",
+      "col": 0,
+      "type": "external",
+      "label": "Modrinth",
+      "sublabel": "全量 shader 目录与版本 zip",
+      "width": 175
+    },
+    {
+      "id": "sync",
+      "lane": "automation",
+      "col": 1,
+      "type": "backend",
+      "label": "GitHub Actions 同步",
+      "sublabel": "catalog → metadata → detect",
+      "tag": "每日 UTC 21:00",
+      "width": 185
+    },
+    {
+      "id": "data",
+      "lane": "datapipeline",
+      "col": 2,
+      "type": "database",
+      "label": "项目 JSON 数据",
+      "sublabel": "catalog / shaders / glossary",
+      "width": 175
+    },
+    {
+      "id": "translate_llm",
+      "lane": "datapipeline",
+      "col": 3,
+      "type": "backend",
+      "label": "Hunyuan-MT-7B 翻译",
+      "sublabel": "SiliconFlow · en_US → 分块 → zh_CN",
+      "tag": "手动启动",
+      "width": 185
+    },
+    {
+      "id": "validate",
+      "lane": "datapipeline",
+      "col": 4,
+      "type": "security",
+      "label": "结构校验与登记",
+      "sublabel": "key / 占位符 / § / 编码",
+      "tag": "失败不上线",
+      "width": 180
+    },
+    {
+      "id": "release",
+      "lane": "automation",
+      "col": 4,
+      "type": "backend",
+      "label": "Git 发布脚本",
+      "sublabel": "git add → commit → push",
+      "tag": "npm run release",
+      "width": 175
+    },
+    {
+      "id": "deploy",
+      "lane": "automation",
+      "col": 5,
+      "type": "cloud",
+      "label": "Cloudflare Pages",
+      "sublabel": "main push → build → Wrangler",
+      "tag": "自动部署",
+      "width": 175
+    },
+    {
+      "id": "docs",
+      "lane": "external",
+      "col": 3,
+      "type": "external",
+      "label": "腾讯文档智能表格",
+      "sublabel": "新增未翻译项目登记",
+      "tag": "可选 token",
+      "width": 185
+    }
+  ],
+  "edges": [
+    {
+      "id": "visitor-site",
+      "from": "visitor",
+      "to": "site",
+      "label": "访问 / 请求",
+      "role": "main",
+      "variant": "emphasis"
+    },
+    {
+      "id": "site-download",
+      "from": "site",
+      "to": "download",
+      "label": "按版本下载",
+      "role": "return"
+    },
+    {
+      "id": "source-sync",
+      "from": "source",
+      "to": "sync",
+      "label": "API 目录与元数据",
+      "role": "main"
+    },
+    {
+      "id": "sync-data",
+      "from": "sync",
+      "to": "data",
+      "label": "写入 JSON + 快照",
+      "role": "main"
+    },
+    {
+      "id": "sync-docs",
+      "from": "sync",
+      "to": "docs",
+      "label": "新增项（可选）",
+      "role": "async"
+    },
+    {
+      "id": "data-translate",
+      "from": "data",
+      "to": "translate_llm",
+      "label": "筛选候选 + 下载最新 zip + glossary",
+      "role": "main",
+      "variant": "emphasis"
+    },
+    {
+      "id": "translate-validate",
+      "from": "translate_llm",
+      "to": "validate",
+      "label": "生成 zh_CN.lang",
+      "role": "main",
+      "variant": "emphasis"
+    },
+    {
+      "id": "validate-release",
+      "from": "validate",
+      "to": "release",
+      "label": "人工检查后发布",
+      "role": "main",
+      "variant": "emphasis"
+    },
+    {
+      "id": "release-deploy",
+      "from": "release",
+      "to": "deploy",
+      "label": "push main",
+      "role": "main",
+      "variant": "emphasis"
+    },
+    {
+      "id": "deploy-site",
+      "from": "deploy",
+      "to": "site",
+      "label": "部署静态资源",
+      "role": "main",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "已验证主链路",
+      "items": [
+        "Modrinth 目录可成功拉取；隔离同步测试通过",
+        "VitePress 构建成功，详情页与静态资源可生成",
+        "Cloudflare Pages 项目与本机凭据已验证可访问"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "人工触发边界",
+      "items": [
+        "每日同步自动运行，但不会调用翻译模型",
+        "翻译与 npm run release 需要用户手动执行",
+        "夸克上传仍需手动维护，未接入 release.mjs"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "当前凭据边界",
+      "items": [
+        "同步不需要 CosForge / CurseForge API Key",
+        "本机使用 Cloudflare Global API Key + Email；CI 使用 API Token + Account ID",
+        "TENCENT_DOCS_TOKEN 只影响智能表格登记，不影响 Modrinth 同步"
+      ]
+    }
+  ]
+}

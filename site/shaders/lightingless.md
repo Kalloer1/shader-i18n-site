@@ -62,7 +62,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -73,29 +73,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/astralex">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/RphJSnEs/images/94cba843df8f5ee3c995b92bfe9baeb69e40462d_350.webp" alt="AstraLex Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">AstraLex Shaders</span><span class="sp-similar__dl">⬇ 490.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/exposa-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/renderpearl">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BrRak9pu/images/ca4c103984c68ebd3706560e472201e85fd56c62_350.webp" alt="RenderPearl" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RenderPearl</span><span class="sp-similar__dl">⬇ 131.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/kappa-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simply-upscaled">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp" alt="BSL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders</span><span class="sp-similar__dl">⬇ 2855.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/phoxel-pt">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/m9mH4vjB/images/813eadc9bf2637504db994587c7dda6c147229c9_350.webp" alt="Phoxel PT" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Phoxel PT</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/fastpbr">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ygChbn8J/images/a0dd165216e6ce8304f52a9e24ebbce6c838e338_350.webp" alt="FastPBR" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">FastPBR</span><span class="sp-similar__dl">⬇ 185.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/rethinking-voxels">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kmwfVOoi/images/5de1c81f0bc383e607993c76c81aa56c37a63a7a_350.webp" alt="Rethinking Voxels" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Rethinking Voxels</span><span class="sp-similar__dl">⬇ 1269.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/arc-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yY9oI7oz/images/723643aee7ba0ae7f68f6fd2e8c382d1a4c27bbb_350.webp" alt="Arc" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Arc</span><span class="sp-similar__dl">⬇ 89.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simplicissimus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/pegasus">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
 </a>
 </div>
 </div>

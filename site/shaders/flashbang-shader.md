@@ -63,7 +63,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -78,25 +78,25 @@ layout: page
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/potato-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/just-colored-lighting">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/McUqXQ0J/images/0f024d76b7430f0eb43159a51ace2c93b5d04205_350.webp" alt="Just Colored Lighting" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Just Colored Lighting</span><span class="sp-similar__dl">⬇ 58.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/noble">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sclYVqbt/images/42ce3eb6bab8fdae6754821297a89f7a8426fc02_350.webp" alt="Noble Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Noble Shaders</span><span class="sp-similar__dl">⬇ 218.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/body-camera-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/by2i3tnt/images/3be877330d71e58a1b2941356fa5fd02a8db7a29_350.webp" alt="Body Camera" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Body Camera</span><span class="sp-similar__dl">⬇ 132.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/miniature-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UaS8ROxa/images/beec07b07d81705fadb724a4ffa45851a43c0d3b_350.webp" alt="Miniature Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Miniature Shader</span><span class="sp-similar__dl">⬇ 446.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/voyager-shader-2.0">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/71EyVfCn/images/b9e61cc231914ffff4769bfbf857631b12377792_350.webp" alt="Voyager shader 2.0" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Voyager shader 2.0</span><span class="sp-similar__dl">⬇ 72.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/fantasy-shader-unbound">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1ICdkzj/images/883834b76c9fbc5fc54dac9850c200ea9a1582ba_350.webp" alt="Fantasy Shaders Unbound" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Unbound</span><span class="sp-similar__dl">⬇ 100.0 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bloop-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/spooklementary">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6uJCfiCH/images/16b942e3d1b6221726192776df5bb7482c3cf55f_350.webp" alt="Spooklementary" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Spooklementary</span><span class="sp-similar__dl">⬇ 295.2 万</span></div>
 </a>
 </div>
 </div>

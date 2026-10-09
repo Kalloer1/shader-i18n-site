@@ -63,7 +63,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -74,29 +74,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/insanity-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EQWX2WiO/images/293677d965339398965a5addeb1fd7d4117282b1_350.webp" alt="Insanity Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Insanity Shader</span><span class="sp-similar__dl">⬇ 724.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/kappa-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/mc-vhs">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhXP52S3/images/8d24b74a10b864000c4ccf2a3a78579682d889b1_350.webp" alt="MC VHS" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">MC VHS</span><span class="sp-similar__dl">⬇ 57.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/btb-back-to-basics">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/jiOSfcba/images/729b94891981617672e24c74edcff4cc65e96a15_350.webp" alt="[BTB] Back To Basics" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">[BTB] Back To Basics</span><span class="sp-similar__dl">⬇ 18.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/noble">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sclYVqbt/images/42ce3eb6bab8fdae6754821297a89f7a8426fc02_350.webp" alt="Noble Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Noble Shaders</span><span class="sp-similar__dl">⬇ 218.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/miniature-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UaS8ROxa/images/beec07b07d81705fadb724a4ffa45851a43c0d3b_350.webp" alt="Miniature Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Miniature Shader</span><span class="sp-similar__dl">⬇ 446.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/glimmer-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PgdT4v4a/images/9327833ebb17d41e7831dc887d506062d9cb8284_350.webp" alt="Glimmer" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Glimmer</span><span class="sp-similar__dl">⬇ 49.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/musk-rose-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HpOC6pyc/images/2579e84653106ea355a51bd9ceb69e0fbece8e4c_350.webp" alt="Musk Rose Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Musk Rose Shaders</span><span class="sp-similar__dl">⬇ 32.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders-classic">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/pgzM6RBY/images/c933b31d55f896d3c5260a66edcfc577192a842e_350.webp" alt="BSL Shaders - Classic" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders - Classic</span><span class="sp-similar__dl">⬇ 215.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/ctrvcr">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XaonJnsc/images/ef049a118b6270b40933f71a5ddca36ecda5acee.gif" alt="CTR VCR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">CTR VCR</span><span class="sp-similar__dl">⬇ 57.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/fastpbr">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ygChbn8J/images/a0dd165216e6ce8304f52a9e24ebbce6c838e338_350.webp" alt="FastPBR" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">FastPBR</span><span class="sp-similar__dl">⬇ 185.1 万</span></div>
 </a>
 </div>
 </div>

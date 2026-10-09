@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/voyager-shader-2.0">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/71EyVfCn/images/b9e61cc231914ffff4769bfbf857631b12377792_350.webp" alt="Voyager shader 2.0" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Voyager shader 2.0</span><span class="sp-similar__dl">⬇ 72.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/lux-v1">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DiGQENDV/images/e472939aa358364e86be01986c4c1d8075c5e64c_350.webp" alt="Lux V1" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Lux V1</span><span class="sp-similar__dl">⬇ 120.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/trailershaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44_350.webp" alt="Trailer Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Trailer Shaders</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/exposa-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bloop-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/redhat-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvitaqQh/images/2a9e6a3190a6fc6d9b4cd05e483affd58edccb76_350.webp" alt="RedHat Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RedHat Shaders</span><span class="sp-similar__dl">⬇ 93.3 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/drdestens-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/4kHmJd4i/images/15e0bf5a8b8aff5d2f7384815e6d75c43dda9e52_350.webp" alt="DrDestens Minecraft Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">DrDestens Minecraft Shaders</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp" alt="BSL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders</span><span class="sp-similar__dl">⬇ 2855.1 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/ushader">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UDDa70lE/images/8526bf02177fa84d413e52ae460a311f8456bdd6_350.webp" alt="UShader" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">UShader</span><span class="sp-similar__dl">⬇ 64.6 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/daybreak-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/retrovision">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BWnGghPW/images/016eb0db0389597b8b929c5724f371335badc2f1_350.webp" alt="RetroVision" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">RetroVision</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
 </div>
 </div>

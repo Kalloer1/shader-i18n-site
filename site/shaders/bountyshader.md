@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/phoxel-pt">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/m9mH4vjB/images/813eadc9bf2637504db994587c7dda6c147229c9_350.webp" alt="Phoxel PT" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Phoxel PT</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/mellow">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BUxf36AP/images/df1fcff4703e11d9f45c49658699068ba6478362_350.webp" alt="Mellow" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Mellow</span><span class="sp-similar__dl">⬇ 639.2 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/i-like-vanilla">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DoODk4HD/images/9028a07e88871c018c344d36c1b8876ccdaf8431_350.webp" alt="I Like Vanilla" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">I Like Vanilla</span><span class="sp-similar__dl">⬇ 218.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/fantasy-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6di6hYz/images/1f48959425b3bf1f3a8dd2c62326d1c035288282_350.webp" alt="Fantasy Shaders Reimagined" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Reimagined</span><span class="sp-similar__dl">⬇ 122.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/exposa-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/miniature-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UaS8ROxa/images/beec07b07d81705fadb724a4ffa45851a43c0d3b_350.webp" alt="Miniature Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Miniature Shader</span><span class="sp-similar__dl">⬇ 446.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/lethal-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kih5VmNo/images/e63a18a1090c530b29f789a55c947addeb08843e_350.webp" alt="Lethal Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Lethal Shaders</span><span class="sp-similar__dl">⬇ 20.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/light-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UuwCHIS3/images/773c8d0b945d5798dd97799a32c52b3748b69f57_350.webp" alt="LIGHT Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">LIGHT Shaders</span><span class="sp-similar__dl">⬇ 48.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/potato-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/spooky-flashlight-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xJNabPID/images/43b9a8686012819747c3b3720ed171ddfb877926_350.webp" alt="Flashlight Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Flashlight Shader</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders-classic">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/pgzM6RBY/images/c933b31d55f896d3c5260a66edcfc577192a842e_350.webp" alt="BSL Shaders - Classic" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders - Classic</span><span class="sp-similar__dl">⬇ 215.5 万</span></div>
 </a>
 </div>
 </div>

@@ -78,7 +78,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -89,29 +89,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/stracciatella-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/7FjF4us6/images/a7e4b6b87dc5b331cbf9d256b5aa7eb4f3221891_350.webp" alt="Stracciatella Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Stracciatella Shaders</span><span class="sp-similar__dl">⬇ 16.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/simplicissimus">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/potato-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/stereos-default+">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/OT1P0oHO/images/0a3190171e21a383383f41e40361acebd309feda_350.webp" alt="Stereo's Default+" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Stereo's Default+</span><span class="sp-similar__dl">⬇ 39.1 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/photon-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/lLqFfGNs/images/8d5657f12c52084d64e2edccc4dfc0b6083b127f_350.webp" alt="Photon Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Photon Shaders</span><span class="sp-similar__dl">⬇ 2607.9 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/light-shaders">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UuwCHIS3/images/773c8d0b945d5798dd97799a32c52b3748b69f57_350.webp" alt="LIGHT Shaders" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">LIGHT Shaders</span><span class="sp-similar__dl">⬇ 48.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/noble">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sclYVqbt/images/42ce3eb6bab8fdae6754821297a89f7a8426fc02_350.webp" alt="Noble Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Noble Shaders</span><span class="sp-similar__dl">⬇ 218.3 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/fantasy-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6di6hYz/images/1f48959425b3bf1f3a8dd2c62326d1c035288282_350.webp" alt="Fantasy Shaders Reimagined" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Reimagined</span><span class="sp-similar__dl">⬇ 122.4 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/retrovision">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BWnGghPW/images/016eb0db0389597b8b929c5724f371335badc2f1_350.webp" alt="RetroVision" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RetroVision</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/spring-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/68DAChCV/images/31664077a0e0c9643596e6d1efcc0f3ff326d215_350.webp" alt="Spring Shaders (Chun)" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Spring Shaders (Chun)</span><span class="sp-similar__dl">⬇ 28.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/eclipseshaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/s8ZCVd1a/images/3177d7afe9048dd413191eb09cb0c294c1be6cb7_350.webp" alt="Eclipse" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Eclipse</span><span class="sp-similar__dl">⬇ 39.4 万</span></div>
 </a>
 </div>
 </div>

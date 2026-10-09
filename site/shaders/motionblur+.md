@@ -63,7 +63,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -74,29 +74,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/kappa-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/auroras-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2_350.webp" alt="Aurora's Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Aurora's Shaders</span><span class="sp-similar__dl">⬇ 89.6 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/spooky-flashlight-shader">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xJNabPID/images/43b9a8686012819747c3b3720ed171ddfb877926_350.webp" alt="Flashlight Shader" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Flashlight Shader</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bliss-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/musk-rose-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HpOC6pyc/images/2579e84653106ea355a51bd9ceb69e0fbece8e4c_350.webp" alt="Musk Rose Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Musk Rose Shaders</span><span class="sp-similar__dl">⬇ 32.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/renderpearl">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BrRak9pu/images/ca4c103984c68ebd3706560e472201e85fd56c62_350.webp" alt="RenderPearl" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RenderPearl</span><span class="sp-similar__dl">⬇ 131.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/lethal-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kih5VmNo/images/e63a18a1090c530b29f789a55c947addeb08843e_350.webp" alt="Lethal Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Lethal Shaders</span><span class="sp-similar__dl">⬇ 20.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/fantasy-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6di6hYz/images/1f48959425b3bf1f3a8dd2c62326d1c035288282_350.webp" alt="Fantasy Shaders Reimagined" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Reimagined</span><span class="sp-similar__dl">⬇ 122.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/sildurs-vibrant-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/z8EjLYqN/images/5eb583f151c7b4799c30696e758effd0a48aec92_350.webp" alt="Sildur's Vibrant Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Sildur's Vibrant Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/potato-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/shrimple">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BS9T99lD/images/f52cd76af3aad866abbe4c9b60a9665b3804aa57_350.webp" alt="Shrimple" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Shrimple</span><span class="sp-similar__dl">⬇ 208.1 万</span></div>
 </a>
 </div>
 </div>

@@ -78,7 +78,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -89,29 +89,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/vector">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/a8nz2nHG/images/1098ccfbcdb1087427848718266f2459c0b93f81_350.webp" alt="VECTOR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">VECTOR</span><span class="sp-similar__dl">⬇ 24.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/bliss-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/allium-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EQs4Ewl7/images/47902c9dd8b54b1f3e6a5d5bdc34730719e0b4e5_350.webp" alt="Allium Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Allium Shaders</span><span class="sp-similar__dl">⬇ 31.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/alpha-piscium">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/bvDpxd8c/images/09197f461f5334f8a708591e358b5637be744a22_350.webp" alt="Alpha Piscium" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Alpha Piscium</span><span class="sp-similar__dl">⬇ 28.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bsl-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp" alt="BSL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders</span><span class="sp-similar__dl">⬇ 2855.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/mc-vhs">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhXP52S3/images/8d24b74a10b864000c4ccf2a3a78579682d889b1_350.webp" alt="MC VHS" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">MC VHS</span><span class="sp-similar__dl">⬇ 57.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/lux-v1">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DiGQENDV/images/e472939aa358364e86be01986c4c1d8075c5e64c_350.webp" alt="Lux V1" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Lux V1</span><span class="sp-similar__dl">⬇ 120.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simply-upscaled">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/nostalgia-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xEItlMn3/images/2cd00df04e86c74ca7095235a83ea558bd7f2c54_350.webp" alt="Nostalgia Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Nostalgia Shader</span><span class="sp-similar__dl">⬇ 416.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/auroras-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2_350.webp" alt="Aurora's Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Aurora's Shaders</span><span class="sp-similar__dl">⬇ 89.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/solas-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EpQFjzrQ/images/ce6ca2fab6173e6fcf4454487e320c041291fecd_350.webp" alt="Solas Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Solas Shader</span><span class="sp-similar__dl">⬇ 1656.1 万</span></div>
 </a>
 </div>
 </div>

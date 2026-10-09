@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/fastpbr">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ygChbn8J/images/a0dd165216e6ce8304f52a9e24ebbce6c838e338_350.webp" alt="FastPBR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">FastPBR</span><span class="sp-similar__dl">⬇ 185.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/spooklementary">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6uJCfiCH/images/16b942e3d1b6221726192776df5bb7482c3cf55f_350.webp" alt="Spooklementary" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Spooklementary</span><span class="sp-similar__dl">⬇ 295.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/voyager-shader-2.0">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/71EyVfCn/images/b9e61cc231914ffff4769bfbf857631b12377792_350.webp" alt="Voyager shader 2.0" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Voyager shader 2.0</span><span class="sp-similar__dl">⬇ 72.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/potato-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/yofps">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xM96NJmk/images/c60dea96a53d40a9cc70216f121749fd467b5c17_350.webp" alt="YoFPS" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">YoFPS</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/night-vision-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XuGx9Ezb/images/5ff5dde691b70ffe917dbcc4d383b7207a4d211b_350.webp" alt="Night Vision Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Night Vision Shaders</span><span class="sp-similar__dl">⬇ 21.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/stracciatella-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/7FjF4us6/images/a7e4b6b87dc5b331cbf9d256b5aa7eb4f3221891_350.webp" alt="Stracciatella Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Stracciatella Shaders</span><span class="sp-similar__dl">⬇ 16.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/photon-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/lLqFfGNs/images/8d5657f12c52084d64e2edccc4dfc0b6083b127f_350.webp" alt="Photon Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Photon Shaders</span><span class="sp-similar__dl">⬇ 2607.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/amethyst-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LypdYQ63/images/cdceb457e26f38db8d2ff5263578b1a2d23f2814_350.webp" alt="Amethyst Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Amethyst Shaders</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/mc-vhs">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhXP52S3/images/8d24b74a10b864000c4ccf2a3a78579682d889b1_350.webp" alt="MC VHS" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">MC VHS</span><span class="sp-similar__dl">⬇ 57.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/lite-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LTvf5Tji/images/20136478b4568176829c5af5b16b2f7a32dc8540_350.webp" alt="E-LITE shaders (MakeUp edit)" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">E-LITE shaders (MakeUp edit)</span><span class="sp-similar__dl">⬇ 136.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/exposa-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
 </a>
 </div>
 </div>

@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/visual-vibrance">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6Uqs2fS/images/947aacab971724d9367122f279ba23c69b897df5_350.webp" alt="Visual Vibrance" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Visual Vibrance</span><span class="sp-similar__dl">⬇ 223.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/opal-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/w8N6pbsN/images/90ce23670ccd44cbcc4379e423a3bb0d9df75464_350.webp" alt="OPAL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">OPAL Shaders</span><span class="sp-similar__dl">⬇ 36.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/spooky-flashlight-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xJNabPID/images/43b9a8686012819747c3b3720ed171ddfb877926_350.webp" alt="Flashlight Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Flashlight Shader</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/epoch">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/IsJZJfNT/images/0518e0dca1fd30a85efe334f6986b4c5b41a6488_350.webp" alt="Epoch" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Epoch</span><span class="sp-similar__dl">⬇ 21.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simply-upscaled">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/fantasy-shader-unbound">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1ICdkzj/images/883834b76c9fbc5fc54dac9850c200ea9a1582ba_350.webp" alt="Fantasy Shaders Unbound" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Unbound</span><span class="sp-similar__dl">⬇ 100.0 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/just-colored-lighting">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/McUqXQ0J/images/0f024d76b7430f0eb43159a51ace2c93b5d04205_350.webp" alt="Just Colored Lighting" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Just Colored Lighting</span><span class="sp-similar__dl">⬇ 58.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp" alt="BSL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders</span><span class="sp-similar__dl">⬇ 2855.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/spooklementary">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6uJCfiCH/images/16b942e3d1b6221726192776df5bb7482c3cf55f_350.webp" alt="Spooklementary" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Spooklementary</span><span class="sp-similar__dl">⬇ 295.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/trailershaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44_350.webp" alt="Trailer Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Trailer Shaders</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/super-duper-vanilla">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp" alt="Super Duper Vanilla" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Super Duper Vanilla</span><span class="sp-similar__dl">⬇ 768.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/fantasy-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6di6hYz/images/1f48959425b3bf1f3a8dd2c62326d1c035288282_350.webp" alt="Fantasy Shaders Reimagined" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Reimagined</span><span class="sp-similar__dl">⬇ 122.4 万</span></div>
 </a>
 </div>
 </div>

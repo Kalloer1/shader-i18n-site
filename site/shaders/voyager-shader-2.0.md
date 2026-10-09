@@ -79,7 +79,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -90,29 +90,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/ushader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UDDa70lE/images/8526bf02177fa84d413e52ae460a311f8456bdd6_350.webp" alt="UShader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">UShader</span><span class="sp-similar__dl">⬇ 64.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/nostalgia-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xEItlMn3/images/2cd00df04e86c74ca7095235a83ea558bd7f2c54_350.webp" alt="Nostalgia Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Nostalgia Shader</span><span class="sp-similar__dl">⬇ 416.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/daybreak-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/simply-upscaled">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/drdestens-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/4kHmJd4i/images/15e0bf5a8b8aff5d2f7384815e6d75c43dda9e52_350.webp" alt="DrDestens Minecraft Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">DrDestens Minecraft Shaders</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/noble">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sclYVqbt/images/42ce3eb6bab8fdae6754821297a89f7a8426fc02_350.webp" alt="Noble Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Noble Shaders</span><span class="sp-similar__dl">⬇ 218.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/lethal-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kih5VmNo/images/e63a18a1090c530b29f789a55c947addeb08843e_350.webp" alt="Lethal Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Lethal Shaders</span><span class="sp-similar__dl">⬇ 20.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/bvs">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/chKtnjkM/images/46679475fc5da38e5a52b70feb55edf9af3c38bc_350.webp" alt="BVS - Best Vanilla Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BVS - Best Vanilla Shader</span><span class="sp-similar__dl">⬇ 62.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/super-duper-vanilla">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp" alt="Super Duper Vanilla" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Super Duper Vanilla</span><span class="sp-similar__dl">⬇ 768.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/auroras-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2_350.webp" alt="Aurora's Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Aurora's Shaders</span><span class="sp-similar__dl">⬇ 89.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/spring-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/68DAChCV/images/31664077a0e0c9643596e6d1efcc0f3ff326d215_350.webp" alt="Spring Shaders (Chun)" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Spring Shaders (Chun)</span><span class="sp-similar__dl">⬇ 28.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/mello">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EJ1dyMxD/images/7e21cd75f6a6a13397ecf0d40364870b7d1347f6_350.webp" alt="Mello" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Mello</span><span class="sp-similar__dl">⬇ 25.1 万</span></div>
 </a>
 </div>
 </div>

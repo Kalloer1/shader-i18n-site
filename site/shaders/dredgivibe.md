@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/trailershaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44_350.webp" alt="Trailer Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Trailer Shaders</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/stracciatella-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/7FjF4us6/images/a7e4b6b87dc5b331cbf9d256b5aa7eb4f3221891_350.webp" alt="Stracciatella Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Stracciatella Shaders</span><span class="sp-similar__dl">⬇ 16.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/mello">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EJ1dyMxD/images/7e21cd75f6a6a13397ecf0d40364870b7d1347f6_350.webp" alt="Mello" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Mello</span><span class="sp-similar__dl">⬇ 25.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/pegasus">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/lite-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LTvf5Tji/images/20136478b4568176829c5af5b16b2f7a32dc8540_350.webp" alt="E-LITE shaders (MakeUp edit)" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">E-LITE shaders (MakeUp edit)</span><span class="sp-similar__dl">⬇ 136.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp" alt="BSL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders</span><span class="sp-similar__dl">⬇ 2855.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/night-vision-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XuGx9Ezb/images/5ff5dde691b70ffe917dbcc4d383b7207a4d211b_350.webp" alt="Night Vision Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Night Vision Shaders</span><span class="sp-similar__dl">⬇ 21.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/yofps">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xM96NJmk/images/c60dea96a53d40a9cc70216f121749fd467b5c17_350.webp" alt="YoFPS" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">YoFPS</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/reverie_shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/frac8sks/images/ae7df48f1b7a7a4cb81e353d5bc42c251e95ab7f_350.webp" alt="Reverie" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Reverie</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/super-duper-vanilla">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp" alt="Super Duper Vanilla" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Super Duper Vanilla</span><span class="sp-similar__dl">⬇ 768.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/opal-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/w8N6pbsN/images/90ce23670ccd44cbcc4379e423a3bb0d9df75464_350.webp" alt="OPAL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">OPAL Shaders</span><span class="sp-similar__dl">⬇ 36.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/ebin-resurrected">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/VP9picRm/images/13114a13b9883a129b12b7188207580565fd218a_350.webp" alt="Ebin Resurrected" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Ebin Resurrected</span><span class="sp-similar__dl">⬇ 59.1 万</span></div>
 </a>
 </div>
 </div>

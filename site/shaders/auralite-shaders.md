@@ -79,7 +79,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -90,29 +90,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/bliss-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/ebin-resurrected">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/VP9picRm/images/13114a13b9883a129b12b7188207580565fd218a_350.webp" alt="Ebin Resurrected" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Ebin Resurrected</span><span class="sp-similar__dl">⬇ 59.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/renderpearl">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BrRak9pu/images/ca4c103984c68ebd3706560e472201e85fd56c62_350.webp" alt="RenderPearl" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RenderPearl</span><span class="sp-similar__dl">⬇ 131.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/allium-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EQs4Ewl7/images/47902c9dd8b54b1f3e6a5d5bdc34730719e0b4e5_350.webp" alt="Allium Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Allium Shaders</span><span class="sp-similar__dl">⬇ 31.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/soft-voxels-lite">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Xl42lc6c/images/d92b6fa36fc489eac4830087dbdff583b0e95838_350.webp" alt="Soft Voxels Lite" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Soft Voxels Lite</span><span class="sp-similar__dl">⬇ 57.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/bloop-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/photon-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/lLqFfGNs/images/8d5657f12c52084d64e2edccc4dfc0b6083b127f_350.webp" alt="Photon Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Photon Shaders</span><span class="sp-similar__dl">⬇ 2607.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/spring-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/68DAChCV/images/31664077a0e0c9643596e6d1efcc0f3ff326d215_350.webp" alt="Spring Shaders (Chun)" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Spring Shaders (Chun)</span><span class="sp-similar__dl">⬇ 28.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simplicissimus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/auroras-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2_350.webp" alt="Aurora's Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Aurora's Shaders</span><span class="sp-similar__dl">⬇ 89.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/drdestens-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/4kHmJd4i/images/15e0bf5a8b8aff5d2f7384815e6d75c43dda9e52_350.webp" alt="DrDestens Minecraft Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">DrDestens Minecraft Shaders</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/spooklementary">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6uJCfiCH/images/16b942e3d1b6221726192776df5bb7482c3cf55f_350.webp" alt="Spooklementary" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Spooklementary</span><span class="sp-similar__dl">⬇ 295.2 万</span></div>
 </a>
 </div>
 </div>

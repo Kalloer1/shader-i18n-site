@@ -1,5 +1,5 @@
 {
-  "$comment": "站点核心数据：光影列表与版本映射。手动维护字段：id/name/nameCN/quark/langVersions/curseforge；`_meta.modrinth`/`_meta.curseforge` 由 `npm run sync` 自动同步，勿手改。langVersions.shaderVersion 必须与光影版本号精确对应（见 CONTEXT.md 版本映射）。",
+  "$comment": "站点核心数据：光影列表与版本映射。手动维护字段：id/name/nameCN/quark/langVersions；`_meta.modrinth` 由 `npm run sync` 自动同步，勿手改。langVersions.shaderVersion 必须与光影版本号精确对应（见 README.md“版本映射”说明）。",
   "shaders": [
     {
       "id": "complementary-reimagined",
@@ -213,38 +213,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/14fc41457977"
-    },
-    {
-      "id": "mellow",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "mellow",
-        "projectId": "BUxf36AP"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "3.4",
-          "langVersion": "1.0.0",
-          "file": "/lang/mellow/3.4/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/56b3c540c9f5",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Mellow",
-          "description": "Shaderpack with a painterly aesthetic made for people who want to actually play the game. It's easy on your eyes and on your computer!",
-          "downloads": 7376595,
-          "iconUrl": "https://cdn.modrinth.com/data/BUxf36AP/b2cc2e9b97e5e0c4c7fcd89b7e295f29a29b9c6d_96.webp",
-          "author": "TheCMK",
-          "pageUrl": "https://modrinth.com/shader/mellow",
-          "lastSync": "2026-10-09"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/56b3c540c9f5"
     },
     {
       "id": "pastel-shaders",
@@ -745,38 +713,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/a9b99be038b7"
-    },
-    {
-      "id": "lite-shaders",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "lite-shaders",
-        "projectId": "LTvf5Tji"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "ELT511",
-          "langVersion": "1.0.0",
-          "file": "/lang/lite-shaders/ELT511/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/a079946bcd19",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "E-LITE shaders (MakeUp edit)",
-          "description": "A MakeUp - Ultra Fast shaders edit that is highly customizable, beautiful, and fast!",
-          "downloads": 1533014,
-          "iconUrl": "https://cdn.modrinth.com/data/LTvf5Tji/072376c650c8cec851cae74e2686599454d446f8_96.webp",
-          "author": "Entokito",
-          "pageUrl": "https://modrinth.com/shader/lite-shaders",
-          "lastSync": "2026-10-09"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/a079946bcd19"
     },
     {
       "id": "body-camera-shader",

@@ -78,7 +78,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -89,29 +89,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/ushader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UDDa70lE/images/8526bf02177fa84d413e52ae460a311f8456bdd6_350.webp" alt="UShader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">UShader</span><span class="sp-similar__dl">⬇ 64.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/retrovision">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BWnGghPW/images/016eb0db0389597b8b929c5724f371335badc2f1_350.webp" alt="RetroVision" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">RetroVision</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bloop-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/complementary-reimagined">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9_350.webp" alt="Complementary Shaders - Reimagined" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Complementary Shaders - Reimagined</span><span class="sp-similar__dl">⬇ 6494.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simply-upscaled">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/solas-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EpQFjzrQ/images/ce6ca2fab6173e6fcf4454487e320c041291fecd_350.webp" alt="Solas Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Solas Shader</span><span class="sp-similar__dl">⬇ 1656.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/vanilla-plus-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EPsIYDj1/images/9afa8d27a50792f2c2ad779bf5c14fe2faa25085_350.webp" alt="Vanilla Plus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Vanilla Plus Shader</span><span class="sp-similar__dl">⬇ 206.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/spring-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/68DAChCV/images/31664077a0e0c9643596e6d1efcc0f3ff326d215_350.webp" alt="Spring Shaders (Chun)" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Spring Shaders (Chun)</span><span class="sp-similar__dl">⬇ 28.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/kappa-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/psx-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/5FTpbyBl/images/056b70713c35a14001d5b918e11b04ddbb70117e_350.webp" alt="PSX Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">PSX Shader</span><span class="sp-similar__dl">⬇ 22.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/lite-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LTvf5Tji/images/20136478b4568176829c5af5b16b2f7a32dc8540_350.webp" alt="E-LITE shaders (MakeUp edit)" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">E-LITE shaders (MakeUp edit)</span><span class="sp-similar__dl">⬇ 136.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/voyager-shader-2.0">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/71EyVfCn/images/b9e61cc231914ffff4769bfbf857631b12377792_350.webp" alt="Voyager shader 2.0" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Voyager shader 2.0</span><span class="sp-similar__dl">⬇ 72.8 万</span></div>
 </a>
 </div>
 </div>

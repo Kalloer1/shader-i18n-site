@@ -63,7 +63,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -74,29 +74,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
+<a class="sp-similar__card" href="/shaders/yofps">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xM96NJmk/images/c60dea96a53d40a9cc70216f121749fd467b5c17_350.webp" alt="YoFPS" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">YoFPS</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/vanilletix">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/CiFGzRV9/images/898dd6f6d5c64f2dbcd82035987deccf03b1252c_350.webp" alt="Vanilletix Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Vanilletix Shaders</span><span class="sp-similar__dl">⬇ 36.3 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/shrimple">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BS9T99lD/images/f52cd76af3aad866abbe4c9b60a9665b3804aa57_350.webp" alt="Shrimple" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Shrimple</span><span class="sp-similar__dl">⬇ 208.1 万</span></div>
+</a>
 <a class="sp-similar__card" href="/shaders/noble">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sclYVqbt/images/42ce3eb6bab8fdae6754821297a89f7a8426fc02_350.webp" alt="Noble Shaders" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Noble Shaders</span><span class="sp-similar__dl">⬇ 218.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/photon-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/lLqFfGNs/images/8d5657f12c52084d64e2edccc4dfc0b6083b127f_350.webp" alt="Photon Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Photon Shaders</span><span class="sp-similar__dl">⬇ 2607.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/pegasus">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/exposa-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/potato-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/lux-v1">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DiGQENDV/images/e472939aa358364e86be01986c4c1d8075c5e64c_350.webp" alt="Lux V1" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Lux V1</span><span class="sp-similar__dl">⬇ 120.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/mello">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EJ1dyMxD/images/7e21cd75f6a6a13397ecf0d40364870b7d1347f6_350.webp" alt="Mello" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Mello</span><span class="sp-similar__dl">⬇ 25.1 万</span></div>
 </a>
 </div>
 </div>

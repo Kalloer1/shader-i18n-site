@@ -65,7 +65,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -76,29 +76,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/pegasus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/bvs">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/chKtnjkM/images/46679475fc5da38e5a52b70feb55edf9af3c38bc_350.webp" alt="BVS - Best Vanilla Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BVS - Best Vanilla Shader</span><span class="sp-similar__dl">⬇ 62.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/insanity-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EQWX2WiO/images/293677d965339398965a5addeb1fd7d4117282b1_350.webp" alt="Insanity Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Insanity Shader</span><span class="sp-similar__dl">⬇ 724.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/pixel-perfect-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/D5k8BTVz/images/946806e31ca0a4cf878f286d7c384dc668517b2d_350.webp" alt="Pixel Perfect" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Pixel Perfect</span><span class="sp-similar__dl">⬇ 79.2 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/kappa-shader">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp" alt="BSL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders</span><span class="sp-similar__dl">⬇ 2855.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/amethyst-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LypdYQ63/images/cdceb457e26f38db8d2ff5263578b1a2d23f2814_350.webp" alt="Amethyst Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Amethyst Shaders</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/i-like-vanilla">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DoODk4HD/images/9028a07e88871c018c344d36c1b8876ccdaf8431_350.webp" alt="I Like Vanilla" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">I Like Vanilla</span><span class="sp-similar__dl">⬇ 218.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/spooklementary">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6uJCfiCH/images/16b942e3d1b6221726192776df5bb7482c3cf55f_350.webp" alt="Spooklementary" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Spooklementary</span><span class="sp-similar__dl">⬇ 295.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/arc-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yY9oI7oz/images/723643aee7ba0ae7f68f6fd2e8c382d1a4c27bbb_350.webp" alt="Arc" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Arc</span><span class="sp-similar__dl">⬇ 89.2 万</span></div>
 </a>
 </div>
 </div>

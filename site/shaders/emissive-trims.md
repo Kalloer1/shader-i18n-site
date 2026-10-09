@@ -63,7 +63,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -74,29 +74,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/soft-voxels-lite">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Xl42lc6c/images/d92b6fa36fc489eac4830087dbdff583b0e95838_350.webp" alt="Soft Voxels Lite" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Soft Voxels Lite</span><span class="sp-similar__dl">⬇ 57.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/pixel-perfect-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/D5k8BTVz/images/946806e31ca0a4cf878f286d7c384dc668517b2d_350.webp" alt="Pixel Perfect" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Pixel Perfect</span><span class="sp-similar__dl">⬇ 79.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/rethinking-voxels">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kmwfVOoi/images/5de1c81f0bc383e607993c76c81aa56c37a63a7a_350.webp" alt="Rethinking Voxels" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Rethinking Voxels</span><span class="sp-similar__dl">⬇ 1269.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/night-vision-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XuGx9Ezb/images/5ff5dde691b70ffe917dbcc4d383b7207a4d211b_350.webp" alt="Night Vision Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Night Vision Shaders</span><span class="sp-similar__dl">⬇ 21.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/ebin-resurrected">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/VP9picRm/images/13114a13b9883a129b12b7188207580565fd218a_350.webp" alt="Ebin Resurrected" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Ebin Resurrected</span><span class="sp-similar__dl">⬇ 59.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/arc-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yY9oI7oz/images/723643aee7ba0ae7f68f6fd2e8c382d1a4c27bbb_350.webp" alt="Arc" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Arc</span><span class="sp-similar__dl">⬇ 89.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/renderpearl">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BrRak9pu/images/ca4c103984c68ebd3706560e472201e85fd56c62_350.webp" alt="RenderPearl" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RenderPearl</span><span class="sp-similar__dl">⬇ 131.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/drdestens-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/4kHmJd4i/images/15e0bf5a8b8aff5d2f7384815e6d75c43dda9e52_350.webp" alt="DrDestens Minecraft Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">DrDestens Minecraft Shaders</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simply-upscaled">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/miniature-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UaS8ROxa/images/beec07b07d81705fadb724a4ffa45851a43c0d3b_350.webp" alt="Miniature Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Miniature Shader</span><span class="sp-similar__dl">⬇ 446.7 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/potato-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
 </a>
 </div>
 </div>

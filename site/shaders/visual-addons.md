@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/simply-upscaled">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yhuqxlbn/images/7567f93dd9f2e8eff4ec3a551bd3a9f6092966d6_350.webp" alt="Simply Upscaled" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simply Upscaled</span><span class="sp-similar__dl">⬇ 42.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/phoxel-pt">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/m9mH4vjB/images/813eadc9bf2637504db994587c7dda6c147229c9_350.webp" alt="Phoxel PT" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Phoxel PT</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/trailershaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44_350.webp" alt="Trailer Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Trailer Shaders</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/astralex">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/RphJSnEs/images/94cba843df8f5ee3c995b92bfe9baeb69e40462d_350.webp" alt="AstraLex Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">AstraLex Shaders</span><span class="sp-similar__dl">⬇ 490.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/vanilla-plus-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EPsIYDj1/images/9afa8d27a50792f2c2ad779bf5c14fe2faa25085_350.webp" alt="Vanilla Plus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Vanilla Plus Shader</span><span class="sp-similar__dl">⬇ 206.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/cursed-fog">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sAZ9WsJP/images/165d9ca8f9a1255d9cb5a582bdba5ec00204fe00_350.webp" alt="Cursed Fog" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Cursed Fog</span><span class="sp-similar__dl">⬇ 61.7 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bloop-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/simplicissimus">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/pixel-perfect-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/D5k8BTVz/images/946806e31ca0a4cf878f286d7c384dc668517b2d_350.webp" alt="Pixel Perfect" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Pixel Perfect</span><span class="sp-similar__dl">⬇ 79.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/fantasy-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6di6hYz/images/1f48959425b3bf1f3a8dd2c62326d1c035288282_350.webp" alt="Fantasy Shaders Reimagined" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Reimagined</span><span class="sp-similar__dl">⬇ 122.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/pegasus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/musk-rose-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HpOC6pyc/images/2579e84653106ea355a51bd9ceb69e0fbece8e4c_350.webp" alt="Musk Rose Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Musk Rose Shaders</span><span class="sp-similar__dl">⬇ 32.2 万</span></div>
 </a>
 </div>
 </div>

@@ -73,7 +73,6 @@ for (const e of catalog.shaders) {
   const downloads = manual?._meta?.modrinth?.downloads ?? e.downloads
   const pageUrl = manual?._meta?.modrinth?.pageUrl ?? e.pageUrl
   const iconUrl = manual?._meta?.modrinth?.iconUrl ?? e.iconUrl ?? ''
-  const cf = manual?._meta?.curseforge ?? null
   const langVersions = manual?.langVersions ?? []
   const vr = versionRange(e.gameVersions)
   const gallery = (e.gallery ?? []).slice(0, 6)
@@ -122,7 +121,6 @@ for (const e of catalog.shaders) {
   L.push(`</div>`) // badges
   L.push(`<div class="sp-hero__actions">`)
   if (pageUrl) L.push(`<a class="sp-btn sp-btn--primary" href="${escHtml(pageUrl)}" target="_blank" rel="noopener">获取光影本体 →</a>`)
-  if (cf?.pageUrl) L.push(`<a class="sp-btn sp-btn--ghost" href="${escHtml(cf.pageUrl)}" target="_blank" rel="noopener">CurseForge</a>`)
   L.push(`</div>`) // actions
   L.push(`</div>`) // content
   L.push(`</div>`) // hero
@@ -251,14 +249,24 @@ for (const e of catalog.shaders) {
   // ===== Tab 4: 安装方法 =====
   L.push(`<div class="sp-tabs__panel sp-tabs__panel--install">`)
   L.push(`<div class="sp-install-content">`)
-  L.push(`<h2 class="sp-section-title">安装方法</h2>`)
-  L.push(`<p class="sp-install-hint">三步让游戏内光影界面显示中文</p>`)
-  L.push(`<ol class="sp-install-steps">`)
-  L.push(`<li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>`)
-  L.push(`<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>`)
-  L.push(`<li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>`)
-  L.push(`</ol>`)
-  L.push(`<p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>`)
+  if (e.hasNativeZhCN) {
+    L.push(`<h2 class="sp-section-title">使用方法</h2>`)
+    L.push(`<p class="sp-install-hint">官方包已自带中文语言文件，无需额外下载或注入。</p>`)
+    L.push(`<ol class="sp-install-steps">`)
+    L.push(`<li><strong>保留</strong>：不要删除光影 zip 内的 <code>shaders/lang/zh_CN.lang</code>。</li>`)
+    L.push(`<li><strong>选择</strong>：游戏内选中该光影，并确认游戏语言为简体中文。</li>`)
+    L.push(`<li><strong>验证</strong>：打开光影设置界面，出现中文即成功。</li>`)
+    L.push(`</ol>`)
+  } else {
+    L.push(`<h2 class="sp-section-title">安装方法</h2>`)
+    L.push(`<p class="sp-install-hint">三步让游戏内光影界面显示中文</p>`)
+    L.push(`<ol class="sp-install-steps">`)
+    L.push(`<li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>`)
+    L.push(`<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>`)
+    L.push(`<li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>`)
+    L.push(`</ol>`)
+    L.push(`<p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>`)
+  }
   L.push(`</div>`)
   L.push(`</div>`) // panel install
 

@@ -65,7 +65,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -80,25 +80,25 @@ layout: page
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PgdT4v4a/images/9327833ebb17d41e7831dc887d506062d9cb8284_350.webp" alt="Glimmer" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Glimmer</span><span class="sp-similar__dl">⬇ 49.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simplicissimus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/bloop-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/light-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UuwCHIS3/images/773c8d0b945d5798dd97799a32c52b3748b69f57_350.webp" alt="LIGHT Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">LIGHT Shaders</span><span class="sp-similar__dl">⬇ 48.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/epoch">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/IsJZJfNT/images/0518e0dca1fd30a85efe334f6986b4c5b41a6488_350.webp" alt="Epoch" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Epoch</span><span class="sp-similar__dl">⬇ 21.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/exposa-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/complementary-reimagined">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9_350.webp" alt="Complementary Shaders - Reimagined" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Complementary Shaders - Reimagined</span><span class="sp-similar__dl">⬇ 6494.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/lethal-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kih5VmNo/images/e63a18a1090c530b29f789a55c947addeb08843e_350.webp" alt="Lethal Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Lethal Shaders</span><span class="sp-similar__dl">⬇ 20.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/reverie_shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/frac8sks/images/ae7df48f1b7a7a4cb81e353d5bc42c251e95ab7f_350.webp" alt="Reverie" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Reverie</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/noble">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sclYVqbt/images/42ce3eb6bab8fdae6754821297a89f7a8426fc02_350.webp" alt="Noble Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Noble Shaders</span><span class="sp-similar__dl">⬇ 218.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/daybreak-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
 </a>
 </div>
 </div>

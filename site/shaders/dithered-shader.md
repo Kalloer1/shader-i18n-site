@@ -75,7 +75,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -86,29 +86,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/arc-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yY9oI7oz/images/723643aee7ba0ae7f68f6fd2e8c382d1a4c27bbb_350.webp" alt="Arc" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Arc</span><span class="sp-similar__dl">⬇ 89.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/solas-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EpQFjzrQ/images/ce6ca2fab6173e6fcf4454487e320c041291fecd_350.webp" alt="Solas Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Solas Shader</span><span class="sp-similar__dl">⬇ 1656.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/fastpbr">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ygChbn8J/images/a0dd165216e6ce8304f52a9e24ebbce6c838e338_350.webp" alt="FastPBR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">FastPBR</span><span class="sp-similar__dl">⬇ 185.1 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/trailershaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44_350.webp" alt="Trailer Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Trailer Shaders</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/super-duper-vanilla">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp" alt="Super Duper Vanilla" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Super Duper Vanilla</span><span class="sp-similar__dl">⬇ 768.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/rethinking-voxels">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kmwfVOoi/images/5de1c81f0bc383e607993c76c81aa56c37a63a7a_350.webp" alt="Rethinking Voxels" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Rethinking Voxels</span><span class="sp-similar__dl">⬇ 1269.5 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/visual-vibrance">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6Uqs2fS/images/947aacab971724d9367122f279ba23c69b897df5_350.webp" alt="Visual Vibrance" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Visual Vibrance</span><span class="sp-similar__dl">⬇ 223.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/ctrvcr">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XaonJnsc/images/ef049a118b6270b40933f71a5ddca36ecda5acee.gif" alt="CTR VCR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">CTR VCR</span><span class="sp-similar__dl">⬇ 57.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/astralex">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/RphJSnEs/images/94cba843df8f5ee3c995b92bfe9baeb69e40462d_350.webp" alt="AstraLex Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">AstraLex Shaders</span><span class="sp-similar__dl">⬇ 490.2 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/glimmer-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PgdT4v4a/images/9327833ebb17d41e7831dc887d506062d9cb8284_350.webp" alt="Glimmer" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Glimmer</span><span class="sp-similar__dl">⬇ 49.1 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/miniature-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UaS8ROxa/images/beec07b07d81705fadb724a4ffa45851a43c0d3b_350.webp" alt="Miniature Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Miniature Shader</span><span class="sp-similar__dl">⬇ 446.7 万</span></div>
 </a>
 </div>
 </div>

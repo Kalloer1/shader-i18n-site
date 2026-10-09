@@ -3,10 +3,9 @@
  * 同步光影元数据到 site/data/shaders.json（ADR-0002）。
  *
  * - Modrinth：无需密钥，直接拉取项目与成员信息。
- * - CurseForge：需要 key，从环境变量 CURSEFORGE_API_KEY 读取，绝不写入任何文件。
  *
- * 手动维护字段（nameCN / curseforge / quark / langVersions）永不被覆盖；
- * 同步结果写入 shader._meta.modrinth / shader._meta.curseforge。
+ * 手动维护字段（nameCN / quark / langVersions）永不被覆盖；
+ * 同步结果写入 shader._meta.modrinth。
  *
  * 用法：npm run sync
  */
@@ -16,7 +15,6 @@ import { dirname, join } from 'node:path'
 
 const DATA_FILE = join(dirname(fileURLToPath(import.meta.url)), '../site/data/shaders.json')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
-const CURSEFORGE_API = 'https://api.curseforge.com/v1'
 const UA = 'shader-i18n-site/0.1.0 (metadata sync)'
 
 const db = JSON.parse(readFileSync(DATA_FILE, 'utf8'))
@@ -48,41 +46,11 @@ async function syncModrinth(shader) {
   return `${project.title}（${project.downloads} 下载）`
 }
 
-async function syncCurseForge(shader) {
-  const key = process.env.CURSEFORGE_API_KEY
-  if (!key) return null
-  const headers = { 'x-api-key': key, accept: 'application/json' }
-  let mods
-  if (shader.curseforge?.slug) {
-    mods = await getJSON(
-      `${CURSEFORGE_API}/mods/search?gameId=432&classId=6552&slug=${shader.curseforge.slug}`,
-      headers,
-    ).then((r) => r.data)
-  }
-  const mod = mods?.[0]
-  if (!mod) return undefined
-  shader.curseforge = shader.curseforge ?? {}
-  shader.curseforge.slug = shader.curseforge.slug || mod.slug
-  shader.curseforge.projectId = mod.id
-  shader._meta = shader._meta ?? {}
-  shader._meta.curseforge = {
-    name: mod.name,
-    downloads: mod.downloadCount,
-    pageUrl: mod.links?.websiteUrl,
-    lastSync: new Date().toISOString().slice(0, 10),
-  }
-  return `${mod.name}（${mod.downloadCount} 下载）`
-}
-
 let ok = 0
 for (const shader of db.shaders) {
   const lines = [shader.id]
   try {
     if (shader.modrinth?.slug) lines.push(`  modrinth: ${await syncModrinth(shader)}`)
-    const cf = await syncCurseForge(shader)
-    if (cf === null) lines.push('  curseforge: 跳过（未设置 CURSEFORGE_API_KEY）')
-    else if (cf === undefined) lines.push('  curseforge: 未匹配到项目')
-    else lines.push(`  curseforge: ${cf}`)
     ok++
   } catch (err) {
     lines.push(`  失败: ${err.message}`)

@@ -65,7 +65,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -76,29 +76,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/cursed-fog">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/sAZ9WsJP/images/165d9ca8f9a1255d9cb5a582bdba5ec00204fe00_350.webp" alt="Cursed Fog" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Cursed Fog</span><span class="sp-similar__dl">⬇ 61.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/photon-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/lLqFfGNs/images/8d5657f12c52084d64e2edccc4dfc0b6083b127f_350.webp" alt="Photon Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Photon Shaders</span><span class="sp-similar__dl">⬇ 2607.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/body-camera-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/by2i3tnt/images/3be877330d71e58a1b2941356fa5fd02a8db7a29_350.webp" alt="Body Camera" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Body Camera</span><span class="sp-similar__dl">⬇ 132.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/fantasy-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6di6hYz/images/1f48959425b3bf1f3a8dd2c62326d1c035288282_350.webp" alt="Fantasy Shaders Reimagined" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Reimagined</span><span class="sp-similar__dl">⬇ 122.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/kappa-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/pegasus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/shrimple">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BS9T99lD/images/f52cd76af3aad866abbe4c9b60a9665b3804aa57_350.webp" alt="Shrimple" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Shrimple</span><span class="sp-similar__dl">⬇ 208.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/makeup-ultra-fast-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/izsIPI7a/images/7fad6f7be5d313e9cd9c2dc4378250299ea29950_350.webp" alt="MakeUp - Ultra Fast" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">MakeUp - Ultra Fast</span><span class="sp-similar__dl">⬇ 1241.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/retrovision">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BWnGghPW/images/016eb0db0389597b8b929c5724f371335badc2f1_350.webp" alt="RetroVision" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">RetroVision</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/alpha-piscium">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/bvDpxd8c/images/09197f461f5334f8a708591e358b5637be744a22_350.webp" alt="Alpha Piscium" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Alpha Piscium</span><span class="sp-similar__dl">⬇ 28.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/i-like-vanilla">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DoODk4HD/images/9028a07e88871c018c344d36c1b8876ccdaf8431_350.webp" alt="I Like Vanilla" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">I Like Vanilla</span><span class="sp-similar__dl">⬇ 218.1 万</span></div>
 </a>
 </div>
 </div>

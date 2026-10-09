@@ -79,7 +79,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -90,29 +90,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/visual-vibrance">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6Uqs2fS/images/947aacab971724d9367122f279ba23c69b897df5_350.webp" alt="Visual Vibrance" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Visual Vibrance</span><span class="sp-similar__dl">⬇ 223.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/simplicissimus">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/reverie_shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/frac8sks/images/ae7df48f1b7a7a4cb81e353d5bc42c251e95ab7f_350.webp" alt="Reverie" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Reverie</span><span class="sp-similar__dl">⬇ 35.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/complementary-unbound">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/R6NEzAwj/images/7c45cec837f459ef49571d230e54952c42717cab_350.webp" alt="Complementary Shaders - Unbound" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Complementary Shaders - Unbound</span><span class="sp-similar__dl">⬇ 4231.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/spooklementary">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6uJCfiCH/images/16b942e3d1b6221726192776df5bb7482c3cf55f_350.webp" alt="Spooklementary" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Spooklementary</span><span class="sp-similar__dl">⬇ 295.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/stracciatella-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/7FjF4us6/images/a7e4b6b87dc5b331cbf9d256b5aa7eb4f3221891_350.webp" alt="Stracciatella Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Stracciatella Shaders</span><span class="sp-similar__dl">⬇ 16.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/super-duper-vanilla">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp" alt="Super Duper Vanilla" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Super Duper Vanilla</span><span class="sp-similar__dl">⬇ 768.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/pixel-perfect-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/D5k8BTVz/images/946806e31ca0a4cf878f286d7c384dc668517b2d_350.webp" alt="Pixel Perfect" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Pixel Perfect</span><span class="sp-similar__dl">⬇ 79.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/re-shaded">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Gdq9dXUk/images/bae22196e44ae30b0193d07b3dda73185d973ab2_350.webp" alt="ReShaded" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">ReShaded</span><span class="sp-similar__dl">⬇ 57.7 万</span></div>
+<a class="sp-similar__card" href="/shaders/sildurs-vibrant-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/z8EjLYqN/images/5eb583f151c7b4799c30696e758effd0a48aec92_350.webp" alt="Sildur's Vibrant Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Sildur's Vibrant Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/i-like-vanilla">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/DoODk4HD/images/9028a07e88871c018c344d36c1b8876ccdaf8431_350.webp" alt="I Like Vanilla" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">I Like Vanilla</span><span class="sp-similar__dl">⬇ 218.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/retrovision">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BWnGghPW/images/016eb0db0389597b8b929c5724f371335badc2f1_350.webp" alt="RetroVision" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">RetroVision</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
 </div>
 </div>

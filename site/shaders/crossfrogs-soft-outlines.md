@@ -79,7 +79,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -90,29 +90,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/vanilla-plus-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EPsIYDj1/images/9afa8d27a50792f2c2ad779bf5c14fe2faa25085_350.webp" alt="Vanilla Plus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Vanilla Plus Shader</span><span class="sp-similar__dl">⬇ 206.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/bliss-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/auroras-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2_350.webp" alt="Aurora's Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Aurora's Shaders</span><span class="sp-similar__dl">⬇ 89.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/ebin-resurrected">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/VP9picRm/images/13114a13b9883a129b12b7188207580565fd218a_350.webp" alt="Ebin Resurrected" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Ebin Resurrected</span><span class="sp-similar__dl">⬇ 59.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/visual-vibrance">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6Uqs2fS/images/947aacab971724d9367122f279ba23c69b897df5_350.webp" alt="Visual Vibrance" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Visual Vibrance</span><span class="sp-similar__dl">⬇ 223.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/musk-rose-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HpOC6pyc/images/2579e84653106ea355a51bd9ceb69e0fbece8e4c_350.webp" alt="Musk Rose Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Musk Rose Shaders</span><span class="sp-similar__dl">⬇ 32.2 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/daybreak-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/insanity-shader">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EQWX2WiO/images/293677d965339398965a5addeb1fd7d4117282b1_350.webp" alt="Insanity Shader" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Insanity Shader</span><span class="sp-similar__dl">⬇ 724.7 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/phoxel-pt">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/m9mH4vjB/images/813eadc9bf2637504db994587c7dda6c147229c9_350.webp" alt="Phoxel PT" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Phoxel PT</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/yofps">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xM96NJmk/images/c60dea96a53d40a9cc70216f121749fd467b5c17_350.webp" alt="YoFPS" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">YoFPS</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/potato-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/WX4iF5Cj/images/dae0dbbaee526fc94dd61707c635cea90fcf592a_350.webp" alt="Potato Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Potato Shaders</span><span class="sp-similar__dl">⬇ 284.8 万</span></div>
 </a>
 </div>
 </div>

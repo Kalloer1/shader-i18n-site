@@ -76,7 +76,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -87,29 +87,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/renderpearl">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BrRak9pu/images/ca4c103984c68ebd3706560e472201e85fd56c62_350.webp" alt="RenderPearl" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RenderPearl</span><span class="sp-similar__dl">⬇ 131.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/soft-voxels-lite">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Xl42lc6c/images/d92b6fa36fc489eac4830087dbdff583b0e95838_350.webp" alt="Soft Voxels Lite" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Soft Voxels Lite</span><span class="sp-similar__dl">⬇ 57.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/daybreak-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/eclipseshaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/s8ZCVd1a/images/3177d7afe9048dd413191eb09cb0c294c1be6cb7_350.webp" alt="Eclipse" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Eclipse</span><span class="sp-similar__dl">⬇ 39.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/opal-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/w8N6pbsN/images/90ce23670ccd44cbcc4379e423a3bb0d9df75464_350.webp" alt="OPAL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">OPAL Shaders</span><span class="sp-similar__dl">⬇ 36.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/super-duper-vanilla">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp" alt="Super Duper Vanilla" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Super Duper Vanilla</span><span class="sp-similar__dl">⬇ 768.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/pegasus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/vanilletix">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/CiFGzRV9/images/898dd6f6d5c64f2dbcd82035987deccf03b1252c_350.webp" alt="Vanilletix Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Vanilletix Shaders</span><span class="sp-similar__dl">⬇ 36.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bvs">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/chKtnjkM/images/46679475fc5da38e5a52b70feb55edf9af3c38bc_350.webp" alt="BVS - Best Vanilla Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">BVS - Best Vanilla Shader</span><span class="sp-similar__dl">⬇ 62.8 万</span></div>
+<a class="sp-similar__card" href="/shaders/nostalgia-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xEItlMn3/images/2cd00df04e86c74ca7095235a83ea558bd7f2c54_350.webp" alt="Nostalgia Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Nostalgia Shader</span><span class="sp-similar__dl">⬇ 416.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bloop-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q6RQF9Oa/images/fffaec035f6c2e7a51e951bd17a4085764643f61_350.webp" alt="Bloop Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bloop Shaders</span><span class="sp-similar__dl">⬇ 175.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/spooky-flashlight-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xJNabPID/images/43b9a8686012819747c3b3720ed171ddfb877926_350.webp" alt="Flashlight Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Flashlight Shader</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
 </a>
 </div>
 </div>

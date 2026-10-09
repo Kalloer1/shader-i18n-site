@@ -65,7 +65,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -76,29 +76,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/ctrvcr">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XaonJnsc/images/ef049a118b6270b40933f71a5ddca36ecda5acee.gif" alt="CTR VCR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">CTR VCR</span><span class="sp-similar__dl">⬇ 57.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/kappa-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/shrimple">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BS9T99lD/images/f52cd76af3aad866abbe4c9b60a9665b3804aa57_350.webp" alt="Shrimple" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Shrimple</span><span class="sp-similar__dl">⬇ 208.1 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/rethinking-voxels">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kmwfVOoi/images/5de1c81f0bc383e607993c76c81aa56c37a63a7a_350.webp" alt="Rethinking Voxels" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Rethinking Voxels</span><span class="sp-similar__dl">⬇ 1269.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/visual-vibrance">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/l6Uqs2fS/images/947aacab971724d9367122f279ba23c69b897df5_350.webp" alt="Visual Vibrance" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Visual Vibrance</span><span class="sp-similar__dl">⬇ 223.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/musk-rose-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HpOC6pyc/images/2579e84653106ea355a51bd9ceb69e0fbece8e4c_350.webp" alt="Musk Rose Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Musk Rose Shaders</span><span class="sp-similar__dl">⬇ 32.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/eclipseshaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/s8ZCVd1a/images/3177d7afe9048dd413191eb09cb0c294c1be6cb7_350.webp" alt="Eclipse" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Eclipse</span><span class="sp-similar__dl">⬇ 39.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/trailershaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44_350.webp" alt="Trailer Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Trailer Shaders</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/psx-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/5FTpbyBl/images/056b70713c35a14001d5b918e11b04ddbb70117e_350.webp" alt="PSX Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">PSX Shader</span><span class="sp-similar__dl">⬇ 22.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/hysteria-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/iHC8BZn4/images/7396ef6d393cdf092302f9058d55e01d811e9c05_350.webp" alt="Hysteria Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Hysteria Shaders</span><span class="sp-similar__dl">⬇ 333.6 万</span></div>
 </a>
 </div>
 </div>

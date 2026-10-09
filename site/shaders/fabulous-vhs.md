@@ -63,7 +63,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -74,29 +74,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/ushader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UDDa70lE/images/8526bf02177fa84d413e52ae460a311f8456bdd6_350.webp" alt="UShader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">UShader</span><span class="sp-similar__dl">⬇ 64.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/yofps">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xM96NJmk/images/c60dea96a53d40a9cc70216f121749fd467b5c17_350.webp" alt="YoFPS" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">YoFPS</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/sildurs-vibrant-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/z8EjLYqN/images/5eb583f151c7b4799c30696e758effd0a48aec92_350.webp" alt="Sildur's Vibrant Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Sildur's Vibrant Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/kappa-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780_350.webp" alt="Kappa Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Kappa Shader</span><span class="sp-similar__dl">⬇ 306.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/astralex">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/RphJSnEs/images/94cba843df8f5ee3c995b92bfe9baeb69e40462d_350.webp" alt="AstraLex Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">AstraLex Shaders</span><span class="sp-similar__dl">⬇ 490.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/ebin-resurrected">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/VP9picRm/images/13114a13b9883a129b12b7188207580565fd218a_350.webp" alt="Ebin Resurrected" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Ebin Resurrected</span><span class="sp-similar__dl">⬇ 59.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/just-colored-lighting">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/McUqXQ0J/images/0f024d76b7430f0eb43159a51ace2c93b5d04205_350.webp" alt="Just Colored Lighting" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Just Colored Lighting</span><span class="sp-similar__dl">⬇ 58.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/trailershaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44_350.webp" alt="Trailer Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Trailer Shaders</span><span class="sp-similar__dl">⬇ 19.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/pegasus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262_350.webp" alt="Pegasus Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Pegasus Shaders</span><span class="sp-similar__dl">⬇ 80.9 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders-classic">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/pgzM6RBY/images/c933b31d55f896d3c5260a66edcfc577192a842e_350.webp" alt="BSL Shaders - Classic" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders - Classic</span><span class="sp-similar__dl">⬇ 215.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/daybreak-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/psx-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/5FTpbyBl/images/056b70713c35a14001d5b918e11b04ddbb70117e_350.webp" alt="PSX Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">PSX Shader</span><span class="sp-similar__dl">⬇ 22.9 万</span></div>
 </a>
 </div>
 </div>

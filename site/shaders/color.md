@@ -66,7 +66,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -77,29 +77,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/lethal-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/kih5VmNo/images/e63a18a1090c530b29f789a55c947addeb08843e_350.webp" alt="Lethal Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Lethal Shaders</span><span class="sp-similar__dl">⬇ 20.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/clarityshader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/rinvvngy/images/9cc7a71fca9cbc07feaf1a89cd8a4c32dd170dc7_350.webp" alt="Clarity" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Clarity</span><span class="sp-similar__dl">⬇ 86.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/fastpbr">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ygChbn8J/images/a0dd165216e6ce8304f52a9e24ebbce6c838e338_350.webp" alt="FastPBR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">FastPBR</span><span class="sp-similar__dl">⬇ 185.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/nostalgia-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xEItlMn3/images/2cd00df04e86c74ca7095235a83ea558bd7f2c54_350.webp" alt="Nostalgia Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Nostalgia Shader</span><span class="sp-similar__dl">⬇ 416.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/light-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UuwCHIS3/images/773c8d0b945d5798dd97799a32c52b3748b69f57_350.webp" alt="LIGHT Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">LIGHT Shaders</span><span class="sp-similar__dl">⬇ 48.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/voyager-shader-2.0">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/71EyVfCn/images/b9e61cc231914ffff4769bfbf857631b12377792_350.webp" alt="Voyager shader 2.0" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Voyager shader 2.0</span><span class="sp-similar__dl">⬇ 72.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/arc-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/yY9oI7oz/images/723643aee7ba0ae7f68f6fd2e8c382d1a4c27bbb_350.webp" alt="Arc" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Arc</span><span class="sp-similar__dl">⬇ 89.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/btb-back-to-basics">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/jiOSfcba/images/729b94891981617672e24c74edcff4cc65e96a15_350.webp" alt="[BTB] Back To Basics" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">[BTB] Back To Basics</span><span class="sp-similar__dl">⬇ 18.8 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bliss-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/spooky-flashlight-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xJNabPID/images/43b9a8686012819747c3b3720ed171ddfb877926_350.webp" alt="Flashlight Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Flashlight Shader</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/simplicissimus">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/dEAKT8y9/images/1184e445cc41ecfd60340e7b4295b5dffbbf7af1_350.webp" alt="Simplicissimus Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Simplicissimus Shader</span><span class="sp-similar__dl">⬇ 23.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/spring-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/68DAChCV/images/31664077a0e0c9643596e6d1efcc0f3ff326d215_350.webp" alt="Spring Shaders (Chun)" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Spring Shaders (Chun)</span><span class="sp-similar__dl">⬇ 28.2 万</span></div>
 </a>
 </div>
 </div>

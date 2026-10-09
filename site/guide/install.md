@@ -14,7 +14,7 @@
 
 1. 找到你的光影文件，位于 `.minecraft/shaderpacks/` 目录下的一个 zip（例如 `BSL_v8.4.zip`）。
 2. 用压缩软件（7-Zip、WinRAR、Bandizip 等）**打开**这个 zip（不要解压）。
-3. 进入 zip 内的 `shaders/lang/` 目录（没有就新建一个 `lang` 文件夹）。
+3. 进入 zip 内的 `shaders/lang/` 目录；如果目录不存在，请依次新建 `shaders` 和 `lang` 文件夹。
 4. 把下载的 `zh_CN.lang` 拖进去。
 
 完成后 zip 内应有如下结构：

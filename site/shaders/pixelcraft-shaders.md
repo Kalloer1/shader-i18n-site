@@ -79,7 +79,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -90,29 +90,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/stereos-default+">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/OT1P0oHO/images/0a3190171e21a383383f41e40361acebd309feda_350.webp" alt="Stereo's Default+" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Stereo's Default+</span><span class="sp-similar__dl">⬇ 39.1 万</span></div>
-</a>
 <a class="sp-similar__card" href="/shaders/complementary-unbound">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/R6NEzAwj/images/7c45cec837f459ef49571d230e54952c42717cab_350.webp" alt="Complementary Shaders - Unbound" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Complementary Shaders - Unbound</span><span class="sp-similar__dl">⬇ 4231.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/night-vision-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XuGx9Ezb/images/5ff5dde691b70ffe917dbcc4d383b7207a4d211b_350.webp" alt="Night Vision Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Night Vision Shaders</span><span class="sp-similar__dl">⬇ 21.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/vanilletix">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/CiFGzRV9/images/898dd6f6d5c64f2dbcd82035987deccf03b1252c_350.webp" alt="Vanilletix Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Vanilletix Shaders</span><span class="sp-similar__dl">⬇ 36.3 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/redhat-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvitaqQh/images/2a9e6a3190a6fc6d9b4cd05e483affd58edccb76_350.webp" alt="RedHat Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">RedHat Shaders</span><span class="sp-similar__dl">⬇ 93.3 万</span></div>
-</a>
-<a class="sp-similar__card" href="/shaders/fantasy-shader-unbound">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1ICdkzj/images/883834b76c9fbc5fc54dac9850c200ea9a1582ba_350.webp" alt="Fantasy Shaders Unbound" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Fantasy Shaders Unbound</span><span class="sp-similar__dl">⬇ 100.0 万</span></div>
+<a class="sp-similar__card" href="/shaders/just-colored-lighting">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/McUqXQ0J/images/0f024d76b7430f0eb43159a51ace2c93b5d04205_350.webp" alt="Just Colored Lighting" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Just Colored Lighting</span><span class="sp-similar__dl">⬇ 58.3 万</span></div>
 </a>
 <a class="sp-similar__card" href="/shaders/ebin-resurrected">
 <div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/VP9picRm/images/13114a13b9883a129b12b7188207580565fd218a_350.webp" alt="Ebin Resurrected" loading="lazy" /></div>
 <div class="sp-similar__info"><span class="sp-similar__name">Ebin Resurrected</span><span class="sp-similar__dl">⬇ 59.1 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/exposa-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
+</a>
+<a class="sp-similar__card" href="/shaders/glimmer-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PgdT4v4a/images/9327833ebb17d41e7831dc887d506062d9cb8284_350.webp" alt="Glimmer" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Glimmer</span><span class="sp-similar__dl">⬇ 49.1 万</span></div>
 </a>
 </div>
 </div>

@@ -79,7 +79,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -90,29 +90,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/builders-qol-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/6NnvPzWJ/images/1b9e21f73dcfb83dd899ab72b0c95f36b7523151_350.webp" alt="Builder's QOL Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Builder's QOL Shaders</span><span class="sp-similar__dl">⬇ 68.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/stracciatella-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/7FjF4us6/images/a7e4b6b87dc5b331cbf9d256b5aa7eb4f3221891_350.webp" alt="Stracciatella Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Stracciatella Shaders</span><span class="sp-similar__dl">⬇ 16.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/shrimple">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BS9T99lD/images/f52cd76af3aad866abbe4c9b60a9665b3804aa57_350.webp" alt="Shrimple" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Shrimple</span><span class="sp-similar__dl">⬇ 208.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/complementary-unbound">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/R6NEzAwj/images/7c45cec837f459ef49571d230e54952c42717cab_350.webp" alt="Complementary Shaders - Unbound" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Complementary Shaders - Unbound</span><span class="sp-similar__dl">⬇ 4231.6 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/exposa-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/PYhc7nNa/images/9d86c001765061336dd282427b081be1292502cf_350.webp" alt="Exposa Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Exposa Shaders</span><span class="sp-similar__dl">⬇ 43.3 万</span></div>
+<a class="sp-similar__card" href="/shaders/re-shaded">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Gdq9dXUk/images/bae22196e44ae30b0193d07b3dda73185d973ab2_350.webp" alt="ReShaded" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">ReShaded</span><span class="sp-similar__dl">⬇ 57.7 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/super-duper-vanilla">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp" alt="Super Duper Vanilla" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Super Duper Vanilla</span><span class="sp-similar__dl">⬇ 768.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/astralex">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/RphJSnEs/images/94cba843df8f5ee3c995b92bfe9baeb69e40462d_350.webp" alt="AstraLex Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">AstraLex Shaders</span><span class="sp-similar__dl">⬇ 490.2 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/soft-voxels-lite">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Xl42lc6c/images/d92b6fa36fc489eac4830087dbdff583b0e95838_350.webp" alt="Soft Voxels Lite" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Soft Voxels Lite</span><span class="sp-similar__dl">⬇ 57.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/complementary-reimagined">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9_350.webp" alt="Complementary Shaders - Reimagined" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Complementary Shaders - Reimagined</span><span class="sp-similar__dl">⬇ 6494.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/nostalgia-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xEItlMn3/images/2cd00df04e86c74ca7095235a83ea558bd7f2c54_350.webp" alt="Nostalgia Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Nostalgia Shader</span><span class="sp-similar__dl">⬇ 416.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/bsl-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp" alt="BSL Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders</span><span class="sp-similar__dl">⬇ 2855.1 万</span></div>
 </a>
 </div>
 </div>

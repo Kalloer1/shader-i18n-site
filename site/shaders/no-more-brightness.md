@@ -76,7 +76,7 @@ layout: page
 <p class="sp-install-hint">三步让游戏内光影界面显示中文</p>
 <ol class="sp-install-steps">
 <li><strong>下载</strong>：点击上方「下载 zh_CN.lang」按钮。</li>
-<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>（没有就新建），把 <code>zh_CN.lang</code> 拖进去。</li>
+<li><strong>注入</strong>：用压缩软件打开光影 zip（位于 <code>.minecraft/shaderpacks/</code>），进入 <code>shaders/lang/</code>；如果目录不存在，请依次新建 <code>shaders</code> 和 <code>lang</code> 文件夹，再把 <code>zh_CN.lang</code> 拖进去。</li>
 <li><strong>验证</strong>：游戏内选中该光影，确认语言为简体中文，光影设置界面出现中文即成功。</li>
 </ol>
 <p>详细图文教程见 <a href="/guide/install">安装教程</a>。</p>
@@ -87,29 +87,29 @@ layout: page
 <div class="sp-similar">
 <h2 class="sp-section-title">你可能还喜欢</h2>
 <div class="sp-similar__scroll">
-<a class="sp-similar__card" href="/shaders/ushader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/UDDa70lE/images/8526bf02177fa84d413e52ae460a311f8456bdd6_350.webp" alt="UShader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">UShader</span><span class="sp-similar__dl">⬇ 64.6 万</span></div>
+<a class="sp-similar__card" href="/shaders/retrovision">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BWnGghPW/images/016eb0db0389597b8b929c5724f371335badc2f1_350.webp" alt="RetroVision" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">RetroVision</span><span class="sp-similar__dl">⬇ 17.4 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/allium-shaders">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/EQs4Ewl7/images/47902c9dd8b54b1f3e6a5d5bdc34730719e0b4e5_350.webp" alt="Allium Shaders" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Allium Shaders</span><span class="sp-similar__dl">⬇ 31.1 万</span></div>
+<a class="sp-similar__card" href="/shaders/stereos-default+">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/OT1P0oHO/images/0a3190171e21a383383f41e40361acebd309feda_350.webp" alt="Stereo's Default+" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Stereo's Default+</span><span class="sp-similar__dl">⬇ 39.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/daybreak-shader">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/YU49BElv/images/3757493e9ba86b294e7a78364f1c0be5848cb1a8_350.webp" alt="Daybreak Shader" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Daybreak Shader</span><span class="sp-similar__dl">⬇ 17.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/bliss-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp" alt="Bliss Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Bliss Shaders</span><span class="sp-similar__dl">⬇ 1405.5 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/bsl-shaders-classic">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/pgzM6RBY/images/c933b31d55f896d3c5260a66edcfc577192a842e_350.webp" alt="BSL Shaders - Classic" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">BSL Shaders - Classic</span><span class="sp-similar__dl">⬇ 215.5 万</span></div>
+<a class="sp-similar__card" href="/shaders/spooky-flashlight-shader">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/xJNabPID/images/43b9a8686012819747c3b3720ed171ddfb877926_350.webp" alt="Flashlight Shader" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Flashlight Shader</span><span class="sp-similar__dl">⬇ 41.9 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/ctrvcr">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XaonJnsc/images/ef049a118b6270b40933f71a5ddca36ecda5acee.gif" alt="CTR VCR" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">CTR VCR</span><span class="sp-similar__dl">⬇ 57.4 万</span></div>
+<a class="sp-similar__card" href="/shaders/night-vision-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/XuGx9Ezb/images/5ff5dde691b70ffe917dbcc4d383b7207a4d211b_350.webp" alt="Night Vision Shaders" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">Night Vision Shaders</span><span class="sp-similar__dl">⬇ 21.1 万</span></div>
 </a>
-<a class="sp-similar__card" href="/shaders/mellow">
-<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/BUxf36AP/images/df1fcff4703e11d9f45c49658699068ba6478362_350.webp" alt="Mellow" loading="lazy" /></div>
-<div class="sp-similar__info"><span class="sp-similar__name">Mellow</span><span class="sp-similar__dl">⬇ 639.2 万</span></div>
+<a class="sp-similar__card" href="/shaders/makeup-ultra-fast-shaders">
+<div class="sp-similar__cover"><img src="https://cdn.modrinth.com/data/izsIPI7a/images/7fad6f7be5d313e9cd9c2dc4378250299ea29950_350.webp" alt="MakeUp - Ultra Fast" loading="lazy" /></div>
+<div class="sp-similar__info"><span class="sp-similar__name">MakeUp - Ultra Fast</span><span class="sp-similar__dl">⬇ 1241.3 万</span></div>
 </a>
 </div>
 </div>

@@ -6,7 +6,7 @@
   "description": "Minecraft Java 版光影包简体中文本地化资源站",
   "scripts": {
     "dev": "vitepress dev site",
-    "build": "node scripts/gen-shader-pages.mjs && vitepress build site",
+    "build": "vitepress build site",
     "preview": "vitepress preview site",
     "prebuild": "node scripts/gen-shader-pages.mjs",
     "catalog": "node scripts/fetch-catalog.mjs",

@@ -3,7 +3,7 @@
  * 拉取 Modrinth 全量光影目录（ADR-0004）。
  *
  * - 分页拉取 Modrinth 全部 project_type:shader 的已审核项目
- * - 收录门槛：下载量 >= 1000
+ * - 收录范围：全量已发布的 shader 项目（不设下载量门槛）
  * - 生成轻量目录 site/data/modrinth-catalog.json（不含简介正文，供列表按需加载）
  * - `hasNativeZhCN` 由 pipeline.mjs 检测 zip 后回写，本脚本不覆盖已有值
  *
@@ -16,7 +16,6 @@ import { dirname, join } from 'node:path'
 const CATALOG_FILE = join(dirname(fileURLToPath(import.meta.url)), '../site/data/modrinth-catalog.json')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
 const UA = 'shader-i18n-site/0.1.0 (catalog sync)'
-const MIN_DOWNLOADS = 0 // 已取消门槛：全量收录（ADR-0004 修订，自带中文打标不排除）
 const PAGE_SIZE = 100
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
