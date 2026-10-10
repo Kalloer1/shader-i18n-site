@@ -63,29 +63,46 @@ npm run build            # 先生成详情页，再构建 site/.vitepress/dist
 npm run preview          # 预览已构建的静态站点
 npm run catalog          # 拉取 Modrinth 全量光影目录
 npm run sync             # 只同步 Modrinth 元数据
-npm run translate        # 启动翻译流水线，需要 LLM API key
+npm run translate        # 启动翻译流水线（--top N 按候选取前 N 个；--ids a,b,c 只处理指定光影）
+npm run mirror -- --ids a,b,c  # 把已产出的 lang 镜像到夸克 / 百度网盘，并回写分享链接
 npm run release <id>     # 检查指定光影后，提交并推送当前工作区全部变更
 npm run detect-changes   # 检测目录新增项并尝试写入腾讯文档
-npm run validate:lang -- <en_US.lang> <zh_CN.lang>
+npm run validate:lang    # 全量闸门：批量校验 site/public/lang 下所有 zh_CN.lang
+npm run validate:lang -- <en_US.lang> <zh_CN.lang>   # 单文件模式
+npm run fix:lang         # 修复译文引入的畸形 § 序列（--dry-run 只报告）
+npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合并式）
 ```
 
 `npm run build` 通过 npm 的 `prebuild` 钩子执行一次 `scripts/gen-shader-pages.mjs`，然后执行 VitePress 构建；详情页不会重复生成。
 
-### 如何手动启动翻译
+### 语言校验闸门
 
-不需要直接点击 `pipeline.mjs`。推荐双击仓库根目录的 `start-translation.cmd`：
+`npm run validate:lang`（`scripts/validate-lang.mjs`）在本地与 CI 都会跑，不传参时批量校验 `site/public/lang` 下全部 460 个文件。
+
+- **失败（退出码 1）**：缺键/多键、译文引入的畸形 `§` 序列、非 `%%` 占位符差异、BOM、翻译新增的重复键、找不到英文源。
+- **警告（不阻断）**：`§` 格式码数量差异、`%%` 差异、上游 EN 自带的乱码、继承自上游的重复键、值与英文相同。
+- **英文源解析顺序**：同目录 `en_US.lang` → `sources/<id>/<version>/en_US.lang` → `data/lang-sources.json.gz`。
+  `sources/` 不入库（版权属原作者），因此 CI 靠 `data/lang-sources.json.gz`（约 2 MB）做**真实比对**；三处都没有会**判失败**，绝不退回“自检”产生假绿灯。
+- 写入 `sources/` 后（`npm run translate` 会写）记得跑 `npm run pack:lang` 刷新压缩包，否则 CI 看不到新英文源。
+
+### 如何启动翻译
+
+两条路径：
+
+**A. 站点触发（推荐）** —— 玩家在 `/request` 页提交请求后，管理员在该页的「翻译工作台」输入口令点「开启翻译」；Worker 校验口令后调用 GitHub Actions 触发 `.github/workflows/translate.yml`，逐条翻译、自动校验、自动提交发布。
+
+**B. 本地手动** —— 双击仓库根目录的 `start-translation.cmd`，或执行 `npm run translate -- --top 1` / `npm run translate -- --ids a,b,c`：
 
 1. 如果当前 PowerShell 环境已经有 `SILICONFLOW_API_KEY`，脚本直接使用它；否则会在窗口中临时询问 API Key。
 2. API Key 只保存在本次进程内，不会写入仓库文件。
 3. 脚本会询问是否开始；确认后按 `--top` 数量处理候选。默认 `start-translation.cmd` 只处理 1 个候选，适合先做小规模测试。
-4. 也可以在终端执行：`npm run translate -- --top 1`（先处理一个）或 `npm run translate -- --top 50`。
-5. 翻译完成后仍需人工检查，再执行 `npm run release <shader-id>` 发布。
+4. 产出后由自动校验闸门判定是否可上线，不再需要人工确认。
 
 如果要长期使用，建议把 `SILICONFLOW_API_KEY` 配置为 Windows 用户环境变量；不要把 Key 写进 `.mjs`、`.cmd`、README 或 GitHub 仓库。
 
 ## 运行流程与自动化边界
 
-当前系统不是“所有步骤全自动”：目录/元数据同步和 Cloudflare 部署自动化程度较高；翻译启动、Git 发布确认、夸克上传仍需要人工操作。
+目录/元数据同步、翻译、校验、Git 提交、Cloudflare 部署与网盘镜像均已自动化；唯一需要人工的是「点一下开启翻译」（在 `/request` 工作台输入口令），以及网盘凭证到期后的重新授权。
 
 ### 1. GitHub 每日同步流（自动，也可手动触发）
 
@@ -110,9 +127,9 @@ npm run validate:lang -- <en_US.lang> <zh_CN.lang>
 
 本次隔离实测结果（不修改生产数据）：Modrinth 目录成功拉取 886 个项目；抽取 `complementary-reimagined`、`complementary-unbound`、`bsl-shaders` 三个项目后，三者元数据均成功写入，未设置 CurseForge API Key 也能完成同步，并成功生成 catalog 快照。生产仓库当前目录快照为 887 个项目，数量会随 Modrinth 变化。
 
-### 2. 翻译流水线（内容自动化，但启动是手动的）
+### 2. 翻译流水线（站点触发或本地手动）
 
-入口：`npm run translate`，实现：`scripts/pipeline.mjs`。当前没有 GitHub Actions 定时调用它；因此它不是每日自动翻译。
+入口：`npm run translate`，实现：`scripts/pipeline.mjs`。由 `.github/workflows/translate.yml` 在站点 `/request` 点「开启翻译」时调用；也可在本地手动运行。
 
 前置条件：至少配置一个本地环境变量：`SILICONFLOW_API_KEY`。模型固定为 `tencent/Hunyuan-MT-7B`；接口地址可通过 `SILICONFLOW_BASE_URL` 覆盖。
 
@@ -129,27 +146,33 @@ npm run validate:lang -- <en_US.lang> <zh_CN.lang>
 9. 生成 `site/public/lang/<shader-id>/<shader-version>/zh_CN.lang`，文件头会明确写入“AI 初翻，未人工校对”。
 10. 调用 `scripts/validate-lang.mjs` 校验 key 集合、占位符、格式码、编码和结构；失败或回退率过高时不上线、不登记，留待下次重试。
 11. 校验通过后更新 `site/data/shaders.json` 的 `langVersions`，并持久化 `modrinth-catalog.json` 与 `glossary.json`。
-12. 人工检查翻译质量；人工检查不是脚本自动完成的。确认后再进入发布步骤。
+12. 产出后立即进入发布链路（Git commit/push → Cloudflare 部署），不再有「人工确认」这一步。
 
-所以，翻译内容生成是自动的，但“开始运行”必须由用户在本地手动执行，API key、额度和人工质量确认也都由用户负责。
+**质量来源**：唯一的质量闸门是自动校验（`scripts/validate-lang.mjs`：键集合、`§` 格式码数量、占位符种类与数量、UTF-8 无 BOM），加上玩家反馈。校验不通过则**不写文件、不登记、不上线**。玩家反馈触发重译。
 
-### 3. Git 发布与 Cloudflare 部署（半自动）
+所以，翻译内容生成与启动都是自动的：站点 `/request` 页点「开启翻译」→ Worker 触发 GitHub Actions → 逐条翻译 → 自动校验 → 自动提交发布。API key 与额度由仓库 Secrets 负责。
 
-入口：`npm run release <shader-id>`，实现：`scripts/release.mjs`。
+### 3. Git 发布与 Cloudflare 部署（自动）
+
+正常情况下无需手动跑 `release.mjs`：`.github/workflows/translate.yml` 在翻译结束后直接 commit + push，推送即触发部署。
+
+手动补发布时入口为 `npm run release <shader-id>`，实现：`scripts/release.mjs`。
 
 1. 脚本检查该光影目录下是否存在 `site/public/lang/<shader-id>/<version>/zh_CN.lang`。
-2. 执行 `git add -A`，把当前工作区全部变更加入暂存区；因此运行前必须先检查 `git status`，它并不只提交参数对应的光影。
+2. 暂存**显式路径**（`site/public/lang/<shader-id>`、`site/data/shaders.json`、`glossary.json`、`modrinth-catalog.json`），不再使用 `git add -A`。
 3. 创建提交，提交信息为 `发布 <shader-id> 汉化文件`。
-4. 执行 `git push` 推送到 `main`；脚本本身没有人工审批、夸克上传或回滚逻辑。
+4. 执行 `git push` 推送到 `main`。
 5. 推送后触发 `.github/workflows/deploy.yml`（也可在 Actions 页面使用 `workflow_dispatch` 手动触发）。
-6. Deploy workflow 安装依赖并执行 `npm run build`：先生成详情页，再构建 VitePress 静态产物到 `site/.vitepress/dist`。
-7. 使用 Wrangler 将构建目录部署到 Cloudflare Pages 项目 `shader-i18n-site`。
+6. Deploy workflow 先跑测试与全量 lang 校验（质量闸门），再执行 `npm run build`：先生成详情页，再构建 VitePress 静态产物到 `site/.vitepress/dist`。
+7. 用 Wrangler 先 `deploy` Worker，再部署 Pages 项目 `shader-i18n-site`。
 
-当前边界：Git push 后 Cloudflare 部署是自动的；`release.mjs` 的启动仍然是手动的；夸克字段 `quark` 仍需手动维护和上传，项目中没有夸克上传 API/脚本。
+当前边界：整条发布链路（翻译 → 校验 → commit → push → 部署）已自动化；网盘镜像失败只让对应链接留空，不阻断发布。
 
-### 4. 请求翻译链路（独立于批量翻译）
+### 4. 请求翻译链路（提交 + 触发）
 
-站内 `/request` 页面提交请求后，前端调用 Cloudflare Worker，Worker 再调用腾讯文档智能表格 API。它只登记用户请求，不会自动下载光影、调用 LLM 或生成 `zh_CN.lang`。
+站内 `/request` 页面提交请求后，前端调用 Cloudflare Worker：Worker 校验 Modrinth 链接后写入 KV 队列（权威状态源），并尽力镜像到腾讯文档智能表格。
+
+同一页面的「翻译工作台」会轮询 `GET /queue` 显示队列与状态；管理员输入口令后 `POST /translate`，Worker 调 GitHub Actions 的 `translate.yml` 触发翻译。翻译结束后 `mirror.mjs` 把 lang 上传到夸克/百度并写回分享链接。
 
 ## 目录结构
 
@@ -167,15 +190,19 @@ site/
 scripts/
 ├── fetch-catalog.mjs                 # 拉取 Modrinth 目录
 ├── sync-metadata.mjs                 # 同步元数据
-├── pipeline.mjs                      # Hunyuan-MT-7B 翻译流水线
-├── validate-lang.mjs                 # lang 结构校验
+├── pipeline.mjs                      # Hunyuan-MT-7B 翻译流水线（--top / --ids）
+├── validate-lang.mjs                 # lang 结构校验（唯一质量闸门）
+├── mirror.mjs                        # 上传 lang 到夸克/百度并写回分享链接
 ├── gen-shader-pages.mjs              # 生成详情页
 ├── detect-changes.mjs                # 检测新增目录项目
 └── release.mjs                       # 提交并推送发布
-worker/index.js                       # 请求翻译表单的 Cloudflare Worker
+shared/tencent-docs.mjs               # 腾讯文档字段/状态枚举的唯一来源（Worker 与 Node 共用）
+tests/                                # node --test：数据契约 + 校验器回归
+worker/index.js                       # 请求表单 + KV 队列 + 翻译触发的 Cloudflare Worker
 .github/workflows/
-├── deploy.yml                        # 构建并部署 Cloudflare Pages
-└── sync.yml                          # 每日目录/元数据同步
+├── deploy.yml                        # 测试/校验 → 构建 → 部署 Worker 与 Pages
+├── sync.yml                          # 每日目录/元数据同步
+└── translate.yml                     # 站点触发的翻译 + 镜像 + 自动提交
 ```
 
 `sources/` 是本地英文源文件目录，已加入 `.gitignore`，不会进入公开仓库。
@@ -217,7 +244,7 @@ worker/index.js                       # 请求翻译表单的 Cloudflare Worker
 2. **使用 VitePress 静态站**：数据以 JSON 进入仓库，详情页在构建期生成，部署到 Cloudflare Pages。
 3. **GitHub 主渠道 + 夸克镜像**：GitHub 用于版本化和主下载，夸克用于国内访问备用。
 4. **全量目录**：从 Modrinth 拉取已发布的 shader 项目，不再使用下载量门槛；自带中文项目仍展示在目录中。
-5. **自动翻译但醒目标注**：AI 初翻可以直接提供下载，但必须明确标记“未人工校对”；人工校对后再登记新版本。
+5. **自动翻译直接发布**：AI 初翻经自动校验闸门通过后直接提供下载，文件头醒目标注“未人工校对”；不再有人工确认环节，玩家反馈触发重译。
 6. **双仓方案已废弃**：早期曾计划将数据和公开站点分仓，2026-09-11 已合并为单仓；当前不再按双仓方案维护。
 
 ## 待办事项

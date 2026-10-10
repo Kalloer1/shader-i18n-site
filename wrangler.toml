@@ -2,5 +2,22 @@ name = "shader-i18n-api"
 main = "worker/index.js"
 compatibility_date = "2024-01-01"
 
+# Worker 源码 import 了 ../shared/tencent-docs.mjs，wrangler 会用 esbuild 自动打包。
+
 [vars]
-# TENCENT_DOCS_TOKEN = ""  # 通过 wrangler secret put TENCENT_DOCS_TOKEN 设置
+# GITHUB_REPO 与 GITHUB_WORKFLOW_FILE 用于 /translate 触发 Actions。
+GITHUB_REPO = "Kalloer1/shader-i18n-site"
+GITHUB_WORKFLOW_FILE = "translate.yml"
+
+# 以下为 Secrets，通过 `wrangler secret put <NAME>` 设置，不要写进本文件：
+#   TENCENT_DOCS_TOKEN      腾讯文档 API token（缺失则跳过镜像）
+#   TRANSLATE_PASSPHRASE    /translate 口令
+#   INTERNAL_STATUS_TOKEN   /status 内部 token
+#   GITHUB_PAT              仅需本仓库 actions: write
+
+# 翻译队列（权威状态源）。ID 由 `wrangler kv namespace create TRANSLATION_QUEUE` 生成。
+# 注意：binding 必须是 TRANSLATION_QUEUE（worker/index.js 读 env.TRANSLATION_QUEUE），
+# 不要用 Cloudflare 控制台默认的 KV_BINDING，否则 Worker 会报「缺少 TRANSLATION_QUEUE KV 绑定」。
+[[kv_namespaces]]
+binding = "TRANSLATION_QUEUE"
+id = "d89b68831b5f463c9f4e46a9f937f07a"

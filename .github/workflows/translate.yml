@@ -1,0 +1,101 @@
+name: translate
+
+# 站点 /request 页点「开启翻译」→ Worker POST /translate → 本工作流。
+# inputs.ids 是逗号分隔的 shaderId 列表（Worker 传入全部「待翻译」条目）。
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: '逗号分隔的 shaderId 列表'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+# 与 sync.yml 共用 concurrency 组：两者都会 commit + push。
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    # 每条光影在 pipeline 内独立 5 分钟超时；这里给整批留出余量。
+    # 上限 360 分钟（GitHub Actions 单 job 硬上限）。
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # pipeline 会写回 site/data 与 site/public/lang，需要可 push 的凭据
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci || npm install
+
+      # 闸门：先把仓库里已有的 lang 全部校验一遍，避免带着历史问题继续产出。
+      # EN 原文来自 data/lang-sources.json.gz（sources/ 未入库）。
+      - name: Run tests
+        run: npm test
+
+      - name: Validate existing lang files
+        run: npm run validate:lang
+
+      # 网盘凭证（阶段 0 实测通过后才存在；缺失时 mirror 自动跳过该网盘）
+      - name: Restore quark config
+        if: ${{ secrets.QUARK_CONFIG_JSON != '' }}
+        run: |
+          set -e
+          SKILL_DIR="$HOME/.pi/agent/skills/quarkclouddrive"
+          mkdir -p "$SKILL_DIR/.quarkclouddrive/openclaw"
+          printf '%s' '${{ secrets.QUARK_CONFIG_JSON }}' > "$SKILL_DIR/.quarkclouddrive/openclaw/config.json"
+          chmod 600 "$SKILL_DIR/.quarkclouddrive/openclaw/config.json"
+
+      - name: Restore bdpan config
+        if: ${{ secrets.BDPAN_CONFIG_JSON != '' }}
+        run: |
+          set -e
+          mkdir -p "$HOME/.config/bdpan"
+          printf '%s' '${{ secrets.BDPAN_CONFIG_JSON }}' > "$HOME/.config/bdpan/config.json"
+          chmod 600 "$HOME/.config/bdpan/config.json"
+
+      - name: Translate
+        run: node scripts/pipeline.mjs --ids "${{ inputs.ids }}"
+        env:
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}
+
+      - name: Mirror to cloud drives
+        # 网盘不可用时不阻断发布：镜像失败只让对应字段留空。
+        continue-on-error: true
+        run: node scripts/mirror.mjs --ids "${{ inputs.ids }}"
+        env:
+          QUARK_CLI: ${{ secrets.QUARK_CLI_PATH }}
+          QUARK_PARENT_FID: ${{ secrets.QUARK_PARENT_FID }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}
+
+      - name: Repack lang sources
+        # pipeline 会把本次新翻译的 en_US.lang 写入 sources/；
+        # 必须重新打包，否则新光影在下次 CI 校验时找不到英文源而假失败。
+        # 打包会与已有包合并，不会抹掉历史条目。
+        run: npm run pack:lang
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # 显式路径，禁止 git add -A（否则会裹入无关文件）
+          for p in site/public/lang site/data/shaders.json site/data/glossary.json site/data/modrinth-catalog.json data/lang-sources.json.gz; do
+            [ -e "$p" ] && git add -- "$p"
+          done
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交"
+            exit 0
+          fi
+          git commit -m "翻译: ${{ inputs.ids }}"
+          git push

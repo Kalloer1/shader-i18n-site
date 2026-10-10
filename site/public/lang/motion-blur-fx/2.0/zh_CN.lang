@@ -399,7 +399,7 @@ option.UNDERWATER_FOG=§e水下 /  lava 雾
 option.UNDERWATER_FOG.comment=水下和 lava 区域的雾效。每帧都要额外渲染一次 §eevery frame§r 即使在陆地上也耗费资源。§a如果从不游泳可免费提升 FPS。
 
 option.WATER_FOG_DENSITY=§7水雾密度
-option.WATER_FOG_DENSITY.comment=水体中的雾气吞噬视野的速度。需要§e§ underwater / Lava Fog§r。
+option.WATER_FOG_DENSITY.comment=水体中的雾气吞噬视野的速度。需要§e§r underwater / Lava Fog§r。
 
 option.WATER_FOG_R=§7水雾红色
 option.WATER_FOG_R.comment=水下雾霾的红色分量。需要§e§r§7 underwater / lava fog§r。

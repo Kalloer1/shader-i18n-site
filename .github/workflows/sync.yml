@@ -8,6 +8,12 @@ on:
 permissions:
   contents: write
 
+# 与 translate.yml 共用同一 concurrency 组：两者都会 commit + push，
+# 并发运行会互相冲突（non-fast-forward）。
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -33,6 +39,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
+          # 显式路径，不用 `git add -A`：避免把工作区里无关的临时文件提交进来。
+          for p in site/data/modrinth-catalog.json \
+                   site/data/modrinth-catalog.prev.json \
+                   site/data/shaders.json \
+                   site/data/glossary.json; do
+            [ -e "$p" ] && git add -- "$p"
+          done
           git diff --cached --quiet || git commit -m "chore: daily sync $(date -u +%Y-%m-%d)"
           git push

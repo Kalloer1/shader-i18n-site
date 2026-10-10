@@ -63,7 +63,7 @@ screen.VC=§4§l§f§l体积§f§l云
 screen.CS=§4§l§f§l云层§f§l阴影
 screen.CC=§4§l§f§l云§f§l
 screen.CR=§4§l§f§l雨§f§l云
-screen.VRay=§4§l§f§l体积§6§l§f光§
+screen.VRay=§4§l§f§l体积§6§l§f光
 screen.Lighting=§4§l§f§l光照
 screen.Directlighting=§4§l§f§l直接§f§l光照
 screen.Indirectlighting=§4§l§f§l间接§f§l光照
@@ -515,7 +515,7 @@ option.FOG_BLOOM_INTENSITY=§a§l§f§l雾效柔化泛光强度
 option.FOG_BLOOM_RAIN_INTENSITY=§a§l§f§l雨天柔化泛光强度
 option.FOG_BLOOM_MULTIPLIER=§a§l§f§l柔和泛光倍增器
 
-option.BODYCAM_CHROMA_STRENGTH=§a§l警告§f：色度偏移！！！请关闭色差并开启身体视角！！！§
+option.BODYCAM_CHROMA_STRENGTH=§a§l警告§f：色度偏移！！！请关闭色差并开启身体视角！！！
 
 
 option.PURKINJE_SHIFT=真实夜景光照§a§l [推荐使用]
@@ -903,7 +903,7 @@ option.DLSS_DISTANCE_START=DLSS 起始距离（以方块为单位）
 option.DLSS_DISTANCE_END=DLSS 结束距离（以方块为单位）
 
 #--# RANDOM #--------------------------------------------------------------------------#
-option.EXPOSURE_STYLE=§a§l§f曝光风§f§l格§
+option.EXPOSURE_STYLE=§a§l§f曝光风§f§l格
 
 option.RSM_SAMPLES  =G§6RSM 采样
 

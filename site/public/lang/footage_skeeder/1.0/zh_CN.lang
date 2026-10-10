@@ -862,7 +862,7 @@ option.DLSS_DISTANCE_START=§3§lD§r§lLSS 起始距离（以方块为单位）
 option.DLSS_DISTANCE_END=§3§lDL§r§lSS 结束距离（以方块为单位）
 
 #--# RANDOM #--------------------------------------------------------------------------#
-option.EXPOSURE_STYLE=§3§l§r§l曝光风格§
+option.EXPOSURE_STYLE=§3§l§r§l曝光风格
 
 option.RSM_SAMPLES  =§3§lG§r§lRSM 采样
 

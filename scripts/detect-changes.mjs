@@ -13,14 +13,18 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import {
+  TENCENT_MCP_URL,
+  TENCENT_FILE_ID,
+  TENCENT_SHEET_ID,
+  SOURCE,
+  buildFieldValues,
+} from '../shared/tencent-docs.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
 const PREV_CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.prev.json')
 const SHADERS_FILE = join(ROOT, 'site/data/shaders.json')
-const TENCENT_MCP_URL = 'https://docs.qq.com/openapi/mcp';
-const FILE_ID = 'BpuvvJhOQHbW'
-const SHEET_ID = 't00i2h'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -40,8 +44,8 @@ async function writeToSmartTable(token, records) {
       jsonrpc: '2.0',
       method: 'smartsheet.add_records',
       params: {
-        file_id: FILE_ID,
-        sheet_id: SHEET_ID,
+        file_id: TENCENT_FILE_ID,
+        sheet_id: TENCENT_SHEET_ID,
         records: records.map(r => ({ field_values: r })),
       },
       id: 1,
@@ -57,15 +61,14 @@ async function writeToSmartTable(token, records) {
   return true
 }
 
+// 字段结构由 shared/tencent-docs.mjs 统一提供（此前与 worker/index.js 各写一份，会漂移）
 function buildRecord(entry, changeType) {
-  return [
-    { field: '光影名称', text_value: { items: [{ text: entry.title, type: 'text' }] } },
-    { field: 'Modrinth 链接', url_value: { items: [{ text: entry.title, type: 'url', link: `https://modrinth.com/shader/${entry.slug}` }] } },
-    { field: '来源', option_value: { items: [{ text: '自动检测' }] } },
-    { field: '状态', option_value: { items: [{ text: '待翻译' }] } },
-    { field: '提交时间', string_value: String(Date.now()) },
-    { field: '备注', text_value: { items: [{ text: changeType, type: 'text' }] } },
-  ]
+  return buildFieldValues({
+    title: entry.title,
+    url: `https://modrinth.com/shader/${entry.slug}`,
+    source: SOURCE.AUTO,
+    note: changeType,
+  })
 }
 
 async function main() {

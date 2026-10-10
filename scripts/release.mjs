@@ -2,11 +2,11 @@
 /**
  * 发布脚本：翻译完成后一键发布到站点。
  *
- * 用法：node scripts/release.mjs <shader-id>
+ * 用法：node scripts/release.mjs <shader-id> [--dry-run]
  *
  * 流程：
  * 1. 验证 lang 文件存在
- * 2. 暂存当前仓库全部变更并 commit
+ * 2. 暂存本次发布相关的**显式路径**（不使用 git add -A，避免裹入无关文件）
  * 3. git push 触发 Cloudflare Pages 部署
  *
  * 环境变量：无必填
@@ -20,6 +20,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const LANG_DIR = join(ROOT, 'site/public/lang')
 
 const args = process.argv.slice(2)
+const dryRun = args.includes('--dry-run')
 const shaderId = args.find(a => !a.startsWith('-'))
 
 if (!shaderId) {
@@ -60,11 +61,30 @@ if (!langInfo) {
 }
 console.log(`📄 找到 lang 文件: ${langInfo.path}`)
 
-// 2. git add
-exec('git add -A')
+// 2. 显式路径暂存。
+// 原先用 `git add -A` 会把工作区里任何无关改动（编辑器临时文件、
+// 本地实验产物）一并提交。这里只暂存本次发布真正涉及的内容。
+const STAGE_PATHS = [
+  `site/public/lang/${shaderId}`,
+  'site/data/shaders.json',
+  'site/data/glossary.json',
+  'site/data/modrinth-catalog.json',
+]
+
+for (const p of STAGE_PATHS) {
+  if (!existsSync(join(ROOT, p))) continue
+  exec(`git add -- "${p}"`)
+}
+
 const status = exec('git status --porcelain')
 if (!status) {
   console.log('ℹ️  无变更，跳过提交')
+  process.exit(0)
+}
+
+if (dryRun) {
+  console.log('ℹ️  --dry-run：已暂存但未提交，待提交内容：')
+  console.log(exec('git diff --cached --stat'))
   process.exit(0)
 }
 

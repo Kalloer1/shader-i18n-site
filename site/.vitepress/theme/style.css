@@ -92,6 +92,25 @@ img.img-fallback {
   background: #141a21;
 }
 
+/* 视觉隐藏但保留给屏幕阅读器与键盘焦点 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 全站统一可见焦点环（键盘导航） */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
 /* ============================================================
    Steam/Epic 风格光影详情页
    ============================================================ */
@@ -100,20 +119,35 @@ img.img-fallback {
 .sp-tabs {
   margin: 32px 0 24px;
 }
+/* 视觉隐藏但可聚焦：Tab 可进入，方向键切换分栏 */
 .sp-tabs__radio {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .sp-tabs__nav {
   display: flex;
   gap: 4px;
   border-bottom: 1px solid var(--vp-c-divider);
   margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sp-tabs__nav::-webkit-scrollbar {
+  display: none;
 }
 .sp-tabs__btn {
   font-family: var(--shader-display-font);
   font-weight: 600;
   font-size: 14px;
   padding: 10px 18px;
+  white-space: nowrap;
   color: var(--vp-c-text-3);
   cursor: pointer;
   border-bottom: 2px solid transparent;
@@ -134,11 +168,31 @@ img.img-fallback {
   color: var(--vp-c-brand-1);
   border-bottom-color: var(--vp-c-brand-1);
 }
+/* 键盘焦点落在 radio 上时，高亮对应标签 */
+#sp-tab-download:focus-visible ~ .sp-tabs__nav label[for="sp-tab-download"],
+#sp-tab-gallery:focus-visible ~ .sp-tabs__nav label[for="sp-tab-gallery"],
+#sp-tab-desc:focus-visible ~ .sp-tabs__nav label[for="sp-tab-desc"],
+#sp-tab-install:focus-visible ~ .sp-tabs__nav label[for="sp-tab-install"] {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
 #sp-tab-download:checked ~ .sp-tabs__panel--download,
 #sp-tab-gallery:checked ~ .sp-tabs__panel--gallery,
 #sp-tab-desc:checked ~ .sp-tabs__panel--desc,
 #sp-tab-install:checked ~ .sp-tabs__panel--install {
   display: block;
+  animation: sp-panel-in 0.22s ease;
+}
+@keyframes sp-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* --- 安装方法内容 --- */
@@ -167,18 +221,18 @@ img.img-fallback {
   position: relative;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  height: 65vh;
-  min-height: 380px;
-  max-height: 720px;
+  height: 52vh;
+  min-height: 320px;
+  max-height: 620px;
   overflow: hidden;
-  background: var(--vp-c-bg);
+  background: linear-gradient(135deg, #1a222c, var(--vp-c-bg));
 }
 .sp-hero__bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s ease;
 }
 .sp-hero:hover .sp-hero__bg {
   transform: scale(1.03);
@@ -188,10 +242,10 @@ img.img-fallback {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(13, 17, 23, 0.95) 0%,
-    rgba(13, 17, 23, 0.6) 35%,
-    rgba(13, 17, 23, 0.15) 65%,
-    rgba(13, 17, 23, 0.05) 100%
+    rgba(13, 17, 23, 0.96) 0%,
+    rgba(13, 17, 23, 0.72) 34%,
+    rgba(13, 17, 23, 0.2) 66%,
+    rgba(13, 17, 23, 0.06) 100%
   );
   pointer-events: none;
 }
@@ -200,40 +254,49 @@ img.img-fallback {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 32px 40px;
+  padding: 28px 20px;
   z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .sp-hero__title {
   font-family: var(--shader-display-font);
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.15;
   color: #fff;
-  margin: 0 0 4px !important;
+  margin: 0 0 6px !important;
   border: none !important;
   padding: 0 !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
 }
 .sp-hero__namecn {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--vp-c-brand-1);
   margin: 0 0 12px;
   font-weight: 500;
 }
+/* 元数据与徽章列表：去掉列表符号 */
+.sp-hero__meta,
+.sp-hero__badges {
+  list-style: none;
+  padding: 0;
+}
 .sp-hero__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  font-family: 'Chakra Petch', var(--vp-font-family-base);
+  gap: 8px 16px;
+  font-family: var(--shader-display-font);
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 14px;
+  font-variant-numeric: tabular-nums;
 }
 .sp-hero__badges {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
+  margin: 0 0 18px;
 }
 .sp-hero__actions {
   display: flex;
@@ -241,21 +304,48 @@ img.img-fallback {
   gap: 10px;
 }
 
-/* Hero 移动端：缩短高度，元数据常驻 */
-@media (max-width: 768px) {
+/* Hero 增强：平板起放大标题与内边距 */
+@media (min-width: 768px) {
   .sp-hero {
-    height: 50vh;
-    min-height: 300px;
+    height: 60vh;
+    min-height: 400px;
   }
   .sp-hero__content {
-    padding: 20px 18px;
+    padding: 36px 40px;
   }
   .sp-hero__title {
-    font-size: 24px;
+    font-size: 36px;
   }
-  .sp-hero__meta {
-    font-size: 12px;
-    gap: 10px;
+}
+
+/* 减弱动效 */
+@media (prefers-reduced-motion: reduce) {
+  .sp-hero__bg,
+  .sp-btn,
+  .sp-gallery__item,
+  .sp-gallery__item img,
+  .sp-similar__card,
+  .sp-similar__cover img,
+  .sp-tabs__btn,
+  .sp-version-table tbody tr,
+  .sp-version-item,
+  .sp-history summary,
+  .sp-version-list summary,
+  .sp-accordion__trigger {
+    transition: none !important;
+  }
+  .sp-hero:hover .sp-hero__bg,
+  .sp-gallery__item:hover,
+  .sp-similar__card:hover,
+  .sp-similar__card:hover .sp-similar__cover img,
+  .sp-btn--primary:hover {
+    transform: none;
+  }
+  #sp-tab-download:checked ~ .sp-tabs__panel--download,
+  #sp-tab-gallery:checked ~ .sp-tabs__panel--gallery,
+  #sp-tab-desc:checked ~ .sp-tabs__panel--desc,
+  #sp-tab-install:checked ~ .sp-tabs__panel--install {
+    animation: none;
   }
 }
 
@@ -647,27 +737,33 @@ img.img-fallback {
   font-weight: 600;
 }
 
-/* --- 关于本光影：截图画廊 --- */
-.sp-about {
-  margin: 36px 0;
+/* --- 光影详情页容器 ---
+   不设 max-width：Hero 用 100vw + 负 margin 做全宽出血，
+   若父级被限制宽度，calc(-50vw + 50%) 会算错。
+   内容区宽度交给 VitePress 的 page 布局容器。 --- */
+.sp-detail {
+  display: block;
 }
+
+/* --- 截图画廊 --- */
 .sp-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-bottom: 24px;
 }
 .sp-gallery__item {
   margin: 0;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
   cursor: zoom-in;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .sp-gallery__item:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(232, 163, 61, 0.55);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   transform: translateY(-2px);
 }
 .sp-gallery__item img {
@@ -676,6 +772,105 @@ img.img-fallback {
   object-fit: cover;
   display: block;
   aspect-ratio: 16 / 9;
+}
+
+/* --- 类似光影推荐栏 --- */
+.sp-similar {
+  margin: 40px 0 20px;
+}
+.sp-similar__scroll {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+.sp-similar__item {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+}
+.sp-similar__scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.sp-similar__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sp-similar__scroll::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
+}
+.sp-similar__card {
+  display: block;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--vp-c-bg-soft);
+  text-decoration: none !important;
+  transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+}
+.sp-similar__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 163, 61, 0.55);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+.sp-similar__cover {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--vp-c-bg);
+}
+.sp-similar__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s;
+}
+.sp-similar__card:hover .sp-similar__cover img {
+  transform: scale(1.05);
+}
+.sp-similar__cover--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-similar__cover--empty span {
+  font-family: var(--shader-display-font);
+  font-size: 36px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+}
+.sp-similar__info {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sp-similar__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sp-similar__dl {
+  font-family: var(--shader-display-font);
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 增强：平板起图库多列 */
+@media (min-width: 640px) {
+  .sp-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 }
 
 /* --- 介绍正文 --- */
@@ -812,92 +1007,6 @@ img.img-fallback {
   background: var(--vp-c-bg-soft);
   padding: 2px 5px;
   border-radius: 3px;
-}
-
-/* --- 类似光影推荐栏 --- */
-.sp-similar {
-  margin: 40px 0 20px;
-}
-.sp-similar__scroll {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
-  /* 隐藏滚动条（保留功能） */
-  scrollbar-width: thin;
-  scrollbar-color: var(--vp-c-divider) transparent;
-}
-.sp-similar__scroll::-webkit-scrollbar {
-  height: 6px;
-}
-.sp-similar__scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.sp-similar__scroll::-webkit-scrollbar-thumb {
-  background: var(--vp-c-divider);
-  border-radius: 3px;
-}
-.sp-similar__card {
-  flex: 0 0 240px;
-  scroll-snap-align: start;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--vp-c-bg-soft);
-  text-decoration: none !important;
-  transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
-}
-.sp-similar__card:hover {
-  transform: translateY(-4px);
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-}
-.sp-similar__cover {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--vp-c-bg);
-}
-.sp-similar__cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s;
-}
-.sp-similar__card:hover .sp-similar__cover img {
-  transform: scale(1.05);
-}
-.sp-similar__cover--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.sp-similar__cover--empty span {
-  font-family: var(--shader-display-font);
-  font-size: 36px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.3);
-}
-.sp-similar__info {
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.sp-similar__name {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.sp-similar__dl {
-  font-family: 'Chakra Petch', var(--vp-font-family-base);
-  font-size: 11px;
-  color: var(--vp-c-text-3);
 }
 
 /* --- medium-zoom 覆盖层适配 --- */

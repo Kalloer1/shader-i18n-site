@@ -21,9 +21,28 @@ jobs:
 
       - run: npm ci || npm install
 
+      # 闸门：测试 + 全量 lang 校验，必须在构建之前通过。
+      # 删掉人工质量确认后，这里是唯一的质量防线。
+      # EN 原文来自 data/lang-sources.json.gz（sources/ 未入库），因此 CI 也能做完整比对。
+      - name: Run tests
+        run: npm test
+
+      - name: Validate lang files
+        run: npm run validate:lang
+
       - run: npm run build
 
-      - uses: cloudflare/wrangler-action@v3
+      # Worker 部署（此前从未部署过，导致 /request 表单 100% 失败）。
+      # 必须在 pages deploy 之前，否则线上 API 仍是旧版本。
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+
+      - name: Deploy Pages
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

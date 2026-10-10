@@ -1,4 +1,5 @@
 <script setup>
+// 站点三大原则 — 首页特性行
 const items = [
   {
     title: '只分发汉化文件',
@@ -12,44 +13,56 @@ const items = [
   },
   {
     title: 'AI 辅助翻译声明',
-    text: '部分汉化文件由 AI 模型（SiliconFlow / DeepSeek-V4-Flash）初翻生成，标注为「AI 初翻」。建议玩家根据个人偏好选择已校对版本或自行润色。',
+    text: '部分汉化文件由 AI 模型（SiliconFlow / tencent/Hunyuan-MT-7B）初翻生成，标注为「AI 初翻」。建议玩家根据个人偏好选择已校对版本或自行润色。',
     icon: 'M16 18 22 12 16 6M8 6 2 12l6 6',
   },
 ]
 </script>
 
 <template>
-  <div class="feature-row">
+  <section class="feature-row" aria-label="站点原则">
     <div v-for="it in items" :key="it.title" class="feature">
-      <span class="fico">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path :d="it.icon" /></svg>
+      <span class="fico" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path :d="it.icon" />
+        </svg>
       </span>
-      <div>
+      <div class="feature-copy">
         <h3>{{ it.title }}</h3>
         <p>{{ it.text }}</p>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
+/* 移动优先：默认单列堆叠 */
 .feature-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1px;
   background: var(--vp-c-divider);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   margin: 26px 0 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
 }
 .feature {
   display: flex;
   gap: 14px;
   padding: 20px 18px;
   background: var(--vp-c-bg-soft);
-  transition: background 0.2s;
+  transition: background-color 0.2s;
 }
 .feature:hover {
   background: var(--vp-c-bg-elv);
@@ -61,17 +74,17 @@ const items = [
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 9px;
   color: var(--vp-c-brand-1);
   background: rgba(232, 163, 61, 0.15);
   border: 1px solid rgba(232, 163, 61, 0.18);
-  transition: background 0.2s, border-color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 .feature:hover .fico {
   background: rgba(232, 163, 61, 0.22);
   border-color: rgba(232, 163, 61, 0.3);
 }
-.feature h3 {
+.feature-copy h3 {
   font-family: var(--shader-display-font);
   font-size: 14.5px;
   margin: 2px 0 6px !important;
@@ -79,10 +92,24 @@ const items = [
   padding: 0 !important;
   color: var(--vp-c-text-1);
 }
-.feature p {
+.feature-copy p {
   font-size: 12.5px;
   line-height: 1.7;
   color: var(--vp-c-text-3);
   margin: 0;
+}
+
+/* 增强：平板起并排 */
+@media (min-width: 640px) {
+  .feature-row {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature,
+  .fico {
+    transition: none !important;
+  }
 }
 </style>

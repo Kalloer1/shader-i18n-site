@@ -9,15 +9,22 @@
  *   SILICONFLOW_API_KEY；模型固定为 tencent/Hunyuan-MT-7B。
  * 密钥通过环境变量读取，不入库；接口使用 OpenAI 兼容 chat/completions。
   *
- * 用法：node scripts/pipeline.mjs [--top 50]
+ * 用法：
+ *   node scripts/pipeline.mjs [--top 50]     按候选顺序处理前 N 个（行为与改造前完全一致）
+ *   node scripts/pipeline.mjs --ids a,b,c    只处理指定 shaderId（站点 /translate 触发的路径）
+ *
+ * --ids 与 --top 互斥；同时给出时以 --ids 为准并打印警告。
+ * 每条光影独立 5 分钟超时（AbortController，同时中断其进行中的 fetch），
+ * 超时或抛错只影响该条，不阻断整批。
+ * 设置 WORKER_URL + INTERNAL_STATUS_TOKEN 时，每条结束即回写 KV 状态（尽力而为）。
  */
 import { mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
-import { execFileSync } from 'node:child_process'
 import { inflateRawSync } from 'node:zlib'
-import { randomUUID } from 'node:crypto'
+import { STATUS } from '../shared/tencent-docs.mjs'
+import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -25,11 +32,43 @@ const SHADERS_FILE = join(ROOT, 'site/data/shaders.json')
 const MISSING_SOURCE_FILE = join(ROOT, 'site/data/missing-source.json')
 const GLOSSARY_FILE = join(ROOT, 'site/data/glossary.json')
 const LANG_DIR = join(ROOT, 'site/public/lang')
+const SOURCES_DIR = join(ROOT, 'sources')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
 const MODEL = 'tencent/Hunyuan-MT-7B'
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+// 每条光影的处理上限：防止单个卡死的下载/LLM 调用拖垮整批（在 CI 里就是整个 workflow 超时）。
+const PER_SHADER_TIMEOUT_MS = 5 * 60 * 1000
+// 状态回写目标（Worker 的 /status）。两者缺一即静默跳过，不影响本地手动运行。
+const WORKER_URL = process.env.WORKER_URL
+const INTERNAL_STATUS_TOKEN = process.env.INTERNAL_STATUS_TOKEN
+
+/**
+ * 回写单条状态到 KV（经 Worker /status）。
+ * 尽力而为：未配置、网络失败、Worker 未部署都只打日志，绝不影响翻译主流程。
+ */
+async function reportStatus(id, payload) {
+  if (!WORKER_URL || !INTERNAL_STATUS_TOKEN) return
+  try {
+    const res = await fetch(`${WORKER_URL.replace(/\/+$/, '')}/status`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Internal-Token': INTERNAL_STATUS_TOKEN },
+      body: JSON.stringify({ id, ...payload }),
+    })
+    if (!res.ok) console.log(`  [status] 回写失败 HTTP ${res.status}: ${(await res.text()).slice(0, 120)}`)
+  } catch (err) {
+    console.log(`  [status] 回写异常: ${err.message.slice(0, 120)}`)
+  }
+}
+
+// 当前正在处理的光影所对应的中断信号，由 processShaderWithTimeout 设置。
+// 所有网络请求都走 mfetch，超时时能一并中断，而不是留下悬挂的请求。
+let activeSignal = null
+function mfetch(url, opts = {}) {
+  return fetch(url, { ...opts, signal: opts.signal ?? activeSignal ?? undefined })
+}
 // ---------- LLM 提供方 ----------
 const provider = {
   id: 'hunyuan',
@@ -52,7 +91,7 @@ if (!process.env.SILICONFLOW_API_KEY) {
 console.log(`LLM 提供方：${provider.name}（${provider.body([]).model}）\n`)
 
 async function chatOnce(activeProvider, messages) {
-  const res = await fetch(activeProvider.url(), {
+  const res = await mfetch(activeProvider.url(), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${activeProvider.key()}` },
     body: JSON.stringify(activeProvider.body(messages)),
@@ -276,11 +315,45 @@ const candidates = catalog.shaders.filter((c) => {
 
 const args = process.argv.slice(2)
 const topArg = args.indexOf('--top')
+const idsArg = args.indexOf('--ids')
 const TOP = topArg >= 0 ? Number(args[topArg + 1]) : 50
-console.log(`候选 ${candidates.length} 个，本次处理前 ${TOP} 个\n`)
+const IDS = idsArg >= 0
+  ? (args[idsArg + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean)
+  : []
 
 const tmp = mkdtempSync(join(tmpdir(), 'shader-pipeline-'))
 let done = 0, skippedNative = 0, failed = 0, processed = 0
+
+// 处理清单：--ids 优先（站点触发路径），否则沿用「按下载量取前 N 个」
+let worklist
+if (IDS.length) {
+  if (topArg >= 0) console.log('⚠ 同时指定了 --ids 与 --top，以 --ids 为准（--top 被忽略）')
+  worklist = []
+  for (const id of IDS) {
+    const fromCatalog = catalog.shaders.find((c) => c.id === id)
+    if (fromCatalog) { worklist.push(fromCatalog); continue }
+    // catalog 外（多为玩家刚提交的新光影）：现场向 Modrinth 解析，失败只影响这一条
+    try {
+      const res = await fetch(`${MODRINTH_API}/project/${encodeURIComponent(id)}`, {
+        headers: { 'User-Agent': UA() },
+      })
+      if (!res.ok) throw new Error(`Modrinth 返回 HTTP ${res.status}`)
+      const p = await res.json()
+      const synthesized = { id: p.slug ?? id, projectId: p.id, title: p.title ?? id, synthesized: true }
+      catalog.shaders.push(synthesized)
+      worklist.push(synthesized)
+      console.log(`[${synthesized.id}] 不在 catalog 中，已从 Modrinth 现场解析（projectId ${p.id}）`)
+    } catch (err) {
+      console.log(`[${id}] 无法解析: ${err.message.slice(0, 120)}`)
+      failed++
+      await reportStatus(id, { status: STATUS.FAILED, error: `无法解析该光影：${err.message.slice(0, 200)}` })
+    }
+  }
+  console.log(`本次处理 ${worklist.length} 个指定光影\n`)
+} else {
+  worklist = candidates.slice(0, TOP)
+  console.log(`候选 ${candidates.length} 个，本次处理前 ${TOP} 个\n`)
+}
 
 function persist() {
   writeFileSync(CATALOG_FILE, JSON.stringify(catalog, null, 2) + '\n')
@@ -290,20 +363,23 @@ function persist() {
 async function processShader(entry) {
   const tag = `[${entry.id}]`
   try {
-    const versions = await fetch(`${MODRINTH_API}/project/${entry.projectId}/version`, {
+    const versions = await mfetch(`${MODRINTH_API}/project/${entry.projectId}/version`, {
       headers: { 'User-Agent': UA() },
     }).then((r) => r.json())
     const latest = versions[0]
     const file = latest?.files?.find((f) => f.primary) ?? latest?.files?.[0]
-    if (!file) { console.log(`${tag} 无可下载文件，跳过`); failed++; return }
+    if (!file) { console.log(`${tag} 无可下载文件，跳过`); failed++; return { status: STATUS.FAILED, error: 'Modrinth 最新版本无可下载文件' } }
     const shaderVersion = latest.version_number
-    if (latestLangVersion.get(entry.id) === shaderVersion) { console.log(`${tag} v${shaderVersion} 已有汉化，跳过`); return }
+    if (latestLangVersion.get(entry.id) === shaderVersion) {
+      console.log(`${tag} v${shaderVersion} 已有汉化，跳过`)
+      return { status: STATUS.DONE, error: '', shaderVersion }
+    }
 
     // zip 下载带重试（大文件网络中断偶发）
     let zipBuf
     for (let attempt = 1; ; attempt++) {
       try {
-        zipBuf = Buffer.from(await fetch(file.url, { headers: { 'User-Agent': UA() } }).then((r) => r.arrayBuffer()))
+        zipBuf = Buffer.from(await mfetch(file.url, { headers: { 'User-Agent': UA() } }).then((r) => r.arrayBuffer()))
         break
       } catch (err) {
         if (attempt >= 3) throw err
@@ -318,7 +394,7 @@ async function processShader(entry) {
       console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
       skippedNative++
       persist()
-      return
+      return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
     }
     const enName = langNames.find((n) => /^shaders\/lang\/en_US\.lang$/i.test(n))
     if (!enName) {
@@ -326,7 +402,7 @@ async function processShader(entry) {
       console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
       failed++
       persist()
-      return
+      return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
     }
 
     const enText = zip.read(enName).toString('utf8')
@@ -344,7 +420,7 @@ async function processShader(entry) {
       console.log(`${tag} en_US.lang 无可翻译条目，跳过`)
       failed++
       persist()
-      return
+      return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
     }
 
     console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${provider.id}] 开始初翻…`)
@@ -354,27 +430,41 @@ async function processShader(entry) {
     if (totalFallback > pairs.length * 0.3) {
       console.log(`${tag} 回退率过高（${totalFallback}/${pairs.length}），判定失败，跳过`)
       failed++
-      return
+      return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）` }
     }
     const outLines = lines.map((line) => {
       const t = line.trim()
       if (!t || t.startsWith('#')) return line
       const eq = t.indexOf('=')
       if (eq <= 0) return line
-      return `${t.slice(0, eq)}=${zhMap.get(t.slice(0, eq)) ?? t.slice(eq + 1)}`
+      const key = t.slice(0, eq)
+      const value = zhMap.get(key) ?? t.slice(eq + 1)
+      // 初翻常见的格式码切断（`§e§ ` 这类）在落盘前就修掉，
+      // 避免产出会被闸门拦下的文件。
+      return `${key}=${repairMalformedSections(value).text}`
     })
     const header = `#shaders/lang/zh_CN.lang\n# ${entry.title} v${shaderVersion} 简体中文翻译（AI 初翻，未人工校对）\n# 源文件：${file.filename} 的 ${enName}\n`
     const outPath = join(LANG_DIR, entry.id, shaderVersion, 'zh_CN.lang')
+
+    // 先校验内存里的内容，通过后才落盘。
+    // 历史实现是「先写文件再校验」，校验失败时已把坏文件留在磁盘上。
+    const verdict = validatePair(enText, header + outLines.join('\n'), `${entry.id}/${shaderVersion}`)
+    if (verdict.problems.length) {
+      failed++
+      const msg = verdict.problems.join('; ').slice(0, 300)
+      console.log(`${tag} 校验未通过，不落盘: ${msg}`)
+      persist()
+      return { status: STATUS.FAILED, error: msg }
+    }
+
     mkdirSync(dirname(outPath), { recursive: true })
     writeFileSync(outPath, header + outLines.join('\n'))
 
-    const enTmp = join(tmp, `${randomUUID()}_en_US.lang`)
-    writeFileSync(enTmp, enText)
-    try {
-      execFileSync(process.execPath, [join(ROOT, 'scripts/validate-lang.mjs'), enTmp, outPath], { stdio: 'pipe' })
-    } finally {
-      rmSync(enTmp, { force: true })
-    }
+    // 同时缓存英文原文到 sources/，供 pack-lang-sources.mjs 重新打包。
+    // 否则新翻译的光影在 CI 里找不到英文源，下一次 validate:lang 会判失败。
+    const enCachePath = join(SOURCES_DIR, entry.id, shaderVersion, 'en_US.lang')
+    mkdirSync(dirname(enCachePath), { recursive: true })
+    writeFileSync(enCachePath, enText)
 
     let shaderEntry = db.shaders.find((s) => s.id === entry.id)
     if (!shaderEntry) {
@@ -387,18 +477,70 @@ async function processShader(entry) {
       langVersion: '1.0.0',
       file: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
       quark: '',
+      baidu: '',
       updatedAt: new Date().toISOString().slice(0, 10),
       contributors: [`AI 初翻（${provider.name.split('（')[0]}），未人工校对`],
     })
     done++
     processed++
-    console.log(`${tag} 完成（${processed}/${TOP}） -> ${outPath.replace(ROOT + '\\', '').replace(/\\\\/g, '/')}`)
+    console.log(`${tag} 完成（${processed}/${worklist.length}） -> ${outPath.replace(ROOT + '\\', '').replace(/\\\\/g, '/')}`)
     persist()
     await sleep(300)
+    return {
+      status: STATUS.DONE,
+      error: '',
+      langPath: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
+      shaderVersion,
+    }
   } catch (err) {
     console.log(`${tag} 失败: ${err.message.slice(0, 200)}`)
     failed++
+    return { status: STATUS.FAILED, error: err.message.slice(0, 200) }
   }
+}
+
+/**
+ * 给 processShader 套一层独立超时。
+ * 超时或抛错都只让这一条计为失败，不影响后续条目（失败隔离）。
+ */
+async function processShaderWithTimeout(entry) {
+  const controller = new AbortController()
+  activeSignal = controller.signal
+
+  let timer
+  const timeout = new Promise((resolve) => {
+    timer = setTimeout(() => {
+      controller.abort()
+      resolve('timeout')
+    }, PER_SHADER_TIMEOUT_MS)
+  })
+
+  let result
+  try {
+    result = await Promise.race([
+      processShader(entry).catch((err) => ({ status: STATUS.FAILED, error: err.message.slice(0, 200) })),
+      timeout,
+    ])
+  } finally {
+    clearTimeout(timer)
+    activeSignal = null
+  }
+
+  if (result === 'timeout') {
+    const minutes = PER_SHADER_TIMEOUT_MS / 60000
+    console.log(`[${entry.id}] 超过 ${minutes} 分钟未完成，已中止，跳过`)
+    failed++
+    result = { status: STATUS.FAILED, error: `处理超时（>${minutes} 分钟）` }
+  }
+
+  await reportStatus(entry.id, {
+    status: result.status,
+    error: result.error,
+    langPath: result.langPath,
+    shaderVersion: result.shaderVersion,
+    note: result.note,
+    attempts: (entry.attempts ?? 0) + 1,
+  })
 }
 
 function UA() {
@@ -406,7 +548,7 @@ function UA() {
 }
 
 try {
-  for (const entry of candidates.slice(0, TOP)) await processShader(entry)
+  for (const entry of worklist) await processShaderWithTimeout(entry)
 } finally {
   persist()
   persistGlossary()

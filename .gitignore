@@ -6,7 +6,10 @@ site/.vitepress/dist/
 .vitepress/cache/
 .vitepress/dist/
 .wrangler/
-package-lock.json
+
+# 详情页由 scripts/gen-shader-pages.mjs 在 prebuild 时清空并重建，
+# 不入库（否则每次构建产生数百个文件的噪声 diff）。
+site/shaders/
 
 # === 密钥与凭证 ===
 *.key
