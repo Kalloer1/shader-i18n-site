@@ -44,22 +44,35 @@ jobs:
       - name: Validate existing lang files
         run: npm run validate:lang
 
-      # 网盘凭证（阶段 0 实测通过后才存在；缺失时 mirror 自动跳过该网盘）
+      # 网盘凭证（阶段 0 实测通过后才存在；缺失时 mirror 自动跳过该网盘）。
+      # 注意：**不能用 `if: ${{ secrets.X != '' }}`** —— GitHub 的 if 表达式校验器
+      # 不接受 secrets 上下文，会让整个 workflow 变成「无效」而无法派发。
+      # 改为把 secret 传成环境变量，在 shell 里判断。
       - name: Restore quark config
-        if: ${{ secrets.QUARK_CONFIG_JSON != '' }}
+        env:
+          QUARK_CONFIG_JSON: ${{ secrets.QUARK_CONFIG_JSON }}
         run: |
+          if [ -z "$QUARK_CONFIG_JSON" ]; then
+            echo "未提供 QUARK_CONFIG_JSON，跳过"
+            exit 0
+          fi
           set -e
           SKILL_DIR="$HOME/.pi/agent/skills/quarkclouddrive"
           mkdir -p "$SKILL_DIR/.quarkclouddrive/openclaw"
-          printf '%s' '${{ secrets.QUARK_CONFIG_JSON }}' > "$SKILL_DIR/.quarkclouddrive/openclaw/config.json"
+          printf '%s' "$QUARK_CONFIG_JSON" > "$SKILL_DIR/.quarkclouddrive/openclaw/config.json"
           chmod 600 "$SKILL_DIR/.quarkclouddrive/openclaw/config.json"
 
       - name: Restore bdpan config
-        if: ${{ secrets.BDPAN_CONFIG_JSON != '' }}
+        env:
+          BDPAN_CONFIG_JSON: ${{ secrets.BDPAN_CONFIG_JSON }}
         run: |
+          if [ -z "$BDPAN_CONFIG_JSON" ]; then
+            echo "未提供 BDPAN_CONFIG_JSON，跳过"
+            exit 0
+          fi
           set -e
           mkdir -p "$HOME/.config/bdpan"
-          printf '%s' '${{ secrets.BDPAN_CONFIG_JSON }}' > "$HOME/.config/bdpan/config.json"
+          printf '%s' "$BDPAN_CONFIG_JSON" > "$HOME/.config/bdpan/config.json"
           chmod 600 "$HOME/.config/bdpan/config.json"
 
       - name: Translate
