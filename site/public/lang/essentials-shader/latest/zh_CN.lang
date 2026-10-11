@@ -1,0 +1,7 @@
+#shaders/lang/zh_CN.lang
+# ESSENTIALS Shader vlatest 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：ESSENTIALS Shader.zip 的 shaders/lang/en_us.lang
+option.ABOUT_ESSENTIALS=[ 悬停查看 ]
+value.ABOUT_ESSENTIALS.1=信息
+
+option.ABOUT_ESSENTIALS.comment=一款仅保留必要视觉特效的轻量级 Minecraft 光影，用于模拟阴影、太阳光线等真实效果，可在集成显卡上运行。\n\n市面上有很多轻量光影，都声称能很好地保持 FPS，但 ESSENTIALS 光影将其精简到了极致，带来了模拟的太阳光线/月光光线、半真实水面、基于深度的雾效等诸多效果。\n\n没错，它可能是你见过最差的光影，但它一定能完成它的使命。\n\n注意：此处没有可更改的光影包设置，一切都已尽可能优化，你只需启用即可游玩！

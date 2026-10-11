@@ -1,0 +1,102 @@
+#shaders/lang/zh_CN.lang
+# Mode 13h: MS-DOSify! v3.1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：mode-13h-3.1.0.zip 的 shaders/lang/en_us.lang
+# Mode 13h — language file
+
+# ===== Main Screen =====
+
+option.DOS_SCALE=像素缩放
+option.DOS_SCALE.comment=最终图像的降采样倍数。在 1280x800 分辨率下缩放倍数为 4 时，输出为 320x200（Mode 13h）。
+
+option.AMBIENT_FLOOR=环境光下限
+option.AMBIENT_FLOOR.comment=光照贴图最低亮度。防止无光照区域变为纯黑。
+
+option.DOS_PALETTE=调色板
+option.DOS_PALETTE.comment=输出的 256 色。Ramp：16 种 Minecraft 色相各 16 级明暗，如同 DOS 游戏的手制调色板。VGA：原版 BIOS 调色板。RGB332 与 6x6x6 将各通道均匀分割。其余为 Mac OS 系统调色板及经典 DOS 游戏的调色板。
+value.DOS_PALETTE.0=关
+value.DOS_PALETTE.1=Ramp
+value.DOS_PALETTE.2=VGA
+value.DOS_PALETTE.3=RGB332
+value.DOS_PALETTE.4=6x6x6
+value.DOS_PALETTE.5=Mac OS
+value.DOS_PALETTE.6=Wolf3D
+value.DOS_PALETTE.7=Doom
+value.DOS_PALETTE.8=Heretic
+value.DOS_PALETTE.9=Hexen
+value.DOS_PALETTE.10=Quake
+value.DOS_PALETTE.11=Duke 3D
+value.DOS_PALETTE.12=Daggerfall
+
+option.DOS_COLORMAP=色表光照
+option.DOS_COLORMAP.comment=贴图仅使用调色板颜色，明暗变化沿各颜色的渐变阶梯递减，而非平滑变暗，如同 Doom 与 Quake 的色表。需要调色板。
+value.DOS_COLORMAP.0=关
+value.DOS_COLORMAP.1=开
+
+option.DOS_LIGHT_STEPS=光照级数
+option.DOS_LIGHT_STEPS.comment=离散光照等级数量。模拟 DOS 时代引擎中的带状色表光照。设为 0 则禁用量化。
+
+# ===== Texture Mapping =====
+
+screen.TEXMAP=贴图映射
+screen.TEXMAP.comment=贴图跟随透视的方式。90 年代末的软件渲染器仅每隔数个像素校正一次。
+
+option.DOS_TEXMAP=映射
+option.DOS_TEXMAP.comment=Subdivided：每隔数个像素精确校正，之间线性插值，如 Quake（轻微晃动）。Affine：从不校正，如 PlayStation（严重扭曲）。公告板与手部始终保持透视正确。
+value.DOS_TEXMAP.0=透视
+value.DOS_TEXMAP.1=细分
+value.DOS_TEXMAP.2=仿射
+
+option.DOS_SPAN=跨度宽度
+option.DOS_SPAN.comment=Subdivided 模式下透视校正点之间的输出像素数。Quake 使用 16；跨度越宽晃动越明显。
+
+# ===== Fog =====
+
+screen.FOG=雾
+screen.FOG.comment=缩放原版雾效以营造更浓郁、更有氛围感的效果。全部设为 1.00 即为原版效果。
+
+option.FOG_START_SCALE=起始缩放
+option.FOG_START_SCALE.comment=雾起始距离的倍数。
+
+option.FOG_END_SCALE=结束缩放
+option.FOG_END_SCALE.comment=雾完全不透明时距离的倍数。
+
+option.CLOUD_DISTANCE=云层距离
+option.CLOUD_DISTANCE.comment=设为视频设置中的云层渲染距离，单位为区块（1.21.6+）。云层会在此距离内淡出。
+
+# ===== Hands =====
+
+screen.HANDS=手部与手持物品
+screen.HANDS.comment=针对第一人称手部与手持物品的渲染调整，以呈现更扁平的 DOS 精灵外观。
+
+option.HAND_FLATTEN=扁平视模精灵
+option.HAND_FLATTEN.comment=移除第一人称手部与手持物品的光照贴图阴影，使其更像绘制的 2D 精灵。
+value.HAND_FLATTEN.0=关
+value.HAND_FLATTEN.1=开
+
+option.HAND_DITHER=视模抖动
+option.HAND_DITHER.comment=应用于第一人称手部与手持物品的有序抖动强度，在调色板处理前生效。设为 0 则关闭。
+
+# ===== Add-ons =====
+
+screen.ADDONS=附加内容
+screen.ADDONS.comment=需要配套模组或资源包的可选功能。
+
+option.FLATTER_SIGNS=更扁平的告示牌
+option.FLATTER_SIGNS.comment=将直立和悬挂式告示牌以扁平精灵形式公告板化。§e需要 Flatter Signs 附加内容！
+value.FLATTER_SIGNS.0=关
+value.FLATTER_SIGNS.1=开
+
+option.BILLY_BOARDING=Billy Boarding
+option.BILLY_BOARDING.comment=将蛋糕、插蜡蛋糕、花盆、酿造台、铁砧、钟、仙人掌、作物、火焰和灵魂火以公告板形式呈现。§e需要 Billy Boarding 附加内容！
+value.BILLY_BOARDING.0=关
+value.BILLY_BOARDING.1=开
+
+option.GOLDEN_DAYS=Golden Days
+option.GOLDEN_DAYS.comment=将海草和悬挂的红树胎生苗绘制为 Golden Days 的交叉模型。§e需要 Golden Days 资源包！
+value.GOLDEN_DAYS.0=关
+value.GOLDEN_DAYS.1=开
+
+option.GOLDEN_DAYS_CANDLES=Golden Days 2D 蜡烛
+option.GOLDEN_DAYS_CANDLES.comment=将蜡烛以公告板形式呈现，每根蜡烛围绕各自的烛芯。§e需要启用了 Flat Candles 选项（Polytone）的 Golden Days！
+value.GOLDEN_DAYS_CANDLES.0=关
+value.GOLDEN_DAYS_CANDLES.1=开

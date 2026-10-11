@@ -377,9 +377,10 @@ function tint(s) {
    移动优先：默认写窄屏样式，再用 min-width 逐级增强。
    ============================================================ */
 
+/* 容器由全局 .shader-list 统一策略（max-width + gutter）接管，
+   消除窄视口 20px 轴线差与 min(calc) 负宽度塌陷 */
 .shader-list {
-  max-width: 1200px;
-  margin: 0 auto;
+  /* width/max-width/padding 由全局 style.css 的 .shader-list 规则提供 */
 }
 
 /* 视觉隐藏但保留给屏幕阅读器 */

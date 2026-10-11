@@ -3,157 +3,17 @@
   "generatedAt": "2026-10-11",
   "summary": {
     "total": 451,
-    "unchanged": 383,
-    "needsUpdate": 68,
+    "unchanged": 440,
+    "needsUpdate": 11,
     "delisted": 0,
     "failed": 0
   },
   "needsUpdate": [
     {
-      "id": "complementary-reimagined",
-      "projectId": "HVnmMxH1",
-      "currentVersion": "r5.9",
-      "latestVersion": "r5.9.3",
-      "versionType": "release"
-    },
-    {
-      "id": "complementary-unbound",
-      "projectId": "R6NEzAwj",
-      "currentVersion": "r5.9",
-      "latestVersion": "r5.9.3",
-      "versionType": "release"
-    },
-    {
-      "id": "bsl-shaders",
-      "projectId": "Q1vvjJYV",
-      "currentVersion": "10.1.5",
-      "latestVersion": "10.1.8",
-      "versionType": "release"
-    },
-    {
-      "id": "i-like-vanilla",
-      "projectId": "DoODk4HD",
-      "currentVersion": "v1.4.4",
-      "latestVersion": "v1.5.0b",
-      "versionType": "release"
-    },
-    {
-      "id": "noble",
-      "projectId": "sclYVqbt",
-      "currentVersion": "1.9.7",
-      "latestVersion": "1.9.9",
-      "versionType": "release"
-    },
-    {
-      "id": "lux-v1",
-      "projectId": "DiGQENDV",
-      "currentVersion": "1.2",
-      "latestVersion": "1.3",
-      "versionType": "release"
-    },
-    {
-      "id": "pegasus",
-      "projectId": "1BZ68dI8",
-      "currentVersion": "0.4",
-      "latestVersion": "0.8.1",
-      "versionType": "beta"
-    },
-    {
-      "id": "cursed-fog",
-      "projectId": "sAZ9WsJP",
-      "currentVersion": "1.0.9",
-      "latestVersion": "1.0.10",
-      "versionType": "release"
-    },
-    {
-      "id": "just-colored-lighting",
-      "projectId": "McUqXQ0J",
-      "currentVersion": "1.0.1",
-      "latestVersion": "1.0.2",
-      "versionType": "release"
-    },
-    {
-      "id": "sildurs-vibrant-shaders",
-      "projectId": "z8EjLYqN",
-      "currentVersion": "2.01",
-      "latestVersion": "2.02",
-      "versionType": "release"
-    },
-    {
-      "id": "reverie_shader",
-      "projectId": "frac8sks",
-      "currentVersion": "v0.9",
-      "latestVersion": "v1.0",
-      "versionType": "release"
-    },
-    {
-      "id": "opal-shaders",
-      "projectId": "w8N6pbsN",
-      "currentVersion": "v1.2.0",
-      "latestVersion": "v1.2.1",
-      "versionType": "beta"
-    },
-    {
       "id": "alpha-piscium",
       "projectId": "bvDpxd8c",
       "currentVersion": "1.10.0-Beta1",
       "latestVersion": "1.10.0",
-      "versionType": "release"
-    },
-    {
-      "id": "sildurs-enhanced-default-shaders",
-      "projectId": "2jvH1Rcl",
-      "currentVersion": "1.19",
-      "latestVersion": "1.20",
-      "versionType": "release"
-    },
-    {
-      "id": "truelight-fx-lite",
-      "projectId": "2euhaJq5",
-      "currentVersion": "v5.6.2",
-      "latestVersion": "v5.6.3",
-      "versionType": "release"
-    },
-    {
-      "id": "aurora-fantasy",
-      "projectId": "ZuJPfLHp",
-      "currentVersion": "5.4.2",
-      "latestVersion": "5.5.2",
-      "versionType": "release"
-    },
-    {
-      "id": "lumina-shader-event-horizon",
-      "projectId": "9gxVXUDr",
-      "currentVersion": "1.3.81",
-      "latestVersion": "1.3.9",
-      "versionType": "release"
-    },
-    {
-      "id": "artshade",
-      "projectId": "iZBu2k8u",
-      "currentVersion": "0.4",
-      "latestVersion": "0.4B",
-      "versionType": "release"
-    },
-    {
-      "id": "taa",
-      "projectId": "aE6ouBYi",
-      "currentVersion": "1.5",
-      "latestVersion": "1.5.1",
-      "versionType": "release"
-    },
-    {
-      "id": "sildurs-basic-shaders",
-      "projectId": "N1BIOvQX",
-      "currentVersion": "2.6",
-      "latestVersion": "2.7",
-      "versionType": "release"
-    },
-    {
-      "id": "zayko",
-      "projectId": "FFaD08BY",
-      "currentVersion": "8.0",
-      "latestVersion": "9.0",
       "versionType": "release"
     },
     {
@@ -164,48 +24,6 @@
       "versionType": "release"
     },
     {
-      "id": "lumina-shader-lite",
-      "projectId": "70O0661F",
-      "currentVersion": "1.2.7",
-      "latestVersion": "1.2.9",
-      "versionType": "release"
-    },
-    {
-      "id": "nwoofs-wynn-shader",
-      "projectId": "K8XDv70D",
-      "currentVersion": "0.1.13",
-      "latestVersion": "0.2.2",
-      "versionType": "beta"
-    },
-    {
-      "id": "psx-core",
-      "projectId": "424Wbdmo",
-      "currentVersion": "0.1.6",
-      "latestVersion": "0.1.7",
-      "versionType": "release"
-    },
-    {
-      "id": "bettervoxels",
-      "projectId": "TUoQmbZR",
-      "currentVersion": "1.7",
-      "latestVersion": "1.8",
-      "versionType": "release"
-    },
-    {
-      "id": "muuf-a.g.i-shaders",
-      "projectId": "Xng19eSP",
-      "currentVersion": "Rebuild-8",
-      "latestVersion": "Rebuild-9",
-      "versionType": "release"
-    },
-    {
-      "id": "baked-potato-shaders",
-      "projectId": "x1ZfjCSo",
-      "currentVersion": "1.0",
-      "latestVersion": "2.0",
-      "versionType": "release"
-    },
-    {
       "id": "velocity-shaders",
       "projectId": "qpA3SxtS",
       "currentVersion": "velocity-11",
@@ -213,31 +31,10 @@
       "versionType": "release"
     },
     {
-      "id": "nostalgia-ultra",
-      "projectId": "DbCgw2md",
-      "currentVersion": "Nostalgia_Ultra-V10",
-      "latestVersion": "16.2",
-      "versionType": "release"
-    },
-    {
       "id": "luster-shaders",
       "projectId": "GWRThy8E",
       "currentVersion": "v1.5",
       "latestVersion": "v5.4",
-      "versionType": "release"
-    },
-    {
-      "id": "unbound-visual-+",
-      "projectId": "jgYsD3FV",
-      "currentVersion": "PT-v9.7",
-      "latestVersion": "PT-v10.1",
-      "versionType": "release"
-    },
-    {
-      "id": "lux-brickcraft-edition",
-      "projectId": "in4K1Xj9",
-      "currentVersion": "be1.2",
-      "latestVersion": "be1.3",
       "versionType": "release"
     },
     {
@@ -255,108 +52,10 @@
       "versionType": "release"
     },
     {
-      "id": "vertalux",
-      "projectId": "ZroHvBI3",
-      "currentVersion": "5.5",
-      "latestVersion": "6.0",
-      "versionType": "release"
-    },
-    {
-      "id": "contour-shaders",
-      "projectId": "VUMmIDj7",
-      "currentVersion": "1.0.3",
-      "latestVersion": "1.0.4.2",
-      "versionType": "release"
-    },
-    {
-      "id": "hypershader",
-      "projectId": "xAWqMDMo",
-      "currentVersion": "1.2.0",
-      "latestVersion": "1.3.1",
-      "versionType": "release"
-    },
-    {
-      "id": "vividhorizon",
-      "projectId": "pmts4duk",
-      "currentVersion": "V5.2",
-      "latestVersion": "5.3.0",
-      "versionType": "release"
-    },
-    {
-      "id": "aurelia-shaders",
-      "projectId": "OHtWyVlA",
-      "currentVersion": "1.0.0",
-      "latestVersion": "1.2.0",
-      "versionType": "release"
-    },
-    {
-      "id": "essentials-shader",
-      "projectId": "lcVBKCo1",
-      "currentVersion": "v2.0.1-beta",
-      "latestVersion": "latest",
-      "versionType": "release"
-    },
-    {
-      "id": "aerial",
-      "projectId": "xhSIVWgz",
-      "currentVersion": "0.6",
-      "latestVersion": "1.1",
-      "versionType": "release"
-    },
-    {
-      "id": "solstice-shaderpack",
-      "projectId": "l2palkeG",
-      "currentVersion": "1.5",
-      "latestVersion": "2",
-      "versionType": "release"
-    },
-    {
-      "id": "mode-13h",
-      "projectId": "X5nQ5C2A",
-      "currentVersion": "1.0.3",
-      "latestVersion": "3.1.0",
-      "versionType": "release"
-    },
-    {
-      "id": "dap-shaders",
-      "projectId": "xDn0BoKd",
-      "currentVersion": "8.6",
-      "latestVersion": "10.0",
-      "versionType": "release"
-    },
-    {
-      "id": "pixel-shades",
-      "projectId": "ikGRnJq1",
-      "currentVersion": "2",
-      "latestVersion": "2.1",
-      "versionType": "release"
-    },
-    {
       "id": "light-shadow",
       "projectId": "pWeVnXDz",
       "currentVersion": "3.4",
       "latestVersion": "4.0.2",
-      "versionType": "release"
-    },
-    {
-      "id": "aetherstone-by-tark-projects",
-      "projectId": "9Rg9KKDK",
-      "currentVersion": "1.0.2",
-      "latestVersion": "1.2.1.B",
-      "versionType": "beta"
-    },
-    {
-      "id": "colorcone",
-      "projectId": "WLkdXnId",
-      "currentVersion": "1.0",
-      "latestVersion": "1.1",
-      "versionType": "release"
-    },
-    {
-      "id": "source-water",
-      "projectId": "W7QXpvVg",
-      "currentVersion": "1.1.1",
-      "latestVersion": "1.2.0",
       "versionType": "release"
     },
     {
@@ -367,80 +66,10 @@
       "versionType": "release"
     },
     {
-      "id": "zarya",
-      "projectId": "ZMDDXGl0",
-      "currentVersion": "0.1.1-lpv-fix",
-      "latestVersion": "1.1.0",
-      "versionType": "release"
-    },
-    {
-      "id": "eddyveil",
-      "projectId": "JH3s1XBW",
-      "currentVersion": "6.15.0-MacOS",
-      "latestVersion": "8.1.0-MacOS",
-      "versionType": "release"
-    },
-    {
       "id": "nexus-unbound",
       "projectId": "qxUeQ92X",
       "currentVersion": "1.2.2",
       "latestVersion": "2.0.0",
-      "versionType": "release"
-    },
-    {
-      "id": "cinderframe",
-      "projectId": "p2W8jI7f",
-      "currentVersion": "1.0",
-      "latestVersion": "3.3",
-      "versionType": "release"
-    },
-    {
-      "id": "npc-shaders",
-      "projectId": "BDWacDO2",
-      "currentVersion": "1.2",
-      "latestVersion": "1.3",
-      "versionType": "release"
-    },
-    {
-      "id": "embervoid-shader",
-      "projectId": "yEtjSPos",
-      "currentVersion": "0.5.2",
-      "latestVersion": "0.5.4",
-      "versionType": "beta"
-    },
-    {
-      "id": "goldelion-shaders",
-      "projectId": "Oagc9O98",
-      "currentVersion": "Ready_v5",
-      "latestVersion": "Ready_v7",
-      "versionType": "release"
-    },
-    {
-      "id": "silva-pro",
-      "projectId": "PzyOxx1v",
-      "currentVersion": "v0.2.5-alpha",
-      "latestVersion": "1.0.0",
-      "versionType": "release"
-    },
-    {
-      "id": "incredible-graphics",
-      "projectId": "ioPkf1jI",
-      "currentVersion": "1.2.1",
-      "latestVersion": "1.2.2",
-      "versionType": "release"
-    },
-    {
-      "id": "bcu-shades",
-      "projectId": "TxpEaMDk",
-      "currentVersion": "1.0.5",
-      "latestVersion": "1.0.7",
-      "versionType": "release"
-    },
-    {
-      "id": "robs-vanilla-reshaded",
-      "projectId": "4055otpg",
-      "currentVersion": "1.0.1",
-      "latestVersion": "1.0.5",
       "versionType": "release"
     },
     {
@@ -451,39 +80,11 @@
       "versionType": "release"
     },
     {
-      "id": "the-beat-of-a-heart",
-      "projectId": "QOgLibNW",
-      "currentVersion": "V8",
-      "latestVersion": "V9",
-      "versionType": "release"
-    },
-    {
       "id": "snowhard-shader",
       "projectId": "b6eOhxbm",
       "currentVersion": "b0.9.6",
-      "latestVersion": "r1.0.6",
+      "latestVersion": "r1.0.8",
       "versionType": "release"
-    },
-    {
-      "id": "bcr-shades",
-      "projectId": "NRNJNS9V",
-      "currentVersion": "1.0.0",
-      "latestVersion": "1.0.1",
-      "versionType": "release"
-    },
-    {
-      "id": "eddyveil-shaders-windows",
-      "projectId": "UqY4RQhr",
-      "currentVersion": "6.15.0-Windows",
-      "latestVersion": "8.1.0-Windows",
-      "versionType": "release"
-    },
-    {
-      "id": "prismatic-shaders",
-      "projectId": "SxpB99P2",
-      "currentVersion": "1.0.0",
-      "latestVersion": "2.0.0-alpha",
-      "versionType": "alpha"
     }
   ],
   "delisted": [],

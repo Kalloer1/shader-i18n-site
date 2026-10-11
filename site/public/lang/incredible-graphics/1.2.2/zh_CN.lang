@@ -1,0 +1,21 @@
+#shaders/lang/zh_CN.lang
+# Incredible Graphics v1.2.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：IncredibleGraphics-v1.2.2.zip 的 shaders/lang/en_us.lang
+profile.PERFORMANCE=性能
+profile.BALANCED=平衡
+profile.ULTRA=超高
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.SHADOW_SOFTNESS=阴影柔和度
+option.sunPathRotation=太阳路径倾斜
+option.GODRAYS=丁达尔光效
+option.GODRAY_SAMPLES=丁达尔效应质量
+option.GODRAY_STRENGTH=丁达尔效应强度
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.WAVING_PLANTS=植物摆动
+option.WAVING_LEAVES=摇摆树叶
+option.WAVE_HEIGHT=水面波浪高度
+option.EXPOSURE=曝光
+option.SATURATION=饱和度
+option.VIGNETTE=暗角

@@ -1,0 +1,9 @@
+#shaders/lang/zh_CN.lang
+# TAA Project v1.5.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：TAA Project.zip 的 shaders/lang/en_US.lang
+option.SHARPENING=锐化
+value.SHARPENING.0=关
+value.SHARPENING.1=反锐化遮罩
+value.SHARPENING.2=CAS（对比度自适应锐化）
+
+option.CAS_AMOUNT=CAS 强度

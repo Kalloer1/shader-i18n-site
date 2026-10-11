@@ -20,6 +20,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "r5.9.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/complementary-reimagined/r5.9.3/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "r5.9",
           "langVersion": "1.0.0",
           "file": "/lang/complementary-reimagined/r5.9/zh_CN.lang",
@@ -51,6 +62,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "r5.9.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/complementary-unbound/r5.9.3/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "r5.9",
           "langVersion": "1.0.0",
           "file": "/lang/complementary-unbound/r5.9/zh_CN.lang",
@@ -70,6 +92,17 @@
         "projectId": "Q1vvjJYV"
       },
       "langVersions": [
+        {
+          "shaderVersion": "10.1.8",
+          "langVersion": "1.0.0",
+          "file": "/lang/bsl-shaders/10.1.8/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "10.1.5",
           "langVersion": "1.0.0",
@@ -504,6 +537,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "v1.5.0b",
+          "langVersion": "1.0.0",
+          "file": "/lang/i-like-vanilla/v1.5.0b/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "v1.4.4",
           "langVersion": "1.0.0",
           "file": "/lang/i-like-vanilla/v1.4.4/zh_CN.lang",
@@ -535,6 +579,17 @@
         "projectId": "sclYVqbt"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.9.9",
+          "langVersion": "1.0.0",
+          "file": "/lang/noble/1.9.9/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.9.7",
           "langVersion": "1.0.0",
@@ -816,6 +871,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/lux-v1/1.3/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.2",
           "langVersion": "1.0.0",
           "file": "/lang/lux-v1/1.2/zh_CN.lang",
@@ -1005,6 +1071,17 @@
         "projectId": "1BZ68dI8"
       },
       "langVersions": [
+        {
+          "shaderVersion": "0.8.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/pegasus/0.8.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "0.4",
           "langVersion": "1.0.0",
@@ -1198,6 +1275,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.0.10",
+          "langVersion": "1.0.0",
+          "file": "/lang/cursed-fog/1.0.10/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.0.9",
           "langVersion": "1.0.0",
           "file": "/lang/cursed-fog/1.0.9/zh_CN.lang",
@@ -1261,6 +1349,17 @@
         "projectId": "McUqXQ0J"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.0.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/just-colored-lighting/1.0.2/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.0.1",
           "langVersion": "1.0.0",
@@ -1486,6 +1585,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "2.02",
+          "langVersion": "1.0.0",
+          "file": "/lang/sildurs-vibrant-shaders/2.02/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "2.01",
           "langVersion": "1.0.0",
           "file": "/lang/sildurs-vibrant-shaders/2.01/zh_CN.lang",
@@ -1646,6 +1756,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "v1.2.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/opal-shaders/v1.2.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "v1.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/opal-shaders/v1.2.0/zh_CN.lang",
@@ -1741,6 +1862,17 @@
         "projectId": "frac8sks"
       },
       "langVersions": [
+        {
+          "shaderVersion": "v1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/reverie_shader/v1.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "v0.9",
           "langVersion": "1.0.0",
@@ -2318,6 +2450,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.20",
+          "langVersion": "1.0.0",
+          "file": "/lang/sildurs-enhanced-default-shaders/1.20/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.19",
           "langVersion": "1.0.0",
           "file": "/lang/sildurs-enhanced-default-shaders/1.19/zh_CN.lang",
@@ -2381,6 +2524,17 @@
         "projectId": "ZuJPfLHp"
       },
       "langVersions": [
+        {
+          "shaderVersion": "5.5.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/aurora-fantasy/5.5.2/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "5.4.2",
           "langVersion": "1.0.0",
@@ -2477,6 +2631,17 @@
         "projectId": "2euhaJq5"
       },
       "langVersions": [
+        {
+          "shaderVersion": "v5.6.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/truelight-fx-lite/v5.6.3/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "v5.6.2",
           "langVersion": "1.0.0",
@@ -2669,6 +2834,17 @@
         "projectId": "9gxVXUDr"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.3.9",
+          "langVersion": "1.0.0",
+          "file": "/lang/lumina-shader-event-horizon/1.3.9/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.3.81",
           "langVersion": "1.0.0",
@@ -2958,6 +3134,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "0.4B",
+          "langVersion": "1.0.0",
+          "file": "/lang/artshade/0.4B/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "0.4",
           "langVersion": "1.0.0",
           "file": "/lang/artshade/0.4/zh_CN.lang",
@@ -3053,6 +3240,17 @@
         "projectId": "aE6ouBYi"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.5.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/taa/1.5.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.5",
           "langVersion": "1.0.0",
@@ -3214,6 +3412,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "9.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/zayko/9.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "8.0",
           "langVersion": "1.0.0",
           "file": "/lang/zayko/8.0/zh_CN.lang",
@@ -3309,6 +3518,17 @@
         "projectId": "N1BIOvQX"
       },
       "langVersions": [
+        {
+          "shaderVersion": "2.7",
+          "langVersion": "1.0.0",
+          "file": "/lang/sildurs-basic-shaders/2.7/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "2.6",
           "langVersion": "1.0.0",
@@ -3437,6 +3657,17 @@
         "projectId": "K8XDv70D"
       },
       "langVersions": [
+        {
+          "shaderVersion": "0.2.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/nwoofs-wynn-shader/0.2.2/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "0.1.13",
           "langVersion": "1.0.0",
@@ -3597,6 +3828,17 @@
         "projectId": "70O0661F"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.2.9",
+          "langVersion": "1.0.0",
+          "file": "/lang/lumina-shader-lite/1.2.9/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.2.7",
           "langVersion": "1.0.0",
@@ -3853,6 +4095,17 @@
         "projectId": "424Wbdmo"
       },
       "langVersions": [
+        {
+          "shaderVersion": "0.1.7",
+          "langVersion": "1.0.0",
+          "file": "/lang/psx-core/0.1.7/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "0.1.6",
           "langVersion": "1.0.0",
@@ -4173,6 +4426,17 @@
         "projectId": "Xng19eSP"
       },
       "langVersions": [
+        {
+          "shaderVersion": "Rebuild-9",
+          "langVersion": "1.0.0",
+          "file": "/lang/muuf-a.g.i-shaders/Rebuild-9/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "Rebuild-8",
           "langVersion": "1.0.0",
@@ -4525,6 +4789,17 @@
         "projectId": "TUoQmbZR"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.8",
+          "langVersion": "1.0.0",
+          "file": "/lang/bettervoxels/1.8/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.7",
           "langVersion": "1.0.0",
@@ -5070,6 +5345,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "16.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/nostalgia-ultra/16.2/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "Nostalgia_Ultra-V10",
           "langVersion": "1.0.0",
           "file": "/lang/nostalgia-ultra/Nostalgia_Ultra-V10/zh_CN.lang",
@@ -5261,6 +5547,17 @@
         "projectId": "x1ZfjCSo"
       },
       "langVersions": [
+        {
+          "shaderVersion": "2.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/baked-potato-shaders/2.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
@@ -5870,6 +6167,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "PT-v10.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/unbound-visual-+/PT-v10.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "PT-v9.7",
           "langVersion": "1.0.0",
           "file": "/lang/unbound-visual-+/PT-v9.7/zh_CN.lang",
@@ -5933,6 +6241,17 @@
         "projectId": "in4K1Xj9"
       },
       "langVersions": [
+        {
+          "shaderVersion": "be1.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/lux-brickcraft-edition/be1.3/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "be1.2",
           "langVersion": "1.0.0",
@@ -7022,6 +7341,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.0.4.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/contour-shaders/1.0.4.2/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.0.3",
           "langVersion": "1.0.0",
           "file": "/lang/contour-shaders/1.0.3/zh_CN.lang",
@@ -7053,6 +7383,17 @@
         "projectId": "ZroHvBI3"
       },
       "langVersions": [
+        {
+          "shaderVersion": "6.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/vertalux/6.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "5.5",
           "langVersion": "1.0.0",
@@ -7117,6 +7458,17 @@
         "projectId": "xAWqMDMo"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.3.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/hypershader/1.3.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.2.0",
           "langVersion": "1.0.0",
@@ -7213,6 +7565,17 @@
         "projectId": "lcVBKCo1"
       },
       "langVersions": [
+        {
+          "shaderVersion": "latest",
+          "langVersion": "1.0.0",
+          "file": "/lang/essentials-shader/latest/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "v2.0.1-beta",
           "langVersion": "1.0.0",
@@ -7758,6 +8121,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "3.1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/mode-13h/3.1.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.0.3",
           "langVersion": "1.0.0",
           "file": "/lang/mode-13h/1.0.3/zh_CN.lang",
@@ -7853,6 +8227,17 @@
         "projectId": "xhSIVWgz"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/aerial/1.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "0.6",
           "langVersion": "1.0.0",
@@ -7950,6 +8335,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "2",
+          "langVersion": "1.0.0",
+          "file": "/lang/solstice-shaderpack/2/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.5",
           "langVersion": "1.0.0",
           "file": "/lang/solstice-shaderpack/1.5/zh_CN.lang",
@@ -7981,6 +8377,17 @@
         "projectId": "xDn0BoKd"
       },
       "langVersions": [
+        {
+          "shaderVersion": "10.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/dap-shaders/10.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "8.6",
           "langVersion": "1.0.0",
@@ -8366,6 +8773,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "5.3.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/vividhorizon/5.3.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "V5.2",
           "langVersion": "1.0.0",
           "file": "/lang/vividhorizon/V5.2/zh_CN.lang",
@@ -8462,6 +8880,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "2.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/pixel-shades/2.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "2",
           "langVersion": "1.0.0",
           "file": "/lang/pixel-shades/2/zh_CN.lang",
@@ -8525,6 +8954,17 @@
         "projectId": "WLkdXnId"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/colorcone/1.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
@@ -8653,6 +9093,17 @@
         "projectId": "OHtWyVlA"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.2.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/aurelia-shaders/1.2.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
@@ -9101,6 +9552,17 @@
         "projectId": "WTBaGxsU"
       },
       "langVersions": [
+        {
+          "shaderVersion": "4",
+          "langVersion": "1.0.0",
+          "file": "/lang/sublime-visuals/4/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "3",
           "langVersion": "1.0.0",
@@ -10574,6 +11036,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.2.1.B",
+          "langVersion": "1.0.0",
+          "file": "/lang/aetherstone-by-tark-projects/1.2.1.B/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.0.2",
           "langVersion": "1.0.0",
           "file": "/lang/aetherstone-by-tark-projects/1.0.2/zh_CN.lang",
@@ -10733,6 +11206,17 @@
         "projectId": "JH3s1XBW"
       },
       "langVersions": [
+        {
+          "shaderVersion": "8.1.0-MacOS",
+          "langVersion": "1.0.0",
+          "file": "/lang/eddyveil/8.1.0-MacOS/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "6.15.0-MacOS",
           "langVersion": "1.0.0",
@@ -11086,6 +11570,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "0.5.4",
+          "langVersion": "1.0.0",
+          "file": "/lang/embervoid-shader/0.5.4/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（longcat-2.5-preview-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "0.5.2",
           "langVersion": "1.0.0",
           "file": "/lang/embervoid-shader/0.5.2/zh_CN.lang",
@@ -11277,6 +11772,17 @@
         "projectId": "BDWacDO2"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/npc-shaders/1.3/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.2",
           "langVersion": "1.0.0",
@@ -11534,6 +12040,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/silva-pro/1.0.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "v0.2.5-alpha",
           "langVersion": "1.0.0",
           "file": "/lang/silva-pro/v0.2.5-alpha/zh_CN.lang",
@@ -11630,6 +12147,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.2.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/incredible-graphics/1.2.2/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.2.1",
           "langVersion": "1.0.0",
           "file": "/lang/incredible-graphics/1.2.1/zh_CN.lang",
@@ -11693,6 +12221,17 @@
         "projectId": "W7QXpvVg"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.2.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/source-water/1.2.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.1.1",
           "langVersion": "1.0.0",
@@ -11949,6 +12488,17 @@
         "projectId": "ZMDDXGl0"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/zarya/1.1.0/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "0.1.1-lpv-fix",
           "langVersion": "1.0.0",
@@ -12878,6 +13428,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "V9",
+          "langVersion": "1.0.0",
+          "file": "/lang/the-beat-of-a-heart/V9/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "V8",
           "langVersion": "1.0.0",
           "file": "/lang/the-beat-of-a-heart/V8/zh_CN.lang",
@@ -12909,6 +13470,17 @@
         "projectId": "TxpEaMDk"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.0.7",
+          "langVersion": "1.0.0",
+          "file": "/lang/bcu-shades/1.0.7/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.0.5",
           "langVersion": "1.0.0",
@@ -13934,6 +14506,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "1.0.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/bcr-shades/1.0.1/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/bcr-shades/1.0.0/zh_CN.lang",
@@ -14094,6 +14677,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "3.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/cinderframe/3.3/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/cinderframe/1.0/zh_CN.lang",
@@ -14190,6 +14784,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "8.1.0-Windows",
+          "langVersion": "1.0.0",
+          "file": "/lang/eddyveil-shaders-windows/8.1.0-Windows/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "6.15.0-Windows",
           "langVersion": "1.0.0",
           "file": "/lang/eddyveil-shaders-windows/6.15.0-Windows/zh_CN.lang",
@@ -14253,6 +14858,17 @@
         "projectId": "4055otpg"
       },
       "langVersions": [
+        {
+          "shaderVersion": "1.0.5",
+          "langVersion": "1.0.0",
+          "file": "/lang/robs-vanilla-reshaded/1.0.5/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "1.0.1",
           "langVersion": "1.0.0",
@@ -14318,6 +14934,17 @@
       },
       "langVersions": [
         {
+          "shaderVersion": "2.0.0-alpha",
+          "langVersion": "1.0.0",
+          "file": "/lang/prismatic-shaders/2.0.0-alpha/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
+        {
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/prismatic-shaders/1.0.0/zh_CN.lang",
@@ -14381,6 +15008,17 @@
         "projectId": "Oagc9O98"
       },
       "langVersions": [
+        {
+          "shaderVersion": "Ready_v7",
+          "langVersion": "1.0.0",
+          "file": "/lang/goldelion-shaders/Ready_v7/zh_CN.lang",
+          "quark": "",
+          "baidu": "",
+          "updatedAt": "2026-10-11",
+          "contributors": [
+            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
+          ]
+        },
         {
           "shaderVersion": "Ready_v5",
           "langVersion": "1.0.0",

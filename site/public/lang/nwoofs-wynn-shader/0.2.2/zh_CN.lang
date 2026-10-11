@@ -1,0 +1,794 @@
+#shaders/lang/zh_CN.lang
+# Nwoof's Wynn Shader v0.2.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：§6§l§k~§r §9§lNwoof's §a§lWynn §9§lShader §4Beta§7-§40§7.§42§7.§42 §6§l§k~.zip 的 shaders/lang/en_us.lang
+option.ENTITY_SHADOWS=§e实体阴影
+option.ENTITY_SHADOWS.comment=§e对实体应用阴影贴图。§4§l在有大量生物的区域会显著影响 CPU 和 GPU 性能
+value.ENTITY_SHADOWS.false=§e关闭
+value.ENTITY_SHADOWS.true=§4§k§l§oa §4§l§o开启 §4§k§l§oa
+
+option.SHADOWS_ENABLED=阴影
+option.SHADOWS_ENABLED.comment=§e启用阴影。关闭后会显著提升 GPU 性能§7，§e但画面效果会差很多
+
+option.SHADOW_RES=阴影分辨率
+option.SHADOW_RES.comment=§e阴影贴图质量。§4§l会显著影响显存占用
+value.SHADOW_RES.128=128像素
+value.SHADOW_RES.256=256px
+value.SHADOW_RES.512=512px
+value.SHADOW_RES.1024=1024px
+value.SHADOW_RES.2048=2048px
+value.SHADOW_RES.4096=§a默认
+value.SHADOW_RES.8192=8192px
+
+option.SHADOW_DIST=阴影距离
+option.SHADOW_DIST.comment=§e阴影可渲染的最远距离。§4§l会显著影响 GPU 性能
+value.SHADOW_DIST.4=区块
+value.SHADOW_DIST.5=区块
+value.SHADOW_DIST.6=区块
+value.SHADOW_DIST.7=区块
+value.SHADOW_DIST.8=区块
+value.SHADOW_DIST.9=区块
+value.SHADOW_DIST.10=区块
+value.SHADOW_DIST.11=区块
+value.SHADOW_DIST.12=区块
+value.SHADOW_DIST.13=区块
+value.SHADOW_DIST.14=区块
+value.SHADOW_DIST.15=区块
+value.SHADOW_DIST.16=区块
+value.SHADOW_DIST.17=区块
+value.SHADOW_DIST.18=区块
+value.SHADOW_DIST.19=区块
+value.SHADOW_DIST.20=区块
+value.SHADOW_DIST.21=区块
+value.SHADOW_DIST.22=区块
+value.SHADOW_DIST.23=区块
+value.SHADOW_DIST.24=区块
+value.SHADOW_DIST.25=区块
+value.SHADOW_DIST.26=区块
+value.SHADOW_DIST.27=区块
+value.SHADOW_DIST.28=区块
+value.SHADOW_DIST.29=区块
+value.SHADOW_DIST.30=区块
+value.SHADOW_DIST.31=区块
+value.SHADOW_DIST.32=区块
+
+option.VARIABLE_PENUMBRA_SHADOWS=可变半影阴影
+option.VARIABLE_PENUMBRA_SHADOWS.comment=§e启用后，阴影会随距离光源越远而越锐利
+
+
+option.DAY_R=§c红色
+option.DAY_G=绿
+option.DAY_B=色
+option.DAY_I=强度
+
+option.NIGHT_R=§c红色
+option.NIGHT_G=绿
+option.NIGHT_B=色
+option.NIGHT_I=强度
+
+option.SUNSET_R=§c红色
+option.SUNSET_G=绿
+option.SUNSET_B=色
+option.SUNSET_I=强度
+
+option.SKY_DAY_A_R=地平线红
+option.SKY_DAY_A_G=地平线绿
+option.SKY_DAY_A_B=地平线蓝
+
+option.SKY_DAY_B_R=§c平流层红色
+option.SKY_DAY_B_G=§a平流层绿色
+option.SKY_DAY_B_B=§9平流层蓝色
+
+option.SKY_NIGHT_A_R=地平线红
+option.SKY_NIGHT_A_G=地平线绿
+option.SKY_NIGHT_A_B=地平线蓝
+
+option.SKY_NIGHT_B_R=§c平流层红色
+option.SKY_NIGHT_B_G=§a平流层绿色
+option.SKY_NIGHT_B_B=§9平流层蓝色
+
+option.SKY_SUNSET_A_R=地平线红
+option.SKY_SUNSET_A_G=地平线绿
+option.SKY_SUNSET_A_B=地平线蓝
+
+option.SKY_SUNSET_B_R=§c平流层红色
+option.SKY_SUNSET_B_G=§a平流层绿色
+option.SKY_SUNSET_B_B=§9平流层蓝色
+
+option.FOG_STYLE=§f雾样式
+value.FOG_STYLE.0=§c关闭
+value.FOG_STYLE.1=§a基础
+value.FOG_STYLE.2=§6精美
+
+option.FOG_DAY_R=§c红色
+option.FOG_DAY_G=绿
+option.FOG_DAY_B=色
+option.FOG_DAY_DIST_MIN=§7最小距离
+option.FOG_DAY_DIST_MAX=§7最大距离
+option.DH_FOG_DAY_DIST_MAX=§7Distant Horizons 远裁剪面
+option.FOG_DAY_INTENSITY=强度
+option.FOG_DAY_CURVE=§e曲线
+option.FOG_DAY_DENSITY=§b密度
+
+option.FOG_NIGHT_R=§c红色
+option.FOG_NIGHT_G=绿
+option.FOG_NIGHT_B=色
+option.FOG_NIGHT_DIST_MIN=§7最小距离
+option.FOG_NIGHT_DIST_MAX=§7最大距离
+option.DH_FOG_NIGHT_DIST_MAX=§7Distant Horizons 远裁剪面
+option.FOG_NIGHT_INTENSITY=强度
+option.FOG_NIGHT_CURVE=§e曲线
+option.FOG_NIGHT_DENSITY=§b密度
+
+option.FOG_SUNSET_R=§c红色
+option.FOG_SUNSET_G=绿
+option.FOG_SUNSET_B=色
+option.FOG_SUNSET_DIST_MIN=§7最小距离
+option.FOG_SUNSET_DIST_MAX=§7最大距离
+option.DH_FOG_SUNSET_DIST_MAX=§7Distant Horizons 远裁剪面
+option.FOG_SUNSET_INTENSITY=强度
+option.FOG_SUNSET_CURVE=§e曲线
+option.FOG_SUNSET_DENSITY=§b密度
+
+option.FOG_SE_R=§c红色
+option.FOG_SE_G=绿
+option.FOG_SE_B=色
+option.FOG_SE_DIST_MIN=§7最小距离
+option.FOG_SE_DIST_MAX=§7最大距离
+option.DH_FOG_SE_DIST_MAX=§7Distant Horizons 远裁剪面
+option.FOG_SE_INTENSITY=强度
+option.FOG_SE_CURVE=§e曲线
+option.FOG_SE_DENSITY=§b密度
+
+option.FOG_CORRUPTION_R=§c红色
+option.FOG_CORRUPTION_G=绿
+option.FOG_CORRUPTION_B=色
+option.FOG_CORRUPTION_DIST_MIN=§7最小距离
+option.FOG_CORRUPTION_DIST_MAX=§7最大距离
+option.DH_FOG_CORRUPTION_DIST_MAX=§7Distant Horizons 远裁剪面
+option.FOG_CORRUPTION_INTENSITY=强度
+option.FOG_CORRUPTION_CURVE=§e曲线
+option.FOG_CORRUPTION_DENSITY=§b密度
+
+option.FOG_DAY_RAIN_R=§c红色
+option.FOG_DAY_RAIN_G=绿
+option.FOG_DAY_RAIN_B=色
+option.FOG_DAY_RAIN_DIST_MIN=§7最小距离
+option.FOG_DAY_RAIN_DIST_MAX=§7最大距离
+option.DH_FOG_DAY_RAIN_DIST_MAX=§7Distant Horizons 远裁剪面
+option.FOG_DAY_RAIN_INTENSITY=强度
+option.FOG_DAY_RAIN_CURVE=§e曲线
+option.FOG_DAY_RAIN_DENSITY=§b密度
+
+option.FOG_NIGHT_RAIN_R=§c红色
+option.FOG_NIGHT_RAIN_G=绿
+option.FOG_NIGHT_RAIN_B=色
+option.FOG_NIGHT_RAIN_DIST_MIN=§7最小距离
+option.FOG_NIGHT_RAIN_DIST_MAX=§7最大距离
+option.DH_FOG_NIGHT_RAIN_DIST_MAX=§7Distant Horizons 远平面
+option.FOG_NIGHT_RAIN_INTENSITY=强度
+option.FOG_NIGHT_RAIN_CURVE=§e曲线
+option.FOG_NIGHT_RAIN_DENSITY=§b密度
+
+option.FOG_SUNSET_RAIN_R=§c红色
+option.FOG_SUNSET_RAIN_G=绿
+option.FOG_SUNSET_RAIN_B=色
+option.FOG_SUNSET_RAIN_DIST_MIN=§7最小距离
+option.FOG_SUNSET_RAIN_DIST_MAX=§7最大距离
+option.DH_FOG_SUNSET_RAIN_DIST_MAX=§7Distant Horizons 远平面
+option.FOG_SUNSET_RAIN_INTENSITY=强度
+option.FOG_SUNSET_RAIN_CURVE=§e曲线
+option.FOG_SUNSET_RAIN_DENSITY=§b密度
+
+option.FOG_CAVE_R=§c红色
+option.FOG_CAVE_G=绿
+option.FOG_CAVE_B=色
+option.FOG_CAVE_DIST_MIN=§7最小距离
+option.FOG_CAVE_DIST_MAX=§7最大距离
+option.DH_FOG_CAVE_DIST_MAX=§7Distant Horizons 远平面
+option.FOG_CAVE_INTENSITY=强度
+option.FOG_CAVE_CURVE=§e曲线
+option.FOG_CAVE_DENSITY=§b密度
+
+option.FOG_MISTWOODS_R=§c红色
+option.FOG_MISTWOODS_G=绿
+option.FOG_MISTWOODS_B=色
+option.FOG_MISTWOODS_DIST_MIN=§7最小距离
+option.FOG_MISTWOODS_DIST_MAX=§7最大距离
+option.DH_FOG_MISTWOODS_DIST_MAX=§7Distant Horizons 远平面
+option.FOG_MISTWOODS_INTENSITY=强度
+option.FOG_MISTWOODS_CURVE=§e曲线
+option.FOG_MISTWOODS_DENSITY=§b密度
+
+option.NATURAL_ROUGHNESS=§a自然粗糙度
+
+option.NATURAL_SPECULAR=§a自然高光强度
+
+option.STONE_ROUGHNESS=§7石头粗糙度
+
+option.STONE_SPECULAR=§7石头高光强度
+
+option.SMOOTH_ROUGHNESS=§e平滑粗糙度
+
+option.SMOOTH_SPECULAR=§e平滑高光强度
+
+option.METAL_ROUGHNESS=§6金属粗糙度
+
+option.METAL_SPECULAR=§6金属高光强度
+
+option.MIN_LIGHT=§a最低亮度
+value.MIN_LIGHT.0.0f=暗
+
+option.SE_MIN_LIGHT=§a最低亮度
+value.SE_MIN_LIGHT.0.0f=暗
+
+option.SE_MAX_LIGHT=§b最大亮度
+value.SE_MAX_LIGHT.4.1f=无限
+
+option.MIN_SE_SATURATION=§c最小饱和度
+value.MIN_SE_SATURATION.1.0=§a默认
+option.MIN_SE_SATURATION.comment=§9在低亮度下限制 Silent Expanse 的去饱和度
+
+option.MAX_LIGHT=§b最大亮度
+value.MAX_LIGHT.4.1f=无限
+
+option.MIN_FOLIAGE_LIGHT=§b最小亮度 §7(§b植被§7)
+value..MIN_FOLIAGE_LIGHT.0.0f=暗
+
+option.SHADOW_BRIGHTNESS=阴影亮度
+value.SHADOW_BRIGHTNESS.0.0f=暗
+
+option.BLOOM=§e泛光
+option.BLOOM.comment=§9使光源向周围物体溢出。 §2对 GPU 性能影响较低至中等
+
+option.BLOOM_QUALITY=质量
+option.BLOOM_QUALITY.comment=§9泛光效果的采样数。 §e§l对 GPU 性能影响中等
+suffix.BLOOM_QUALITY=采样数
+
+option.BLOOM_INTENSITY=强度
+option.BLOOM_INTENSITY.comment=§9泛光效果的亮度
+
+option.BLOOM_THRESHOLD=阈值
+option.BLOOM_THRESHOLD.comment=§9调节启用§7/§9禁用泛光的光照等级
+
+option.WATER_REFRACTION=水折射
+option.WATER_REFRACTION.comment = §6Distorts light as it passes through water
+
+option.WATER_FOAM=水面泡沫
+option.WATER_FOAM.comment = §6Enables foam at the edges of water
+
+option.SSR=屏幕空间反射（SSR）
+option.SSR.comment = §eSimulates the curvature of Earth
+value.SSR.0=§c关闭
+value.SSR.1=§f开启
+value.SSR.2=仅水体
+value.SSR.3=§f仅金属
+
+option.WORLD_CURVATURE=世界曲率
+option.SSR.comment = §eSimulates the curvature of Earth
+
+option.POM=§9视差遮蔽映射 §7(§9POM§7)
+value.POM.false=§c关闭
+value.POM.true=§a开启
+option.POM.comment=§e为方块添加动态深度
+
+option.WATER_WAVES=水面波浪
+option.WATER_WAVES.comment=§6为水面启用 3§7-§6维波浪
+
+option.WAVE_SPEED_X=§9波浪速度 (X)
+option.WAVE_SPEED_X.comment=§9调节水面波浪的宽度
+
+option.WAVE_SPEED_Y=§9波浪速度 (Y)
+option.WAVE_SPEED_Y.comment=§9调节水面波浪在 Y 轴上的速度
+
+option.WAVE_DENSITY_X=§9波浪密度长度
+option.WAVE_SPEED_X.comment=§9调节水面波浪的宽度
+
+option.WAVE_DENSITY_Y=§9波浪密度宽度
+option.WAVE_SPEED_X.comment=§9调节水面波浪的宽度
+
+option.WAVE_AMPLITUDE=波浪高度
+option.WAVE_AMPLITUDE.comment=调节水面波浪的高度
+
+option.TILTED_RAIN=§9倾斜雨
+option.TILTED_RAIN.comment=调节雨的倾斜角度以增强真实感
+
+option.SUN_STYLE=太阳样式
+option.SUN_STYLE.comment=在原版太阳与写实太阳之间切换
+value.SUN_STYLE.0=原版
+value.SUN_STYLE.1=§a写实
+
+option.SUN_ANGLE=太阳角度
+option.SUN_ANGLE.comment=为太阳位置添加角度以提升真实感
+value.SUN_ANGLE.0=原版
+value.SUN_ANGLE.1=§e倾斜
+
+option.SHADER_CLOUDS=云
+
+option.CLOUD_STYLE =体积云
+value.CLOUD_STYLE.0 = §cOff
+value.CLOUD_STYLE.1 = §aOn
+option.CLOUD_STYLE.comment = §9Enables 3-Dimensional Volumetric Clouds. §6§lMedium-High Performance Impact
+
+option.BKG_CLOUDS = §fBackground Clouds
+value.BKG_CLOUDS.0 = §cOff
+value.BKG_CLOUDS.1 = §aOn
+option.BKG_CLOUDS.comment = §9Enables distant clouds in the background. §aLow Performance Impact
+
+option.CLOUD_FOG = §fDistant Fog
+option.CLOUD_FOG.comment = §9Distant Fog amount on Volumetric Clouds.
+
+option.CLOUD_SAMPLES = §fVolumetric Cloud Samples
+option.CLOUD_SAMPLES.comment = §9The sample rate for Volumetric Cloud height. §e§lMedium Performance Impact
+
+option.CLOUD_RESOLUTION_REDUCTION = §fVolumetric Cloud Upscaling
+option.CLOUD_RESOLUTION_REDUCTION.comment = §9Adjusts the base resolution for cloud upscaling§7, §9relative to screen
+
+option.CLOUD_DENSITY = §fVolumetric Cloud Density
+
+option.CLOUD_DENSITY_RAIN = §fVolumetric Cloud Density §7(§aRainy§7)
+
+option.CLOUD_SPEED = §fVolumetric Cloud Speed
+
+option.CLOUD_SHADING_SAMPLES = §fVolumetric Cloud Light Samples
+option.CLOUD_SHADING_SAMPLES.comment = §9Sample count for lighting on Volumetric Clouds. §4§lSevere GPU/CPU Performance Impact + VRAM Usage Increase
+
+option.CLOUD_SHADING_DISTANCE = §fVolumetric Cloud Light Distance
+
+option.PATH_TRACING_GI=路径追踪
+value.PATH_TRACING_GI.0=§e关闭
+value.PATH_TRACING_GI.1=§4§k§l§oa §4§l§o开启 §4§k§l§oa
+option.PATH_TRACING_GI.comment=§9启用路径追踪光照。 §4§l严重影响 GPU/CPU 性能 + 显存占用增加
+
+option.WAVING_FOLIAGE=摇曳植被
+value.WAVING_FOLIAGE.false=§c关闭
+value.WAVING_FOLIAGE.true=§a开启
+option.WAVING_FOLIAGE.comment=§9启用摆动的树叶
+
+option.WAVING_GRASS=摇曳草丛
+value.WAVING_GRASS.false=§c关闭
+value.WAVING_GRASS.true=§a开启
+option.WAVING_GRASS.comment=§9启用摆动的草
+
+option.GRASS_SPEED=§2草摆动速度
+value.GRASS_SPEED.0.1f=0.1x
+value.GRASS_SPEED.0.2f=0.2x
+value.GRASS_SPEED.0.3f=0.3x
+value.GRASS_SPEED.0.4f=0.4x
+value.GRASS_SPEED.0.5f=0.5倍
+value.GRASS_SPEED.0.6f=0.6x
+value.GRASS_SPEED.0.7f=0.7x
+value.GRASS_SPEED.0.8f=0.8x
+value.GRASS_SPEED.0.9f=0.9x
+value.GRASS_SPEED.1.0f=§a默认
+value.GRASS_SPEED.1.1f=1.1x
+value.GRASS_SPEED.1.2f=1.2x
+value.GRASS_SPEED.1.3f=1.3x
+value.GRASS_SPEED.1.4f=1.4x
+value.GRASS_SPEED.1.5f=1.5倍
+value.GRASS_SPEED.1.6f=1.6x
+value.GRASS_SPEED.1.7f=1.7x
+value.GRASS_SPEED.1.8f=1.8x
+value.GRASS_SPEED.1.9f=1.9x
+value.GRASS_SPEED.2.0f=2.0x
+option.GRASS_SPEED.comment=§9调整摆动的草的速度
+
+option.GRASS_INTENSITY=§2草摆动强度
+value.GRASS_INTENSITY.0.1f=0.1x
+value.GRASS_INTENSITY.0.2f=0.2x
+value.GRASS_INTENSITY.0.3f=0.3x
+value.GRASS_INTENSITY.0.4f=0.4x
+value.GRASS_INTENSITY.0.5f=0.5倍
+value.GRASS_INTENSITY.0.6f=0.6x
+value.GRASS_INTENSITY.0.7f=0.7x
+value.GRASS_INTENSITY.0.8f=0.8x
+value.GRASS_INTENSITY.0.9f=0.9x
+value.GRASS_INTENSITY.1.0f=§a默认
+value.GRASS_INTENSITY.1.1f=1.1x
+value.GRASS_INTENSITY.1.2f=1.2x
+value.GRASS_INTENSITY.1.3f=1.3x
+value.GRASS_INTENSITY.1.4f=1.4x
+value.GRASS_INTENSITY.1.5f=1.5倍
+value.GRASS_INTENSITY.1.6f=1.6x
+value.GRASS_INTENSITY.1.7f=1.7x
+value.GRASS_INTENSITY.1.8f=1.8x
+value.GRASS_INTENSITY.1.9f=1.9x
+value.GRASS_INTENSITY.2.0f=2.0x
+option.GRASS_INTENSITY.comment=§9调整摆动草的强度
+
+option.WAVING_LEAVES=摇摆树叶
+value.WAVING_LEAVES.false=§c关
+value.WAVING_LEAVES.true=§a开
+option.WAVING_LEAVES.comment=§9启用摆动树叶
+
+option.LEAVES_SPEED=§2摆动树叶速度
+value.LEAVES_SPEED.0.1f=0.1x
+value.LEAVES_SPEED.0.2f=0.2x
+value.LEAVES_SPEED.0.3f=0.3x
+value.LEAVES_SPEED.0.4f=0.4x
+value.LEAVES_SPEED.0.5f=0.5倍
+value.LEAVES_SPEED.0.6f=0.6x
+value.LEAVES_SPEED.0.7f=0.7x
+value.LEAVES_SPEED.0.8f=0.8x
+value.LEAVES_SPEED.0.9f=0.9x
+value.LEAVES_SPEED.1.0f=§a默认
+value.LEAVES_SPEED.1.1f=1.1x
+value.LEAVES_SPEED.1.2f=1.2x
+value.LEAVES_SPEED.1.3f=1.3x
+value.LEAVES_SPEED.1.4f=1.4x
+value.LEAVES_SPEED.1.5f=1.5倍
+value.LEAVES_SPEED.1.6f=1.6x
+value.LEAVES_SPEED.1.7f=1.7x
+value.LEAVES_SPEED.1.8f=1.8x
+value.LEAVES_SPEED.1.9f=1.9x
+value.LEAVES_SPEED.2.0f=2.0x
+option.LEAVES_SPEED.comment=§9调整摆动树叶的速度
+
+option.LEAVES_INTENSITY=§2摆动树叶强度
+value.LEAVES_INTENSITY.0.1f=0.1x
+value.LEAVES_INTENSITY.0.2f=0.2x
+value.LEAVES_INTENSITY.0.3f=0.3x
+value.LEAVES_INTENSITY.0.4f=0.4x
+value.LEAVES_INTENSITY.0.5f=0.5倍
+value.LEAVES_INTENSITY.0.6f=0.6x
+value.LEAVES_INTENSITY.0.7f=0.7x
+value.LEAVES_INTENSITY.0.8f=0.8x
+value.LEAVES_INTENSITY.0.9f=0.9x
+value.LEAVES_INTENSITY.1.0f=§a默认
+value.LEAVES_INTENSITY.1.1f=1.1x
+value.LEAVES_INTENSITY.1.2f=1.2x
+value.LEAVES_INTENSITY.1.3f=1.3x
+value.LEAVES_INTENSITY.1.4f=1.4x
+value.LEAVES_INTENSITY.1.5f=1.5倍
+value.LEAVES_INTENSITY.1.6f=1.6x
+value.LEAVES_INTENSITY.1.7f=1.7x
+value.LEAVES_INTENSITY.1.8f=1.8x
+value.LEAVES_INTENSITY.1.9f=1.9x
+value.LEAVES_INTENSITY.2.0f=2.0x
+option.LEAVES_INTENSITY.comment=§9调整摆动树叶的强度
+
+option.FOLIAGE_WAVE_DISTANCE=§2摆动植被距离
+value.FOLIAGE_WAVE_DISTANCE.2=区块
+value.FOLIAGE_WAVE_DISTANCE.4=区块
+value.FOLIAGE_WAVE_DISTANCE.8=区块
+value.FOLIAGE_WAVE_DISTANCE.16=区块
+value.FOLIAGE_WAVE_DISTANCE.32=区块
+option.FOLIAGE_WAVE_DISTANCE.comment=§9设置可见植被摆动的距离。§6§l中-高性能影响
+
+option.SCENE_AWARE_LIGHTING=§e§l场景感知光照
+value.SCENE_AWARE_LIGHTING.0=§c关
+value.SCENE_AWARE_LIGHTING.1=§a模糊
+value.SCENE_AWARE_LIGHTING.2=§4§k§l§4§k§oa §4§l§o开启 §4§k§l§oa
+option.SCENE_AWARE_LIGHTING.comment=根据光源启用彩色光照。§e§l中等 §6至 §4§l严重 §6性能影响
+
+option.LIGHTING_MODE=§e§l光照模式
+value.LIGHTING_MODE.0=§aClassic
+value.LIGHTING_MODE.1=§6§l精美
+option.LIGHTING_MODE.comment=切换渲染管线。§a经典 §r运行更快，但 §6§l精美 §r可用功能更多
+
+option.LIGHTMAP_QUALITY=§e§l光照贴图质量
+value.LIGHTMAP_QUALITY.4=4 采样
+value.LIGHTMAP_QUALITY.8=8 采样
+value.LIGHTMAP_QUALITY.12=12 采样
+value.LIGHTMAP_QUALITY.16=16 采样
+value.LIGHTMAP_QUALITY.20=20 采样
+value.LIGHTMAP_QUALITY.24=24 采样
+value.LIGHTMAP_QUALITY.28=28 采样
+value.LIGHTMAP_QUALITY.32=32 采样
+value.LIGHTMAP_QUALITY.36=36 采样
+value.LIGHTMAP_QUALITY.40=40 采样
+value.LIGHTMAP_QUALITY.44=44 采样
+value.LIGHTMAP_QUALITY.48=48 采样
+value.LIGHTMAP_QUALITY.52=52 采样
+value.LIGHTMAP_QUALITY.56=56 采样
+value.LIGHTMAP_QUALITY.60=60 采样
+value.LIGHTMAP_QUALITY.64=64 采样
+value.LIGHTMAP_QUALITY.68=68 采样
+value.LIGHTMAP_QUALITY.72=72 采样
+value.LIGHTMAP_QUALITY.76=76 采样
+value.LIGHTMAP_QUALITY.80=80 采样
+value.LIGHTMAP_QUALITY.84=84 采样
+value.LIGHTMAP_QUALITY.88=88 采样
+value.LIGHTMAP_QUALITY.92=92 采样
+value.LIGHTMAP_QUALITY.96=96 采样
+value.LIGHTMAP_QUALITY.100=100 采样
+value.LIGHTMAP_QUALITY.104=104 采样
+value.LIGHTMAP_QUALITY.108=108 采样
+value.LIGHTMAP_QUALITY.112=112 采样
+value.LIGHTMAP_QUALITY.116=116 采样
+value.LIGHTMAP_QUALITY.120=120 采样
+value.LIGHTMAP_QUALITY.124=124 采样
+value.LIGHTMAP_QUALITY.128=128 采样
+option.LIGHTMAP_QUALITY.comment=场景感知光照的采样数量。§4§l较高设置会严重影响 GPU 性能
+
+option.AO=§e环境光遮蔽
+option.AO.comment=§e启用环境光遮蔽。§e§l中度§6至§4§l重度§6 GPU 性能影响
+value.AO.0=§c关闭
+value.AO.1=屏幕空间环境光遮蔽
+value.AO.2=全局光照环境光遮蔽
+
+option.AO_THRESHOLD=阈值
+option.AO_THRESHOLD.comment=§e调整 SSAO 的灵敏度
+
+option.AO_STRENGTH=强度
+option.AO_STRENGTH.comment=§e调整环境光遮蔽的强度
+
+option.AO_STRENGTH_PLANT=§9环境光遮蔽强度 §7(§9植物§7)
+option.AO_STRENGTH_PLANT.comment=§e调整植物环境光遮蔽的强度
+
+option.AO_SAMPLES=采样数
+option.AO_SAMPLES.comment=§e调整 SSAO 的质量
+
+option.GTAO_NUM_DIRS=§9方向数量
+option.GTAO_NUM_DIRS.comment=§e设置计算 GTAO 时采样的方向数量
+
+option.GTAO_NUM_STEPS=步进次数
+option.GTAO_NUM_STEPS.comment=§e设置 GTAO 每个方向的处理步数
+
+option.GTAO_RADIUS=半径
+option.GTAO_RADIUS.comment=§e设置 GTAO 采样的半径
+
+option.AO_SCALE=缩放
+option.AO_SCALE.comment=§e设置环境光遮蔽的渲染分辨率
+value.AO_SCALE.0=§e4x
+value.AO_SCALE.1=§a0.75x
+value.AO_SCALE.2=§a0.5x
+value.AO_SCALE.3=§a0.25x
+
+option.AA=§a模式
+value.AA.0=关
+value.AA.1=基础
+value.AA.2=SMAA抗锯齿
+value.AA.3=自适应时间抗锯齿
+value.AA.4=SIAA
+option.AA.comment=§6在抗锯齿模式之间切换§7：§7 - §9关闭§7 - §9基础§7 - §9SMAA§7 - §9TAA§7 - §9SIAA
+
+option.BAA_SHARPEN_AMOUNT=§6基础锐化
+option.BAA_SHARPEN_AMOUNT.comment=§9调整应用于基础抗锯齿的锐化程度
+
+option.BAA_SHARPEN_BLEND=§6基础锐化混合
+option.BAA_SHARPEN_BLEND.comment=§9调整基础抗锯齿中锐化图像的混合比例
+
+option.SMAA_EDGE_FACTOR=§bSMAA 边缘系数
+option.SMAA_EDGE_FACTOR.comment=§9调整 SMAA 的边缘系数阈值
+
+option.SMAA_NEAR_THRESHOLD=§bSMAA 近距阈值
+option.SMAA_NEAR_THRESHOLD.comment=§9调整远距离 SMAA 衰减的起始深度
+
+option.SMAA_FAR_THRESHOLD=§bSMAA 近距阈值
+option.SMAA_FAR_THRESHOLD.comment=§9调整远距离 SMAA 衰减的结束深度
+
+option.TAA_BLEND=§eTAA 混合
+option.TAA_BLEND.comment=§9调整 TAA 中上一帧的混合程度
+
+option.GAMMA=伽马
+value.GAMMA.2.2=sRGB
+option.GAMMA.comment=§6调整场景伽马校正偏移
+
+option.AUTO_EXPOSURE=§6自动曝光
+
+option.VIBRANT_MODE=§5鲜艳模式
+value.VIBRANT_MODE.0=关
+value.VIBRANT_MODE.1=开
+value.VIBRANT_MODE.2=仅 SE
+value.VIBRANT_MODE.3=仅常规
+option.VIBRANT_MODE.comment=§6启用 LUT 以实现鲜艳配色方案
+
+option.LUT_NORM=查找表
+
+option.LUT_SE=§dSilent Expanse LUT
+
+option.VOLUMETRIC_LIGHTING=体积光照
+option.VOLUMETRIC_LIGHTING.comment=§9启用来自太阳的体积光
+
+option.VL_SAMPLES=体积光采样数
+option.VL_SAMPLES.comment=§9调整体积光的采样数量
+
+option.VL_EXPOSURE=§6体积光曝光
+option.VL_EXPOSURE.comment=§9调整体积光的强度
+
+option.VL_COLOR_R=§c红色
+
+option.VL_COLOR_G=绿
+
+option.VL_COLOR_B=色
+
+option.LIGHT_COLOR_R=§c光照红色
+option.LIGHT_COLOR_G=§a光照绿色
+option.LIGHT_COLOR_B=§9光照蓝色
+
+option.TONEMAP_SAL=色调映射
+value.TONEMAP_SAL.0=§c关闭
+value.TONEMAP_SAL.1=reinhard
+value.TONEMAP_SAL.2=色彩编码的电影级色调映射
+value.TONEMAP_SAL.3=洛特斯
+value.TONEMAP_SAL.4= unreal
+value.TONEMAP_SAL.5=未知海域
+value.TONEMAP_SAL.6=AGX
+value.TONEMAP_SAL.7=AgX §7(§eGolden§7)
+value.TONEMAP_SAL.8=AGX（增强对比度）
+value.TONEMAP_SAL.9=Nwoof
+value.TONEMAP_SAL.10=Nwoof 2
+value.TONEMAP_SAL.11=Nwoof 3
+option.TONEMAP_SAL.comment=§6更改屏幕的色调映射曲线
+
+option.TONEMAP_NORM=色调映射
+value.TONEMAP_NORM.0=§c关闭
+value.TONEMAP_NORM.1=reinhard
+value.TONEMAP_NORM.2=色彩编码的电影级色调映射
+value.TONEMAP_NORM.3=洛特斯
+value.TONEMAP_NORM.4= unreal
+value.TONEMAP_NORM.5=未知海域
+value.TONEMAP_NORM.6=AGX
+value.TONEMAP_NORM.7=AgX §7(§eGolden§7)
+value.TONEMAP_NORM.8=AGX（增强对比度）
+value.TONEMAP_NORM.9=Nwoof
+value.TONEMAP_NORM.10=Nwoof 2
+value.TONEMAP_NORM.11=Nwoof 3
+option.TONEMAP_NORM.comment=§6更改屏幕的色调映射曲线
+
+option.BRIGHTNESS=§b亮度
+option.BRIGHTNESS.comment=§9调整场景光照的亮度
+
+option.NORM_EXP=§a曝光
+option.NORM_EXP.comment=§9调整光线到达你的强度
+
+option.SE_EXP=§a曝光
+option.SE_EXP.comment=§9调整光线到达你的强度
+
+option.DEBUG=§f已启用
+value.DEBUG.0=§c关闭
+value.DEBUG.1=§a开启
+
+option.DEBUG_MODE=§f模式
+value.DEBUG_MODE.0=§f基础颜色
+value.DEBUG_MODE.1=§f法线
+value.DEBUG_MODE.2=§e光照
+value.DEBUG_MODE.3=§f缓冲 A
+value.DEBUG_MODE.4=§f缓冲 B
+value.DEBUG_MODE.5=§f缓冲 C
+value.DEBUG_MODE.6=§f深度
+value.DEBUG_MODE.7=§f距相机的距离
+value.DEBUG_MODE.8=§f水体深度
+value.DEBUG_MODE.9=§f抗锯齿
+value.DEBUG_MODE.10=§f定向光照
+value.DEBUG_MODE.11=阴影
+value.DEBUG_MODE.12=§fNdotL
+value.DEBUG_MODE.13=§e环境光遮蔽
+value.DEBUG_MODE.14=§f最终漫反射
+
+option.PARTICLE_RAIN_SUPPORT=§bParticle Rain 支持
+option.PARTICLE_RAIN_SUPPORT.comment=§6修补粒子光照渲染以更好地兼容 Particle Rain
+
+option.TEMPERATURE_COLOR=§f基于温度§7-§f的颜色
+
+option.SUN_TEMP=太阳温度
+suffix.SUN_TEMP=k
+
+option.SUNSET_TEMP=§6日落温度
+suffix.SUNSET_TEMP=k
+
+option.MOON_TEMP=色温
+suffix.MOON_TEMP=k
+
+option.NIGHT_SKY_TEMP=§b天光温度
+suffix.NIGHT_SKY_TEMP=k
+
+option.LIGHT_DAY_R=§c红色
+option.LIGHT_DAY_G=绿
+option.LIGHT_DAY_B=色
+option.LIGHT_DAY_I=强度
+
+option.LIGHT_NIGHT_R=§c红色
+option.LIGHT_NIGHT_G=绿
+option.LIGHT_NIGHT_B=色
+option.LIGHT_NIGHT_I=强度
+
+option.LIGHT_SUNSET_R=§c红色
+option.LIGHT_SUNSET_G=绿
+option.LIGHT_SUNSET_B=色
+
+option.AMBIENT_LIGHT_R=§c红色
+option.AMBIENT_LIGHT_G=绿
+option.AMBIENT_LIGHT_B=色
+option.AMBIENT_LIGHT_I=强度
+
+option.LIGHT_SE_R=§c红色
+option.LIGHT_SE_G=绿
+option.LIGHT_SE_B=色
+option.LIGHT_SE_I=强度
+
+option.LIGHT_CORRUPTION_R=§c红色
+option.LIGHT_CORRUPTION_G=绿
+option.LIGHT_CORRUPTION_B=色
+option.LIGHT_CORRUPTION_I=强度
+
+screen.PERFORMANCE=性能
+
+screen.SSAO =屏幕空间环境光遮蔽（SSAO）
+screen.GTAO = §9Ground Truth Ambient Occlusion §7(§9GTAO§7)
+
+screen.SKY =天空
+screen.ATMOSPHERE_COLORS = §bAtmosphere Colors
+screen.ATMOSPHERE_DAY = §bDay
+screen.ATMOSPHERE_NIGHT = §aLight
+screen.ATMOSPHERE_SUNSET = §6Sunrise§7/§6Sunset
+
+screen.SKY_COLORS =天空颜色
+screen.SKY_DAY = §bDay
+screen.SKY_NIGHT = §aLight
+screen.SKY_SUNSET = §6Sunrise§7/§6Sunset
+
+screen.SKY_CLOUDS =§b云
+
+screen.FOG = §7Fog
+
+screen.FOG_DAY = §bDay
+screen.FOG_DAY_RAIN = §9Rain
+
+screen.FOG_NIGHT = §aLight
+screen.FOG_NIGHT_RAIN = §9Rain
+
+screen.FOG_SUNSET = §6Sunrise§7/§6Sunset
+screen.FOG_SUNSET_RAIN = §9Rain
+
+screen.FOG_SE = §dSilent Expanse
+
+screen.FOG_CORRUPTION = §cRoots of Corruption
+
+screen.FOG_CAVE = §7Cave
+
+screen.FOG_MISTWOODS = §2Mistwoods
+
+screen.LIGHTING=§e光照
+
+screen.WATER=水
+
+screen.CAMERA = §fCamera
+
+screen.WORLD =世界
+
+screen.VOLUMETRIC_LIGHT =体积光照
+
+screen.SPECIAL_LIGHTING = §eAdditional Options
+
+screen.NORMAL_LIGHTING =光照设置
+
+screen.FANCY_LIGHTING = §5Fancy Lighting Settings
+
+screen.SHADOW_SETTINGS =阴影
+
+screen.SILENT_EXPANSE = §dSilent Expanse
+
+screen.SPECULAR =镜面反射
+
+screen.ANTIALIASING = §aAntialiasing
+
+screen.DEBUG = §fDebug Mode
+
+screen.MISC =§d杂项§r
+
+
+screen.LIGHTING_COLORS = §6Light Colors
+
+
+screen.LIGHT_DAY = §bDay
+
+screen.LIGHT_NIGHT = §aLight
+
+screen.LIGHT_SUNSET = §6Sunrise§7/§6Sunset
+
+screen.LIGHT_AMBIENT = §8Ambient
+
+screen.LIGHT_SE = §dSilent Expanse
+
+screen.LIGHT_CORRUPTION = §4Roots of Corruption
+
+
+profile.TOASTER=烤面包机（玩笑模式）
+profile.POTATO=土豆
+profile.LOW=§a低配
+profile.MEDIUM=§a中配
+profile.HIGH=高
+profile.ULTRA=超高
+profile.CINEMATIC=§b电影感
+profile.CINEMATIC_PATH=§4§l电影级路径追踪

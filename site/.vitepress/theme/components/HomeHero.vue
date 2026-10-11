@@ -246,19 +246,15 @@ function formatDownloads(n) {
 </template>
 
 <style scoped>
-/* 移动优先：默认单列，宽屏再分两栏 */
+/* 移动优先：默认单列，宽屏再分两栏 — 容器由全局 .home-hero 统一策略接管 */
 .home-hero {
-  /* 与导航（32px）和光影列表（1200px 居中）共用同一条内容轴线：
-     宽屏 1200px 居中，窄屏左右各留 20px。 */
-  width: min(1200px, calc(100% - 40px));
-  margin-inline: auto;
   display: grid;
   /* minmax(0, 1fr) 而非 1fr：否则「最近更新」8 张卡片的 min-content
      会把列宽撑到 ~1688px，导致移动端整页横向溢出。 */
   grid-template-columns: minmax(0, 1fr);
   gap: 28px;
   align-items: center;
-  padding: 32px 0 16px;
+  padding: 32px var(--sh-gutter) 16px;
 }
 
 .kicker {
@@ -656,7 +652,7 @@ function formatDownloads(n) {
   .home-hero {
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
     gap: 40px;
-    padding: 48px 0 24px;
+    padding: 48px var(--sh-gutter) 24px;
   }
   .title {
     font-size: 56px;

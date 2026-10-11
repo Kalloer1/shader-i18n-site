@@ -1,0 +1,535 @@
+#shaders/lang/zh_CN.lang
+# Silva Pro v1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Silva Pro.zip 的 shaders/lang/en_us.lang
+# =============================================================================
+#  Silva Pro  -  English (US) settings screen text
+# =============================================================================
+
+# --- profiles ----------------------------------------------------------------
+profile=画质预设
+profile.comment=POTATO 和 LOW 专为核显和旧款笔记本打造。MEDIUM 为默认值。请先选择一个预设，再按喜好微调任意选项。
+value.profile.POTATO=土豆
+value.profile.LOW=低
+value.profile.MEDIUM=中
+value.profile.HIGH=高
+value.profile.ULTRA=超高
+value.profile.CUSTOM=自定义
+
+
+# =============================================================================
+#  Screens
+# =============================================================================
+
+screen.LIGHTING=光照
+screen.LIGHTING.comment=太阳、月亮、火把与环境光。
+
+screen.SHADOWS_SCR=阴影与遮蔽
+screen.SHADOWS_SCR.comment=阴影质量、柔和度、接触阴影与环境光遮蔽。
+
+screen.WATER=水
+screen.WATER.comment=波浪、反射、折射、颜色与水下雾。
+
+screen.SKY=天空与云
+screen.SKY.comment=天空渐变、日月光晕、星辰与云层。
+
+screen.FOG=雾与体积光
+screen.FOG.comment=远景雾、山谷薄雾、天气雾与体积光。
+
+screen.POST=泛光与色彩
+screen.POST.comment=泛光、色调映射、色彩分级与屏幕特效。
+
+screen.WAVING=摆动方块
+screen.WAVING.comment=哪些方块会随风摆动，以及摆动幅度。
+
+screen.DIMENSIONS=维度
+screen.DIMENSIONS.comment=下界与末地的独立外观。
+
+screen.NETHER= The Nether
+screen.NETHER.comment=下界没有天空，因此所有光线均来自岩石。此处控制其呈现效果。
+
+screen.END=末地
+screen.END.comment=冰冷、平坦、永恒的光线与紫色虚空。
+
+screen.PERFORMANCE=性能
+screen.PERFORMANCE.comment=所有真正消耗帧数的内容都集中于此。如果游戏感觉卡顿，请从这里开始调整。
+
+screen.MISC=世界与杂项
+screen.MISC.comment=太阳轨迹、状态效果与其他零碎设置。
+
+
+# =============================================================================
+#  1. Lighting
+# =============================================================================
+
+option.SUN_BRIGHTNESS=太阳亮度
+option.SUN_BRIGHTNESS.comment=直射阳光的强度。决定日间场景观感的最主要控制项。
+
+option.MOON_BRIGHTNESS=月球亮度
+option.MOON_BRIGHTNESS.comment=月光强度。月光会跟随月相变化，因此无论此项如何设置，新月时依然昏暗。
+
+option.SKY_LIGHT_BRIGHTNESS=环境/天空光
+option.SKY_LIGHT_BRIGHTNESS.comment=从天空反弹至阴影区域的光线。若阴影过黑，可调高此项。
+
+option.BLOCK_LIGHT_BRIGHTNESS=方块光亮度
+option.BLOCK_LIGHT_BRIGHTNESS.comment=火把、灯笼、萤石及其他放置式光源的强度。
+
+option.BLOCK_LIGHT_WARMTH=方块光照暖度
+option.BLOCK_LIGHT_WARMTH.comment=火把光的橙色程度。0 为中性白光，2 为火焰光。
+
+option.SUN_WARMTH=太阳色温
+option.SUN_WARMTH.comment=阳光的金黄程度。0 为中性日光白，2 为强暖色调。
+
+option.MOON_COOLNESS=月亮色温
+option.MOON_COOLNESS.comment=月光的蓝色程度。0 为灰色，2 为深冷蓝色。
+
+option.SUNSET_STRENGTH=日出/日落颜色
+option.SUNSET_STRENGTH.comment=天空与阳光在地平线附近变为橙色的强度。
+
+option.AMBIENT_MINIMUM=最小亮度
+option.AMBIENT_MINIMUM.comment=所有表面的最低亮度下限，确保没有任何地方为纯黑。若洞穴过暗导致无法游玩，可调高此项。
+
+option.EMISSIVE_STRENGTH=发光强度
+option.EMISSIVE_STRENGTH.comment=发光方块的自发光强度。哪些方块会发光在 block.properties 中设置。
+
+option.SUBSURFACE_SCATTERING=叶片半透明度
+option.SUBSURFACE_SCATTERING.comment=当太阳在背后时，光线透过树叶与草地的效果。
+
+option.SPECULAR_STRENGTH=镜面高光
+option.SPECULAR_STRENGTH.comment=阳光在潮湿与光亮表面上的高光。设为 0 可小幅提升性能。
+
+option.DIRECTIONAL_LIGHTMAP=定向方块光源
+option.DIRECTIONAL_LIGHTMAP.comment=为火把光伪造光照方向，使平坦墙面不会被均匀照亮。无性能消耗。
+
+option.HANDHELD_LIGHT=手持光源
+option.HANDHELD_LIGHT.comment=手持火把或灯笼会照亮周围世界。可与 LambDynamicLights 协同工作。
+
+option.HANDHELD_LIGHT_STRENGTH=手持光源强度
+option.HANDHELD_LIGHT_STRENGTH.comment=手持物品所发出光线的亮度。
+
+
+# =============================================================================
+#  2. Shadows
+# =============================================================================
+
+option.SHADOWS=阴影
+option.SHADOWS.comment=总开关。关闭后将跳过整个阴影渲染通道，这是该光影包中单项最大的性能提升。
+
+option.SHADOW_BRIGHTNESS=阴影漏光
+option.SHADOW_BRIGHTNESS.comment=仍有多少直射光能到达完全处于阴影中的表面。0 为物理正确；若阴影看起来过重，可调高此项。
+
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=阴影贴图的细节。每提升一档都会消耗显存与填充率。在常规渲染距离下，1024 已足够。
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影绘制的距离，单位为方块。超出此范围后，表面将回退为普通天空光。降低此项比降低分辨率更省性能。
+
+option.SHADOW_FILTER=柔和阴影
+option.SHADOW_FILTER.comment=平滑阴影贴图的锯齿边缘。关闭时阴影边缘锐利且呈像素化，但几乎不消耗性能。
+
+option.SHADOW_SAMPLES=阴影采样数
+option.SHADOW_SAMPLES.comment=柔和阴影滤波的采样次数。这是柔和阴影的主要开销——减半此值约可减半开销。
+
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=模糊的宽度。数值越高，需要的采样数越多，否则阴影会显得有颗粒感。
+
+option.SHADOW_PENUMBRA=接触硬化
+option.SHADOW_PENUMBRA.comment=阴影在物体接触地面处保持锐利，并随距离逐渐变柔和，与真实阴影一致。
+
+option.SHADOW_DISTORTION=阴影聚焦
+option.SHADOW_DISTORTION.comment=将阴影贴图细节集中于玩家附近。数值越高，近处越清晰，远处越呈块状。
+
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BIAS.comment=将阴影测试推离表面。若在受光表面上看到条纹或点状图案，请调高此项。
+
+option.SHADOW_FADE_EDGE=阴影淡化边缘
+option.SHADOW_FADE_EDGE.comment=阴影贴图开始混合至普通天空光的位置，以阴影距离的比例表示。数值越低，边界越柔和、越不明显。
+
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=染色玻璃、冰与水会为透过的光线染色，而非直接将其遮挡。
+
+option.CONTACT_SHADOWS=接触阴影
+option.CONTACT_SHADOWS.comment=用于补充阴影贴图无法捕捉的细小细节的屏幕空间阴影。会消耗数帧性能——默认关闭。
+
+option.CONTACT_SHADOW_STEPS=接触阴影步数
+option.CONTACT_SHADOW_STEPS.comment=每像素的光线步进数。越多越精确，开销也越大。
+
+option.CONTACT_SHADOW_LENGTH=接触阴影长度
+option.CONTACT_SHADOW_LENGTH.comment=光线在视图空间中的延伸距离。较短时效果细微且开销低。
+
+option.SSAO=环境光遮蔽
+option.SSAO.comment=加深环境光无法到达的缝隙与角落。以适中的开销带来显著的立体感。
+
+option.SSAO_SAMPLES=环境光遮蔽采样数 
+option.SSAO_SAMPLES.comment=每像素采样数。这就是环境光遮蔽的全部开销。
+
+option.SSAO_RADIUS=环境光遮蔽半径 
+option.SSAO_RADIUS.comment=效果的影响范围，单位为方块。
+
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_STRENGTH.comment=被遮蔽区域变暗的程度。
+
+
+# =============================================================================
+#  3. Water
+# =============================================================================
+
+option.WATER_WAVES=水面波浪
+option.WATER_WAVES.comment=水面上的动态波浪几何。
+
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_WAVE_HEIGHT.comment=水面实际上下起伏的幅度。
+
+option.WATER_WAVE_SPEED=波浪速度
+option.WATER_WAVE_SPEED.comment=波浪翻滚的速度。
+
+option.WATER_NORMALS=波纹细节
+option.WATER_NORMALS.comment=大波浪之上的细微涟漪法线。正是它让水面能够捕捉光线，而非看起来像一块平板。
+
+option.WATER_NORMAL_STRENGTH=波纹强度
+option.WATER_NORMAL_STRENGTH.comment=小涟漪的凸显程度。
+
+option.WATER_NORMAL_OCTAVES=涟漪倍频
+option.WATER_NORMAL_OCTAVES.comment=为水面涟漪细节计算的波浪倍频数量。数值越高，微观涟漪越细腻。
+
+option.WATER_EXTINCTION_SCALE=水体清晰度
+option.WATER_EXTINCTION_SCALE.comment=控制比尔-朗伯吸收强度。数值越低，水体越清澈透亮；数值越高，水色随深度加深得越快。
+
+option.WATER_REFLECTION_MODE=反射
+option.WATER_REFLECTION_MODE.comment=仅天空是无需光线步进的廉价解析反射，是低配硬件的正确选择。屏幕空间还会反射附近地形，开销明显更高。
+value.WATER_REFLECTION_MODE.0=关
+value.WATER_REFLECTION_MODE.1=仅天空（快速）
+value.WATER_REFLECTION_MODE.2=屏幕空间
+
+option.REFLECTION_STRENGTH=反射强度
+option.REFLECTION_STRENGTH.comment=水面的镜面感有多强。
+
+option.SSR_STEPS=屏幕空间步数
+option.SSR_STEPS.comment=屏幕空间反射的光线步进数。仅在反射设为屏幕空间时生效。
+
+option.WATER_FRESNEL=菲涅尔强度
+option.WATER_FRESNEL.comment=以掠射角观察水面时，反射增强的程度。正是它让远处的水面如镜面般反射，而脚下的水则显得清澈。
+
+option.WATER_REFRACTION=折射
+option.WATER_REFRACTION.comment=使透过水面看到的景象产生弯折。
+
+option.WATER_REFRACTION_STRENGTH=折射强度
+option.WATER_REFRACTION_STRENGTH.comment=水面后方图像的位移距离。
+
+option.WATER_OPACITY=水不透明度
+option.WATER_OPACITY.comment=水色遮挡其后方景物的程度。
+
+option.WATER_TINT_R=水体着色 - 红色
+option.WATER_TINT_R.comment=水色的红色分量。同时也会影响水下雾和深度吸收。
+
+option.WATER_TINT_G=水体着色 - 绿色
+option.WATER_TINT_G.comment=水色的绿色分量。
+
+option.WATER_TINT_B=水体着色 - 蓝色
+option.WATER_TINT_B.comment=水色的蓝色分量。
+
+option.UNDERWATER_FOG_DENSITY=水下雾气密度
+option.UNDERWATER_FOG_DENSITY.comment=水下能见度衰减的速度。同时也控制从水面上方向下看时，深水吞没海底的速度。
+
+option.UNDERWATER_DISTORTION=水下晃动
+option.UNDERWATER_DISTORTION.comment=游泳时轻微的屏幕波纹晃动。
+
+option.CAUSTICS=焦散
+option.CAUSTICS.comment=水下表面上舞动的焦散光斑。
+
+option.CAUSTICS_STRENGTH=焦散强度
+option.CAUSTICS_STRENGTH.comment=焦散图案的亮度。
+
+
+# =============================================================================
+#  4. Sky
+# =============================================================================
+
+option.SKY_BRIGHTNESS=天空亮度
+option.SKY_BRIGHTNESS.comment=天空渐变的整体亮度。
+
+option.SKY_SATURATION=天空饱和度
+option.SKY_SATURATION.comment=天空的色彩鲜艳程度。0 为灰度。
+
+option.ATMOSPHERE_DENSITY=大气密度
+option.ATMOSPHERE_DENSITY.comment=地平线附近薄雾的厚度。数值越高，地平线颜色向天空更高处延伸。
+
+option.HORIZON_HEIGHT=地平线高度
+option.HORIZON_HEIGHT.comment=改变天空渐变所认定的地平线位置。在极高或极低处建造时很有用。
+
+option.STARS=星星
+option.STARS.comment=夜间的程序化星空。独立于原版星空贴图。
+
+option.STAR_AMOUNT=星体密度
+option.STAR_AMOUNT.comment=出现的星星数量。
+
+option.STAR_BRIGHTNESS=星星亮度
+option.STAR_BRIGHTNESS.comment=每颗星星的亮度。
+
+option.SUN_MOON_GLOW=日月光晕
+option.SUN_MOON_GLOW.comment=太阳和月亮周围的大气光晕。
+
+option.SUN_SIZE=太阳光晕大小
+option.SUN_SIZE.comment=扩大太阳光晕的明亮核心。不会改变原版太阳贴图本身的大小。
+
+option.SKY_CLOUDS=天空云层
+option.SKY_CLOUDS.comment=绘制在天空中的程序化云层。独立于 Minecraft 自身的云方块。
+
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_COVERAGE.comment=云层覆盖天空的程度。
+
+option.CLOUD_SPEED=云层速度
+option.CLOUD_SPEED.comment=云层飘动的速度。0 为静止。
+
+option.CLOUD_BRIGHTNESS=云朵亮度
+option.CLOUD_BRIGHTNESS.comment=云层受光面的亮度。
+
+option.CLOUD_OCTAVES=云层细节
+option.CLOUD_OCTAVES.comment=云形状中的噪声倍频。每提升一级，云层更蓬松但更慢——这是天空设置中唯一真正开销较大的选项。
+
+option.VANILLA_CLOUD_SHADING=重光照原版云层
+option.VANILLA_CLOUD_SHADING.comment=重新为 Minecraft 自身的云层打光以匹配光影的天空，避免两者冲突。关闭则保持原版云层不变。
+
+
+# =============================================================================
+#  5. Fog
+# =============================================================================
+
+option.FOG=雾
+option.FOG.comment=所有水上雾的总开关。
+
+option.FOG_DENSITY=距离雾浓度
+option.FOG_DENSITY.comment=朝向渲染距离方向雾的浓度。
+
+option.FOG_START=雾起点
+option.FOG_START.comment=雾开始出现的距离，以渲染距离的比例表示。
+
+option.FOG_SKY_BLEND=雾与天空混合
+option.FOG_SKY_BLEND.comment=雾在多大程度上取用你所朝方向的天空颜色，而非扁平的地平线颜色。
+
+option.HEIGHT_FOG=山谷薄雾
+option.HEIGHT_FOG.comment=积聚在低洼处、随高度升高而消散的雾。在黎明和夜晚最为明显。
+
+option.HEIGHT_FOG_DENSITY=薄雾密度
+option.HEIGHT_FOG_DENSITY.comment=低洼薄雾的浓度。
+
+option.HEIGHT_FOG_ALTITUDE=雾气海拔高度
+option.HEIGHT_FOG_ALTITUDE.comment=薄雾所处的 Y 轴高度。海平面为 62。
+
+option.HEIGHT_FOG_FALLOFF=雾气衰减程度
+option.HEIGHT_FOG_FALLOFF.comment=薄雾在其高度之上变薄所需的方块数。数值越高，雾层越深厚、越柔和。
+
+option.WEATHER_FOG_STRENGTH=天气雾
+option.WEATHER_FOG_STRENGTH.comment=降雨和雷暴期间的额外雾。
+
+option.BORDER_FOG=边界雾
+option.BORDER_FOG.comment=淡化已加载世界的边缘，使区块不会在空旷天空中突兀弹出。
+
+option.VOLUMETRIC_LIGHT=神圣光芒 
+option.VOLUMETRIC_LIGHT.comment=透过地形缝隙可见的体积光光束。基于阴影贴图进行光线步进——开销确实很高，因此默认关闭。
+
+option.VL_SAMPLES=神光采样数
+option.VL_SAMPLES.comment=每像素采样步数。这是体积光的全部开销。
+
+option.VL_STRENGTH=丁达尔效应强度
+option.VL_STRENGTH.comment=体积光的亮度。
+
+
+# =============================================================================
+#  6. Bloom & colour
+# =============================================================================
+
+option.BLOOM=泛光
+option.BLOOM.comment=明亮物体会向周围溢出光线形成泛光。全分辨率下两次模糊处理——开销很低，但若追求极限帧率，则相当于额外三次全屏处理。
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=有多少泛光会混合回画面中。
+
+option.BLOOM_RADIUS=泛光半径
+option.BLOOM_RADIUS.comment=泛光扩散的距离。增大半径不会带来额外开销——仅在相同采样次数下加大采样间距。
+
+option.BLOOM_QUALITY=泛光质量
+option.BLOOM_QUALITY.comment=模糊采样次数。半径较小时用低配即可；半径较大时若仍用低配，泛光可能会出现阶梯状断层。
+value.BLOOM_QUALITY.0=低
+value.BLOOM_QUALITY.1=中
+value.BLOOM_QUALITY.2=高
+
+option.BLOOM_THRESHOLD=泛光阈值
+option.BLOOM_THRESHOLD.comment=像素达到多亮才会产生泛光。阈值越低，场景中产生泛光的区域越多。
+
+option.EMISSIVE_BLOOM=自发光泛光
+option.EMISSIVE_BLOOM.comment=即使不是画面中最亮的部分，发光方块也会产生泛光。
+
+option.TONEMAP=色调映射
+option.TONEMAP.comment=将高动态范围压缩至显示器可显示范围的方式。Silva Filmic 为本光影包自带的曲线；ACES-Lite 对比更强；Reinhard 则平淡中性。
+value.TONEMAP.0=无
+value.TONEMAP.1=Silva Filmic
+value.TONEMAP.2=ACES-Lite
+value.TONEMAP.3=reinhard
+
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=色调映射前的画面整体亮度。
+
+option.AUTO_EXPOSURE=自适应曝光
+option.AUTO_EXPOSURE.comment=进入黑暗洞穴时画面会变亮，回到室外后又会逐渐恢复。由游戏自带的平滑光照读数驱动，因此无额外开销。
+
+option.AUTO_EXPOSURE_SPEED=适应量
+option.AUTO_EXPOSURE_SPEED.comment=自动曝光相对于曝光设置可偏移的范围。
+
+option.SATURATION=饱和度
+option.SATURATION.comment=整体色彩的饱和度。
+
+option.VIBRANCE=鲜艳度
+option.VIBRANCE.comment=提升暗淡色彩，同时保留原本已饱和的色彩。比饱和度更柔和。
+
+option.CONTRAST=对比度
+option.CONTRAST.comment=暗部与亮部之间的分离度。
+
+option.GAMMA_ADJUST=伽马
+option.GAMMA_ADJUST.comment=提亮或压暗中间调，不影响纯黑与纯白。
+
+option.WHITE_BALANCE=白平衡
+option.WHITE_BALANCE.comment=整个画面的色温，单位为开尔文。低于 6500 偏暖，高于 6500 偏冷。
+
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=压暗屏幕边角形成暗角。
+
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE_STRENGTH.comment=边角压暗的程度。
+
+option.SHARPEN=锐化
+option.SHARPEN.comment=使纹理更清晰。可在抗锯齿后找回细节。
+
+option.SHARPEN_STRENGTH=锐化强度
+option.SHARPEN_STRENGTH.comment=锐化的强度。过高会在边缘产生明亮光晕。
+
+option.FXAA=抗锯齿（快速近似抗锯齿）
+option.FXAA.comment=在单次低开销处理中平滑锯齿边缘。比 MSAA 或 TAA 轻量得多，会轻微柔化画面。
+
+option.DITHERING=抖动
+option.DITHERING.comment=添加微量噪点以消除天空等平滑渐变中的色彩断层。无开销。
+
+
+# =============================================================================
+#  7. Waving blocks
+# =============================================================================
+
+option.WAVE_STRENGTH=波浪强度
+option.WAVE_STRENGTH.comment=摆动方块整体的移动幅度。
+
+option.WAVE_SPEED=波浪速度
+option.WAVE_SPEED.comment=风力移动速度。
+
+option.WAVE_WIND_GUSTS=阵风
+option.WAVE_WIND_GUSTS.comment=风以阵阵波浪的形式吹来，而非持续摆动。每个顶点增加一次额外的噪点采样开销。
+
+option.RAIN_WAVE_BOOST=风暴摆动
+option.RAIN_WAVE_BOOST.comment=在降雨和雷暴天气下的额外摆动。
+
+option.WAVING_PLANTS=植物摆动
+option.WAVING_PLANTS.comment=草、鲜花、树苗及其他小型植物。
+
+option.WAVING_LEAVES=摇摆树叶
+option.WAVING_LEAVES.comment=树叶以整簇为单位摆动。
+
+option.WAVING_CROPS=农作物摆动
+option.WAVING_CROPS.comment=小麦、胡萝卜、马铃薯、甜菜根和下界疣。
+
+option.WAVING_LILYPAD=摆动的荷叶
+option.WAVING_LILYPAD.comment=荷叶在水面上漂浮摆动。
+
+option.WAVING_FIRE=摆动火焰
+option.WAVING_FIRE.comment=火焰与灵魂火闪烁摆动。
+
+option.WAVING_LAVA=摆动熔岩
+option.WAVING_LAVA.comment=熔岩表面的缓慢起伏。
+
+
+# =============================================================================
+#  8. Nether
+# =============================================================================
+
+option.NETHER_BRIGHTNESS=下界亮度
+option.NETHER_BRIGHTNESS.comment=下界的整体亮度。这里没有太阳，因此这实际上就是整个维度的曝光。
+
+option.NETHER_AMBIENT_R=下界环境光 - 红色
+option.NETHER_AMBIENT_R.comment=下界基础环境光的红色分量。与群系自带的雾颜色混合，因此绯红森林和诡异森林看起来仍各不相同。
+
+option.NETHER_AMBIENT_G=下界环境光 - 绿色
+option.NETHER_AMBIENT_G.comment=下界基础环境光的绿色分量。
+
+option.NETHER_AMBIENT_B=下界环境光 - 蓝色
+option.NETHER_AMBIENT_B.comment=下界基础环境光的蓝色分量。
+
+option.NETHER_FOG_DENSITY=下界雾气浓度
+option.NETHER_FOG_DENSITY.comment=下界薄雾笼罩的距离。调低可在大型洞穴中看得更远。
+
+option.NETHER_GLOW=岩浆辉光脉冲
+option.NETHER_GLOW.comment=缓慢而微弱的亮度脉动，如同远处熔岩海的呼吸。
+
+
+# =============================================================================
+#  9. The End
+# =============================================================================
+
+option.END_BRIGHTNESS=末地亮度
+option.END_BRIGHTNESS.comment=末地的整体亮度。
+
+option.END_AMBIENT_R=末地环境光 - 红色
+option.END_AMBIENT_R.comment=末地环境光的红色分量。
+
+option.END_AMBIENT_G=末地环境光 - 绿色
+option.END_AMBIENT_G.comment=末地环境光的绿色分量。
+
+option.END_AMBIENT_B=末地环境光 - 蓝色
+option.END_AMBIENT_B.comment=末地环境光的蓝色分量。
+
+option.END_FOG_DENSITY=末地雾密度
+option.END_FOG_DENSITY.comment=虚空中弥漫的薄雾量。默认较稀薄，使末地感觉开阔而非雾气弥漫。
+
+option.END_STARS=末地星空
+option.END_STARS.comment=向各个方向（包括脚下）铺满浓密的紫色星空。
+
+option.END_PORTAL_GLOW=虚空微光
+option.END_PORTAL_GLOW.comment=虚空地平线处淡淡的紫色微光。
+
+
+# =============================================================================
+# 10. World & misc
+# =============================================================================
+
+option.sunPathRotation=太阳路径倾斜
+option.sunPathRotation.comment=以度为单位倾斜太阳与月亮在天空中的运行轨迹。非零倾角意味着正午时太阳不会直射头顶，从而全天都能产生真实阴影，而非正午时平淡的光照。
+
+option.NIGHT_VISION_STRENGTH=夜视强度
+option.NIGHT_VISION_STRENGTH.comment=夜视效果提亮世界的程度。
+
+option.UNDERWATER_TINT_STRENGTH=水下色调
+option.UNDERWATER_TINT_STRENGTH.comment=处于水下时屏幕呈现水体颜色的强度。
+
+option.LAVA_VISION_STRENGTH=熔岩视野
+option.LAVA_VISION_STRENGTH.comment=头部处于熔岩中时橙色薄雾的亮度。
+
+option.BLINDNESS_STRENGTH=失明强度
+option.BLINDNESS_STRENGTH.comment=失明效果向四周收拢的程度。
+
+
+# =============================================================================
+#  Units
+#
+#  Appended after the value on sliders, so a number reads as a quantity
+#  instead of a bare figure.
+# =============================================================================
+
+suffix.shadowDistance=方块
+suffix.shadowMapResolution=像素
+suffix.SHADOW_SAMPLES=次采样
+suffix.SSAO_SAMPLES=次采样
+suffix.SSAO_RADIUS=方块
+suffix.SSR_STEPS=步骤
+suffix.VL_SAMPLES=步骤
+suffix.CONTACT_SHADOW_STEPS=步骤
+suffix.HEIGHT_FOG_ALTITUDE=§6精美
+suffix.HEIGHT_FOG_FALLOFF=方块
+suffix.WHITE_BALANCE=k
+suffix.sunPathRotation=度
+suffix.CLOUD_OCTAVES=倍频

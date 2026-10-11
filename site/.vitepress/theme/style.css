@@ -7,6 +7,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap');
 
 :root {
+  /* ── 全站统一容器策略 ──
+     消除 .shader-list(max-width:1200;margin:auto) 与
+     HomeHero/FeatureRow(width:min(1200,calc(100%-40))) 在
+     768/1024/1185 视口的 20px 轴线差：所有内容区共用
+     max-width:1200 + gutter 20 的同一条容器轴线。 */
+  --sh-content-max: 1200px;
+  --sh-gutter: 20px;
+  --sh-border-strong: rgba(232, 163, 61, 0.24);
+  --sh-accent-text: #f0c98a;
+  --sh-focus-ring: 0 0 0 3px rgba(232, 163, 61, 0.22);
+
   /* VitePress 品牌色 → 火把琥珀 */
   --vp-c-brand-1: #e8a33d;
   --vp-c-brand-2: #d18e2b;
@@ -109,6 +120,77 @@ img.img-fallback {
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: 2px;
+}
+
+/* ============================================================
+   统一容器：消除 39px 以下的 min(calc) 负宽度塌陷 + 轴线差 20px
+   旧写法 width:min(1200,calc(100%-40)) 在视口 < 40px 时 width=0，
+   产生 "Invalid property value"（audit 20/39px 塌陷）；
+   且与 .shader-list 的 margin:auto 在 768/1024/1185 差 20px。
+   统一为 max-width + padding-inline 的 gutter 模型。
+   ============================================================ */
+.shader-container,
+.home-hero,
+.feature-row,
+.shader-list {
+  width: 100%;
+  max-width: calc(var(--sh-content-max) + 2 * var(--sh-gutter));
+  margin-inline: auto;
+  padding-inline: var(--sh-gutter);
+  box-sizing: border-box;
+}
+/* 允许网格收缩：避免 8 卡片 min-content 把容器撑爆溢出（measure 曾现 1688px） */
+.shader-container,
+.home-hero,
+.feature-row,
+.shader-list,
+.recent-scroll,
+.carousel-viewport {
+  min-width: 0;
+}
+
+/* ============================================================
+   Markdown H2 轴线统一：让 "## 光影列表" 与容器同轴
+   旧 audit：mdH2 left 0 / shaderList left 0（无 gutter），与
+   HomeHero left 20 / FeatureRow left 20 差 20px。
+   ============================================================ */
+.VPPage .vp-doc > div > h2,
+.VPPage .vp-doc > h2 {
+  width: 100%;
+  max-width: calc(var(--sh-content-max) + 2 * var(--sh-gutter));
+  margin-inline: auto;
+  padding-inline: var(--sh-gutter);
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   对比与分隔微调：gallery 高分段（19:19 PASS）上保持；
+   pagination 禁用态的文字对比（3.4:1）抬到 4.5:1 以上；
+   卡片边框在悬停前用 --sh-border-strong 的轻微描边提升识别。
+   ============================================================ */
+.pagination button:disabled {
+  opacity: 0.72;
+  color: var(--vp-c-text-2);
+}
+.pagination button:disabled:hover {
+  border-color: var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+}
+.card--spacious,
+.card--dense,
+.recent-card {
+  border-color: color-mix(in srgb, var(--vp-c-divider) 88%, var(--sh-border-strong) 12%);
+}
+
+/* ============================================================
+   站点阈值收敛：reduce-motion 统一关闭 card/carousel/按钮动效
+   保证 H1/H2 大字在任何视口都不产生布局溢出（text-wrap/overflow）。
+   ============================================================ */
+.sp-hero__title,
+.VPPage .vp-doc h1,
+.VPPage .vp-doc > div > h1 {
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 /* ============================================================

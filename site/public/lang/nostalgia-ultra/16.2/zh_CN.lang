@@ -1,0 +1,344 @@
+#shaders/lang/zh_CN.lang
+# Nostalgia Ultra Shader v16.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Nostalgia_Ultra-V16.2.zip 的 shaders/lang/en_US.lang
+# ═══════════════════════════════════════════════════════════════════════════
+#                            NOSTALGIA ULTRA
+#                         English Language File
+# ═══════════════════════════════════════════════════════════════════════════
+
+# --- Profiles ---
+profile.ULTRA=§6§l极高 §7- 最高画质
+profile.HIGH=§e高配 §7- 推荐
+profile.MEDIUM=§a中配 §7- 均衡
+profile.LOW=§c低配 §7- 性能优先
+profile.POTATO=§8土豆 §7- 古董电脑
+
+# --- Menu Titles ---
+screen.NOSTALGIA=§6★ 怀旧风格
+screen.NOSTALGIA.comment=来自黄金时代的复古效果与暖色调
+
+screen.WATER=§b◆ 水面与波浪
+screen.WATER.comment=波浪、反射、泡沫与水下效果
+
+screen.SKY=§9☀ 天空
+screen.SKY.comment=太阳、星辰与云层
+
+screen.LIGHTING=§e✦ 光照
+screen.LIGHTING.comment=阴影、火把与光照
+
+screen.POST=§d✧ 后期效果
+screen.POST.comment=泛光、雾与后期处理
+
+screen.DIMENSIONS=§5◈ 维度
+screen.DIMENSIONS.comment=下界与末地专属设置
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                         NOSTALGIC OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.NOSTALGIA_PRESET=怀旧年代
+option.NOSTALGIA_PRESET.comment=选择你怀念的年代
+value.NOSTALGIA_PRESET.0=现代
+value.NOSTALGIA_PRESET.1=Beta 1.7
+value.NOSTALGIA_PRESET.2=Release 1.2.5
+value.NOSTALGIA_PRESET.3=Release 1.5
+
+option.CRT_EFFECT=CRT 显示器效果
+option.CRT_EFFECT.comment=模拟老式 CRT 显示器：曲面、扫描线、颗粒感
+
+option.CRT_CURVATURE=屏幕曲率
+option.CRT_CURVATURE.comment=CRT 屏幕弯曲程度
+
+option.CRT_SCANLINES=扫描线
+option.CRT_SCANLINES.comment=水平 CRT 扫描线
+
+option.CRT_CHROMA=色差
+option.CRT_CHROMA.comment=屏幕边缘细微的 RGB 分离，如同老式显像管
+
+option.CRT_GRAIN=胶片颗粒
+option.CRT_GRAIN.comment=动态模拟噪点
+
+option.WARM_COLORS=暖色调
+option.WARM_COLORS.comment=如同老式显示器的橙黄偏色
+
+option.COLOR_SATURATION=饱和度
+option.COLOR_SATURATION.comment=颜色强度
+
+option.GRASS_RECOLOR=鲜艳复古草地
+option.GRASS_RECOLOR.comment=为草地和树叶提供超高饱和度的 Alpha/Beta 版绿色
+
+option.FOLIAGE_WAVING=摇曳植被
+option.FOLIAGE_WAVING.comment=草地与树叶随风摇摆
+
+option.WAVING_STRENGTH=波动强度
+option.WAVING_STRENGTH.comment=植被摆动的幅度
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                              WATER OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.WATER_COLOR=水体颜色
+option.WATER_COLOR.comment=经典的青绿色或其他复古预设
+value.WATER_COLOR.0=原版
+value.WATER_COLOR.1=青绿 1.3
+value.WATER_COLOR.2=快速模式
+value.WATER_COLOR.3=热带
+
+option.WATER_ALPHA=水不透明度
+option.WATER_ALPHA.comment=水面透明度
+
+option.WAVE_STYLE=波浪样式
+option.WAVE_STYLE.comment=平滑正弦、方形复古阶梯或平面
+value.WAVE_STYLE.0=平滑
+value.WAVE_STYLE.1=复古方形
+value.WAVE_STYLE.2=平面模式
+value.WAVE_STYLE.3=Gerstner 复古
+
+option.WAVE_HEIGHT=波浪高度
+option.WAVE_HEIGHT.comment=波浪振幅
+
+option.WAVE_SPEED=波浪速度
+option.WAVE_SPEED.comment=水面动画速度
+option.WATER_SSR=水反射 (SSR)
+option.WATER_SSR.comment=地形与天空在水面反射。0=关闭 1=快速 2=高质量
+value.WATER_SSR.0=关
+value.WATER_SSR.1=快速
+value.WATER_SSR.2=质量
+option.WATER_SHADOWS=水面阴影
+option.WATER_SHADOWS.comment=水面接收真实的日/月光阴影
+
+option.WATER_ABSORPTION=深度吸收
+option.WATER_ABSORPTION.comment=浅水更清澈，深水更幽暗
+
+option.WATER_FOAM=岸边浪花
+option.WATER_FOAM.comment=水与岸交界处的白色泡沫
+
+option.WATER_CAUSTICS=焦散
+option.WATER_CAUSTICS.comment=水面与水下的焦散光纹
+
+option.UNDERWATER_FOG=水下雾
+option.UNDERWATER_FOG.comment=恰当的青绿色水下雾，在洞穴和夜晚会变暗
+
+option.UNDERWATER_DISTORTION=水下扭曲
+option.UNDERWATER_DISTORTION.comment=游泳时的波浪扭曲效果
+
+option.UNDERWATER_BLUR=水滴特效
+option.UNDERWATER_BLUR.comment=水下柔和模糊
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                               SKY OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.SKY_COLOR_MODE=天空颜色
+option.SKY_COLOR_MODE.comment=2011 年的电光蓝天空及相关预设
+value.SKY_COLOR_MODE.0=原版风格
+value.SKY_COLOR_MODE.1=电光蓝 2011
+value.SKY_COLOR_MODE.2=Alpha 经典
+
+option.SKY_SATURATION=天空饱和度
+option.SKY_SATURATION.comment=天空的鲜艳程度
+
+option.SUN_STYLE=太阳样式
+option.SUN_STYLE.comment=2011 年的方形太阳及其黄色光晕
+value.SUN_STYLE.0=原版贴图
+value.SUN_STYLE.1=方形 2011
+
+option.SUN_SIZE=太阳大小
+option.SUN_SIZE.comment=太阳大小
+
+option.SUN_HALO=太阳光晕
+option.SUN_HALO.comment=经典黄色光晕的强度
+
+option.MOON_STYLE=月亮样式
+option.MOON_STYLE.comment=原版月亮或旧版方形月亮
+value.MOON_STYLE.0=原版贴图
+value.MOON_STYLE.1=方形 2011
+value.MOON_STYLE.2=Alpha 白色
+option.MOON_HALO=月晕
+option.MOON_HALO.comment=月亮周围柔和的冷色光晕
+value.MOON_HALO.0=关
+value.MOON_HALO.1=开
+
+option.STARS_ENABLED=星星
+option.STARS_ENABLED.comment=2011 年风格的大尺寸固定星星
+
+option.STARS_SIZE=星体大小
+option.STARS_SIZE.comment=星星的大小
+
+option.STARS_BRIGHTNESS=星星亮度
+option.STARS_BRIGHTNESS.comment=星星的亮度
+option.MILKY_WAY=银河
+option.MILKY_WAY.comment=横跨夜空的淡淡银河带
+option.SHOOTING_STARS=流星
+option.SHOOTING_STARS.comment=偶尔划过夜空的流星
+option.AURORA_ENABLED=北极光
+option.AURORA_ENABLED.comment=夜空中动态的绿色与紫色极光幕帘，每天都会重塑形态
+option.RAINBOW_HALO=太阳光晕 (22°)
+option.RAINBOW_HALO.comment=太阳周围淡淡的光谱色光环，如同真实的冰晶折射
+
+option.CLOUDS_STYLE=云层样式
+option.CLOUDS_STYLE.comment=Beta 扁平 2D 云，由光影本身绘制
+value.CLOUDS_STYLE.0=原版云
+value.CLOUDS_STYLE.1=Beta 2D
+value.CLOUDS_STYLE.2=Alpha 纤薄
+value.CLOUDS_STYLE.3=体积 3D
+
+option.CLOUDS_HEIGHT=云层高度
+option.CLOUDS_HEIGHT.comment=云层的高度
+
+option.CLOUDS_COVERAGE=云朵覆盖度
+option.CLOUDS_COVERAGE.comment=天空的云量覆盖程度
+
+option.CLOUDS_SPEED=云层速度
+option.CLOUDS_SPEED.comment=云层飘动的速度
+
+option.CLOUDS_OPACITY=云层不透明度
+option.CLOUDS_OPACITY.comment=云层的不透明度
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=云层在下方世界上投射柔和移动的阴影
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                             LIGHTING OPTIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.SHADOW_QUALITY=阴影质量
+option.SHADOW_QUALITY.comment=关闭、硬质复古、柔和或超柔和 PCSS
+value.SHADOW_QUALITY.0=关
+value.SHADOW_QUALITY.1=硬质 (复古)
+value.SHADOW_QUALITY.2=柔和
+value.SHADOW_QUALITY.3=超柔和 (PCSS)
+
+option.SHADOW_STRENGTH=阴影强度
+option.SHADOW_STRENGTH.comment=阴影的深浅程度
+
+option.NIGHT_SHADOWS=夜晚阴影
+option.NIGHT_SHADOWS.comment=夜晚淡淡的蓝色月光阴影
+option.SSAO_ENABLED=环境光遮蔽（SSAO）
+option.SSAO_ENABLED.comment=角落与缝隙中的柔和接触阴影
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_STRENGTH.comment=环境光遮蔽的强度
+option.CONTACT_SHADOWS=接触阴影
+option.CONTACT_SHADOWS.comment=步进追踪微阴影：方块上的草、方块边缘——阴影贴图无法捕捉的细节
+option.SPECULAR_STRENGTH=镜面反射强度
+option.SPECULAR_STRENGTH.comment=光亮方块上的太阳高光 (labPBR 资源包)
+
+option.OLD_LIGHTING_MODE=旧版光照
+option.OLD_LIGHTING_MODE.comment=量化的光照阶梯，无平滑渐变——标志性的外观
+
+option.GODRAYS_ENABLED=丁达尔光效
+option.GODRAYS_ENABLED.comment=来自太阳的体积光光束
+
+option.GODRAYS_QUALITY=光束质量
+option.GODRAYS_QUALITY.comment=体积光的采样数量
+value.GODRAYS_QUALITY.1=低
+value.GODRAYS_QUALITY.2=中
+value.GODRAYS_QUALITY.3=高
+
+option.GODRAYS_INTENSITY=体积光强度
+option.GODRAYS_INTENSITY.comment=体积光的强度
+
+option.GODRAYS_DENSITY=体积光密度
+option.GODRAYS_DENSITY.comment=体积光的浓度
+
+option.TORCH_BRIGHTNESS=火把亮度
+option.TORCH_BRIGHTNESS.comment=火把光照的亮度
+
+option.TORCH_COLOR_TEMP=火把色温
+option.TORCH_COLOR_TEMP.comment=以开尔文为单位——数值越低越偏橙色
+
+option.HELD_LIGHT=手持光源
+option.HELD_LIGHT.comment=手持火把时照亮周围的世界
+
+option.HELD_LIGHT_STRENGTH=手持光源强度
+option.HELD_LIGHT_STRENGTH.comment=手持光照的照射距离
+
+option.EMISSIVE_BRIGHTNESS=自发光亮度
+option.EMISSIVE_BRIGHTNESS.comment=萤石、海晶灯等的自发光亮度
+
+option.LAVA_GLOW=岩浆辉光
+option.LAVA_GLOW.comment=岩浆发光与泛光的程度
+
+option.TORCH_GLOW=火把泛光
+option.TORCH_GLOW.comment=火把发光与泛光的程度
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                            POST-PROCESSING
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.BLOOM_ENABLED=泛光
+option.BLOOM_ENABLED.comment=明亮物体与自发光方块周围的泛光
+
+option.BLOOM_INTENSITY=泛光强度
+option.BLOOM_INTENSITY.comment=泛光的强度
+
+option.BLOOM_THRESHOLD=泛光阈值
+option.BLOOM_THRESHOLD.comment=触发泛光的亮度阈值
+
+option.BLOOM_RADIUS=泛光半径
+option.BLOOM_RADIUS.comment=泛光光晕的大小
+
+option.FOG_ENABLED=距离雾
+option.FOG_ENABLED.comment=远处地形上的大气雾
+
+option.FOG_AMOUNT=雾浓度
+option.FOG_AMOUNT.comment=远景雾的浓度
+
+option.RAIN_EFFECTS=雨天效果
+option.RAIN_EFFECTS.comment=下雨时世界变得潮湿变暗，水面出现雨滴涟漪
+option.FXAA_ENABLED=抗锯齿（快速近似抗锯齿）
+option.FXAA_ENABLED.comment=廉价的边缘平滑。会轻微柔化复古像素——默认关闭
+
+option.VIGNETTE_ENABLED=暗角
+option.VIGNETTE_ENABLED.comment=屏幕边角变暗的暗角效果
+
+option.VIGNETTE_AMOUNT=暗角量
+option.VIGNETTE_AMOUNT.comment=暗角的强度
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                              DIMENSIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+option.NETHER_FOG_DENSITY=下界雾气浓度
+option.NETHER_FOG_DENSITY.comment=经典的浓厚下界雾
+
+option.NETHER_SATURATION=下界饱和度
+option.NETHER_SATURATION.comment=血红色！
+option.NETHER_HEAT_HAZE=下界热浪扭曲
+option.NETHER_HEAT_HAZE.comment=熔岩湖上方的热空气晃动
+
+option.END_VOID_COLOR=末地虚空颜色
+option.END_VOID_COLOR.comment=末地天空的颜色
+value.END_VOID_COLOR.0=黑色
+value.END_VOID_COLOR.1=紫黑色
+value.END_VOID_COLOR.2=深紫色
+
+option.END_STARS_STYLE=末地星辰样式
+option.END_STARS_STYLE.comment=末地星辰的表现方式
+option.END_NEBULA=末地星云
+option.END_NEBULA.comment=在末地天空中漂浮的紫色星云
+value.END_STARS_STYLE.0=原版
+value.END_STARS_STYLE.1=大型固定
+value.END_STARS_STYLE.2=闪烁
+
+# --- Debug / Advanced ---
+screen.DEBUG=§c⚙ 调试与高级设置
+screen.DEBUG.comment=阴影贴图设置与调试工具
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowMapResolution.comment=阴影贴图的分辨率 - 越高阴影越清晰
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影的渲染距离
+option.CHUNK_BORDERS=区块边框
+option.CHUNK_BORDERS.comment=显示经典的区块边框线（调试用）
+option.CHUNK_BORDER_COLOR=区块边框颜色
+option.CHUNK_BORDER_COLOR.comment=调试用区块边框的颜色
+value.CHUNK_BORDER_COLOR.0=白色
+value.CHUNK_BORDER_COLOR.1=黄色
+value.CHUNK_BORDER_COLOR.2=红
+option.TONEMAP_STYLE=色调映射
+option.TONEMAP_STYLE.comment=颜色曲线：精确的复古直出或 ACES 电影感
+value.TONEMAP_STYLE.0=复古直出
+value.TONEMAP_STYLE.1=电影感 ACES
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE.comment=带重影和光迹的电影感镜头光晕
+value.LENS_FLARE.0=关
+value.LENS_FLARE.1=开

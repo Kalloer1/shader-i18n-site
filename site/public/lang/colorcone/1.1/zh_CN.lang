@@ -1,0 +1,30 @@
+#shaders/lang/zh_CN.lang
+# Color Cone v1.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Color-Cone 1.1.zip 的 shaders/lang/en_us.lang
+# Colorblind Shader - English labels
+# Based on clinical definitions from NIH, Colour Blind Awareness, Britannica
+
+option.COLORBLIND_MODE=色盲模式
+option.COLORBLIND_MODE.comment=模拟特定类型的色觉缺陷。二色视即某类视锥细胞完全缺失，异常三色视即某类视锥细胞功能减弱。
+
+value.COLORBLIND_MODE.0=正常视觉
+value.COLORBLIND_MODE.1=绿色盲 (绿色视锥细胞缺失)
+value.COLORBLIND_MODE.2=红色盲 (红色视锥细胞缺失)
+value.COLORBLIND_MODE.3=蓝色盲 (蓝色视锥细胞缺失)
+value.COLORBLIND_MODE.4=绿色弱视 (绿色视锥细胞功能减弱)
+value.COLORBLIND_MODE.5=红色弱视 (红色视锥细胞功能减弱)
+value.COLORBLIND_MODE.6=蓝色弱视 (蓝色视锥细胞功能减弱)
+value.COLORBLIND_MODE.7=全色盲 (无视锥细胞)
+value.COLORBLIND_MODE.8=蓝色视锥细胞单色视
+
+option.CONTRAST=对比度
+option.CONTRAST.comment=提高颜色对比度。建议色觉缺陷用户设为 1.2-1.5。
+suffix.CONTRAST=§e4x
+
+option.SHADOW_STRENGTH=阴影强度
+option.SHADOW_STRENGTH.comment=控制表面阴影的深浅。
+
+option.SHOW_NORMALS=显示法线 [DEBUG]
+option.SHOW_NORMALS.comment=将表面法线向量以颜色可视化。
+
+screen.ADVANCED=高级设置

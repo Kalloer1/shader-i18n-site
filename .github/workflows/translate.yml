@@ -78,6 +78,11 @@ jobs:
       - name: Translate
         run: node scripts/pipeline.mjs --ids "${{ inputs.ids }}"
         env:
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+          LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY }}
+          LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
           WORKER_URL: ${{ secrets.WORKER_URL }}
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}

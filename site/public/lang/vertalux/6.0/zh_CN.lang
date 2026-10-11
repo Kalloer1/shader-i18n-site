@@ -1,0 +1,403 @@
+#shaders/lang/zh_CN.lang
+# VertaLux v6.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：VertaLuxV6.zip 的 shaders/lang/en_us.lang
+# VertaLux - menu labels (EN)
+# Menu: ONE global quality scale (the profile) + 4 screens - Quality / Water &
+# sky / Ambience / Image. Every visible option is an ON/OFF switch or a NAMED
+# TIER; no raw number is ever displayed on a control.
+# This file holds ONLY the keys of the 5 reachable screens (see the layout
+# convention and the accessibility audit in shaders.properties). EN and FR carry
+# strictly the same key set: 4 profiles, 4 screens, 92 options.
+# THE ORDER OF THIS FILE IS THE ORDER OF THE MENU, block for block. Keep it that
+# way - a key that drifts away from its screen block is a key nobody remembers
+# to update. Blank lines mark the same blocks the screens separate with <empty>.
+
+# ---- global quality scale (the profile) ----
+# Same four words and the SAME FOUR COLOURS as every tier in the pack: the
+# player reads one single scale, from the profile down to the last setting.
+# There is deliberately no fifth entry of a different nature next to them.
+profile.POTATO=§9低配
+profile.MEDIUM=§a中配
+profile.HIGH=§6高配
+profile.EXTREME=§4极高
+
+# ---- screens ----
+screen.QUALITY=§b⚙ 画质与性能
+screen.QUALITY.comment=仅包含影响帧率的选项，别无其他。共六组：渲染分辨率（影响最大的杠杆）、阴影与遮蔽、间接光照、体积光与太阳光束、反射与材质，最后是三项开关位于“水面与天空”屏幕的分级。总开关始终位于其控制分级的左侧，若某分级有两个开关则位于其上一行。
+screen.NATURE=§9☁ 水面、天空与云
+screen.NATURE.comment=你在水面与天空上实际看到的内容。共四组：水面、水下、云层，然后是太阳、月亮与星辰。除水体色调、云量与星辰亮度为命名分级外，其余均为开关。
+screen.AMBIANCE=§d✨ 氛围与世界
+screen.AMBIANCE.comment=世界的氛围，每项一个开关。共五组：雾与薄雾、群系赋予空气的颜色、天气与季节、灯光与火焰，然后是下界、末地与传送门。
+screen.IMAGE=§6◐ 画面与相机
+screen.IMAGE.comment=画面，按渲染链的计算顺序排列。共五组：基础调色（曝光、对比度、饱和度）、色调映射曲线、画面特效、镜头与相机，最后是 FXAA。
+
+# ============ SCREEN 1/4 - QUALITY & PERFORMANCE ============
+
+# -- block 1: render resolution --
+option.TAA=时间性抗锯齿（TAA）
+option.TAA.comment=随时间累积帧：平滑边缘、稳定间接光照、无锯齿闪烁。借助邻域钳制将重影降至最低。其右侧即为其控制的 TAA 渲染与超分总开关。
+option.TAA_MODE=TAA 渲染与超分
+option.TAA_MODE.comment=游戏以更低分辨率渲染，再由 TAA 提升回屏幕分辨率。超高质量 = 不超分（100%）。高质量 = 72% 像素，均衡 = 56%，性能 = 44%，超级性能 = 25%。本光影包中影响帧率最大的杠杆。关闭 TAA 时无效。
+value.TAA_MODE.0=超高质量 
+value.TAA_MODE.1=质量
+value.TAA_MODE.2=§e均衡
+value.TAA_MODE.3=性能
+value.TAA_MODE.4=超高性能 
+option.TAA_QUALITY=画面稳定性
+option.TAA_QUALITY.comment=帧之间混合的精细程度——不要与上方选择渲染分辨率的设置混淆。此处修复闪烁与微小移动时的柔化。低配：廉价版本，使用原始邻域且仅读取一次上一帧而非五次——唯一能回收帧率的档位。中配：迄今为止默认的混合方式，锐化重建上一帧并统计剔除拖影。高配：在此之上，每个像素都会测量自身帧间不稳定性并据此精确放宽钳制阈值——这才得以稳定平滑表面（间接光照、反射），这些是邻域钳制永远无法保护的对象，且相机转动时屏幕边缘不再出现生硬截断。实测：闪烁减半且画面更接近真正的抗锯齿，而无需额外的纹理读取。关闭 TAA 时无效。
+value.TAA_QUALITY.0=§a低配
+value.TAA_QUALITY.1=§a中配
+value.TAA_QUALITY.2=高
+
+# -- block 2: shadows & occlusion --
+option.SHADOW_QUALITY=阴影质量
+option.SHADOW_QUALITY.comment=优先阴影清晰度，其次是范围。阴影纹素从 0.025 降至 0.0094 方块（分辨率 1024 →
+value.SHADOW_QUALITY.0=§a低配
+value.SHADOW_QUALITY.1=§a中配
+value.SHADOW_QUALITY.2=高
+value.SHADOW_QUALITY.3=极高
+option.SHADOW_SHARP_LEVEL=Near shadow sharpness
+option.SHADOW_SHARP_LEVEL.comment=Shadow LOD, axis 1 of 2: like real games, shadow resolution now falls with distance — a plateau of CONSTANT fine detail around you, then a firm falloff. This tier sets the plateau magnification: ×3.3 / ×5 / ×7 / ×10 the base texel of Shadow quality (at the default map that is 5.6 / 3.8 / 2.6 / 1.9 cm per shadow texel). FREE in FPS: the map is redistributed, never enlarged — what the center gains, mid-distance and the border pay. High is the calibrated default (closest to the pack's previous look); Very high buys a ×10 center but visibly coarser mid-range shadows, best paired with a Short range on the right.
+value.SHADOW_SHARP_LEVEL.0=§a低配
+value.SHADOW_SHARP_LEVEL.1=§a中配
+value.SHADOW_SHARP_LEVEL.2=高
+value.SHADOW_SHARP_LEVEL.3=极高
+option.SHADOW_SHARP_RANGE=Sharp shadow range
+option.SHADOW_SHARP_RANGE.comment=Shadow LOD, axis 2 of 2: how far the sharp plateau reaches before detail starts dropping — 12 / 20 / 32 / 48 blocks asked. FREE, same trade as the sharpness: a longer plateau is paid at mid-distance and at the border of the shadow range. The delivered radius is capped by the shadow-map budget, so the top notches can COINCIDE at a given Shadow quality. At High sharpness the four notches deliver 12 / 20 / 21 / 21 blocks on Medium shadows (the default — Long and Very long are then identical), 12 / 14 / 14 / 14 on Low, 12 / 20 / 28 / 28 on High, 12 / 20 / 32 / 42 on Very high — and the higher the sharpness level, the shorter the reachable range. The quality profiles walk this axis 0→3.
+value.SHADOW_SHARP_RANGE.0=短
+value.SHADOW_SHARP_RANGE.1=§a中配
+value.SHADOW_SHARP_RANGE.2= §7Fog
+value.SHADOW_SHARP_RANGE.3=非常长
+option.AO=环境光遮蔽（SSAO）
+option.AO.comment=Corners, crevices and contact areas darken naturally. The detail that changes everything. Its sample count follows Shadow quality, on its left.
+option.PARTICLE_SHADOWS=粒子阴影
+option.PARTICLE_SHADOWS.comment=Particles (smoke, drips, rain splashes...) and the first-person hand receive real sun and cloud shadows like the terrain. OFF = lightmap-only shading. Far particles keep a fast one-tap path.
+value.PARTICLE_SHADOWS.0=§8OFF
+value.PARTICLE_SHADOWS.1=§aON
+option.PIXEL_SHADOWS=Pixel-perfect shadows
+option.PIXEL_SHADOWS.comment=Shadow edges become STAIRS locked to the 16×16 texture pixels of the blocks — the voxel look. Every screen pixel inside one block texel reads the shadow map at the very same place, and the soft penumbra (PCSS) is still computed there: a shadow touching its block keeps a crisp edge, a shadow cast from far above widens into grey steps, one value per texel — the shadow is blurred, THEN pixelated. Same cost as the default shadows. Caustics follow, drawn in the same 1/16-block pixels, and so do colored shadows (stained glass) and the water's own shadow. Cloud shadows, volumetric rays, indirect light and reflections do NOT follow, by design. Shadow quality on its left still drives the map RESOLUTION, and that is what decides how far the steps stay exact: about 13 / 17 / 27 / 52 blocks from Low to Very high — further out one map texel covers several block texels and the steps grow chunkier.
+value.PIXEL_SHADOWS.0=§8OFF
+value.PIXEL_SHADOWS.1=§aON
+
+# -- block 3: indirect light --
+option.SSGI=ssgi（太阳光反弹）
+option.SSGI.comment=One bounce of SUNLIGHT only: sunlit surfaces light their neighbors (color bleeding). Block lights stay strictly vanilla and never feed the GI. Fades out in caves. Master, with the RSM next to it, of Indirect light quality below.
+option.RSM_GI=屏幕外阳光反弹（反射阴影贴图）
+option.RSM_GI.comment=Uses the shadow map as a bounce source: sunlight reflects off colored surfaces EVEN off-screen. True PTGI-style color bleeding. The map covers what lies on the SUN side of your view, not a full circle around you, so a little bounce can appear when the camera turns (shadow.culling = reversed in shaders.properties buys a stable all-around map for GPU time). ALREADY ON from High upwards — Indirect light quality below turns it on by itself at its last two notches. This box is what turns it on at Low and Medium, where it is off by default. It never counts a bounce twice: a surface the camera can already see is left to SSGI.
+option.GI_QUALITY=Indirect light quality
+option.GI_QUALITY.comment=The single dial for indirect light. Low and Medium: screen-space bounce only (SSGI, 4 then 8 samples). High: 12 samples AND the OFF-SCREEN bounce (RSM, 16 samples) switches on — colour now arrives from geometry the camera cannot see, which is the biggest jump on this axis and the only one that changes what is lit rather than how cleanly. Very high: 24 SSGI / 24 RSM and the whole bounce computed at FULL resolution instead of a quarter of the pixels, so silhouettes stop being rebuilt by interpolation — about four times the cost. Does nothing at Low/Medium if SSGI is off and the RSM box above is unchecked.
+value.GI_QUALITY.0=§a低配
+value.GI_QUALITY.1=§a中配
+value.GI_QUALITY.2=高
+value.GI_QUALITY.3=极高
+option.DENOISE_QUALITY=Indirect light stability
+option.DENOISE_QUALITY.comment=How hard the bounce denoiser scrubs the frame-to-frame shimmer of the indirect light. Its temporal stage — a statistical clamp that stops the history from being crushed on sparse frames, the old cause of the faint sparkling everywhere — is always on and costs nothing, whatever this tier says. Low: temporal stage only, the delivered cost to the tap. Medium: one smoothing ring around each pixel, edges protected by depth and normals so contacts stay crisp. High: a second, wider ring — the strongest scrub. Very high: same two rings, but their width follows the MEASURED noise of each pixel — fully open on fresh or moving pixels (exactly where the shimmer lives), nearly closed on a settled image, so it is both the most stable and the sharpest tier at the same cost as High. Does nothing if SSGI is off and the RSM box above is unchecked (same masters as Indirect light quality).
+value.DENOISE_QUALITY.0=§a低配
+value.DENOISE_QUALITY.1=§a中配
+value.DENOISE_QUALITY.2=高
+value.DENOISE_QUALITY.3=极高
+
+# -- block 4: volumetrics & sun rays --
+option.VOLUMETRIC_LIGHT=体积光束
+option.VOLUMETRIC_LIGHT.comment=Sunlight and moonlight made visible in the air: shafts through leaves and windows, glow around the sun. The most atmospheric effect of the pack, and what turns the dawn mist into a real volume. Master of Volumetrics quality, right next to it.
+option.VOLUMETRIC_QUALITY=体积光质量
+option.VOLUMETRIC_QUALITY.comment=FINENESS of the volumetric fog (fog banks, dawn mist, Nether columns) and underwater ray range. Each notch DOUBLES the march samples: above water the step shrinks (40 → 20 → 10 → 5 blocks); below water the ray RANGE grows (24 → 48 → 96 → 128 blocks) and the step tightens to 4 blocks at the last notch. Very high is the finest, longest march of the pack; like every tier it runs on a quarter of the pixels behind a depth-aware upsample (the old full-resolution march costs 4x for slightly crisper fog edges — screenshot hunters can force it back with VL_FULL_RES in lib/settings.glsl). From High up, the dawn mist banks get their full contrast. Sun rays have their own tier two lines below.
+value.VOLUMETRIC_QUALITY.0=§a低配
+value.VOLUMETRIC_QUALITY.1=§a中配
+value.VOLUMETRIC_QUALITY.2=高
+value.VOLUMETRIC_QUALITY.3=极高
+option.GODRAYS=云隙光
+option.GODRAYS.comment=Sky light streams radially from the sun, cut by geometry. These are the AIR rays: over water they are trimmed to the share of the view that really is air, because the beams inside the water are drawn by the underwater ray system instead. Master, on the air side, of Sun ray quality below.
+option.UW_VOLUMETRICS=水下体积雾
+option.UW_VOLUMETRICS.comment=Depth-graded volumetric fog and caustic god rays under the water surface (Beer-Lambert extinction). OFF = flat underwater fog only. Master, on the underwater side, of Sun ray quality below.
+option.SUNRAY_QUALITY=Sun ray quality
+option.SUNRAY_QUALITY.comment=Sample count of the crepuscular rays in air AND the finesse of the underwater light shafts (substeps and render distance). Does nothing if both switches on the line above are off.
+value.SUNRAY_QUALITY.0=§a低配
+value.SUNRAY_QUALITY.1=§a中配
+value.SUNRAY_QUALITY.2=高
+value.SUNRAY_QUALITY.3=极高
+
+# -- block 5: reflections & materials --
+option.SSR_ENABLED=水反射 (SSR)
+option.SSR_ENABLED.comment=Screen-space reflections on the water: everything already drawn on screen is mirrored by the surface. The base of every water reflection. Master of Reflection quality, right next to it.
+option.REFLECT_QUALITY=反射质量
+option.REFLECT_QUALITY.comment=Budget of the raymarch that draws EVERY reflection in the pack (water, glass, PBR metals): REACH of the reflection (20 to 64 steps, so off-screen objects are found further and further out) and PRECISION of the hit point (4 to 8 refinement passes divide the impact error by 16, 32, 64 then 256, which is what stops a reflection from sliding along an edge). Does nothing if Water reflections is off.
+value.REFLECT_QUALITY.0=§a低配
+value.REFLECT_QUALITY.1=§a中配
+value.REFLECT_QUALITY.2=高
+value.REFLECT_QUALITY.3=极高
+option.PBR_TEXTURES=PBR纹理（labpbr）
+option.PBR_TEXTURES.comment=Uses the resource pack's normal and specular maps when present. Master of Material quality, right next to it.
+option.PBR_QUALITY=Material quality
+option.PBR_QUALITY.comment=Number of roughness-blur taps used on reflections: how many samples a rough surface averages before it looks soft instead of grainy. Does nothing if PBR textures is off.
+value.PBR_QUALITY.0=§a低配
+value.PBR_QUALITY.1=§a中配
+value.PBR_QUALITY.2=高
+value.PBR_QUALITY.3=极高
+option.PBR_POM=视差浮雕（高度贴图）
+option.PBR_POM.comment=视差映射：根据资源包高度贴图雕刻浮雕效果。实验性功能——部分资源包可能出现视觉瑕疵。
+option.GLASS_EFFECTS=玻璃效果
+option.GLASS_EFFECTS.comment=所有玻璃的菲涅尔反射、微折射与太阳闪烁效果。
+
+# -- block 6: tiers whose master lives on the Water & sky screen --
+option.CLOUD_QUALITY=云层质量
+option.CLOUD_QUALITY.comment=FINENESS of the cloud volume, then draw distance. Both rise together: the march goes from 8 to 48 steps while the range goes from 700 to 1800 blocks, so the step shortens from 87 to 37 blocks and the cumulus gain relief at every notch. Turned on and off by "Volumetric clouds", and its COVERAGE is set, on the Water & sky screen.
+value.CLOUD_QUALITY.0=§a低配
+value.CLOUD_QUALITY.1=§a中配
+value.CLOUD_QUALITY.2=高
+value.CLOUD_QUALITY.3=极高
+option.WAVE_QUALITY=Wave quality
+option.WAVE_QUALITY.comment=Swell train count, number of rungs on the wave ladder (from the long swell down to the fine chop) and parallax-occlusion steps on the near water. Turned on and off by "Water waves", on the Water & sky screen.
+value.WAVE_QUALITY.0=§a低配
+value.WAVE_QUALITY.1=§a中配
+value.WAVE_QUALITY.2=高
+value.WAVE_QUALITY.3=极高
+option.CAUSTIC_QUALITY=Caustics quality
+option.CAUSTIC_QUALITY.comment=Low = analytic caustics (cheapest). Medium = photon-density net evaluated on the sea you actually see. High = same net, shaped into a continuous caustic instead of a two-tone stencil. Three notches only: there is no useful fourth state. Turned on and off by "Underwater caustics", on the Water & sky screen.
+value.CAUSTIC_QUALITY.0=§a低配
+value.CAUSTIC_QUALITY.1=§a中配
+value.CAUSTIC_QUALITY.2=高
+
+# ============ SCREEN 2/4 - WATER, SKY & CLOUDS ============
+
+# -- block 1: the water surface --
+option.WATER_SKY_TINT=Sky in the water
+option.WATER_SKY_TINT.comment=The colour of the SKY REFLECTED IN THE WATER — not the sky itself, which never moves. Past about eight blocks the water pixel IS that reflection: 70% of it at ten blocks, 96% at twenty, 99% at sixty — the colour of the water MEDIUM is fixed to its natural calibration, so this reflection is what decides the colour of open water. FOUR NAMED STEPS: Azure (physical) is the untouched physical mirror; Slight, Medium and Strong (Medium is the look that ships) pivot the reflected sky out of azure and drain its saturation, at EXACTLY constant Rec.709 brightness — the water gets warmer and less "swimming pool", never darker and never washed out. Two things are deliberately spared: the SUN, whose disc comes through bit for bit at every step, and the whole GOLD PATH of a sunset, which is measured at zero change because the step only ever bites on blue. An assumed artistic choice, not physics.
+value.WATER_SKY_TINT.0=§9Azure (physical)
+value.WATER_SKY_TINT.1=§aSlight
+value.WATER_SKY_TINT.2=§a中配
+value.WATER_SKY_TINT.3=强
+option.WATER_WAVES=水面波浪
+option.WATER_WAVES.comment=A formed sea on the water surface: long crossed crest lines from the swell down to the fine chop, exact analytic normals, and a far ocean crushed toward mirror at grazing angles with a tight sun-glitter path. OFF = a flat vanilla plane. Master of Wave quality (Quality screen).
+option.WATER_REFRACTION=水折射
+option.WATER_REFRACTION.comment=Bends what you see through the surface with the wave normals. Ships disabled: OFF = no distortion, and no cost.
+option.WATER_CAUSTICS=水下焦散
+option.WATER_CAUSTICS.comment=Computed from the wave field: focused light follows the swell. Master of Caustics quality (Quality screen).
+option.WATER_MICRONORMAL=水面微波纹
+option.WATER_MICRONORMAL.comment=涌浪之上叠加的细微波纹细节，近看使水面呈现哑光、被风拂过的颗粒感。
+option.WATER_FOAM=边缘泡沫
+option.WATER_FOAM.comment=水体与岸边及固体方块交界处的白色泡沫。
+
+# -- block 2: underwater --
+option.UNDERWATER_FX=水下效果
+option.UNDERWATER_FX.comment=斯涅尔窗口、悬浮颗粒、随深度渐变的雾。总控其后三项设置。
+option.UW_BIOME_TINT=水下群系色调
+option.UW_BIOME_TINT.comment=水下雾与光束将采用群系水体颜色（保持物理亮度）。
+option.UW_PARTICLES=悬浮粒子
+option.UW_PARTICLES.comment=精细水下粒子。默认关闭。
+option.UW_VIGNETTE=水下暗角
+option.UW_VIGNETTE.comment=头部处于水下时使屏幕四角变暗。
+
+# -- block 3: the clouds --
+option.VOLUMETRIC_CLOUDS=体积云
+option.VOLUMETRIC_CLOUDS.comment=锚定于世界中的真实 3D 云：视差、自阴影、银边。总控其右侧的云量以及云品质（位于品质界面）。
+option.CLOUD_AMOUNT=云朵覆盖度
+option.CLOUD_AMOUNT.comment=积云占据天空的比例。低 = 晴天时的零星云岛，极高 = 阴沉的天空。游戏内天气仍会对此进行调节。
+value.CLOUD_AMOUNT.0=§a低配
+value.CLOUD_AMOUNT.1=§a中配
+value.CLOUD_AMOUNT.2=高
+value.CLOUD_AMOUNT.3=极高
+option.CLOUD_LAYER_ALTO=高积云层
+option.CLOUD_LAYER_ALTO.comment=第二层云：位于积云之上的中高空斑驳高积云层。
+option.CLOUD_LAYER_CIRRUS=卷云层
+option.CLOUD_LAYER_CIRRUS.comment=第三层云：高空稀薄的卷云薄纱。也是日晕出现所需。
+option.VC_GROUND_SHADOWS=地面云影
+option.VC_GROUND_SHADOWS.comment=云层阴影在地形上漂移。
+
+# -- block 4: sun, moon and stars --
+option.SUN_HALO=太阳光晕 (22°)
+option.SUN_HALO.comment=太阳（夜间为月亮）周围的冰晶光晕，仅在稀薄的高空薄纱掠过视野时出现：内缘偏红，外缘呈白蓝色，内部天空略暗。浓厚的云层会同时遮住太阳和光晕。
+value.SUN_HALO.0=§8关闭
+value.SUN_HALO.1=§a开启
+option.MOON_HALO=月晕（22°）
+option.MOON_HALO.comment=潮湿夜晚月亮周围的冰晶光环。
+option.MOON_PHASE_LIGHT=月相光照
+option.MOON_PHASE_LIGHT.comment=月光、夜间环境光和夜空随月相变化：满月夜明亮，新月夜黑暗。星光与洞穴最低亮度不受影响。
+value.MOON_PHASE_LIGHT.0=§8关闭
+value.MOON_PHASE_LIGHT.1=§a开启
+option.STAR_LEVEL=星星亮度
+option.STAR_LEVEL.comment=星空的亮度。最高的两个档位还会显示银河，较低的两个档位则没有。
+value.STAR_LEVEL.0=§a低配
+value.STAR_LEVEL.1=§a中配
+value.STAR_LEVEL.2=高
+value.STAR_LEVEL.3=极高
+option.AURORA=北极光
+option.AURORA.comment=某些晴朗夜晚出现的绿色与紫色极光帷幕。
+option.SHOOTING_STARS=流星
+option.SHOOTING_STARS.comment=偶尔划过夜空的流星。
+
+# ============ SCREEN 3/4 - AMBIENCE & WORLD ============
+
+# -- block 1: fogs & mists --
+option.ATMO_FOG=大气雾
+option.ATMO_FOG.comment=约 60 格起的渐进式 Beer-Lambert 薄霾：真实的中距离大气纵深，黄昏时增强。与高度雾一起，是装点所有地形的两种雾之一。
+option.HEIGHT_FOG=高度雾
+option.HEIGHT_FOG.comment=薄雾弥漫山谷，大型建筑逐渐显现。黎明和黄昏时雾气更浓。
+option.DAWN_MIST=晨雾
+option.DAWN_MIST.comment=黎明时汇聚于山谷与洼地的低层雾气（4:30 至 7:00 浓厚，9:30 前消散），黄昏时较淡，雨停后会残留潮湿薄霾。它是真实的体积雾，与体积光一同步进：树木与山丘的阴影刻入其中，飘过的云会使其变暗，动态场将其打散为带有清晰间隙的漂移雾团。雾团随世界时间像云一样漂移，因此睡觉或 /time set 会使其随世界移动。需要体积光，体积品质设为高及以上时效果最佳。洞穴与水下永不出现。
+value.DAWN_MIST.0=§8关闭
+value.DAWN_MIST.1=§a开启
+option.CAVE_FOG=洞穴氛围
+option.CAVE_FOG.comment=无天空洞穴中的深色迷雾。
+option.DISTANCE_FOG=距离雾
+option.DISTANCE_FOG.comment=在渲染距离尽头的原版指数雾墙（开启远景地平线时会推至dh lod边缘）。关闭 = 仅由体积雾（大气、高度、洞穴、体积光）修饰远景距离。
+value.DISTANCE_FOG.0=§8关闭
+value.DISTANCE_FOG.1=§a开启
+option.SEALEVEL_MIST=海平面薄雾
+option.SEALEVEL_MIST.comment=黎明与黄昏时水面上方的一层薄雾。默认关闭：它会在海平面处绘制一条金色的水平带，并非所有人都喜欢。
+option.CLOUD_SHAFTS=云隙光
+option.CLOUD_SHAFTS.comment=积云在空气中刻出的光与影的光柱。全天候且来自各个方向：无需站在阴影边缘，也无需等到日落。即使完全没有雾，光柱依然存在：该选项在 160 格外自带气溶胶薄霾，因此即使关闭大气雾和高度雾，光柱仍会在远景与天空中显现。这两种雾开启时会增强光柱（它们会加入自身的空气，同样被云层切割）；但已不再是必需。此前，薄霾上的云影在太阳高度低于 3.5° 时会完全关闭——恰好在日落时。设置越高，承载薄霾越浓，且越能从侧面和背对太阳时看清光柱（实测：背对太阳时，自然档位的幅度大 34 倍）。光柱细节跟随体积品质（品质界面）。开销：每帧烘焙一张小型云影贴图（固定尺寸，与分辨率无关），每个空气采样仅需对其读取一次。关闭 = 与之前的渲染逐位一致。
+value.CLOUD_SHAFTS.0=§8关闭
+value.CLOUD_SHAFTS.1=微妙
+value.CLOUD_SHAFTS.2=§a自然
+value.CLOUD_SHAFTS.3=强
+
+# -- block 2: the colour the biome gives the air --
+option.BIOME_ATMOSPHERE=群系大气效果
+option.BIOME_ATMOSPHERE.comment=雾效采用群系颜色：沙漠温暖，沼泽翠绿，针叶林冰寒。
+option.BIOME_CLIMATE=群系气候
+option.BIOME_CLIMATE.comment=来自所在群系气候的细微天空、薄霾与光照变化：沙漠中苍白温暖的地平线与尘霾，丛林与沼泽中更浓厚的柔和薄霾，雪地中清冽偏冷的空气。群系边界处平滑过渡。
+value.BIOME_CLIMATE.0=§8关闭
+value.BIOME_CLIMATE.1=§a开启
+
+# -- block 3: weather & seasons --
+option.RAIN_WET=湿润地面（雨天）
+option.RAIN_WET.comment=降雨期间及雨后，地面变暗并反射天空；雨停时阳光会在地面产生高光。
+option.LIGHTNING_FX=闪电照明
+option.LIGHTNING_FX.comment=闪电击中时，周围环境闪烁蓝白色光芒。
+option.RAINBOW=彩虹
+option.RAINBOW.comment=雨后，与太阳方向相反——带有倒置的次虹。
+option.SNOW_SPARKLE=雪地闪光
+option.SNOW_SPARKLE.comment=阳光下的积雪闪烁：数千个固定于世界中的微小冰晶面，仅在将太阳（或较暗的月亮）反射向你时才闪光——光点随你的移动而漂移，自身永不闪烁。雨天、湿雪、阴影中或云层下无闪烁。
+value.SNOW_SPARKLE.0=§8关闭
+value.SNOW_SPARKLE.1=§a开启
+option.WAVING_FOLIAGE=风力动态植被
+option.WAVING_FOLIAGE.comment=植物摆动（树叶、草、花、作物）的总开关。默认关闭：植物完全静止，且该效果毫无开销。Distant Horizons 的 LOD 永不摆动。
+option.WAVING_WATER_PLANTS=水下植物动态效果
+option.WAVING_WATER_PLANTS.comment=让水下植物（海带、海草）随水流漂动，比风中摆动更慢、幅度更大。默认关闭。需要其左侧的“风动植被”。
+
+# -- block 4: lights & fire --
+option.EMISSIVE_LPV=彩色灯光
+option.EMISSIVE_LPV.comment=每种发光方块投射一种干净固定的颜色：火把/灯笼/火焰为暖橙色，萤石/菌光体为琥珀色，灵魂为蓝青色，海晶灯为冷白色，红石火把为红色，末地烛为淡紫色，紫水晶为紫罗兰色……仅改变色调，永不改变原版照射范围。实时体积传播（LPV），放置或移除方块时更新。限制：网格由阴影通道（面向太阳的视锥）供给——视野外的光源保持原版色调，转动视角时颜色才会出现。
+value.EMISSIVE_LPV.0=§8关闭
+value.EMISSIVE_LPV.1=§a开启
+option.EMISSIVE_FLICKER=火焰闪烁
+option.EMISSIVE_FLICKER.comment=火把、火焰和熔岩轻微闪烁。冷光源保持稳定。
+option.LAVA_OVERLAY=熔岩内视角
+option.LAVA_OVERLAY.comment=在熔岩中游泳时屏幕浸染橙色辉光。
+option.BOSS_FX=Boss战效果
+option.BOSS_FX.comment=Boss战（末影龙/凋灵）时出现脉动紫色渐晕效果。
+
+# -- block 5: the Nether, the End & the portals --
+option.DIMENSION_FX=下界与末地效果
+option.DIMENSION_FX.comment=整个区块的总开关。关闭 = 所有维度均为朴素渲染（下界看起来像主世界夜晚，末地像正午）。开启 = 专属的下界/末地观感，外加下方的三项末地设置。
+value.DIMENSION_FX.0=§8关闭
+value.DIMENSION_FX.1=§a开启
+option.PORTAL_FX=传送门特效
+option.PORTAL_FX.comment=下界传送门：以原速播放的原版动态纹理，原版半透明，外加轻微 HDR 发光（泛光）。末地传送门/折跃门：通往深空的窗口（见“末地传送门：深空”）。关闭 = 原版渲染。
+value.PORTAL_FX.0=§8关闭
+value.PORTAL_FX.1=§a开启
+option.END_STORM=末地风暴
+option.END_STORM.comment=环绕末地岛屿的雷电夜暴：从岛屿下方黑暗风暴海中升起的扭曲蓝夜光柱，围绕中央岛屿缓缓旋转，自上方受寒冷末地光照亮，自内部受闪电照亮。末地色调转为蓝夜（星辰与星云保留）。以半分辨率加时域累积渲染，开销约等同于积云。关闭 = 朴素的紫色末地。
+value.END_STORM.0=§8关闭
+value.END_STORM.1=§a开启
+option.END_LIGHTNING=末地闪电
+option.END_LIGHTNING.comment=风暴内部的随机闪电（需要其左侧的“末地风暴”）：闪光从内部照亮风暴，在光柱间划出闪电通道，在薄霾中发光，短暂照亮所有表面并轻微为屏幕着色。每次闪击持续 0.15-0.4 秒，包含 2-3 次子闪，随后是等长的短暂余晖。
+value.END_LIGHTNING.0=§8关闭
+value.END_LIGHTNING.1=§a开启
+option.END_BLACKHOLE=末地黑洞
+option.END_BLACKHOLE.comment=一个超大质量黑洞占据末地太阳悬挂的空位，近到足以填满视野：约 12° 宽的漆黑阴影位于 38° 高处，边缘有一圈极细的白蓝色光子环，整个末地天空被真实的强场引力弯曲——弯曲在光子环处如自然界般发散，因此环外紧邻的天空显示的是黑洞背后的景象，星光堆积成真正发光的爱因斯坦环，吸积盘从阴影顶部上方和底部下方绕过。盘体本身是一个厚实、鲜活的环面：其近半部扫过黑色圆盘前方，近侧面遮住远侧面，作为真实黑体由内向外从白热冷却至琥珀色，引力使内缘变红变暗，其自身的轨道速度使一侧增亮变蓝、另一侧变暗变红，旋臂与环绕的热点在其中流动。仅绘制于天空，位于岛屿之后、风暴之下，并免费在水中反射。关闭 = 朴素的末地天空。
+value.END_BLACKHOLE.0=§8关闭
+value.END_BLACKHOLE.1=§a开启
+option.END_PORTAL_SPACE=末地传送门：深空
+option.END_PORTAL_SPACE.comment=末地传送门与折跃门将化作通往深空的窗口：4 层星空随视角滑动（视差）、缓慢漂移与闪烁、淡淡的紫色星云、近乎纯黑的虚空、边缘轻微压暗。关闭时则为简单的星空井。
+value.END_PORTAL_SPACE.0=§8关闭
+value.END_PORTAL_SPACE.1=§a开启
+
+# ============ SCREEN 4/4 - IMAGE & CAMERA ============
+
+# -- block 1: base grade --
+option.IMG_EXPOSURE=曝光
+option.IMG_EXPOSURE.comment=色调映射前的整体画面亮度。低 = 更暗、对比更强的画面；极高 = 明亮但会压爆高光的画面。
+value.IMG_EXPOSURE.0=§a低配
+value.IMG_EXPOSURE.1=§a中配
+value.IMG_EXPOSURE.2=高
+value.IMG_EXPOSURE.3=极高
+option.IMG_CONTRAST=对比度
+option.IMG_CONTRAST.comment=色调映射 S 曲线的强度。低 = 柔和、平淡的画面；极高 = 深邃的黑色与纯净的白色。
+value.IMG_CONTRAST.0=§a低配
+value.IMG_CONTRAST.1=§a中配
+value.IMG_CONTRAST.2=高
+value.IMG_CONTRAST.3=极高
+option.IMG_SATURATION=饱和度
+option.IMG_SATURATION.comment=色彩强度（整体饱和度与暗淡色彩提升联动）。低 = 纪实感，极高 = 明信片般的鲜艳色彩。
+value.IMG_SATURATION.0=§a低配
+value.IMG_SATURATION.1=§a中配
+value.IMG_SATURATION.2=高
+value.IMG_SATURATION.3=极高
+option.AUTO_EXPOSURE=自动曝光（视觉适应）
+option.AUTO_EXPOSURE.comment=在洞穴中瞳孔会张开：画面会逐渐变亮。叠加在曝光档位之上，不会取代它。
+
+# -- block 2: tonemapping curve --
+option.ACES_TONEMAP=ACES电影级色调映射
+option.ACES_TONEMAP.comment=学院电影级曲线：深邃的黑色、柔和的高光、自然的中间调饱和度。同时关闭此项与 AgX 可回退至 Uchimura。
+option.AGX_TONEMAP=AgX色调映射
+option.AGX_TONEMAP.comment=现代电影感色调映射，可在高光处（太阳、熔岩、霓虹）保留色相，而 ACES 会在此去饱和至白色。同时开启时将覆盖 ACES——这就是两者并排放置的原因。
+option.PURKINJE=夜视效果（浦肯野现象）
+option.PURKINJE.comment=黑暗环境中，人眼失去红色感知并偏向蓝色视觉。
+
+# -- block 3: image effects --
+option.BLOOM_LEVEL=泛光
+option.BLOOM_LEVEL.comment=亮光源周围的泛光。关闭将禁用整个处理通道（可提升帧率）：没有单独的开关。
+value.BLOOM_LEVEL.0=§8关闭
+value.BLOOM_LEVEL.1=§a低配
+value.BLOOM_LEVEL.2=§a中配
+value.BLOOM_LEVEL.3=高
+option.VIGNETTE_LEVEL=暗角
+option.VIGNETTE_LEVEL.comment=画面边缘压暗。关闭 = 边角完全中性无压暗。
+value.VIGNETTE_LEVEL.0=§8关闭
+value.VIGNETTE_LEVEL.1=§a低配
+value.VIGNETTE_LEVEL.2=§a中配
+value.VIGNETTE_LEVEL.3=高
+option.SHARPEN_LEVEL=锐化
+option.SHARPEN_LEVEL.comment=在最后阶段应用的自适应锐化，可弥补激进 TAA 放大带来的模糊。默认关闭，与预设外观保持一致。
+value.SHARPEN_LEVEL.0=§8关闭
+value.SHARPEN_LEVEL.1=§a低配
+value.SHARPEN_LEVEL.2=§a中配
+value.SHARPEN_LEVEL.3=高
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN.comment=非常轻微的胶片颗粒，为画面增添生动感。（渐变色带已在 8 位量化前永久处理完毕：此项不可调节。）
+
+# -- block 4: lens & camera --
+option.LENS_FLARE=太阳镜头光晕
+option.LENS_FLARE.comment=沿摄像机轴线的光晕与光学鬼影，当太阳隐藏时遮挡。
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION.comment=画面边缘的细微光学色散，如同真实镜头。
+option.DOF=景深
+option.DOF.comment=对焦点进行对焦，距离产生模糊如同相机镜头。
+option.MOTION_BLUR=动态模糊
+option.MOTION_BLUR.comment=相机运动模糊（需启用taa）。在传送/去遮挡时自动关闭以避免拖影。
+option.CAMERA_DROPLETS=镜头雨滴
+option.CAMERA_DROPLETS.comment=在户外雨天，少量不起眼的水滴会附着在镜头上并产生轻微折射，偶有细细的水痕滑落。
+value.CAMERA_DROPLETS.0=§8关闭
+value.CAMERA_DROPLETS.1=微妙
+value.CAMERA_DROPLETS.2=强
+option.DAMAGE_LEVEL=伤害效果
+option.DAMAGE_LEVEL.comment=失去生命值时的红色屏幕脉冲，强度随损失量缩放。关闭后也将移除生命值的 uniform 读取。
+value.DAMAGE_LEVEL.0=§8关闭
+value.DAMAGE_LEVEL.1=§a低配
+value.DAMAGE_LEVEL.2=§a中配
+value.DAMAGE_LEVEL.3=高
+
+# -- block 5: anti-aliasing --
+option.FXAA=抗锯齿（快速近似抗锯齿）
+option.FXAA.comment=平滑边缘的像素锯齿。当 TAA 关闭时的兜底方案：TAA（画质界面）是本光影包主要的抗锯齿方式。
+
+# -- SOURCE NOTE, not an in-game legend: DEBUG_VIEW is off-menu (no
+# option.DEBUG_VIEW / value.DEBUG_VIEW.*, on no screen.* of shaders.properties),
+# so these # lines never reach the UI - they document the view for whoever reads
+# the code. DEBUG_VIEW 29 (MISSION CL3, lib/settings.glsl): colored-lights
+# autopsy, magenta cross = camera. One sentence: if the TOP is black around the
+# cross while torches sit nearby, voxelization or the flood is not running; if
+# the top is colored but the BOTTOM is gray/burnt, the application side
+# (normalization or the gbuffers bridges) is what breaks.

@@ -49,11 +49,9 @@ const items = [
 </template>
 
 <style scoped>
-/* 移动优先：默认单列堆叠 */
+/* 移动优先：默认单列堆叠 — 容器由全局 .feature-row 统一策略接管 */
 .feature-row {
-  /* 与首页 Hero / 光影列表共用同一条内容轴线（1200px 居中） */
-  width: min(1200px, calc(100% - 40px));
-  margin: 26px auto 40px;
+  margin-block: 26px 40px;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1px;

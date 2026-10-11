@@ -1,0 +1,677 @@
+#shaders/lang/zh_CN.lang
+# DAP Shaders v10.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：DAP Shaders 1.16 to 1.19.4 Version 10.0.zip 的 shaders/lang/en_us.lang
+# DAP Shaders menu labels
+
+# ---- screens ----
+screen.SHADOWS=阴影
+screen.SSAO_SCR=环境光遮蔽
+screen.SSR_SCR=反射（屏幕空间反射）
+screen.FOG_SCR=体积雾
+screen.BLOOM_SCR=泛光
+screen.COLORGRADE=色调映射与色彩
+
+# ---- shadows ----
+option.SHADOW_RESOLUTION=阴影分辨率
+option.SHADOW_DISTANCE=阴影距离
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_TAPS=阴影滤波采样次数
+option.SHADOW_DISTORT=阴影聚焦
+option.SHADOW_BIAS=阴影偏移
+
+# ---- lighting ----
+option.SUN_INTENSITY=太阳/月亮强度
+option.AMBIENT_INTENSITY=环境光强度
+option.BLOCKLIGHT_INTENSITY=方块光照强度
+option.BLOCKLIGHT_TEMPERATURE=方块光照暖度
+option.MINIMUM_LIGHT=最小光照
+
+# ---- ssao ----
+option.SSAO=环境光遮蔽
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_SAMPLES=环境光遮蔽采样数 
+option.SSAO_RADIUS=环境光遮蔽半径 
+
+# ---- ssr ----
+option.SSR=屏幕空间反射
+option.SSR_STEPS=光线步进
+option.SSR_REFINE=精炼步数
+option.SSR_ROUGHNESS_BLUR=粗糙度模糊
+option.SSR_FADE=边缘淡出
+option.SSR_FALLBACK_SKY=天空备用色
+
+# ---- fog ----
+option.VOLUMETRIC_FOG=体积雾
+option.VL_SAMPLES=雾气采样数
+option.VL_DISTANCE=雾气行进距离
+option.VL_STRENGTH=光轴强度
+option.FOG_DENSITY=雾密度
+option.FOG_HEIGHT_FALLOFF=高度衰减
+option.FOG_BASE_HEIGHT=雾气基础高度
+option.VL_MIE=前向散射
+option.GROUND_FOG=地面雾
+
+# ---- bloom ----
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_THRESHOLD=泛光阈值
+
+# ---- colour ----
+option.TONEMAP=色调映射运算符
+value.TONEMAP.0=reinhard
+value.TONEMAP.1=色彩编码的电影级色调映射
+value.TONEMAP.2=内村效果
+value.TONEMAP.3=洛特斯
+option.EXPOSURE=曝光
+option.SATURATION=饱和度
+option.CONTRAST=对比度
+option.WHITE_BALANCE=白平衡
+option.TINT_R=色调红
+option.TINT_G=色调绿
+option.TINT_B=色调蓝
+option.VIGNETTE=暗角
+option.VIGNETTE_STRENGTH=暗角强度
+
+# ---- water ----
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_WAVE_SPEED=波浪速度
+option.WATER_OPACITY=水不透明度
+
+# ---- profiles ----
+
+# ---- artistic ----
+screen.ARTISTIC=艺术效果
+option.SPLIT_TONING=分离色调
+option.SPLIT_STRENGTH=分离色调强度
+option.FILM_GRAIN=胶片颗粒
+option.GRAIN_STRENGTH=噪点强度
+option.MATTE_FILM=哑光电影效果
+option.MATTE_STRENGTH=哑光强度
+option.CHROMATIC_ABERRATION=色差
+option.CA_STRENGTH=色差强度
+
+# ---- sky & clouds ----
+
+# ---- sky & clouds ----
+option.STARS=星星
+option.STAR_AMOUNT=星星亮度
+option.CLOUDS=体积云
+option.CLOUD_SAMPLES=云层质量
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_HEIGHT=云层高度
+option.CLOUD_THICKNESS=云层厚度
+option.CLOUD_SPEED=云层速度
+
+# ---- lava ----
+option.LAVA_GLOW=岩浆辉光
+option.LAVA_GLOW_STRENGTH=岩浆辉光强度
+
+# ---- end crystal ----
+option.END_CRYSTAL_GLOW=末地水晶辉光
+option.END_CRYSTAL_GLOW_STRENGTH=末地水晶辉光强度
+
+# 2.2 additions
+option.END_PORTAL_EFFECT=太空传送门
+option.END_PORTAL_BRIGHTNESS=传送门亮度
+option.END_PORTAL_STARS=传送门星点密度
+option.END_PORTAL_NEBULA=传送门星云
+option.SKYBOX_BRIGHTNESS=天空盒/太阳/月亮亮度
+option.NETHER_TINT=下界群系色调
+option.END_AMBIENT=末地环境光
+
+# 3.0 additions
+screen.FEATURES=附加功能
+option.PURKINJE=浦肯野偏移 
+option.PURKINJE_STRENGTH=普尔钦效应强度
+option.SHARPEN=锐化
+option.SHARPEN_STRENGTH=锐化强度
+option.LETTERBOX=电影黑边
+option.LETTERBOX_SIZE=条形尺寸
+option.POSTERIZE=色阶分离
+option.POSTERIZE_LEVELS=色阶分离等级
+option.SKY_TINT_R=天空色调 R
+option.SKY_TINT_G=天空色调 G
+option.SKY_TINT_B=天空色调 B
+option.END_PORTAL_LAYERS=传送门深度层
+
+# ---- graphical impact tooltips (auto) ----
+option.SHADOW_RESOLUTION.comment=阴影贴图细节。数值越高阴影越锐利。影响：高。
+option.SHADOW_DISTANCE.comment=阴影投射距离。 §7性能影响: §f中§7.
+option.SHADOW_SOFTNESS.comment=阴影边缘柔化程度。 §7性能影响: §f低§7.
+option.SHADOW_TAPS.comment=用于柔化阴影的采样数。 §7性能影响: §f中§7.
+option.SHADOW_DISTORT.comment=将阴影细节集中于摄像机附近。影响：极低。
+option.SHADOW_BIAS.comment=修复阴影瑕疵。仅影响外观。 §7性能影响: §f无§7.
+option.SUN_INTENSITY.comment=直射阳光亮度。 §7性能影响: §f无§7.
+option.AMBIENT_INTENSITY.comment=天空环境光亮度。 §7性能影响: §f无§7.
+option.BLOCKLIGHT_INTENSITY.comment=火把及其他方块光源亮度。 §7性能影响: §f无§7.
+option.BLOCKLIGHT_TEMPERATURE.comment=方块光源的冷暖色调。 §7性能影响: §f无§7.
+option.MINIMUM_LIGHT.comment=最低亮度，确保暗处不会完全漆黑。 §7性能影响: §f无§7.
+option.LAVA_GLOW.comment=岩浆作为光源发光并产生泛光。 §7性能影响: §f无§7.
+option.LAVA_GLOW_STRENGTH.comment=岩浆发光强度。 §7性能影响: §f无§7.
+option.END_CRYSTAL_GLOW.comment=末地水晶从核心发光。 §7性能影响: §f无§7.
+option.END_CRYSTAL_GLOW_STRENGTH.comment=末地水晶发光强度。 §7性能影响: §f无§7.
+option.EMISSIVE_BLOCKS.comment=使哭泣的黑曜石、萤石、海晶灯等方块自发光并产生泛光。 §7性能影响: §f无§7.
+option.EMISSIVE_STRENGTH.comment=自发光方块发光强度。 §7性能影响: §f无§7.
+option.SSAO.comment=环境光遮蔽：在角落产生柔和的接触阴影。 §7性能影响: §f中§7.
+option.SSAO_STRENGTH.comment=环境光遮蔽的强度。影响：极低。
+option.SSAO_SAMPLES.comment=环境光遮蔽每像素采样数。 §7性能影响: §f中§7.
+option.SSAO_RADIUS.comment=环境光遮蔽作用范围。 §7性能影响: §f低§7.
+option.SSR.comment=水面与平滑表面的屏幕空间反射。影响：高。
+option.SSR_STEPS.comment=光线步进次数。次数越多反射越清晰。影响：极高。
+option.SSR_REFINE.comment=用于获得更清晰反射命中点的细化步数。 §7性能影响: §f中§7.
+option.SSR_ROUGHNESS_BLUR.comment=模糊较粗糙表面的反射。影响：极低。
+option.SSR_FADE.comment=在屏幕边缘淡化反射。 §7性能影响: §f无§7.
+option.SSR_FALLBACK_SKY.comment=当反射光线未命中时使用天空光照。影响：极低。
+option.VOLUMETRIC_FOG.comment=体积光与体积雾效果。影响：高。
+option.VL_SAMPLES.comment=雾气步进采样数。次数越多光柱越平滑。影响：极高。
+option.VL_DISTANCE.comment=雾气步进的传播距离。影响：高。
+option.VL_STRENGTH.comment=体积光强度。 §7性能影响: §f无§7.
+option.FOG_DENSITY.comment=整体雾浓度。 §7性能影响: §f无§7.
+option.FOG_HEIGHT_FALLOFF.comment=雾随高度变薄的速度。 §7性能影响: §f无§7.
+option.FOG_BASE_HEIGHT.comment=用作大气雾基准的世界 Y 高度。对于自定义高度的世界，请将其设为海平面或地形基准高度。 §7性能影响: §f无§7.
+option.VL_MIE.comment=朝向太阳的前向散射。 §7性能影响: §f无§7.
+option.GROUND_FOG.comment=近地雾层数量。 §7性能影响: §f低§7.
+option.BLOOM.comment=亮部像素周围的柔和泛光。 §7性能影响: §f低§7.
+option.BLOOM_STRENGTH.comment=泛光效果的强度。影响：极低。
+option.BLOOM_THRESHOLD.comment=像素产生泛光所需的亮度。 §7性能影响: §f无§7.
+option.STARS.comment=程序化生成的夜空星辰。影响：极低。
+option.STAR_AMOUNT.comment=星星密度与亮度。影响：极低。
+option.CLOUDS.comment=体积云效果。影响：高。
+option.CLOUD_SAMPLES.comment=云层步进采样数。次数越多云层越平滑。影响：极高。
+option.CLOUD_COVERAGE.comment=云层覆盖天空的程度。 §7性能影响: §f中§7.
+option.CLOUD_HEIGHT.comment=云层高度。 §7性能影响: §f无§7.
+option.CLOUD_THICKNESS.comment=云层垂直厚度。 §7性能影响: §f低§7.
+option.CLOUD_SPEED.comment=云层漂移速度。 §7性能影响: §f无§7.
+option.SKYBOX_BRIGHTNESS.comment=自定义天空盒及日月的亮度。 §7性能影响: §f无§7.
+option.SKY_TINT_R.comment=天空红色色调。 §7性能影响: §f无§7.
+option.SKY_TINT_G.comment=天空绿色色调。 §7性能影响: §f无§7.
+option.SKY_TINT_B.comment=天空蓝色色调。 §7性能影响: §f无§7.
+option.NETHER_TINT.comment=群系雾颜色对下界光照的着色强度。 §7性能影响: §f无§7.
+option.END_AMBIENT.comment=末地环境补光亮度。 §7性能影响: §f无§7.
+option.NETHER_PORTAL_EFFECT.comment=使用动态旋转的下界传送门效果替代平面材质。影响：极低。
+option.NETHER_PORTAL_BRIGHTNESS.comment=下界传送门漩涡亮度。 §7性能影响: §f无§7.
+option.END_PORTAL_EFFECT.comment=末地传送门和折跃门变为通往太空的窗口。 §7性能影响: §f低§7.
+option.END_PORTAL_NEBULA.comment=在传送门内添加漂移的星云。 §7性能影响: §f中§7.
+option.END_PORTAL_BRIGHTNESS.comment=传送门星空亮度。 §7性能影响: §f无§7.
+option.END_PORTAL_STARS.comment=传送门内的星星密度。影响：极低。
+option.END_PORTAL_LAYERS.comment=传送门内的视差深度层数。 §7性能影响: §f低§7.
+option.WATER_WAVE_HEIGHT.comment=水面波浪高度。影响：极低。
+option.WATER_WAVE_SPEED.comment=水面波浪速度。 §7性能影响: §f无§7.
+option.WATER_OPACITY.comment=水体不透明度。 §7性能影响: §f无§7.
+option.TIME_OVERRIDE.comment=仅客户端：固定显示某一时刻的天空。不会执行 /time，也不会影响服务器、阴影或生物生成。 §7性能影响: §f无§7.
+option.TIME_OF_DAY.comment=要显示的天空对应时刻（0-24）。 §7性能影响: §f无§7.
+option.WEATHER_OVERRIDE.comment=仅客户端：固定显示某一潮湿程度的外观。不会执行 /weather，也不会添加真实的雨粒子。 §7性能影响: §f无§7.
+option.WEATHER_RAIN.comment=0 为晴朗 .. 1 为暴雨，仅为视觉效果。 §7性能影响: §f无§7.
+option.TONEMAP.comment=HDR 到显示器的色调映射曲线。会改变整体观感。 §7性能影响: §f无§7.
+option.EXPOSURE.comment=整体亮度/曝光度。 §7性能影响: §f无§7.
+option.SATURATION.comment=颜色饱和度。 §7性能影响: §f无§7.
+option.CONTRAST.comment=图像对比度。 §7性能影响: §f无§7.
+option.WHITE_BALANCE.comment=冷暖白平衡。 §7性能影响: §f无§7.
+option.TINT_R.comment=红色通道色调。 §7性能影响: §f无§7.
+option.TINT_G.comment=绿色通道色调。 §7性能影响: §f无§7.
+option.TINT_B.comment=蓝色通道色调。 §7性能影响: §f无§7.
+option.VIGNETTE.comment=使屏幕边角变暗的暗角效果。 §7性能影响: §f无§7.
+option.VIGNETTE_STRENGTH.comment=暗角强度。 §7性能影响: §f无§7.
+option.SPLIT_TONING.comment=青色阴影、暖色高光的分色调效果。 §7性能影响: §f无§7.
+option.SPLIT_STRENGTH.comment=分色调色强度。 §7性能影响：§f无§7.
+option.FILM_GRAIN.comment=动态胶片颗粒效果。影响：极低。
+option.GRAIN_STRENGTH.comment=胶片颗粒强度。影响：极低。
+option.MATTE_FILM.comment=轻微提亮、褪色的黑色。 §7性能影响：§f无§7.
+option.MATTE_STRENGTH.comment=胶片褪色强度。 §7性能影响：§f无§7.
+option.CHROMATIC_ABERRATION.comment=向边缘扩散的色彩边纹。影响：极低。
+option.CA_STRENGTH.comment=色差强度。影响：极低。
+option.PURKINJE.comment=近黑暗环境中眼睛向蓝色偏移。影响：极低。
+option.PURKINJE_STRENGTH.comment=普尔金耶效应强度。影响：极低。
+option.SHARPEN.comment=对比度自适应锐化。 §7性能影响：§f低§7.
+option.SHARPEN_STRENGTH.comment=锐化强度。 §7性能影响：§f低§7.
+option.LETTERBOX.comment=电影黑边。 §7性能影响：§f无§7.
+option.LETTERBOX_SIZE.comment=电影黑边高度。 §7性能影响：§f无§7.
+option.POSTERIZE.comment=将颜色分带以呈现复古效果。 §7性能影响：§f无§7.
+option.POSTERIZE_LEVELS.comment=颜色分带数量。 §7性能影响：§f无§7.
+
+# =====================================================================
+#   v3.5 additions
+# =====================================================================
+
+# ---- screens ----
+screen.MATERIALS=材质与基于物理的渲染
+screen.CAMERA=相机与抗锯齿
+
+# ---- waving foliage ----
+option.WAVING_FOLIAGE=摇曳植被
+option.WAVING_FOLIAGE.comment=草、花、作物和树叶的风动动画。植物从根部弯曲而非平移，因此保持扎根原地。 §7性能影响：§f低§7.
+option.WAVE_PLANTS=植物摇曳
+option.WAVE_PLANTS.comment=草、花与作物弯曲幅度。设为0可禁用植物运动但保留叶片晃动。
+option.WAVE_LEAVES=树叶摇摆
+option.WAVE_LEAVES.comment=树叶摇曳幅度。设为0可禁用叶片运动但保留植物晃动。
+option.WAVE_SPEED=风速
+option.WAVE_SPEED.comment=风力移动速度。
+option.WAVE_SCALE=阵风强度
+option.WAVE_SCALE.comment=风场模式大小。低值使相邻植物同步大幅摆动；高值使它们独立晃动。
+
+# ---- water & underwater ----
+option.UNDERWATER=水下雾
+option.UNDERWATER.comment=沉水时吸收颜色随距离变化：红色先褪，其次绿色，使深水呈现蓝色。同时影响岩浆与细雪。影响：极低。
+option.WATER_ABSORPTION=水体吸收度
+option.WATER_ABSORPTION.comment=水下颜色随深度衰减的速度。数值越高水体越浑浊。
+option.WATER_FOG_BRIGHTNESS=水下亮度
+option.WATER_FOG_BRIGHTNESS.comment=沉水时水体本身亮度。
+option.WATER_REFRACTION=水折射
+option.WATER_REFRACTION.comment=当头部处于水、岩浆或粉雪之下时扭曲视野，使上方的水面产生波纹扭曲效果。 §7从外部俯视水面时不会产生折射——这需要表面背后的背景，而硬件混合已将其合并。 §7性能影响：§f极低§7.
+option.REFRACTION_STRENGTH=折射强度
+option.REFRACTION_STRENGTH.comment=水下晃动推动图像的强度。1080p分辨率下0.1约对应3像素。高值会导致屏幕边缘模糊。
+option.WATER_CAUSTICS=焦散
+option.WATER_CAUSTICS.comment=水下表面上舞动的聚焦光带。仅在潜入水中且日光可照射到的地方可见。 §7性能影响：§f低§7.
+option.CAUSTICS_STRENGTH=焦散强度
+option.CAUSTICS_STRENGTH.comment=焦散图案亮度。
+
+# ---- shadow extras ----
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=染色玻璃和水会为其遮挡的光线染色，而非投射纯黑阴影。开销适中：阴影贴图读取量翻倍。 §7性能影响：§f中§7.
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=云层会在其下方的地面投下阴影，与实际可见的云层位置一致。 §7性能影响：§f中§7.
+option.CLOUD_SHADOW_STRENGTH=云层阴影强度
+option.CLOUD_SHADOW_STRENGTH.comment=云层下方地面变暗程度。
+
+# ---- held light ----
+option.HELD_LIGHT=手持光源
+option.HELD_LIGHT.comment=手持火炬或其他发光方块时照亮周围世界。影响：极低。
+option.HELD_LIGHT_STRENGTH=手持光源强度
+option.HELD_LIGHT_STRENGTH.comment=携带光源的亮度与照射范围。
+
+# ---- PBR ----
+option.LABPBR=实验室PBR材质
+option.LABPBR.comment=使用 LabPBR 资源包中的法线贴图和高光贴图来实现真实的表面凹凸、粗糙度和由纹理驱动的自发光。未加载此类资源包时无效。 §7性能影响：§f中§7.
+option.LABPBR_EMISSION=基于物理的渲染自发光
+option.LABPBR_EMISSION.comment=资源自发光通道驱动的辉光强度。
+
+# ---- extra geometry ----
+option.BEACON_BEAM_BRIGHTNESS=信标光束
+option.BEACON_BEAM_BRIGHTNESS.comment=信标光柱亮度。现已采用独立程序实现发光效果，而非像实体方块那样着色。
+option.SPIDER_EYES_BRIGHTNESS=生物眼睛
+option.SPIDER_EYES_BRIGHTNESS.comment=蜘蛛、末影人等发光生物眼睛亮度。
+option.GLINT_BRIGHTNESS=附魔光泽
+option.GLINT_BRIGHTNESS.comment=物品与盔甲附魔微光亮度。
+option.WEATHER_BRIGHTNESS=雨雪亮度
+option.WEATHER_BRIGHTNESS.comment=雨雪粒子亮度。现受天光着色，使雨在夜晚和遮蔽下呈现正确观感。
+option.WEATHER_OPACITY=雨雪不透明度
+option.WEATHER_OPACITY.comment=雨雪粒子视觉密度。
+
+# ---- camera / AA ----
+option.FXAA=快速近似抗锯齿
+option.FXAA.comment=平滑锯齿边缘。开销低且无重影，但会轻微柔化细节。完整的时域抗锯齿计划在版本 4 中加入。 §7性能影响：§f低§7.
+option.FXAA_STRENGTH=快速近似抗锯齿强度
+option.FXAA_STRENGTH.comment=边缘的平滑强度。
+option.MOTION_BLUR=动态模糊
+option.MOTION_BLUR.comment=沿物体自上一帧以来的移动方向拖尾模糊图像。默认关闭。 §7性能影响：§f中§7.
+option.MOTION_BLUR_STRENGTH=动态模糊强度
+option.MOTION_BLUR_STRENGTH.comment=涂抹的长度。
+option.MOTION_BLUR_SAMPLES=运动模糊采样数
+option.MOTION_BLUR_SAMPLES.comment=涂抹的流畅度。数值越高，性能开销越大。
+option.DEPTH_OF_FIELD=景深
+option.DEPTH_OF_FIELD.comment=模糊不在注视距离上的景物。默认关闭。 §7性能影响：§f中§7.
+option.DOF_STRENGTH=景深强度
+option.DOF_STRENGTH.comment=景深模糊的强度。
+option.DOF_FOCUS_RANGE=焦点范围。
+option.DOF_FOCUS_RANGE.comment=清晰带宽度。数值越高，场景中保持清晰的部分越多。
+
+# ---- sky ----
+option.AURORA=极光
+option.AURORA.comment=夜空中的极光光幕。雨天和白天会淡出。 §7性能影响：§f低§7.
+option.AURORA_STRENGTH=极光强度
+option.AURORA_STRENGTH.comment=极光的亮度。
+option.CLOUD_DENSITY=云层密度
+option.CLOUD_DENSITY.comment=云层的厚度和不透明度。此选项在着色器 v3 中已被使用，但从未出现在菜单中。
+option.END_PORTAL_SPEED=末地传送门速度
+option.END_PORTAL_SPEED.comment=末地传送门的漩涡和闪烁速度。此设置存在于 v3 中，但未连接到任何功能。
+
+# ---- labels that were missing in v3 (options showed as raw define names) ----
+option.EMISSIVE_BLOCKS=发光方块
+option.EMISSIVE_STRENGTH=发光强度
+option.NETHER_PORTAL_EFFECT=下界传送门效果
+option.NETHER_PORTAL_BRIGHTNESS=下界传送门亮度
+option.TIME_OVERRIDE=自定义时间
+option.TIME_OF_DAY=一天中的时间
+option.WEATHER_OVERRIDE=自定义天气
+option.WEATHER_RAIN=雨量
+
+# =====================================================================
+#   v4.0 additions + intuitive naming pass
+# =====================================================================
+option.TAA=时间性抗锯齿（TAA）
+option.TAA.comment=通过与前几帧混合来平滑闪烁和爬行的边缘。本版本使用无子像素抖动的重投影：安全且抗重影，但在运动中会损失部分清晰度。 §7性能影响：§f低§7.
+option.TAA_STRENGTH=TAA 强度
+option.TAA_STRENGTH.comment=前几帧的权重。数值越高越平滑，但运动中会略微变柔和。
+option.RAIN_PUDDLES=湿润地面和水坑
+option.RAIN_PUDDLES.comment=雨水会使暴露的地面变暗，并在低洼处形成可反射的水洼。雨停后表面会逐渐变干。仅影响露天下的方块。 §7性能影响：§f低§7.
+option.PUDDLE_AMOUNT=水坑数量
+option.PUDDLE_AMOUNT.comment=地面积水形成水坑的比例。设为0会保留潮湿感，但去除水坑。
+
+# ---- friendlier screen names ----
+screen.GRAPHICS=图形与效果
+screen.SKY_GRP=天空与天气
+screen.ANIMATIONS=运动与动画
+screen.WATER_SCR=水体与雨天
+screen.DIMENSIONS=下界与末地
+screen.GAMEPLAY=时间与天气覆盖
+screen.COLOR_GRP=色彩与风格
+screen.LIGHTING=光照
+
+# ---- profile descriptions (shown when cycling the profile) ----
+
+# ---- ray-traced reflections (rebuilt in 8.0) ----
+screen.REFLECT=反射
+option.RT_REFLECTIONS=光线追踪反射
+option.RT_REFLECTIONS.comment=能显示屏幕外及身后的几何体的反射。反射光线会与阴影贴图进行步进追踪，该贴图包含你阴影距离内所有物体的真实深度缓冲——因此它能捕捉到屏幕空间反射无法看到的物体。需要 iris 和《我的世界》1.20 或更高版本。会降级到屏幕空间反射，然后是天空。影响：高。
+option.RT_DISTANCE=光线距离
+option.RT_DISTANCE.comment=反射光线可传播的距离，以方块为单位。超出你阴影距离的物体不存在，因此将此值设得高于阴影距离不会增加效果。影响：高。
+option.RT_STEPS=光线步进
+option.RT_STEPS.comment=每条光线的采样数。在相同距离下步数越少，搜索越粗糙，细薄的几何体开始被跳过。影响：高。
+option.RT_REFINE=光线细化
+option.RT_REFINE.comment=在粗略搜索大致命中位置后，通过额外采样精确确定光线命中点。关闭后反射会明显滞后于其反射的几何体。 §7性能影响：§f低§7.
+option.RT_THICKNESS=表面厚度
+option.RT_THICKNESS.comment=以方块为单位，表面后方多远仍算作命中。过高会导致被遮蔽的空气也产生反射；过低则会漏掉掠射命中。 §7性能影响：§f无§7.
+
+# ---- version-gated ray tracing notice (shown on <1.20) ----
+option.INFO_RT_UNAVAILABLE=光线追踪不可用
+option.INFO_RT_UNAVAILABLE.comment=光线追踪反射需要《我的世界》1.20 或更高版本配合 iris。你的版本较旧，因此此功能已关闭并隐藏。屏幕空间反射仍可用 - 请打开下方的 SSR 设置。请在 iris 上更新到 1.20+ 以解锁光线追踪。
+value.INFO_RT_UNAVAILABLE.0=需要《我的世界》1.20+ (iris)
+
+# ---- water appearance (v5.1) ----
+
+# ---- biome water + surface debris (v5.2) ----
+
+# ---- brightness / tone (v5.3) ----
+option.HIGHLIGHT_ROLLOFF=高光衰减
+option.HIGHLIGHT_ROLLOFF.comment=控制过亮的天空和太阳，使其平缓过渡至白色，而不是直接裁剪成一片死白。数值越高 = 高光越柔和、越不易过曝。
+option.WARMTH=暖色调
+option.WARMTH.comment=在场景明亮部分添加一种舒适的暖色调，使日光呈现金色而非冰冷感。0 = 中性。
+
+# ---- shadow/midtone brightness (v5.4) ----
+option.SHADOW_LIFT=阴影亮度
+option.SHADOW_LIFT.comment=提亮阴暗区域，如森林地面和树下，同时不会提亮天空。如果森林感觉太暗，可提高此值。0 = 保持阴影原状。
+option.MIDTONE_GAIN=中间调亮度
+option.MIDTONE_GAIN.comment=提升中等亮度范围（主要是地形与植被），同时保持天空高光不变。
+
+# ---- extra atmosphere (v5.5) ----
+option.FIREFLIES=萤火虫
+option.FIREFLIES.comment=夜晚漂浮的发光萤火虫，纯粹的氛围效果——天黑后出现在地形上方。
+option.FIREFLY_AMOUNT=萤火虫数量
+option.FIREFLY_AMOUNT.comment=夜晚漂浮的萤火虫数量。
+option.FIREFLY_COLOR=萤火虫颜色
+option.FIREFLY_COLOR.comment=萤火虫的颜色。
+value.FIREFLY_COLOR.0=暖黄色
+value.FIREFLY_COLOR.1=绿
+value.FIREFLY_COLOR.2=青色值
+option.RAINBOWS=彩虹
+option.RAINBOWS.comment=轻微降雨时晴天出现的彩虹，与太阳呈自然42度对角。
+option.RAINBOW_STRENGTH=彩虹强度
+option.RAINBOW_STRENGTH.comment=彩虹的可见程度。
+option.LIGHTNING_FLASH=闪电闪光
+option.LIGHTNING_FLASH.comment=雷暴期间天空短暂亮起的闪光。
+option.LIGHTNING_STRENGTH=闪电亮度
+option.LIGHTNING_STRENGTH.comment=闪电闪光的亮度。
+
+screen.ATMOS=额外氛围效果
+
+# ---- MODE selector (use-case presets) ----
+option.MODE=预设
+option.MODE.comment=预设视觉风格：自定义 = 自己的设置；空岛 = 空灵光晕使建筑在虚空映衬下闪耀；起床战争 = 鲜明的队伍色彩对比；重装步兵 = 电影感青橙色调+聚焦暗角；竞技场 = 最高可视度平光PVP；电影 = 暖调电影质感+暗角。左右键均可切换。
+value.MODE.0=自定义
+value.MODE.1=原版
+value.MODE.2=空岛模式
+value.MODE.3=起床战争
+value.MODE.4=重装步兵
+value.MODE.5=竞技场
+value.MODE.6=电影级
+
+# ---- QUALITY preset (both-click cycling) ----
+option.QUALITY=质量
+option.QUALITY.comment=最重要的总控选项。 §7性能§f 为纯净原版， §7低配§f 增加泛光和环境光遮蔽， §7中配§f 增加反射和体积雾， §7高配§f 增加视差和云影， §7极高§f 将所有数值调至最高， §7MAX§f 则是在极高基础上加入光线追踪。 §7自定义§f 将停止应用预设阶梯并保留你单独选择的菜单设置。左右键点击可循环切换。 §7性能影响：§f决定下方所有选项§7.
+value.QUALITY.0=性能
+value.QUALITY.1=低
+value.QUALITY.2=中
+value.QUALITY.3=高
+value.QUALITY.4=超高
+value.QUALITY.5=最大
+value.QUALITY.6=自定义
+
+option.BRIGHTNESS=亮度
+option.BRIGHTNESS.comment=整体画面亮度。1.0为校准默认值。提高此值会显著提升地形与阴影亮度，但不会影响天空。
+
+# =====================================================================
+#  5.7 - settings that existed in the shader but had no menu entry
+# =====================================================================
+
+# ---- light levels ----
+screen.LIGHTLEVELS=光照等级
+option.LIGHT_LEVELS=光照等级
+option.PRESERVE_TEXTURE_DETAIL=保留纹理细节
+option.PRESERVE_TEXTURE_DETAIL.comment=绕过 TAA、FXAA、运动模糊和景深。还原原版云层和原作者绘制的日/月像素。草地和方块纹理更清晰，但边缘锯齿更明显。关闭以恢复之前的电影感滤镜。
+option.SMOOTH_LIGHT_TRANSITIONS=平滑光照过渡
+option.SMOOTH_LIGHT_TRANSITIONS.comment=在保留亮度上限的同时，保持方块光照等级之间的平滑过渡。关闭可获得刻意分级的光照。可防止墙壁和天花板上的等高线状条带。 §7性能影响：§f无§7.
+option.LIGHT_LEVELS.comment=分级模式下的亮度锚点数量。平滑光照过渡会在其间插值；同时请在 Minecraft 视频设置 > 平滑光照中启用。该值为 Smooth 时还会禁用亮度上限。 §7性能影响：§f无§7.
+value.LIGHT_LEVELS.0=平滑模式（关闭分级）
+value.LIGHT_LEVELS.8=8级
+value.LIGHT_LEVELS.16=16级（原版模式）
+value.LIGHT_LEVELS.32=32级
+value.LIGHT_LEVELS.64=64级
+option.LIGHT_MAX_WHITE=最高亮度级别
+option.LIGHT_MAX_WHITE.comment=最亮一级允许达到的亮度。低于 1.0 时，受日光照射的方块永远不会过曝至纯白而丢失纹理。基于默认色彩设置测量——更改曝光或亮度会使其偏移。 §7性能影响：§f无§7.
+option.LIGHT_CURVE=级间亮度差
+option.LIGHT_CURVE.comment=各级之间的间距分布。数值越高，暗部级数越多，因此昏暗洞穴细节更丰富，而亮部则分级更粗。 §7性能影响：§f无§7.
+
+# ---- auto exposure ----
+screen.EXPOSURE_SCR=自动曝光
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE.comment=根据太阳高度缩放曝光，使正午不会过曝刺眼，同时保持夜晚观感。由一天中的时间驱动，而非通过测量画面。 §7性能影响：§f无§7.
+option.AUTO_EXPOSURE_DAY=日间曝光量
+option.AUTO_EXPOSURE_DAY.comment=正午时的曝光倍数。若日光仍感觉过亮，请优先调低此项。 §7性能影响：§f无§7.
+option.AUTO_EXPOSURE_NIGHT=夜间曝光度
+option.AUTO_EXPOSURE_NIGHT.comment=午夜时的曝光倍数。1.0 将保持夜晚观感不变。 §7性能影响：§f无§7.
+
+# ---- Nether fog ----
+option.NETHER_FOG=下界雾效
+option.NETHER_FOG.comment=下界雾霾的浓度。调低可看得更远——数值较高时，雾气会在约一百格内聚拢。 §7性能影响：§f无§7.
+
+# ---- stars ----
+option.STAR_TWINKLE=星星闪烁
+option.STAR_TWINKLE.comment=星星以各自频率闪烁，明亮恒星比暗弱恒星闪烁更轻微，符合真实天体现象。极低性能影响。
+
+# ---- water appearance ----
+screen.WATER_LOOK=水体外观
+option.WATER_BIOME_TINT=群系色彩浸染
+option.WATER_BIOME_TINT.comment=群系自身水色透出的程度。刻意保持微妙，使沼泽色调偏移而不会变成棕色。 §7性能影响：§f无§7.
+option.WATER_BIOME_BRIGHT=水体亮度
+option.WATER_BIOME_BRIGHT.comment=水面整体亮度。 §7性能影响：§f无§7.
+option.WATER_FRESNEL=掠射反射
+option.WATER_FRESNEL.comment=以掠射角度平视水面时水的反射强度。数值越高，远处水面越像镜面。 §7性能影响：§f无§7.
+option.WATER_SKY_REFLECT=天空反射
+option.WATER_SKY_REFLECT.comment=水面映出天空的程度。 §7性能影响：§f无§7.
+option.WATER_SUN_GLITTER=日光波光
+option.WATER_SUN_GLITTER.comment=阳光在波纹上产生的闪烁。 §7性能影响：§f无§7.
+option.WATER_WAVE_DETAIL=波纹细节
+option.WATER_WAVE_DETAIL.comment=水面大波浪基础上的精细纹理量。极低性能影响。
+option.WATER_SURFACE_DEBRIS=表面斑点
+option.WATER_SURFACE_DEBRIS.comment=水面漂浮的稀疏淡色斑点，暗示浮游物。仅为视觉效果，无真实物理模拟。极低性能影响。
+option.WATER_DEBRIS_AMOUNT=斑点数量
+option.WATER_SHORE_FOAM=岸边浪花
+option.WATER_SHORE_FOAM.comment=跟随地形附近真实水体边缘的破碎泡沫。性能影响：低。
+option.WATER_FOAM_STRENGTH=泡沫强度
+option.WATER_FOAM_STRENGTH.comment=深度感知的岸边泡沫可见度。性能影响：无。
+option.WATER_DEBRIS_AMOUNT.comment=水面上漂浮碎屑的数量。 §7性能影响：§f无§7.
+option.END_FOG=末地雾气
+option.END_FOG.comment=末地紫色薄雾的浓度。调低可在虚空中看得更远，更容易辨认飞往的岛屿。 §7性能影响：§f无§7.
+option.AUTO_EXPOSURE_DARK=洞穴曝光度
+option.AUTO_EXPOSURE_DARK.comment=处于无天空遮盖的地下时的曝光倍数。调高可使洞穴更易看清。进出时会在约一秒内平缓过渡，如同人眼适应。 §7性能影响：§f无§7.
+
+# =====================================================================
+#  6.5 - surface detail, and features the bigger packs have
+# =====================================================================
+
+screen.SURFACE=地表细节
+
+# ---- contact-hardening shadows ----
+option.SHADOW_PCSS=接触硬化
+option.SHADOW_PCSS.comment=阴影在物体接触地面处清晰，并随距离逐渐模糊，如同真实阴影。关闭后所有阴影各处柔化程度相同，会使物体看起来像漂浮着。 §7性能影响：§f中§7.
+option.SHADOW_PENUMBRA=阴影扩散
+option.SHADOW_PENUMBRA.comment=阴影随远离投射物而扩散的速度。数值越高，太阳越大越柔和；越低则越锐利、方向性越强。 §7性能影响：§f低§7.
+
+# ---- direct specular ----
+option.SPECULAR=镜面高光
+option.SPECULAR.comment=表面反射日光或月光产生的眩光。这是高光本身，而非镜像场景——镜像场景由反射负责。没有它，潮湿的石头、冰、金属和抛光方块无论多么具反射性都会显得扁平。 §7性能影响：§f低§7.
+option.SPECULAR_STRENGTH=高光强度
+option.SPECULAR_STRENGTH.comment=日光和月光眩光的亮度。 §7性能影响：§f无§7.
+option.SPECULAR_WET=潮湿表面光泽
+option.SPECULAR_WET.comment=被雨水打湿表面的额外高光。设为 0 则干湿无差别。 §7性能影响：§f无§7.
+option.SPECULAR_MULTISCATTER=多重散射高光
+option.SPECULAR_MULTISCATTER.comment=单次散射 GGX 模型仅模拟光线在粗糙表面内部反弹一次，因此本应再次反
+
+# ---- subsurface scattering ----
+option.SSS=次表面散射
+option.SSS.comment=Light passing through thin surfaces, so leaves and grass glow warmly when the sun is behind them. Uses the same block list as the waving foliage, and a PBR pack's subsurface channel when one is loaded. §7Impact: §fLow§7.
+option.SSS_STRENGTH=散射强度
+option.SSS_STRENGTH.comment=How much light bleeds through backlit leaves and plants. §7Impact: §fNone§7.
+option.SSS_TINT=叶绿素色调
+option.SSS_TINT.comment=How green the light goes as it passes through a leaf. Real leaves filter light through chlorophyll, so what comes out the far side is greener than the leaf itself. 0 keeps the leaf's own colour. §7Impact: §fNone§7.
+
+# ---- rain ripples ----
+option.RAIN_RIPPLES=雨水波纹
+option.RAIN_RIPPLES.comment=Expanding rings where raindrops land on wet ground and puddles. It bends the surface, which breaks up the reflection and the highlight - a puddle that stays glassy in a downpour looks wrong. §7Impact: §fLow§7.
+option.RIPPLE_STRENGTH=波纹强度
+option.RIPPLE_STRENGTH.comment=How pronounced the raindrop rings are. §7Impact: §fNone§7.
+
+# ---- parallax occlusion mapping ----
+option.POM=视差遮蔽映射（3D深度）
+option.POM.comment=为方块赋予真实立体深度而非平面贴图效果——砖块呈现凹陷，鹅卵石呈现凸起。需搭配含高度贴图的labpbr资源包并开启材质与PBR选项，否则无效。此为资源包中最耗费性能的选项。影响：极高。
+option.POM_DEPTH=地形浮雕深度
+option.POM_DEPTH.comment=How deep the surface relief goes. Too high and blocks look inflated and start to distort at glancing angles. §7Impact: §fNone§7.
+option.POM_SAMPLES=视差质量 
+option.POM_SAMPLES.comment=深度追踪的步进值。提高此值可消除浅视角观察深度浮雕时出现的阶梯状伪影。影响：极高。
+option.POM_DISTANCE=视差距离
+option.POM_DISTANCE.comment=视差效果的最大作用距离（以方块为单位）。超出该距离后效果逐渐消失——此时深度信息已小于像素尺寸，因此降低此值对性能提升几乎无损。影响：高。
+
+# ---- moon phases ----
+option.MOON_PHASES=月相光照
+option.MOON_PHASES.comment=Moonlight brightness follows the real lunar phase, so a new moon is genuinely dark and a full moon is bright. Minecraft always drew the correct crescent but every night was lit as though the moon were full. §7Impact: §fNone§7.
+option.MOON_PHASE_STRENGTH=月相强度
+option.MOON_PHASE_STRENGTH.comment=How much the phase matters. 0 lights every night like a full moon; 1 makes a new moon very dark. §7Impact: §fNone§7.
+
+# ---- sun glare ----
+option.SUN_GLARE=日光眩光
+option.SUN_GLARE.comment=太阳周围的镜头眩光与重影反射。与泛光不同：泛光来自明亮像素，而此效果来自镜头，且会通过深度缓冲检测，因此当太阳落到地形后方时会逐渐淡出。 §7性能影响：§f低§7.
+option.SUN_GLARE_STRENGTH=光晕强度
+option.SUN_GLARE_STRENGTH.comment=眩光及其重影的强度。 §7性能影响：§f无§7.
+
+# ---- 7.0 lighting rebuild ----
+option.SUN_BOUNCE=地面反弹光
+option.SUN_BOUNCE.comment=照射到地面后反弹到背向天空的表面上的阳光。最廉价的全局光照替代方案，可避免受遮挡的表面呈现死灰色。仅在有天空可见的地方生效，因此绝不会漏进洞穴。 §7性能影响：§f无§7.
+option.BLOCKLIGHT_SHAPING=火炬光照造型
+option.BLOCKLIGHT_SHAPING.comment=方块光随表面角度变化的程度。Minecraft 的方块光本身没有方向性，若无此项，火把会将房间的天花板、地板和所有墙壁照得完全一致。设为 0 可恢复旧版的扁平效果。 §7性能影响：§f无§7.
+option.CLOUD_DETAIL=云层稀薄度
+option.CLOUD_DETAIL.comment=细腻噪声对云层边缘的侵蚀程度，使云层呈现撕裂、缥缈的效果，而非边缘平滑的团块。核心部分会有意保持实心——若侵蚀核心只会让云看起来充满噪点。 §7性能影响：§f低§7.
+
+# ---- atmosphere (8.0) ----
+screen.SKY_ATM=大气与太阳
+option.ATMOSPHERE=物理天空
+option.ATMOSPHERE.comment=基于瑞利散射和米氏散射计算天空色彩，而非混合预设色值。日落、黄金时刻、蓝色时刻及太阳颜色均源自同一模型，彼此协调。关闭后恢复7.0渐变效果。影响：极低。
+option.ATM_RAYLEIGH=空气清晰度
+option.ATM_RAYLEIGH.comment=空气分子的散射——天空呈蓝色、日落呈红色的原因。数值越高，天空蓝色越深、越饱和。 §7性能影响：§f无§7.
+option.ATM_HAZE=薄雾
+option.ATM_HAZE.comment=尘埃与水汽的散射。几乎无色，因此会使地平线变淡，并在太阳周围形成光晕，而不会给任何事物染色。 §7性能影响：§f无§7.
+option.ATM_EXPOSURE=天空亮度
+option.ATM_EXPOSURE.comment=天空的整体亮度。自动曝光会对此作出反应，因此调高此项并不会简单地让一切变亮。 §7性能影响：§f无§7.
+option.BLUE_HOUR=蓝色时刻
+option.BLUE_HOUR.comment=日落后太阳位于地平线以下约 6 至 12 度时，天空所呈现的蓝色深度。设为 0 可直接从黄昏过渡到夜晚。 §7性能影响：§f无§7.
+option.MOON_SKY_STRENGTH=月光夜空
+option.MOON_SKY_STRENGTH.comment=月光对夜空的照亮程度。使用与太阳相同的散射模型并以月亮为光源，因此月夜会呈现真实的渐变，而非平坦的单色。 §7性能影响：§f无§7.
+option.SUN_DISC=太阳圆盘
+option.SUN_DISC.comment=将太阳绘制为真实圆盘，边缘比中心暗淡以模拟真实太阳，而非仅显示泛光团。影响：极低。
+option.SUN_SIZE=太阳大小
+option.SUN_SIZE.comment=太阳圆面的视大小。 §7性能影响：§f无§7.
+option.SUN_DISC_BRIGHTNESS=太阳圆盘亮度
+option.SUN_DISC_BRIGHTNESS.comment=太阳圆面本身的炽热程度。数值越高，泛光越强烈，直视太阳时会感到刺眼。 §7性能影响：§f无§7.
+
+# ---- depth-aware water (8.0) ----
+option.WATER_DEPTH_COLOR=深度着色
+option.WATER_DEPTH_COLOR.comment=水体根据深度自动着色——水洼呈现透明感，海洋呈现深蓝色。此前两者色调相同，这是水体效果最明显的缺陷。影响：极低。
+option.WATER_DEPTH_FADE=深度渐淡
+option.WATER_DEPTH_FADE.comment=达到完整深水颜色所需的水体方块数。数值越低，即使浅水也会呈现饱和的深色；数值越高，河流与湖泊边缘则保持清澈。 §7性能影响：§f无§7.
+
+# ---- snapshot compatibility (8.0) ----
+option.SNAPSHOT_TOLERANT=快照兼容性
+option.SNAPSHOT_TOLERANT.comment=在比此构建所知更新的 Minecraft 版本（快照、预发布版和候选版）上正常运行。未开启时，光影包会判定自身版本不匹配并用警告条纹覆盖整个屏幕，即使它实际上可以正常工作。比构建版本更旧的游戏仍会发出醒目警告，因为那种情况确实无法正常运行。 §7性能影响：§f无§7.
+option.SNAPSHOT_MARK=快照标记
+option.SNAPSHOT_MARK.comment=当你所用版本超前于构建版本时，出现在左上角的小琥珀色三角标记的大小。它用于解释快照版本中可能出现的异常，而非警告。设为 0 可移除。 §7性能影响：§f无§7.
+
+# ---- 8.0 feature batch ----
+option.MOON_DISC=月球盘面
+option.MOON_DISC.comment=将月亮绘制为带有真实晨昏线——凸月实际具有的弯曲阴影线——的发光球体，而非忽略其自身相位的扁平圆形。影响：极低。
+option.MOON_SIZE=月球大小
+option.MOON_SIZE.comment=月亮的视大小。 §7性能影响：§f无§7.
+option.MOON_DISC_BRIGHTNESS=月球亮度
+option.MOON_DISC_BRIGHTNESS.comment=月亮受照面的亮度。 §7性能影响：§f无§7.
+option.MILKY_WAY=银河
+option.MILKY_WAY.comment=横跨夜空的银河带，其上穿行着黑暗的尘埃带。单独的星点场只是黑底上的光点；正是它让星空呈现出深度感。影响：极低。
+option.MILKY_WAY_STRENGTH=银河强度
+option.MILKY_WAY_STRENGTH.comment=银河带的可见程度。 §7性能影响：§f无§7.
+option.AERIAL_PERSPECTIVE=空气透视
+option.AERIAL_PERSPECTIVE.comment=远处地形会呈现其前方空气的颜色，因此山丘在白天呈现淡蓝色，在日落时呈现橙色光晕，而并非被直接照成橙色。它使用与天空相同的散射，因此两者始终保持一致——这是户外场景最重要的距离感线索。 §7性能影响：§f低§7.
+option.AERIAL_STRENGTH=空气强度
+option.AERIAL_STRENGTH.comment=距离着色的强度。设为 0 可在不禁用功能的情况下关闭该效果。 §7性能影响：§f无§7.
+option.AERIAL_DISTANCE=空气距离
+option.AERIAL_DISTANCE.comment=达到完全着色所需的方块距离。数值越低，世界显得越朦胧、越小；数值越高，远处地形则保持清晰。 §7性能影响：§f无§7.
+option.CONTACT_SHADOWS=接触阴影
+option.CONTACT_SHADOWS.comment=阴影贴图在物理上无法解析的小尺度阴影——方块与地面交界处的暗线、栅栏柱在其自身栏杆上的投影。阴影贴图在最佳情况下每几厘米才有一个纹素；而此效果在像素尺度上工作。 §7性能影响：§f中§7.
+option.CONTACT_LENGTH=接触光线长度
+option.CONTACT_LENGTH.comment=光线行进的距离，以方块为单位。设计为短距离——用于补充阴影贴图缺失的细节，而非替代它。 §7性能影响：§f低§7.
+option.CONTACT_STEPS=接触光线步数
+option.CONTACT_STEPS.comment=接触阴影光线上的采样数。步数过少会开始漏掉纤细的遮挡物。 §7性能影响：§f中§7.
+option.CONTACT_STRENGTH=接触阴影强度
+option.CONTACT_STRENGTH.comment=接触阴影的暗度。 §7性能影响：§f无§7.
+
+# ---- ? ----
+screen.PARTY=§8. . .
+option.PARTY_MODE=§cP§6a§er§at§by §dM§5o§cd§6e
+option.PARTY_MODE.comment=一切都变得五彩缤纷。一道彩色波浪在屏幕上移动并持续传播。 §7它作用于最终画面，因此底层的着色与阴影仍能正常显示——洞穴保持黑暗，受光面保持明亮，你仍可正常游玩。 §7默认关闭，且任何预设或画质档位都不会将其开启。 §7性能影响：§f极低§7.
+option.PARTY_SPEED=速度
+option.PARTY_SPEED.comment=颜色在屏幕上移动的速度。 §7性能影响：§f无§7.
+option.PARTY_SCALE=色带数量
+option.PARTY_SCALE.comment=同时呈现在屏幕上的色带数量。数值低时为一道宽阔的扫掠；数值高时为紧密的条纹。 §7性能影响：§f无§7.
+option.PARTY_STRENGTH=强度
+option.PARTY_STRENGTH.comment=对原有颜色的覆盖程度。设为 1.0 时，原调色板将完全不剩。 §7性能影响：§f无§7.
+
+option.AUTO_EXPOSURE_SPEED=适应速度
+option.AUTO_EXPOSURE_SPEED.comment=曝光在明暗之间切换时的反应速度。 §70 为旧版行为，约在一秒内平滑过渡，因为这是游戏报告周围光照的速度。 §71 为即时切换，但读数以整数光照等级步进，因此在行走时会看到画面明显跳变。 §f性能影响：§f无§7.
+
+# ---- profiles (8.0) ----
+# Selecting a profile is the only way to push these values over a config file
+# Iris has already saved. See the PROFILES block in shaders.properties.
+profile.RECOMMENDED=推荐设置（默认值8.0）
+profile.DIMMER=更暗
+profile.BRIGHTER=更亮
+
+# ---- 8.6 ----
+# INFO_BUILD's label is rewritten per variant by build.py - the text here is the
+# source default and names no real build.
+option.INFO_BUILD=§bDAP Shaders §f1.16 to 1.19.4  §7•  §fVersion 10.0
+option.INFO_BUILD.comment=你当前运行的构建版本。 §7值得检查：Iris 会按光影包文件名保存一份设置文件，因此很容易出现实际运行的光影包比你想象的更旧的情况。 §7性能影响：§f无§7.
+option.SUNLIGHT_FROM_SKY=物理阳光
+option.SUNLIGHT_FROM_SKY.comment=直接阳光的颜色取自计算天空时所用的同一片空气，而非固定的暖色到白色的渐变。 §7因此日落时的光线会因蓝色在长路径中被真实散射掉而变红——而改变空气清澈度也会带动阳光颜色，这在以前从未实现过。 §7只有颜色来自物理计算；亮度保持不变。 §7性能影响：§f无§7.
+option.GODRAYS=神圣光芒 
+option.GODRAYS.comment=从太阳向外发散的曙暮光线。屏幕空间处理，因此与体积雾不同，它几乎不消耗性能，即使关闭雾也能生效——两者可叠加。 §7性能影响：§f低§7.
+option.GODRAY_STRENGTH=光线强度
+option.GODRAY_STRENGTH.comment=光线的亮度。 §7性能影响：§f无§7.
+option.GODRAY_SAMPLES=光线采样数
+option.GODRAY_SAMPLES.comment=每条光线上的步进数。步数过少时，太阳附近会呈现阶梯状。 §7性能影响：§f中§7.
+option.GODRAY_DECAY=光线覆盖范围
+option.GODRAY_DECAY.comment=光线在淡出前传播的距离。 §7性能影响：§f无§7.
+
+option.EMISSIVE_TINT_AMOUNT=自发光颜色
+option.EMISSIVE_TINT_AMOUNT.comment=每种光源向其自身颜色偏移的程度——灵魂灯笼偏青、红石呈深红、紫水晶与哭泣的黑曜石呈紫色，普通灯具则为暖白。 §7设为 0 时，所有发光体都保持以往的发光方式。 §7注意，此项为方块本身着色，而非其投射到邻近像素上的光：Minecraft 将方块光报告为单一数值，因此光影无法分辨某个像素是由何种光源照亮的。 §7性能影响：§f无§7.
+
+option.LIGHT_KNEE=亮度上限柔化
+option.LIGHT_KNEE.comment=光照上限开始平滑过渡的位置，以其比例表示。 §7数值越低越柔和：光照会一直变化到上限附近，而非在上限处戛然而止，因此明亮表面仍能呈现立体感。 §71.0 为旧版的硬截断，超过上限的所有部分渲染效果完全一致，阴影细节随之消失。 §7性能影响：§f无§7.
+
+option.EMISSIVE_FLICKER=火焰闪烁
+option.EMISSIVE_FLICKER.comment=火把、蜡烛、营火

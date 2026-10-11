@@ -1,0 +1,34 @@
+#shaders/lang/zh_CN.lang
+# PSX-Core Shader v0.1.7 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：PSX-Core v0.1.7.zip 的 shaders/lang/en_US.lang
+screen.INFO=PSX-Core 光影
+screen.DITHER=图像抖动
+screen.COLOR=颜色与色带
+screen.GEOMETRY=渲染
+screen.FOG=雾效设置
+
+option.psx_enable_dither=体积云采样数
+option.psx_dither_strength=抖动强度
+option.psx_pattern_scale=Bayer 缩放
+option.psx_color_steps=颜色阶数
+option.psx_post_scale=渲染比例
+option.psx_post_contrast=合成对比度
+option.psx_light_steps=Gouraud 级数
+option.psx_warp_limit=仿射强度
+option.psx_enable_vertex_snap=顶点吸附
+option.psx_affine_held_items=手持物品仿射
+option.psx_vertex_resolution=对齐精度
+option.psx_fog_enable=雾
+option.psx_fog_distance=雾距离
+option.psx_fog_noise=雾噪声
+
+option.INFO=PSX-Core (光影)
+value.INFO.0.0=§aby dooji
+value.psx_enable_dither.0.0=关
+value.psx_enable_dither.1.0=开
+value.psx_enable_vertex_snap.0.0=关
+value.psx_enable_vertex_snap.1.0=开
+value.psx_affine_held_items.0.0=关
+value.psx_affine_held_items.1.0=开
+value.psx_fog_enable.0.0=关
+value.psx_fog_enable.1.0=开

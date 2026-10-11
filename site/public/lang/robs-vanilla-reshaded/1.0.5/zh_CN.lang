@@ -1,0 +1,152 @@
+#shaders/lang/zh_CN.lang
+# Rob's Vanilla Reshaded v1.0.5 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Rob's Vanilla Reshaded 1.0.5.zip 的 shaders/lang/en_US.lang
+screen.COLORS =颜色
+screen.FOG =雾
+screen.SKY =天空
+screen.GLOW = Glow
+screen.GODRAYS =丁达尔光效
+screen.WAVING = Waving
+screen.UNDERWATER =水下
+
+option.COLOR_CONTRAST = Color Contrast
+option.COLOR_CONTRAST.comment = Scales color away from a midpoint. Values above 1.0 increase contrast; below 1.0 flatten it.
+option.COLOR_CONTRAST_MIDPOINT = Contrast Midpoint
+option.COLOR_CONTRAST_MIDPOINT.comment = The brightness level that stays fixed when contrast is applied. 0.0 = black, 1.0 = white.
+
+option.FOG_START_FACTOR = Overworld Fog Start
+option.FOG_START_FACTOR.comment = Distance at which overworld fog begins, as a fraction of the render distance. Negative values push the start behind the camera.
+option.FOG_END_FACTOR = Overworld Fog End
+option.FOG_END_FACTOR.comment = Distance at which overworld fog is fully opaque, as a fraction of the render distance.
+
+option.NETHER_FOG_START_FACTOR = Nether Fog Start
+option.NETHER_FOG_START_FACTOR.comment = Distance at which nether fog begins, as a fraction of the render distance.
+option.NETHER_FOG_END_FACTOR = Nether Fog End
+option.NETHER_FOG_END_FACTOR.comment = Distance at which nether fog is fully opaque, as a fraction of the render distance.
+
+option.END_FOG_START_FACTOR = End Fog Start
+option.END_FOG_START_FACTOR.comment = Distance at which End fog begins, as a fraction of the render distance.
+option.END_FOG_END_FACTOR = End Fog End
+option.END_FOG_END_FACTOR.comment = Distance at which End fog is fully opaque, as a fraction of the render distance.
+
+option.UNDERWATER_FOG_START_FACTOR = Underwater Fog Start
+option.UNDERWATER_FOG_START_FACTOR.comment = Distance at which underwater fog begins, as a fraction of the render distance. Negative values push the start behind the camera, making fog appear immediately.
+option.UNDERWATER_FOG_END_FACTOR = Underwater Fog End
+option.UNDERWATER_FOG_END_FACTOR.comment = Distance at which underwater fog is fully opaque, as a fraction of the render distance. Lower values make the underwater view murkier.
+
+option.CLOUD_FOG_DISTANCE = Cloud Fog Distance
+option.CLOUD_FOG_DISTANCE.comment = Absolute reference distance (in blocks × 16) used to compute cloud fog. Lower values make distant clouds fade faster.
+option.CLOUD_FOG_START_FACTOR = Cloud Fog Start
+option.CLOUD_FOG_START_FACTOR.comment = Fraction of the cloud fog distance at which clouds start to fade out.
+option.CLOUD_FOG_END_FACTOR = Cloud Fog End
+option.CLOUD_FOG_END_FACTOR.comment = Fraction of the cloud fog distance at which clouds are fully faded.
+
+option.SKY_AXIAL_TILT = Sun Axial Tilt
+option.SKY_AXIAL_TILT.comment = Tilts the sun/moon path away from the equator. 90° = vertical overhead arc (vanilla). Lower values produce a more oblique, real-world-like arc.
+
+option.END_SKY_GRADIENT_SHARPNESS = End Sky Sharpness
+option.END_SKY_GRADIENT_SHARPNESS.comment = Controls how sharply the End sky transitions from horizon to zenith. Higher values produce a tighter band of color near the horizon.
+
+option.END_BEAM_INTENSITY =末地光束强度
+option.END_BEAM_INTENSITY.comment = Overall brightness of the streaky beam pattern near the End sky horizon. 0.0 disables it entirely.
+option.END_BEAM_SHARPNESS = End Beam Sharpness
+option.END_BEAM_SHARPNESS.comment = How tightly the beam pattern concentrates near the horizon. Higher values produce thinner, more defined beams.
+
+option.GLOW_MODE = Glow Mode
+option.GLOW_MODE.comment = Off: no glow. Shimmer: brightens emissive areas without blurring (crisp highlight). Full: Gaussian bloom that spreads light outward.
+value.GLOW_MODE.0 =关
+value.GLOW_MODE.1 = Shimmer
+value.GLOW_MODE.2 =完整
+
+option.GLOW_STRENGTH =发光强度
+option.GLOW_STRENGTH.comment = Additive blend factor for the glow. Higher values make the bloom brighter. Applies to all modes except Off.
+
+option.GLOW_RADIUS =发光半径
+option.GLOW_RADIUS.comment = Blur sample spacing in texels. Controls how wide the glow spreads. Only has effect in Full mode.
+
+option.STAR_GLOW_BOOST = Star Glow Boost
+option.STAR_GLOW_BOOST.comment = Extra brightness multiplier applied to star glow before it enters the bloom buffer.
+
+option.LAVA_GLOW_BOOST = Lava Glow Boost
+option.LAVA_GLOW_BOOST.comment = Extra brightness multiplier applied to lava glow before it enters the bloom buffer.
+
+option.END_PORTAL_GLOW_BOOST = End Portal Glow Boost
+option.END_PORTAL_GLOW_BOOST.comment = Extra brightness multiplier applied to End portal glow before it enters the bloom buffer.
+
+option.NETHER_PORTAL_GLOW_BOOST = Nether Portal Glow Boost
+option.NETHER_PORTAL_GLOW_BOOST.comment = Extra brightness multiplier applied to Nether portal glow before it enters the bloom buffer.
+
+option.GODRAYS =丁达尔光效
+option.GODRAYS.comment = Sunbeam/moonbeam shafts radiating from the sun or moon.
+value.GODRAYS.define =开
+value.GODRAYS.undef =关
+
+option.GODRAY_QUALITY =丁达尔效应质量
+option.GODRAY_QUALITY.comment = Fast is unfiltered and can band; Dithered smooths banding into a softer, hazier shaft at a small performance cost.
+value.GODRAY_QUALITY.1 =快速
+value.GODRAY_QUALITY.2 = Dithered
+
+option.GODRAY_SAMPLES =光束采样
+option.GODRAY_SAMPLES.comment = Number of steps marched toward the sun per pixel. Higher looks smoother but costs more performance.
+
+option.GODRAY_INTENSITY = Godray Intensity
+option.GODRAY_INTENSITY.comment = Overall brightness of the godray effect.
+
+option.GODRAY_MOON_BOOST = Godray Moon Boost
+option.GODRAY_MOON_BOOST.comment = Multiplier on Godray Intensity applied at night, when the moon is the light source.
+
+option.GODRAY_ANGULAR_FALLOFF = Godray Angular Falloff
+option.GODRAY_ANGULAR_FALLOFF.comment = How tightly the effect hugs the sun/moon. Higher values keep rays concentrated near the sun instead of fanning across the whole sky.
+
+option.WAVING_WATER = Water Waving
+option.WAVING_WATER.comment = Enables vertex-animated water surface waves.
+value.WAVING_WATER.define =开
+value.WAVING_WATER.undef =关
+
+option.WAVING_PLANTS = Plant Waving
+option.WAVING_PLANTS.comment = Enables vertex-animated swaying for grass, leaves, and vines.
+value.WAVING_PLANTS.define =开
+value.WAVING_PLANTS.undef =关
+
+option.WATER_WAVING_SPEED =水面波浪速度
+option.WATER_WAVING_SPEED.comment = Overall speed multiplier for water surface animation.
+
+option.WATER_WAVE_AMPLITUDE =水面波浪高度
+option.WATER_WAVE_AMPLITUDE.comment = Peak height of water surface waves in blocks.
+
+option.WATER_WAVE_SCALE =水波规模
+option.WATER_WAVE_SCALE.comment = Spatial scale of water waves. Higher values produce more, smaller waves. Default 3.0 is 3× smaller than vanilla-like spacing.
+
+option.PLANT_WAVING_SPEED = Plant Sway Speed
+option.PLANT_WAVING_SPEED.comment = Overall speed multiplier for grass, leaf, and vine animation.
+
+option.PLANT_WAVE_AMPLITUDE = Plant Sway Amount
+option.PLANT_WAVE_AMPLITUDE.comment = Magnitude of grass, leaf, and vine swaying. Higher values produce wider, more dramatic movement.
+
+option.UNDERWATER_TINT = Underwater Color Tint
+option.UNDERWATER_TINT.comment = Tints color based on the water absorption values as light passes through. Disable for a clearer, untinted underwater view.
+value.UNDERWATER_TINT.define =开
+value.UNDERWATER_TINT.undef =关
+
+option.WATER_ABSORB_R =红色吸收
+option.WATER_ABSORB_R.comment = How fast red light is absorbed per block of water. Higher = red disappears sooner, making things look more blue-green.
+
+option.WATER_ABSORB_G =绿色吸收
+option.WATER_ABSORB_G.comment = How fast green light is absorbed per block of water.
+
+option.WATER_ABSORB_B =蓝色吸收
+option.WATER_ABSORB_B.comment = How fast blue light is absorbed per block of water. Keep this low — blue travels farthest in real water.
+
+option.UNDERWATER_REFRACTION = Underwater Refraction
+option.UNDERWATER_REFRACTION.comment = Enables the wavy screen-space distortion effect seen while underwater.
+value.UNDERWATER_REFRACTION.define =开
+value.UNDERWATER_REFRACTION.undef =关
+
+option.WATER_DISTORT_STRENGTH =折射强度
+option.WATER_DISTORT_STRENGTH.comment = How far pixels are shifted by the underwater distortion. Higher = more warped.
+
+option.WATER_DISTORT_SCALE =折射缩放
+option.WATER_DISTORT_SCALE.comment = Size of the underwater refraction pattern. Lower values produce finer, more detailed ripples; higher values produce larger, broader waves. Default is 2.0.
+
+option.WATER_DISTORT_SPEED =折射速度
+option.WATER_DISTORT_SPEED.comment = How fast the underwater distortion animates.
