@@ -50,6 +50,10 @@ const CACHE_COMMENT = '版本更新检测缓存：latestVersionId 为 Modrinth s
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const today = () => new Date().toISOString().slice(0, 10)
 
+// 版本号归一化：上游与本地常只差一个 "v" 前缀（如本地 v1.5.1 vs 上游 1.5.1），语义上是同一版本。
+// 仅归一化前缀（且必须是 v 后跟数字），不做更激进的模糊匹配，避免掩盖真实变更。
+const normVersion = (v) => String(v ?? '').trim().replace(/^v(?=\d)/i, '')
+
 /**
  * 全局请求节流器：所有并发 worker 共享一个「下次允许发请求的时刻」，
  * 从而把**总体**速率限制在 1000/intervalMs 次/秒，而不是每个 worker 各限一次。
@@ -175,17 +179,23 @@ async function checkShader(shader, hit, cacheEntry, noCache, releaseOnly, versio
   const localVersion = shader.langVersions[0].shaderVersion
   const fingerprint = hit?.latest_version
 
-  // 缓存命中：latestVersionId 未变 → 上游没有新版本，直接判无变化，不发 version 请求
-  // releaseOnly 模式只信任由 --release-only 写入的缓存，避免复用默认模式（含 beta）的指纹
-  const cacheModeOk = releaseOnly ? cacheEntry?.mode === 'release' : true
-  if (!noCache && fingerprint && cacheEntry && cacheEntry.latestVersionId === fingerprint && cacheModeOk) {
+  // 缓存命中：search 指纹未变 → 上游没有新版本，可省掉 version 请求。
+  // 但**仍必须比对「本地汉化版本 vs 缓存里的上游版本」**——否则本地一直落后的条目
+  // 会被报成 unchanged（假绿灯）。这一步零网络开销，不比对纯粹是漏报。
+  //
+  // release-only 模式**不能**走这条捷径：search 的 latest_version 追的是「最新版本（含 beta）」，
+  // 当 beta 比 release 新时，release 升级不会让指纹变化，会漏报。该模式一律拉 version 列表。
+  const wantedMode = releaseOnly ? 'release' : 'latest'
+  const cacheModeOk = cacheEntry?.mode === wantedMode
+  if (!noCache && !releaseOnly && fingerprint && cacheEntry && cacheEntry.latestVersionId === fingerprint && cacheModeOk) {
+    const cachedUpstream = cacheEntry.versionNumber ?? ''
     return {
       id: shader.id,
       projectId,
-      status: 'unchanged',
+      status: cachedUpstream && normVersion(cachedUpstream) !== normVersion(localVersion) ? 'needsUpdate' : 'unchanged',
       localVersion,
-      upstreamVersion: cacheEntry.versionNumber ?? '',
-      versionType: '',
+      upstreamVersion: cachedUpstream,
+      versionType: cacheEntry.versionType ?? '',
       latestVersionId: fingerprint,
       cached: true,
     }
@@ -203,7 +213,7 @@ async function checkShader(shader, hit, cacheEntry, noCache, releaseOnly, versio
   return {
     id: shader.id,
     projectId,
-    status: upstreamVersion === localVersion ? 'unchanged' : 'needsUpdate',
+    status: normVersion(upstreamVersion) === normVersion(localVersion) ? 'unchanged' : 'needsUpdate',
     localVersion,
     upstreamVersion,
     versionType: chosen.version_type ?? '',
@@ -262,7 +272,7 @@ async function main() {
   const { total, pageCount, byProjectId } = await fetchSearchIndex()
   console.log(`   共 ${total} 个光影，${pageCount} 页`)
 
-  // 3. 逐个检测（版本请求并发 10，每条之间 sleep(50)）
+  // 3. 逐个检测（版本请求全局节流，见 createThrottle）
   const summary = { total: worklist.length, unchanged: 0, needsUpdate: 0, delisted: 0, failed: 0 }
   const needsUpdate = []
   const delisted = []
@@ -297,6 +307,7 @@ async function main() {
         projectId,
         latestVersionId: result.latestVersionId,
         upstreamVersion: result.upstreamVersion,
+        versionType: result.versionType ?? '',
       })
     } catch (err) {
       // 404 = 上游项目已删除。单独归类，不混进 failed；其余错误语义不变。
@@ -317,6 +328,7 @@ async function main() {
       projectId: u.projectId,
       latestVersionId: u.latestVersionId,
       versionNumber: u.upstreamVersion,
+      versionType: u.versionType ?? '',
       mode: RELEASE_ONLY ? 'release' : 'latest',
       checkedAt: today(),
     }
@@ -325,7 +337,7 @@ async function main() {
 
   // 5. 写出结果 JSON
   const result = {
-    $comment: '光影版本更新检测结果：needsUpdate 为本次新发现的待重翻清单，可交由 pipeline.mjs 重新翻译',
+    $comment: '光影版本更新检测结果：needsUpdate 为本地汉化版本落后于上游最新版本的清单，可交由 pipeline.mjs 重新翻译',
     generatedAt: today(),
     summary: {
       total: summary.total,
@@ -351,7 +363,7 @@ async function main() {
   console.log(`  已下架      ${summary.delisted}（Modrinth 404，需人工从 shaders.json 清理）`)
   console.log(`  检测失败    ${summary.failed}`)
   console.log(`  耗时        ${elapsedSec}s（版本请求 ${versionRequests.count} 次）`)
-  console.log('  ※ 待重翻仅统计「自上次检测以来新出现的版本变化」')
+  console.log('  ※ 待重翻 = 本地汉化版本落后于上游最新版本的条目（含缓存命中，每次都会比对）')
 
   if (needsUpdate.length > 0) {
     console.log('\n  待重翻清单:')

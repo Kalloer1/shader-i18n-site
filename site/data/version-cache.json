@@ -5,6 +5,7 @@
       "projectId": "HVnmMxH1",
       "latestVersionId": "Bqen1mJX",
       "versionNumber": "r5.9.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -12,6 +13,7 @@
       "projectId": "Q1vvjJYV",
       "latestVersionId": "Y68yiql9",
       "versionNumber": "10.1.8",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -19,6 +21,7 @@
       "projectId": "R6NEzAwj",
       "latestVersionId": "B1kyfoUZ",
       "versionNumber": "r5.9.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -26,6 +29,7 @@
       "projectId": "BkTdFBUU",
       "latestVersionId": "w3Pxx3b4",
       "versionNumber": "1.200",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -33,6 +37,7 @@
       "projectId": "kmwfVOoi",
       "latestVersionId": "cpD4esk9",
       "versionNumber": "r0.1-beta9",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -40,6 +45,7 @@
       "projectId": "EQWX2WiO",
       "latestVersionId": "TK0ZSsk0",
       "versionNumber": "1.650",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -47,6 +53,7 @@
       "projectId": "Y8161YLz",
       "latestVersionId": "8p4viq8V",
       "versionNumber": "5.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -54,6 +61,7 @@
       "projectId": "UaS8ROxa",
       "latestVersionId": "LWmZ94RG",
       "versionNumber": "2.19",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -61,6 +69,7 @@
       "projectId": "xEItlMn3",
       "latestVersionId": "fzxeGgx7",
       "versionNumber": "5.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -68,6 +77,7 @@
       "projectId": "6uJCfiCH",
       "latestVersionId": "rcr90eRP",
       "versionNumber": "v2.0.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -75,6 +85,7 @@
       "projectId": "pgzM6RBY",
       "latestVersionId": "a05qYRrG",
       "versionNumber": "10.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -82,6 +93,7 @@
       "projectId": "l6Uqs2fS",
       "latestVersionId": "zGC385Y8",
       "versionNumber": "0.3.5a",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -89,6 +101,7 @@
       "projectId": "DoODk4HD",
       "latestVersionId": "lrndU3YJ",
       "versionNumber": "v1.5.0b",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -96,6 +109,7 @@
       "projectId": "WX4iF5Cj",
       "latestVersionId": "eFL8xOji",
       "versionNumber": "1.0d",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -103,6 +117,7 @@
       "projectId": "W3QK7DQz",
       "latestVersionId": "CgdY86YT",
       "versionNumber": "1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -110,6 +125,7 @@
       "projectId": "ygChbn8J",
       "latestVersionId": "3MU1pMJY",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -117,6 +133,7 @@
       "projectId": "BS9T99lD",
       "latestVersionId": "tAx0UOBX",
       "versionNumber": "v0.12",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -124,6 +141,7 @@
       "projectId": "iHC8BZn4",
       "latestVersionId": "u7oNAXa5",
       "versionNumber": "1.2.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -131,6 +149,7 @@
       "projectId": "Q6RQF9Oa",
       "latestVersionId": "WvrEQHFq",
       "versionNumber": "1.8.0-Alpha-3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -138,6 +157,7 @@
       "projectId": "BrRak9pu",
       "latestVersionId": "avpYqS0K",
       "versionNumber": "2.8.0-beta.4",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -145,6 +165,7 @@
       "projectId": "EPsIYDj1",
       "latestVersionId": "U3rhmRqW",
       "versionNumber": "3.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -152,6 +173,7 @@
       "projectId": "ZvitaqQh",
       "latestVersionId": "Ca8OxUZj",
       "versionNumber": "34.3.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -159,6 +181,7 @@
       "projectId": "DiGQENDV",
       "latestVersionId": "olEssKhO",
       "versionNumber": "1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -166,6 +189,7 @@
       "projectId": "rinvvngy",
       "latestVersionId": "BOa5cSU4",
       "versionNumber": "1.1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -173,6 +197,7 @@
       "projectId": "sclYVqbt",
       "latestVersionId": "5g32dX2k",
       "versionNumber": "1.9.9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -180,6 +205,7 @@
       "projectId": "by2i3tnt",
       "latestVersionId": "8XmNiuNn",
       "versionNumber": "1.6.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -187,6 +213,7 @@
       "projectId": "yY9oI7oz",
       "latestVersionId": "etcq6IIX",
       "versionNumber": "0.15.2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -194,6 +221,7 @@
       "projectId": "Q1ICdkzj",
       "latestVersionId": "xncGr4KP",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -201,6 +229,7 @@
       "projectId": "l6di6hYz",
       "latestVersionId": "kqFlgfIA",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -208,6 +237,7 @@
       "projectId": "UDDa70lE",
       "latestVersionId": "rfCVvTvJ",
       "versionNumber": "2.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -215,6 +245,7 @@
       "projectId": "6NnvPzWJ",
       "latestVersionId": "QLiPA3d1",
       "versionNumber": "2.11.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -222,6 +253,7 @@
       "projectId": "1BZ68dI8",
       "latestVersionId": "WmZTYuqV",
       "versionNumber": "0.8.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -229,6 +261,7 @@
       "projectId": "71EyVfCn",
       "latestVersionId": "GZ6KdIAk",
       "versionNumber": "2.0.8",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -236,6 +269,7 @@
       "projectId": "chKtnjkM",
       "latestVersionId": "1NSEqI17",
       "versionNumber": "1.9.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -243,6 +277,7 @@
       "projectId": "hgAKxFQg",
       "latestVersionId": "dF60Go3s",
       "versionNumber": "1.9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -250,6 +285,7 @@
       "projectId": "sAZ9WsJP",
       "latestVersionId": "9yVXZsfs",
       "versionNumber": "1.0.10",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -257,6 +293,7 @@
       "projectId": "McUqXQ0J",
       "latestVersionId": "Z2m5xx6H",
       "versionNumber": "1.0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -264,6 +301,7 @@
       "projectId": "z8EjLYqN",
       "latestVersionId": "J4RlzpKF",
       "versionNumber": "2.02",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -271,6 +309,7 @@
       "projectId": "VP9picRm",
       "latestVersionId": "blRQVUY5",
       "versionNumber": "1.5.6",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -278,6 +317,7 @@
       "projectId": "D5k8BTVz",
       "latestVersionId": "yClZbuaO",
       "versionNumber": "1.5.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -285,6 +325,7 @@
       "projectId": "Xl42lc6c",
       "latestVersionId": "IxJIqh4s",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -292,6 +333,7 @@
       "projectId": "UuwCHIS3",
       "latestVersionId": "9NQ5dtYa",
       "versionNumber": "1.8.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -299,6 +341,7 @@
       "projectId": "yhXP52S3",
       "latestVersionId": "UvQ7EfTW",
       "versionNumber": "2",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -306,6 +349,7 @@
       "projectId": "xJNabPID",
       "latestVersionId": "nPdxfY8Y",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -313,6 +357,7 @@
       "projectId": "OT1P0oHO",
       "latestVersionId": "sccT8gps",
       "versionNumber": "2.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -320,6 +365,7 @@
       "projectId": "PgdT4v4a",
       "latestVersionId": "1dD3KC4h",
       "versionNumber": "1.5.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -327,6 +373,7 @@
       "projectId": "4kHmJd4i",
       "latestVersionId": "tAWPqD40",
       "versionNumber": "2.1.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -334,6 +381,7 @@
       "projectId": "yhuqxlbn",
       "latestVersionId": "5tWalPaN",
       "versionNumber": "0.4.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -341,6 +389,7 @@
       "projectId": "PYhc7nNa",
       "latestVersionId": "vws1JH0D",
       "versionNumber": "5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -348,6 +397,7 @@
       "projectId": "w8N6pbsN",
       "latestVersionId": "Eg1XEWuh",
       "versionNumber": "v1.2.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -355,6 +405,7 @@
       "projectId": "XaonJnsc",
       "latestVersionId": "qDaPIBRQ",
       "versionNumber": "v1.4.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -362,6 +413,7 @@
       "projectId": "HpOC6pyc",
       "latestVersionId": "qQRRhxGQ",
       "versionNumber": "4.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -369,6 +421,7 @@
       "projectId": "68DAChCV",
       "latestVersionId": "wqeySncE",
       "versionNumber": "260618",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -376,6 +429,7 @@
       "projectId": "a8nz2nHG",
       "latestVersionId": "JEcLxa6M",
       "versionNumber": "v1.4.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -383,6 +437,7 @@
       "projectId": "LypdYQ63",
       "latestVersionId": "mULXIH2t",
       "versionNumber": "2.4",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -390,6 +445,7 @@
       "projectId": "CiFGzRV9",
       "latestVersionId": "r613fCq9",
       "versionNumber": "1.2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -397,6 +453,7 @@
       "projectId": "dEAKT8y9",
       "latestVersionId": "lNKYwjuL",
       "versionNumber": "1.3a",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -404,6 +461,7 @@
       "projectId": "frac8sks",
       "latestVersionId": "ivhRImBT",
       "versionNumber": "v1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -411,6 +469,7 @@
       "projectId": "2jvH1Rcl",
       "latestVersionId": "va1R00mK",
       "versionNumber": "1.20",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -418,6 +477,7 @@
       "projectId": "gGrRQIse",
       "latestVersionId": "MdMeU9Tc",
       "versionNumber": "r1.6",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -425,6 +485,7 @@
       "projectId": "hNGQT69K",
       "latestVersionId": "NQzWkv5v",
       "versionNumber": "V1.3.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -432,6 +493,7 @@
       "projectId": "2euhaJq5",
       "latestVersionId": "saNvbCw4",
       "versionNumber": "v5.6.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -439,6 +501,7 @@
       "projectId": "IsJZJfNT",
       "latestVersionId": "69ki86C5",
       "versionNumber": "1.3.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -446,6 +509,7 @@
       "projectId": "EQs4Ewl7",
       "latestVersionId": "PWB6M4aT",
       "versionNumber": "2.1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -453,6 +517,7 @@
       "projectId": "bvDpxd8c",
       "latestVersionId": "tB8N3ghY",
       "versionNumber": "1.10.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -460,6 +525,7 @@
       "projectId": "xM96NJmk",
       "latestVersionId": "hOdwb79n",
       "versionNumber": "1.0-high",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -467,6 +533,7 @@
       "projectId": "MVFwE4xD",
       "latestVersionId": "hHkJuKbk",
       "versionNumber": "0.6.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -474,6 +541,7 @@
       "projectId": "kih5VmNo",
       "latestVersionId": "IkDUL8uy",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -481,6 +549,7 @@
       "projectId": "2vBMeaEW",
       "latestVersionId": "foQdIe7M",
       "versionNumber": "2.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -488,6 +557,7 @@
       "projectId": "ZuJPfLHp",
       "latestVersionId": "45l0a6Nc",
       "versionNumber": "5.5.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -495,6 +565,7 @@
       "projectId": "m9mH4vjB",
       "latestVersionId": "HzxDiNcr",
       "versionNumber": "0.6.2.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -502,6 +573,7 @@
       "projectId": "7eXucZxq",
       "latestVersionId": "5gkAG9Q0",
       "versionNumber": "2.0.0_Dev7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -509,6 +581,7 @@
       "projectId": "zf7q9mVY",
       "latestVersionId": "xGGcqubm",
       "versionNumber": "0.4.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -516,6 +589,7 @@
       "projectId": "7FjF4us6",
       "latestVersionId": "7d6tDJ8o",
       "versionNumber": "1.6.4.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -523,6 +597,7 @@
       "projectId": "dzx2zisP",
       "latestVersionId": "X5paKLYY",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -530,6 +605,7 @@
       "projectId": "BWnGghPW",
       "latestVersionId": "GWiZz2xP",
       "versionNumber": "1.80.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -537,6 +613,7 @@
       "projectId": "RC7Z2EaZ",
       "latestVersionId": "j9JJRIVO",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -544,6 +621,7 @@
       "projectId": "iZBu2k8u",
       "latestVersionId": "oxYrc10F",
       "versionNumber": "0.4B",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -551,6 +629,7 @@
       "projectId": "5aFJgbak",
       "latestVersionId": "mJRuVshF",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -558,6 +637,7 @@
       "projectId": "ZUcNZHzL",
       "latestVersionId": "CuNf4bhz",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -565,6 +645,7 @@
       "projectId": "3cdrsl5X",
       "latestVersionId": "M8PnRxP6",
       "versionNumber": "r1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -572,6 +653,7 @@
       "projectId": "bNFqrJXS",
       "latestVersionId": "e05xM5g0",
       "versionNumber": "V4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -579,6 +661,7 @@
       "projectId": "iCrp3Ew5",
       "latestVersionId": "jaZMWfYJ",
       "versionNumber": "4.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -586,6 +669,7 @@
       "projectId": "4A1AZFli",
       "latestVersionId": "HqDOnXal",
       "versionNumber": "1.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -593,6 +677,7 @@
       "projectId": "IGWHPfOD",
       "latestVersionId": "p27O9eEV",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -600,6 +685,7 @@
       "projectId": "rYFfh55l",
       "latestVersionId": "P222mBb2",
       "versionNumber": "1.9.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -607,6 +693,7 @@
       "projectId": "WUot79rk",
       "latestVersionId": "BH2A8fpn",
       "versionNumber": "V1.1.8",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -614,6 +701,7 @@
       "projectId": "MEwabHnq",
       "latestVersionId": "YB0NWSl0",
       "versionNumber": "1.5.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -621,6 +709,7 @@
       "projectId": "reghUXdy",
       "latestVersionId": "vQXzN8YJ",
       "versionNumber": "1.6.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -628,6 +717,7 @@
       "projectId": "6sOj95GW",
       "latestVersionId": "x7lVrsGR",
       "versionNumber": "5.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -635,6 +725,7 @@
       "projectId": "aE6ouBYi",
       "latestVersionId": "dN3Ek7BZ",
       "versionNumber": "1.5.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -642,6 +733,7 @@
       "projectId": "CqoL8Aty",
       "latestVersionId": "jpAr4qTr",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -649,6 +741,7 @@
       "projectId": "d84ohPxl",
       "latestVersionId": "4lNUSiJ5",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -656,6 +749,7 @@
       "projectId": "iwEbAN22",
       "latestVersionId": "p8Tvfh3t",
       "versionNumber": "Rewrite",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -663,6 +757,7 @@
       "projectId": "N1BIOvQX",
       "latestVersionId": "fgt6eoLP",
       "versionNumber": "2.7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -670,6 +765,7 @@
       "projectId": "FFaD08BY",
       "latestVersionId": "wwm2jwhP",
       "versionNumber": "9.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -677,6 +773,7 @@
       "projectId": "ZhCRyz0a",
       "latestVersionId": "SSJ3P1uR",
       "versionNumber": "2.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -684,6 +781,7 @@
       "projectId": "wXgazpCy",
       "latestVersionId": "M2z9fVlt",
       "versionNumber": "1.1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -691,6 +789,7 @@
       "projectId": "Z8vHOw6N",
       "latestVersionId": "kaqB0sa5",
       "versionNumber": "5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -698,6 +797,7 @@
       "projectId": "DIAdpUOD",
       "latestVersionId": "iWuG0oHo",
       "versionNumber": "1.0.4",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -705,6 +805,7 @@
       "projectId": "2cbOUuF5",
       "latestVersionId": "PjB08fPG",
       "versionNumber": "1.2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -712,6 +813,7 @@
       "projectId": "CjjJQ9zg",
       "latestVersionId": "2eCQ1VnL",
       "versionNumber": "1.6",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -719,6 +821,7 @@
       "projectId": "wWS77kEk",
       "latestVersionId": "R4PCQPU4",
       "versionNumber": "v1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -726,6 +829,7 @@
       "projectId": "AZs0ahDh",
       "latestVersionId": "t1vPVCFN",
       "versionNumber": "5.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -733,6 +837,7 @@
       "projectId": "5FTpbyBl",
       "latestVersionId": "z6WyqZok",
       "versionNumber": "0.0.6",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -740,6 +845,7 @@
       "projectId": "1KNMo6Id",
       "latestVersionId": "3g0LXPS3",
       "versionNumber": "v5.1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -747,6 +853,7 @@
       "projectId": "F6cjDyQ2",
       "latestVersionId": "AOiBMMrz",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -754,6 +861,7 @@
       "projectId": "K8XDv70D",
       "latestVersionId": "OStc8zIW",
       "versionNumber": "0.2.2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -761,6 +869,7 @@
       "projectId": "Hrr4MlDP",
       "latestVersionId": "cBxsD2BF",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -768,6 +877,7 @@
       "projectId": "dE3Syxsf",
       "latestVersionId": "BdKGvUb9",
       "versionNumber": "v6.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -775,6 +885,7 @@
       "projectId": "HPkbgOtW",
       "latestVersionId": "hqzbZQ5T",
       "versionNumber": "1.0.9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -782,6 +893,7 @@
       "projectId": "CjpZFrHx",
       "latestVersionId": "xDLp5ADn",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -789,6 +901,7 @@
       "projectId": "AGUnjUjy",
       "latestVersionId": "G74YNoOB",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -796,6 +909,7 @@
       "projectId": "t0C0BbIo",
       "latestVersionId": "6G9tfeTK",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -803,6 +917,7 @@
       "projectId": "424Wbdmo",
       "latestVersionId": "aEO8DmTl",
       "versionNumber": "0.1.7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -810,6 +925,7 @@
       "projectId": "9gxVXUDr",
       "latestVersionId": "pZJyyZZ4",
       "versionNumber": "1.3.9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -817,6 +933,7 @@
       "projectId": "70gOBuNk",
       "latestVersionId": "ZBlgI3Vs",
       "versionNumber": "1.7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -824,6 +941,7 @@
       "projectId": "TUoQmbZR",
       "latestVersionId": "i31Hbdnd",
       "versionNumber": "1.8",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -831,6 +949,7 @@
       "projectId": "ur3m7B1i",
       "latestVersionId": "REcFtSru",
       "versionNumber": "1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -838,6 +957,7 @@
       "projectId": "OlFHJKqo",
       "latestVersionId": "pfF2Jb9W",
       "versionNumber": "1.7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -845,6 +965,7 @@
       "projectId": "EjUbGcrd",
       "latestVersionId": "8ihbM9j8",
       "versionNumber": "0.1.0a",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -852,6 +973,7 @@
       "projectId": "YIhUcKoq",
       "latestVersionId": "DybitdC8",
       "versionNumber": "2.91",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -859,6 +981,7 @@
       "projectId": "OD8EMbgs",
       "latestVersionId": "COofL12B",
       "versionNumber": "r-0.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -866,6 +989,7 @@
       "projectId": "tFhYnvyA",
       "latestVersionId": "eIROqidV",
       "versionNumber": "1.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -873,6 +997,7 @@
       "projectId": "WCbcn7ba",
       "latestVersionId": "6usaCJXL",
       "versionNumber": "1.1-fix",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -880,6 +1005,7 @@
       "projectId": "Xng19eSP",
       "latestVersionId": "jPUvAiVH",
       "versionNumber": "Rebuild-9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -887,6 +1013,7 @@
       "projectId": "70O0661F",
       "latestVersionId": "AC7c1gBI",
       "versionNumber": "1.2.9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -894,6 +1021,7 @@
       "projectId": "s55p5822",
       "latestVersionId": "xA0NnuZl",
       "versionNumber": "1.1.0",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -901,6 +1029,7 @@
       "projectId": "ch1yZBko",
       "latestVersionId": "zkmsy0i7",
       "versionNumber": "0.8.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -908,6 +1037,7 @@
       "projectId": "M8LIx21K",
       "latestVersionId": "7GiMizFD",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -915,6 +1045,7 @@
       "projectId": "GLbKOZGA",
       "latestVersionId": "GKrM2rdJ",
       "versionNumber": "1.0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -922,6 +1053,7 @@
       "projectId": "kxwHM1hj",
       "latestVersionId": "JqHWnnGm",
       "versionNumber": "preview-2",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -929,6 +1061,7 @@
       "projectId": "hlFrL4hV",
       "latestVersionId": "HRbfw1g0",
       "versionNumber": "1.17",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -936,6 +1069,7 @@
       "projectId": "CGMMa4Ji",
       "latestVersionId": "mBW4y4OJ",
       "versionNumber": "1.4.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -943,6 +1077,7 @@
       "projectId": "5MV64h18",
       "latestVersionId": "rIEA6JAL",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -950,6 +1085,7 @@
       "projectId": "acY2UwwP",
       "latestVersionId": "hu2HSozY",
       "versionNumber": "1.3.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -957,6 +1093,7 @@
       "projectId": "8co1yEDN",
       "latestVersionId": "d9ARngBX",
       "versionNumber": "0.0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -964,6 +1101,7 @@
       "projectId": "XK75twAh",
       "latestVersionId": "yN2LuG37",
       "versionNumber": "1.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -971,6 +1109,7 @@
       "projectId": "6CdvxWhV",
       "latestVersionId": "KkG4Aviu",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -978,6 +1117,7 @@
       "projectId": "GEuwLKq2",
       "latestVersionId": "XVmtlTv0",
       "versionNumber": "0.102",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -985,6 +1125,7 @@
       "projectId": "tLyAc6iV",
       "latestVersionId": "PzBMgESN",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -992,6 +1133,7 @@
       "projectId": "6OQgclAX",
       "latestVersionId": "HbpI3ulO",
       "versionNumber": "1.1.0b",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -999,6 +1141,7 @@
       "projectId": "UE3ewgSx",
       "latestVersionId": "7dPOlIS1",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1006,6 +1149,7 @@
       "projectId": "lGNT3tgC",
       "latestVersionId": "wSHFORKF",
       "versionNumber": "1.3.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1013,6 +1157,7 @@
       "projectId": "x1ZfjCSo",
       "latestVersionId": "WiWDE9WL",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1020,6 +1165,7 @@
       "projectId": "fVElstMy",
       "latestVersionId": "IxxXLYda",
       "versionNumber": "6.6.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1027,6 +1173,7 @@
       "projectId": "Ah4Q0Hhi",
       "latestVersionId": "ueU9qosj",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1034,6 +1181,7 @@
       "projectId": "TZ7II0UR",
       "latestVersionId": "iR83UybB",
       "versionNumber": "3.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1041,6 +1189,7 @@
       "projectId": "BuUSGd4X",
       "latestVersionId": "CgzQgfTI",
       "versionNumber": "0.0.6",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1048,6 +1197,7 @@
       "projectId": "pB0H8J2Y",
       "latestVersionId": "5aqS4ziD",
       "versionNumber": "2.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1055,6 +1205,7 @@
       "projectId": "qpA3SxtS",
       "latestVersionId": "Y6l5tHVP",
       "versionNumber": "velo-12",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1062,6 +1213,7 @@
       "projectId": "YmRYaclX",
       "latestVersionId": "lUHvhyOE",
       "versionNumber": "0.0.1",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1069,6 +1221,7 @@
       "projectId": "NPKlYU6I",
       "latestVersionId": "wfUrJPdT",
       "versionNumber": "0.3.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1076,6 +1229,7 @@
       "projectId": "UEIkxUHB",
       "latestVersionId": "ULET5Ak1",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1083,6 +1237,7 @@
       "projectId": "iIUAlvLk",
       "latestVersionId": "SudhVJmX",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1090,6 +1245,7 @@
       "projectId": "T9AnY83f",
       "latestVersionId": "Ean2qzL2",
       "versionNumber": "1.9.0b",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1097,6 +1253,7 @@
       "projectId": "icIHUe3L",
       "latestVersionId": "PPswUPzc",
       "versionNumber": "0.23.58",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1104,6 +1261,7 @@
       "projectId": "qjbB6Qp6",
       "latestVersionId": "U5RqthUl",
       "versionNumber": "0.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1111,6 +1269,7 @@
       "projectId": "j8vzmojd",
       "latestVersionId": "LlYkL4yT",
       "versionNumber": "1.0",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1118,6 +1277,7 @@
       "projectId": "KOQHPy4R",
       "latestVersionId": "6mO75v75",
       "versionNumber": "1.23",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1125,6 +1285,7 @@
       "projectId": "cFPyBbB1",
       "latestVersionId": "o2S1KeDB",
       "versionNumber": "3.1.7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1132,6 +1293,7 @@
       "projectId": "GWRThy8E",
       "latestVersionId": "hKFXp83z",
       "versionNumber": "v5.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1139,6 +1301,7 @@
       "projectId": "EQ0xrqNb",
       "latestVersionId": "4BJQY5Bo",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1146,6 +1309,7 @@
       "projectId": "ZsT2QmUU",
       "latestVersionId": "TWg7NH7p",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1153,6 +1317,7 @@
       "projectId": "mMOmm2Zk",
       "latestVersionId": "6ZzHXdRN",
       "versionNumber": "v0.2.2a-hotfix1",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1160,6 +1325,7 @@
       "projectId": "7wfGkCoM",
       "latestVersionId": "a9gL2Zla",
       "versionNumber": "v0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1167,6 +1333,7 @@
       "projectId": "DbCgw2md",
       "latestVersionId": "EOxSocIm",
       "versionNumber": "16.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1174,6 +1341,7 @@
       "projectId": "XcwivM4z",
       "latestVersionId": "HHSwegCm",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1181,6 +1349,7 @@
       "projectId": "g90sV5x4",
       "latestVersionId": "qT5IYsey",
       "versionNumber": "1.4.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1188,6 +1357,7 @@
       "projectId": "Rosc1kAc",
       "latestVersionId": "15uhPL1R",
       "versionNumber": "1.2-beta",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1195,6 +1365,7 @@
       "projectId": "4ETindzX",
       "latestVersionId": "sJ2H74Cp",
       "versionNumber": "1.0.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1202,6 +1373,7 @@
       "projectId": "fkGPS2gb",
       "latestVersionId": "khpulBvk",
       "versionNumber": "1.4.6",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1209,6 +1381,7 @@
       "projectId": "kj9VuxTY",
       "latestVersionId": "QZ7JTGEe",
       "versionNumber": "0.2.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1216,6 +1389,7 @@
       "projectId": "NuMAacDC",
       "latestVersionId": "omqmRjt6",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1223,6 +1397,7 @@
       "projectId": "wwfPGOds",
       "latestVersionId": "LCNLWfDo",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1230,6 +1405,7 @@
       "projectId": "Uzkg6HgX",
       "latestVersionId": "FENoHvT5",
       "versionNumber": "1.0.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1237,6 +1413,7 @@
       "projectId": "dPBtZ5Ry",
       "latestVersionId": "QDt6KYrg",
       "versionNumber": "v1.4",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1244,6 +1421,7 @@
       "projectId": "sdBzRG7h",
       "latestVersionId": "UsIej1Av",
       "versionNumber": "3.7.6",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1251,6 +1429,7 @@
       "projectId": "AoWEEFBh",
       "latestVersionId": "30mKV6nO",
       "versionNumber": "20",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1258,6 +1437,7 @@
       "projectId": "ueSyHBpg",
       "latestVersionId": "nQmDNrGM",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1265,6 +1445,7 @@
       "projectId": "C8Sy7Xye",
       "latestVersionId": "hov1a3G3",
       "versionNumber": "3.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1272,6 +1453,7 @@
       "projectId": "qcMw3mB6",
       "latestVersionId": "GFdFDteK",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1279,6 +1461,7 @@
       "projectId": "KiDl1F9o",
       "latestVersionId": "DQmq3Ejj",
       "versionNumber": "0.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1286,6 +1469,7 @@
       "projectId": "zrVlkYvk",
       "latestVersionId": "2mAWydkG",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1293,6 +1477,7 @@
       "projectId": "STXlqnTM",
       "latestVersionId": "IBAdcxrN",
       "versionNumber": "2.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1300,6 +1485,7 @@
       "projectId": "in4K1Xj9",
       "latestVersionId": "Dh0h66sm",
       "versionNumber": "be1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1307,6 +1493,7 @@
       "projectId": "wQhetBka",
       "latestVersionId": "Wirya051",
       "versionNumber": "6",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1314,6 +1501,7 @@
       "projectId": "ZeqDZZRS",
       "latestVersionId": "iCph41jP",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1321,6 +1509,7 @@
       "projectId": "nIIpn55X",
       "latestVersionId": "r0k0Lgvp",
       "versionNumber": "1.0.0",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1328,6 +1517,7 @@
       "projectId": "mzJo5Nx3",
       "latestVersionId": "pzehpmP0",
       "versionNumber": "v1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1335,6 +1525,7 @@
       "projectId": "vWdu7BRL",
       "latestVersionId": "oD6AJxjs",
       "versionNumber": "0.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1342,6 +1533,7 @@
       "projectId": "BUz1aSAh",
       "latestVersionId": "T3uT0aPk",
       "versionNumber": "0.4",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1349,6 +1541,7 @@
       "projectId": "wFfhUbYQ",
       "latestVersionId": "LdV3W96n",
       "versionNumber": "3.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1356,6 +1549,7 @@
       "projectId": "KBmTU8ja",
       "latestVersionId": "MIi8NI2W",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1363,6 +1557,7 @@
       "projectId": "jgYsD3FV",
       "latestVersionId": "9we0R8Dq",
       "versionNumber": "PT-v10.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1370,6 +1565,7 @@
       "projectId": "buFZXJqT",
       "latestVersionId": "ktbJXE1i",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1377,6 +1573,7 @@
       "projectId": "Qxdz7rmW",
       "latestVersionId": "Se9LwUy5",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1384,6 +1581,7 @@
       "projectId": "pcMKaDsV",
       "latestVersionId": "4SqNZSI9",
       "versionNumber": "2.5.8",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1391,6 +1589,7 @@
       "projectId": "408flTHR",
       "latestVersionId": "2bbLuUJ5",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1398,6 +1597,7 @@
       "projectId": "xFrc4NPo",
       "latestVersionId": "apQ6yrrS",
       "versionNumber": "4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1405,6 +1605,7 @@
       "projectId": "lYoE5ym5",
       "latestVersionId": "WeLRi7Dn",
       "versionNumber": "1.8.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1412,6 +1613,7 @@
       "projectId": "r6gSVPWY",
       "latestVersionId": "YQJkhJ7N",
       "versionNumber": "onlyshadows",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1419,6 +1621,7 @@
       "projectId": "HFpynP04",
       "latestVersionId": "7xmlQsfi",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1426,6 +1629,7 @@
       "projectId": "fn1Eae1N",
       "latestVersionId": "9G8Y5o9Q",
       "versionNumber": "1.0.2",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1433,6 +1637,7 @@
       "projectId": "wz6Mcdq6",
       "latestVersionId": "mHC4AArT",
       "versionNumber": "0.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1440,6 +1645,7 @@
       "projectId": "okSXLiG4",
       "latestVersionId": "U14b7BOg",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1447,6 +1653,7 @@
       "projectId": "ZroHvBI3",
       "latestVersionId": "IgGHvlIE",
       "versionNumber": "6.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1454,6 +1661,7 @@
       "projectId": "FQST0Z8M",
       "latestVersionId": "EQEJQ7Lp",
       "versionNumber": "alpha-four",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1461,6 +1669,7 @@
       "projectId": "KiFpblnH",
       "latestVersionId": "LgR1TLL7",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1468,6 +1677,7 @@
       "projectId": "JJENX1BH",
       "latestVersionId": "VWUs1TDT",
       "versionNumber": "0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1475,6 +1685,7 @@
       "projectId": "JZnbMbTm",
       "latestVersionId": "YdEuCG8F",
       "versionNumber": "1.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1482,6 +1693,7 @@
       "projectId": "O5m5hPLR",
       "latestVersionId": "kzIhDPGE",
       "versionNumber": "B3-PvP",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1489,6 +1701,7 @@
       "projectId": "WD4lLjK2",
       "latestVersionId": "LtoBcfpf",
       "versionNumber": "v1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1496,6 +1709,7 @@
       "projectId": "z0NF17Hp",
       "latestVersionId": "O5e42ZGS",
       "versionNumber": "1.1.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1503,6 +1717,7 @@
       "projectId": "r80tWUPL",
       "latestVersionId": "uLOUG6oa",
       "versionNumber": "2.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1510,6 +1725,7 @@
       "projectId": "KbqQa0aB",
       "latestVersionId": "WyZSH24t",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1517,6 +1733,7 @@
       "projectId": "3z5iC0bj",
       "latestVersionId": "5AAOjQm4",
       "versionNumber": "v2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1524,6 +1741,7 @@
       "projectId": "JX18zgB7",
       "latestVersionId": "ZO60Nzwo",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1531,6 +1749,7 @@
       "projectId": "uYBHIcV9",
       "latestVersionId": "AnVtVfeF",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1538,6 +1757,7 @@
       "projectId": "fsDxQcSJ",
       "latestVersionId": "d9lbBtxU",
       "versionNumber": "1.0-hotfix",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1545,6 +1765,7 @@
       "projectId": "xAWqMDMo",
       "latestVersionId": "rKjxhPSD",
       "versionNumber": "1.3.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1552,6 +1773,7 @@
       "projectId": "VUMmIDj7",
       "latestVersionId": "gsFHQXVd",
       "versionNumber": "1.0.4.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1559,6 +1781,7 @@
       "projectId": "THdWNh20",
       "latestVersionId": "RJ8vUJq1",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1566,6 +1789,7 @@
       "projectId": "buyR2SoV",
       "latestVersionId": "mMBYo1df",
       "versionNumber": "1.0.0-legacy",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1573,6 +1797,7 @@
       "projectId": "3rSkAqDn",
       "latestVersionId": "ZnCxuRVT",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1580,6 +1805,7 @@
       "projectId": "o86c4okd",
       "latestVersionId": "xTGjvNEQ",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1587,6 +1813,7 @@
       "projectId": "TKpehqLE",
       "latestVersionId": "yVPgPgS6",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1594,6 +1821,7 @@
       "projectId": "nE7lYhsP",
       "latestVersionId": "RIAK6yIR",
       "versionNumber": "v0.1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1601,6 +1829,7 @@
       "projectId": "DVjRE6FA",
       "latestVersionId": "97BOPX2d",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1608,6 +1837,7 @@
       "projectId": "8jikfk78",
       "latestVersionId": "sWMXKiJg",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1615,6 +1845,7 @@
       "projectId": "pmts4duk",
       "latestVersionId": "o5GkRfax",
       "versionNumber": "5.3.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1622,6 +1853,7 @@
       "projectId": "tKZUSGNE",
       "latestVersionId": "ZChPgeBT",
       "versionNumber": "0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1629,6 +1861,7 @@
       "projectId": "Jqn55RVZ",
       "latestVersionId": "KHDU4PJM",
       "versionNumber": "1.0.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1636,6 +1869,7 @@
       "projectId": "eU5gfXAN",
       "latestVersionId": "wWp6ix9C",
       "versionNumber": "1.3.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1643,6 +1877,7 @@
       "projectId": "vWdKXjPs",
       "latestVersionId": "9NlyrmEw",
       "versionNumber": "0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1650,6 +1885,7 @@
       "projectId": "3W0Dwcrv",
       "latestVersionId": "pnJy9v8q",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1657,6 +1893,7 @@
       "projectId": "xhSIVWgz",
       "latestVersionId": "CT8MpHGq",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1664,6 +1901,7 @@
       "projectId": "OHtWyVlA",
       "latestVersionId": "TIvsL2FG",
       "versionNumber": "1.2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1671,6 +1909,7 @@
       "projectId": "JgBImdrF",
       "latestVersionId": "ILbWie97",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1678,6 +1917,7 @@
       "projectId": "lcVBKCo1",
       "latestVersionId": "wsxkJoMD",
       "versionNumber": "latest",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1685,6 +1925,7 @@
       "projectId": "d6TfTZPu",
       "latestVersionId": "ansSQFOT",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1692,6 +1933,7 @@
       "projectId": "Il6bho6B",
       "latestVersionId": "FETgTo6F",
       "versionNumber": "v1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1699,6 +1941,7 @@
       "projectId": "6izFt5nL",
       "latestVersionId": "8ZH9gYKy",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1706,6 +1949,7 @@
       "projectId": "xsT9i8EC",
       "latestVersionId": "bPe2mkC3",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1713,6 +1957,7 @@
       "projectId": "41qDSipJ",
       "latestVersionId": "T6KIoJHt",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1720,6 +1965,7 @@
       "projectId": "33Flu4rX",
       "latestVersionId": "QHJXpVpl",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1727,6 +1973,7 @@
       "projectId": "5s4tVLty",
       "latestVersionId": "lEtf2ObT",
       "versionNumber": "1.0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1734,6 +1981,7 @@
       "projectId": "1S4HCfve",
       "latestVersionId": "rZpHJ6g1",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1741,6 +1989,7 @@
       "projectId": "Sg7URyDE",
       "latestVersionId": "ZQ20qKbM",
       "versionNumber": "3.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1748,6 +1997,7 @@
       "projectId": "X5nQ5C2A",
       "latestVersionId": "lTk2vwKN",
       "versionNumber": "3.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1755,6 +2005,7 @@
       "projectId": "txGgplPN",
       "latestVersionId": "YQj5h2lm",
       "versionNumber": "6.30.2026b",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1762,6 +2013,7 @@
       "projectId": "xDn0BoKd",
       "latestVersionId": "uzjwtX81",
       "versionNumber": "10.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1769,6 +2021,7 @@
       "projectId": "TGOrCOTp",
       "latestVersionId": "viro9STj",
       "versionNumber": "1.2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1776,6 +2029,7 @@
       "projectId": "MuKtZfKJ",
       "latestVersionId": "MgivpSrn",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1783,6 +2037,7 @@
       "projectId": "osD74aom",
       "latestVersionId": "IUzuYFR6",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1790,6 +2045,7 @@
       "projectId": "8eOqqmcr",
       "latestVersionId": "9yxKhEkq",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1797,6 +2053,7 @@
       "projectId": "cZBxYEz4",
       "latestVersionId": "USWs75w0",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1804,6 +2061,7 @@
       "projectId": "xTPEb5xp",
       "latestVersionId": "7aPMDIjy",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1811,6 +2069,7 @@
       "projectId": "ikGRnJq1",
       "latestVersionId": "VwOKReW7",
       "versionNumber": "2.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1818,6 +2077,7 @@
       "projectId": "7VtTR53y",
       "latestVersionId": "KZsT4Uak",
       "versionNumber": "beta-1.2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1825,6 +2085,7 @@
       "projectId": "MTiuNKqA",
       "latestVersionId": "AJumhKPA",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1832,6 +2093,7 @@
       "projectId": "ezzUqPd4",
       "latestVersionId": "kwkM9Dyo",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1839,6 +2101,7 @@
       "projectId": "ecEGgWOY",
       "latestVersionId": "eoiDqdMV",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1846,6 +2109,7 @@
       "projectId": "NnRy8IFu",
       "latestVersionId": "rwQ6bL9v",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1853,6 +2117,7 @@
       "projectId": "OCmyF3Cs",
       "latestVersionId": "GLlnrxJJ",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1860,6 +2125,7 @@
       "projectId": "2P0AV9FE",
       "latestVersionId": "bQT94Z6W",
       "versionNumber": "1.2.1",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1867,6 +2133,7 @@
       "projectId": "LHVsUxbi",
       "latestVersionId": "7NtaEfvF",
       "versionNumber": "1.0.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1874,6 +2141,7 @@
       "projectId": "LvtQEwjR",
       "latestVersionId": "AwTfcPdR",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1881,6 +2149,7 @@
       "projectId": "mIcyuS5O",
       "latestVersionId": "WUbv0Slk",
       "versionNumber": "1.21x",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1888,6 +2157,7 @@
       "projectId": "RO6afEst",
       "latestVersionId": "Kz6gFpjw",
       "versionNumber": "1.0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1895,6 +2165,7 @@
       "projectId": "qc513Unu",
       "latestVersionId": "R9vOsJDN",
       "versionNumber": "1.8",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1902,6 +2173,7 @@
       "projectId": "l2palkeG",
       "latestVersionId": "AMtghtuG",
       "versionNumber": "2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1909,6 +2181,7 @@
       "projectId": "eSqJcTf7",
       "latestVersionId": "mSH3zbpg",
       "versionNumber": "0.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1916,6 +2189,7 @@
       "projectId": "9Rg9KKDK",
       "latestVersionId": "6n4SBKk2",
       "versionNumber": "1.2.1.B",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1923,6 +2197,7 @@
       "projectId": "iZ0PwIr7",
       "latestVersionId": "K2UfoU0B",
       "versionNumber": "beta",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1930,6 +2205,7 @@
       "projectId": "piJlVDtP",
       "latestVersionId": "6f6tfdO6",
       "versionNumber": "v5.8.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1937,6 +2213,7 @@
       "projectId": "aTLNnxX3",
       "latestVersionId": "LX4WQRzY",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1944,6 +2221,7 @@
       "projectId": "pWeVnXDz",
       "latestVersionId": "FL0np64M",
       "versionNumber": "4.0.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1951,6 +2229,7 @@
       "projectId": "WTBaGxsU",
       "latestVersionId": "CMTUuUzB",
       "versionNumber": "3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1958,6 +2237,7 @@
       "projectId": "f1VMVPC1",
       "latestVersionId": "82GHWXho",
       "versionNumber": "1.0.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1965,6 +2245,7 @@
       "projectId": "WLkdXnId",
       "latestVersionId": "EDIOf95s",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1972,6 +2253,7 @@
       "projectId": "gEzKZOqB",
       "latestVersionId": "rQzMjZFn",
       "versionNumber": "v1.0.0-mc26.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1979,6 +2261,7 @@
       "projectId": "ARW1Jej5",
       "latestVersionId": "wOCzQliM",
       "versionNumber": "1.1-beta2-dark",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1986,6 +2269,7 @@
       "projectId": "8OeaZfgn",
       "latestVersionId": "l3u4JLW3",
       "versionNumber": "V1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -1993,6 +2277,7 @@
       "projectId": "Zi60D5U5",
       "latestVersionId": "uyhji1EB",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2000,6 +2285,7 @@
       "projectId": "5taDo0oi",
       "latestVersionId": "EK9RpK9E",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2007,6 +2293,7 @@
       "projectId": "GqCH3B4C",
       "latestVersionId": "bIPGe6Ni",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2014,6 +2301,7 @@
       "projectId": "uUbHpMiv",
       "latestVersionId": "typ5htGO",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2021,6 +2309,7 @@
       "projectId": "bn9xKwMe",
       "latestVersionId": "lYNv8YYl",
       "versionNumber": "2025.12.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2028,6 +2317,7 @@
       "projectId": "9VzoIcj0",
       "latestVersionId": "A4whTi5q",
       "versionNumber": "1.1.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2035,6 +2325,7 @@
       "projectId": "4f6gA44l",
       "latestVersionId": "BtEhiglL",
       "versionNumber": "4.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2042,6 +2333,7 @@
       "projectId": "cfhJEfJM",
       "latestVersionId": "1GpmF0UM",
       "versionNumber": "v1.0r",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2049,6 +2341,7 @@
       "projectId": "zxdgn1L8",
       "latestVersionId": "yVJYROg1",
       "versionNumber": "1.0.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2056,6 +2349,7 @@
       "projectId": "6iApq3jH",
       "latestVersionId": "DRYJ9wOV",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2063,6 +2357,7 @@
       "projectId": "ACsC5xz2",
       "latestVersionId": "mNYRG7gR",
       "versionNumber": "0.1.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2070,6 +2365,7 @@
       "projectId": "WfX3EInm",
       "latestVersionId": "xcyn1F48",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2077,6 +2373,7 @@
       "projectId": "n48y4QW0",
       "latestVersionId": "m1pK1YQy",
       "versionNumber": "1.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2084,6 +2381,7 @@
       "projectId": "E4OF11ZZ",
       "latestVersionId": "7xL4s4Ef",
       "versionNumber": "1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2091,6 +2389,7 @@
       "projectId": "S8ZCVZOX",
       "latestVersionId": "7rtSMvnv",
       "versionNumber": "1.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2098,6 +2397,7 @@
       "projectId": "sGnIENEE",
       "latestVersionId": "yYuceQ7Z",
       "versionNumber": "1.0.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2105,6 +2405,7 @@
       "projectId": "W7QXpvVg",
       "latestVersionId": "cjo1tRR6",
       "versionNumber": "1.2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2112,6 +2413,7 @@
       "projectId": "ACzzdXfc",
       "latestVersionId": "7753qCiq",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2119,6 +2421,7 @@
       "projectId": "EwxnsoQC",
       "latestVersionId": "Y6b5J69L",
       "versionNumber": "V1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2126,6 +2429,7 @@
       "projectId": "9BonL3mf",
       "latestVersionId": "GoQvmDSI",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2133,6 +2437,7 @@
       "projectId": "lcdZ7DO8",
       "latestVersionId": "7lvLwFbO",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2140,13 +2445,15 @@
       "projectId": "G0xaxDsv",
       "latestVersionId": "D64c8N2W",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
     "makeup-dead-days": {
       "projectId": "oAeXD5jG",
-      "latestVersionId": "jImebdnr",
-      "versionNumber": "1.1",
+      "latestVersionId": "kU95n2wy",
+      "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2154,6 +2461,7 @@
       "projectId": "APwTnV72",
       "latestVersionId": "4tFVvYbj",
       "versionNumber": "bennigan_1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2161,6 +2469,7 @@
       "projectId": "coczPlMB",
       "latestVersionId": "msDPMqxQ",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2168,6 +2477,7 @@
       "projectId": "CEkE0ksb",
       "latestVersionId": "vZa7Jss3",
       "versionNumber": "0.2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2175,6 +2485,7 @@
       "projectId": "6edtW5qi",
       "latestVersionId": "TAMg5XEs",
       "versionNumber": "2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2182,6 +2493,7 @@
       "projectId": "LVUlY6Vc",
       "latestVersionId": "3Wt0vQwT",
       "versionNumber": "v2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2189,6 +2501,7 @@
       "projectId": "V1DPLa8z",
       "latestVersionId": "KxQ5VsUs",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2196,6 +2509,7 @@
       "projectId": "BbUlopVn",
       "latestVersionId": "kFZjkCIb",
       "versionNumber": "0.1.9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2203,6 +2517,7 @@
       "projectId": "wtW98QUr",
       "latestVersionId": "kCA1PAAN",
       "versionNumber": "1.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2210,6 +2525,7 @@
       "projectId": "RRaYwADF",
       "latestVersionId": "3sgxp41v",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2217,6 +2533,7 @@
       "projectId": "WjcI9P1w",
       "latestVersionId": "xgAzztaI",
       "versionNumber": "1",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2224,6 +2541,7 @@
       "projectId": "ZMDDXGl0",
       "latestVersionId": "AxIyCvN3",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2231,6 +2549,7 @@
       "projectId": "ln2avam6",
       "latestVersionId": "ynZ9DGmp",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2238,6 +2557,7 @@
       "projectId": "rPU2vYZU",
       "latestVersionId": "MygFBpjJ",
       "versionNumber": "0.3",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2245,6 +2565,7 @@
       "projectId": "LVvPobw5",
       "latestVersionId": "I09W0uPh",
       "versionNumber": "1.3.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2252,13 +2573,15 @@
       "projectId": "qxUeQ92X",
       "latestVersionId": "Jrc0wwq7",
       "versionNumber": "2.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
     "eddyveil": {
       "projectId": "JH3s1XBW",
-      "latestVersionId": "v0GuGMvV",
-      "versionNumber": "6.15.0-MacOS",
+      "latestVersionId": "XUGFsMes",
+      "versionNumber": "8.1.0-MacOS",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2266,6 +2589,7 @@
       "projectId": "C9RsInRE",
       "latestVersionId": "hpHLBqYa",
       "versionNumber": "1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2273,6 +2597,7 @@
       "projectId": "xUZIReLK",
       "latestVersionId": "4ReU8MnU",
       "versionNumber": "0.9.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2280,6 +2605,7 @@
       "projectId": "RWIrIHFp",
       "latestVersionId": "Yt11F8bm",
       "versionNumber": "2.0-optifine",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2287,6 +2613,7 @@
       "projectId": "4vvEmj8p",
       "latestVersionId": "jINrh3dF",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2294,6 +2621,7 @@
       "projectId": "iXjzmsNv",
       "latestVersionId": "6PFa2EfZ",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2301,6 +2629,7 @@
       "projectId": "XxNK9TOy",
       "latestVersionId": "6rNOjnP9",
       "versionNumber": "1.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2308,6 +2637,7 @@
       "projectId": "P3yk0Q5w",
       "latestVersionId": "Lr6c3yTy",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2315,6 +2645,7 @@
       "projectId": "ksD0jjws",
       "latestVersionId": "lFQv0nxz",
       "versionNumber": "0.1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2322,6 +2653,7 @@
       "projectId": "GWgDfysQ",
       "latestVersionId": "PT0P01RK",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2329,6 +2661,7 @@
       "projectId": "SXup1RFh",
       "latestVersionId": "v8wgwb8X",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2336,6 +2669,7 @@
       "projectId": "QOSA4rZD",
       "latestVersionId": "7vyZR4AN",
       "versionNumber": "1.0.4",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2343,6 +2677,7 @@
       "projectId": "QRSbjJqU",
       "latestVersionId": "D0AagIXX",
       "versionNumber": "v1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2350,6 +2685,7 @@
       "projectId": "mHWnah27",
       "latestVersionId": "zFedTcB3",
       "versionNumber": "1.0.0-beta3",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2357,6 +2693,7 @@
       "projectId": "r1EogXS7",
       "latestVersionId": "P4yPXfXQ",
       "versionNumber": "v2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2364,6 +2701,7 @@
       "projectId": "lCjPSSn9",
       "latestVersionId": "zui5gRco",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2371,6 +2709,7 @@
       "projectId": "G1j6TYS3",
       "latestVersionId": "qKGHsP8x",
       "versionNumber": "v1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2378,6 +2717,7 @@
       "projectId": "O4klg90P",
       "latestVersionId": "5eDyc0B8",
       "versionNumber": "1.5.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2385,6 +2725,7 @@
       "projectId": "EJfV67NC",
       "latestVersionId": "8AdUIYZC",
       "versionNumber": "V1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2392,6 +2733,7 @@
       "projectId": "p2W8jI7f",
       "latestVersionId": "n6x6SXCh",
       "versionNumber": "3.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2399,6 +2741,7 @@
       "projectId": "f8scbtiO",
       "latestVersionId": "X87grp8C",
       "versionNumber": "0.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2406,6 +2749,7 @@
       "projectId": "tuXTuJTX",
       "latestVersionId": "Eo2OIeAF",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2413,6 +2757,7 @@
       "projectId": "BDWacDO2",
       "latestVersionId": "Di6RCnCl",
       "versionNumber": "1.3",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2420,6 +2765,7 @@
       "projectId": "6zwoOMPJ",
       "latestVersionId": "Lx8BMm0E",
       "versionNumber": "0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2427,6 +2773,7 @@
       "projectId": "h0xSmugX",
       "latestVersionId": "kcCeeMcQ",
       "versionNumber": "0.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2434,6 +2781,7 @@
       "projectId": "prKz0vtM",
       "latestVersionId": "Zll814lG",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2441,6 +2789,7 @@
       "projectId": "yhAv3x3d",
       "latestVersionId": "yfXR1bla",
       "versionNumber": "version_2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2448,6 +2797,7 @@
       "projectId": "uA5nNhrW",
       "latestVersionId": "Kd8xXKma",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2455,6 +2805,7 @@
       "projectId": "XkrUGY2b",
       "latestVersionId": "EAnjAGZ3",
       "versionNumber": "0.6.0-beta",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2462,6 +2813,7 @@
       "projectId": "Oagc9O98",
       "latestVersionId": "QY0AsRPh",
       "versionNumber": "Ready_v7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2469,6 +2821,7 @@
       "projectId": "MYAGpRLz",
       "latestVersionId": "AVLsc4fz",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2476,6 +2829,7 @@
       "projectId": "T9JGy2Xj",
       "latestVersionId": "agAvDZe4",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2483,6 +2837,7 @@
       "projectId": "vRmou5uM",
       "latestVersionId": "JKiLVLDD",
       "versionNumber": "500.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2490,6 +2845,7 @@
       "projectId": "8MrirRd6",
       "latestVersionId": "spTzqZKH",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2497,6 +2853,7 @@
       "projectId": "1jdWjXFa",
       "latestVersionId": "L1i1odNQ",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2504,6 +2861,7 @@
       "projectId": "EGLiNMH2",
       "latestVersionId": "OeVR9Agv",
       "versionNumber": "1.1.0b",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2511,6 +2869,7 @@
       "projectId": "yEtjSPos",
       "latestVersionId": "FQEAOKY3",
       "versionNumber": "0.5.4",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2518,6 +2877,7 @@
       "projectId": "jJ5VFiNe",
       "latestVersionId": "7k2ODAWd",
       "versionNumber": "v2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2525,6 +2885,7 @@
       "projectId": "ioPkf1jI",
       "latestVersionId": "VvljCDPP",
       "versionNumber": "1.2.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2532,6 +2893,7 @@
       "projectId": "AAUN4OCM",
       "latestVersionId": "DNUfuA3O",
       "versionNumber": "V1.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2539,6 +2901,7 @@
       "projectId": "6n6PKtZ3",
       "latestVersionId": "fZzaHXIG",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2546,6 +2909,7 @@
       "projectId": "134lIeeG",
       "latestVersionId": "UxwK2Ihi",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2553,6 +2917,7 @@
       "projectId": "vbGqX7LT",
       "latestVersionId": "Voo96BqO",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2560,6 +2925,7 @@
       "projectId": "Fy31eTyo",
       "latestVersionId": "gQc92XxP",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2567,6 +2933,7 @@
       "projectId": "PzyOxx1v",
       "latestVersionId": "r7z2OaSg",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2574,6 +2941,7 @@
       "projectId": "dSmVRdkN",
       "latestVersionId": "UVtBOnbu",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2581,6 +2949,7 @@
       "projectId": "6nLgxdmJ",
       "latestVersionId": "gaMzpAis",
       "versionNumber": "V1.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2588,6 +2957,7 @@
       "projectId": "3PrdwOBX",
       "latestVersionId": "gWBkfQwo",
       "versionNumber": "1.5.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2595,6 +2965,7 @@
       "projectId": "kbbNRQvY",
       "latestVersionId": "C1iPpPG6",
       "versionNumber": "r1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2602,6 +2973,7 @@
       "projectId": "X4f9rX0Z",
       "latestVersionId": "UUnhc1U8",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2609,6 +2981,7 @@
       "projectId": "PIWE6r1I",
       "latestVersionId": "soUQMmNO",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2616,6 +2989,7 @@
       "projectId": "SChBUawA",
       "latestVersionId": "p9SuSMDx",
       "versionNumber": "1.5.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2623,6 +2997,7 @@
       "projectId": "q8rOKdsz",
       "latestVersionId": "7HNdD0FY",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2630,6 +3005,7 @@
       "projectId": "TxpEaMDk",
       "latestVersionId": "2zGBJII2",
       "versionNumber": "1.0.7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2637,6 +3013,7 @@
       "projectId": "6XweFP9V",
       "latestVersionId": "ZvW5EnU4",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2644,6 +3021,7 @@
       "projectId": "bTcyUAbI",
       "latestVersionId": "XcTg1zb4",
       "versionNumber": "V1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2651,6 +3029,7 @@
       "projectId": "TOAcsNEL",
       "latestVersionId": "3kTzheHr",
       "versionNumber": "1.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2658,6 +3037,7 @@
       "projectId": "g3CAig6K",
       "latestVersionId": "auInYwkF",
       "versionNumber": "1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2665,6 +3045,7 @@
       "projectId": "4055otpg",
       "latestVersionId": "n6hmSZff",
       "versionNumber": "1.0.5",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2672,6 +3053,7 @@
       "projectId": "kauudFKe",
       "latestVersionId": "DAW5nZ0h",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2679,6 +3061,7 @@
       "projectId": "AyCLIZ8j",
       "latestVersionId": "Qzldqgjg",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2686,6 +3069,7 @@
       "projectId": "8uysgPy7",
       "latestVersionId": "O645BesY",
       "versionNumber": "beta-1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2693,6 +3077,7 @@
       "projectId": "WCeMAaBy",
       "latestVersionId": "jUC1G6vj",
       "versionNumber": "0.1.1",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2700,6 +3085,7 @@
       "projectId": "xFIftOsH",
       "latestVersionId": "AK0shBZI",
       "versionNumber": "4.17",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2707,6 +3093,7 @@
       "projectId": "UqImZFIy",
       "latestVersionId": "cXtFY5WJ",
       "versionNumber": "1.52.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2714,6 +3101,7 @@
       "projectId": "3XFlJWus",
       "latestVersionId": "Jur4UYq7",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2721,6 +3109,7 @@
       "projectId": "wiOKY4t2",
       "latestVersionId": "trDao1L8",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2728,6 +3117,7 @@
       "projectId": "N4lQFvZ1",
       "latestVersionId": "pubktQ3c",
       "versionNumber": "12",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2735,6 +3125,7 @@
       "projectId": "QOgLibNW",
       "latestVersionId": "JvxuiPoV",
       "versionNumber": "V9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2742,6 +3133,7 @@
       "projectId": "4A4w7sor",
       "latestVersionId": "6RpagBYI",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2749,6 +3141,7 @@
       "projectId": "VeFMbpGd",
       "latestVersionId": "wZEC0DUK",
       "versionNumber": "1.13",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2756,6 +3149,7 @@
       "projectId": "kewvpRhY",
       "latestVersionId": "WCVqVVUw",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2763,6 +3157,7 @@
       "projectId": "cA9Vf1d8",
       "latestVersionId": "BMGlouDd",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2770,6 +3165,7 @@
       "projectId": "ttqhlVxf",
       "latestVersionId": "LBcm1uLr",
       "versionNumber": "V1.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2777,6 +3173,7 @@
       "projectId": "J0ArLR0H",
       "latestVersionId": "fRt4cPzU",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2784,6 +3181,7 @@
       "projectId": "sIWy5A4M",
       "latestVersionId": "eNhqLpI2",
       "versionNumber": "V1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2791,6 +3189,7 @@
       "projectId": "DBdwEtV9",
       "latestVersionId": "og20XbYV",
       "versionNumber": "1.96",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2798,6 +3197,7 @@
       "projectId": "uMgf7Go6",
       "latestVersionId": "Ly6uTaAV",
       "versionNumber": "22.2.17",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2805,6 +3205,7 @@
       "projectId": "gACrH6H4",
       "latestVersionId": "aEUUhYIx",
       "versionNumber": "1",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2812,6 +3213,7 @@
       "projectId": "jkDOHaKM",
       "latestVersionId": "U8OY8xA0",
       "versionNumber": "0.1",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2819,6 +3221,7 @@
       "projectId": "wntcSD6O",
       "latestVersionId": "qSOPYo2j",
       "versionNumber": "1.2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2826,6 +3229,7 @@
       "projectId": "uSrJL7QR",
       "latestVersionId": "Ycr1ArFU",
       "versionNumber": "GreenVoid+1.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2833,6 +3237,7 @@
       "projectId": "HEhd6OXA",
       "latestVersionId": "PevVEPDW",
       "versionNumber": "01A01",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2840,6 +3245,7 @@
       "projectId": "S0hPQ8C2",
       "latestVersionId": "glh3qvNj",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2847,6 +3253,7 @@
       "projectId": "Dim3bYIE",
       "latestVersionId": "Cicna2mz",
       "versionNumber": "2.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2854,6 +3261,7 @@
       "projectId": "162KpUhg",
       "latestVersionId": "TycW690e",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2861,6 +3269,7 @@
       "projectId": "SChVy308",
       "latestVersionId": "1QGDE6Lt",
       "versionNumber": "0.2.3-optifine",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2868,6 +3277,7 @@
       "projectId": "XNvZHEgC",
       "latestVersionId": "j7XTZv7x",
       "versionNumber": "v1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2875,6 +3285,7 @@
       "projectId": "5TEA0dqi",
       "latestVersionId": "i3RU6Pjg",
       "versionNumber": "1.2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2882,6 +3293,7 @@
       "projectId": "gPuG6wzc",
       "latestVersionId": "PbIo5F8X",
       "versionNumber": "v1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2889,6 +3301,7 @@
       "projectId": "L0V7C0lS",
       "latestVersionId": "BbOurMyg",
       "versionNumber": "1.7",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2896,6 +3309,7 @@
       "projectId": "UQWktRm2",
       "latestVersionId": "CABGL9Fh",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2903,6 +3317,7 @@
       "projectId": "ttR5oBp1",
       "latestVersionId": "tlP5sXiL",
       "versionNumber": "Vix_enchanced_vibrant_medium",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2910,6 +3325,7 @@
       "projectId": "OfdzoZie",
       "latestVersionId": "nUA9X48a",
       "versionNumber": "1.2.4",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2917,6 +3333,7 @@
       "projectId": "tompRlIK",
       "latestVersionId": "1pqrh0oG",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2924,6 +3341,7 @@
       "projectId": "b32yQFcy",
       "latestVersionId": "QHhRD8TD",
       "versionNumber": "2.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2931,6 +3349,7 @@
       "projectId": "WEs7MJGP",
       "latestVersionId": "89AfT1wO",
       "versionNumber": "0.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2938,6 +3357,7 @@
       "projectId": "kuFlKtAV",
       "latestVersionId": "ehF6L9dC",
       "versionNumber": "1.2.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2945,6 +3365,7 @@
       "projectId": "Ne6WFx4Z",
       "latestVersionId": "6Ch0YRxt",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2952,6 +3373,7 @@
       "projectId": "x8m6GVCK",
       "latestVersionId": "MHr4aSXg",
       "versionNumber": "0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2959,6 +3381,7 @@
       "projectId": "K1dqNbzW",
       "latestVersionId": "oIISiXdk",
       "versionNumber": "TUFF_Shaders_Beta_2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2966,6 +3389,7 @@
       "projectId": "P7HjKDV0",
       "latestVersionId": "mNOOARgW",
       "versionNumber": "1.1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2973,13 +3397,15 @@
       "projectId": "NRNJNS9V",
       "latestVersionId": "fAk5Zr3i",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
     "snowhard-shader": {
       "projectId": "b6eOhxbm",
-      "latestVersionId": "QR73c0in",
-      "versionNumber": "r1.0.0",
+      "latestVersionId": "ZgXOuwQl",
+      "versionNumber": "r1.0.6",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2987,6 +3413,7 @@
       "projectId": "CpStrxYO",
       "latestVersionId": "ImP0drf0",
       "versionNumber": "1.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -2994,6 +3421,7 @@
       "projectId": "zBirrR15",
       "latestVersionId": "yIJjIYAk",
       "versionNumber": "1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3001,6 +3429,7 @@
       "projectId": "3B69vZwc",
       "latestVersionId": "m6uXNXQX",
       "versionNumber": "1.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3008,6 +3437,7 @@
       "projectId": "mjtvvCNv",
       "latestVersionId": "GlLeaahy",
       "versionNumber": "2.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3015,6 +3445,7 @@
       "projectId": "83NcAaaB",
       "latestVersionId": "mKqWvllg",
       "versionNumber": "0.1",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3022,6 +3453,7 @@
       "projectId": "VUpulnMt",
       "latestVersionId": "91xasrgj",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3029,6 +3461,7 @@
       "projectId": "q0sQ0yBU",
       "latestVersionId": "BzreKAK6",
       "versionNumber": "floor(EVERYTHING)",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3036,6 +3469,7 @@
       "projectId": "htdOJhsU",
       "latestVersionId": "V3NCE1dV",
       "versionNumber": "1.9",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3043,6 +3477,7 @@
       "projectId": "1cVbuPXx",
       "latestVersionId": "PK7UVbyl",
       "versionNumber": "0.4.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3050,6 +3485,7 @@
       "projectId": "VCfprxC0",
       "latestVersionId": "tlZ5W7j2",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3057,6 +3493,7 @@
       "projectId": "2Tbyk0c3",
       "latestVersionId": "yrThEct0",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3064,6 +3501,7 @@
       "projectId": "v8dYs088",
       "latestVersionId": "wqT6BH1G",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3071,6 +3509,7 @@
       "projectId": "9GNQ0wb4",
       "latestVersionId": "8JjjB6rq",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3078,6 +3517,7 @@
       "projectId": "Ted1Ctet",
       "latestVersionId": "g90wLctV",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3085,6 +3525,7 @@
       "projectId": "lZxEUFDj",
       "latestVersionId": "nqFXBXOf",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3092,6 +3533,7 @@
       "projectId": "c2oCftuo",
       "latestVersionId": "s7k42zBu",
       "versionNumber": "5.0",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3099,6 +3541,7 @@
       "projectId": "IxzPCO4v",
       "latestVersionId": "5slTgqfe",
       "versionNumber": "0.3.2",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3106,6 +3549,7 @@
       "projectId": "pdPzO9sA",
       "latestVersionId": "Mjndaoqa",
       "versionNumber": "1.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3113,6 +3557,7 @@
       "projectId": "SxpB99P2",
       "latestVersionId": "lWzXPPF0",
       "versionNumber": "2.0.0-alpha",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3120,6 +3565,7 @@
       "projectId": "KBmAMnUR",
       "latestVersionId": "qO6Jc03b",
       "versionNumber": "Alpha-1.0.0",
+      "versionType": "alpha",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3127,13 +3573,15 @@
       "projectId": "3FUsMjv8",
       "latestVersionId": "U3vja3yI",
       "versionNumber": "v5.5.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
     "eddyveil-shaders-windows": {
       "projectId": "UqY4RQhr",
-      "latestVersionId": "sbkCDyyX",
-      "versionNumber": "6.15.0-Windows",
+      "latestVersionId": "OSrsDigA",
+      "versionNumber": "8.1.0-Windows",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3141,6 +3589,7 @@
       "projectId": "WF97OGUz",
       "latestVersionId": "a9zWGrbf",
       "versionNumber": "1.0.0",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3148,6 +3597,7 @@
       "projectId": "oEztSFkC",
       "latestVersionId": "wTiUfGZD",
       "versionNumber": "1.0.1",
+      "versionType": "release",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     },
@@ -3155,6 +3605,7 @@
       "projectId": "IR92NLTh",
       "latestVersionId": "Colp574E",
       "versionNumber": "2",
+      "versionType": "beta",
       "mode": "latest",
       "checkedAt": "2026-10-11"
     }

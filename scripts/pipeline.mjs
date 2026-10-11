@@ -203,11 +203,15 @@ function stripSkeleton(value) {
 // 并发 worker 会同时改 catalog / db / glossary。所有写盘任务排进同一条队列串行执行，
 // 且写盘时才序列化当前内存状态，因此两个写任务不会交错写坏同一个 JSON。
 let writeQueue = Promise.resolve()
+// 写盘失败计数。落盘是尽力而为，但**不能静默吞掉**：CI 里 git commit 不校验文件内容，
+// 写失败仍 exit 0 就是假绿灯。这里累计，结束时用非零退出码暴露。
+let writeFailures = 0
 
 function enqueueWrite(label, write) {
-  writeQueue = writeQueue
-    .then(write)
-    .catch((err) => console.error(`  [persist] ${label} 写回失败: ${err.message}`))
+  writeQueue = writeQueue.then(write).catch((err) => {
+    writeFailures++
+    console.error(`  [persist] ${label} 写回失败: ${err.message}`)
+  })
   return writeQueue
 }
 
@@ -453,10 +457,8 @@ function persist() {
   })
 }
 
-async function processShader(entry, signal) {
+async function processShader(entry, signal, localGlossary) {
   const tag = `[${entry.id}]`
-  // 本条光影的翻译记忆增量：处理结束后再合并进全局 glossary。
-  const localGlossary = new Map()
   try {
     const versions = await mfetch(`${MODRINTH_API}/project/${entry.projectId}/version`, {
       headers: { 'User-Agent': UA() },
@@ -521,8 +523,7 @@ async function processShader(entry, signal) {
 
     console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${provider.id}] 开始初翻…`)
     const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, provider, signal, localGlossary)
-    // 合并本条的局部翻译记忆（同步循环、无 await，合并本身不会被并发打断）
-    for (const [k, v] of localGlossary) if (!glossary[k]) glossary[k] = v
+    // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
     console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}`)
     // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
     if (totalFallback > pairs.length * 0.3) {
@@ -606,6 +607,9 @@ async function processShaderWithTimeout(entry) {
   // 并发处理其他条目时互不影响（不再使用模块级 activeSignal）。
   const controller = new AbortController()
   const { signal } = controller
+  // 本条光影的翻译记忆增量。**在这里创建**，这样超时/抛错被 Promise.race 抢占时，
+  // 已经翻好的术语仍能在 finally 里合并，不会白丢（否则下次重跑要重调 LLM）。
+  const localGlossary = new Map()
 
   let timer
   const timeout = new Promise((resolve) => {
@@ -618,11 +622,14 @@ async function processShaderWithTimeout(entry) {
   let result
   try {
     result = await Promise.race([
-      processShader(entry, signal).catch((err) => ({ status: STATUS.FAILED, error: err.message.slice(0, 200) })),
+      processShader(entry, signal, localGlossary).catch((err) => ({ status: STATUS.FAILED, error: err.message.slice(0, 200) })),
       timeout,
     ])
   } finally {
     clearTimeout(timer)
+    // 无论成功 / 超时 / 抛错，都合并本条已产出的记忆增量。
+    // 同步循环、无 await，合并本身不会被并发打断；重复合并是幂等的（有 !glossary[k] 守卫）。
+    for (const [k, v] of localGlossary) if (!glossary[k]) glossary[k] = v
   }
 
   if (result === 'timeout') {
@@ -670,4 +677,8 @@ try {
   await persistGlossary()
   rmSync(tmp, { recursive: true, force: true })
   console.log(`\n流水线结束：完成 ${done}，自带中文排除 ${skippedNative}，失败/跳过 ${failed}`)
+  if (writeFailures > 0) {
+    console.error(`\n❌ 有 ${writeFailures} 次写盘失败，产物可能不完整（退出码置 1）`)
+    process.exitCode = 1
+  }
 }

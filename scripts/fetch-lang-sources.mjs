@@ -99,8 +99,11 @@ const sec = ((Date.now() - t0) / 1000).toFixed(0)
 console.log(`\n完成：新增 ${done}，已存在跳过 ${skipped}，失败 ${failed}，耗时 ${sec}s`)
 console.log(`输出：${OUT_DIR}（sources/ 已 gitignore，不入库）`)
 // 汇总：Range/整包计数与流量节省（若全整包需 fullBytes）
+// 注意：回退整包的文件，其回退前的尾部/条目尝试字节也计入 downloadedBytes，
+// 因此 savedPct 可能为负——这是**真实网络开销**（Range 尝试反而多花了流量），不是计数错误。
 const savedPct = fullBytes > 0 ? ((1 - downloadedBytes / fullBytes) * 100).toFixed(1) : '0.0'
+const savedNote = Number(savedPct) < 0 ? '（负值＝有文件 Range 失败回退，回退前的尝试字节也计入总下载）' : ''
 console.log(
   `Range ${rangeCount} 个 / 整包 ${fullCount} 个，共下载 ${(downloadedBytes / 1048576).toFixed(2)} MB` +
-    `（若全整包需 ${(fullBytes / 1048576).toFixed(2)} MB，节省 ${savedPct}%）`,
+    `（若全整包需 ${(fullBytes / 1048576).toFixed(2)} MB，节省 ${savedPct}%）${savedNote}`,
 )
