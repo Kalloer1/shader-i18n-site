@@ -1,0 +1,14 @@
+{
+  "$comment": "光影版本更新检测结果：needsUpdate 为本次新发现的待重翻清单，可交由 pipeline.mjs 重新翻译",
+  "generatedAt": "2026-10-11",
+  "summary": {
+    "total": 451,
+    "unchanged": 451,
+    "needsUpdate": 0,
+    "delisted": 0,
+    "failed": 0
+  },
+  "needsUpdate": [],
+  "delisted": [],
+  "failed": []
+}

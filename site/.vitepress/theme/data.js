@@ -85,4 +85,3 @@ for (const s of db.shaders) {
 allShaders.sort((a, b) => b.downloads - a.downloads)
 
 export const shaderById = Object.fromEntries(allShaders.map((s) => [s.id, s]))
-export const { minDownloads } = catalog

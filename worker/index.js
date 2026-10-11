@@ -211,7 +211,6 @@ async function handleSubmit(request, env, origin) {
         shaderVersion: '',
         quark: '',
         baidu: '',
-        note: '',
         contact: contact || '',
         note: note || '',
       }

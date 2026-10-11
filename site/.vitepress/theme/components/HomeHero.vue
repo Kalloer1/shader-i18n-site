@@ -22,6 +22,28 @@ function pickDaily(pool, count = 3) {
 const collage = ref(pickDaily(popularPool))
 const total = allShaders.length
 const translated = allShaders.filter((s) => s.langVersions.length).length
+const coverage = total ? Math.round((translated / total) * 100) : 0
+
+// 最近更新：取最近 8 个有汉化更新记录的光影（按汉化发布时间倒序）
+const recentlyUpdated = allShaders
+  .filter((s) => s.langVersions?.length)
+  .sort(
+    (a, b) =>
+      (b.langVersions[0]?.updatedAt ?? '').localeCompare(a.langVersions[0]?.updatedAt ?? ''),
+  )
+  .slice(0, 8)
+
+function cover(s) {
+  return s.gallery?.[0] ?? s.iconUrl ?? ''
+}
+
+function initial(s) {
+  return (s.title ?? s.id ?? '?').trim().charAt(0).toUpperCase()
+}
+
+function formatDate(d) {
+  return d ? String(d).slice(0, 10) : ''
+}
 
 const slideCount = computed(() => collage.value.length)
 
@@ -85,10 +107,21 @@ function formatDownloads(n) {
         <a class="btn primary" href="#光影列表">浏览 {{ total }} 个光影</a>
         <a class="btn ghost" href="/guide/install">安装教程</a>
       </div>
-      <p class="stats">
-        <strong>{{ translated }}</strong> 个光影已有汉化 · 数据来自 Modrinth · 只分发语言文件，不重分发光影本体
-      </p>
-      <p class="modrinth-note">目前仅支持 Modrinth 平台收录的光影包，CurseForge 光影暂未接入。</p>
+      <div class="stat-cards" role="group" aria-label="站点数据统计">
+        <div class="stat-card">
+          <span class="stat-num">{{ total }}</span>
+          <span class="stat-label">收录光影</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num stat-num--brand">{{ translated }}</span>
+          <span class="stat-label">已有汉化</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">{{ coverage }}%</span>
+          <span class="stat-label">汉化覆盖率</span>
+        </div>
+      </div>
+      <p class="modrinth-note">数据来自 Modrinth · 只分发语言文件，不重分发光影本体 · 目前仅支持 Modrinth 平台收录的光影包，CurseForge 暂未接入。</p>
     </div>
 
     <!-- 今日推荐：水平无限循环轮播 -->
@@ -170,14 +203,59 @@ function formatDownloads(n) {
         />
       </div>
     </div>
+
+    <!-- 最近更新：按汉化发布时间倒序的横向滚动卡片 -->
+    <section v-if="recentlyUpdated.length" class="recent-section" aria-labelledby="recent-title">
+      <div class="recent-head">
+        <h2 id="recent-title" class="recent-title">最近更新</h2>
+        <span class="recent-hint">按汉化发布时间排序</span>
+      </div>
+      <div class="recent-scroll">
+        <a
+          v-for="s in recentlyUpdated"
+          :key="s.id"
+          class="recent-card"
+          :href="`/shaders/${s.id}`"
+        >
+          <span class="recent-cover">
+            <img
+              v-if="cover(s)"
+              :src="cover(s)"
+              :alt="`${s.title} 封面`"
+              width="320"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
+            <span v-else class="recent-fallback" aria-hidden="true">{{ initial(s) }}</span>
+            <span v-if="s.langVersions?.[0]?.shaderVersion" class="recent-version">
+              {{ s.langVersions[0].shaderVersion }}
+            </span>
+          </span>
+          <span class="recent-info">
+            <span class="recent-name">{{ s.title }}</span>
+            <span class="recent-meta">
+              <span class="recent-date">{{ formatDate(s.langVersions?.[0]?.updatedAt) }}</span>
+              <span class="recent-dl">{{ formatDownloads(s.downloads) }} 下载</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </section>
   </section>
 </template>
 
 <style scoped>
 /* 移动优先：默认单列，宽屏再分两栏 */
 .home-hero {
+  /* 与导航（32px）和光影列表（1200px 居中）共用同一条内容轴线：
+     宽屏 1200px 居中，窄屏左右各留 20px。 */
+  width: min(1200px, calc(100% - 40px));
+  margin-inline: auto;
   display: grid;
-  grid-template-columns: 1fr;
+  /* minmax(0, 1fr) 而非 1fr：否则「最近更新」8 张卡片的 min-content
+     会把列宽撑到 ~1688px，导致移动端整页横向溢出。 */
+  grid-template-columns: minmax(0, 1fr);
   gap: 28px;
   align-items: center;
   padding: 32px 0 16px;
@@ -206,6 +284,7 @@ function formatDownloads(n) {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  filter: drop-shadow(0 0 18px rgba(232, 163, 61, 0.28));
 }
 .tagline {
   font-size: 15px;
@@ -256,19 +335,52 @@ function formatDownloads(n) {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: 3px;
 }
-.stats {
-  font-size: 13px;
-  color: var(--vp-c-text-3);
+/* 统计卡片 */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+  max-width: 430px;
 }
-.stats strong {
-  color: var(--vp-c-brand-1);
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.stat-card:hover {
+  border-color: rgba(232, 163, 61, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232, 163, 61, 0.1);
+}
+.stat-num {
   font-family: var(--shader-display-font);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--vp-c-text-1);
+  font-variant-numeric: tabular-nums;
+}
+.stat-num--brand {
+  color: var(--vp-c-brand-1);
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  letter-spacing: 0.08em;
 }
 .modrinth-note {
   font-size: 12px;
   color: var(--vp-c-text-3);
   margin-top: 6px;
   opacity: 0.75;
+  line-height: 1.7;
 }
 
 /* ---- 今日推荐光影：水平无限循环轮播 ---- */
@@ -397,6 +509,148 @@ function formatDownloads(n) {
   border-radius: 50%;
 }
 
+/* ---- 最近更新：横向滚动卡片 ---- */
+.recent-section {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+.recent-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.recent-title {
+  font-family: var(--shader-display-font);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+.recent-title::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background: var(--vp-c-brand-1);
+  border-radius: 2px;
+  margin-right: 9px;
+  vertical-align: -2px;
+}
+.recent-hint {
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+}
+.recent-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  min-width: 0;
+  padding: 2px 2px 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+.recent-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.recent-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.recent-scroll::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
+}
+.recent-card {
+  flex: 0 0 200px;
+  scroll-snap-align: start;
+  display: block;
+  position: relative;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--vp-c-bg-soft);
+  text-decoration: none !important;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.recent-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(232, 163, 61, 0.55);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+.recent-card:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+.recent-cover {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--vp-c-bg);
+}
+.recent-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s;
+}
+.recent-card:hover .recent-cover img {
+  transform: scale(1.05);
+}
+.recent-version {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(13, 17, 23, 0.78);
+  color: var(--vp-c-brand-1);
+  backdrop-filter: blur(4px);
+}
+.recent-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--shader-display-font);
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+}
+.recent-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px 12px;
+}
+.recent-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recent-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  font-variant-numeric: tabular-nums;
+}
+.recent-date {
+  font-family: var(--shader-display-font);
+}
+
 /* ---- 增强：宽屏两栏 ---- */
 @media (min-width: 960px) {
   .home-hero {
@@ -418,7 +672,10 @@ function formatDownloads(n) {
 @media (prefers-reduced-motion: reduce) {
   .btn,
   .carousel-slide img,
-  .carousel-dot::after {
+  .carousel-dot::after,
+  .stat-card,
+  .recent-card,
+  .recent-cover img {
     transition: none !important;
   }
   .btn.primary:hover {
@@ -429,6 +686,13 @@ function formatDownloads(n) {
     filter: none;
   }
   .carousel-dot:hover::after {
+    transform: none;
+  }
+  .stat-card:hover,
+  .recent-card:hover {
+    transform: none;
+  }
+  .recent-card:hover .recent-cover img {
     transform: none;
   }
 }

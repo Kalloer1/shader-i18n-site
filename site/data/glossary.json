@@ -16036,7 +16036,6 @@
   "glass light transmission": "玻璃透光度 ",
   "how much extra light passes through stained and tinted glass. the base look multiplies light by the glass colour, which crushes the off-colour channels and dims it. higher lifts the tint toward white so more light gets through (brighter, but the coloured cast becomes paler). 0 = base saturated tint, 100 = clear glass.": "染色和有色玻璃允许多少额外光线通过。基础效果会用玻璃颜色乘以光线强度，这会压制偏色通道并使其变暗。数值越高，色调越接近白色，从而允许更多光线通过（更亮，但彩色色调会变浅）。0 = 基础饱和色调，100 = 透明玻璃。 ",
   "base tint": "基础色调 ",
-  "serenacore": "宁静核心 ",
   "controls water surface roughness. higher values make reflections softer and less mirror-like.": "控制水面粗糙度。数值越高，反射效果越柔和，镜面感越弱。 ",
   "determines how focus distance is calculated. auto uses center depth. manual uses focus distance slider. manual+ uses focus distance slider and brightness slider (in video settings).": "确定焦距的计算方式。自动使用中心深度。手动使用焦距滑块。手动+使用焦距滑块和亮度滑块（在视频设置中）。 ",
   "adjusts horizontal position of the auto focus point.": "调整自动对焦点的水平位置。 ",

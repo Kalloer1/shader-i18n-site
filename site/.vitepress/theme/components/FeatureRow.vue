@@ -2,16 +2,19 @@
 // 站点三大原则 — 首页特性行
 const items = [
   {
+    num: '01',
     title: '只分发汉化文件',
     text: '出于版权原因不分发光影本体，只提供 zh_CN.lang；光影本体一律跳转 Modrinth / CurseForge 官方页面。',
     icon: 'M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2',
   },
   {
+    num: '02',
     title: '精确到版本的映射',
     text: 'lang 键随光影版本变动。每个汉化文件都标注适配的光影版本，最新版默认展示，旧版本折叠。',
     icon: 'M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M3 15v4a2 2 0 0 0 2 2h4m10-6v4a2 2 0 0 1-2 2h-4M7 12h10',
   },
   {
+    num: '03',
     title: 'AI 辅助翻译声明',
     text: '部分汉化文件由 AI 模型（SiliconFlow / tencent/Hunyuan-MT-7B）初翻生成，标注为「AI 初翻」。建议玩家根据个人偏好选择已校对版本或自行润色。',
     icon: 'M16 18 22 12 16 6M8 6 2 12l6 6',
@@ -22,6 +25,7 @@ const items = [
 <template>
   <section class="feature-row" aria-label="站点原则">
     <div v-for="it in items" :key="it.title" class="feature">
+      <span class="fnum" aria-hidden="true">{{ it.num }}</span>
       <span class="fico" aria-hidden="true">
         <svg
           viewBox="0 0 24 24"
@@ -47,22 +51,40 @@ const items = [
 <style scoped>
 /* 移动优先：默认单列堆叠 */
 .feature-row {
+  /* 与首页 Hero / 光影列表共用同一条内容轴线（1200px 居中） */
+  width: min(1200px, calc(100% - 40px));
+  margin: 26px auto 40px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1px;
   background: var(--vp-c-divider);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   overflow: hidden;
-  margin: 26px 0 40px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
 }
 .feature {
+  position: relative;
   display: flex;
   gap: 14px;
   padding: 20px 18px;
   background: var(--vp-c-bg-soft);
   transition: background-color 0.2s;
+}
+.fnum {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: var(--shader-display-font);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(232, 163, 61, 0.18);
+  transition: color 0.2s;
+  pointer-events: none;
+}
+.feature:hover .fnum {
+  color: rgba(232, 163, 61, 0.32);
 }
 .feature:hover {
   background: var(--vp-c-bg-elv);
@@ -105,10 +127,10 @@ const items = [
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .feature,
-  .fico {
+  .fico,
+  .fnum {
     transition: none !important;
   }
 }

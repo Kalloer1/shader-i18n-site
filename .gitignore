@@ -55,3 +55,7 @@ pelican-bicycle.svg
 todo.json
 already-done.json
 translate-summary.json
+
+# === Agent 探测残留 ===
+.quarkclouddrive/
+site/data/version-check-result.limit.json

@@ -8966,38 +8966,6 @@
       "quark": "https://pan.quark.cn/s/c73aae76d76c"
     },
     {
-      "id": "serenacore",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "serenacore",
-        "projectId": "HeMbTkJg"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.5",
-          "langVersion": "1.0.0",
-          "file": "/lang/serenacore/1.5/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/64123e823037",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "SerenaCore",
-          "description": "These are shaders developed for weak and medium computers, they focus on being not demanding (more FPS) and looking good.",
-          "downloads": 3216,
-          "iconUrl": "https://cdn.modrinth.com/data/HeMbTkJg/fc1fe95007d29ba6606e6a09fd25c36b4db0cef8_96.webp",
-          "author": "NOPOREL",
-          "pageUrl": "https://modrinth.com/shader/serenacore",
-          "lastSync": "2026-10-04"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/64123e823037"
-    },
-    {
       "id": "panini-projection",
       "nameCN": "",
       "modrinth": {
@@ -9766,38 +9734,6 @@
       "quark": "https://pan.quark.cn/s/14cc5383eea1"
     },
     {
-      "id": "n87-shaders",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "n87-shaders",
-        "projectId": "mX7szUw7"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "06.09.2026",
-          "langVersion": "1.0.0",
-          "file": "/lang/n87-shaders/06.09.2026/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/c78fb6c963ae",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "N87 Shaders",
-          "description": "A realistic shaders for Minecraft, with a modern and cutting-edge look.",
-          "downloads": 3558,
-          "iconUrl": "https://cdn.modrinth.com/data/mX7szUw7/89cd01ec884faab0299ac983242247c09823f931_96.webp",
-          "author": "n87design",
-          "pageUrl": "https://modrinth.com/shader/n87-shaders",
-          "lastSync": "2026-10-03"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/c78fb6c963ae"
-    },
-    {
       "id": "aurora-astral",
       "nameCN": "",
       "modrinth": {
@@ -10084,38 +10020,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/317ca7b5761c"
-    },
-    {
-      "id": "upaamashaders",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "upaamashaders",
-        "projectId": "U3xqeQYU"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1",
-          "langVersion": "1.0.0",
-          "file": "/lang/upaamashaders/1/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/3f01e4a221c8",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "UpaamaShaders",
-          "description": "UpaamaShaders improves Minecraft with cinematic lighting, atmospheric skies, realistic shadows, beautiful water, and optimized performance while preserving the original vanilla style.",
-          "downloads": 1369,
-          "iconUrl": "https://cdn.modrinth.com/data/U3xqeQYU/7243e39e80098b05f1515cc5d9880782b17a6bc0_96.webp",
-          "author": "imh4u",
-          "pageUrl": "https://modrinth.com/shader/upaamashaders",
-          "lastSync": "2026-09-09"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/3f01e4a221c8"
     },
     {
       "id": "charas-vibrant-shaders",
@@ -10724,38 +10628,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/6d71ad04cd6b"
-    },
-    {
-      "id": "foxy-shader",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "foxy-shader",
-        "projectId": "sSZS20Tb"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.0.0",
-          "langVersion": "1.0.0",
-          "file": "/lang/foxy-shader/1.0.0/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/5f3498bb63e6",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Foxy Shader",
-          "description": "Voxy Flywheel Veil, a perfect rendering module designed specifically for Minecraft 1.21.1 that is compatible with the three mainstream rendering modules, also features ray tracing!",
-          "downloads": 1223,
-          "iconUrl": "https://cdn.modrinth.com/data/sSZS20Tb/e75bbe25fdd6f3880539f1c48eb44e712bf50ecf.webp",
-          "author": "_anmuxi_",
-          "pageUrl": "https://modrinth.com/shader/foxy-shader",
-          "lastSync": "2026-09-16"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/5f3498bb63e6"
     },
     {
       "id": "baunilha-shader",
@@ -11814,38 +11686,6 @@
       "quark": "https://pan.quark.cn/s/68e91646e818"
     },
     {
-      "id": "neon-reverie",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "neon-reverie",
-        "projectId": "Jcqcrp1w"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.4",
-          "langVersion": "1.0.0",
-          "file": "/lang/neon-reverie/1.4/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/da43f61a3c8f",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Neon Reverie",
-          "description": "A Minecraft shaderpack edit based on Complementary Reimagined, bringing a vibrant visual overhaul with dynamic lighting, glowing celestial skies, and refined material details.",
-          "downloads": 1074,
-          "iconUrl": "https://cdn.modrinth.com/data/Jcqcrp1w/b2d44a905441e08803bd8bb344b986696632d3f6_96.webp",
-          "author": "yunsiyi",
-          "pageUrl": "https://modrinth.com/shader/neon-reverie",
-          "lastSync": "2026-10-10"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/da43f61a3c8f"
-    },
-    {
       "id": "source-water",
       "nameCN": "",
       "modrinth": {
@@ -12228,38 +12068,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/6af03899a9a0"
-    },
-    {
-      "id": "notscary",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "notscary",
-        "projectId": "NHtuBYSh"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.0",
-          "langVersion": "1.0.0",
-          "file": "/lang/notscary/1.0/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/a30d0d7935a1",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "NotScary",
-          "description": "Scary Minecraft Shaders inspired by R.E.P.O.",
-          "downloads": 512,
-          "iconUrl": "https://cdn.modrinth.com/data/NHtuBYSh/71cb8fc9722dafeef9c7a2d41c771dcfcb5adc4b_96.webp",
-          "author": "NotTerra",
-          "pageUrl": "https://modrinth.com/shader/notscary",
-          "lastSync": "2026-09-12"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/a30d0d7935a1"
     },
     {
       "id": "bananashaders",
@@ -13382,38 +13190,6 @@
       "quark": "https://pan.quark.cn/s/8953c73a3d0f"
     },
     {
-      "id": "notshaders",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "notshaders",
-        "projectId": "bdquHLN2"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.0",
-          "langVersion": "1.0.0",
-          "file": "/lang/notshaders/1.0/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/f3a23852a418",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "NotShaders",
-          "description": "Simple NotRealistic Minecraft Shaders for 26.2.",
-          "downloads": 338,
-          "iconUrl": "https://cdn.modrinth.com/data/bdquHLN2/605b11b6a3afac824834bd67af720c500b9ae282_96.webp",
-          "author": "NotTerra",
-          "pageUrl": "https://modrinth.com/shader/notshaders",
-          "lastSync": "2026-09-12"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/f3a23852a418"
-    },
-    {
       "id": "wiresight",
       "nameCN": "",
       "modrinth": {
@@ -13892,38 +13668,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/868694424fcc"
-    },
-    {
-      "id": "vibrant-vision",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "vibrant-vision",
-        "projectId": "cRAb91Rg"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.0.2",
-          "langVersion": "1.0.0",
-          "file": "/lang/vibrant-vision/1.0.2/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/ee7274417920",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Vibrant Vision",
-          "description": "The closest to getting Vibrant Visuals for Java with Iris",
-          "downloads": 186,
-          "iconUrl": "https://cdn.modrinth.com/data/cRAb91Rg/1b650cad62d34e35e6df74d89b1d32823b4b2e1f_96.webp",
-          "author": "the_unnamed",
-          "pageUrl": "https://modrinth.com/shader/vibrant-vision",
-          "lastSync": "2026-09-09"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/ee7274417920"
     },
     {
       "id": "lucent-realms-shaders",
@@ -14468,38 +14212,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/74f9e15fa6fd"
-    },
-    {
-      "id": "sphereshaderpack",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "sphereshaderpack",
-        "projectId": "jUOHWkFY"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.0.0",
-          "langVersion": "1.0.0",
-          "file": "/lang/sphereshaderpack/1.0.0/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/265dda5a768a",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Sphere|Shaderpack",
-          "description": "Its a chilling vibe Shader where you have epic dimension designs and more.Try it out!",
-          "downloads": 86,
-          "iconUrl": "https://cdn.modrinth.com/data/jUOHWkFY/16e502cd6c6e488b7d7de62784536122fe7059ba_96.webp",
-          "author": "B4STI",
-          "pageUrl": "https://modrinth.com/shader/sphereshaderpack",
-          "lastSync": "2026-09-12"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/265dda5a768a"
     },
     {
       "id": "zaryashader",

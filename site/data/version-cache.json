@@ -1,0 +1,3162 @@
+{
+  "$comment": "版本更新检测缓存：latestVersionId 为 Modrinth search 接口的 latest_version 字段",
+  "entries": {
+    "complementary-reimagined": {
+      "projectId": "HVnmMxH1",
+      "latestVersionId": "Bqen1mJX",
+      "versionNumber": "r5.9.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bsl-shaders": {
+      "projectId": "Q1vvjJYV",
+      "latestVersionId": "Y68yiql9",
+      "versionNumber": "10.1.8",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "complementary-unbound": {
+      "projectId": "R6NEzAwj",
+      "latestVersionId": "B1kyfoUZ",
+      "versionNumber": "r5.9.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pastel-shaders": {
+      "projectId": "BkTdFBUU",
+      "latestVersionId": "w3Pxx3b4",
+      "versionNumber": "1.200",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "rethinking-voxels": {
+      "projectId": "kmwfVOoi",
+      "latestVersionId": "cpD4esk9",
+      "versionNumber": "r0.1-beta9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "insanity-shader": {
+      "projectId": "EQWX2WiO",
+      "latestVersionId": "TK0ZSsk0",
+      "versionNumber": "1.650",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "kappa-shader": {
+      "projectId": "Y8161YLz",
+      "latestVersionId": "8p4viq8V",
+      "versionNumber": "5.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "miniature-shader": {
+      "projectId": "UaS8ROxa",
+      "latestVersionId": "LWmZ94RG",
+      "versionNumber": "2.19",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nostalgia-shader": {
+      "projectId": "xEItlMn3",
+      "latestVersionId": "fzxeGgx7",
+      "versionNumber": "5.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "spooklementary": {
+      "projectId": "6uJCfiCH",
+      "latestVersionId": "rcr90eRP",
+      "versionNumber": "v2.0.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bsl-shaders-classic": {
+      "projectId": "pgzM6RBY",
+      "latestVersionId": "a05qYRrG",
+      "versionNumber": "10.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "visual-vibrance": {
+      "projectId": "l6Uqs2fS",
+      "latestVersionId": "zGC385Y8",
+      "versionNumber": "0.3.5a",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "i-like-vanilla": {
+      "projectId": "DoODk4HD",
+      "latestVersionId": "lrndU3YJ",
+      "versionNumber": "v1.5.0b",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "potato-shaders": {
+      "projectId": "WX4iF5Cj",
+      "latestVersionId": "eFL8xOji",
+      "versionNumber": "1.0d",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vanillaa": {
+      "projectId": "W3QK7DQz",
+      "latestVersionId": "CgdY86YT",
+      "versionNumber": "1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "fastpbr": {
+      "projectId": "ygChbn8J",
+      "latestVersionId": "3MU1pMJY",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "shrimple": {
+      "projectId": "BS9T99lD",
+      "latestVersionId": "tAx0UOBX",
+      "versionNumber": "v0.12",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "hysteria-shaders": {
+      "projectId": "iHC8BZn4",
+      "latestVersionId": "u7oNAXa5",
+      "versionNumber": "1.2.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bloop-shaders": {
+      "projectId": "Q6RQF9Oa",
+      "latestVersionId": "WvrEQHFq",
+      "versionNumber": "1.8.0-Alpha-3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "renderpearl": {
+      "projectId": "BrRak9pu",
+      "latestVersionId": "avpYqS0K",
+      "versionNumber": "2.8.0-beta.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vanilla-plus-shader": {
+      "projectId": "EPsIYDj1",
+      "latestVersionId": "U3rhmRqW",
+      "versionNumber": "3.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "redhat-shaders": {
+      "projectId": "ZvitaqQh",
+      "latestVersionId": "Ca8OxUZj",
+      "versionNumber": "34.3.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lux-v1": {
+      "projectId": "DiGQENDV",
+      "latestVersionId": "olEssKhO",
+      "versionNumber": "1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "clarityshader": {
+      "projectId": "rinvvngy",
+      "latestVersionId": "BOa5cSU4",
+      "versionNumber": "1.1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "noble": {
+      "projectId": "sclYVqbt",
+      "latestVersionId": "5g32dX2k",
+      "versionNumber": "1.9.9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "body-camera-shader": {
+      "projectId": "by2i3tnt",
+      "latestVersionId": "8XmNiuNn",
+      "versionNumber": "1.6.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "arc-shader": {
+      "projectId": "yY9oI7oz",
+      "latestVersionId": "etcq6IIX",
+      "versionNumber": "0.15.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "fantasy-shader-unbound": {
+      "projectId": "Q1ICdkzj",
+      "latestVersionId": "xncGr4KP",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "fantasy-shaders": {
+      "projectId": "l6di6hYz",
+      "latestVersionId": "kqFlgfIA",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ushader": {
+      "projectId": "UDDa70lE",
+      "latestVersionId": "rfCVvTvJ",
+      "versionNumber": "2.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "builders-qol-shaders": {
+      "projectId": "6NnvPzWJ",
+      "latestVersionId": "QLiPA3d1",
+      "versionNumber": "2.11.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pegasus": {
+      "projectId": "1BZ68dI8",
+      "latestVersionId": "WmZTYuqV",
+      "versionNumber": "0.8.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "voyager-shader-2.0": {
+      "projectId": "71EyVfCn",
+      "latestVersionId": "GZ6KdIAk",
+      "versionNumber": "2.0.8",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bvs": {
+      "projectId": "chKtnjkM",
+      "latestVersionId": "1NSEqI17",
+      "versionNumber": "1.9.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "auroras-shaders": {
+      "projectId": "hgAKxFQg",
+      "latestVersionId": "dF60Go3s",
+      "versionNumber": "1.9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cursed-fog": {
+      "projectId": "sAZ9WsJP",
+      "latestVersionId": "9yVXZsfs",
+      "versionNumber": "1.0.10",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "just-colored-lighting": {
+      "projectId": "McUqXQ0J",
+      "latestVersionId": "Z2m5xx6H",
+      "versionNumber": "1.0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sildurs-vibrant-shaders": {
+      "projectId": "z8EjLYqN",
+      "latestVersionId": "J4RlzpKF",
+      "versionNumber": "2.02",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ebin-resurrected": {
+      "projectId": "VP9picRm",
+      "latestVersionId": "blRQVUY5",
+      "versionNumber": "1.5.6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pixel-perfect-shaders": {
+      "projectId": "D5k8BTVz",
+      "latestVersionId": "yClZbuaO",
+      "versionNumber": "1.5.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "soft-voxels-lite": {
+      "projectId": "Xl42lc6c",
+      "latestVersionId": "IxJIqh4s",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "light-shaders": {
+      "projectId": "UuwCHIS3",
+      "latestVersionId": "9NQ5dtYa",
+      "versionNumber": "1.8.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mc-vhs": {
+      "projectId": "yhXP52S3",
+      "latestVersionId": "UvQ7EfTW",
+      "versionNumber": "2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "spooky-flashlight-shader": {
+      "projectId": "xJNabPID",
+      "latestVersionId": "nPdxfY8Y",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "stereos-default+": {
+      "projectId": "OT1P0oHO",
+      "latestVersionId": "sccT8gps",
+      "versionNumber": "2.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "glimmer-shaders": {
+      "projectId": "PgdT4v4a",
+      "latestVersionId": "1dD3KC4h",
+      "versionNumber": "1.5.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "drdestens-shaders": {
+      "projectId": "4kHmJd4i",
+      "latestVersionId": "tAWPqD40",
+      "versionNumber": "2.1.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "simply-upscaled": {
+      "projectId": "yhuqxlbn",
+      "latestVersionId": "5tWalPaN",
+      "versionNumber": "0.4.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "exposa-shaders": {
+      "projectId": "PYhc7nNa",
+      "latestVersionId": "vws1JH0D",
+      "versionNumber": "5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "opal-shaders": {
+      "projectId": "w8N6pbsN",
+      "latestVersionId": "Eg1XEWuh",
+      "versionNumber": "v1.2.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ctrvcr": {
+      "projectId": "XaonJnsc",
+      "latestVersionId": "qDaPIBRQ",
+      "versionNumber": "v1.4.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "musk-rose-shaders": {
+      "projectId": "HpOC6pyc",
+      "latestVersionId": "qQRRhxGQ",
+      "versionNumber": "4.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "spring-shaders": {
+      "projectId": "68DAChCV",
+      "latestVersionId": "wqeySncE",
+      "versionNumber": "260618",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vector": {
+      "projectId": "a8nz2nHG",
+      "latestVersionId": "JEcLxa6M",
+      "versionNumber": "v1.4.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "amethyst-shaders": {
+      "projectId": "LypdYQ63",
+      "latestVersionId": "mULXIH2t",
+      "versionNumber": "2.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vanilletix": {
+      "projectId": "CiFGzRV9",
+      "latestVersionId": "r613fCq9",
+      "versionNumber": "1.2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "simplicissimus": {
+      "projectId": "dEAKT8y9",
+      "latestVersionId": "lNKYwjuL",
+      "versionNumber": "1.3a",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "reverie_shader": {
+      "projectId": "frac8sks",
+      "latestVersionId": "ivhRImBT",
+      "versionNumber": "v1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sildurs-enhanced-default-shaders": {
+      "projectId": "2jvH1Rcl",
+      "latestVersionId": "va1R00mK",
+      "versionNumber": "1.20",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "trailershaders": {
+      "projectId": "gGrRQIse",
+      "latestVersionId": "MdMeU9Tc",
+      "versionNumber": "r1.6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pyvtron-shaders-official-modrinth": {
+      "projectId": "hNGQT69K",
+      "latestVersionId": "NQzWkv5v",
+      "versionNumber": "V1.3.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "truelight-fx-lite": {
+      "projectId": "2euhaJq5",
+      "latestVersionId": "saNvbCw4",
+      "versionNumber": "v5.6.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "epoch": {
+      "projectId": "IsJZJfNT",
+      "latestVersionId": "69ki86C5",
+      "versionNumber": "1.3.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "allium-shaders": {
+      "projectId": "EQs4Ewl7",
+      "latestVersionId": "PWB6M4aT",
+      "versionNumber": "2.1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "alpha-piscium": {
+      "projectId": "bvDpxd8c",
+      "latestVersionId": "tB8N3ghY",
+      "versionNumber": "1.10.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "yofps": {
+      "projectId": "xM96NJmk",
+      "latestVersionId": "hOdwb79n",
+      "versionNumber": "1.0-high",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "blocky-shader": {
+      "projectId": "MVFwE4xD",
+      "latestVersionId": "hHkJuKbk",
+      "versionNumber": "0.6.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lethal-shaders": {
+      "projectId": "kih5VmNo",
+      "latestVersionId": "IkDUL8uy",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dercode": {
+      "projectId": "2vBMeaEW",
+      "latestVersionId": "foQdIe7M",
+      "versionNumber": "2.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aurora-fantasy": {
+      "projectId": "ZuJPfLHp",
+      "latestVersionId": "45l0a6Nc",
+      "versionNumber": "5.5.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "phoxel-pt": {
+      "projectId": "m9mH4vjB",
+      "latestVersionId": "HzxDiNcr",
+      "versionNumber": "0.6.2.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "tea-shaders": {
+      "projectId": "7eXucZxq",
+      "latestVersionId": "5gkAG9Q0",
+      "versionNumber": "2.0.0_Dev7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dirt-rt": {
+      "projectId": "zf7q9mVY",
+      "latestVersionId": "xGGcqubm",
+      "versionNumber": "0.4.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "stracciatella-shaders": {
+      "projectId": "7FjF4us6",
+      "latestVersionId": "7d6tDJ8o",
+      "versionNumber": "1.6.4.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cyanide-shaders": {
+      "projectId": "dzx2zisP",
+      "latestVersionId": "X5paKLYY",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "retrovision": {
+      "projectId": "BWnGghPW",
+      "latestVersionId": "GWiZz2xP",
+      "versionNumber": "1.80.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "snowimagined": {
+      "projectId": "RC7Z2EaZ",
+      "latestVersionId": "j9JJRIVO",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "artshade": {
+      "projectId": "iZBu2k8u",
+      "latestVersionId": "oxYrc10F",
+      "versionNumber": "0.4B",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "motion-blur-fx": {
+      "projectId": "5aFJgbak",
+      "latestVersionId": "mJRuVshF",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "simple-saturation-shader": {
+      "projectId": "ZUcNZHzL",
+      "latestVersionId": "CuNf4bhz",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pixelcraft-shaders": {
+      "projectId": "3cdrsl5X",
+      "latestVersionId": "M8PnRxP6",
+      "versionNumber": "r1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ch-motion": {
+      "projectId": "bNFqrJXS",
+      "latestVersionId": "e05xM5g0",
+      "versionNumber": "V4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "escheridia": {
+      "projectId": "iCrp3Ew5",
+      "latestVersionId": "jaZMWfYJ",
+      "versionNumber": "4.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dreamlight-shaders": {
+      "projectId": "4A1AZFli",
+      "latestVersionId": "HqDOnXal",
+      "versionNumber": "1.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "somber": {
+      "projectId": "IGWHPfOD",
+      "latestVersionId": "p27O9eEV",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bvsf": {
+      "projectId": "rYFfh55l",
+      "latestVersionId": "P222mBb2",
+      "versionNumber": "1.9.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pyvtron-vx": {
+      "projectId": "WUot79rk",
+      "latestVersionId": "BH2A8fpn",
+      "versionNumber": "V1.1.8",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "simple-saturation": {
+      "projectId": "MEwabHnq",
+      "latestVersionId": "YB0NWSl0",
+      "versionNumber": "1.5.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "astralcore": {
+      "projectId": "reghUXdy",
+      "latestVersionId": "vQXzN8YJ",
+      "versionNumber": "1.6.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "subete-kowasu-no-nara-kuro-ni-nare-old": {
+      "projectId": "6sOj95GW",
+      "latestVersionId": "x7lVrsGR",
+      "versionNumber": "5.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "taa": {
+      "projectId": "aE6ouBYi",
+      "latestVersionId": "dN3Ek7BZ",
+      "versionNumber": "1.5.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bds-better-default-shaders": {
+      "projectId": "CqoL8Aty",
+      "latestVersionId": "jpAr4qTr",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lymboshader": {
+      "projectId": "d84ohPxl",
+      "latestVersionId": "4lNUSiJ5",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sillywankershader": {
+      "projectId": "iwEbAN22",
+      "latestVersionId": "p8Tvfh3t",
+      "versionNumber": "Rewrite",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sildurs-basic-shaders": {
+      "projectId": "N1BIOvQX",
+      "latestVersionId": "fgt6eoLP",
+      "versionNumber": "2.7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "zayko": {
+      "projectId": "FFaD08BY",
+      "latestVersionId": "wwm2jwhP",
+      "versionNumber": "9.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "trickeds-shaders": {
+      "projectId": "ZhCRyz0a",
+      "latestVersionId": "SSJ3P1uR",
+      "versionNumber": "2.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "flashlight-shader": {
+      "projectId": "wXgazpCy",
+      "latestVersionId": "M2z9fVlt",
+      "versionNumber": "1.1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "acidshaders15": {
+      "projectId": "Z8vHOw6N",
+      "latestVersionId": "kaqB0sa5",
+      "versionNumber": "5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vtxs-screen-space-demo": {
+      "projectId": "DIAdpUOD",
+      "latestVersionId": "iWuG0oHo",
+      "versionNumber": "1.0.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sundial-lite": {
+      "projectId": "2cbOUuF5",
+      "latestVersionId": "PjB08fPG",
+      "versionNumber": "1.2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dms-depth-map-shaders": {
+      "projectId": "CjjJQ9zg",
+      "latestVersionId": "2eCQ1VnL",
+      "versionNumber": "1.6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "open4es-renewed": {
+      "projectId": "wWS77kEk",
+      "latestVersionId": "R4PCQPU4",
+      "versionNumber": "v1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "prismarine-shader": {
+      "projectId": "AZs0ahDh",
+      "latestVersionId": "t1vPVCFN",
+      "versionNumber": "5.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "psx-shader": {
+      "projectId": "5FTpbyBl",
+      "latestVersionId": "z6WyqZok",
+      "versionNumber": "0.0.6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "truelightfx": {
+      "projectId": "1KNMo6Id",
+      "latestVersionId": "3g0LXPS3",
+      "versionNumber": "v5.1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "footage_skeeder": {
+      "projectId": "F6cjDyQ2",
+      "latestVersionId": "AOiBMMrz",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nwoofs-wynn-shader": {
+      "projectId": "K8XDv70D",
+      "latestVersionId": "OStc8zIW",
+      "versionNumber": "0.2.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "reflective-vanilla-shaders": {
+      "projectId": "Hrr4MlDP",
+      "latestVersionId": "cBxsD2BF",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "genesis-shader": {
+      "projectId": "dE3Syxsf",
+      "latestVersionId": "BdKGvUb9",
+      "versionNumber": "v6.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "anti-aliasing": {
+      "projectId": "HPkbgOtW",
+      "latestVersionId": "hqzbZQ5T",
+      "versionNumber": "1.0.9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pvp-zerox": {
+      "projectId": "CjpZFrHx",
+      "latestVersionId": "xDLp5ADn",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "kute": {
+      "projectId": "AGUnjUjy",
+      "latestVersionId": "G74YNoOB",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "super-ugly-shaders": {
+      "projectId": "t0C0BbIo",
+      "latestVersionId": "6G9tfeTK",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "psx-core": {
+      "projectId": "424Wbdmo",
+      "latestVersionId": "aEO8DmTl",
+      "versionNumber": "0.1.7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lumina-shader-event-horizon": {
+      "projectId": "9gxVXUDr",
+      "latestVersionId": "pZJyyZZ4",
+      "versionNumber": "1.3.9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "wem-white-entities-mask": {
+      "projectId": "70gOBuNk",
+      "latestVersionId": "ZBlgI3Vs",
+      "versionNumber": "1.7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bettervoxels": {
+      "projectId": "TUoQmbZR",
+      "latestVersionId": "i31Hbdnd",
+      "versionNumber": "1.8",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "crusher-shader": {
+      "projectId": "ur3m7B1i",
+      "latestVersionId": "REcFtSru",
+      "versionNumber": "1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nms-normal-map-shaders": {
+      "projectId": "OlFHJKqo",
+      "latestVersionId": "pfF2Jb9W",
+      "versionNumber": "1.7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lyrae-shaders": {
+      "projectId": "EjUbGcrd",
+      "latestVersionId": "8ihbM9j8",
+      "versionNumber": "0.1.0a",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "beyond-vanilla": {
+      "projectId": "YIhUcKoq",
+      "latestVersionId": "DybitdC8",
+      "versionNumber": "2.91",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "warpedmemory": {
+      "projectId": "OD8EMbgs",
+      "latestVersionId": "COofL12B",
+      "versionNumber": "r-0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "glaciershaders": {
+      "projectId": "tFhYnvyA",
+      "latestVersionId": "eIROqidV",
+      "versionNumber": "1.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "motion-blur-pvp": {
+      "projectId": "WCbcn7ba",
+      "latestVersionId": "6usaCJXL",
+      "versionNumber": "1.1-fix",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "muuf-a.g.i-shaders": {
+      "projectId": "Xng19eSP",
+      "latestVersionId": "jPUvAiVH",
+      "versionNumber": "Rebuild-9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lumina-shader-lite": {
+      "projectId": "70O0661F",
+      "latestVersionId": "AC7c1gBI",
+      "versionNumber": "1.2.9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "minimal-shader": {
+      "projectId": "s55p5822",
+      "latestVersionId": "xA0NnuZl",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "steadfast-shaders": {
+      "projectId": "ch1yZBko",
+      "latestVersionId": "zkmsy0i7",
+      "versionNumber": "0.8.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "psx-shader-nb": {
+      "projectId": "M8LIx21K",
+      "latestVersionId": "7GiMizFD",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "miasma": {
+      "projectId": "GLbKOZGA",
+      "latestVersionId": "GKrM2rdJ",
+      "versionNumber": "1.0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mcpt": {
+      "projectId": "kxwHM1hj",
+      "latestVersionId": "JqHWnnGm",
+      "versionNumber": "preview-2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "soft-memory": {
+      "projectId": "hlFrL4hV",
+      "latestVersionId": "HRbfw1g0",
+      "versionNumber": "1.17",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "yamashita-shimejize": {
+      "projectId": "CGMMa4Ji",
+      "latestVersionId": "mBW4y4OJ",
+      "versionNumber": "1.4.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pineshaders": {
+      "projectId": "5MV64h18",
+      "latestVersionId": "rIEA6JAL",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lantern-shader": {
+      "projectId": "acY2UwwP",
+      "latestVersionId": "hu2HSozY",
+      "versionNumber": "1.3.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "scan": {
+      "projectId": "8co1yEDN",
+      "latestVersionId": "d9ARngBX",
+      "versionNumber": "0.0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "thunders-mb": {
+      "projectId": "XK75twAh",
+      "latestVersionId": "yN2LuG37",
+      "versionNumber": "1.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "earthshaders": {
+      "projectId": "6CdvxWhV",
+      "latestVersionId": "KkG4Aviu",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "raincore": {
+      "projectId": "GEuwLKq2",
+      "latestVersionId": "XVmtlTv0",
+      "versionNumber": "0.102",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "crt-shader": {
+      "projectId": "tLyAc6iV",
+      "latestVersionId": "PzBMgESN",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pollution-2035-shaders": {
+      "projectId": "6OQgclAX",
+      "latestVersionId": "HbpI3ulO",
+      "versionNumber": "1.1.0b",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lidar-s": {
+      "projectId": "UE3ewgSx",
+      "latestVersionId": "7dPOlIS1",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vulkanite-demo-pack": {
+      "projectId": "lGNT3tgC",
+      "latestVersionId": "wSHFORKF",
+      "versionNumber": "1.3.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "baked-potato-shaders": {
+      "projectId": "x1ZfjCSo",
+      "latestVersionId": "WiWDE9WL",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mc-outline-shader": {
+      "projectId": "fVElstMy",
+      "latestVersionId": "IxxXLYda",
+      "versionNumber": "6.6.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ascii-shader": {
+      "projectId": "Ah4Q0Hhi",
+      "latestVersionId": "ueU9qosj",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sketchbound": {
+      "projectId": "TZ7II0UR",
+      "latestVersionId": "iR83UybB",
+      "versionNumber": "3.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "loesnightvision": {
+      "projectId": "BuUSGd4X",
+      "latestVersionId": "CgzQgfTI",
+      "versionNumber": "0.0.6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "verlixia": {
+      "projectId": "pB0H8J2Y",
+      "latestVersionId": "5aqS4ziD",
+      "versionNumber": "2.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "velocity-shaders": {
+      "projectId": "qpA3SxtS",
+      "latestVersionId": "Y6l5tHVP",
+      "versionNumber": "velo-12",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "freevibrant-shaders": {
+      "projectId": "YmRYaclX",
+      "latestVersionId": "lUHvhyOE",
+      "versionNumber": "0.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "krpmon-lite": {
+      "projectId": "NPKlYU6I",
+      "latestVersionId": "wfUrJPdT",
+      "versionNumber": "0.3.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "liquorice": {
+      "projectId": "UEIkxUHB",
+      "latestVersionId": "ULET5Ak1",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "low-water": {
+      "projectId": "iIUAlvLk",
+      "latestVersionId": "SudhVJmX",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "light-ray": {
+      "projectId": "T9AnY83f",
+      "latestVersionId": "Ean2qzL2",
+      "versionNumber": "1.9.0b",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "modern-psx-shaders": {
+      "projectId": "icIHUe3L",
+      "latestVersionId": "PPswUPzc",
+      "versionNumber": "0.23.58",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cel-shader": {
+      "projectId": "qjbB6Qp6",
+      "latestVersionId": "U5RqthUl",
+      "versionNumber": "0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "terders-potato-shader": {
+      "projectId": "j8vzmojd",
+      "latestVersionId": "LlYkL4yT",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "oct-path": {
+      "projectId": "KOQHPy4R",
+      "latestVersionId": "6mO75v75",
+      "versionNumber": "1.23",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "terrafirmagreg-shaders": {
+      "projectId": "cFPyBbB1",
+      "latestVersionId": "o2S1KeDB",
+      "versionNumber": "3.1.7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "luster-shaders": {
+      "projectId": "GWRThy8E",
+      "latestVersionId": "hKFXp83z",
+      "versionNumber": "v5.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ink-shader": {
+      "projectId": "EQ0xrqNb",
+      "latestVersionId": "4BJQY5Bo",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "makeup-breezy-shaders": {
+      "projectId": "ZsT2QmUU",
+      "latestVersionId": "TWg7NH7p",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "zephyr-starlight": {
+      "projectId": "mMOmm2Zk",
+      "latestVersionId": "6ZzHXdRN",
+      "versionNumber": "v0.2.2a-hotfix1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "wither-rose": {
+      "projectId": "7wfGkCoM",
+      "latestVersionId": "a9gL2Zla",
+      "versionNumber": "v0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nostalgia-ultra": {
+      "projectId": "DbCgw2md",
+      "latestVersionId": "EOxSocIm",
+      "versionNumber": "16.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "phial": {
+      "projectId": "XcwivM4z",
+      "latestVersionId": "HHSwegCm",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "extremely-simple-camera-effects": {
+      "projectId": "g90sV5x4",
+      "latestVersionId": "qT5IYsey",
+      "versionNumber": "1.4.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lumeau": {
+      "projectId": "Rosc1kAc",
+      "latestVersionId": "15uhPL1R",
+      "versionNumber": "1.2-beta",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "breezeflow": {
+      "projectId": "4ETindzX",
+      "latestVersionId": "sJ2H74Cp",
+      "versionNumber": "1.0.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "wispy-shader": {
+      "projectId": "fkGPS2gb",
+      "latestVersionId": "khpulBvk",
+      "versionNumber": "1.4.6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "serendipity-shader": {
+      "projectId": "kj9VuxTY",
+      "latestVersionId": "QZ7JTGEe",
+      "versionNumber": "0.2.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "comic-shaders": {
+      "projectId": "NuMAacDC",
+      "latestVersionId": "omqmRjt6",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "kefirs-flashlight": {
+      "projectId": "wwfPGOds",
+      "latestVersionId": "LCNLWfDo",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nova-reimagined": {
+      "projectId": "Uzkg6HgX",
+      "latestVersionId": "FENoHvT5",
+      "versionNumber": "1.0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "water-shader": {
+      "projectId": "dPBtZ5Ry",
+      "latestVersionId": "QDt6KYrg",
+      "versionNumber": "v1.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "taa-distant-horizons-port": {
+      "projectId": "sdBzRG7h",
+      "latestVersionId": "UsIej1Av",
+      "versionNumber": "3.7.6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "make-your-own-shaders": {
+      "projectId": "AoWEEFBh",
+      "latestVersionId": "30mKV6nO",
+      "versionNumber": "20",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pumpkin-shaders": {
+      "projectId": "ueSyHBpg",
+      "latestVersionId": "nQmDNrGM",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "paintbound": {
+      "projectId": "C8Sy7Xye",
+      "latestVersionId": "hov1a3G3",
+      "versionNumber": "3.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mellowedited": {
+      "projectId": "qcMw3mB6",
+      "latestVersionId": "GFdFDteK",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "roses-new-shades": {
+      "projectId": "KiDl1F9o",
+      "latestVersionId": "DQmq3Ejj",
+      "versionNumber": "0.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "screen-mirror-shader": {
+      "projectId": "zrVlkYvk",
+      "latestVersionId": "2mAWydkG",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mathematically-unplayable": {
+      "projectId": "STXlqnTM",
+      "latestVersionId": "IBAdcxrN",
+      "versionNumber": "2.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lux-brickcraft-edition": {
+      "projectId": "in4K1Xj9",
+      "latestVersionId": "Dh0h66sm",
+      "versionNumber": "be1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cinematic-vanilla": {
+      "projectId": "wQhetBka",
+      "latestVersionId": "Wirya051",
+      "versionNumber": "6",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mcrt": {
+      "projectId": "ZeqDZZRS",
+      "latestVersionId": "iCph41jP",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dither": {
+      "projectId": "nIIpn55X",
+      "latestVersionId": "r0k0Lgvp",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "oakshaders": {
+      "projectId": "mzJo5Nx3",
+      "latestVersionId": "pzehpmP0",
+      "versionNumber": "v1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mew-chippa256-shader": {
+      "projectId": "vWdu7BRL",
+      "latestVersionId": "oD6AJxjs",
+      "versionNumber": "0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nightbloom": {
+      "projectId": "BUz1aSAh",
+      "latestVersionId": "T3uT0aPk",
+      "versionNumber": "0.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "black-and-white-shaders": {
+      "projectId": "wFfhUbYQ",
+      "latestVersionId": "LdV3W96n",
+      "versionNumber": "3.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "crt-monochrome-shaderpack": {
+      "projectId": "KBmTU8ja",
+      "latestVersionId": "MIi8NI2W",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "unbound-visual-+": {
+      "projectId": "jgYsD3FV",
+      "latestVersionId": "9we0R8Dq",
+      "versionNumber": "PT-v10.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "potatoshaders": {
+      "projectId": "buFZXJqT",
+      "latestVersionId": "ktbJXE1i",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "spirity-motion-blur": {
+      "projectId": "Qxdz7rmW",
+      "latestVersionId": "Se9LwUy5",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "apexshader": {
+      "projectId": "pcMKaDsV",
+      "latestVersionId": "4SqNZSI9",
+      "versionNumber": "2.5.8",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ditherpunk": {
+      "projectId": "408flTHR",
+      "latestVersionId": "2bbLuUJ5",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cinematic-villa": {
+      "projectId": "xFrc4NPo",
+      "latestVersionId": "apQ6yrrS",
+      "versionNumber": "4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lost-signal-vhs": {
+      "projectId": "lYoE5ym5",
+      "latestVersionId": "WeLRi7Dn",
+      "versionNumber": "1.8.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "only-shadows": {
+      "projectId": "r6gSVPWY",
+      "latestVersionId": "YQJkhJ7N",
+      "versionNumber": "onlyshadows",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "coffeeshaders": {
+      "projectId": "HFpynP04",
+      "latestVersionId": "7xmlQsfi",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "wisp-shaders": {
+      "projectId": "fn1Eae1N",
+      "latestVersionId": "9G8Y5o9Q",
+      "versionNumber": "1.0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dithering3d": {
+      "projectId": "wz6Mcdq6",
+      "latestVersionId": "mHC4AArT",
+      "versionNumber": "0.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ritegvhs": {
+      "projectId": "okSXLiG4",
+      "latestVersionId": "U14b7BOg",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vertalux": {
+      "projectId": "ZroHvBI3",
+      "latestVersionId": "IgGHvlIE",
+      "versionNumber": "6.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "glint-shaders": {
+      "projectId": "FQST0Z8M",
+      "latestVersionId": "EQEJQ7Lp",
+      "versionNumber": "alpha-four",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dithered-shader": {
+      "projectId": "KiFpblnH",
+      "latestVersionId": "LgR1TLL7",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "atmospheric-shaders": {
+      "projectId": "JJENX1BH",
+      "latestVersionId": "VWUs1TDT",
+      "versionNumber": "0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bloom-shader": {
+      "projectId": "JZnbMbTm",
+      "latestVersionId": "YdEuCG8F",
+      "versionNumber": "1.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "b3-pvp": {
+      "projectId": "O5m5hPLR",
+      "latestVersionId": "kzIhDPGE",
+      "versionNumber": "B3-PvP",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "luxora-shaders": {
+      "projectId": "WD4lLjK2",
+      "latestVersionId": "LtoBcfpf",
+      "versionNumber": "v1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "auralite-shaders": {
+      "projectId": "z0NF17Hp",
+      "latestVersionId": "O5e42ZGS",
+      "versionNumber": "1.1.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "neon-skylines-shader": {
+      "projectId": "r80tWUPL",
+      "latestVersionId": "uLOUG6oa",
+      "versionNumber": "2.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "invertcolors-shader": {
+      "projectId": "KbqQa0aB",
+      "latestVersionId": "WyZSH24t",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "tilde": {
+      "projectId": "3z5iC0bj",
+      "latestVersionId": "5AAOjQm4",
+      "versionNumber": "v2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "valentine": {
+      "projectId": "JX18zgB7",
+      "latestVersionId": "ZO60Nzwo",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "image-shader": {
+      "projectId": "uYBHIcV9",
+      "latestVersionId": "AnVtVfeF",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "gradius-vibrantshader": {
+      "projectId": "fsDxQcSJ",
+      "latestVersionId": "d9lbBtxU",
+      "versionNumber": "1.0-hotfix",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "hypershader": {
+      "projectId": "xAWqMDMo",
+      "latestVersionId": "rKjxhPSD",
+      "versionNumber": "1.3.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "contour-shaders": {
+      "projectId": "VUMmIDj7",
+      "latestVersionId": "gsFHQXVd",
+      "versionNumber": "1.0.4.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "paranoia-shader": {
+      "projectId": "THdWNh20",
+      "latestVersionId": "RJ8vUJq1",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "grayblack-shader": {
+      "projectId": "buyR2SoV",
+      "latestVersionId": "mMBYo1df",
+      "versionNumber": "1.0.0-legacy",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aurorart": {
+      "projectId": "3rSkAqDn",
+      "latestVersionId": "ZnCxuRVT",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lumora-shader": {
+      "projectId": "o86c4okd",
+      "latestVersionId": "xTGjvNEQ",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dreamers-shaders": {
+      "projectId": "TKpehqLE",
+      "latestVersionId": "yVPgPgS6",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "etherea-shader": {
+      "projectId": "nE7lYhsP",
+      "latestVersionId": "RIAK6yIR",
+      "versionNumber": "v0.1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aurora-astral": {
+      "projectId": "DVjRE6FA",
+      "latestVersionId": "97BOPX2d",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "fantasy.vt": {
+      "projectId": "8jikfk78",
+      "latestVersionId": "sWMXKiJg",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vividhorizon": {
+      "projectId": "pmts4duk",
+      "latestVersionId": "o5GkRfax",
+      "versionNumber": "5.3.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "perrylight": {
+      "projectId": "tKZUSGNE",
+      "latestVersionId": "ZChPgeBT",
+      "versionNumber": "0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "3d-displacement-test-shader": {
+      "projectId": "Jqn55RVZ",
+      "latestVersionId": "KHDU4PJM",
+      "versionNumber": "1.0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "refrax": {
+      "projectId": "eU5gfXAN",
+      "latestVersionId": "wWp6ix9C",
+      "versionNumber": "1.3.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "after-hours-shader": {
+      "projectId": "vWdKXjPs",
+      "latestVersionId": "9NlyrmEw",
+      "versionNumber": "0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sundial-lite-vivid": {
+      "projectId": "3W0Dwcrv",
+      "latestVersionId": "pnJy9v8q",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aerial": {
+      "projectId": "xhSIVWgz",
+      "latestVersionId": "CT8MpHGq",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aurelia-shaders": {
+      "projectId": "OHtWyVlA",
+      "latestVersionId": "TIvsL2FG",
+      "versionNumber": "1.2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "found-vhs-tapes": {
+      "projectId": "JgBImdrF",
+      "latestVersionId": "ILbWie97",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "essentials-shader": {
+      "projectId": "lcVBKCo1",
+      "latestVersionId": "wsxkJoMD",
+      "versionNumber": "latest",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "world-outline-shader": {
+      "projectId": "d6TfTZPu",
+      "latestVersionId": "ansSQFOT",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "novas-vibrant-lite-shaders": {
+      "projectId": "Il6bho6B",
+      "latestVersionId": "FETgTo6F",
+      "versionNumber": "v1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "glamoroussp-shaders": {
+      "projectId": "6izFt5nL",
+      "latestVersionId": "8ZH9gYKy",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dreamfall-shaders": {
+      "projectId": "xsT9i8EC",
+      "latestVersionId": "bPe2mkC3",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pam": {
+      "projectId": "41qDSipJ",
+      "latestVersionId": "T6KIoJHt",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "echoshift": {
+      "projectId": "33Flu4rX",
+      "latestVersionId": "QHJXpVpl",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "realisticallyoptimized": {
+      "projectId": "5s4tVLty",
+      "latestVersionId": "lEtf2ObT",
+      "versionNumber": "1.0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "haze-shader": {
+      "projectId": "1S4HCfve",
+      "latestVersionId": "rZpHJ6g1",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "base-shader": {
+      "projectId": "Sg7URyDE",
+      "latestVersionId": "ZQ20qKbM",
+      "versionNumber": "3.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mode-13h": {
+      "projectId": "X5nQ5C2A",
+      "latestVersionId": "lTk2vwKN",
+      "versionNumber": "3.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "serie": {
+      "projectId": "txGgplPN",
+      "latestVersionId": "YQj5h2lm",
+      "versionNumber": "6.30.2026b",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "dap-shaders": {
+      "projectId": "xDn0BoKd",
+      "latestVersionId": "uzjwtX81",
+      "versionNumber": "10.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "taa69": {
+      "projectId": "TGOrCOTp",
+      "latestVersionId": "viro9STj",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ripple-shaders": {
+      "projectId": "MuKtZfKJ",
+      "latestVersionId": "MgivpSrn",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "wavy-world": {
+      "projectId": "osD74aom",
+      "latestVersionId": "IUzuYFR6",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "knightshaders": {
+      "projectId": "8eOqqmcr",
+      "latestVersionId": "9yxKhEkq",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "horizon-reimagined": {
+      "projectId": "cZBxYEz4",
+      "latestVersionId": "USWs75w0",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "wvp-shader": {
+      "projectId": "xTPEb5xp",
+      "latestVersionId": "7aPMDIjy",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pixel-shades": {
+      "projectId": "ikGRnJq1",
+      "latestVersionId": "VwOKReW7",
+      "versionNumber": "2.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aesyins-shaders": {
+      "projectId": "7VtTR53y",
+      "latestVersionId": "KZsT4Uak",
+      "versionNumber": "beta-1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cartoonikal": {
+      "projectId": "MTiuNKqA",
+      "latestVersionId": "AJumhKPA",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "jonasgrove": {
+      "projectId": "ezzUqPd4",
+      "latestVersionId": "kwkM9Dyo",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "adaptiveoutline": {
+      "projectId": "ecEGgWOY",
+      "latestVersionId": "eoiDqdMV",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "tri-valor-realistic-shader": {
+      "projectId": "NnRy8IFu",
+      "latestVersionId": "rwQ6bL9v",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "oxygen-atmosphere": {
+      "projectId": "OCmyF3Cs",
+      "latestVersionId": "GLlnrxJJ",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "liminal-shader": {
+      "projectId": "2P0AV9FE",
+      "latestVersionId": "bQT94Z6W",
+      "versionNumber": "1.2.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "true-black-white-shader-(grayscale)": {
+      "projectId": "LHVsUxbi",
+      "latestVersionId": "7NtaEfvF",
+      "versionNumber": "1.0.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sarp": {
+      "projectId": "LvtQEwjR",
+      "latestVersionId": "AwTfcPdR",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aberration-shader": {
+      "projectId": "mIcyuS5O",
+      "latestVersionId": "WUbv0Slk",
+      "versionNumber": "1.21x",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "focal-shader": {
+      "projectId": "RO6afEst",
+      "latestVersionId": "Kz6gFpjw",
+      "versionNumber": "1.0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "fs-shaders": {
+      "projectId": "qc513Unu",
+      "latestVersionId": "R9vOsJDN",
+      "versionNumber": "1.8",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "solstice-shaderpack": {
+      "projectId": "l2palkeG",
+      "latestVersionId": "AMtghtuG",
+      "versionNumber": "2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nolantic-shader": {
+      "projectId": "eSqJcTf7",
+      "latestVersionId": "mSH3zbpg",
+      "versionNumber": "0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aetherstone-by-tark-projects": {
+      "projectId": "9Rg9KKDK",
+      "latestVersionId": "6n4SBKk2",
+      "versionNumber": "1.2.1.B",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "visualmcshader": {
+      "projectId": "iZ0PwIr7",
+      "latestVersionId": "K2UfoU0B",
+      "versionNumber": "beta",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "avalux-reimagined": {
+      "projectId": "piJlVDtP",
+      "latestVersionId": "6f6tfdO6",
+      "versionNumber": "v5.8.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "highframes": {
+      "projectId": "aTLNnxX3",
+      "latestVersionId": "LX4WQRzY",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "light-shadow": {
+      "projectId": "pWeVnXDz",
+      "latestVersionId": "FL0np64M",
+      "versionNumber": "4.0.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sublime-visuals": {
+      "projectId": "WTBaGxsU",
+      "latestVersionId": "CMTUuUzB",
+      "versionNumber": "3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "crt-monitor-shader": {
+      "projectId": "f1VMVPC1",
+      "latestVersionId": "82GHWXho",
+      "versionNumber": "1.0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "colorcone": {
+      "projectId": "WLkdXnId",
+      "latestVersionId": "EDIOf95s",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "daylight-shaders": {
+      "projectId": "gEzKZOqB",
+      "latestVersionId": "rQzMjZFn",
+      "versionNumber": "v1.0.0-mc26.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "polace": {
+      "projectId": "ARW1Jej5",
+      "latestVersionId": "wOCzQliM",
+      "versionNumber": "1.1-beta2-dark",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "helios-shaders": {
+      "projectId": "8OeaZfgn",
+      "latestVersionId": "l3u4JLW3",
+      "versionNumber": "V1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "tachyon-shaders": {
+      "projectId": "Zi60D5U5",
+      "latestVersionId": "uyhji1EB",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ink-wash-shaderpack": {
+      "projectId": "5taDo0oi",
+      "latestVersionId": "EK9RpK9E",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bsushaders": {
+      "projectId": "GqCH3B4C",
+      "latestVersionId": "bIPGe6Ni",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ecoshift-lite": {
+      "projectId": "uUbHpMiv",
+      "latestVersionId": "typ5htGO",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "drunk-n-high": {
+      "projectId": "bn9xKwMe",
+      "latestVersionId": "lYNv8YYl",
+      "versionNumber": "2025.12.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "velora-shader-turbo": {
+      "projectId": "9VzoIcj0",
+      "latestVersionId": "A4whTi5q",
+      "versionNumber": "1.1.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "senabyssshader": {
+      "projectId": "4f6gA44l",
+      "latestVersionId": "BtEhiglL",
+      "versionNumber": "4.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "onward-shader": {
+      "projectId": "cfhJEfJM",
+      "latestVersionId": "1GpmF0UM",
+      "versionNumber": "v1.0r",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "feathc2": {
+      "projectId": "zxdgn1L8",
+      "latestVersionId": "yVJYROg1",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "debug-view": {
+      "projectId": "6iApq3jH",
+      "latestVersionId": "DRYJ9wOV",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "panini-projection": {
+      "projectId": "ACsC5xz2",
+      "latestVersionId": "mNYRG7gR",
+      "versionNumber": "0.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "softshade-shader": {
+      "projectId": "WfX3EInm",
+      "latestVersionId": "xcyn1F48",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "rtfshaders": {
+      "projectId": "n48y4QW0",
+      "latestVersionId": "m1pK1YQy",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "taa-voxy-port": {
+      "projectId": "E4OF11ZZ",
+      "latestVersionId": "7xL4s4Ef",
+      "versionNumber": "1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lost-tape-shader": {
+      "projectId": "S8ZCVZOX",
+      "latestVersionId": "7rtSMvnv",
+      "versionNumber": "1.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "swiftshade": {
+      "projectId": "sGnIENEE",
+      "latestVersionId": "yYuceQ7Z",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "source-water": {
+      "projectId": "W7QXpvVg",
+      "latestVersionId": "cjo1tRR6",
+      "versionNumber": "1.2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bsrshaders": {
+      "projectId": "ACzzdXfc",
+      "latestVersionId": "7753qCiq",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "clearvision-shader": {
+      "projectId": "EwxnsoQC",
+      "latestVersionId": "Y6b5J69L",
+      "versionNumber": "V1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "iskra": {
+      "projectId": "9BonL3mf",
+      "latestVersionId": "GoQvmDSI",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "kinescope-shaders": {
+      "projectId": "lcdZ7DO8",
+      "latestVersionId": "7lvLwFbO",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aalushaders": {
+      "projectId": "G0xaxDsv",
+      "latestVersionId": "D64c8N2W",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "makeup-dead-days": {
+      "projectId": "oAeXD5jG",
+      "latestVersionId": "jImebdnr",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "renford_tomlinson": {
+      "projectId": "APwTnV72",
+      "latestVersionId": "4tFVvYbj",
+      "versionNumber": "bennigan_1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "horizon-unbound": {
+      "projectId": "coczPlMB",
+      "latestVersionId": "msDPMqxQ",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "noise-shaders": {
+      "projectId": "CEkE0ksb",
+      "latestVersionId": "vZa7Jss3",
+      "versionNumber": "0.2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bitnixelet": {
+      "projectId": "6edtW5qi",
+      "latestVersionId": "TAMg5XEs",
+      "versionNumber": "2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "despatras-crt": {
+      "projectId": "LVUlY6Vc",
+      "latestVersionId": "3Wt0vQwT",
+      "versionNumber": "v2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vanillashaders": {
+      "projectId": "V1DPLa8z",
+      "latestVersionId": "KxQ5VsUs",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "velpix-shaders": {
+      "projectId": "BbUlopVn",
+      "latestVersionId": "kFZjkCIb",
+      "versionNumber": "0.1.9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "marigold-shaders": {
+      "projectId": "wtW98QUr",
+      "latestVersionId": "kCA1PAAN",
+      "versionNumber": "1.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "liteframes": {
+      "projectId": "RRaYwADF",
+      "latestVersionId": "3sgxp41v",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cosinus-shader": {
+      "projectId": "WjcI9P1w",
+      "latestVersionId": "xgAzztaI",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "zarya": {
+      "projectId": "ZMDDXGl0",
+      "latestVersionId": "AxIyCvN3",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vice-wave": {
+      "projectId": "ln2avam6",
+      "latestVersionId": "ynZ9DGmp",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lost-signal": {
+      "projectId": "rPU2vYZU",
+      "latestVersionId": "MygFBpjJ",
+      "versionNumber": "0.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "naturalvision": {
+      "projectId": "LVvPobw5",
+      "latestVersionId": "I09W0uPh",
+      "versionNumber": "1.3.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nexus-unbound": {
+      "projectId": "qxUeQ92X",
+      "latestVersionId": "Jrc0wwq7",
+      "versionNumber": "2.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "eddyveil": {
+      "projectId": "JH3s1XBW",
+      "latestVersionId": "v0GuGMvV",
+      "versionNumber": "6.15.0-MacOS",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "simply-dithered": {
+      "projectId": "C9RsInRE",
+      "latestVersionId": "hpHLBqYa",
+      "versionNumber": "1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "doruks-shader": {
+      "projectId": "xUZIReLK",
+      "latestVersionId": "4ReU8MnU",
+      "versionNumber": "0.9.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pretty-shadows": {
+      "projectId": "RWIrIHFp",
+      "latestVersionId": "Yt11F8bm",
+      "versionNumber": "2.0-optifine",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vanillaqua-reflections": {
+      "projectId": "4vvEmj8p",
+      "latestVersionId": "jINrh3dF",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mistbound": {
+      "projectId": "iXjzmsNv",
+      "latestVersionId": "6PFa2EfZ",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "improvedvanillalighting": {
+      "projectId": "XxNK9TOy",
+      "latestVersionId": "6rNOjnP9",
+      "versionNumber": "1.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "noxara": {
+      "projectId": "P3yk0Q5w",
+      "latestVersionId": "Lr6c3yTy",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "extraterrestrial-expanse": {
+      "projectId": "ksD0jjws",
+      "latestVersionId": "lFQv0nxz",
+      "versionNumber": "0.1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "psiho-shader": {
+      "projectId": "GWgDfysQ",
+      "latestVersionId": "PT0P01RK",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bright-pixels": {
+      "projectId": "SXup1RFh",
+      "latestVersionId": "v8wgwb8X",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "r-t-s": {
+      "projectId": "QOSA4rZD",
+      "latestVersionId": "7vyZR4AN",
+      "versionNumber": "1.0.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "charas-vibrant-shaders": {
+      "projectId": "QRSbjJqU",
+      "latestVersionId": "D0AagIXX",
+      "versionNumber": "v1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "atherial-shaders": {
+      "projectId": "mHWnah27",
+      "latestVersionId": "zFedTcB3",
+      "versionNumber": "1.0.0-beta3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "black-white-shader": {
+      "projectId": "r1EogXS7",
+      "latestVersionId": "P4yPXfXQ",
+      "versionNumber": "v2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ezsaturation": {
+      "projectId": "lCjPSSn9",
+      "latestVersionId": "zui5gRco",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "salicylicshaders": {
+      "projectId": "G1j6TYS3",
+      "latestVersionId": "qKGHsP8x",
+      "versionNumber": "v1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "candela-shaders": {
+      "projectId": "O4klg90P",
+      "latestVersionId": "5eDyc0B8",
+      "versionNumber": "1.5.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "no-hand-shaders": {
+      "projectId": "EJfV67NC",
+      "latestVersionId": "8AdUIYZC",
+      "versionNumber": "V1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cinderframe": {
+      "projectId": "p2W8jI7f",
+      "latestVersionId": "n6x6SXCh",
+      "versionNumber": "3.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "unified-realism": {
+      "projectId": "f8scbtiO",
+      "latestVersionId": "X87grp8C",
+      "versionNumber": "0.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "henrys-drunk": {
+      "projectId": "tuXTuJTX",
+      "latestVersionId": "Eo2OIeAF",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "npc-shaders": {
+      "projectId": "BDWacDO2",
+      "latestVersionId": "Di6RCnCl",
+      "versionNumber": "1.3",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "solis-blend": {
+      "projectId": "6zwoOMPJ",
+      "latestVersionId": "Lx8BMm0E",
+      "versionNumber": "0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "select-outline": {
+      "projectId": "h0xSmugX",
+      "latestVersionId": "kcCeeMcQ",
+      "versionNumber": "0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "orion-shaders": {
+      "projectId": "prKz0vtM",
+      "latestVersionId": "Zll814lG",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "baunilha-shader": {
+      "projectId": "yhAv3x3d",
+      "latestVersionId": "yfXR1bla",
+      "versionNumber": "version_2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "shadey": {
+      "projectId": "uA5nNhrW",
+      "latestVersionId": "Kd8xXKma",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "eternal-prism": {
+      "projectId": "XkrUGY2b",
+      "latestVersionId": "EAnjAGZ3",
+      "versionNumber": "0.6.0-beta",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "goldelion-shaders": {
+      "projectId": "Oagc9O98",
+      "latestVersionId": "QY0AsRPh",
+      "versionNumber": "Ready_v7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "breeze-shaders": {
+      "projectId": "MYAGpRLz",
+      "latestVersionId": "AVLsc4fz",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "mcf-shaders": {
+      "projectId": "T9JGy2Xj",
+      "latestVersionId": "agAvDZe4",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "visuality-shaders": {
+      "projectId": "vRmou5uM",
+      "latestVersionId": "JKiLVLDD",
+      "versionNumber": "500.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lightweight-atmospherica": {
+      "projectId": "8MrirRd6",
+      "latestVersionId": "spTzqZKH",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "amberveil-shaders": {
+      "projectId": "1jdWjXFa",
+      "latestVersionId": "L1i1odNQ",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "rift-shaders": {
+      "projectId": "EGLiNMH2",
+      "latestVersionId": "OeVR9Agv",
+      "versionNumber": "1.1.0b",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "embervoid-shader": {
+      "projectId": "yEtjSPos",
+      "latestVersionId": "FQEAOKY3",
+      "versionNumber": "0.5.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "white-black-shader": {
+      "projectId": "jJ5VFiNe",
+      "latestVersionId": "7k2ODAWd",
+      "versionNumber": "v2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "incredible-graphics": {
+      "projectId": "ioPkf1jI",
+      "latestVersionId": "VvljCDPP",
+      "versionNumber": "1.2.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "cinematix-shader": {
+      "projectId": "AAUN4OCM",
+      "latestVersionId": "DNUfuA3O",
+      "versionNumber": "V1.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lineshaders": {
+      "projectId": "6n6PKtZ3",
+      "latestVersionId": "fZzaHXIG",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "chandlers-retro-shader": {
+      "projectId": "134lIeeG",
+      "latestVersionId": "UxwK2Ihi",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "chill-shaders": {
+      "projectId": "vbGqX7LT",
+      "latestVersionId": "Voo96BqO",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "orbit-shader": {
+      "projectId": "Fy31eTyo",
+      "latestVersionId": "gQc92XxP",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "silva-pro": {
+      "projectId": "PzyOxx1v",
+      "latestVersionId": "r7z2OaSg",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "spudlight-shaders": {
+      "projectId": "dSmVRdkN",
+      "latestVersionId": "UVtBOnbu",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "actmos": {
+      "projectId": "6nLgxdmJ",
+      "latestVersionId": "gaMzpAis",
+      "versionNumber": "V1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "catnip-shaders": {
+      "projectId": "3PrdwOBX",
+      "latestVersionId": "gWBkfQwo",
+      "versionNumber": "1.5.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "pale-shaders": {
+      "projectId": "kbbNRQvY",
+      "latestVersionId": "C1iPpPG6",
+      "versionNumber": "r1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vividvanilla-shaders": {
+      "projectId": "X4f9rX0Z",
+      "latestVersionId": "UUnhc1U8",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "crystalism-shaders": {
+      "projectId": "PIWE6r1I",
+      "latestVersionId": "soUQMmNO",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "simply-solid-shaders": {
+      "projectId": "SChBUawA",
+      "latestVersionId": "p9SuSMDx",
+      "versionNumber": "1.5.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "only-shadows-shader": {
+      "projectId": "q8rOKdsz",
+      "latestVersionId": "7HNdD0FY",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bcu-shades": {
+      "projectId": "TxpEaMDk",
+      "latestVersionId": "2zGBJII2",
+      "versionNumber": "1.0.7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "veylora-shaders": {
+      "projectId": "6XweFP9V",
+      "latestVersionId": "ZvW5EnU4",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "motion-blur-test3": {
+      "projectId": "bTcyUAbI",
+      "latestVersionId": "XcTg1zb4",
+      "versionNumber": "V1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "realyty-shaders": {
+      "projectId": "TOAcsNEL",
+      "latestVersionId": "3kTzheHr",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "koptiretro": {
+      "projectId": "g3CAig6K",
+      "latestVersionId": "auInYwkF",
+      "versionNumber": "1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "robs-vanilla-reshaded": {
+      "projectId": "4055otpg",
+      "latestVersionId": "n6hmSZff",
+      "versionNumber": "1.0.5",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "optifine-old-lighting": {
+      "projectId": "kauudFKe",
+      "latestVersionId": "DAW5nZ0h",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "out-of-focus": {
+      "projectId": "AyCLIZ8j",
+      "latestVersionId": "Qzldqgjg",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "old-doggo-shaders": {
+      "projectId": "8uysgPy7",
+      "latestVersionId": "O645BesY",
+      "versionNumber": "beta-1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "veil-of-the-unseen": {
+      "projectId": "WCeMAaBy",
+      "latestVersionId": "jUC1G6vj",
+      "versionNumber": "0.1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aethervisuals": {
+      "projectId": "xFIftOsH",
+      "latestVersionId": "AK0shBZI",
+      "versionNumber": "4.17",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vanilla-shade": {
+      "projectId": "UqImZFIy",
+      "latestVersionId": "cXtFY5WJ",
+      "versionNumber": "1.52.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ezexposure": {
+      "projectId": "3XFlJWus",
+      "latestVersionId": "Jur4UYq7",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bananashaders": {
+      "projectId": "wiOKY4t2",
+      "latestVersionId": "trDao1L8",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "make-your-own-rt-shaders": {
+      "projectId": "N4lQFvZ1",
+      "latestVersionId": "pubktQ3c",
+      "versionNumber": "12",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "the-beat-of-a-heart": {
+      "projectId": "QOgLibNW",
+      "latestVersionId": "JvxuiPoV",
+      "versionNumber": "V9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "highframesextra": {
+      "projectId": "4A4w7sor",
+      "latestVersionId": "6RpagBYI",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "expanse-shaders": {
+      "projectId": "VeFMbpGd",
+      "latestVersionId": "wZEC0DUK",
+      "versionNumber": "1.13",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sobel-pack": {
+      "projectId": "kewvpRhY",
+      "latestVersionId": "WCVqVVUw",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "og-shaders": {
+      "projectId": "cA9Vf1d8",
+      "latestVersionId": "BMGlouDd",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "saturation-test3": {
+      "projectId": "ttqhlVxf",
+      "latestVersionId": "LBcm1uLr",
+      "versionNumber": "V1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "krpmonvoltplus": {
+      "projectId": "J0ArLR0H",
+      "latestVersionId": "fRt4cPzU",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "depth-of-field-test3": {
+      "projectId": "sIWy5A4M",
+      "latestVersionId": "eNhqLpI2",
+      "versionNumber": "V1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "reimagined-global-illumination-fork": {
+      "projectId": "DBdwEtV9",
+      "latestVersionId": "og20XbYV",
+      "versionNumber": "1.96",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "refract-shaders": {
+      "projectId": "uMgf7Go6",
+      "latestVersionId": "Ly6uTaAV",
+      "versionNumber": "22.2.17",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "deprivation-shaders": {
+      "projectId": "gACrH6H4",
+      "latestVersionId": "aEUUhYIx",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "extremedarknessshader": {
+      "projectId": "jkDOHaKM",
+      "latestVersionId": "U8OY8xA0",
+      "versionNumber": "0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "liteperf-shaders": {
+      "projectId": "wntcSD6O",
+      "latestVersionId": "qSOPYo2j",
+      "versionNumber": "1.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "greenvoid": {
+      "projectId": "uSrJL7QR",
+      "latestVersionId": "Ycr1ArFU",
+      "versionNumber": "GreenVoid+1.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "rivet-lite-animatic-1": {
+      "projectId": "HEhd6OXA",
+      "latestVersionId": "PevVEPDW",
+      "versionNumber": "01A01",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "carrotshaders": {
+      "projectId": "S0hPQ8C2",
+      "latestVersionId": "glh3qvNj",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "talaxs-lobotomy-shaders": {
+      "projectId": "Dim3bYIE",
+      "latestVersionId": "Cicna2mz",
+      "versionNumber": "2.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vanilla-camera": {
+      "projectId": "162KpUhg",
+      "latestVersionId": "TycW690e",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "wiresight": {
+      "projectId": "SChVy308",
+      "latestVersionId": "1QGDE6Lt",
+      "versionNumber": "0.2.3-optifine",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "quaint-shaders": {
+      "projectId": "XNvZHEgC",
+      "latestVersionId": "j7XTZv7x",
+      "versionNumber": "v1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aquareal-shaders": {
+      "projectId": "5TEA0dqi",
+      "latestVersionId": "i3RU6Pjg",
+      "versionNumber": "1.2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ezrgb": {
+      "projectId": "gPuG6wzc",
+      "latestVersionId": "PbIo5F8X",
+      "versionNumber": "v1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "thaiglowlite-shader": {
+      "projectId": "L0V7C0lS",
+      "latestVersionId": "BbOurMyg",
+      "versionNumber": "1.7",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "hexshaders": {
+      "projectId": "UQWktRm2",
+      "latestVersionId": "CABGL9Fh",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vix-enchanced-vibrant": {
+      "projectId": "ttR5oBp1",
+      "latestVersionId": "tlP5sXiL",
+      "versionNumber": "Vix_enchanced_vibrant_medium",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lit-vanila-plus": {
+      "projectId": "OfdzoZie",
+      "latestVersionId": "nUA9X48a",
+      "versionNumber": "1.2.4",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "vertigo-shader": {
+      "projectId": "tompRlIK",
+      "latestVersionId": "1pqrh0oG",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "fryed-vibrant-shader": {
+      "projectId": "b32yQFcy",
+      "latestVersionId": "QHhRD8TD",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "animtr": {
+      "projectId": "WEs7MJGP",
+      "latestVersionId": "89AfT1wO",
+      "versionNumber": "0.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "aeonrealism": {
+      "projectId": "kuFlKtAV",
+      "latestVersionId": "ehF6L9dC",
+      "versionNumber": "1.2.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "crossfrogs-soft-outlines": {
+      "projectId": "Ne6WFx4Z",
+      "latestVersionId": "6Ch0YRxt",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "tint-shaders": {
+      "projectId": "x8m6GVCK",
+      "latestVersionId": "MHr4aSXg",
+      "versionNumber": "0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "tuff-shaders": {
+      "projectId": "K1dqNbzW",
+      "latestVersionId": "oIISiXdk",
+      "versionNumber": "TUFF_Shaders_Beta_2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "elasion": {
+      "projectId": "P7HjKDV0",
+      "latestVersionId": "mNOOARgW",
+      "versionNumber": "1.1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "bcr-shades": {
+      "projectId": "NRNJNS9V",
+      "latestVersionId": "fAk5Zr3i",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "snowhard-shader": {
+      "projectId": "b6eOhxbm",
+      "latestVersionId": "QR73c0in",
+      "versionNumber": "r1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "zer0s-beta-shaders": {
+      "projectId": "CpStrxYO",
+      "latestVersionId": "ImP0drf0",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "luminary-shaders": {
+      "projectId": "zBirrR15",
+      "latestVersionId": "yIJjIYAk",
+      "versionNumber": "1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "zaryashader": {
+      "projectId": "3B69vZwc",
+      "latestVersionId": "m6uXNXQX",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "solarlite": {
+      "projectId": "mjtvvCNv",
+      "latestVersionId": "GlLeaahy",
+      "versionNumber": "2.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ephyrium-shaders": {
+      "projectId": "83NcAaaB",
+      "latestVersionId": "mKqWvllg",
+      "versionNumber": "0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lucent-realms-shaders": {
+      "projectId": "VUpulnMt",
+      "latestVersionId": "91xasrgj",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "floor_it": {
+      "projectId": "q0sQ0yBU",
+      "latestVersionId": "BzreKAK6",
+      "versionNumber": "floor(EVERYTHING)",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "thaiglow-shader": {
+      "projectId": "htdOJhsU",
+      "latestVersionId": "V3NCE1dV",
+      "versionNumber": "1.9",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "tls": {
+      "projectId": "1cVbuPXx",
+      "latestVersionId": "PK7UVbyl",
+      "versionNumber": "0.4.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "renderkit-utilities": {
+      "projectId": "VCfprxC0",
+      "latestVersionId": "tlZ5W7j2",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "nightvision-goggles": {
+      "projectId": "2Tbyk0c3",
+      "latestVersionId": "yrThEct0",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "googy-shaders": {
+      "projectId": "v8dYs088",
+      "latestVersionId": "wqT6BH1G",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "circlecraft": {
+      "projectId": "9GNQ0wb4",
+      "latestVersionId": "8JjjB6rq",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lve-sunward-shader": {
+      "projectId": "Ted1Ctet",
+      "latestVersionId": "g90wLctV",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "sel-shaders": {
+      "projectId": "lZxEUFDj",
+      "latestVersionId": "nqFXBXOf",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "ozza-shader": {
+      "projectId": "c2oCftuo",
+      "latestVersionId": "s7k42zBu",
+      "versionNumber": "5.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "lumen-shader": {
+      "projectId": "IxzPCO4v",
+      "latestVersionId": "5slTgqfe",
+      "versionNumber": "0.3.2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "virelia-shaders": {
+      "projectId": "pdPzO9sA",
+      "latestVersionId": "Mjndaoqa",
+      "versionNumber": "1.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "prismatic-shaders": {
+      "projectId": "SxpB99P2",
+      "latestVersionId": "lWzXPPF0",
+      "versionNumber": "2.0.0-alpha",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "livelymagic": {
+      "projectId": "KBmAMnUR",
+      "latestVersionId": "qO6Jc03b",
+      "versionNumber": "Alpha-1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "valtique": {
+      "projectId": "3FUsMjv8",
+      "latestVersionId": "U3vja3yI",
+      "versionNumber": "v5.5.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "eddyveil-shaders-windows": {
+      "projectId": "UqY4RQhr",
+      "latestVersionId": "sbkCDyyX",
+      "versionNumber": "6.15.0-Windows",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "no-more-brightness": {
+      "projectId": "WF97OGUz",
+      "latestVersionId": "a9zWGrbf",
+      "versionNumber": "1.0.0",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "auroralite": {
+      "projectId": "oEztSFkC",
+      "latestVersionId": "wTiUfGZD",
+      "versionNumber": "1.0.1",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    },
+    "veridian": {
+      "projectId": "IR92NLTh",
+      "latestVersionId": "Colp574E",
+      "versionNumber": "2",
+      "mode": "latest",
+      "checkedAt": "2026-10-11"
+    }
+  }
+}

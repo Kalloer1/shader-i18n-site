@@ -3,18 +3,25 @@
  * 自动汉化流水线（ADR-0005）：下载 → 检测自带中文 → LLM 初翻 → 校验 → 登记。
  *
  * 候选：目录中按下载量排序、未被流水线覆盖且不在缺少英文源清单中的光影（无汉化映射、未检出自带中文）。
- * 翻译使用单一模型并按候选顺序处理，避免免费接口并发限流和同一文件术语不一致。
+ * 翻译默认使用单一模型并按候选顺序（串行）处理，避免免费接口并发限流和同一文件术语不一致；
+ * 需要提速时用 LLM_CONCURRENCY 显式开启并发（每条光影仍各自独立超时、独立中断）。
  *
- * LLM 提供方：SiliconFlow（硅基流动）。
- *   SILICONFLOW_API_KEY；模型固定为 tencent/Hunyuan-MT-7B。
+ * LLM 提供方：环境变量配置，默认仍为 SiliconFlow（硅基流动）。
+ *   LLM_BASE_URL    接口地址；优先级 LLM_BASE_URL > SILICONFLOW_BASE_URL > SiliconFlow 官方
+ *   LLM_API_KEY     API key；缺省回退 SILICONFLOW_API_KEY
+ *   LLM_MODEL       模型名；默认 tencent/Hunyuan-MT-7B
+ *   LLM_CONCURRENCY 并发度；默认 1（串行，与改造前等价）
+ *   LLM_EXTRA_BODY  额外请求体（JSON 字符串，浅合并进 body，用于透传中转站参数）
+ * 不设任何 LLM_* 环境变量时，报错文案 / provider 打印 / 请求体 / 模型与改造前完全一致。
  * 密钥通过环境变量读取，不入库；接口使用 OpenAI 兼容 chat/completions。
-  *
+ *
  * 用法：
  *   node scripts/pipeline.mjs [--top 50]     按候选顺序处理前 N 个（行为与改造前完全一致）
  *   node scripts/pipeline.mjs --ids a,b,c    只处理指定 shaderId（站点 /translate 触发的路径）
  *
  * --ids 与 --top 互斥；同时给出时以 --ids 为准并打印警告。
- * 每条光影独立 5 分钟超时（AbortController，同时中断其进行中的 fetch），
+ * 每条光影独立 5 分钟超时，并各自持有独立的 AbortController/signal
+ * （并发下超时只中断这一条的进行中 fetch，不会波及其他条目）；
  * 超时或抛错只影响该条，不阻断整批。
  * 设置 WORKER_URL + INTERNAL_STATUS_TOKEN 时，每条结束即回写 KV 状态（尽力而为）。
  */
@@ -35,7 +42,8 @@ const LANG_DIR = join(ROOT, 'site/public/lang')
 const SOURCES_DIR = join(ROOT, 'sources')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
-const MODEL = 'tencent/Hunyuan-MT-7B'
+const DEFAULT_MODEL = 'tencent/Hunyuan-MT-7B'
+const DEFAULT_BASE_URL = 'https://api.siliconflow.cn/v1/chat/completions'
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -63,38 +71,94 @@ async function reportStatus(id, payload) {
   }
 }
 
-// 当前正在处理的光影所对应的中断信号，由 processShaderWithTimeout 设置。
-// 所有网络请求都走 mfetch，超时时能一并中断，而不是留下悬挂的请求。
-let activeSignal = null
-function mfetch(url, opts = {}) {
-  return fetch(url, { ...opts, signal: opts.signal ?? activeSignal ?? undefined })
+// 所有网络请求都走 mfetch：中断信号由调用方显式传入（每条光影自己的 signal）。
+// 不再读模块级全局信号——并发下那样会让一条的超时打断其他条的请求。
+function mfetch(url, { signal, ...opts } = {}) {
+  return fetch(url, { ...opts, signal })
 }
-// ---------- LLM 提供方 ----------
+
+// ---------- LLM 提供方（环境变量可配，默认与改造前一致） ----------
+// 空字符串视为未设置，避免 `LLM_MODEL=` 之类把配置抹成空值。
+function envStr(name) {
+  const v = process.env[name]
+  return v === undefined || v.trim() === '' ? undefined : v
+}
+
+const LLM_MODEL = envStr('LLM_MODEL') ?? DEFAULT_MODEL
+const LLM_URL = () => envStr('LLM_BASE_URL') ?? envStr('SILICONFLOW_BASE_URL') ?? DEFAULT_BASE_URL
+const LLM_KEY = () => envStr('LLM_API_KEY') ?? envStr('SILICONFLOW_API_KEY')
+
+// 仅当「提供方本身」被改写（换模型/换地址）时按自定义提供方呈现；
+// 只设 LLM_CONCURRENCY / LLM_API_KEY 时不改打印，保持与改造前一致的字面输出。
+const LLM_ENV_SET = envStr('LLM_MODEL') !== undefined
+  || envStr('LLM_BASE_URL') !== undefined
+  || envStr('LLM_API_KEY') !== undefined
+
+// 额外请求体：浅合并进 body，透传中转站的额外参数（如 enable_thinking）。
+let LLM_EXTRA_BODY = {}
+const rawExtraBody = envStr('LLM_EXTRA_BODY')
+if (rawExtraBody !== undefined) {
+  try {
+    const parsed = JSON.parse(rawExtraBody)
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('必须是 JSON 对象')
+    LLM_EXTRA_BODY = parsed
+  } catch (err) {
+    console.error(`LLM_EXTRA_BODY 不是合法的 JSON 对象：${err.message}`)
+    process.exit(2)
+  }
+}
+
+// 并发度：默认 1（等价于改造前的串行 for）；非法值回退为 1。
+function readConcurrency() {
+  const raw = envStr('LLM_CONCURRENCY')
+  if (raw === undefined) return 1
+  const n = Number(raw)
+  if (!Number.isInteger(n) || n < 1) {
+    console.error(`LLM_CONCURRENCY 无效（${raw}），回退为 1（串行）`)
+    return 1
+  }
+  return n
+}
+const LLM_CONCURRENCY = readConcurrency()
+
+function providerHostLabel(url) {
+  try { return new URL(url).host } catch { return url }
+}
+
 const provider = {
-  id: 'hunyuan',
-  name: 'Hunyuan-MT-7B（SiliconFlow）',
-  url: () => process.env.SILICONFLOW_BASE_URL ?? 'https://api.siliconflow.cn/v1/chat/completions',
-  key: () => process.env.SILICONFLOW_API_KEY,
+  // id 只用于日志前缀；默认路径必须仍是 'hunyuan'，否则输出与改造前不一致。
+  id: envStr('LLM_MODEL') ? LLM_MODEL : 'hunyuan',
+  name: LLM_ENV_SET ? `${LLM_MODEL}（${providerHostLabel(LLM_URL())}）` : 'Hunyuan-MT-7B（SiliconFlow）',
+  url: LLM_URL,
+  key: LLM_KEY,
   body: (messages) => ({
-    model: MODEL,
+    model: LLM_MODEL,
     messages,
     temperature: 0.2,
     max_tokens: 8192,
+    ...LLM_EXTRA_BODY,
   }),
   extract: (j) => j.choices?.[0]?.message?.content,
 }
 
-if (!process.env.SILICONFLOW_API_KEY) {
-  console.error('缺少 SiliconFlow API key：请设置 SILICONFLOW_API_KEY')
+if (!LLM_KEY()) {
+  if (LLM_ENV_SET) {
+    console.error('缺少 LLM API key：请设置 LLM_API_KEY（或回退 SILICONFLOW_API_KEY）')
+  } else {
+    console.error('缺少 SiliconFlow API key：请设置 SILICONFLOW_API_KEY')
+  }
   process.exit(2)
 }
 console.log(`LLM 提供方：${provider.name}（${provider.body([]).model}）\n`)
+// 仅在显式配置时打印，保证「不设环境变量」时的输出与改造前逐字一致。
+if (envStr('LLM_CONCURRENCY') !== undefined) console.log(`LLM 并发度：${LLM_CONCURRENCY}\n`)
 
-async function chatOnce(activeProvider, messages) {
+async function chatOnce(activeProvider, messages, signal) {
   const res = await mfetch(activeProvider.url(), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${activeProvider.key()}` },
     body: JSON.stringify(activeProvider.body(messages)),
+    signal,
   })
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`)
   const j = await res.json()
@@ -103,12 +167,14 @@ async function chatOnce(activeProvider, messages) {
   return text
 }
 
-async function chatWithRetry(activeProvider, messages) {
+async function chatWithRetry(activeProvider, messages, signal) {
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
-      return await chatOnce(activeProvider, messages)
+      return await chatOnce(activeProvider, messages, signal)
     } catch (err) {
       if (attempt === MAX_RETRIES) throw err
+      // 本条已超时中断：立即结束，不再退避重试（否则会留下挂到超时之后的孤儿重试）
+      if (signal?.aborted) throw err
       const delay = 2000 * 2 ** (attempt - 1)
       await sleep(delay)
     }
@@ -133,9 +199,23 @@ function stripSkeleton(value) {
     .trim()
 }
 
+// ---------- 落盘队列（并发安全） ----------
+// 并发 worker 会同时改 catalog / db / glossary。所有写盘任务排进同一条队列串行执行，
+// 且写盘时才序列化当前内存状态，因此两个写任务不会交错写坏同一个 JSON。
+let writeQueue = Promise.resolve()
+
+function enqueueWrite(label, write) {
+  writeQueue = writeQueue
+    .then(write)
+    .catch((err) => console.error(`  [persist] ${label} 写回失败: ${err.message}`))
+  return writeQueue
+}
+
 // 保存翻译记忆
 function persistGlossary() {
-  writeFileSync(GLOSSARY_FILE, JSON.stringify(glossary, null, 2) + '\n')
+  return enqueueWrite('glossary', () => {
+    writeFileSync(GLOSSARY_FILE, JSON.stringify(glossary, null, 2) + '\n')
+  })
 }
 
 // ---------- 翻译提示词 ----------
@@ -213,7 +293,7 @@ function parseLangLines(text) {
 }
 
 // 翻译一个分块。模型偶发空响应/回显原文，因此回退率超过 10% 即重试，最多 3 次，取回退最少的版本。
-async function translateChunk(chunk, activeProvider) {
+async function translateChunk(chunk, activeProvider, signal) {
   const input = chunk.map(([k, v]) => `${k}=${v}`).join('\n')
   let best = null, bestFallback = chunk.length
   for (let attempt = 1; attempt <= 3 && bestFallback > Math.ceil(chunk.length * 0.1); attempt++) {
@@ -222,7 +302,7 @@ async function translateChunk(chunk, activeProvider) {
       text = await chatWithRetry(activeProvider, [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: input },
-      ])
+      ], signal)
     } catch (err) {
       if (attempt === 3 || best) {
         console.log(`    [${activeProvider.id}] 分块翻译失败（重试耗尽）: ${err.message.slice(0, 120)}`)
@@ -249,18 +329,22 @@ async function translateChunk(chunk, activeProvider) {
   return { map: best ?? new Map(chunk.map(([k, v]) => [k, v])), fallback: bestFallback }
 }
 
-async function translateEntries(pairs, activeProvider) {
+async function translateEntries(pairs, activeProvider, signal, localGlossary) {
   const out = new Map()
   let totalFallback = 0
   let glossaryHit = 0
   let llmCalls = 0
 
+  // 翻译记忆读取：全局（已合并的历史）优先，其次本条已累积的局部记忆。
+  const lookup = (skel) => glossary[skel] ?? localGlossary.get(skel)
+
   // 第一步：查翻译记忆，命中的直接复用
   const unmatched = []
   for (const [k, v] of pairs) {
     const skel = stripSkeleton(v)
-    if (skel && glossary[skel]) {
-      out.set(k, glossary[skel])
+    const hit = skel ? lookup(skel) : undefined
+    if (hit) {
+      out.set(k, hit)
       glossaryHit++
     } else {
       unmatched.push([k, v])
@@ -277,13 +361,14 @@ async function translateEntries(pairs, activeProvider) {
   // 第二步：未命中的发给 LLM
   for (let i = 0; i < unmatched.length; i += CHUNK_LINES) {
     const chunk = unmatched.slice(i, i + CHUNK_LINES)
-    const { map, fallback } = await translateChunk(chunk, activeProvider)
+    const { map, fallback } = await translateChunk(chunk, activeProvider, signal)
     for (const [k, v] of map) {
       out.set(k, v)
-      // 新翻译结果按英文原文写入翻译记忆
+      // 新翻译结果按英文原文记入本条的局部翻译记忆，不直接改共享的 glossary；
+      // 本条处理结束后由调用方一次性合并，避免并发 worker 同时写同一对象。
       const sourceSkeleton = stripSkeleton(chunk.find(([key]) => key === k)?.[1] ?? '')
-      if (sourceSkeleton && !glossary[sourceSkeleton]) {
-        glossary[sourceSkeleton] = v
+      if (sourceSkeleton && !lookup(sourceSkeleton)) {
+        localGlossary.set(sourceSkeleton, v)
       }
     }
     totalFallback += fallback
@@ -355,16 +440,27 @@ if (IDS.length) {
   console.log(`候选 ${candidates.length} 个，本次处理前 ${TOP} 个\n`)
 }
 
+// 写回 catalog + shaders。同一 tick 内的重复请求合并为一次写（persistDirty），
+// 实际写盘在微任务中执行，此时各 worker 的同步改动都已生效。
+let persistDirty = false
 function persist() {
-  writeFileSync(CATALOG_FILE, JSON.stringify(catalog, null, 2) + '\n')
-  writeFileSync(SHADERS_FILE, JSON.stringify(db, null, 2) + '\n')
+  if (persistDirty) return writeQueue
+  persistDirty = true
+  return enqueueWrite('catalog/shaders', () => {
+    persistDirty = false
+    writeFileSync(CATALOG_FILE, JSON.stringify(catalog, null, 2) + '\n')
+    writeFileSync(SHADERS_FILE, JSON.stringify(db, null, 2) + '\n')
+  })
 }
 
-async function processShader(entry) {
+async function processShader(entry, signal) {
   const tag = `[${entry.id}]`
+  // 本条光影的翻译记忆增量：处理结束后再合并进全局 glossary。
+  const localGlossary = new Map()
   try {
     const versions = await mfetch(`${MODRINTH_API}/project/${entry.projectId}/version`, {
       headers: { 'User-Agent': UA() },
+      signal,
     }).then((r) => r.json())
     const latest = versions[0]
     const file = latest?.files?.find((f) => f.primary) ?? latest?.files?.[0]
@@ -379,10 +475,10 @@ async function processShader(entry) {
     let zipBuf
     for (let attempt = 1; ; attempt++) {
       try {
-        zipBuf = Buffer.from(await mfetch(file.url, { headers: { 'User-Agent': UA() } }).then((r) => r.arrayBuffer()))
+        zipBuf = Buffer.from(await mfetch(file.url, { headers: { 'User-Agent': UA() }, signal }).then((r) => r.arrayBuffer()))
         break
       } catch (err) {
-        if (attempt >= 3) throw err
+        if (attempt >= 3 || signal?.aborted) throw err
         console.log(`${tag} 下载失败（第 ${attempt} 次）: ${err.message.slice(0, 80)}，重试`)
         await sleep(2000 * attempt)
       }
@@ -424,7 +520,9 @@ async function processShader(entry) {
     }
 
     console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${provider.id}] 开始初翻…`)
-    const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, provider)
+    const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, provider, signal, localGlossary)
+    // 合并本条的局部翻译记忆（同步循环、无 await，合并本身不会被并发打断）
+    for (const [k, v] of localGlossary) if (!glossary[k]) glossary[k] = v
     console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}`)
     // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
     if (totalFallback > pairs.length * 0.3) {
@@ -504,8 +602,10 @@ async function processShader(entry) {
  * 超时或抛错都只让这一条计为失败，不影响后续条目（失败隔离）。
  */
 async function processShaderWithTimeout(entry) {
+  // 每条光影独立的中断信号：超时只中断这一条的进行中请求，
+  // 并发处理其他条目时互不影响（不再使用模块级 activeSignal）。
   const controller = new AbortController()
-  activeSignal = controller.signal
+  const { signal } = controller
 
   let timer
   const timeout = new Promise((resolve) => {
@@ -518,12 +618,11 @@ async function processShaderWithTimeout(entry) {
   let result
   try {
     result = await Promise.race([
-      processShader(entry).catch((err) => ({ status: STATUS.FAILED, error: err.message.slice(0, 200) })),
+      processShader(entry, signal).catch((err) => ({ status: STATUS.FAILED, error: err.message.slice(0, 200) })),
       timeout,
     ])
   } finally {
     clearTimeout(timer)
-    activeSignal = null
   }
 
   if (result === 'timeout') {
@@ -547,11 +646,28 @@ function UA() {
   return 'shader-i18n-site/0.1.0 (translation pipeline)'
 }
 
+/**
+ * 固定并发度的 worker pool。concurrency = 1 时与改造前的串行 for 完全等价。
+ * queue.shift() 与空值判断之间没有 await，单线程下不会把同一条派发给两个 worker。
+ */
+async function runPool(items, worker, concurrency) {
+  const queue = [...items]
+  const workers = Math.min(concurrency, queue.length)
+  await Promise.all(Array.from({ length: workers }, async () => {
+    for (;;) {
+      const entry = queue.shift()
+      if (!entry) return
+      await worker(entry)
+    }
+  }))
+}
+
 try {
-  for (const entry of worklist) await processShaderWithTimeout(entry)
+  await runPool(worklist, processShaderWithTimeout, LLM_CONCURRENCY)
 } finally {
-  persist()
-  persistGlossary()
+  // 等在飞的写盘任务落完再退出（persist 现在是排队 + 微任务执行）
+  await persist()
+  await persistGlossary()
   rmSync(tmp, { recursive: true, force: true })
   console.log(`\n流水线结束：完成 ${done}，自带中文排除 ${skippedNative}，失败/跳过 ${failed}`)
 }
