@@ -1,0 +1,14 @@
+#shaders/lang/zh_CN.lang
+# Colorblindness Shaders v0.2.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Colorblind-Shaders-v0.2.0-beta.zip 的 shaders/lang/en_US.lang
+option.PROTANOMALY_STRENGTH = Protanomaly
+option.DEUTANOMALY_STRENGTH = Deuteranomaly
+option.TRITANOMALY_STRENGTH = Tritanomaly
+
+value.PROTANOMALY_STRENGTH.0 =普通
+value.DEUTANOMALY_STRENGTH.0 =普通
+value.TRITANOMALY_STRENGTH.0 =普通
+
+value.PROTANOMALY_STRENGTH.10 =红色盲
+value.DEUTANOMALY_STRENGTH.10 =绿色盲
+value.TRITANOMALY_STRENGTH.10 =蓝色盲

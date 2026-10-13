@@ -1,0 +1,45 @@
+#shaders/lang/zh_CN.lang
+# 1 Shader v26.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：1 Shader.zip 的 shaders/lang/en_us.lang
+screen.SKY=天空与云
+screen.LIGHTING=光照与氛围
+screen.WATER=水
+screen.COLOR=颜色与泛光
+profile.PERFORMANCE=性能
+profile.BALANCED=平衡
+profile.CINEMATIC=电影级
+option.CLOUD_STEPS=云层质量
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_SCALE=云层大小
+option.AURORA_STRENGTH=极光亮度
+option.AURORA_STRENGTH.comment=每个晴朗的主世界夜晚呈现流动的绿、青、紫、粉色光幕。云层会遮挡极光，水面中也会映出极光。
+option.NETHER_MOOD=下界紫绯氛围
+option.NETHER_MOOD.comment=重设下界环境光并加深紫色/绯红色薄雾，与橙色火光形成对比。设为 0 时恢复旧版薄雾配色。
+option.GODRAY_STEPS=丁达尔效应质量
+option.GODRAY_STRENGTH=丁达尔效应强度
+option.GODRAY_DENSITY=体积光散射密度
+option.GODRAY_DENSITY.comment=光束可见度独立于大气薄雾。面向穿过树木或开口的低角度阳光，可看到清晰的光柱。
+option.VIBRANCE=鲜艳度
+option.SATURATION=色彩饱和度
+option.VIBRANCE.comment=提升暗淡色彩的自然饱和度，同时保护暖色调和高光免于过度饱和。
+option.FOG_DENSITY=大气雾霭
+option.FANTASY_HAZE=奇幻蓝色薄雾
+option.FANTASY_HAZE.comment=随距离递增的冷蓝色空气透视效果。在地下和夜晚会减弱，近处材质保持清晰。
+option.WATER_WAVES=波浪强度
+option.WATER_CLARITY=水体清晰度
+option.WATER_SOFTNESS=水面反射柔化
+option.CUSTOM_RAIN=光影雨水
+option.RAIN_OPACITY=雨的可见度
+option.CAMERA_WATER=镜头水渍
+option.RAIN_RIPPLES=雨滴涟漪
+option.DIMENSION_STRENGTH=下界与末地氛围
+option.CAMERA_WATER.comment=出水后，折射水膜与滑落的水滴会在四秒内逐渐消退。
+option.WATER_REFLECTIONS=屏幕空间反射
+option.EXPOSURE=曝光
+option.BLOOM_STRENGTH=泛光
+option.SHADOW_FILTER=阴影柔和度
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.CLOUD_STEPS.comment=采样数越高，体积云细节越好，但 GPU 开销也越高。
+option.WATER_REFLECTIONS.comment=反射可见地形，在屏幕边缘则回退为程序化天空。
+option.WATER_CLARITY.comment=数值越高，越多光线可穿透水体。

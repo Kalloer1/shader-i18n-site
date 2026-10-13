@@ -1,0 +1,13 @@
+#shaders/lang/zh_CN.lang
+# PS FPS SHADER vFull-Shadows-3 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：PS FPS SHADER V3 SHADOW.zip 的 shaders/lang/en_us.lang
+# Shader Pack Settings labels
+option.shadowDistance =阴影距离
+option.shadowDistance.comment = Radius of shadow rendering in blocks. Higher values show farther shadows and cost more GPU time.
+option.shadowMapResolution = Shadow Texture Resolution
+option.shadowMapResolution.comment = Shadow-map texture size. Higher values improve detail but increase GPU and memory cost.
+suffix.shadowDistance =方块
+value.shadowMapResolution.512 = 512 px (fast)
+value.shadowMapResolution.1024 = 1024 px
+value.shadowMapResolution.2048 = 2048 px
+value.shadowMapResolution.4096 = 4096 px (heavy)

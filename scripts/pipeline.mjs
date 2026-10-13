@@ -3,14 +3,15 @@
  * 自动汉化流水线（ADR-0005）：下载 → 检测自带中文 → LLM 初翻 → 校验 → 登记。
  *
  * 候选：目录中按下载量排序、未被流水线覆盖且不在缺少英文源清单中的光影（无汉化映射、未检出自带中文）。
- * 翻译默认使用单一模型并按候选顺序（串行）处理，避免免费接口并发限流和同一文件术语不一致；
- * 需要提速时用 LLM_CONCURRENCY 显式开启并发（每条光影仍各自独立超时、独立中断）。
+ * 翻译默认使用模型池，按分块轮转调用；失败或回退过高时自动尝试下一个模型。
+ * LLM_CONCURRENCY 控制光影级并发（每条光影仍各自独立超时、独立中断）。
  *
  * LLM 提供方：环境变量配置，默认仍为 SiliconFlow（硅基流动）。
  *   LLM_BASE_URL    接口地址；优先级 LLM_BASE_URL > SILICONFLOW_BASE_URL > SiliconFlow 官方
  *   LLM_API_KEY     API key；缺省回退 SILICONFLOW_API_KEY
- *   LLM_MODEL       模型名；默认 tencent/Hunyuan-MT-7B
- *   LLM_CONCURRENCY 并发度；默认 1（串行，与改造前等价）
+ *   LLM_MODELS      模型名列表（逗号分隔）；优先于 LLM_MODEL
+ *   LLM_MODEL       兼容单模型配置，也接受逗号分隔列表
+ *   LLM_CONCURRENCY 并发度；默认 10
  *   LLM_EXTRA_BODY  额外请求体（JSON 字符串，浅合并进 body，用于透传中转站参数）
  * 不设任何 LLM_* 环境变量时，报错文案 / provider 打印 / 请求体 / 模型与改造前完全一致。
  * 密钥通过环境变量读取，不入库；接口使用 OpenAI 兼容 chat/completions。
@@ -43,12 +44,16 @@ const SOURCES_DIR = join(ROOT, 'sources')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
 const DEFAULT_MODEL = 'tencent/Hunyuan-MT-7B'
+const DEFAULT_CONCURRENCY = 10
 const DEFAULT_BASE_URL = 'https://api.siliconflow.cn/v1/chat/completions'
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 // 每条光影的处理上限：防止单个卡死的下载/LLM 调用拖垮整批（在 CI 里就是整个 workflow 超时）。
-const PER_SHADER_TIMEOUT_MS = 5 * 60 * 1000
+const PER_SHADER_TIMEOUT_MS = (() => {
+  const raw = Number(process.env.LLM_PER_SHADER_TIMEOUT_MS)
+  return Number.isFinite(raw) && raw > 0 ? raw : 15 * 60 * 1000
+})()
 // 状态回写目标（Worker 的 /status）。两者缺一即静默跳过，不影响本地手动运行。
 const WORKER_URL = process.env.WORKER_URL
 const INTERNAL_STATUS_TOKEN = process.env.INTERNAL_STATUS_TOKEN
@@ -84,13 +89,24 @@ function envStr(name) {
   return v === undefined || v.trim() === '' ? undefined : v
 }
 
-const LLM_MODEL = envStr('LLM_MODEL') ?? DEFAULT_MODEL
+function parseModels() {
+  const raw = envStr('LLM_MODELS') ?? envStr('LLM_MODEL')
+  if (raw === undefined) return [DEFAULT_MODEL]
+  return raw.split(',').map((s) => s.trim()).filter(Boolean)
+}
+
+const LLM_MODELS = parseModels()
+if (!LLM_MODELS.length) {
+  console.error('LLM_MODELS / LLM_MODEL 不能为空')
+  process.exit(2)
+}
 const LLM_URL = () => envStr('LLM_BASE_URL') ?? envStr('SILICONFLOW_BASE_URL') ?? DEFAULT_BASE_URL
 const LLM_KEY = () => envStr('LLM_API_KEY') ?? envStr('SILICONFLOW_API_KEY')
 
 // 仅当「提供方本身」被改写（换模型/换地址）时按自定义提供方呈现；
 // 只设 LLM_CONCURRENCY / LLM_API_KEY 时不改打印，保持与改造前一致的字面输出。
-const LLM_ENV_SET = envStr('LLM_MODEL') !== undefined
+const LLM_ENV_SET = envStr('LLM_MODELS') !== undefined
+  || envStr('LLM_MODEL') !== undefined
   || envStr('LLM_BASE_URL') !== undefined
   || envStr('LLM_API_KEY') !== undefined
 
@@ -108,14 +124,14 @@ if (rawExtraBody !== undefined) {
   }
 }
 
-// 并发度：默认 1（等价于改造前的串行 for）；非法值回退为 1。
+// 并发度：默认 10；非法值回退为默认值。
 function readConcurrency() {
   const raw = envStr('LLM_CONCURRENCY')
-  if (raw === undefined) return 1
+  if (raw === undefined) return DEFAULT_CONCURRENCY
   const n = Number(raw)
   if (!Number.isInteger(n) || n < 1) {
-    console.error(`LLM_CONCURRENCY 无效（${raw}），回退为 1（串行）`)
-    return 1
+    console.error(`LLM_CONCURRENCY 无效（${raw}），回退为 ${DEFAULT_CONCURRENCY}`)
+    return DEFAULT_CONCURRENCY
   }
   return n
 }
@@ -125,20 +141,31 @@ function providerHostLabel(url) {
   try { return new URL(url).host } catch { return url }
 }
 
-const provider = {
-  // id 只用于日志前缀；默认路径必须仍是 'hunyuan'，否则输出与改造前不一致。
-  id: envStr('LLM_MODEL') ? LLM_MODEL : 'hunyuan',
-  name: LLM_ENV_SET ? `${LLM_MODEL}（${providerHostLabel(LLM_URL())}）` : 'Hunyuan-MT-7B（SiliconFlow）',
-  url: LLM_URL,
-  key: LLM_KEY,
-  body: (messages) => ({
-    model: LLM_MODEL,
-    messages,
-    temperature: 0.2,
-    max_tokens: 8192,
-    ...LLM_EXTRA_BODY,
-  }),
-  extract: (j) => j.choices?.[0]?.message?.content,
+function createProvider(model) {
+  const isDefault = !LLM_ENV_SET && model === DEFAULT_MODEL
+  return {
+    id: model,
+    name: isDefault ? 'Hunyuan-MT-7B（SiliconFlow）' : `${model}（${providerHostLabel(LLM_URL())}）`,
+    url: LLM_URL,
+    key: LLM_KEY,
+    body: (messages) => ({
+      model,
+      messages,
+      temperature: 0.2,
+      max_tokens: 8192,
+      ...LLM_EXTRA_BODY,
+    }),
+    extract: (j) => j.choices?.[0]?.message?.content,
+  }
+}
+
+const providers = LLM_MODELS.map(createProvider)
+const provider = providers[0]
+let providerCursor = 0
+
+function nextProviderOrder(list = providers) {
+  const start = providerCursor++ % list.length
+  return [...list.slice(start), ...list.slice(0, start)]
 }
 
 if (!LLM_KEY()) {
@@ -149,7 +176,10 @@ if (!LLM_KEY()) {
   }
   process.exit(2)
 }
-console.log(`LLM 提供方：${provider.name}（${provider.body([]).model}）\n`)
+const providerLabel = providers.length === 1 && !LLM_ENV_SET
+  ? `${provider.name}（${provider.body([]).model}）`
+  : providers.map((p) => `${p.name}（${p.body([]).model}）`).join(' / ')
+console.log(`LLM 提供方：${providerLabel}\n`)
 // 仅在显式配置时打印，保证「不设环境变量」时的输出与改造前逐字一致。
 if (envStr('LLM_CONCURRENCY') !== undefined) console.log(`LLM 并发度：${LLM_CONCURRENCY}\n`)
 
@@ -297,43 +327,46 @@ function parseLangLines(text) {
 }
 
 // 翻译一个分块。模型偶发空响应/回显原文，因此回退率超过 10% 即重试，最多 3 次，取回退最少的版本。
-async function translateChunk(chunk, activeProvider, signal) {
+async function translateChunk(chunk, activeProviders, signal) {
+  const providerList = Array.isArray(activeProviders) ? activeProviders : [activeProviders]
   const input = chunk.map(([k, v]) => `${k}=${v}`).join('\n')
   let best = null, bestFallback = chunk.length
-  for (let attempt = 1; attempt <= 3 && bestFallback > Math.ceil(chunk.length * 0.1); attempt++) {
-    let text
-    try {
-      text = await chatWithRetry(activeProvider, [
-        { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: input },
-      ], signal)
-    } catch (err) {
-      if (attempt === 3 || best) {
+  const threshold = Math.ceil(chunk.length * 0.1)
+  for (const activeProvider of providerList) {
+    for (let attempt = 1; attempt <= 3 && bestFallback > threshold; attempt++) {
+      let text
+      try {
+        text = await chatWithRetry(activeProvider, [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user', content: input },
+        ], signal)
+      } catch (err) {
         console.log(`    [${activeProvider.id}] 分块翻译失败（重试耗尽）: ${err.message.slice(0, 120)}`)
         break
       }
-      continue
+      const got = parseLangLines(text)
+      const out = new Map()
+      let fallback = 0
+      for (const [k, v] of chunk) {
+        const zh = got.get(k)
+        if (zh && zh !== v) out.set(k, zh)
+        else { out.set(k, v); fallback++ }
+      }
+      if (fallback < bestFallback) {
+        best = out
+        bestFallback = fallback
+      }
+      if (bestFallback > threshold) {
+        console.log(`    第 ${attempt} 次分块回退率 ${fallback}/${chunk.length}，重试`)
+      }
     }
-    const got = parseLangLines(text)
-    const out = new Map()
-    let fallback = 0
-    for (const [k, v] of chunk) {
-      const zh = got.get(k)
-      if (zh && zh !== v) out.set(k, zh)
-      else { out.set(k, v); fallback++ }
-    }
-    if (fallback < bestFallback) {
-      best = out
-      bestFallback = fallback
-    }
-    if (bestFallback > Math.ceil(chunk.length * 0.1)) {
-      console.log(`    第 ${attempt} 次分块回退率 ${fallback}/${chunk.length}，重试`)
-    }
+    if (bestFallback <= threshold) break
   }
   return { map: best ?? new Map(chunk.map(([k, v]) => [k, v])), fallback: bestFallback }
 }
 
-async function translateEntries(pairs, activeProvider, signal, localGlossary) {
+async function translateEntries(pairs, activeProviders, signal, localGlossary) {
+  const providerList = Array.isArray(activeProviders) ? activeProviders : [activeProviders]
   const out = new Map()
   let totalFallback = 0
   let glossaryHit = 0
@@ -365,7 +398,8 @@ async function translateEntries(pairs, activeProvider, signal, localGlossary) {
   // 第二步：未命中的发给 LLM
   for (let i = 0; i < unmatched.length; i += CHUNK_LINES) {
     const chunk = unmatched.slice(i, i + CHUNK_LINES)
-    const { map, fallback } = await translateChunk(chunk, activeProvider, signal)
+    const orderedProviders = providerList.length > 1 ? nextProviderOrder(providerList) : providerList
+    const { map, fallback } = await translateChunk(chunk, orderedProviders, signal)
     for (const [k, v] of map) {
       out.set(k, v)
       // 新翻译结果按英文原文记入本条的局部翻译记忆，不直接改共享的 glossary；
@@ -460,6 +494,9 @@ function persist() {
 async function processShader(entry, signal, localGlossary) {
   const tag = `[${entry.id}]`
   try {
+    if (signal.aborted) {
+      return { status: STATUS.FAILED, error: '处理超时' }
+    }
     const versions = await mfetch(`${MODRINTH_API}/project/${entry.projectId}/version`, {
       headers: { 'User-Agent': UA() },
       signal,
@@ -521,8 +558,8 @@ async function processShader(entry, signal, localGlossary) {
       return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
     }
 
-    console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${provider.id}] 开始初翻…`)
-    const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, provider, signal, localGlossary)
+    console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${LLM_MODELS.join(', ')}] 开始初翻…`)
+    const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, providers, signal, localGlossary)
     // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
     console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}`)
     // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
@@ -556,6 +593,9 @@ async function processShader(entry, signal, localGlossary) {
       return { status: STATUS.FAILED, error: msg }
     }
 
+    if (signal.aborted) {
+      throw new Error('处理超时')
+    }
     mkdirSync(dirname(outPath), { recursive: true })
     writeFileSync(outPath, header + outLines.join('\n'))
 
@@ -576,9 +616,8 @@ async function processShader(entry, signal, localGlossary) {
       langVersion: '1.0.0',
       file: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
       quark: '',
-      baidu: '',
       updatedAt: new Date().toISOString().slice(0, 10),
-      contributors: [`AI 初翻（${provider.name.split('（')[0]}），未人工校对`],
+      contributors: [`AI 初翻（免费模型池：${LLM_MODELS.join(' / ')}），未人工校对`],
     })
     done++
     processed++
@@ -592,6 +631,9 @@ async function processShader(entry, signal, localGlossary) {
       shaderVersion,
     }
   } catch (err) {
+    if (signal.aborted) {
+      return { status: STATUS.FAILED, error: '处理超时' }
+    }
     console.log(`${tag} 失败: ${err.message.slice(0, 200)}`)
     failed++
     return { status: STATUS.FAILED, error: err.message.slice(0, 200) }

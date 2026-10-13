@@ -1,0 +1,37 @@
+#shaders/lang/zh_CN.lang
+# Verity Shader v1.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：VerityShaderV1.2.zip 的 shaders/lang/en_us.lang
+option.chromaticAbberation =色差
+option.abberationAmount =色差强度
+option.noiseToggle =噪声
+option.noiseSize =噪点尺寸
+option.vignetteAmount =暗角大小
+option.vignette =暗角
+option.fogToggle =雾
+option.fogStrenth =雾气强度
+option.oldFoliageGreen =旧版鲜艳绿色树叶
+option.foliageGreenAmount = Acid grass
+option.foliageGreenAmount.comment = if set to anything higher than 1.3, will make grass acid colour, will work only with Old Vibrant Green Foliage set to true
+option.noWaterTransparency =无水体透明度
+option.waterBlueness =水体蓝度调节
+option.fogSkyOverlap =雾天重叠效果
+option.starBrightness =星星亮度
+option.sunMoonBrightness =日月亮度
+profile.original =真实
+profile.cinematic = §bWIP
+option.grayscaleLight = Grayscale Lighting
+option.caveFogLow = Cave fog low point
+option.caveFogLow.comment = Where fog becomes black, set to -20b from Y cave start
+option.caveFogHigh = Cave fog high point
+option.caveFogHigh.comment = Where fog starts to become black, set to -10b from Y cave start
+option.fogStart =雾起始距离
+option.fogStart.comment = Where fog starts to form
+option.fogEnd = Fog end distance
+option.fogEnd.comment = Where fog becomes full
+screen.suboptions = §eDetails
+screen.fog = §bFog settings
+
+#Credit to Capt Tatsu for button code
+option.ABOUT=VerityShader1.0
+option.ABOUT.comment=作者 Acupofchicory，modrinth.com/user/acupofchicory
+value.ABOUT.0=作者：Acupofchicory

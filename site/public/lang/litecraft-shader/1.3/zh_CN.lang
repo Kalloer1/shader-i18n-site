@@ -1,0 +1,160 @@
+#shaders/lang/zh_CN.lang
+# LiteCraft Shader v1.3 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：LiteCraft-Shaders-v1.3.zip 的 shaders/lang/en_us.lang
+screen.SHADOWS_SCREEN=阴影
+screen.SKY_SCREEN=天空与太阳
+screen.CLOUD_SCREEN=云
+screen.LIGHT_SCREEN=光照亮度
+screen.WAVE_SCREEN=摆动与水体
+screen.WATER_SCREEN=水面（BSL）
+screen.WATER_COLOR_SCREEN=水体颜色
+screen.FX_SCREEN=光线与闪烁
+screen.CAMERA_SCREEN=镜头与大气
+screen.COLOR_SCREEN=颜色分级
+
+profile.POTATO=土豆
+profile.FAST=快速
+profile.BALANCED=平衡
+profile.PRETTY=精美
+
+option.SHADOWS=太阳阴影
+option.SHADOW_FLOOR=阴影区亮度
+option.SHADOW_FLOOR.comment=白天直射阳光仍能照到阴影地面的程度。数值越高，阴影越亮、越柔和。
+option.SHADOWS.comment=来自太阳和月亮的实时阴影。本光影包中性能开销最大的一项。
+option.SHADOW_SOFT=柔和阴影
+option.SHADOW_SOFT.comment=4 shadow samples instead of 1. Smoother edges, costs a few FPS.
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=数值越高，阴影越清晰，但占用更多显存、帧数更低。768-1024 适合 2GB 显卡。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影绘制的距离，以方块计。数值越低，性能越好。
+option.sunPathRotation=太阳路径角度
+option.sunPathRotation.comment=倾斜太阳的运行轨迹，使正午时的阴影不会完全垂直。
+
+option.REAL_SUN_MOON=写实日月
+option.REAL_SUN_MOON.comment=带阴影效果的日月圆盘，日出日落时会变红。几乎没有开销。
+option.SKY_SATURATION=天空鲜艳度
+option.SKY_SATURATION.comment=白天天空蓝色的饱和程度。天空显得苍白或发灰时可调高。
+option.SUN_MOON_SIZE=太阳与月亮尺寸 
+option.SUN_MOON_SIZE.comment=默认现在是更小、更写实的尺寸。
+option.REAL_CLOUDS=LiteCraft 网格云
+option.REAL_CLOUDS.comment=仅在云朵样式为 50 时使用（旧版 v2.6 积云，基于原版云的几何体）。
+option.CLOUD_STYLE=云层样式
+option.CLOUD_STYLE.comment=0 = 原版，1 = Complementary Reimagined，3 = Complementary Unbound（默认），50 = 旧版 LiteCraft 网格云。
+option.CLOUD_QUALITY=云层质量
+option.CLOUD_QUALITY.comment=1 = 最省性能（适合低端 GPU），2 = 形状与自阴影更好，3 = 最高。
+option.CLOUD_ALT1=云层高度
+option.CLOUD_SPEED_MULT=云朵速度 (%)
+option.CLOUD_UNBOUND_AMOUNT=云量
+option.CLOUD_UNBOUND_SIZE_MULT=云朵大小 (%)
+option.CLOUD_UNBOUND_RAIN_ADD=雨天额外云量
+option.CLOUD_BRIGHTNESS=云朵亮度
+option.SKY_GLOW=天空辉光
+option.SKY_GLOW.comment=太阳和月亮周围的光线散射光晕。
+
+option.LIGHT_EXPOSURE=曝光
+option.LIGHT_EXPOSURE.comment=整体场景亮度（BSL 风格光照）。数值越低越暗、更自然，越高越亮。
+option.SUN_LIGHT=阳光强度
+option.SUN_LIGHT.comment=直射阳光照射在受光表面上的强度（调高后阴影会相对变得更暗）。
+option.MOON_LIGHT=月光强度
+option.MOON_LIGHT.comment=夜晚月光照射在受光表面上的强度。
+option.AMBIENT_BRIGHTNESS=环境光
+option.AMBIENT_BRIGHTNESS.comment=阴影中来自蓝天的补光。阴影区域显得太暗时可调高。
+option.TORCH_BRIGHTNESS=火把光照
+option.LIGHT_DESATURATION=暗部去饱和
+option.LIGHT_DESATURATION.comment=BSL 特性：黑暗、夜晚和雨天的区域会失去色彩，如同真实眼睛的视觉。
+option.DAY_BRIGHTNESS=太阳圆盘亮度
+option.DAY_BRIGHTNESS.comment=天空中太阳圆盘的亮度（不影响世界光照）。
+option.NIGHT_BRIGHTNESS=月盘亮度
+option.NIGHT_BRIGHTNESS.comment=天空中月亮圆盘的亮度（不影响世界光照）。
+
+option.WAVING_PLANTS=植物摆动
+option.WAVING_PLANTS.comment=草、树叶和农作物上的风动画。开销极低（仅顶点动画）。
+option.WATER_WAVES=水面波浪
+option.WATER_SPECULAR=水面反光闪烁
+option.WAVE_STRENGTH=波浪强度
+
+option.SATURATION=饱和度
+option.CONTRAST=对比度
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=光照之后应用的整体画面亮度。
+option.WHITE_POINT=高光衰减
+option.WHITE_POINT.comment=数值越高，高光越明亮锐利；数值越低，画面越柔和、越显灰白。
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY.comment=设为 0 可获得完全清晰的视野。
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=轻微加深屏幕四角。
+
+option.GOD_RAYS=体积光
+option.GOD_RAYS.comment=穿过树叶缝隙与雾的阳光，以及水下的光柱。会消耗几帧——可降低光线步进数，或在非常低端的 GPU 上关闭。
+option.GOD_RAY_STEPS=光线质量（步进数）
+option.GOD_RAY_STEPS.comment=步进数越多，光柱越平滑，但开销越大。设为 0 会禁用光线效果，即使上方的开关处于开启状态。
+option.GOD_RAY_STRENGTH=光线强度
+option.SNOW_SPARKLE=雪地闪光
+option.SNOW_SPARKLE.comment=阳光直射下雪块上的细小闪光。开销极低。
+option.SPARKLE_STRENGTH=闪烁强度
+
+option.MOTION_BLUR=动态模糊
+option.MOTION_BLUR.comment=沿镜头运动方向涂抹世界。手持物品保持清晰。在非常低端的 GPU 上请关闭。
+option.MOTION_BLUR_STRENGTH=模糊强度
+option.MOTION_BLUR_STRENGTH.comment=拖影的持续长度。0.35 较含蓄，0.70 具电影感。设为 0 时即使开关打开也不生效。
+option.MOTION_BLUR_SAMPLES=模糊采样
+option.MOTION_BLUR_SAMPLES.comment=采样越多，模糊越平滑，开销略增。GT 730 级别的显卡用 4 即可。
+
+option.CLOUD_OVERCAST=雨天阴云
+option.CLOUD_OVERCAST.comment=下雨时云层闭合成一整片灰云的完整程度。0 = 无效果。
+option.MOON_BRIGHTNESS=月球亮度
+option.MOON_GLOW=月光晕
+
+# ---- Water (ported from BSL Shaders by Capt Tatsu) ----
+option.WATER_REFLECTION=天空反射
+option.WATER_REFLECTION.comment=水面的天空菲涅尔反射：角度平缓时倒映天空，俯视时呈现水色。
+option.WATER_GLINT_STRENGTH=太阳光斑强度
+option.WATER_GLINT_STRENGTH.comment=水面 GGX 日/月高光的亮度。需要开启水面反光闪烁。
+option.WATER_NORMALS=波浪法线
+option.WATER_NORMALS.comment=基于噪声纹理的实时涟漪图案。每个水面像素需要 8 次纹理读取。「无」最省性能。
+value.WATER_NORMALS.0=无
+value.WATER_NORMALS.1=沃利噪声
+value.WATER_NORMALS.2=佩林噪声
+option.WATER_PARALLAX=波浪视差
+option.WATER_PARALLAX.comment=随视角偏移涟漪图案以增强立体感。每个水面像素额外 8 次纹理读取——低端 GPU 可跳过。
+option.WATER_BUMP=凹凸感
+option.WATER_BUMP.comment=涟漪的强度。
+option.WATER_DETAIL=细节
+option.WATER_DETAIL.comment=大涟漪与小涟漪的比例。
+option.WATER_SHARPNESS=锐化度
+option.WATER_SHARPNESS.comment=涟漪的锐利程度。
+value.WATER_SHARPNESS.0.8=低
+value.WATER_SHARPNESS.0.5=中
+value.WATER_SHARPNESS.0.2=高
+option.WATER_SPEED=波纹速度
+option.WATER_PIXEL=像素锁定
+option.WATER_PIXEL.comment=将涟漪图案吸附至像素网格。
+value.WATER_PIXEL.0=关
+option.WATER_MODE=水面纹理模式
+option.WATER_MODE.comment=默认：光影纯色。原版：原版贴图。着色原版：带光影颜色的原版贴图。纯色原版：仅原版群系颜色。
+value.WATER_MODE.0=默认
+value.WATER_MODE.1=原版
+value.WATER_MODE.2=原版色调
+value.WATER_MODE.3=平坦原版
+option.WATER_ALPHA_MODE=水体透明模式
+option.WATER_ALPHA_MODE.comment=纯色：光影透明度。原版：贴图透明度。
+value.WATER_ALPHA_MODE.0=平面模式
+value.WATER_ALPHA_MODE.1=原版
+option.WATER_FOG=水雾
+option.WATER_FOG.comment=仅水下：仅在潜入水中时可见雾。完整：还会透过水面对向下视野进行着色（额外一次深度读取）。
+value.WATER_FOG.0=仅限水下
+value.WATER_FOG.1=完整
+option.WATER_FOG_DENSITY=水雾密度
+option.UNDERWATER_DISTORTION=水下扭曲
+option.UNDERWATER_DISTORTION.comment=相机在水下时轻微的屏幕晃动。
+option.WATER_R=红
+option.WATER_G=绿
+option.WATER_B=蓝
+option.WATER_I=强度
+option.WATER_A=阿尔法
+option.WATER_F=雾气强度
+option.WATER_VI=原版强度
+option.WATER_VA=原版透明曲线
+
+option.EYE_GLOW=生物眼部发光
+option.EYE_GLOW.comment=发光眼睛的亮度（蜘蛛、末影人、幻翼、末影龙）。

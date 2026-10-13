@@ -1,0 +1,8 @@
+#shaders/lang/zh_CN.lang
+# RocketShaders v1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：RocketShaders-1.0.0.zip 的 shaders/lang/en_us.lang
+profile.comment=RocketShaders - 为 RocketCraft 打造的 Rocket League 体育场风格。
+option.DUSK=一天中的时间
+option.DUSK.comment=正午是明亮的体育场风格。黄昏是预告片中低垂的暖阳、长影与紫色天空。
+value.DUSK.0=正午
+value.DUSK.1=§d霓虹黄昏

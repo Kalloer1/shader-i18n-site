@@ -210,7 +210,6 @@ async function handleSubmit(request, env, origin) {
         langPath: '',
         shaderVersion: '',
         quark: '',
-        baidu: '',
         contact: contact || '',
         note: note || '',
       }
@@ -339,7 +338,6 @@ async function handleStatus(request, env, origin) {
     langPath: body.langPath ?? existing.langPath,
     shaderVersion: body.shaderVersion ?? existing.shaderVersion,
     quark: body.quark ?? existing.quark,
-    baidu: body.baidu ?? existing.baidu,
   }
 
   await writeEntry(env, entry)

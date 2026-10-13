@@ -35,10 +35,30 @@
   --shader-display-font: 'Chakra Petch', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
-/* 导航与页脚的玻璃质感 */
-.VPNavBar,
+/* 导航与页脚：去默认 VitePress 味，收成画廊风 */
+.VPNavBar {
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: color-mix(in srgb, #0d1117 82%, transparent) !important;
+}
 .VPFooter {
   backdrop-filter: blur(8px);
+  border-top: 1px solid var(--vp-c-divider);
+  background: linear-gradient(180deg, transparent, rgba(232, 163, 61, 0.04));
+  padding-block: 28px 32px !important;
+}
+.VPFooter .container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+.VPFooter .message {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  max-width: 46em;
+  line-height: 1.8;
 }
 
 /* 深色模式底色微调（比默认更暗、更冷） */
@@ -88,11 +108,36 @@
   z-index: 1;
 }
 
-/* 导航栏品牌色 */
+/* 导航栏：品牌色 + 悬停下划线，去默认味 */
 :root {
   --vp-c-brand-1: #e8a33d;
 }
-.VPNavBar .title span,
+.VPNavBar .title span {
+  font-family: var(--shader-display-font);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--vp-c-brand-1) !important;
+}
+.VPNavBarMenuLink {
+  position: relative;
+  font-weight: 500;
+  padding-bottom: 2px;
+}
+.VPNavBarMenuLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--vp-c-brand-1);
+  transition: right 0.2s ease;
+}
+.VPNavBarMenuLink:hover::after,
+.VPNavBarMenuLink.active::after {
+  right: 0;
+}
 .VPNavBarMenuLink.active {
   color: var(--vp-c-brand-1) !important;
 }
@@ -1125,4 +1170,45 @@ img.img-fallback {
 .VPPage .vp-doc > div > h2 {
   font-size: 24px;
   padding-top: 18px;
+}
+
+/* ============================================================
+   Direction C 首页
+   只覆盖首页，不改变详情页、指南页和现有全局组件。
+   ============================================================ */
+html:has(.home-shell) {
+  background: #0b0e12;
+}
+
+html:has(.home-shell) .VPContent::before,
+html:has(.home-shell) .VPContent::after {
+  display: none;
+}
+
+html:has(.home-shell) .VPContent,
+html:has(.home-shell) .VPPage,
+html:has(.home-shell) .vp-doc {
+  background: #0b0e12;
+}
+
+html:has(.home-shell) .vp-doc {
+  max-width: none;
+  padding: 0;
+}
+
+html:has(.home-shell) .VPNavBar {
+  background: #0b0e12 !important;
+  backdrop-filter: none;
+}
+
+.home-shell .shader-list {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+#dl-panel,
+#shader-list {
+  scroll-margin-top: calc(var(--vp-nav-height, 64px) + 76px);
 }

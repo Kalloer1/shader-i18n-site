@@ -1,0 +1,60 @@
+#shaders/lang/zh_CN.lang
+# AuroraLite v1.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：AuroraLite-26.2-v9.6.2-hotfix1.zip 的 shaders/lang/en_us.lang
+screen.SHADOWS =阴影
+screen.ATMOSPHERICS =大气效果
+screen.WATER =水
+profile.comment = LITE = lowest GPU cost; BALANCED = recommended starting point; CINEMATIC = higher quality and cost.
+
+option.GodRays = Sun Shafts
+option.GodRays.comment = Screen-space sun shafts. Light passes through gaps in trees, terrain and clouds.
+option.GodRayQuality = Sun Shaft Quality
+value.GodRayQuality.0 =轻量版
+value.GodRayQuality.1 =平衡
+value.GodRayQuality.2 =高
+
+option.Aurora =极光
+option.Aurora.comment = Snowy-biome aurora effect during deep night.
+option.NightNebula =夜间星云
+option.NightNebula.comment = Procedural nebula bands visible only at night.
+option.ProceduralClouds =云
+option.ProceduralClouds.comment = Volumetric-style clouds. Vanilla clouds are disabled by this pack, so turning this off means no clouds.
+option.CloudQuality =云层质量
+value.CloudQuality.0 =轻量版
+value.CloudQuality.1 =平衡
+value.CloudQuality.2 =高
+option.CloudCoverage =云朵覆盖度
+option.CloudCoverage.comment = How much of the sky is covered. Rain adds coverage automatically.
+option.CloudHeight =云层高度
+option.CloudHeight.comment = Base altitude of the cloud layer in blocks.
+option.GodRayStrength = Sun Shaft Strength
+option.OverworldFog =大气雾
+option.OverworldFog.comment = Distance haze, dawn/dusk mist and rain fog that blends into the sky.
+option.FogDensity =雾密度
+option.UnderwaterFogDensity =水下雾气密度
+option.UnderwaterFogDensity.comment = Higher = shorter underwater visibility.
+
+option.shadowMapResolution =阴影分辨率
+value.shadowMapResolution.1024 = 1024
+value.shadowMapResolution.1536 = 1536
+value.shadowMapResolution.2048 = 2048
+option.shadowDistance =阴影距离
+option.shadowDistance.comment = Radius of the shadow map in blocks.
+option.ShadowFilter =阴影滤波
+value.ShadowFilter.0 =强度
+value.ShadowFilter.1 =百分比接近过滤
+value.ShadowFilter.2 = Wide PCF
+
+option.WaterWaves =水面波浪
+option.WaterWaves.comment = Vertex waves, world-space ripples, sky reflections and sun glints.
+option.WaterFoam =岸边泡沫
+option.WaterFoam.comment = Foam where water meets the shore.
+option.WaterOpacity =水不透明度
+value.WaterOpacity.0.64 = 64%
+value.WaterOpacity.0.72 = 72%
+value.WaterOpacity.0.80 = 80%
+value.WaterOpacity.0.84 = 84%
+value.WaterOpacity.0.88 = 88%
+value.WaterOpacity.0.92 = 92%
+
+option.shadowMapResolution.comment = Higher resolution sharpens shadows but costs VRAM and shadow pass time.

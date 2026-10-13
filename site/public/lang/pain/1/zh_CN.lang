@@ -1,0 +1,8 @@
+#shaders/lang/zh_CN.lang
+# Pain. v1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Pain-v1.zip 的 shaders/lang/en_US.lang
+option.EPILEPSY_ACK=我已阅读并接受癫痫/光敏性警告
+option.EPILEPSY_ACK.comment=警告：光敏性癫痫发作警告\n\n此光影包包含带有快速闪光、频闪色彩和屏幕扭曲的可选效果。\n\n即使没有癫痫病史，极少数人在接触闪光或图案时也可能会癫痫发作。\n\n如出现头晕、视力异常、眼睛或肌肉抽搐、意识丧失、定向障碍或惊厥，请立即停止使用此光影并咨询医生。\n\n勾选此框即表示您已阅读此警告并接受相关风险。\n\n祝好运。\n\n-Remy
+
+option.PAIN_MODE=痛苦模式
+option.PAIN_MODE.comment=启用快速闪光、频闪和屏幕扭曲效果。需要先接受上述警告。

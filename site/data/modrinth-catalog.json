@@ -8514,7 +8514,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "sildurs-basic-shaders",
@@ -38789,7 +38790,7 @@
         "shadows",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -39232,7 +39233,7 @@
         "realistic",
         "reflections"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -46206,7 +46207,8 @@
         "waterfall"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "rtfshaders",
@@ -50479,7 +50481,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "just-vanilla.",
@@ -51413,7 +51416,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "potato-lite-shader",
@@ -51443,7 +51447,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "horizon-unbound",
@@ -52918,7 +52923,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "naturalvision",
@@ -54885,7 +54891,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "bloom-entity",
@@ -60877,7 +60884,7 @@
         "shadows",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -61186,7 +61193,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "emperial-shaders",
@@ -62281,7 +62289,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "catnip-shaders",
@@ -64202,7 +64211,7 @@
         "vanilla",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -66195,7 +66204,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "breeze-shader",
@@ -66400,7 +66410,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "bountyshader",
@@ -68112,7 +68123,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "vynixshader",
@@ -69412,7 +69424,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "cealith-shaders",
@@ -69520,7 +69533,7 @@
         "semi-realistic",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -69646,7 +69659,7 @@
       "lastSync": "2026-10-10"
     },
     {
-      "id": "pain.",
+      "id": "pain",
       "projectId": "yYcr1jRo",
       "title": "Pain.",
       "author": "RemyEliot",
@@ -69943,7 +69956,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "relighting",
@@ -70301,7 +70315,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "amiarchiveshader",
@@ -70602,7 +70617,8 @@
         "low"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "bcr-shades",
@@ -70662,7 +70678,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "doruks-shader-plus",
@@ -70756,7 +70773,7 @@
         "semi-realistic",
         "shadows"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -70995,7 +71012,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "astral-cinema",
@@ -71808,7 +71826,7 @@
         "shadows",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -71838,7 +71856,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "fnaf-static-cam-shader",
@@ -71881,7 +71900,7 @@
         "medium",
         "optifine"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -71982,7 +72001,7 @@
         "reflections",
         "shadows"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -72154,7 +72173,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "lve-sunward-shader",
@@ -72619,7 +72639,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "kourin-shaders",
@@ -72654,7 +72675,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "valtique",
@@ -73042,7 +73064,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "procpromo",
@@ -73166,7 +73189,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "elytrune-shaders",
@@ -73420,7 +73444,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "yamsu-shader",
@@ -73480,7 +73505,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "grayscale-rp",
@@ -73572,7 +73598,7 @@
         "reflections",
         "semi-realistic"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -73687,7 +73713,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "boralancesshaders",
@@ -73785,7 +73812,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "font-curtains",
@@ -73927,7 +73955,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "conversely-rp",
@@ -74264,7 +74293,7 @@
         "shadows",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -74326,7 +74355,7 @@
         "potato",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -75302,7 +75331,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "variancefog",
@@ -75329,7 +75359,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "inkdot-shaders",
@@ -75354,7 +75385,7 @@
         "iris",
         "low"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-10"
     },
     {
@@ -75383,7 +75414,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "aetherrealism",
@@ -75440,7 +75472,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-10"
+      "lastSync": "2026-10-10",
+      "noEnUsLang": true
     },
     {
       "id": "lavi_bloomz",

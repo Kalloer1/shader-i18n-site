@@ -1,0 +1,97 @@
+#shaders/lang/zh_CN.lang
+# AALab v1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：AA_Lab_1.0.zip 的 shaders/lang/en_US.lang
+# ---------------------------------------------------------------- screens
+screen.SCR_FXAA=FXAA 3.11 设置
+screen.SCR_FXAAF=FXAA 快速设置
+screen.SCR_NFAA=NFAA 设置
+screen.SCR_SMAA=SMAA（精简）设置
+screen.SCR_DEPTHAA=深度边缘抗锯齿设置
+screen.SCR_TAA=时间性抗锯齿设置
+screen.SCR_LAB=实验室工具
+
+# ---------------------------------------------------------------- main
+option.AA_MODE=抗锯齿模式
+option.AA_MODE.comment=选择抗锯齿技术。时域模式（TAA）会抖动相机，需要几帧才能稳定下来。
+value.AA_MODE.0=关
+value.AA_MODE.1=FXAA 3.11（质量）
+value.AA_MODE.2=FXAA 快速（主机）
+value.AA_MODE.3=NFAA（标准滤波）
+value.AA_MODE.4=SMAA 1x（精简）
+value.AA_MODE.5=深度边缘抗锯齿（几何）
+value.AA_MODE.6=TAA（时域）
+value.AA_MODE.7=TAA + FXAA
+value.AA_MODE.8=SMAA T2x（SMAA + TAA）
+
+option.SHARPEN_PERCENT=锐化（CAS）
+option.SHARPEN_PERCENT.comment=在抗锯齿之后应用的对比度自适应锐化。适用于会让画面变软的 TAA 和 FXAA。
+
+# ---------------------------------------------------------------- FXAA
+option.FXAA_SUBPIX=子像素质量
+option.FXAA_SUBPIX.comment=子像素锯齿（细线）的去除程度。越高越柔和。
+option.FXAA_EDGE_THRESHOLD=边缘阈值
+option.FXAA_EDGE_THRESHOLD.comment=将像素判定为边缘所需的最低局部对比度。越低，被平滑的边缘越多。
+option.FXAA_EDGE_THRESHOLD_MIN=边缘阈值（暗部）
+option.FXAA_EDGE_THRESHOLD_MIN.comment=削减对极暗区域的处理。
+option.FXAA_SEARCH_STEPS=搜索步数
+option.FXAA_SEARCH_STEPS.comment=FXAA 沿边缘搜索的距离。越高，长边缘效果越好，速度略慢。
+option.FXAAF_SPAN_MAX=模糊跨度
+option.FXAAF_SPAN_MAX.comment=快速 FXAA 的最大模糊长度（像素）。
+
+# ---------------------------------------------------------------- NFAA
+option.NFAA_THRESHOLD=边缘阈值
+option.NFAA_THRESHOLD.comment=进行模糊前所需的亮度梯度。越低越平滑、越模糊。
+option.NFAA_STRENGTH=模糊强度
+option.NFAA_STRENGTH.comment=沿边缘法线方向的模糊距离（像素）。
+
+# ---------------------------------------------------------------- SMAA
+option.SMAA_THRESHOLD=边缘阈值
+option.SMAA_THRESHOLD.comment=视为边缘的亮度差异。越低，检测到的边缘越多。
+option.SMAA_MAX_STEPS=最大搜索步数
+option.SMAA_MAX_STEPS.comment=SMAA 跟随的最长边缘线长度（像素）。
+option.SMAA_LOCAL_CONTRAST=局部对比度自适应
+option.SMAA_LOCAL_CONTRAST.comment=去除强边缘旁的弱边缘。越高，被模糊的纹理边缘越少。
+option.SMAA_STRENGTH=混合强度
+option.SMAA_STRENGTH.comment=缩放计算出的混合权重。
+
+# ---------------------------------------------------------------- Depth AA
+option.DEPTHAA_THRESHOLD=深度边缘阈值
+option.DEPTHAA_THRESHOLD.comment=视为几何边缘的相对深度曲率。只平滑几何边缘，纹理保持清晰。
+option.DEPTHAA_STRENGTH=模糊强度
+option.DEPTHAA_STRENGTH.comment=跨越几何边缘的模糊距离（像素）。
+
+# ---------------------------------------------------------------- TAA
+option.TAA_BLEND=历史权重
+option.TAA_BLEND.comment=保留多少前几帧的信息。越高越平滑，但拖影也越多。
+option.TAA_JITTER_SAMPLES=抖动采样数
+option.TAA_JITTER_SAMPLES.comment=Halton 抖动序列的长度。采样越多，子像素覆盖越精细。
+option.TAA_CLAMP_MODE=历史拒绝
+option.TAA_CLAMP_MODE.comment=如何修正错误的历史颜色以避免拖影。
+value.TAA_CLAMP_MODE.0=最小/最大钳制
+value.TAA_CLAMP_MODE.1=方差裁剪
+option.TAA_VARIANCE_GAMMA=方差 Gamma
+option.TAA_VARIANCE_GAMMA.comment=方差框的大小。越低拖影越少，但闪烁越多。
+option.TAA_HISTORY_FILTER=历史滤波
+option.TAA_HISTORY_FILTER.comment=重投影后如何采样历史缓冲区。
+value.TAA_HISTORY_FILTER.0=双线性
+value.TAA_HISTORY_FILTER.1=Catmull-Rom（锐利）
+option.TAA_MOTION_REJECTION=运动拒绝
+option.TAA_MOTION_REJECTION.comment=在相机移动时降低历史权重以减少拖尾。
+
+# ---------------------------------------------------------------- Lab
+option.LAB_VIEW=实验室视图
+option.LAB_VIEW.comment=用于对比抗锯齿模式的工具。注意：在 TAA 模式下，“无抗锯齿”一侧显示的是原始抖动，因此会轻微晃动。
+value.LAB_VIEW.0=普通
+value.LAB_VIEW.1=分屏（左侧 = 无抗锯齿）
+value.LAB_VIEW.2=放大镜
+value.LAB_VIEW.3=差异图
+option.LAB_SPLIT_POS=分屏位置
+option.LAB_SPLIT_POS.comment=分割线位置，以屏幕宽度的百分比表示。
+option.LAB_ZOOM=放大镜缩放
+option.LAB_ZOOM.comment=屏幕中心（黄色方框）的像素级缩放。上方方框为无抗锯齿，下方方框为有抗锯齿。
+option.LAB_ZOOM_SIZE=放大镜尺寸
+option.LAB_ZOOM_SIZE.comment=放大镜方框的尺寸，以屏幕高度的百分比表示。
+option.LAB_DIFF_GAIN=差异增益
+option.LAB_DIFF_GAIN.comment=差异贴图的亮度倍增系数。
+option.LAB_INDICATOR=模式指示器
+option.LAB_INDICATOR.comment=在左上角显示 9 个小方框。绿色方框为当前启用的抗锯齿模式（第一个为关闭）。

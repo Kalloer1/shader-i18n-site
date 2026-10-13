@@ -1,8 +1,12 @@
 // 站点数据合并：全量目录（自动） + 人工映射（shaders.json）按 Modrinth projectId 关联。
 // 目录条目覆盖绝大多数光影；shaders.json 提供汉化版本映射与精选元数据。
 import catalog from '../../data/modrinth-catalog.json'
+import hiresRaw from '../../data/gallery-hires.json'
 import db from '../../data/shaders.json'
 import missingSourceRaw from '../../data/missing-source.json'
+
+// Top80 高清原图（raw_url），根治 _350 缩略图拉大必糊；缺失回退缩略图
+const hiresMap = new Map(Object.entries(hiresRaw ?? {}))
 
 const missingSet = new Set(missingSourceRaw)
 
@@ -24,10 +28,12 @@ function mergeManual(entry, manual) {
     pageUrl: manual?._meta?.modrinth?.pageUrl ?? entry.pageUrl,
     gameVersions: entry.gameVersions ?? [],
     gallery: entry.gallery ?? [],
+    // 高清原图：Top80 有 raw_url，其余回退缩略图；cover() 优先用它
+    galleryHi: hiresMap.get(entry.id) ?? [],
     color: entry.color ?? '',
     categories: entry.categories ?? [],
     hasNativeZhCN: entry.hasNativeZhCN === true,
-    missingSource: missingSet.has(entry.id),
+    missingSource: missingSet.has(entry.id) || missingSet.has(entry.projectId) || entry.noEnUsLang === true,
     checked: entry.hasNativeZhCN !== null && entry.hasNativeZhCN !== undefined,
     // 人工字段
     nameCN: manual?.nameCN ?? '',
@@ -53,6 +59,60 @@ export function versionRange(versions) {
   if (!count) return null
   const fmt = (p) => `${p[0]}.${p[1]}${p[2] ? `.${p[2]}` : ''}`
   return { min: fmt(min), max: fmt(max), count }
+}
+
+// 首页与列表共用的展示状态，严格按业务优先级区分四种情况。
+export function shaderStatus(shader) {
+  if (!shader) {
+    return {
+      key: 'none',
+      label: '暂无汉化',
+      description: '暂未制作汉化文件。',
+    }
+  }
+  if (shader.langVersions?.length) {
+    return {
+      key: 'translated',
+      label: '已有汉化',
+      description: '已有可下载的简体中文语言文件。',
+    }
+  }
+  if (shader.hasNativeZhCN === true) {
+    return {
+      key: 'native',
+      label: '自带中文',
+      description: '该光影包已自带简体中文，无需额外安装汉化文件。',
+    }
+  }
+  if (shader.missingSource === true) {
+    return {
+      key: 'missing',
+      label: '无英文源',
+      description: '上游没有 en_US.lang，无法翻译。',
+    }
+  }
+  return {
+    key: 'none',
+    label: '暂无汉化',
+    description: '暂未制作汉化文件。',
+  }
+}
+
+export function shaderCover(shader) {
+  return shader?.galleryHi?.[0] || shader?.gallery?.[0] || shader?.iconUrl || ''
+}
+
+export function shaderCoverSource(shader) {
+  if (shader?.galleryHi?.[0]) return 'gallery-hires.json'
+  if (shader?.gallery?.[0]) return 'modrinth-catalog.json'
+  if (shader?.iconUrl) return 'Modrinth icon'
+  return '暂无图片'
+}
+
+export function shaderVersionRange(shader) {
+  const range = versionRange(shader?.gameVersions)
+  if (!range) return ''
+  return range.min === range.max ? range.min : `${range.min} ~ ${range.max}`
 }
 
 // 全量目录（含自带中文的光影，UI 打"自带中文"标签）

@@ -1,0 +1,33 @@
+#shaders/lang/zh_CN.lang
+# AnalogCraft vv1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：AnalogCraft v1.zip 的 shaders/lang/en_US.lang
+option.FILTER_MODE=视觉预设
+value.FILTER_MODE.0=关
+value.FILTER_MODE.1=VHS 摄像机
+value.FILTER_MODE.2=Game Boy（经典）
+value.FILTER_MODE.3=街机 CRT
+value.FILTER_MODE.4=夜视（第一代）
+value.FILTER_MODE.5=赛博朋克 / 霓虹都市
+value.FILTER_MODE.6=1920年代胶片
+value.FILTER_MODE.7=热成像 / 热力图
+value.FILTER_MODE.8=琥珀色终端
+value.FILTER_MODE.9=警用执法记录仪
+value.FILTER_MODE.10=闭路监控
+
+option.FILM_GRAIN=胶片颗粒
+value.FILM_GRAIN.0.0=关
+value.FILM_GRAIN.0.5=低
+value.FILM_GRAIN.1.0=标准（默认）
+value.FILM_GRAIN.1.5=高
+value.FILM_GRAIN.2.0=极端
+
+option.SCOPE_MODE=狙击镜行为
+value.SCOPE_MODE.0=已禁用（无瞄准镜）
+value.SCOPE_MODE.1=自动（仅缩放时）
+value.SCOPE_MODE.2=始终开启
+
+option.SCOPE_ZOOM=瞄准镜额外放大倍率
+value.SCOPE_ZOOM.1.0=1.0x（标准）
+value.SCOPE_ZOOM.2.0=2.0x 放大
+value.SCOPE_ZOOM.4.0=4.0x 放大
+value.SCOPE_ZOOM.8.0=8.0x 放大

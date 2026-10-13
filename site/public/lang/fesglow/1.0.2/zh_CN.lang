@@ -1,0 +1,39 @@
+#shaders/lang/zh_CN.lang
+# FESGlow v1.0.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：FESGlow.zip 的 shaders/lang/en_US.lang
+profile.FAST =快速
+profile.FAST.comment = Softer shadows and subtle rim light, best performance.
+profile.MEDIUM =中
+profile.MEDIUM.comment = Balanced look and performance.
+profile.ULTRA =超高
+profile.ULTRA.comment = Higher contrast shadows and brighter outline.
+
+screen.LIGHTING = Entity Lighting
+screen.LIGHTING.comment = Directional sun/moon lighting and model shadows.
+
+screen.RIMLIGHT =边缘光
+screen.RIMLIGHT.comment = Edge silhouette outline settings.
+
+option.DYNAMIC_ENTITY_LIGHTING = Directional Light
+option.DYNAMIC_ENTITY_LIGHTING.comment = Sunlight and moonlight angles on player and mob models.
+
+option.ENTITY_SHADOWS_ENABLED =实体阴影
+option.ENTITY_SHADOWS_ENABLED.comment = Darkens unlit faces of models.
+
+option.ENTITY_SHADOW_INTENSITY = Shadow Intensity
+option.ENTITY_SHADOW_INTENSITY.comment = Shadow darkness on character models.
+
+option.LIGHT_WRAPPING_ENABLED = Half-Lambert Wrap
+option.LIGHT_WRAPPING_ENABLED.comment = Softens harsh cube light-to-shadow transitions.
+
+option.LIGHT_WRAP_AMOUNT = Wrap Amount
+option.LIGHT_WRAP_AMOUNT.comment = How far light wraps onto shadowed sides.
+
+option.LIGHT_WRAP_SSS = Terminator Bleed
+option.LIGHT_WRAP_SSS.comment = Warm tint bleed along the shadow edge.
+
+option.RIM_LIGHT_ENABLED =边缘光
+option.RIM_LIGHT_ENABLED.comment = Colored edge outline using texture tones.
+
+option.RIM_LIGHT_INTENSITY = Rim Brightness
+option.RIM_LIGHT_INTENSITY.comment = Brightness of the silhouette outline.

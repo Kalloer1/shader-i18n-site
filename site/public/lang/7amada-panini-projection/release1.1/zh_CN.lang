@@ -1,0 +1,7 @@
+#shaders/lang/zh_CN.lang
+# 7amada Panini Projection Lite vrelease1.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：7amada-panini-projection-lite.zip 的 shaders/lang/en_US.lang
+option.PANINI_DIST=Panini 强度
+option.PANINI_DIST.comment=0 为正常透视，100 为完整 Panini 投影。数值越低越接近正常透视效果。
+option.PANINI_CROP=边缘裁剪
+option.PANINI_CROP.comment=100 为刚好放大至隐藏弯曲边框，0 为不放大（边框可能会拉伸）。

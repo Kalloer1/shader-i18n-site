@@ -74,8 +74,40 @@ for (const e of catalog.shaders) {
   const nameCN = manual?.nameCN ?? ''
   const author = manual?._meta?.modrinth?.author ?? e.author ?? ''
   const downloads = manual?._meta?.modrinth?.downloads ?? e.downloads
-  const pageUrl = manual?._meta?.modrinth?.pageUrl ?? e.pageUrl
+  const pageUrl =
+    manual?._meta?.modrinth?.pageUrl ??
+    e.pageUrl ??
+    (e.projectId ? `https://modrinth.com/shader/${encodeURIComponent(e.projectId)}` : '')
   const langVersions = manual?.langVersions ?? []
+  const isMissingSource =
+    e.missingSource === true || missingSet.has(e.id) || missingSet.has(e.projectId)
+  const status = langVersions.length
+    ? {
+        badge: '已有汉化',
+        badgeClass: 'sp-badge--ok',
+        note: '本站提供简体中文 lang 文件',
+        noteClass: 'sp-callout--info',
+      }
+    : e.hasNativeZhCN
+      ? {
+          badge: '自带中文',
+          badgeClass: 'sp-badge--native',
+          note: '光影包本身已内置简体中文，无需另装',
+          noteClass: 'sp-callout--info',
+        }
+      : isMissingSource
+        ? {
+            badge: '无英文源',
+            badgeClass: 'sp-badge--none',
+            note: '上游没有提供 en_US.lang，无法翻译',
+            noteClass: 'sp-callout--empty',
+          }
+        : {
+            badge: '暂无汉化',
+            badgeClass: 'sp-badge--none',
+            note: '尚未汉化，可到<a href="/request">「请求翻译」</a>页提交',
+            noteClass: 'sp-callout--empty',
+          }
   const vr = versionRange(e.gameVersions)
   const gallery = (e.gallery ?? []).slice(0, 6)
   const heroImg = gallery[0] ?? ''
@@ -111,6 +143,7 @@ for (const e of catalog.shaders) {
   if (vr) L.push(`<li class="sp-hero__mcver">MC ${vr.min} ~ ${vr.max}</li>`)
   L.push(`</ul>`)
   L.push(`<ul class="sp-hero__badges">`)
+  L.push(`<li class="sp-badge ${status.badgeClass}">${status.badge}</li>`)
   if (langVersions.length) {
     const isNewestAI = (langVersions[0]?.contributors?.[0] ?? '').startsWith('AI')
     if (isNewestAI) {
@@ -119,24 +152,21 @@ for (const e of catalog.shaders) {
       L.push(`<li class="sp-badge sp-badge--ok">已校对</li>`)
     }
     L.push(`<li class="sp-badge sp-badge--count">${langVersions.length} 个版本已汉化</li>`)
-  } else if (e.hasNativeZhCN) {
-    L.push(`<li class="sp-badge sp-badge--native">自带中文</li>`)
-  } else if (missingSet.has(e.id)) {
-    L.push(`<li class="sp-badge sp-badge--none">无英文源，暂不可译</li>`)
-  } else {
-    L.push(`<li class="sp-badge sp-badge--none">暂无汉化</li>`)
   }
   L.push(`</ul>`)
   L.push(`<div class="sp-hero__actions">`)
   if (pageUrl) {
     L.push(
-      `<a class="sp-btn sp-btn--primary" href="${escHtml(pageUrl)}" target="_blank" rel="noopener noreferrer">获取光影本体<span aria-hidden="true"> →</span></a>`,
+      `<a class="sp-btn sp-btn--ghost" href="${escHtml(pageUrl)}" target="_blank" rel="noopener noreferrer">Modrinth 原页<span aria-hidden="true"> →</span></a>`,
     )
   }
   L.push(`<a class="sp-btn sp-btn--ghost" href="/guide/install">安装教程</a>`)
   L.push(`</div>`)
   L.push(`</div>`)
   L.push(`</header>`)
+  L.push(`<div class="sp-callout ${status.noteClass}">`)
+  L.push(`<p>${status.note}</p>`)
+  L.push(`</div>`)
 
   // ===== 标签分栏（原生 radio 组：Tab 进入，方向键切换，无需 JS） =====
   const hasGallery = gallery.length > 1
@@ -178,17 +208,28 @@ for (const e of catalog.shaders) {
     L.push(`</div>`)
     L.push(`<p class="sp-download__hint">lang 键随光影版本变动，请选择与光影版本一致的汉化文件。</p>`)
     L.push(`<div class="sp-download__featured-actions">`)
-    if (newestHasFile) {
-      L.push(
-        `<a class="sp-btn sp-btn--primary sp-btn--dl" href="${escHtml(newest.file)}" download>下载 zh_CN.lang</a>`,
-      )
-    } else {
-      L.push(`<span class="sp-btn sp-btn--disabled sp-btn--dl">zh_CN.lang（待上传）</span>`)
-    }
-    const quarkUrl = manual?.quark
+    const quarkUrl = newest.quark || manual?.quark || e.quark
     if (quarkUrl) {
       L.push(
-        `<a class="sp-btn sp-btn--ghost sp-btn--dl" href="${escHtml(quarkUrl)}" target="_blank" rel="noopener noreferrer">国内镜像</a>`,
+        `<a class="sp-btn sp-btn--primary sp-btn--dl" href="${escHtml(quarkUrl)}" target="_blank" rel="noopener noreferrer">夸克网盘下载</a>`,
+      )
+    } else {
+      L.push(
+        `<span class="sp-btn sp-btn--primary sp-btn--disabled sp-btn--dl" aria-disabled="true">夸克暂未镜像</span>`,
+      )
+    }
+    if (newestHasFile) {
+      L.push(
+        `<a class="sp-btn sp-btn--ghost sp-btn--dl" href="${escHtml(newest.file)}" download>本站直链</a>`,
+      )
+    } else {
+      L.push(
+        `<span class="sp-btn sp-btn--ghost sp-btn--disabled sp-btn--dl" aria-disabled="true">本站直链（待上传）</span>`,
+      )
+    }
+    if (pageUrl) {
+      L.push(
+        `<a class="sp-btn sp-btn--ghost sp-btn--dl" href="${escHtml(pageUrl)}" target="_blank" rel="noopener noreferrer">Modrinth 原页</a>`,
       )
     }
     L.push(`</div>`)
@@ -200,7 +241,7 @@ for (const e of catalog.shaders) {
       L.push(`<table class="sp-version-table">`)
       L.push(`<caption class="sr-only">各光影版本的汉化文件记录</caption>`)
       L.push(
-        `<thead><tr><th scope="col">光影版本</th><th scope="col">汉化版本</th><th scope="col">汉化下载</th><th scope="col">国内镜像</th><th scope="col">状态</th><th scope="col">日期</th></tr></thead>`,
+        `<thead><tr><th scope="col">光影版本</th><th scope="col">汉化版本</th><th scope="col">本站直链</th><th scope="col">夸克网盘</th><th scope="col">状态</th><th scope="col">日期</th></tr></thead>`,
       )
       L.push(`<tbody>`)
       for (const [idx, v] of langVersions.entries()) {
@@ -210,10 +251,10 @@ for (const e of catalog.shaders) {
         const dl = vHasFile
           ? `<a href="${escHtml(v.file)}" download>zh_CN.lang</a>`
           : '<code>待上传</code>'
-        const qk =
-          idx === 0 && manual?.quark
-            ? `<a href="${escHtml(manual.quark)}" target="_blank" rel="noopener noreferrer">国内镜像</a>`
-            : '—'
+        const versionQuarkUrl = v.quark || (idx === 0 ? manual?.quark || e.quark : '')
+        const qk = versionQuarkUrl
+          ? `<a href="${escHtml(versionQuarkUrl)}" target="_blank" rel="noopener noreferrer">夸克网盘</a>`
+          : '—'
         const badge = isAI
           ? '<span class="sp-badge sp-badge--ai sp-badge--xs">AI 初翻</span>'
           : '<span class="sp-badge sp-badge--ok sp-badge--xs">已校对</span>'
@@ -239,12 +280,10 @@ for (const e of catalog.shaders) {
     L.push(`<div class="sp-download">`)
     L.push(`<h2 class="sp-section-title">汉化文件下载</h2>`)
     L.push(`<div class="sp-callout sp-callout--empty">`)
-    if (missingSet.has(e.id)) {
-      L.push(
-        `<p>该光影没有英文语言文件（<code>en_US.lang</code>），无法自动生成汉化。若光影作者后续添加了英文语言文件，汉化将自动跟进。</p>`,
-      )
+    if (isMissingSource) {
+      L.push(`<p>上游没有提供 en_US.lang，无法翻译。</p>`)
     } else {
-      L.push(`<p>该光影暂无汉化文件，敬请期待。</p>`)
+      L.push(`<p>尚未汉化，可到<a href="/request">「请求翻译」</a>页提交。</p>`)
     }
     L.push(`</div>`)
     L.push(`</div>`)

@@ -1,0 +1,98 @@
+#shaders/lang/zh_CN.lang
+# procPromo v0.8.3 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：procPromo-v0.8.3.zip 的 shaders/lang/en_US.lang
+
+option.PROC_PROMO=
+value.PROC_PROMO.true=[:: procPromo 光影包 ::]
+value.PROC_PROMO.false=[:: §6§kgh§r §oprocPromo§r§6 §kij§r ::]
+option.PROC_PROMO.comment=§f感谢你试用我的光影包。§o作者：§r§6Kevin Edzenga§7§o，2022-2026。§oGitHub：§r§6ProcStack。§7§o（此按钮没有任何作用）
+
+#General Quality Controls
+
+option.BaseQuality=基础质量
+value.BaseQuality.0 =低
+value.BaseQuality.1 = Mid
+value.BaseQuality.2 =高
+option.BaseQuality.comment=减少纹理模糊采样数量、更繁重的数学运算与性能损耗。下方选项表示画质保真度，而本选项决定这些保真度如何被利用。注意——为保证性能，低配与中配档下的色盲模拟为估算值，如有问题请联系我。
+
+# -- -- --
+
+#Color Values & Gamma
+
+option.LightBlackLevel=暗部色阶
+option.LightBlackLevel.comment=设置光照可以暗到什么程度；通过对暗色值进行偏移来提亮整个环境。数值越低氛围越暗沉，数值越高越适合直播或录制视频。0.0，黑色 = §8黑色。0.5，黑色 = §7灰色。1.0，黑色 = 白色
+
+option.LightWhiteLevel=亮部色阶
+option.LightWhiteLevel.comment=设置方块光照可以亮到什么程度。由于发光方块同样会呈现辉光，此选项也会影响可见辉光的强弱。0.0，白色 = §7灰色。1.0，白色 = 白色。2.0，白色 = §l§o亮瞎眼
+
+option.FogAmount=雾浓度
+option.FogAmount.comment=设置雾对世界的影响程度。
+
+# -- -- --
+
+#Screen Style Effects
+
+option.GlowBrightness=发光强度
+option.GlowBrightness.comment=设置辉光的亮度。辉光来自发光方块，以及在直射阳光／附近光照下更显明亮的方块（火把、灯笼等）和粒子。0.0，无辉光。1.0，默认辉光。2.0，辉光颜色过曝。
+
+option.DetailBlurring=细节模糊
+option.DetailBlurring.comment=设置方块、实体等的纹理混合程度。细节模糊可与自定义资源包配合生效。0.0，无细节模糊。1.0，默认模糊。2.0，方块呈现为纯色。
+
+option.EdgeShading=边缘轮廓
+option.EdgeShading.comment=游戏中边缘的可见度，在主世界较亮，在下界较暗。0.0，看不到边缘。1.0，默认边缘（略微透明，约 2 像素宽）。2.0，强化边缘（100% 可见，约 4 像素宽）
+
+option.HandPosScalar=手部位置
+option.HandPosScalar.comment=手部在屏幕上的位置，用于竖屏显示设备
+
+# -- -- --
+
+#Environment Effects
+
+option.UnderWaterBlur=水下效果
+option.UnderWaterBlur.comment=开关水下的模糊与扭曲效果。如果你在水下容易头晕或不适，请将其设为 False
+
+option.SolidLeaves=实心树叶
+option.SolidLeaves.comment=开关实心树叶颜色。True，以匹配 Mojang 的宣传图／主视觉风格；False，树叶保持默认的透明效果。
+
+option.SkyQuality=天空质量
+value.SkyQuality.0=低
+value.SkyQuality.1=中配
+value.SkyQuality.2=高
+option.SkyQuality.comment=减少天空颜色的运算。包括地平线颜色、日出日落颜色等。§o不影响云质量。
+
+# -- -- --
+
+#Shadow Options
+
+option.shadowMapResolution=阴影分辨率
+value.shadowMapResolution.16384=16384§c§6(!)
+option.shadowMapResolution.comment=生成阴影所用纹理的尺寸。512，低画质，性能更好。4096，高画质，性能较差。16384，§o仅用于高质量视频，帧率可能下降。
+
+option.ShadowSampleCount=阴影质量
+value.ShadowSampleCount.0=关
+value.ShadowSampleCount.1=低
+value.ShadowSampleCount.2=中配
+value.ShadowSampleCount.3=高
+value.ShadowSampleCount.4=极高
+option.ShadowSampleCount.comment=设置阴影质量。关闭，无阴影。低配，简单阴影，1 个采样。中配，柔和阴影，5 个采样。高配，如鹅绒枕般柔滑的阴影，9 个采样。
+
+# -- -- --
+
+#Debugging Effects
+option.DebugView=调试视觉
+value.DebugView.0=关
+value.DebugView.1=细节模糊
+value.DebugView.2=阴影视角
+value.DebugView.3=阴影调试
+value.DebugView.4=原版 vs procPromo
+option.DebugView.comment=开关调试颜色与效果；用于本光影包的开发。细节模糊，测试模糊方法与并排视图。阴影视角，查看太阳与月亮所见。阴影调试，阴影采样位置。原版 vs procPromo，并排对比
+
+# -- -- --
+
+option.WorldColor=世界色彩
+value.WorldColor.0=§bC§ao§3l§1o§6r§ei§5z§de§4d
+value.WorldColor.1=红色盲
+value.WorldColor.2=§c绿色盲
+value.WorldColor.3=蓝色盲
+value.WorldColor.4=§fG§7r§8e§7y§fs§7c§8a§7l§fe
+option.WorldColor.comment=辅助需求；改变你在屏幕上看到的颜色效果。全彩。红色盲（Protanopia）。绿色盲（Deuteranopia）。蓝色盲（Tritanopia）。灰度

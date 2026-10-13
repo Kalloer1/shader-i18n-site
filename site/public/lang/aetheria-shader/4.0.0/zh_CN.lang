@@ -1,0 +1,20 @@
+#shaders/lang/zh_CN.lang
+# Aetheria Shader v4.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：AetheriaShaders.zip 的 shaders/lang/en_US.lang
+option.QUALITY=质量
+value.QUALITY.0=土豆
+value.QUALITY.1=极低
+value.QUALITY.2=低
+value.QUALITY.3=中
+value.QUALITY.4=高
+value.QUALITY.5=极高
+comment.QUALITY=总体预设 - 环境光、波浪、反射强度、阴影分辨率/距离以及生物的边缘光都会随之一起调整。可用下方控件进一步微调。
+
+option.SATURATION=色彩饱和度
+option.WARMTH=色彩暖度
+option.SHADOW_BOOST=阴影强度（手动）
+comment.SHADOW_BOOST=在所选质量档位的基础上额外增加。负值=阴影更亮，正值=阴影更暗。
+option.LIGHT_BOOST=整体亮度（手动）
+comment.LIGHT_BOOST=在所选质量档位的基础上额外增加。负值=更暗，正值=更亮。
+option.WAVE_BOOST=水波大小（手动）
+comment.WAVE_BOOST=在所选质量档位的基础上，乘算波浪高度与速度。

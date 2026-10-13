@@ -1,0 +1,19 @@
+#shaders/lang/zh_CN.lang
+# Cealith Shaders v1.1.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Cealith-Shaders-1.1.2.zip 的 shaders/lang/en_us.lang
+screen.QUALITY=质量
+option.SHADOW_FILTER=阴影滤波
+option.SHADOW_FILTER.comment=阴影边缘的柔和度。Fast 为 1 次采样，Balanced 为 2 次，High 为 4 次。
+value.SHADOW_FILTER.1=快速
+value.SHADOW_FILTER.2=平衡
+value.SHADOW_FILTER.4=高
+option.WATER_RIPPLES=精细水面波动
+option.WATER_RIPPLES.comment=水面上的细微涟漪与波光闪烁。
+option.CLOUD_EDGE_SHADING=精细云层边缘
+option.CLOUD_EDGE_SHADING.comment=云层边缘的柔和阴影。
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.NIGHT_BRIGHTNESS.comment=夜间整体亮度。1.0 为默认值；若夜晚过暗可调高。
+profile.LOW=低
+profile.BALANCED=平衡
+profile.HIGH=高
+profile.comment=低配侧重帧率，中配保留 Cealith 效果，高配提升阴影质量。

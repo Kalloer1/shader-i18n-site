@@ -1,0 +1,59 @@
+#shaders/lang/zh_CN.lang
+# HSN-Shaders v1.7 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：HSN-Shaders-1.7-26.x.zip 的 shaders/lang/en_US.lang
+screen.PERFORMANCE_SETTINGS=性能
+screen.SHADOW_SETTINGS=阴影
+screen.POST_SETTINGS=后期处理
+screen.ATMOSPHERE_SETTINGS=大气
+screen.WATER_SETTINGS=水
+screen.FOLIAGE_SETTINGS=植被
+screen.EXPERIMENTAL_SETTINGS=实验性功能
+
+profile.POTATO=土豆
+profile.LOW=低
+profile.MEDIUM=中
+profile.HIGH=高
+
+option.POST_PROCESSING=后期处理
+option.POST_PROCESSING.comment=泛光、暗角、锐化、调色与色差。设为关闭时会跳过以上全部效果。
+
+option.SHADOW_QUALITY=阴影质量
+value.SHADOW_QUALITY.-1=关
+value.SHADOW_QUALITY.0=强度
+value.SHADOW_QUALITY.1=柔和
+option.shadowDistance=阴影距离
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BRIGHTNESS=阴影亮度
+option.SHADOW_DISTORT_FACTOR=阴影扭曲
+option.SHADOW_DISTORT_FACTOR.comment=数值越低，阴影贴图越向你所在的位置挤压。如果玩家的影子被裁切掉了，请调高。
+
+option.WARMTH=暖色调
+option.SATURATION=饱和度
+option.CONTRAST=对比度
+option.EXPOSURE=曝光
+option.GLOW_STRENGTH=高光发光
+option.BLOOM_ENABLED=泛光
+option.BLOOM_ENABLED.comment=为明亮的方块、熔岩和太阳添加柔和光晕。需要开启「后期处理」。
+option.BLOOM_STRENGTH=泛光强度
+option.VIGNETTE=暗角
+option.CHROMA_ABERRATION=色差
+option.SHARPEN=锐化
+option.WATER_TINT=水体色调
+option.WATER_WAVES=水面波浪
+option.WATER_WAVES.comment=水面的波纹效果。关闭后水体着色仍然生效。
+option.FOG_STRENGTH=雾气强度
+option.NIGHT_FOG=夜晚雾气
+option.FOG_DENSITY=雾密度
+option.WAVING_FOLIAGE=植物摆动
+option.WAVING_FOLIAGE.comment=草、花朵、农作物和树叶会随风摆动。藤蔓不参与摆动。
+option.WAVING_SPEED=波浪速度
+option.WAVING_STRENGTH=摆动幅度
+
+option.SSAO_ENABLED=SSAO（实验性）
+option.SSAO_ENABLED.comment=屏幕空间环境光遮蔽。在较低配置的 GPU 上可能较慢或产生噪点。默认关闭。
+option.SSAO_STRENGTH=SSAO 强度
+option.GODRAYS_ENABLED=体积光（实验性）
+option.GODRAYS_ENABLED.comment=从太阳发出的体积光。实验性效果，默认关闭。
+option.GODRAYS_STRENGTH=神圣光线强度
+
+shaderDescription=HSN-Shaders Lite 26.3.7 —— 一款面向 Minecraft 26.3、以性能为先的轻量级光影包。包含柔和阴影、泛光、雾，以及可选的实验性效果。

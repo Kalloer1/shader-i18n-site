@@ -47,7 +47,7 @@ flowchart TD
 
     CLI --> CAND["筛候选<br/>排除自带中文 / 缺 en_US.lang / 已是最新汉化"]
     CAND --> GL["glossary.json 精确命中<br/>按剥离 § 格式码后的英文骨架"]
-    GL -->|"未命中"| LLM["LLM 分块翻译<br/>SiliconFlow Hunyuan-MT-7B，60 行/块"]
+    GL -->|"未命中"| LLM["LLM 分块翻译<br/>免费模型池轮转，60 行/块"]
     LLM --> GATE{"回退率 ≤ 30%？"}
     GATE -->|"否，失败"| FAIL["不写出、不登记<br/>记 failed 并回写 KV"]
     GATE -->|"是"| W["写出 site/public/lang/&lt;id&gt;/&lt;version&gt;/zh_CN.lang<br/>头部标注 AI 初翻未人工校对"]
@@ -89,13 +89,8 @@ flowchart TD
     MIR --> Q{"夸克可用？"}
     Q -->|"是"| QU["create-folder 幂等取目录<br/>upload → share（永久公开）"]
     Q -->|"否"| SKIPQ["跳过，quark 留空"]
-    MIR --> B{"百度网盘可用？"}
-    B -->|"是"| BD["upload → share --period 0"]
-    B -->|"否"| SKIPB["跳过，baidu 留空"]
     QU --> WRITE[("写回 shaders.json<br/>顶层 + langVersions 双写")]
-    BD --> WRITE
     SKIPQ --> WRITE
-    SKIPB --> WRITE
     WRITE --> ST2["POST /status 回写<br/>已完成 / 已完成待镜像"]
 
     ST2 --> PACK["npm run pack:lang<br/>合并式重打包英文源"]

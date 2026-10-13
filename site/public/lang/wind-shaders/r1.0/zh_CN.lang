@@ -1,0 +1,182 @@
+#shaders/lang/zh_CN.lang
+# Wind Shaders vr1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：WindShaders_r1.0.zip 的 shaders/lang/en_US.lang
+option.p_INDIRECT_LIGHTING=间接光照
+option.p_INDIRECT_LIGHTING.comment=控制环境光遮蔽，会使光线难以到达的区域变暗。“高”会启用 RSM，模拟光线在到达玩家前多次反弹的效果。
+
+option.p_SHADOWS=阴影
+option.p_SHADOWS.comment=控制阴影分辨率、距离和过滤质量。
+
+option.p_FOG=雾
+option.p_FOG.comment=控制环境雾、下界烟雾、水雾等的质量。
+
+option.AA_MODE=抗锯齿
+option.AA_MODE.comment=平滑图像的锯齿边缘。SMAA 产生更清晰的图像，但某些效果需要 TAA 才能呈现良好效果。TA（时间累积）是 TAA 的简化版本。
+
+option.p_MATERIALS=动态模糊设置
+option.p_MATERIALS.comment=启用对 labPBR 1.3 资源包的支持。若使用完整模式，请将抗锯齿设为“TAA”以获得最佳效果。
+
+option.p_ENDSKY=末地天空
+option.p_ENDSKY.comment=在不同的末地天空纹理之间切换。
+option.INFO=Wind Shaders 作者：
+
+option.USE_ADVANCED_SETTINGS=启用 §c§l高级§r 模式
+option.USE_ADVANCED_SETTINGS.comment=需启用此选项，标记为 §c§lᵃᵈᵛ§r 的设置才会生效。否则，它们将被主菜单中的设置覆盖。
+
+option.CINEMATIC_MODE=§e§l电影模式§r
+option.CINEMATIC_MODE.comment=启用电影黑边并提升饱和度，呈现电影般的观感
+
+option.FLAT_WATER=§b§l平面水面§r
+option.FLAT_WATER.comment=添加复古电视效果
+
+option.OLD_TV_EFFECT=§c§l复古电视§c
+option.FLAT_WATER.comment=添加复古电视效果
+
+option.VIGNETTE=暗角
+option.VIGNETTE.comment=使屏幕边缘变暗以产生电影感
+option.VIGNETTE_FALLOFF=暗角衰减
+
+option.BLOOM=泛光
+option.BLOOM.comment=为明亮物体周围添加“辉光”
+option.BLOOM_STRENGTH=泛光强度
+
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN_STRENGTH=胶片颗粒强度
+
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE_STRENGTH=镜头光晕强度
+
+option.CHROMATIC_ABERRATION=色差
+option.CA_STRENGTH=色差强度
+
+option.CINEMATIC_BARS=电影黑边
+option.CINEMATIC_BARS.comment=在屏幕顶部和底部添加黑色边框，呈现电影宽屏效果
+option.CINEMATIC_BARS_SIZE=条形尺寸
+option.CINEMATIC_BARS_SIZE.comment=控制黑色电影边框的高度
+
+option.EXPOSURE_MULT=曝光倍增
+option.EXPOSURE_MULT.comment=控制场景的亮度
+option.EXPOSURE_SPEED=曝光速度
+option.EXPOSURE_SPEED.comment=控制“相机”调整亮度变化的速度
+
+option.TONEMAP_OPERATOR=色调映射
+option.TONEMAP_OPERATOR.comment=将颜色转换为屏幕可实际显示的范围。此选项会显著改变游戏外观，可能需要进一步调整才能达到良好效果。
+
+option.SATURATION=饱和度
+option.SATURATION.comment=调整颜色的“强度”
+option.VIBRANCE=鲜艳度
+option.VIBRANCE.comment=与饱和度相同，但对更亮的颜色影响更大
+option.CONTRAST=对比度
+
+option.PURKINJE_EFFECT_STRENGTH=普尔金耶效应
+option.PURKINJE_EFFECT_STRENGTH.comment=将非常暗的颜色稍微偏向蓝色，模拟我们眼睛的工作方式。
+
+option.shadowMapResolution=§c§lᵃᵈᵛ§r 阴影分辨率
+option.shadowDistance=§c§lᵃᵈᵛ§r 阴影距离
+option.SHADOW_FILTER=§c§lᵃᵈᵛ§r 阴影过滤
+option.SHADOW_FILTER.comment=使阴影柔和，就像在现实生活中一样。pcf是恒定的，而pcss考虑投射阴影物体的距离。
+option.SHADOW_FILTER_SIZE=过滤器大小
+option.SCREENSPACE_SHADOWS_FALLBACK=屏幕空间阴影
+option.SCREENSPACE_SHADOWS_FALLBACK.comment=当在阴影贴图之外时，回退到更便宜的方法来制作阴影。
+
+option.VL_OVERWORLD_MODE=§c§lᵃᵈᵛ§r 主世界雾
+option.VL_WATER_MODE=§c§lᵃᵈᵛ§r 水雾
+option.FOG_OVERWORLD_DETAIL=§c§lᵃᵈᵛ§r 雾细节
+option.FOG_OVERWORLD_DETAIL.comment=为主世界的环境雾添加如烟雾般的细节。
+option.VL_SAMPLES=§c§lᵃᵈᵛ§r 雾质量
+
+option.SSAO=§c§lᵃᵈᵛ§r SSAO
+option.SSAO.comment=屏幕空间环境光遮蔽：使光线难以到达的遮蔽区域变暗。
+option.GTAO=§c§lᵃᵈᵛ§r GTAO
+option.GTAO.comment=“Ground Truth”环境光遮蔽：使光线难以到达的遮蔽区域变暗。
+option.RSM=§c§lᵃᵈᵛ§r RSM
+option.RSM.comment=反射阴影映射：模拟光线从直射阳光下的表面反弹到另一个表面，然后到达玩家。
+
+option.PBR_NORMAL=§c§lᵃᵈᵛ§r 法线贴图
+option.PBR_SPECULAR=§c§lᵃᵈᵛ§r 高光贴图
+option.PBR_EMISSIVENESS=§c§lᵃᵈᵛ§r 自发光
+option.PBR_SSS=§c§lᵃᵈᵛ§r 次表面散射
+option.PBR_POM=§c§lᵃᵈᵛ§r 视差遮蔽贴图
+option.POM_MAX_DEPTH=最大深度
+option.POM_STEP_COUNT=步进次数
+option.PBR_ROUGH_REFLECTIONS=§c§lᵃᵈᵛ§r 粗糙反射
+option.SSS_STRENGTH_WEAK=次表面散射（硬编码为“弱”）
+option.SSS_STRENGTH_STRONG=次表面散射（硬编码为“强”）
+
+
+value.AA_MODE.0=无（仅ta）
+value.AA_MODE.1=smaa t2x
+value.AA_MODE.2=自适应时间抗锯齿
+
+value.INFO.0=kiwi.shio
+
+screen.adv_CAMERA_EFFECTS=相机效果
+screen.adv_POST_PROCESSING=后期处理
+screen.adv_COLORS=颜色
+screen.adv_LIGHTING=光照
+screen.adv_INDIRECT_LIGHTING=间接光照
+screen.adv_FOG=雾
+screen.adv_MATERIALS=材质
+screen.adv_POM=视差遮蔽映射
+screen.adv_WEATHER=天气
+screen.adv_SHADOWS=阴影
+screen.adv_SKY=天空
+screen.ADVANCED_SETTINGS=高级设置
+
+
+profile.TOASTER=烤面包机（玩笑模式）
+profile.LOW=低
+profile.MEDIUM=中
+profile.HIGH=高
+profile.ULTRA=超高
+
+value.p_INDIRECT_LIGHTING.q_off=关
+value.p_INDIRECT_LIGHTING.q_toaster=烤面包机（玩笑模式）
+value.p_INDIRECT_LIGHTING.q_low=低
+value.p_INDIRECT_LIGHTING.q_medium=中
+value.p_INDIRECT_LIGHTING.q_high=高
+value.p_INDIRECT_LIGHTING.q_ultra=超高
+
+value.p_SHADOWS.q_off=关
+value.p_SHADOWS.q_toaster=烤面包机（玩笑模式）
+value.p_SHADOWS.q_low=低
+value.p_SHADOWS.q_medium=中
+value.p_SHADOWS.q_high=高
+value.p_SHADOWS.q_ultra=超高
+
+value.p_FOG.q_off=关
+value.p_FOG.q_toaster=烤面包机（玩笑模式）
+value.p_FOG.q_low=低
+value.p_FOG.q_medium=中
+value.p_FOG.q_high=高
+value.p_FOG.q_ultra=超高
+
+value.p_MATERIALS.0=关
+value.p_MATERIALS.1=基础
+value.p_MATERIALS.2=完整
+
+value.p_ENDSKY.1=末地天空 1
+value.p_ENDSKY.2=末地天空 2
+value.p_ENDSKY.3=末地天空 3
+
+value.TONEMAP_OPERATOR.0=莱因哈德-乔迪映射
+value.TONEMAP_OPERATOR.1=ACES电影级色调映射
+value.TONEMAP_OPERATOR.2=未知海域
+value.TONEMAP_OPERATOR.3=AGX极简模式
+value.TONEMAP_OPERATOR.4=无
+
+value.SHADOW_FILTER.0=关
+value.SHADOW_FILTER.1=百分比接近过滤
+value.SHADOW_FILTER.2=接触硬化阴影
+
+value.VL_OVERWORLD_MODE.0=简单
+value.VL_OVERWORLD_MODE.1=光线追踪
+
+value.VL_WATER_MODE.0=简单
+value.VL_WATER_MODE.1=光线追踪
+
+option.CLOUD_COLOR=云层颜色
+option.CLOUD_COLOR.comment=更改云的着色。
+value.CLOUD_COLOR.0=默认
+value.CLOUD_COLOR.1=粉色
+value.CLOUD_COLOR.2=黄色

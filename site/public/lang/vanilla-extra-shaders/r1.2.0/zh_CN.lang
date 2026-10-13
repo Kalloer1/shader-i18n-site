@@ -1,0 +1,171 @@
+#shaders/lang/zh_CN.lang
+# VanillaEX Shader vr1.2.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：VanillaEX r1.2.0.zip 的 shaders/lang/en_US.lang
+screen.Oclusao=§8环境光遮蔽
+screen.Agua=水
+screen.RaiosDeLuz=§6体积光
+screen.Cores=§d颜色校正
+screen.CorEnd=颜色校正
+screen.Sobre=§7关于
+screen.Ceus=§9天空
+screen.CeuOverworld=§b主世界天空
+screen.CeuEnd=天空
+screen.AuroraEnd=§d末地天空极光
+screen.EstrelasCadentes=流星
+screen.NevoaEnd=雾
+screen.Diversos=§5杂项
+screen.MotionBlur=§e运动模糊§r
+screen.TonalidadeSettings=§d环境色调
+
+option.SSAO=环境光遮蔽
+option.AO_STRENGTH=遮蔽强度
+option.AO_RADIUS=遮蔽半径
+option.AO_SAMPLE_SPREAD=采样范围
+
+option.WATER_QUALITY=水体质量
+value.WATER_QUALITY.0=简单
+value.WATER_QUALITY.1=中
+value.WATER_QUALITY.2=高
+
+option.ONDULACAO_DA_AGUA=水波纹
+
+option.CORRECAO_DE_COR=颜色校正
+option.TONALIDADE_AMBIENTAL=环境光色调
+option.TONALIDADE_INTENSIDADE=色调强度
+option.GRADING_GAMMA=伽马
+option.GRADING_GAIN=增益
+option.GRADING_TEMP=色温
+option.GRADING_CONTRAST=对比度
+option.SATURATION=饱和度
+option.VIBRANCE=鲜艳度
+
+option.MODO_TVGIRL=电视女孩模式
+value.MODO_TVGIRL.0=关
+value.MODO_TVGIRL.1=蓝
+value.MODO_TVGIRL.2=粉色
+
+option.MODO_VHS=录像带模式
+value.MODO_VHS.0=关
+value.MODO_VHS.1=简单
+value.MODO_VHS.2=增强模式
+
+option.OUTLINE_RGB=轮廓 RGB
+option.LUZ_NA_MAO=手持光源
+
+option.RAIOS_DE_LUZ=光束效果
+value.RAIOS_DE_LUZ.0=关
+value.RAIOS_DE_LUZ.1=开
+option.GODRAYS_STRENGTH=光束强度
+option.SKY_BRIGHTNESS=天空亮度
+
+option.MOTION_BLUR=动态模糊
+option.MOTION_BLUR_INTENSITY=动态模糊强度
+option.MOTION_BLUR_SAMPLES=运动模糊质量
+option.MOTION_BLUR_MAX=运动模糊限制
+
+# botao de perfil (Graficos) do Iris
+profile=画质预设
+options.iris.profile=画质预设
+options.iris.profile.custom=自定义
+profile.PADRAO=默认
+profile.VHS=VHS效果
+profile.VHS2=VHS 2
+
+option.SH_VERSAO=版本
+value.SH_VERSAO.0=r1.2.0
+option.SH_AUTOR=作者
+value.SH_AUTOR.0=russoviller
+option.SH_AUTOR_MB=运动模糊作者
+value.SH_AUTOR_MB.0=wanders_test3
+
+option.CEU_OVERWORLD=主世界天空
+option.CLOUDS_SPEED=云层速度
+option.CLOUDS_OPACITY=云层不透明度
+option.CLOUDS_HEIGHT=云层高度
+value.CLOUDS_OPACITY.20=20%
+value.CLOUDS_OPACITY.25=25%
+value.CLOUDS_OPACITY.30=30%
+value.CLOUDS_OPACITY.35=35%
+value.CLOUDS_OPACITY.40=40%
+value.CLOUDS_OPACITY.45=45%
+value.CLOUDS_OPACITY.50=50%
+value.CLOUDS_OPACITY.55=55%
+value.CLOUDS_OPACITY.60=60%
+value.CLOUDS_OPACITY.65=65%
+value.CLOUDS_OPACITY.70=70%
+value.CLOUDS_OPACITY.75=75%
+value.CLOUDS_OPACITY.80= 80%
+value.CLOUDS_OPACITY.85= 85%
+value.CLOUDS_OPACITY.90= 90%
+value.CLOUDS_OPACITY.95= 95%
+value.CLOUDS_OPACITY.100= 100%
+option.CEU_END=启用末地天空
+option.END_STARS=末地星空
+option.END_SKY_MIRROR=在下方镜像天空
+option.END_CADENTES=流星
+option.END_CADENTES_VELOCIDADE=流星速度
+option.END_CADENTES_TAMANHO=流星大小
+option.END_STARS_TAMANHO=末地星星大小
+option.END_CADENTES_QUANTIDADE=流星数量
+value.END_CADENTES_QUANTIDADE.1=1x
+value.END_CADENTES_QUANTIDADE.2=2x
+value.END_CADENTES_QUANTIDADE.3=3倍
+value.END_CADENTES_QUANTIDADE.4=4x
+value.END_CADENTES_QUANTIDADE.6= 6x
+value.END_CADENTES_QUANTIDADE.8=8倍
+option.END_AURORA_SPEED=极光速度
+value.END_AURORA_SPEED.0=静态
+value.END_AURORA_SPEED.1=1x
+value.END_AURORA_SPEED.2=2x
+value.END_AURORA_SPEED.3=3倍
+value.END_AURORA_SPEED.4=4x
+value.END_AURORA_SPEED.5=5倍
+value.END_AURORA_SPEED.6= 6x
+value.END_AURORA_SPEED.8=8倍
+value.END_AURORA_SPEED.10=10x
+value.END_AURORA_SPEED.12=12x
+value.END_AURORA_SPEED.16=16倍
+value.END_AURORA_SPEED.20=20x
+value.END_AURORA_SPEED.24=24x
+value.END_AURORA_SPEED.32=32倍
+option.END_AURORA_COR=极光颜色
+value.END_AURORA_COR.0=紫色
+value.END_AURORA_COR.1=粉色
+value.END_AURORA_COR.2=色
+value.END_AURORA_COR.3=§b湖蓝色
+value.END_AURORA_COR.4=§c红色
+value.END_AURORA_COR.5=§6橙色
+value.END_AURORA_COR.6=黄色
+value.END_AURORA_COR.7=绿
+value.END_AURORA_COR.8=§a黄绿色
+option.NEVOA_END=雾
+option.NEVOA_END_OPACIDADE=雾不透明度
+option.NEVOA_END_FORCA=雾气强度
+option.NEVOA_END_VELOCIDADE=雾移动速度
+value.NEVOA_END_OPACIDADE.5=5%
+value.NEVOA_END_OPACIDADE.10=10%
+value.NEVOA_END_OPACIDADE.15=15%
+value.NEVOA_END_OPACIDADE.20=20%
+value.NEVOA_END_OPACIDADE.25=25%
+value.NEVOA_END_OPACIDADE.30=30%
+value.NEVOA_END_OPACIDADE.35=35%
+value.NEVOA_END_OPACIDADE.40=40%
+value.NEVOA_END_OPACIDADE.45=45%
+value.NEVOA_END_OPACIDADE.50=50%
+value.NEVOA_END_OPACIDADE.55=55%
+value.NEVOA_END_OPACIDADE.60=60%
+value.NEVOA_END_OPACIDADE.65=65%
+value.NEVOA_END_OPACIDADE.70=70%
+value.NEVOA_END_OPACIDADE.75=75%
+value.NEVOA_END_OPACIDADE.80= 80%
+value.NEVOA_END_OPACIDADE.85= 85%
+value.NEVOA_END_OPACIDADE.90= 90%
+value.NEVOA_END_OPACIDADE.95= 95%
+value.NEVOA_END_OPACIDADE.100= 100%
+option.COR_END=末地颜色校正
+option.COR_END_GAMMA=伽马
+option.COR_END_GAIN=增益
+option.COR_END_TEMP=色温
+option.COR_END_CONTRAST=对比度
+option.COR_END_SATURATION=饱和度
+option.COR_END_VIBRANCE=鲜艳度

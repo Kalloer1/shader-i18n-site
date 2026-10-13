@@ -39,7 +39,8 @@ export default defineConfig({
     darkModeSwitchTitle: '切换到深色模式',
     footer: {
       message:
-        '本站只分发汉化语言文件，不重分发任何光影本体；光影版权归原作者所有。',
+        '只分发 zh_CN.lang，不重分发光影本体 · 数据来自 Modrinth · 光影版权归原作者所有',
+      copyright: '光影汉化资源站 · 为中文 MC 玩家服务',
     },
   },
 })

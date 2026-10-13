@@ -1,0 +1,208 @@
+#shaders/lang/zh_CN.lang
+# blackhole v1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：BlackHole.zip 的 shaders/lang/en_us.lang
+screen.BH_PLACE=黑洞位置
+screen.BH_SPINJET=自旋与喷流
+screen.BH_DISK=吸积盘
+screen.BH_LIGHT=盘面光照
+screen.BH_SHADOW=建筑阴影
+screen.BH_MAT=材质（需资源包）
+screen.BH_SKY=星空与星云
+screen.BH_QUALITY=画质与速度
+screen.BH_POST=图像处理
+
+# ------------------------------------------------------------ placement
+option.BH_BLOCKS_PER_M=黑洞尺寸
+option.BH_BLOCKS_PER_M.comment=每个质量单位对应多少方块，这是总缩放开关。为 8 时，视界半径为 16 格，天空中的黑色区域宽约 42 格，吸积盘延伸至 120 格。数值越大，黑洞整体越大。
+
+option.BH_POS_X=黑洞 X
+option.BH_POS_X.comment=黑洞中心的世界坐标，默认为 0。
+option.BH_POS_Y=黑洞高度
+option.BH_POS_Y.comment=黑洞中心的高度。默认 160 远高于普通建筑，因此悬挂于空中。
+option.BH_POS_Z=黑洞 Z
+option.BH_POS_Z.comment=黑洞中心的世界坐标，默认为 0。
+
+# ------------------------------------------------------------ spin
+option.BH_SPIN=黑洞自旋
+option.BH_SPIN.comment=黑洞自身旋转的速度。自旋会将吸积盘内缘向内拖拽：为零时内缘位于 6 倍半径处，为 0.9 时仅 2.3 倍。那里的物质公转更快、燃烧更热，因此吸积盘更亮、更紧贴黑色区域。注意阴影仍为圆形——真实旋转黑洞一侧阴影会被压扁，但那需要不同的光线计算。高于 0.94 后内缘同样因此不再移动。
+
+option.BH_JET=喷流亮度
+option.BH_JET.comment=极向喷流，即被加速到近光速的狭窄物质流。为零时禁用。喷流只存在于旋转黑洞周围，因此需搭配非零自旋使用。
+
+option.BH_JET_LEN=喷流长度
+option.BH_JET_LEN.comment=喷流从两极延伸的距离，与黑洞尺寸使用相同单位。
+
+option.BH_JET_ANGLE=喷流粗细
+option.BH_JET_ANGLE.comment=锥体张开的角度。数值低时呈细针状，数值高时呈喇叭形漏斗。
+
+option.BH_JET_SPEED=喷流速度
+option.BH_JET_SPEED.comment=光速的比例。越接近 1，两条喷流的对比越鲜明：朝向你的一条大亮，远离的一条几乎消失。设为零可让两者等亮——这不符合物理，但能让两者同时入镜。
+
+option.BH_JET_TEMP=喷流温度
+option.BH_JET_TEMP.comment=喷流物质的颜色。数值高时呈现类星体典型的蓝白色。
+
+# ------------------------------------------------------------ disk
+option.BH_R_OUT=吸积盘宽度
+option.BH_R_OUT.comment=发光物质延伸的范围。内缘由物理固定、永不移动，此项只拉伸外缘。数值越大吸积盘越宽，黑洞看起来越庞大。
+
+option.BH_T_INNER=物质温度
+option.BH_T_INNER.comment=盘面物质燃烧的温度。颜色按真实加热金属计算：数值低时呈深橙与红，数值高时变为白蓝。
+
+option.BH_DISK_GAIN=吸积盘亮度
+option.BH_DISK_GAIN.comment=吸积盘的整体辉光。若画面过曝发白请调低，若显得暗淡无光请调高。
+
+option.BH_DISK_KAPPA=物质密度
+option.BH_DISK_KAPPA.comment=吸积盘的不透明度。数值低时光线可穿透，可看到其内部与远侧；数值高时则为厚重的不透明云团，只能看到表面。
+
+option.BH_CAM_MIN=黑屏阈值
+option.BH_CAM_MIN.comment=靠近中心到何种程度时计算放弃并显示未扭曲的世界。为 1 时恰为视界。调低可在进入内部后仍看到周围环境——物理上这是假的，视界内光无法逃逸，但能让你飞得更深而不撞上黑屏。
+
+option.BH_SHEAR=纹理旋卷
+option.BH_SHEAR.comment=物质被拉伸成螺旋丝带的程度。内圈跑得比外圈快，旋卷由此而来。数值越高丝带越长越紧。
+
+option.BH_DISK_SPEED=旋转速度
+option.BH_DISK_SPEED.comment=物质旋转的速度。为零时完全冻结，适合拍摄静帧。
+
+option.BH_DISK_THICK=吸积盘厚度
+option.BH_DISK_THICK.comment=吸积盘的蓬松程度。数值低时为薄饼状，侧视如一张平纸；数值高时则为边缘粗糙的立体甜甜圈。
+
+option.BH_DISK_OCTAVES=物质细节
+option.BH_DISK_OCTAVES.comment=计算盘内精细湍流的层数。层数越多，丝缕越清晰，但开销明显增加。这是吸积盘设置中的主要性能开销。
+
+option.BH_NOISE_VFREQ=垂直粗糙度
+option.BH_NOISE_VFREQ.comment=盘内物质上下起伏的程度。数值低时平滑分层，数值高时结块并有凸起。
+
+option.BH_INNER_CUT=吸积盘内缘
+option.BH_INNER_CUT.comment=为零时呈现 Interstellar 外观：炽亮边缘紧贴黑色区域。为一时启用物理，位于最内稳定轨道处的物质停止摩擦、冷却变暗，内缘随之变暗。
+
+option.BH_RADIAL_FALLOFF=向外衰减
+option.BH_RADIAL_FALLOFF.comment=吸积盘从中心到边缘变暗的陡峭程度。数值越高，物质越聚成紧贴黑洞的狭窄亮环，外侧只剩暗橙色。
+
+option.BH_HIGHER_ORDER=重复光环
+option.BH_HIGHER_ORDER.comment=黑色区域周围的纤细嵌套弧线。那是绕黑洞一圈、两圈、三圈并每次穿过吸积盘的光线。为一时符合自然；若觉得杂乱，设为零则只保留吸积盘的直接成像。
+
+# ------------------------------------------------------------ background
+option.BH_STAR_GAIN=星星亮度
+option.BH_STAR_GAIN.comment=星空的亮度。为零时完全移除星星。
+option.BH_NEBULA_GAIN=星云亮度
+option.BH_NEBULA_GAIN.comment=背景中的彩色气体薄雾。为零时只剩繁星的纯净黑空。
+
+# ------------------------------------------------------------ lighting
+option.BH_LIGHT_GAIN=光照强度
+option.BH_LIGHT_GAIN.comment=吸积盘照亮周围世界的亮度。这里没有太阳，所有光照都来自于此。若地面与建筑陷入黑暗请调高。
+
+option.BH_LIGHT_SAMPLES=光照精度
+option.BH_LIGHT_SAMPLES.comment=计算光照时将盘环拆分的份数。份数低时平坦表面可能出现可见色斑；份数高时开销更大。
+
+option.BH_AMBIENT=阴影补光
+option.BH_AMBIENT.comment=微弱的散射光，使背光面不至于变成纯黑。如果在阴影里看不清任何东西，就调高。
+
+option.BH_BLOCK_LIGHT=火把亮度
+option.BH_BLOCK_LIGHT.comment=火把、灯与灯笼的发光强度。这与黑洞无关，只是普通的方块光照。
+
+# ------------------------------------------------------------ volumetric
+option.VOL_STEPS=空气辉光质量
+option.VOL_STEPS.comment=沿视线方向为发光雾霭采样的次数。采样越多画面越平滑，开销也越大。设为 0 会完全关闭体积辉光，并带来可观的速度提升。
+
+option.VOL_LIGHT_SAMPLES=黑洞阴影精度
+option.VOL_LIGHT_SAMPLES.comment=计算黑洞本身投射进雾霭中的阴影时的精细程度。数值过低可能出现淡淡的波纹。
+
+option.VOL_DENSITY=雾霭密度
+option.VOL_DENSITY.comment=充满发光尘埃的空气有多少，是体积辉光的总调节旋钮。调高更有戏剧感，调低可防止雾霭淹没黑洞的黑色区域。
+
+option.VOL_MAX_DIST=雾霭范围
+option.VOL_MAX_DIST.comment=向前计算发光空气的距离，以方块计。必须大于你到黑洞的距离，否则会落在计算范围之外。
+
+option.VOL_ANISO=辉光方向性
+option.VOL_ANISO.comment=光向前散射的强度。数值高时，望向黑洞雾霭会强烈增亮，转过身去则几乎消失。数值低则从各个角度看辉光都很均匀。
+
+option.VOL_BLUR=雾霭模糊
+option.VOL_BLUR.comment=雾霭是分步计算的，总会带有一些颗粒感。此选项用模糊将其去除。看到噪点就调高。
+
+option.VOL_RING_SOFT=光环辉光柔和度
+option.VOL_RING_SOFT.comment=柔和吸积盘附近的雾霭辉光。数值过低会在黑洞周围勾出一圈明显的硬边圆环。
+
+# ------------------------------------------------------------ screen shafts
+option.SHAFT_SAMPLES=光柱质量
+option.SHAFT_SAMPLES.comment=从黑洞向屏幕各处发散的光线。只有黑洞在画面内时才生效，因此它是体积辉光的补充而非替代。设为 0 可禁用。
+
+option.SHAFT_DENSITY=光柱长度
+option.SHAFT_DENSITY.comment=光柱从黑洞起在屏幕上延伸的距离。
+
+option.SHAFT_DECAY=光柱衰减
+option.SHAFT_DECAY.comment=光柱随距离消退的快慢。数值越接近 1，光柱越长也越明显。
+
+option.SHAFT_WEIGHT=光束强度
+option.SHAFT_WEIGHT.comment=光柱的整体亮度。注意：数值过高会把灼亮的吸积盘涂抹到整个屏幕上。
+
+option.SHAFT_CLAMP=光柱亮度上限
+option.SHAFT_CLAMP.comment=限制光柱被允许延伸到的亮点的最大亮度，用于控制吸积盘核心造成的过曝。
+
+# ------------------------------------------------------------ materials
+option.BH_NORMAL_STRENGTH=表面起伏
+option.BH_NORMAL_STRENGTH.comment=仅在启用 BlackHoleStation 资源包时有效。让砖块、缺口与接缝的各个面接住吸积盘的掠射光。未使用该资源包时无效。
+
+option.BH_AO_STRENGTH=缝隙阴影
+option.BH_AO_STRENGTH.comment=仅在使用该资源包时有效。使凹陷处与方块之间的接缝变暗。
+
+option.BH_EMISSION=灯具发光
+option.BH_EMISSION.comment=仅在使用该资源包时有效。灯笼、末地烛、紫水晶等自发光方块自身的发光亮度。
+
+# ------------------------------------------------------------ shadows
+option.BH_SHADOW_EXTENT=阴影范围
+option.BH_SHADOW_EXTENT.comment=你周围建筑投影的半径。数值小则阴影更锐利、更准确，但远处物体将不再起到遮挡作用。数值大覆盖范围更广，但阴影会变粗糙。
+
+option.BH_SHADOW_SOFT=阴影柔和度
+option.BH_SHADOW_SOFT.comment=阴影边缘的模糊程度。吸积盘不是点光源，因此它的真实阴影带有柔和的边缘。
+
+option.BH_SHADOW_BIAS=阴影偏移
+option.BH_SHADOW_BIAS.comment=消除表面在自身投下细条纹阴影时出现的闪烁。如果方块上出现奇怪的摩尔纹就调高。过高则阴影会开始与物体脱离。
+
+option.BH_SHADOW_NORMAL=阴影面偏移
+option.BH_SHADOW_NORMAL.comment=针对同样闪烁问题的第二种更温和的解决方案。吸积盘的光几乎贴着表面掠过，这对阴影来说是最苛刻的情形。请从这里开始调整。
+
+option.VOL_SHADOW=建筑间光柱
+option.VOL_SHADOW.comment=让建筑遮挡发光的雾霭，这正是光柱呈现在拱门之间的真实方式。禁用可略微提升速度。
+
+# ------------------------------------------------------------ quality
+option.BH_WARP_WORLD=扭曲建筑
+option.BH_WARP_WORLD.comment=让方块而不只是星星在黑洞的引力场中弯曲。附近的桥梁与平台会随之流动、旋转。这是一种近似：它只能拉取屏幕上已经绘制的内容，因此本应从你身后传来的光永远不会出现。真正来自四面八方的扭曲需要一个模组。
+
+option.BH_WARP_LIMIT=扭曲上限
+option.BH_WARP_LIMIT.comment=被弯折的光线仍被允许拉扯画面的强度。数值高会把扭曲推得更贴近黑洞阴影，但这种近似会更明显地露出破绽。数值低则更真实，但效果更弱。
+
+option.BH_WARP_MINDIST=距离阈值
+option.BH_WARP_MINDIST.comment=低于到黑洞距离的这一比例的方块不会被拾取。这可防止前景物体在地平线周围被涂抹开——自然界中从不会出现这种现象。
+
+option.BH_AA=黑洞抗锯齿
+option.BH_AA.comment=沿单个轴向每个像素追踪多少条光线。2 表示四条光线，黑洞渲染开销提高到四倍，但细窄的光环不再断裂，黑色区域的边缘也变得平滑。录制视频时用 2 或 3 很值得。
+
+option.BH_STEPS=光线追踪步数
+option.BH_STEPS.comment=围绕黑洞追踪单条光线时的最大步数。步数过少时，在边缘附近蜿蜒的光线会被截断而变黑。
+
+option.BH_DPHI=光线追踪步长
+option.BH_DPHI.comment=每条光线单步前进的距离。越小越精确，开销也越高。它与追踪步数共同决定透镜扭曲的质量。
+
+option.BH_B_SKIP=弯折截止
+option.BH_B_SKIP.comment=与黑洞距离超过此值的光线完全不发生弯折。这会跳过几乎整个画面，从而大幅提升速度。数值过低时，黑洞周围会出现可见的接缝。
+
+# ------------------------------------------------------------ processing
+option.BLOOM_STRENGTH=辉光光晕
+option.BLOOM_STRENGTH.comment=亮部周围柔和的泛光，类似相机的镜头光晕。
+
+option.DITHER_STRENGTH=色带修正
+option.DITHER_STRENGTH.comment=向画面中混入难以察觉的噪点。显示器每个通道只保存 256 级亮度，没有它，平滑的暗部渐变会碎裂成可见的台阶。设为 0 可关闭它，方便你在后续调色时获得干净的画面。
+
+option.AGX_PUNCH=色彩浓郁度
+option.AGX_PUNCH.comment=将画面映射到显示器时为色彩增添浓郁感。关闭后观感更平静，更具纪录片风格。
+
+# ------------------------------------------------------------ values
+value.VOL_SHADOW.0=关
+value.VOL_SHADOW.1=开
+value.AGX_PUNCH.0=关
+value.AGX_PUNCH.1=开
+value.BH_AA.1=关
+value.BH_AA.2=4束射线
+value.BH_AA.3=9 条光线
+value.VOL_STEPS.0=关
+value.SHAFT_SAMPLES.0=关

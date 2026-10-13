@@ -1,0 +1,120 @@
+#shaders/lang/zh_CN.lang
+# AmiArchiveShader vv1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：AmiArchiveShader_WaterFantasy10_LocalSSR_Performance.zip 的 shaders/lang/en_us.lang
+option.volumetricQuality =体积光质量
+value.volumetricQuality.0 =低
+value.volumetricQuality.1 =平衡
+value.volumetricQuality.2 =高
+
+option.cloudQuality =体积云质量
+value.cloudQuality.0 =低
+value.cloudQuality.1 =平衡
+value.cloudQuality.2 =高
+
+screen.PERFORMANCE =性能
+
+screen.REFLECTION =反射
+option.AMI_REFLECTION_DEBUG = Reflection diagnostics
+value.AMI_REFLECTION_DEBUG.0 =关
+value.AMI_REFLECTION_DEBUG.1 =开
+comment.AMI_REFLECTION_DEBUG = Show capture status and captured lens / current lens / zoom ratio for troubleshooting.
+
+# Original AmiArchive water wave controls
+screen.WATER_WAVES =水面波浪设置
+option.AMI_WAVE_STYLE =水面波浪样式
+value.AMI_WAVE_STYLE.0 = BLUE ARCHIVE
+value.AMI_WAVE_STYLE.1 = ECLIPSE-INSPIRED
+value.AMI_WAVE_STYLE.2 = ASTRALEX-INSPIRED
+value.AMI_WAVE_STYLE.3 =平静
+value.AMI_WAVE_STYLE.4 =戏剧性
+option.AMI_WAVE_QUALITY =Wave quality
+value.AMI_WAVE_QUALITY.0 =低
+value.AMI_WAVE_QUALITY.1 =中
+value.AMI_WAVE_QUALITY.2 =高
+option.AMI_WAVE_STRENGTH =波浪强度
+option.AMI_WAVE_SIZE =波浪大小
+option.AMI_WAVE_SPEED =波浪速度
+option.AMI_WAVE_CREST = Crest Strength
+option.AMI_MACRO_SWELL = Macro Swell Strength
+option.AMI_MEDIUM_WAVE = Medium Wave Strength
+option.AMI_FINE_RIPPLE = Fine Ripple Strength
+option.AMI_MICRO_RIPPLE = Micro Ripple Strength
+option.AMI_REFLECTION_DISTORTION = Reflection Distortion
+option.AMI_SPECULAR_RIPPLE = Specular Ripple Strength
+option.AMI_DISTANCE_DETAIL = Distance Detail
+comment.AMI_WAVE_STYLE = Original visual presets. BLUE ARCHIVE favors soft broad flow and clean crossing ripples. Sliders multiply the selected style.
+comment.AMI_WAVE_QUALITY = Low uses broad and medium layers. Medium adds crossing and fine detail. High adds a restrained near-camera micro layer.
+comment.AMI_WAVE_STRENGTH = Overall surface slope. Zero makes water flat. This does not displace the mesh.
+comment.AMI_WAVE_SIZE = Larger values stretch wavelengths while preserving slope strength.
+comment.AMI_WAVE_SPEED = Animation speed for every water band. Zero freezes the water pattern.
+comment.AMI_WAVE_CREST = Shapes the organic height field from rounded swells toward tighter crests. Extreme values remain softly bounded.
+comment.AMI_MACRO_SWELL = Broad, slow swells. Resolvable macro detail survives far from the camera.
+comment.AMI_MEDIUM_WAVE = Crossing waves that give the surface readable movement.
+comment.AMI_FINE_RIPPLE = Fine surface texture and gentle reflection breakup. Fades with distance and pixel footprint.
+comment.AMI_MICRO_RIPPLE = Restrained near-camera shimmer, always footprint filtered. Available in High quality.
+comment.AMI_REFLECTION_DISTORTION = Bounded distortion after the SSR hit. Zero removes that distortion; coarse ray steering remains.
+comment.AMI_SPECULAR_RIPPLE = Fine and micro influence on sun/moon glints; does not affect the SSR ray.
+comment.AMI_DISTANCE_DETAIL = Multiplies detail retention distances. Anti-alias filtering stays active at every value.
+
+# Pass04 water look
+screen.WATER_LOOK = Water Look
+option.AMI_WATER_CLARITY =水体清晰度
+comment.AMI_WATER_CLARITY = Higher values make the water body cleaner and more transparent. Wave detail no longer alternates opacity.
+option.AMI_WATER_SUN_STREAK = Sun Light Path
+comment.AMI_WATER_SUN_STREAK = Strength of the wide pastel sparkle carpet plus the brighter road of light. No extra SSR raymarch.
+option.AMI_WATER_SUN_STREAK_LENGTH = Sun Path Length
+comment.AMI_WATER_SUN_STREAK_LENGTH = Controls how far the reflected light path stretches toward the horizon.
+option.AMI_WATER_SUNSET_GLOW = Sunset Pink Glow
+comment.AMI_WATER_SUNSET_GLOW = Blends the water sun path toward a pastel pink/lilac color while the sun is near the horizon.
+
+# Pass07 sunset art direction
+screen.SUNSET_STYLE = Sunset Style
+option.AMI_SUNSET_STYLE = Sunset Palette
+value.AMI_SUNSET_STYLE.0 = AmiArchive Peach / Pink
+value.AMI_SUNSET_STYLE.1 = Hina L2D Purple / Lilac
+comment.AMI_SUNSET_STYLE = Switches the sunset palette for sky, direct light, volumetric light, water body, sky reflection and water sun path.
+
+# Pass08 depth-based water transmission
+option.AMI_WATER_DEPTH_ABSORPTION =深度吸收
+comment.AMI_WATER_DEPTH_ABSORPTION = Controls how quickly depth removes warm wavelengths. Lower values make deep water clearer.
+option.AMI_WATER_DEPTH_SCATTER = Depth Scatter
+comment.AMI_WATER_DEPTH_SCATTER = Adds restrained cyan/lilac in-scatter with depth. Zero keeps only spectral transmission.
+option.AMI_WATER_REFRACTION =水折射
+comment.AMI_WATER_REFRACTION = Strength of the single bounded depth-aware refraction projection. No parallax raymarch is used.
+
+# WaterFantasy01 - independent controls; accepted sun/reflection settings retained
+option.AMI_WATER_SURFACE = Surface Pattern
+value.AMI_WATER_SURFACE.0 = DHLab04 Texture Waves
+value.AMI_WATER_SURFACE.1 = Anime Soft Swells
+comment.AMI_WATER_SURFACE = Anime uses broad world-anchored, smoothly overlapping swells with analytic slopes. Trace rays and water geometry are unchanged. DHLab04 restores the previous normal generator.
+option.AMI_WATER_FANTASY = Fantasy Water Color
+comment.AMI_WATER_FANTASY = Softens the underwater material toward pearl cyan by day and pastel lilac/peach at sunset. Follows depth and existing light, including DH water. Zero restores the previous body; 1.0 is the new default.
+
+# WaterFantasy07
+screen.UNDERWATER =水下
+option.AMI_UNDERWATER = Underwater atmosphere
+value.AMI_UNDERWATER.0 =关
+value.AMI_UNDERWATER.1 =开
+option.AMI_UNDERWATER_DENSITY =水雾密度
+option.AMI_UNDERWATER_RAYS =水下光柱
+option.AMI_UNDERWATER_CAUSTICS =水下焦散
+option.AMI_UNDERWATER_SAMPLES = Underwater ray samples
+option.AMI_UNDERWATER_SAMPLES.comment = 16 by default, at half resolution. Lower values reduce underwater cost; no effect above water.
+option.AMI_UNDERWATER_RAYS.comment = Animated, shadowed shafts. Their hue follows the selected sky sunset palette.
+
+# WaterFantasy08
+option.AMI_UNDERWATER_BRIGHTNESS =水下亮度
+option.AMI_UNDERWATER_BRIGHTNESS.comment = Clear-water ambient brightness, independent of the camera skylight drop at depth.
+
+# WaterFantasy10 - real distance and sample budgets
+option.AMI_WATER_SSR_DISTANCE = Water SSR radius (blocks)
+comment.AMI_WATER_SSR_DISTANCE = Full local reflections inside 80% of this radius, smooth quality fade over the last 20%, sky reflection only outside. 80 blocks = 5 chunks. Same limit with Distant Horizons and zoom.
+option.AMI_WATER_SSR_QUALITY = Water SSR trace budget
+value.AMI_WATER_SSR_QUALITY.0 = Low (up to 40)
+value.AMI_WATER_SSR_QUALITY.1 = Balanced (up to 64)
+value.AMI_WATER_SSR_QUALITY.2 = High (up to 96)
+comment.AMI_WATER_SSR_QUALITY = Maximum ray traversal visits near the player. Drops toward 10 at the radius edge; outside the radius there is no scene ray. Intersection refinement is separate. Puddle SSR is unchanged.
+option.AMI_SHADOW_FILTER_SAMPLES =柔阴影采样数
+comment.AMI_SHADOW_FILTER_SAMPLES = 16 keeps the 4096 shadow map and soft penumbra with lower filtering cost. 24 restores the old filter sample count; 12 is cheaper.
+comment.volumetricQuality = Low: up to 16 steps. Balanced: up to 24. High: up to 64. Nearby opaque surfaces automatically use fewer steps.
+comment.cloudQuality = Low: 8 steps / 2 octaves. Balanced: 12 / 2 (Fantasy09 effective default). High: 24 / 4.

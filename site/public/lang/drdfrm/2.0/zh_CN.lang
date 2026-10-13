@@ -1,0 +1,72 @@
+#shaders/lang/zh_CN.lang
+# DreadFrame v2.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：DreadFrame_v2.zip 的 shaders/lang/en_us.lang
+screen.SCR_CORE=恐惧 / 调色
+screen.SCR_BRUSH=干笔 / 墨迹
+screen.SCR_LIGHT=光照与距离
+screen.SCR_FX=胶片与镜头
+screen.SCR_DEBUG=调试
+
+profile.VANILLA_SAFE=近似原版
+profile.PLAYABLE=可玩
+profile.NIGHTMARE=噩梦
+profile.SCREENSHOT=截图（红与黑）
+
+option.DREAD=恐惧
+option.DREAD.comment=向红黑观感混合。0 为原版色彩，1 为完全还原参考图。
+option.HARD_CUT=硬阈值
+option.HARD_CUT.comment=把渐变压成纯红与纯黑的对立。截图极佳，游戏体验极差。
+option.RED_HUE=红色纯度
+option.RED_HUE.comment=红色渐变中还保留多少绿与蓝。
+option.POSTERIZE=色阶分离
+option.POSTERIZE.comment=将亮度量化为色阶。
+option.OUTLINE=深度描边
+option.OUTLINE.comment=来自深度缓冲的红色边缘线。当其他一切变成黑色时，正是它让几何结构保持可读。
+option.OUTLINE_WIDTH=轮廓宽度
+option.VISIBILITY=可见度
+option.VISIBILITY.comment=全局光照倍率。如果你连自己的脚都看不见，就调高它。
+option.DARK_RANGE=黑暗范围
+option.DARK_RANGE.comment=多少格之后世界会暗成一片漆黑。
+option.NIGHT_BOOST=夜间恐惧
+option.NIGHT_BOOST.comment=日落之后追加的恐惧感。
+option.TORCH_WARMTH=火把血色
+option.TORCH_WARMTH.comment=把方块光从暖橙推向余烬般的暗红。
+option.SKY_DEATH=天空之死
+option.SKY_DEATH.comment=天空与天光看起来有多"死"。
+option.AMBIENT_FLOOR=环境光下限
+option.AMBIENT_FLOOR.comment=保证洞穴仍可通行的最低光照。安全网。
+option.SUN_MOON_DIM=日/月暗度
+option.PULSE=心跳
+option.PULSE.comment=搏动式的暗角与红色推进。
+option.GRAIN=胶片颗粒
+option.CHROMA=色差
+option.VIGNETTE=暗角
+option.JITTER=镜头抖动
+option.SCANLINE=扫描线
+option.DEBUG_VIEW=调试视图
+option.DEBUG_VIEW.comment=0 关闭 / 1 反照率 / 2 光照图 / 3 线性深度 / 4 边缘遮罩 / 5 材质标记
+
+profile.WOODCUT=木刻（干笔）
+
+option.DRYBRUSH=干笔
+option.DRYBRUSH.comment=总体粗糙度。用脊状墨迹噪点啃噬红黑交界，而不是留下干净的渐变。
+option.BRUSH_SCALE=笔刷缩放
+option.BRUSH_SCALE.comment=笔毛频率。低 = 宽大的刷漆笔触，高 = 细密的排线。
+option.BRUSH_STREAK=笔触方向
+option.BRUSH_STREAK.comment=0 为斑驳随机，1 为长条方向性笔触。
+option.BRUSH_OCTAVES=笔刷细节
+option.BRUSH_OCTAVES.comment=噪点倍频。这是性能旋钮——掉帧时降到 2。
+option.INK_BLEED=墨迹渗染
+option.INK_BLEED.comment=低于 0.5 时红色侵入黑色，高于 0.5 时黑色侵入红色。
+option.BRISTLE_SKIP=笔毛飞白
+option.BRISTLE_SKIP.comment=干笔没刷到的地方，在实心红色中露出的黑色细线。
+option.SPECKLE=墨点
+option.SPECKLE.comment=散落在光照区域旁黑色区域中的零星红点。
+option.WORLD_LOCK=纹理锁定
+option.WORLD_LOCK.comment=0 为墨迹印在屏幕上（丝网印刷），1 为颜料黏在方块上，随走动而滑动。
+option.EDGE_ROUGH=线条粗糙度
+option.EDGE_ROUGH.comment=打散深度描边，让它们看起来像是用快没水的笔画出来的。
+option.GRAIN_SIZE=颗粒大小
+option.GRAIN_SIZE.comment=每个颗粒的像素数。1 为电视雪花，3 以上为粗大的印刷颗粒。
+option.TORN_EDGE=撕裂边框
+option.TORN_EDGE.comment=暗角以参差不齐的碎块剥落，而不是平滑淡出。

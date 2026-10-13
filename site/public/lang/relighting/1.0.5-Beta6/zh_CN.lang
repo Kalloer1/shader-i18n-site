@@ -1,0 +1,17 @@
+#shaders/lang/zh_CN.lang
+# ReLighting v1.0.5-Beta6 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：ReLighting-1.0.5.zip 的 shaders/lang/en_us.lang
+option.SHADOW_RES=阴影分辨率
+option.SHADOW_DIST=阴影距离
+option.SHADOW_SAMPLES=阴影柔化采样
+option.SUN_STRENGTH=太阳强度
+option.TORCH_BRIGHTNESS=火把亮度
+option.TORCH_FALLOFF=火把衰减（越低照得越远）
+option.EXPOSURE=曝光
+option.TORCH_SHADOWS=火把阴影
+option.TORCH_SHADOW_STEPS=火把阴影质量
+option.SSAO=环境光遮蔽
+option.RIM_LIGHT=轮廓光（背光描边）
+option.RIM_STRENGTH=轮廓光强度
+screen.LIGHT=光照
+screen.EFFECTS=视觉效果

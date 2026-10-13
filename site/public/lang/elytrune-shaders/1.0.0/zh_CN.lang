@@ -1,0 +1,11 @@
+#shaders/lang/zh_CN.lang
+# Elytrune Shaders v1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Elytrune-Shaders-1.0.0.zip 的 shaders/lang/en_us.lang
+profile.LOW=低
+profile.BALANCED=平衡
+profile.HIGH=高
+option.SHADOW_FILTER=阴影过滤
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowDistance=阴影距离
+option.WATER_RIPPLES=水面波纹
+option.CLOUD_EDGE_SHADING=Cloud Edge Shading

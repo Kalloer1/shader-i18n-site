@@ -1,0 +1,319 @@
+#shaders/lang/zh_CN.lang
+# Aetherglow v1.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Aetherglow-v1.1.zip 的 shaders/lang/en_us.lang
+# ---------------------------------------------------------------- Main
+option.INFO=§dAetherglow §71.1
+value.INFO.0=§7奇幻光影
+option.INFO.comment=§dAetherglow§r - 一款轻量级的奇幻光影包。§7支持 OptiFine、Iris 与 Oculus。
+
+profile=画质预设
+profile.LITE=§a轻量
+profile.BALANCED=§e均衡
+profile.FANCY=§6精美
+profile.ULTRA=超高
+profile.comment=§a轻配§r：无阴影与反射，几乎任何设备都能运行。§e均衡§r：推荐的默认设置。§6高配§r / §c极高§r：阴影更清晰修长，反射更精致。
+
+screen.LIGHTING=§e光照
+screen.LIGHTING.comment=阴影、火把、发光方块与环境光遮蔽。
+screen.SHADOW_SETTINGS=§e阴影...
+screen.SHADOW_SETTINGS.comment=阴影质量、柔和度与太阳的角度。
+screen.WATER=水
+screen.WATER.comment=颜色、波浪、反射、折射与泡沫。
+screen.NIGHT_SKY=§d夜空
+screen.NIGHT_SKY.comment=星星、星系、行星、流星与极光。
+screen.SUN_MOON=§6太阳、月亮 §7与 §6日食月食
+screen.SUN_MOON.comment=写实的太阳和月亮，以及随机出现的日食。
+screen.CLOUDS=§b云
+screen.CLOUDS.comment=体积云：覆盖率、高度、质量及其投下的阴影。
+screen.ATMOSPHERE=§9大气
+screen.ATMOSPHERE.comment=体积光、雾、晨雾、彩虹、萤火虫与精灵粉尘。
+screen.NATURE=§a自然与动态
+screen.NATURE.comment=风、会对你做出反应的植物、水下植物、粒子、降雨、湿润地面与水洼。
+screen.DIMENSIONS=§c下界 §7与 §5末地
+screen.DIMENSIONS.comment=下界的热浪与余烬，以及末地的巨型黑洞与太阳系。
+screen.CAMERA=视觉效果
+screen.CAMERA.comment=镜头光晕、色差、景深、运动模糊、胶片颗粒与电影黑边。
+screen.POST=§6镜头与色彩
+screen.POST.comment=泛光、曝光与奇幻风格的色彩分级。
+
+# ---------------------------------------------------------------- Lighting
+option.SHADOWS=阴影
+option.SHADOWS.comment=来自太阳和月亮的柔和实时阴影。§c是整个光影包中性能开销最大的一项。
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=阳光穿过染色玻璃和水面时会带上它们的颜色。
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=数值越高，阴影越清晰。§7越高 = 越慢。
+value.shadowMapResolution.1024=低（1024）
+value.shadowMapResolution.1536=中配 (1536)
+value.shadowMapResolution.2048=高配 (2048)
+value.shadowMapResolution.3072=很高配 (3072)
+value.shadowMapResolution.4096=极高 (4096)
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影绘制的距离，以方块计。
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_STRETCH=阴影拉伸
+option.SHADOW_STRETCH.comment=在日出、日落以及月亮较低时，让阴影变得格外修长。§71.0 = 符合物理真实。
+option.SHADOW_SOFTNESS.comment=阴影的柔和程度。正午时总是更清晰，日出、日落以及月光下则更长更柔和。
+option.CONTACT_HARDENING=写实柔和阴影
+option.CONTACT_HARDENING.comment=阴影在接触投射物体处清晰，距离越远越柔和，如同真实阴影。§7关闭 = 均匀柔和的阴影（略快）。
+option.sunPathRotation=太阳角度
+option.sunPathRotation.comment=倾斜太阳的运行轨迹，使阴影以更有趣的角度投下。
+option.TORCH_BRIGHTNESS=火把亮度
+option.HAND_LIGHT=手持物品光照
+option.HAND_LIGHT.comment=手持火把或其他光源时，会照亮你的周围。
+option.EMISSIVE_STRENGTH=发光方块
+option.EMISSIVE_STRENGTH.comment=岩浆、灯笼、萤石等光源的发光强度。
+option.ORE_GLINT=宝石闪光
+option.ORE_GLINT.comment=矿石中的宝石与紫水晶会柔和地闪烁。
+option.AO_STRENGTH=环境光遮蔽
+option.AO_STRENGTH.comment=角落与缝隙处的柔和暗化。
+option.MIN_LIGHT=洞穴最低光照
+option.MIN_LIGHT.comment=漆黑洞穴的黑暗程度。
+option.ENCHANTED_FLORA=附魔花朵
+option.ENCHANTED_FLORA.comment=黄昏之后，花朵五彩的花瓣会散发出柔和、缓缓呼吸般的光芒。
+option.FLORA_GLOW=花朵微光
+option.LEAF_TRANSLUCENCY=发光树叶
+option.LEAF_TRANSLUCENCY.comment=逆着太阳望去，阳光穿透树叶与草，使它们发出浓郁的绿金色光芒。
+
+# ---------------------------------------------------------------- Water
+option.WATER_STYLE=水体颜色
+value.WATER_STYLE.0=§3附魔青碧
+value.WATER_STYLE.1=§9水晶蓝
+value.WATER_STYLE.2=§2群系色彩
+option.WATER_CLARITY=水体清晰度
+option.WATER_CLARITY.comment=你能看透多深的水。
+option.WATER_WAVES=波纹
+option.WAVE_HEIGHT=波浪高度
+option.WATER_DISPLACEMENT=流动水面
+option.WATER_DISPLACEMENT.comment=水面会缓缓起伏。
+option.WATER_FOAM=岸边浪花
+option.WATER_REFLECTIONS=反射
+option.WATER_REFLECTIONS.comment=水面上的屏幕空间反射。
+option.SSR_STEPS=反射质量
+option.WATER_REFRACTION=折射
+option.WATER_REFRACTION.comment=水下的物体会随波浪晃动。
+option.WATER_GLITTER=点点闪光
+option.WATER_GLITTER.comment=细小的波面在阳光和月光下闪闪发光。
+option.WATER_CAUSTICS=焦散
+option.WATER_CAUSTICS.comment=湖海底部舞动的光纹。§7需要开启阴影。
+
+# ---------------------------------------------------------------- Night sky
+option.STARS=星星
+option.STAR_DENSITY=星体密度
+option.STAR_BRIGHTNESS=星星亮度
+option.GALAXIES=星系
+option.GALAXIES.comment=带有星云与暗尘带的银河，以及远处的旋涡星系。
+option.MILKY_WAY_BRIGHTNESS=银河亮度
+option.PLANETS=行星
+option.PLANETS.comment=土星、木星、火星与海王星。它们逐日环绕运行，因此会相对群星移动，相位也随之变化。接近地平线时会变暗并偏红。
+option.SHOOTING_STARS=流星
+option.SHOOTING_STAR_RATE=流星频率
+option.AURORA_MODE=北极光
+option.AURORA_MODE.comment=§b雪原群系§r：仅在寒冷多雪群系的夜晚出现。§7旧版 OptiFine 无法检测群系，请用“总是”。
+value.AURORA_MODE.0=§7关闭
+value.AURORA_MODE.1=雪原群系
+value.AURORA_MODE.2=§a总是
+option.AURORA_STRENGTH=北极光强度
+
+# ---------------------------------------------------------------- Atmosphere
+option.GODRAYS=神圣光芒 
+option.GODRAYS.comment=阳光洒下的光束，日出和日落时最强。
+option.GODRAY_STRENGTH=丁达尔效应强度
+option.GODRAY_SAMPLES=中等性能消耗！
+option.FOG_DENSITY=雾密度
+option.FIREFLIES=萤火虫
+option.FIREFLIES.comment=黄昏和夜晚，发光微粒在你周围飘动。
+option.FIREFLY_AMOUNT=萤火虫数量
+option.VOLUMETRIC_LIGHT=体积光
+option.VOLUMETRIC_LIGHT.comment=真实的体积光：太阳或月光照到的朦胧空气会发光，树木、悬崖和建筑会在其中投下束状阴影。黎明、黄昏和雨天最强。§7需要阴影。
+option.VL_STRENGTH=体积光强度
+option.VL_SAMPLES=体积光质量
+option.VL_SAMPLES.comment=沿每条视线的采样数。§7越高体积光越平滑，但越慢。
+option.MORNING_MIST=晨雾
+option.MORNING_MIST.comment=日出前后，成片薄雾沉降在山谷和水面上，在低角度阳光下发光，到上午中期消散。夜晚很淡。
+option.MIST_DENSITY=薄雾密度
+option.RAINBOWS=彩虹
+option.RAINBOWS.comment=雨后背对太阳时会出现彩虹：主虹、淡淡的反向副虹及之间较暗的带，均为真实角度。
+option.MAGIC_WISPS=鬼火
+option.MAGIC_WISPS.comment=夜晚几团柔和的蓝色和紫色光点缓缓升起，若隐若现。
+option.SKY_HALOS=日月光晕
+option.SKY_HALOS.comment=太阳和月亮周围淡淡的光环，由高空冰晶形成。每天强度有所不同。
+option.FAIRY_DUST=精灵尘
+option.FAIRY_DUST.comment=白天细小的金色尘埃和花粉漂浮在空中，映到阳光时会闪烁。
+option.FAIRY_DUST_AMOUNT=精灵尘数量
+
+# ---------------------------------------------------------------- Nature
+option.WAVING_PLANTS=植物摆动
+option.WAVING_PLANTS.comment=草、花、作物、树叶和藤蔓随风摇摆。
+option.PLAYER_PUSH=植物避让玩家
+option.PLAYER_PUSH.comment=穿过草丛和花丛时，它们会向两边弯折。
+option.WAVE_SPEED=风速
+option.WAVE_STRENGTH=风力强度
+option.UNDERWATER_SWAY=水下植物
+option.UNDERWATER_SWAY.comment=海带和海草随水流摇摆。
+option.LILYPAD_BOB=浮动睡莲叶
+option.PARTICLE_WIND=风中粒子
+option.PARTICLE_WIND.comment=粒子随风飘动。
+option.RAIN_TILT=雨线倾斜度
+option.RAIN_TILT.comment=风将雨雪吹偏的程度。
+option.WET_WORLD=潮湿世界
+option.WET_WORLD.comment=雨水慢慢浸湿地面，使其更暗、更浓并带光泽，雨停后逐渐变干。仅在会下雨的地方生效（沙漠和雪原群系除外）。
+option.PUDDLES=水坑
+option.PUDDLES.comment=雨时平地形成水洼，倒映天空并随雨滴泛起涟漪。§7需要潮湿世界。
+option.PUDDLE_AMOUNT=水坑数量
+
+# ---------------------------------------------------------------- Post
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.EXPOSURE=亮度
+option.SATURATION=饱和度
+option.FANTASY_GRADE=幻想色彩分级
+option.FANTASY_GRADE.comment=冷紫色阴影与暖金色高光。
+option.VIGNETTE=暗角
+option.DREAMY_LOOK=梦幻观感
+option.DREAMY_LOOK.comment=更柔和的对比度，薰衣草色提亮的阴影，玫瑰金色高光，以及远景上的柔雾。
+value.DREAMY_LOOK.0.0=§7关闭
+option.DREAMY_GLOW=梦幻光晕
+option.DREAMY_GLOW.comment=柔光滤镜般的光晕：光线轻轻向周围泛开，营造梦幻油画感。§7需要泛光。
+value.DREAMY_GLOW.0.0=§7关闭
+option.NIGHT_VISION_TINT=月光视觉
+option.NIGHT_VISION_TINT.comment=在极暗光线下颜色褪为冷蓝色，如同人眼在月光下的视觉。
+value.NIGHT_VISION_TINT.0.0=§7关闭
+
+# ---------------------------------------------------------------- Nether & End
+option.NETHER_HEAT_HAZE=热浪
+option.NETHER_HEAT_HAZE.comment=Distant parts of the Nether shimmer in the heat.
+option.NETHER_EMBERS=浮动余烬
+option.NETHER_EMBERS.comment=发光的余烬在空中向上飘动。
+option.END_BLACK_HOLE=巨型黑洞
+option.END_BLACK_HOLE.comment=末地天空中悬挂着巨大的动态黑洞，扭曲周围星光，并将岛屿映成橙色。
+option.END_BLACK_HOLE_SIZE=黑洞尺寸
+option.END_BLACK_HOLE_SPEED=黑洞旋转速度
+value.END_BLACK_HOLE_SPEED.0.0=§7静止
+option.END_MOTES=虚空微粒
+option.END_MOTES.comment=紫色和青色的光点在你周围缓缓漂浮。
+option.END_SOLAR_SYSTEM=太阳系
+option.END_SOLAR_SYSTEM.comment=整个太阳系悬挂在末地天空：太阳、沿轨道运行的八大行星（地球是方块状的 Minecraft 地球，带着它的月球）、土星环和小行星带。
+option.SOLAR_SYSTEM_SIZE=太阳系大小
+option.SOLAR_SYSTEM_SPEED=公转速度
+value.SOLAR_SYSTEM_SPEED.0.0=§7静止
+
+# ---------------------------------------------------------------- Sun, moon & eclipses
+option.SUN_SIZE=太阳大小
+option.SUN_BRIGHTNESS=太阳亮度
+option.MOON_SIZE=月球大小
+option.MOON_BRIGHTNESS=月球亮度
+option.ECLIPSE_MODE=日食
+option.ECLIPSE_MODE.comment=有些日子正午前后月亮会遮住太阳，天空变暗约半分钟。§7想快速看到一次可用“每天”。
+value.ECLIPSE_MODE.0=§7关闭
+value.ECLIPSE_MODE.1=§6随机
+value.ECLIPSE_MODE.2=§e每天
+option.ECLIPSE_CHANCE=日食频率
+option.ECLIPSE_CHANCE.comment=选中随机时，出现日食之日的频率。
+value.ECLIPSE_CHANCE.0.05=稀有（20天一次）
+value.ECLIPSE_CHANCE.0.1=少见（10天一次）
+value.ECLIPSE_CHANCE.0.15=偶尔（7天一次）
+value.ECLIPSE_CHANCE.0.25=常见（4天一次）
+value.ECLIPSE_CHANCE.0.5=频繁（隔天一次）
+option.MOON_TEXTURE=真实月球表面
+option.MOON_TEXTURE.comment=使用NASA月球勘测轨道飞行器贴图，呈现带环形山起伏的照片级月亮。§7如果在旧版OptiFine中月亮显示异常请关闭。
+option.FXAA=抗锯齿（快速近似抗锯齿）
+option.FXAA.comment=平滑方块、树叶和轮廓的锯齿边缘。性能消耗极低。
+
+# ---------------------------------------------------------------- Clouds
+option.VOLUMETRIC_CLOUDS=体积云
+option.VOLUMETRIC_CLOUDS.comment=受太阳光照的真实3D云，日落时带银色镶边。替换原版云。
+option.CLOUD_QUALITY=云层质量
+option.CLOUD_QUALITY.comment=对云层采样。§7越高越柔和，也越慢。
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_COVERAGE.comment=天空的云量。下雨时会自动增加。
+option.CLOUD_HEIGHT=云层高度
+option.CLOUD_THICKNESS=云层厚度
+option.CLOUD_SPEED=风速（云）
+value.CLOUD_SPEED.0.0=静态
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=云会在地面投下移动的阴影。
+
+# ---------------------------------------------------------------- Camera effects
+screen.LENS_FX=§cOBS
+screen.LENS_FX.comment=镜头光晕、镜头污渍、卤化光晕、色差和镜头畸变。
+screen.FOCUS_FX=§b对焦 §7& §b运动
+screen.FOCUS_FX.comment=景深、移轴和运动模糊。
+screen.FILM_FX=§b胶片 §7& §b风格
+screen.FILM_FX.comment=胶片颗粒、色彩滤镜、CRT、像素化、水下晃动和电影黑边。
+
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE.comment=朝太阳看时出现辉光和反射。太阳被地形或云遮挡时渐隐。
+option.LENS_FLARE_STRENGTH=镜头光晕强度
+option.FLARE_GHOSTS=光晕：鬼影
+option.FLARE_GHOSTS.comment=贯穿屏幕的彩色反射光斑。
+option.FLARE_HALO=光晕：光环
+option.FLARE_STREAK=光晕：宽银幕条纹
+option.FLARE_STARBURST=光晕：星芒
+option.LENS_DIRT=镜头污渍
+option.LENS_DIRT.comment=镜头上的污痕和斑点，在强光周围发亮。
+option.LENS_DIRT_STRENGTH=镜头污渍强度
+option.HALATION=光晕
+option.HALATION.comment=在亮光周围溢出的暖红橙色胶片辉光。
+option.HALATION_STRENGTH=卤化光晕强度
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION.comment=像真实相机镜头一样在屏幕边缘出现红/蓝色散，中央保持清晰。
+option.CA_STRENGTH=色差强度
+option.LENS_DISTORTION=镜头畸变
+option.LENS_DISTORTION.comment=像广角（桶形）或长焦（枕形）镜头一样弯曲画面。
+option.LENS_DISTORTION_STRENGTH=畸变强度
+option.LENS_DISTORTION_TYPE=畸变类型
+value.LENS_DISTORTION_TYPE.0=桶形（广角）
+value.LENS_DISTORTION_TYPE.1=枕形（长焦）
+
+option.DEPTH_OF_FIELD=景深
+option.DEPTH_OF_FIELD.comment=相机式对焦：比焦点近和远的景物平滑模糊，虚化的前景柔和地叠在背景上，合焦物体保持清晰。手持物品保持清晰。
+option.DOF_STRENGTH=模糊强度
+option.DOF_FOCUS_MODE=焦点模式
+value.DOF_FOCUS_MODE.0=自动（屏幕中心）
+value.DOF_FOCUS_MODE.1=手动距离
+option.DOF_MANUAL_DISTANCE=手动对焦距离
+option.DOF_MANUAL_DISTANCE.comment=对焦模式为手动时保持清晰的距离（以方块计）。
+option.DOF_QUALITY=模糊质量
+option.DOF_QUALITY.comment=每像素采样数。§7越高模糊越平滑，也越慢。
+option.centerDepthHalflife=焦点速度
+option.centerDepthHalflife.comment=自动对焦调整速度（秒）。§7越低越快。
+option.TILT_SHIFT=移轴效果
+option.TILT_SHIFT.comment=微缩景观效果：只有中间一条带保持清晰，让世界看起来像小模型。
+option.TILT_SHIFT_STRENGTH=移轴强度
+option.MOTION_BLUR=动态模糊
+option.MOTION_BLUR.comment=转向或快速移动时模糊世界。
+option.MOTION_BLUR_STRENGTH=动态模糊强度
+option.MOTION_BLUR_SAMPLES=运动模糊质量
+
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN.comment=细腻动态的电影颗粒。
+option.GRAIN_STRENGTH=噪点强度
+option.GRAIN_SIZE=颗粒大小
+option.SHARPENING=锐化
+option.SHARPENING.comment=在抗锯齿后恢复清晰的方块纹理。
+value.SHARPENING.0.0=§7关
+option.COLOR_FILTER=色彩滤镜
+value.COLOR_FILTER.0=§7无
+value.COLOR_FILTER.1=黑白效果
+value.COLOR_FILTER.2=棕褐色调
+value.COLOR_FILTER.3=复古胶片
+value.COLOR_FILTER.4=Cool
+value.COLOR_FILTER.5=视差贴图自阴影
+option.COLOR_FILTER_STRENGTH=滤镜强度
+option.CRT_SCANLINES=CRT扫描线
+option.CRT_SCANLINES.comment=老式电视扫描线和淡淡的RGB遮罩。
+option.CRT_STRENGTH=CRT强度
+option.PIXELATE=像素化
+option.PIXELATE.comment=复古低分辨率效果。
+option.PIXEL_SIZE=像素大小
+option.UNDERWATER_DISTORTION=水下晃动
+option.UNDERWATER_DISTORTION.comment=在水下时视角轻轻晃动。
+option.UNDERWATER_DISTORTION_STRENGTH=晃动强度
+option.CINEMATIC_BARS=电影黑边
+option.CINEMATIC_BARS.comment=黑色信箱式黑边，营造电影感。
+option.BARS_ASPECT=黑边宽高比
+value.BARS_ASPECT.1.85=1.85:1（平幕）
+value.BARS_ASPECT.2.0=2:1 (Univisium)
+value.BARS_ASPECT.2.39=2.39:1（宽银幕）
+value.BARS_ASPECT.2.76=2.76:1（Ultra Panavision）

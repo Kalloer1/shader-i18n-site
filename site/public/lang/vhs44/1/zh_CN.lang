@@ -1,0 +1,158 @@
+#shaders/lang/zh_CN.lang
+# VHS44 v1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：VHS44.zip 的 shaders/lang/en_US.lang
+screen.TWEAKS=微调
+screen.CAMERA=相机
+screen.SIGNAL=信号
+screen.TUBE=显像管相机
+profile.comment=Normal 为完整效果，Subtle 保留摄像机质感，同时更干净、更锐利。
+
+screen.LIGHTING=光照
+screen.FLASHLIGHT=手电筒
+screen.ADVANCED=微调
+screen.PICTURE=镜头与画面
+screen.COLOR=颜色
+screen.ANALOG=信号
+screen.TUBE_ADV=显像管相机
+screen.COMPRESSION=压缩
+
+option.CAMCORDER_STRENGTH=相机强度
+option.CAMCORDER_STRENGTH.comment=旧式相机质感的主控强度。
+option.OPTICAL_SOFTNESS=光学柔化
+option.EDGE_SHARPENING=边缘增强
+option.LENS_DISTORTION=镜头桶形畸变
+option.CHROMATIC_ABERRATION=色差
+option.VIGNETTE_STRENGTH=镜头暗角
+option.HALATION_STRENGTH=高光晕染
+option.HIGHLIGHT_STRENGTH=高光强度
+option.HIGHLIGHT_STRENGTH.comment=亮源晕染与 CCD 高光拖尾的总强度。默认值 4.00 刻意设得很高。
+option.BLOWN_OUT_LIGHTS=高光增强
+option.BLOWN_OUT_LIGHTS.comment=增强明亮高光，使灯光像旧式相机那样过曝、发光并泛白。
+option.CCD_VERTICAL_SMEAR=CCD 垂直高光拖尾
+option.LENS_EDGE_SOFTNESS=镜头边缘柔化
+option.LENS_EDGE_SOFTNESS.comment=像廉价家用变焦镜头一样，向边缘轻微降低分辨率。
+option.ANALOG_EDGE_RINGING=模拟亮度边缘振铃
+option.ANALOG_EDGE_RINGING.comment=来自旧式相机电路的细微水平过冲/下冲。
+option.AUTO_EXPOSURE_BREATH=自动曝光呼吸效应
+option.AUTO_EXPOSURE_BREATH.comment=缓慢的增益变化，避免静态场景看起来像数字锁定般僵硬。
+option.WHITE_BALANCE_DRIFT=白平衡漂移
+option.WHITE_BALANCE_DRIFT.comment=家用相机自动白平衡常见的缓慢冷暖漂移。
+
+option.BLOCKLIGHT_STRENGTH=方块光照
+option.BLOCKLIGHT_STRENGTH.comment=火把、灯笼、萤石及其他方块光源的亮度。
+option.DAY_EXPOSURE=日间亮度
+option.DAY_EXPOSURE.comment=白天期间的亮度。
+
+option.PITCH_BLACK_NIGHT=漆黑之夜
+option.PITCH_BLACK_NIGHT.comment=仅限主世界。开启后夜晚变为一片漆黑，关闭则恢复原版 Minecraft 天空与夜间光照。
+value.PITCH_BLACK_NIGHT.0=关
+value.PITCH_BLACK_NIGHT.1=开
+
+option.HORIZONTAL_BANDWIDTH_BLUR=水平带宽模糊
+option.HORIZONTAL_BANDWIDTH_BLUR.comment=在真实的 640x360 信号中对亮度进行水平低通处理，同时保留垂直细节，以模拟有限的模拟摄像机带宽。
+option.CHROMA_BLEED=色度渗色宽度
+option.CHROMA_SMEAR=色度拖尾
+option.CHROMA_NOISE=色度相位噪点
+option.CHROMA_DELAY=色度延迟
+option.CHROMA_RESOLUTION=水平色度分辨率损失
+option.SHADOW_RAINBOW_NOISE=阴影彩虹噪点
+option.LUMA_GRAIN=亮度颗粒
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN.comment=自适应相机颗粒。阴影处颗粒/彩色噪点更强，高光处则更干净。
+option.SENSOR_COLOR_NOISE=阴影 RGB 传感器噪点
+option.SENSOR_COLOR_NOISE.comment=精细的红/绿/蓝非相关读取噪点，偏重于画面较暗区域。
+option.SKY_COLOR_MOTTLING=天空/雾颜色斑驳
+option.SKY_COLOR_MOTTLING.comment=平滑明亮区域中宽广的低频色彩漂移，类似旧式传感器与低码率采集的不稳定性。
+option.FRAME_WOBBLE=整帧磁带抖动
+option.FRAME_WOBBLE.comment=帧与帧之间细微的亚像素级走带不稳定性。
+option.LOW_LIGHT_DETAIL_LOSS=弱光细节损失
+option.LOW_LIGHT_DETAIL_LOSS.comment=暗部区域精细细节与色度的选择性损失。
+
+option.TAPE_DROPOUTS=磁带丢帧
+option.FRAME_FLICKER=帧增益闪烁
+option.COMPRESSION_ARTIFACTS=摄像机/DV 压缩
+
+option.YOUTUBE_360P_STRENGTH=压缩
+option.YOUTUBE_360P_STRENGTH.comment=录制视频压缩的可见程度。
+option.YOUTUBE_360P_CHROMA=4:2:0 色度损失
+option.YOUTUBE_360P_CHROMA.comment=近似模拟 4:2:0 色度子采样与重度色度量化。
+option.YOUTUBE_360P_BLOCKS=宏块/量化
+option.YOUTUBE_360P_BLOCKS.comment=16x16 宏块漂移，外加类似 8x8 变换的不连续性与亮度量化。
+option.YOUTUBE_360P_RINGING=DCT 边缘振铃
+option.YOUTUBE_360P_RINGING.comment=在高对比度边缘周围添加编解码器过冲/振铃。
+option.YOUTUBE_360P_MOSQUITO=蚊状噪声
+option.YOUTUBE_360P_MOSQUITO.comment=集中在边缘附近的细微不稳定压缩噪声。
+option.YOUTUBE_360P_BANDING=渐变色带
+option.YOUTUBE_360P_BANDING.comment=在天空和雾等平坦渐变区域添加低码率色带。
+option.YOUTUBE_360P_DEBLOCK=解码器去块
+option.YOUTUBE_360P_DEBLOCK.comment=像视频解码器去块滤镜一样柔化块边界。
+option.YOUTUBE_360P_TEMPORAL=时域块残留
+option.YOUTUBE_360P_TEMPORAL.comment=以模拟的 30 fps 编码节奏呈现稀疏的块级闪烁。
+
+option.CAMERA_EXPOSURE=相机亮度
+option.CAMERA_EXPOSURE.comment=整体录制亮度。
+option.SATURATION=饱和度
+option.WARMTH=冷暖偏色
+option.GREEN_CAST=绿/品红偏色
+option.CONTRAST=对比度
+option.BLACK_LIFT=黑色提升
+option.HIGHLIGHT_CLIP=高光裁切
+option.GAMMA_CURVE=伽马曲线
+
+option.TORCH_FLASHLIGHT=火把手电筒
+option.TORCH_FLASHLIGHT.comment=将手持的火把用作相机手电筒。
+value.TORCH_FLASHLIGHT.0=关
+value.TORCH_FLASHLIGHT.1=开
+option.FLASHLIGHT_STRENGTH=手电筒亮度
+option.FLASHLIGHT_STRENGTH.comment=手电筒的亮度。
+option.FLASHLIGHT_RANGE=手电筒范围
+option.FLASHLIGHT_RANGE.comment=手电筒的照射距离。
+option.FLASHLIGHT_CONE=光束大小
+option.FLASHLIGHT_CONE.comment=手电筒光束的宽度。
+option.FLASHLIGHT_EDGE_SOFTNESS=光束柔化
+option.FLASHLIGHT_EDGE_SOFTNESS.comment=光束在边缘处的淡化柔和程度。
+option.FLASHLIGHT_WARMTH=手电筒暖色
+option.FLASHLIGHT_WARMTH.comment=将光束从中性白向温暖的钨丝灯/火把色混合。
+option.FLASHLIGHT_TURN_DELAY=跟随延迟
+option.FLASHLIGHT_TURN_DELAY.comment=光束跟随鼠标的滞后程度。
+
+option.UPSCALE_SOFTNESS=柔化度
+option.UPSCALE_SOFTNESS.comment=在压缩后轻微柔化录制画面。
+
+option.TUBE70S_MODE=显像管相机
+option.TUBE70S_MODE.comment=添加老式显像管相机的特性。
+value.TUBE70S_MODE.0=关
+value.TUBE70S_MODE.1=开
+option.TUBE_4_3=4:3 边框
+option.TUBE_4_3.comment=添加简单的 4:3 侧边边框。
+option.VERTICAL_STRETCH=垂直拉伸
+option.VERTICAL_STRETCH.comment=将画面略微纵向拉伸，以营造微妙的老式相机画幅感。
+value.TUBE_4_3.0=关
+value.TUBE_4_3.1=开
+option.TUBE_PERSISTENCE=显像管影像残留
+option.TUBE_PERSISTENCE.comment=真实的逐帧显像管延迟。数值越高，在相机移动时残留的上一帧越多。
+option.TUBE_BRIGHT_TRAIL=亮物拖尾
+option.TUBE_BRIGHT_TRAIL.comment=为明亮物体和高光提供额外残留，以复现 Vidicon 式的残影。
+option.TUBE_CHROMA_BANDWIDTH=1970年代色度带宽损失
+option.TUBE_CHROMA_BANDWIDTH.comment=大幅降低水平色彩分辨率，同时保持亮度相对清晰。
+option.TUBE_BLOOM=显像管高光泛光
+option.TUBE_BLOOM.comment=宽广的电子高光过载与拖染，而非干净的现代 HDR 泛光。
+option.TUBE_COLOR_DIRT=1970年代色彩不纯
+option.TUBE_COLOR_DIRT.comment=降低色彩纯度并添加轻微的暖色/绿色模拟荧光粉相机偏色。
+option.TUBE_SYNC_INSTABILITY=水平同步不稳定
+option.TUBE_SYNC_INSTABILITY.comment=窄行组的罕见微小横向偏移。不会添加白色 VHS 磁迹线。
+option.TUBE_BLACK_DRIFT=模拟黑电平漂移
+option.TUBE_BLACK_DRIFT.comment=缓慢的基座漂移，使黑色看起来不会像数字固定那样死板。
+
+option.TUBE_MOTION_SCANLINES=动态扫描线
+option.TUBE_MOTION_SCANLINES.comment=主要在移动时显现的细光栅线。
+value.TUBE_MOTION_SCANLINES.0=关
+value.TUBE_MOTION_SCANLINES.1=开
+option.TUBE_MOTION_SCANLINE_STRENGTH=动态光栅强度
+option.TUBE_MOTION_SCANLINE_STRENGTH.comment=移动过程中细阴影/色彩加权光栅效果的强度。明亮的中性区域保持相对干净。
+
+screen.MISC=杂项
+option.MC66C=MC66C
+option.MC66C.comment=启用后，火把手电筒在 Y -66 以下时亮度提升至 2.0 倍。
+value.MC66C.0=关
+value.MC66C.1=开

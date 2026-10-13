@@ -1,0 +1,21 @@
+#shaders/lang/zh_CN.lang
+# CosmicGlow Shaders v1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：CosmicGlow_Shaders.zip 的 shaders/lang/en_US.lang
+screen.LIGHT=光照
+screen.WORLD=世界
+screen.WATER=水
+screen.POST=后期处理
+option.WAVING_FOLIAGE=摇曳植被
+option.WAVE_STRENGTH=波浪强度
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SUN_INTENSITY=太阳强度
+option.TORCH_FLICKER=火把闪烁
+option.WATER_REFLECTIONS=水体反射
+option.WATER_WAVES=水面波浪
+option.GODRAYS=神圣光芒 
+option.GODRAY_STRENGTH=丁达尔效应强度
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.EXPOSURE=曝光
+option.SATURATION=饱和度
+option.VIGNETTE=暗角

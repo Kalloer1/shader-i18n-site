@@ -1,0 +1,37 @@
+#shaders/lang/zh_CN.lang
+# Black Hole Shader vv1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Black Hole Shader.zip 的 shaders/lang/en_us.lang
+screen.BLACK_HOLE=黑洞
+screen.SPACE=星空与星云
+screen.NIGHT=永久黑夜
+option.SKY_QUALITY=天空质量
+value.SKY_QUALITY.0=低
+value.SKY_QUALITY.1=中
+value.SKY_QUALITY.2=高
+option.BLACK_HOLE_SIZE=黑洞尺寸
+option.BLACK_HOLE_POSITION=位置
+value.BLACK_HOLE_POSITION.0=固定于天空
+value.BLACK_HOLE_POSITION.1=跟随太阳
+value.BLACK_HOLE_POSITION.2=跟随月亮
+option.COLOR_MODE=颜色模式
+value.COLOR_MODE.0=单色
+value.COLOR_MODE.1=星际暖色
+value.COLOR_MODE.2=宇宙紫
+option.STAR_DENSITY=星体密度
+option.NEBULA_STRENGTH=星云强度
+option.SKY_BRIGHTNESS=天空亮度
+option.ACCRETION_BRIGHTNESS=吸积盘
+option.ACCRETION_ROTATION_SPEED=圆环旋转
+option.ACCRETION_ROTATION_SPEED.comment=控制气体结构的环绕速度。0 为静止。
+option.WORLD_DARKNESS=世界亮度
+option.AMBIENT_LIGHT=环境光
+option.WORLD_SATURATION=世界饱和度
+option.VIGNETTE_STRENGTH=暗角
+option.GRAVITATIONAL_LENSING=引力透镜
+option.TWINKLING_STARS=闪烁星星
+profile.PERFORMANCE=性能
+profile.BALANCED=平衡
+profile.CINEMATIC=电影级
+option.NEBULA_STRENGTH.comment=分布于天空中的七处云状区域的强度。
+option.BLACK_HOLE_SIZE.comment=V9：大型致敬经典形象的黑洞。1.50 为默认值。
+option.SKY_QUALITY.comment=性能档降低星云与气体的微观细节，同时保留主体形态与动态。

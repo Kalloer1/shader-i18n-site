@@ -1,0 +1,78 @@
+#shaders/lang/zh_CN.lang
+# EchoShader v2.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：EchoShader-2.0.0.zip 的 shaders/lang/en_us.lang
+option.COLOR_PRESET=回声颜色
+option.PULSE_SPEED=脉冲速度
+option.PULSE_WIDTH=脉冲宽度
+option.WAVE_INTERVAL=波纹间隔
+option.WAVE_REACH_CHUNKS=波纹范围（区块）
+option.RANDOM_AMOUNT=随机幅度
+option.ECHO_R=自定义颜色：R
+option.ECHO_G=自定义颜色：G
+option.ECHO_B=自定义颜色：B
+option.OUTLINE_BRIGHT=轮廓亮度
+option.THRESHOLD=边缘阈值
+option.RANDOM_ENABLED=随机间隔
+option.PROFILE=配置档
+
+option.COLOR_PRESET.comment=一个包含 37 种波纹颜色的按钮：36 种预设颜色（左键点击 - 下一种，右键点击 - 上一种，Shift+点击 - 重置）以及"自定义 (R/G/B)"，后者使用"自定义颜色：R/G/B"滑块。
+option.PULSE_SPEED.comment=基础波纹速度，单位为方块/秒。滑块范围 1 到 100，共 100 个取值。
+option.PULSE_WIDTH.comment=基础波纹环厚度，单位为方块。滑块范围 1 到 100，共 100 个取值。
+option.WAVE_INTERVAL.comment=波纹之间的基础距离，单位为方块。滑块范围 1 到 100，共 100 个取值。
+option.WAVE_REACH_CHUNKS.comment=一个包含 100 个取值的按钮：1 到 100 个区块（1 个区块 = 16 个方块）。对性能影响较大。
+option.RANDOM_AMOUNT.comment=间隔的不规则程度。滑块范围 0.00-1.00，共 101 个取值。
+option.ECHO_R.comment=自定义颜色的红色通道。滑块范围 0.00-1.00，共 101 个取值。
+option.ECHO_G.comment=自定义颜色的绿色通道。滑块范围 0.00-1.00，共 101 个取值。
+option.ECHO_B.comment=自定义颜色的蓝色通道。滑块范围 0.00-1.00，共 101 个取值。
+option.OUTLINE_BRIGHT.comment=描边基础亮度。滑块范围 0.05-5.00，共 100 个取值。
+option.THRESHOLD.comment=对深度差的敏感度。滑块范围 0.01-1.00，共 100 个取值。
+option.RANDOM_ENABLED.comment=启用随机间隔。
+option.PROFILE.comment=默认、轻柔、强烈、赛博朋克（细霓虹）、极简、海洋（缓慢宽波）、声呐（快速细脉冲）。配置档会对基础设置进行倍率调整。
+
+# ─── Ready wave color names for the "Echo color" button ───
+value.COLOR_PRESET.0=青色值
+value.COLOR_PRESET.1=红
+value.COLOR_PRESET.2=绿
+value.COLOR_PRESET.3=蓝
+value.COLOR_PRESET.4=金
+value.COLOR_PRESET.5=紫色
+value.COLOR_PRESET.6=品红色
+value.COLOR_PRESET.7=粉色
+value.COLOR_PRESET.8=橙色
+value.COLOR_PRESET.9=黄色
+value.COLOR_PRESET.10=黄绿
+value.COLOR_PRESET.11=薄荷绿
+value.COLOR_PRESET.12=§3青绿
+value.COLOR_PRESET.13=天空
+value.COLOR_PRESET.14=蔚蓝
+value.COLOR_PRESET.15=冰
+value.COLOR_PRESET.16=靛蓝色
+value.COLOR_PRESET.17=翡翠
+value.COLOR_PRESET.18=森林
+value.COLOR_PRESET.19=橄榄色
+value.COLOR_PRESET.20=沙色
+value.COLOR_PRESET.21=琥珀色
+value.COLOR_PRESET.22=绯红
+value.COLOR_PRESET.23=绯红
+value.COLOR_PRESET.24=血液
+value.COLOR_PRESET.25=玫瑰红
+value.COLOR_PRESET.26=薰衣草色
+value.COLOR_PRESET.27=紫罗兰色
+value.COLOR_PRESET.28=深蓝色
+value.COLOR_PRESET.29=蓝宝石色
+value.COLOR_PRESET.30=剧毒色
+value.COLOR_PRESET.31=幽影效果
+value.COLOR_PRESET.32=霓虹绿
+value.COLOR_PRESET.33=深绿
+value.COLOR_PRESET.34=银色
+value.COLOR_PRESET.35=铜
+value.COLOR_PRESET.36=自定义 (R/G/B)
+
+# ─── Profile names ───
+value.PROFILE.0=默认
+value.PROFILE.1=微妙
+value.PROFILE.2=强烈
+value.PROFILE.3=赛博朋克
+value.PROFILE.4=最小化
+value.PROFILE.5=海洋
+value.PROFILE.6=声呐

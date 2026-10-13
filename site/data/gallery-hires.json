@@ -1,0 +1,392 @@
+{
+  "complementary-reimagined": [
+    "https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9.jpeg",
+    "https://cdn.modrinth.com/data/HVnmMxH1/images/7c45cec837f459ef49571d230e54952c42717cab.png",
+    "https://cdn.modrinth.com/data/HVnmMxH1/images/35b1b4eb6a186297fe039995449d17608f510560.png"
+  ],
+  "complementary-unbound": [
+    "https://cdn.modrinth.com/data/R6NEzAwj/images/7c45cec837f459ef49571d230e54952c42717cab.png",
+    "https://cdn.modrinth.com/data/R6NEzAwj/images/859d7d7f3f723118faf93cf2eff9d7e9ac55baf6.png",
+    "https://cdn.modrinth.com/data/R6NEzAwj/images/0d56b4e3411149fe19d3a45c0105072c18674960.png"
+  ],
+  "bsl-shaders": [
+    "https://cdn.modrinth.com/data/Q1vvjJYV/images/6196a455f84be3071fd99b4dc182694be0e30343.jpeg",
+    "https://cdn.modrinth.com/data/Q1vvjJYV/images/65422dcd9b3e88c064994725f9b6cdb4bb7fb9f7.jpeg",
+    "https://cdn.modrinth.com/data/Q1vvjJYV/images/f9dc692dae4c4c44fcef54a0d921ce83fe7f9800.jpeg"
+  ],
+  "photon-shader": [
+    "https://cdn.modrinth.com/data/lLqFfGNs/images/38d736b56ff2e374efb8005249a98a7db8580816.png",
+    "https://cdn.modrinth.com/data/lLqFfGNs/images/53158735be49a61e603c276c66788af48e5a9503.png",
+    "https://cdn.modrinth.com/data/lLqFfGNs/images/aeba002e0d347a462f8679b68c716c5171526656.png"
+  ],
+  "solas-shader": [
+    "https://cdn.modrinth.com/data/EpQFjzrQ/images/ce6ca2fab6173e6fcf4454487e320c041291fecd.png",
+    "https://cdn.modrinth.com/data/EpQFjzrQ/images/4a63acb5902f6a2746fe3b8b75509f13030a731b.png",
+    "https://cdn.modrinth.com/data/EpQFjzrQ/images/bb7022429b7a04fe2e1d2bfa9f6c24e34d4799ff.png"
+  ],
+  "bliss-shader": [
+    "https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5.png",
+    "https://cdn.modrinth.com/data/ZvMtQlho/images/ecf9e2f601595d4461681ec62d55555dfad70069.png",
+    "https://cdn.modrinth.com/data/ZvMtQlho/images/1d75ec2f5d8406f2fc0305dc623a628df24463bc.png"
+  ],
+  "rethinking-voxels": [
+    "https://cdn.modrinth.com/data/kmwfVOoi/images/5de1c81f0bc383e607993c76c81aa56c37a63a7a.png",
+    "https://cdn.modrinth.com/data/kmwfVOoi/images/4b26f29d09d14d59301421843b6d2438b2c2fb0b.png",
+    "https://cdn.modrinth.com/data/kmwfVOoi/images/2be29c44caaf1356a5bdd2632cf86355f25988d5.png"
+  ],
+  "makeup-ultra-fast-shaders": [
+    "https://cdn.modrinth.com/data/izsIPI7a/images/cfe215bc974937ad50ace1ccbe865026dc985094.jpeg",
+    "https://cdn.modrinth.com/data/izsIPI7a/images/74ba2f7928155d65f601f60cec903979e39588b8.jpeg",
+    "https://cdn.modrinth.com/data/izsIPI7a/images/bdd03d7b879fe8c030062f8e9d3d46eead3e5c25.jpeg"
+  ],
+  "super-duper-vanilla": [
+    "https://cdn.modrinth.com/data/LMIZZNxZ/images/8edcb53225f8eeade023759c54df0916d9e3ff2a.png",
+    "https://cdn.modrinth.com/data/LMIZZNxZ/images/f643695cdd4ab9f7c95750fb8ff43f396cd16f6c.png",
+    "https://cdn.modrinth.com/data/LMIZZNxZ/images/f97e5cb26647bd487fae153b9942f87f373f7695.png"
+  ],
+  "insanity-shader": [
+    "https://cdn.modrinth.com/data/EQWX2WiO/images/dd034c2dcdfa4c852461f8f197eab402cf145c54.png"
+  ],
+  "mellow": [
+    "https://cdn.modrinth.com/data/BUxf36AP/images/b2c0f12ee532c026930cd03390c101dcebd0d2e8.png",
+    "https://cdn.modrinth.com/data/BUxf36AP/images/7fc9580a56cc18690cf8bd02f723ed416b993c8f.png",
+    "https://cdn.modrinth.com/data/BUxf36AP/images/f8b9fda5f7ae483cd47971b85d28416a6f298a1d.png"
+  ],
+  "astralex": [
+    "https://cdn.modrinth.com/data/RphJSnEs/images/6a0094491a7d731dd736636d776781f34be4e222.jpeg",
+    "https://cdn.modrinth.com/data/RphJSnEs/images/1ad8d8a2c86c78d4fcdf057c848937850f2a2b92.jpeg",
+    "https://cdn.modrinth.com/data/RphJSnEs/images/d87f3d816a0648ed0166af7ead5af81148b314ee.jpeg"
+  ],
+  "miniature-shader": [
+    "https://cdn.modrinth.com/data/UaS8ROxa/images/beec07b07d81705fadb724a4ffa45851a43c0d3b.png",
+    "https://cdn.modrinth.com/data/UaS8ROxa/images/85be3936e6ae267ec08f5be8155e185b0068cef8.png",
+    "https://cdn.modrinth.com/data/UaS8ROxa/images/3a2375b76b269c3ea00f6c9383e758b45bbde8c3.png"
+  ],
+  "nostalgia-shader": [
+    "https://cdn.modrinth.com/data/xEItlMn3/images/1700c1e7e94a77b3a4693dea401671d356521701.jpeg",
+    "https://cdn.modrinth.com/data/xEItlMn3/images/d64a3ed603beeba6237d418df2a57a64a936a74c.jpeg",
+    "https://cdn.modrinth.com/data/xEItlMn3/images/8306c48d48a1eb2d495f43782776ef342d8596ac.jpeg"
+  ],
+  "hysteria-shaders": [
+    "https://cdn.modrinth.com/data/iHC8BZn4/images/e584027b9d13ba568aeb99f5ef66e6ad7e0e190e.png",
+    "https://cdn.modrinth.com/data/iHC8BZn4/images/eb0e606243a6339f9619802beeea1c05e6d8d00f.jpeg",
+    "https://cdn.modrinth.com/data/iHC8BZn4/images/1067217ae5fefd13a2e106b2f6796b493b8ced73.png"
+  ],
+  "kappa-shader": [
+    "https://cdn.modrinth.com/data/Y8161YLz/images/5ecb99797230bbdd6f3023f9a8ac1798f17b4780.jpeg",
+    "https://cdn.modrinth.com/data/Y8161YLz/images/4cd8efed2e4602d465a3975acd2c973c5d0e1d22.jpeg",
+    "https://cdn.modrinth.com/data/Y8161YLz/images/e9ab33c68ee57df9344b894b791def6c4d53e52d.jpeg"
+  ],
+  "spooklementary": [
+    "https://cdn.modrinth.com/data/6uJCfiCH/images/16b942e3d1b6221726192776df5bb7482c3cf55f.png",
+    "https://cdn.modrinth.com/data/6uJCfiCH/images/121b7487ceef2872e396c902a3ec858ffc115f39.png",
+    "https://cdn.modrinth.com/data/6uJCfiCH/images/1948965f5909faf35c8ef0fdb38488cc3d8e8191.png"
+  ],
+  "potato-shaders": [
+    "https://cdn.modrinth.com/data/WX4iF5Cj/images/74a2a6db7820a825717e5bd8288505a56411cae1.jpeg",
+    "https://cdn.modrinth.com/data/WX4iF5Cj/images/208b4bc2e138608246b02d865f4f9b28569fe791.jpeg",
+    "https://cdn.modrinth.com/data/WX4iF5Cj/images/7223373f435ed3cdc525626fa9aebb2bc6b32a70.jpeg"
+  ],
+  "i-like-vanilla": [
+    "https://cdn.modrinth.com/data/DoODk4HD/images/9028a07e88871c018c344d36c1b8876ccdaf8431.jpeg",
+    "https://cdn.modrinth.com/data/DoODk4HD/images/e3d7569ec3555cdc8f7f586d4144d896afc310b2.jpeg",
+    "https://cdn.modrinth.com/data/DoODk4HD/images/674155772b5e14a9402a13c61f433d8d61accef0.jpeg"
+  ],
+  "vanilla-plus-shader": [
+    "https://cdn.modrinth.com/data/EPsIYDj1/images/772d1bcc58fbff6e0fee50ad95897f221b103774.jpeg",
+    "https://cdn.modrinth.com/data/EPsIYDj1/images/5c2c5758e3d2b09af88484865a9932510e69e968.jpeg",
+    "https://cdn.modrinth.com/data/EPsIYDj1/images/ebb49fd99867317ff309a25e8d643e9c6bfcad11.jpeg"
+  ],
+  "visual-vibrance": [
+    "https://cdn.modrinth.com/data/l6Uqs2fS/images/947aacab971724d9367122f279ba23c69b897df5.png",
+    "https://cdn.modrinth.com/data/l6Uqs2fS/images/dd5b9092b1f4e2c95750f031b8f99b6df7d47a00.png",
+    "https://cdn.modrinth.com/data/l6Uqs2fS/images/d3129ff06d1756847ca56e1c6d17f8065657c7e3.jpeg"
+  ],
+  "noble": [
+    "https://cdn.modrinth.com/data/sclYVqbt/images/73f695810d645ef0dbc6f1e20455bf5ee6726dfd.png",
+    "https://cdn.modrinth.com/data/sclYVqbt/images/39789d47c74099495918903f987248242520104d.png",
+    "https://cdn.modrinth.com/data/sclYVqbt/images/33eba5dc5256c437172ecd8cac260c747faec7c8.png"
+  ],
+  "bsl-shaders-classic": [
+    "https://cdn.modrinth.com/data/pgzM6RBY/images/211520227eb33226df73c18c12942cfdd7a2f8fa.jpeg",
+    "https://cdn.modrinth.com/data/pgzM6RBY/images/f42407e3d2b7065f8daaa0d6c63865f552ac19b4.jpeg",
+    "https://cdn.modrinth.com/data/pgzM6RBY/images/9ca207948a28bceed04aed11f97bad3c9a5bdfdf.jpeg"
+  ],
+  "shrimple": [
+    "https://cdn.modrinth.com/data/BS9T99lD/images/5c7ab9f9cc7c63c0185855a9d6134e83437923c7.png",
+    "https://cdn.modrinth.com/data/BS9T99lD/images/5fdd1e3a687c5c89fd937423df952ff96731cdff.png",
+    "https://cdn.modrinth.com/data/BS9T99lD/images/928957598da0cb5d2de121b2ec7c06c57f51febb.png"
+  ],
+  "fastpbr": [
+    "https://cdn.modrinth.com/data/ygChbn8J/images/a0dd165216e6ce8304f52a9e24ebbce6c838e338.jpeg",
+    "https://cdn.modrinth.com/data/ygChbn8J/images/cb02a3074650c393cd1d6383b547b6469be8de45.jpeg",
+    "https://cdn.modrinth.com/data/ygChbn8J/images/5cb3ca2be4197bd1b4973f72c057806141bf258f.jpeg"
+  ],
+  "bloop-shaders": [
+    "https://cdn.modrinth.com/data/Q6RQF9Oa/images/77456938251a7d2d7410aec7d150be460523a9b1.jpeg",
+    "https://cdn.modrinth.com/data/Q6RQF9Oa/images/2708231681245a4d1d584c14e05d33ef326a0802.jpeg",
+    "https://cdn.modrinth.com/data/Q6RQF9Oa/images/bd8432fb8b7fc2edb8468c4f18c3087fc64a3355.jpeg"
+  ],
+  "lite-shaders": [
+    "https://cdn.modrinth.com/data/LTvf5Tji/images/20136478b4568176829c5af5b16b2f7a32dc8540.jpeg",
+    "https://cdn.modrinth.com/data/LTvf5Tji/images/e1566b9f6ff88a89289062f72367f69879672aab.jpeg",
+    "https://cdn.modrinth.com/data/LTvf5Tji/images/b174f344585f2078c2e693e53b863a153bf043d2.jpeg"
+  ],
+  "body-camera-shader": [
+    "https://cdn.modrinth.com/data/by2i3tnt/images/b075d9637b3c491b396b5fb7924f2dd3b2103be6.png",
+    "https://cdn.modrinth.com/data/by2i3tnt/images/b1b5f825fded005c9b0e54eed05f77ba06b69bad.png",
+    "https://cdn.modrinth.com/data/by2i3tnt/images/4c70f8d78db53443e7b2e53645503c25ab9e8754.png"
+  ],
+  "renderpearl": [
+    "https://cdn.modrinth.com/data/BrRak9pu/images/ca4c103984c68ebd3706560e472201e85fd56c62.png",
+    "https://cdn.modrinth.com/data/BrRak9pu/images/4758d0b259188bf15980f6afd002fe96f2a236d0.png",
+    "https://cdn.modrinth.com/data/BrRak9pu/images/ae74bd67e5cc1158804d28bbbf9409e15952d0d5.png"
+  ],
+  "fantasy-shaders": [
+    "https://cdn.modrinth.com/data/l6di6hYz/images/1f48959425b3bf1f3a8dd2c62326d1c035288282.png",
+    "https://cdn.modrinth.com/data/l6di6hYz/images/c581737a18fc5ef53b1783ac8fb4935cdf30c827.png",
+    "https://cdn.modrinth.com/data/l6di6hYz/images/7d0d7e322a4b76141095b348df12eb89fefc839f.png"
+  ],
+  "lux-v1": [
+    "https://cdn.modrinth.com/data/DiGQENDV/images/4acbdb2a53ec8aa608a9e7aa34d3c058bc242263.jpeg",
+    "https://cdn.modrinth.com/data/DiGQENDV/images/2be2448a0c3060b5a2f4b5fe4270c76f4399610b.jpeg",
+    "https://cdn.modrinth.com/data/DiGQENDV/images/b195aaf5dbbdc0c9996b231bdacc43ecbb71c1c6.jpeg"
+  ],
+  "clarityshader": [
+    "https://cdn.modrinth.com/data/rinvvngy/images/9cc7a71fca9cbc07feaf1a89cd8a4c32dd170dc7.png",
+    "https://cdn.modrinth.com/data/rinvvngy/images/6c0ec781dabbec0cfff7d8181473fc628f715246.png",
+    "https://cdn.modrinth.com/data/rinvvngy/images/a6b5c915d032db3eed42c2303deb97c4739eec34.png"
+  ],
+  "fantasy-shader-unbound": [
+    "https://cdn.modrinth.com/data/Q1ICdkzj/images/883834b76c9fbc5fc54dac9850c200ea9a1582ba.png",
+    "https://cdn.modrinth.com/data/Q1ICdkzj/images/4dc888f8a791d4c7ea4181b94e1e487b2d5f8588.png",
+    "https://cdn.modrinth.com/data/Q1ICdkzj/images/c0c87ceabeaf816a22ffb6ec84246cc468e1944a.png"
+  ],
+  "redhat-shaders": [
+    "https://cdn.modrinth.com/data/ZvitaqQh/images/9239873aaed0a9c2f031cc04d495c7daeb90c257.png",
+    "https://cdn.modrinth.com/data/ZvitaqQh/images/5f60d5ab35be9926acdde7f5a1b071966dfe5d00.png",
+    "https://cdn.modrinth.com/data/ZvitaqQh/images/8ac9de515d2158ab371799ac48788a87cfd52b07.png"
+  ],
+  "arc-shader": [
+    "https://cdn.modrinth.com/data/yY9oI7oz/images/ba69c4b989d585a1ebf94b14bb649166104bee63.png",
+    "https://cdn.modrinth.com/data/yY9oI7oz/images/ccb941403b73a3ba192a9c6eb023ab703e475901.png",
+    "https://cdn.modrinth.com/data/yY9oI7oz/images/1ced26f1b315910d71c8bf818b69d84ba85c3029.png"
+  ],
+  "auroras-shaders": [
+    "https://cdn.modrinth.com/data/hgAKxFQg/images/cc5eaae2e080e7f75cec0c9768270a3c0dd3d4b2.png",
+    "https://cdn.modrinth.com/data/hgAKxFQg/images/d394cee88380db35c723505a52eb188e4304e6f7.png",
+    "https://cdn.modrinth.com/data/hgAKxFQg/images/488459d45574ce1fd587329904207b812c8e27f5.png"
+  ],
+  "pegasus": [
+    "https://cdn.modrinth.com/data/1BZ68dI8/images/2248134d3f451e4171e16241438539829acae262.jpeg",
+    "https://cdn.modrinth.com/data/1BZ68dI8/images/139fbc4241efa93d683fd4e3271c5cb112efaef0.jpeg",
+    "https://cdn.modrinth.com/data/1BZ68dI8/images/ebdb2b7090a52ad4d20330f4ea998f131944d46e.jpeg"
+  ],
+  "pixel-perfect-shaders": [
+    "https://cdn.modrinth.com/data/D5k8BTVz/images/946806e31ca0a4cf878f286d7c384dc668517b2d.webp",
+    "https://cdn.modrinth.com/data/D5k8BTVz/images/e44db17580cd3c1143e5488c57822c0bab5200d2.png",
+    "https://cdn.modrinth.com/data/D5k8BTVz/images/ce5e4ce40d5231c98abb95a524a7a54feb4f5031.png"
+  ],
+  "voyager-shader-2.0": [
+    "https://cdn.modrinth.com/data/71EyVfCn/images/2f3ea63287e9b41cf8cfb74e3f40b0033f0e13ac.png",
+    "https://cdn.modrinth.com/data/71EyVfCn/images/928a71f6af49366e512bdd5f2bcbc75e36a776a5.png",
+    "https://cdn.modrinth.com/data/71EyVfCn/images/a44fa105e30b8e3b6ed4a4e97c7c2a81cd84e239.png"
+  ],
+  "builders-qol-shaders": [
+    "https://cdn.modrinth.com/data/6NnvPzWJ/images/615779956283ec28cefa708a731e3b02f434b59b.png",
+    "https://cdn.modrinth.com/data/6NnvPzWJ/images/9817d0110658d4f90665246d6397c2056209e58c.png",
+    "https://cdn.modrinth.com/data/6NnvPzWJ/images/dd183916d5ec4bf84acae20fa1e8ad60e73a8fa1.png"
+  ],
+  "ushader": [
+    "https://cdn.modrinth.com/data/UDDa70lE/images/391b2f71df1930be16270067fddbdee5b0cb557a.jpeg",
+    "https://cdn.modrinth.com/data/UDDa70lE/images/1e81e5dd95a311a93faee848da8f8640fae03fd3.jpeg",
+    "https://cdn.modrinth.com/data/UDDa70lE/images/3177ed69dd00f047e94e76da9f43127ce7aadf6f.jpeg"
+  ],
+  "cursed-fog": [
+    "https://cdn.modrinth.com/data/sAZ9WsJP/images/165d9ca8f9a1255d9cb5a582bdba5ec00204fe00.jpeg",
+    "https://cdn.modrinth.com/data/sAZ9WsJP/images/957b7b8e34b8a77f17b347a499c08a2052941c35.jpeg",
+    "https://cdn.modrinth.com/data/sAZ9WsJP/images/8cfbfc2428d03a7cba9c11ea31a63aacee04dbc6.jpeg"
+  ],
+  "bvs": [
+    "https://cdn.modrinth.com/data/chKtnjkM/images/46679475fc5da38e5a52b70feb55edf9af3c38bc.png",
+    "https://cdn.modrinth.com/data/chKtnjkM/images/509e587520b632a8115c9ba232c9b0bf960d1d84.jpeg",
+    "https://cdn.modrinth.com/data/chKtnjkM/images/dc35d88333f014ede029d17d3e27cb82a599932a.png"
+  ],
+  "re-shaded": [
+    "https://cdn.modrinth.com/data/Gdq9dXUk/images/bae22196e44ae30b0193d07b3dda73185d973ab2.png",
+    "https://cdn.modrinth.com/data/Gdq9dXUk/images/e4d3da04b6c711a89aba365872682ed7d4fd0c42.jpeg",
+    "https://cdn.modrinth.com/data/Gdq9dXUk/images/18fb23a52c6a5650eed9cf4e050b31fb0730a59f.png"
+  ],
+  "just-colored-lighting": [
+    "https://cdn.modrinth.com/data/McUqXQ0J/images/0f024d76b7430f0eb43159a51ace2c93b5d04205.png",
+    "https://cdn.modrinth.com/data/McUqXQ0J/images/cb6eadb3ec778a40303dc5e0e66075c4322053f3.png",
+    "https://cdn.modrinth.com/data/McUqXQ0J/images/4fc59aef28b406295c5836015f21bcc823793b0a.jpeg"
+  ],
+  "ebin-resurrected": [
+    "https://cdn.modrinth.com/data/VP9picRm/images/c7e562980cba4ded5673a7a90760227145fe8159.png",
+    "https://cdn.modrinth.com/data/VP9picRm/images/6dbc25755573373efb9cfd52d18a07ddbd9336cd.png",
+    "https://cdn.modrinth.com/data/VP9picRm/images/b8bb136e3f88bfab2a5fa754e2965225381a5302.png"
+  ],
+  "ctrvcr": [
+    "https://cdn.modrinth.com/data/XaonJnsc/images/ef049a118b6270b40933f71a5ddca36ecda5acee.gif",
+    "https://cdn.modrinth.com/data/XaonJnsc/images/c6811a1d2ddbd2841eda9363adbac62af4f63d0e.gif",
+    "https://cdn.modrinth.com/data/XaonJnsc/images/55416de3c10615fc793f9f4aa675650d378072dd.png"
+  ],
+  "mc-vhs": [
+    "https://cdn.modrinth.com/data/yhXP52S3/images/8d24b74a10b864000c4ccf2a3a78579682d889b1.jpeg",
+    "https://cdn.modrinth.com/data/yhXP52S3/images/7e12dab9b629012df1262f6b39b900566b72ac14.jpeg",
+    "https://cdn.modrinth.com/data/yhXP52S3/images/1f428e1c354cf4f964293b4c9e8f745d04e2cbcd.jpeg"
+  ],
+  "sildurs-vibrant-shaders": [
+    "https://cdn.modrinth.com/data/z8EjLYqN/images/5eb583f151c7b4799c30696e758effd0a48aec92.jpeg",
+    "https://cdn.modrinth.com/data/z8EjLYqN/images/d37e7a41ddcd6013c52d5feba5822c790d7f4450.png",
+    "https://cdn.modrinth.com/data/z8EjLYqN/images/8db67cea8085993f7541be166d7ab2488337da02.png"
+  ],
+  "soft-voxels-lite": [
+    "https://cdn.modrinth.com/data/Xl42lc6c/images/78c8e3eac6f1b94636ca602fe0fd7ae555d38afa.jpeg",
+    "https://cdn.modrinth.com/data/Xl42lc6c/images/b92c7b8b4a20bb13566ef8b3eeffd630a9bd4c60.jpeg",
+    "https://cdn.modrinth.com/data/Xl42lc6c/images/0179524a4ed6dcb9816dba9ed06ed476d023769f.jpeg"
+  ],
+  "light-shaders": [
+    "https://cdn.modrinth.com/data/UuwCHIS3/images/773c8d0b945d5798dd97799a32c52b3748b69f57.png",
+    "https://cdn.modrinth.com/data/UuwCHIS3/images/e8cef1977d1f90ffb92bd6a8a9e0a36978598016.png",
+    "https://cdn.modrinth.com/data/UuwCHIS3/images/00b5c65dd6fc249bd5a505a704a12016d0903857.png"
+  ],
+  "glimmer-shaders": [
+    "https://cdn.modrinth.com/data/PgdT4v4a/images/9327833ebb17d41e7831dc887d506062d9cb8284.jpeg",
+    "https://cdn.modrinth.com/data/PgdT4v4a/images/e967dff68740125c992c69f152c92f3dfaa1fc2d.jpeg",
+    "https://cdn.modrinth.com/data/PgdT4v4a/images/9d6c9d15482efc719c4dc76b2203dce76a309a14.jpeg"
+  ],
+  "spooky-flashlight-shader": [
+    "https://cdn.modrinth.com/data/xJNabPID/images/43b9a8686012819747c3b3720ed171ddfb877926.png",
+    "https://cdn.modrinth.com/data/xJNabPID/images/1fa262d07b775466b9e2a4dd01c2fabf6ad5bbfb.png"
+  ],
+  "simply-upscaled": [
+    "https://cdn.modrinth.com/data/yhuqxlbn/images/b568e2f2bb98871365c845a094d5ac5a25cd4da0.png",
+    "https://cdn.modrinth.com/data/yhuqxlbn/images/30d6f6dc35ef3c5a2282cce693248a9c5d230d9c.png",
+    "https://cdn.modrinth.com/data/yhuqxlbn/images/3fcbd8699d6ac46c492419348c1fada0f47b1547.png"
+  ],
+  "amethyst-shaders": [
+    "https://cdn.modrinth.com/data/LypdYQ63/images/cdceb457e26f38db8d2ff5263578b1a2d23f2814.png",
+    "https://cdn.modrinth.com/data/LypdYQ63/images/c224e8a6f20c7f5743c188ba6f5ce28fd2801374.png",
+    "https://cdn.modrinth.com/data/LypdYQ63/images/f71c288e8eb1121680e9437477af3c4e1de14203.png"
+  ],
+  "exposa-shaders": [
+    "https://cdn.modrinth.com/data/PYhc7nNa/images/6229a7cbbef25a3ee4e6a7d8b280d85aa95375bd.png",
+    "https://cdn.modrinth.com/data/PYhc7nNa/images/d044b15f24889d5086885d707aae1b120ca479dc.png"
+  ],
+  "eclipseshaders": [
+    "https://cdn.modrinth.com/data/s8ZCVd1a/images/3177d7afe9048dd413191eb09cb0c294c1be6cb7.png",
+    "https://cdn.modrinth.com/data/s8ZCVd1a/images/99b294b8b1de36b47007a1c3e429002c2574eb71.png",
+    "https://cdn.modrinth.com/data/s8ZCVd1a/images/a86d7cf1279aadd0ede51c2b8110bbc48a2af38b.png"
+  ],
+  "stereos-default+": [
+    "https://cdn.modrinth.com/data/OT1P0oHO/images/bc9c01c8dc2416be762bcb17086da96c461b3f2c.png",
+    "https://cdn.modrinth.com/data/OT1P0oHO/images/7385874de1b2e19c98b9fb95a914dc7ceb0c6800.png",
+    "https://cdn.modrinth.com/data/OT1P0oHO/images/f09f2bf8826352bbaff930640a59262d88896cd5.png"
+  ],
+  "reverie_shader": [
+    "https://cdn.modrinth.com/data/frac8sks/images/ae7df48f1b7a7a4cb81e353d5bc42c251e95ab7f.png",
+    "https://cdn.modrinth.com/data/frac8sks/images/1a9730a7210110fd6a5d2d89415bb8d6e0c87849.png",
+    "https://cdn.modrinth.com/data/frac8sks/images/39494f30e4f7ee96d49d0b0cdb6d2d2373ba3c89.png"
+  ],
+  "drdestens-shaders": [
+    "https://cdn.modrinth.com/data/4kHmJd4i/images/15e0bf5a8b8aff5d2f7384815e6d75c43dda9e52.jpeg",
+    "https://cdn.modrinth.com/data/4kHmJd4i/images/9880c152fceb7e815d649498c6561eae60618086.jpeg",
+    "https://cdn.modrinth.com/data/4kHmJd4i/images/174eae0c244fffef01c4712292da7531d70e011f.jpeg"
+  ],
+  "opal-shaders": [
+    "https://cdn.modrinth.com/data/w8N6pbsN/images/b7e29fd1b9c9281723731f44ac159b5ef6748280.jpeg",
+    "https://cdn.modrinth.com/data/w8N6pbsN/images/d4b23531463b05688d5be89397ec6be2e43ab1c7.jpeg",
+    "https://cdn.modrinth.com/data/w8N6pbsN/images/5bcf65ef3e39c7f4a86a81f557170e578eca3500.jpeg"
+  ],
+  "vanilletix": [
+    "https://cdn.modrinth.com/data/CiFGzRV9/images/898dd6f6d5c64f2dbcd82035987deccf03b1252c.png"
+  ],
+  "alpha-piscium": [
+    "https://cdn.modrinth.com/data/bvDpxd8c/images/09197f461f5334f8a708591e358b5637be744a22.webp",
+    "https://cdn.modrinth.com/data/bvDpxd8c/images/49efe92648abc766f98450635e03a3b3ff9e5e2c.webp",
+    "https://cdn.modrinth.com/data/bvDpxd8c/images/61cdc5c0ccf385ff50f3b59c879eeaae9b2939a2.webp"
+  ],
+  "musk-rose-shaders": [
+    "https://cdn.modrinth.com/data/HpOC6pyc/images/d05048fa91053b9150b1fecf52e37c27908acf66.jpeg",
+    "https://cdn.modrinth.com/data/HpOC6pyc/images/dcb902ab16a387825bcf84d71c51f0ce7358176d.jpeg",
+    "https://cdn.modrinth.com/data/HpOC6pyc/images/c1f4e670991674b28e081b3cc03c0013f94180d2.jpeg"
+  ],
+  "allium-shaders": [
+    "https://cdn.modrinth.com/data/EQs4Ewl7/images/47902c9dd8b54b1f3e6a5d5bdc34730719e0b4e5.jpeg",
+    "https://cdn.modrinth.com/data/EQs4Ewl7/images/5d7b137a9abcad606a568011c98bcb767771146b.jpeg",
+    "https://cdn.modrinth.com/data/EQs4Ewl7/images/c5a3bc04b286004a096cdb8dcf75a684bb0ec450.jpeg"
+  ],
+  "spring-shaders": [
+    "https://cdn.modrinth.com/data/68DAChCV/images/31664077a0e0c9643596e6d1efcc0f3ff326d215.jpeg",
+    "https://cdn.modrinth.com/data/68DAChCV/images/bb8347c46a37811b6d477ba92e6f52fad7de051f.png",
+    "https://cdn.modrinth.com/data/68DAChCV/images/63b8b1972fa19d1c36f54abd0ecc353200dea938.png"
+  ],
+  "mello": [
+    "https://cdn.modrinth.com/data/EJ1dyMxD/images/2c0e8beac5a45e5a54915d734647d4131a5f3390.webp",
+    "https://cdn.modrinth.com/data/EJ1dyMxD/images/646942e35227ce3b2d1c5d0eb646bce98c5f1a5a.webp",
+    "https://cdn.modrinth.com/data/EJ1dyMxD/images/7e21cd75f6a6a13397ecf0d40364870b7d1347f6.png"
+  ],
+  "vector": [
+    "https://cdn.modrinth.com/data/a8nz2nHG/images/7a5a5a39b64a42acf90f9e2a5fa55d8929d49a43.png",
+    "https://cdn.modrinth.com/data/a8nz2nHG/images/2eaa92d841a10fe000d919c23af5874a8ed22f31.png",
+    "https://cdn.modrinth.com/data/a8nz2nHG/images/ef65459c2b7142efa1137512e2861e8f1eb17cfc.png"
+  ],
+  "psx-shader": [
+    "https://cdn.modrinth.com/data/5FTpbyBl/images/056b70713c35a14001d5b918e11b04ddbb70117e.png",
+    "https://cdn.modrinth.com/data/5FTpbyBl/images/90433c67822efe894e788762d3b0088afbc47d66.png",
+    "https://cdn.modrinth.com/data/5FTpbyBl/images/b108f3b51a0b7acb79a64eaa35e452e9678ebb9b.png"
+  ],
+  "simplicissimus": [
+    "https://cdn.modrinth.com/data/dEAKT8y9/images/a1cde11f3ccc58e47437b4e31a67ab3c176b94f9.jpeg",
+    "https://cdn.modrinth.com/data/dEAKT8y9/images/8576caf38d2f8f8b16e31c8cfe7ec9e9d6c6bc7e.jpeg",
+    "https://cdn.modrinth.com/data/dEAKT8y9/images/2d67150ece6f2a6d1c1cda46b32d72bd296c1ce6.jpeg"
+  ],
+  "night-vision-shaders": [
+    "https://cdn.modrinth.com/data/XuGx9Ezb/images/5ff5dde691b70ffe917dbcc4d383b7207a4d211b.png",
+    "https://cdn.modrinth.com/data/XuGx9Ezb/images/8892c227a9d122548087ecac565f756ea963d35d.png",
+    "https://cdn.modrinth.com/data/XuGx9Ezb/images/ca01bea179e85aae2c845ebdd526400d14fee7a9.png"
+  ],
+  "trailershaders": [
+    "https://cdn.modrinth.com/data/gGrRQIse/images/5c30701c5241de629d86d6603d7ca98ebeeffc44.png"
+  ],
+  "sildurs-enhanced-default-shaders": [
+    "https://cdn.modrinth.com/data/2jvH1Rcl/images/e235be0ce8176124f8b4fc2a74d495aba0f2a8f0.jpeg",
+    "https://cdn.modrinth.com/data/2jvH1Rcl/images/fee7ea9e241b05440df982e4dbca6fdf0b5590b1.jpeg",
+    "https://cdn.modrinth.com/data/2jvH1Rcl/images/4009d44c3ca3643d6a21242a1f5b9960d8463153.jpeg"
+  ],
+  "epoch": [
+    "https://cdn.modrinth.com/data/IsJZJfNT/images/d3f6ca657a59c78ab90ed95da90d4ae4c33e8479.png",
+    "https://cdn.modrinth.com/data/IsJZJfNT/images/8d33b3b862ddd4c7ae1d98d29b1f6470d4fc24e1.png",
+    "https://cdn.modrinth.com/data/IsJZJfNT/images/6c799dbd26fafb62d92124ec06789b7d922031b5.png"
+  ],
+  "truelight-fx-lite": [
+    "https://cdn.modrinth.com/data/2euhaJq5/images/598100a168cbcf1f25bce62a6c5415e091f441ab.png",
+    "https://cdn.modrinth.com/data/2euhaJq5/images/bbaff9f47ddfe09767c19676a2744f26a3466e07.png",
+    "https://cdn.modrinth.com/data/2euhaJq5/images/f77c66d5be5ee598e6f69195419aa7355be5870a.png"
+  ],
+  "lethal-shaders": [
+    "https://cdn.modrinth.com/data/kih5VmNo/images/71294bf80bf5b7052e40199051413dfd450d7ae1.png",
+    "https://cdn.modrinth.com/data/kih5VmNo/images/d66a6a34a58f2d2fef4d0e4c0e49ba4e39302ca3.png",
+    "https://cdn.modrinth.com/data/kih5VmNo/images/b5ad91b6b4805f30834e49fa23e933511fb58be5.png"
+  ],
+  "btb-back-to-basics": [
+    "https://cdn.modrinth.com/data/jiOSfcba/images/729b94891981617672e24c74edcff4cc65e96a15.png",
+    "https://cdn.modrinth.com/data/jiOSfcba/images/59031f08267c1b89b8fc8143e759eefa51272576.png",
+    "https://cdn.modrinth.com/data/jiOSfcba/images/7981579b4e42a3d39561f5455af2bd99601b04a4.png"
+  ],
+  "blocky-shader": [
+    "https://cdn.modrinth.com/data/MVFwE4xD/images/664238b3ac5f00e633762477a48d30d2044b3d7e.png",
+    "https://cdn.modrinth.com/data/MVFwE4xD/images/a2ed347dc898da9540f1957a139f2a8d1c57bdba.png",
+    "https://cdn.modrinth.com/data/MVFwE4xD/images/07d4f4496fbaff206a30497106eb5bc7cde153a8.png"
+  ],
+  "yofps": [
+    "https://cdn.modrinth.com/data/xM96NJmk/images/2f8c4028ce04aca7c61beef999a6dfff2e11dc9d.png"
+  ],
+  "dercode": [
+    "https://cdn.modrinth.com/data/2vBMeaEW/images/8043c95d45fb11bf7666f34417f9608fa58aca34.png",
+    "https://cdn.modrinth.com/data/2vBMeaEW/images/c1ca851b06bb2d8d20c18d40ba13005bae304621.png",
+    "https://cdn.modrinth.com/data/2vBMeaEW/images/9a30549c6eef6c4350449b482915739cc58db48c.png"
+  ]
+}

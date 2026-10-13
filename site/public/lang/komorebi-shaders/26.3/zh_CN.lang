@@ -1,0 +1,346 @@
+#shaders/lang/zh_CN.lang
+# Lomborebi Shaders v26.3 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Lomborebi-Shaders-1.12-26.3.zip 的 shaders/lang/en_US.lang
+# Profiles
+profile=配置档
+profile.comment=选择图形质量配置档。中配为标准默认选项。
+profile.POTATO=土豆
+profile.POTATO.comment=为低端设备准备的最低画质。\n禁用阴影、体积效果、SSR 和云。
+profile.LOW=低
+profile.LOW.comment=轻量低配预设，性能流畅。\n简单阴影、基础雾效和流畅帧率。
+profile.MEDIUM=中
+profile.MEDIUM.comment=标准均衡的中配预设，画质与性能兼得。\n柔和接触阴影、SSAO、SSR 反射和体积光。
+profile.HIGH=高
+profile.HIGH.comment=为游戏 PC 打造的高配高保真画质。\n清晰 3K 阴影、摆动植被和丰富体积效果。
+profile.ULTRA=超高
+profile.ULTRA.comment=电影级画质表现。\n4K 阴影、最大光线步进数、流星和泛光。
+profile.HOLYMOLY=HolyMoly
+profile.HOLYMOLY.comment=画质的绝对巅峰！\n4K 阴影、256 距离、32 采样、最高 SSR 和星空视觉效果。
+profile.ANIME=动漫卡通渲染
+profile.ANIME.comment=风格化动漫美学，墨块描边、阶梯式卡通光照和鲜艳色彩。
+profile.custom=自定义
+profile.custom.comment=用户自定义的设置。
+
+# Main Screen Categories
+screen.LIGHTING=光照
+screen.SHADOWS=阴影
+screen.ATMOSPHERE=大气与天空
+screen.FOG=雾与体积效果
+screen.WATER=水
+screen.WAVING=摇曳植被
+screen.PBR=材质与基于物理的渲染
+screen.POST=相机与后期处理
+screen.ANIME=动漫与卡通渲染
+screen.PAUSCHAL=关于 Lomborebi
+
+# Lighting
+option.SUN_BRIGHTNESS=阳光亮度
+option.MOON_BRIGHTNESS=月光亮度
+option.AMBIENT_BRIGHTNESS=天空环境亮度
+option.MIN_LIGHT=洞穴最低光照
+option.MIN_LIGHT.comment=微弱的最低亮度下限，避免无光洞穴一片漆黑。
+option.BLOCKLIGHT_BRIGHTNESS=方块光源亮度
+option.BLOCKLIGHT_WARMTH=方块光暖度
+option.BLOCKLIGHT_WARMTH.comment=0 = 中性白方块光，1 = 暖烛光。
+option.EMISSIVE_BRIGHTNESS=自发光亮度
+option.EMISSIVE_BRIGHTNESS.comment=火把、灯笼、荧石等光源的亮度。
+option.HANDHELD_LIGHT=手持动态光源
+option.HANDHELD_LIGHT.comment=手持光源可照亮周围环境。
+option.DYNAMIC_HANDLIGHT=平滑动态光源
+option.DYNAMIC_HANDLIGHT.comment=手持光源的平滑对数衰减。
+option.FOLIAGE_SSS=植被透光度
+option.FOLIAGE_SSS.comment=逆光时阳光透过树叶和草的透光效果。
+option.ambientOcclusionLevel=原版环境光遮蔽
+option.SSAO=屏幕空间环境光遮蔽
+option.SSAO.comment=角落与缝隙处的接触阴影。
+option.SSAO_STRENGTH=SSAO 强度
+option.SSAO_SAMPLES=环境光遮蔽采样数
+option.DESATURATION=暗部去饱和
+option.DESATURATION.comment=模拟人眼夜视，在深层洞穴中降低色彩饱和度。
+option.DESATURATION_FACTOR=去饱和度系数 
+option.RAIN_WETNESS=雨的湿润度
+option.RAIN_WETNESS.comment=雨天表面变暗并产生光泽。
+option.PUDDLES=雨水坑
+option.PUDDLES.comment=雨天在平坦地面形成反射水洼。
+
+# Light Colors Submenus
+screen.LIGHT_COLOR=直射光与环境光颜色
+screen.LIGHT_M=清晨阳光
+screen.LIGHT_D=白天阳光
+screen.LIGHT_E=傍晚阳光
+screen.LIGHT_N=夜晚月光
+screen.AMBIENT_M=清晨环境光
+screen.AMBIENT_D=白天环境光
+screen.AMBIENT_E=傍晚环境光
+screen.AMBIENT_N=夜间环境光
+screen.MINLIGHT=洞穴最低光颜色
+screen.BLOCKLIGHT_COLOR=方块光颜色
+
+option.LIGHT_MR=红
+option.LIGHT_MG=绿
+option.LIGHT_MB=蓝
+option.LIGHT_MI=强度
+option.LIGHT_DR=红
+option.LIGHT_DG=绿
+option.LIGHT_DB=蓝
+option.LIGHT_DI=强度
+option.LIGHT_ER=红
+option.LIGHT_EG=绿
+option.LIGHT_EB=蓝
+option.LIGHT_EI=强度
+option.LIGHT_NR=红
+option.LIGHT_NG=绿
+option.LIGHT_NB=蓝
+option.LIGHT_NI=强度
+
+option.AMBIENT_MR=红
+option.AMBIENT_MG=绿
+option.AMBIENT_MB=蓝
+option.AMBIENT_MI=强度
+option.AMBIENT_DR=红
+option.AMBIENT_DG=绿
+option.AMBIENT_DB=蓝
+option.AMBIENT_DI=强度
+option.AMBIENT_ER=红
+option.AMBIENT_EG=绿
+option.AMBIENT_EB=蓝
+option.AMBIENT_EI=强度
+option.AMBIENT_NR=红
+option.AMBIENT_NG=绿
+option.AMBIENT_NB=蓝
+option.AMBIENT_NI=强度
+
+option.MINLIGHT_R=红
+option.MINLIGHT_G=绿
+option.MINLIGHT_B=蓝
+option.MINLIGHT_I=强度
+option.BLOCKLIGHT_R=红
+option.BLOCKLIGHT_G=绿
+option.BLOCKLIGHT_B=蓝
+option.BLOCKLIGHT_I=强度
+option.NIGHT_MOON_PHASE=月相亮度
+
+# Shadows
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowMapResolution.comment=阴影贴图分辨率。数值越高越清晰。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=以方块为单位的阴影渲染距离（以玩家为中心）。
+option.SHADOW_SAMPLES=阴影采样数
+option.SHADOW_SAMPLES.comment=阴影滤波采样数。越高半影越柔和。
+option.SHADOW_SOFTNESS=阴影柔和度
+option.PCSS=接触硬化阴影 (PCSS)
+option.PCSS.comment=阴影在接触点附近清晰，随距离逐渐柔化。
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=染色玻璃和半透明方块投射出彩色光线。
+option.SHADOW_DISTORTION=阴影扭曲
+option.SHADOW_DISTORTION.comment=扭曲阴影贴图，将分辨率集中在玩家相机附近。
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=倾斜太阳与月亮在天空中的运行轨迹。
+
+# Atmosphere & Sky
+option.SKY_STYLE=天空样式
+value.SKY_STYLE.0=BSL 天空渐变
+value.SKY_STYLE.1=瑞利大气
+option.SKY_STEPS=大气质量
+option.SKY_STEPS.comment=大气光散射的光线步进数。
+option.SUN_STYLE=太阳形状
+value.SUN_STYLE.0=圆形写实
+value.SUN_STYLE.1=方形原版
+option.SUN_TILT=太阳倾斜角
+option.SUN_TILT.comment=原版太阳的倾斜角度。
+option.SUN_SIZE=太阳大小
+option.STAR_BRIGHTNESS=星星亮度
+option.SHOOTING_STARS=流星
+option.SHOOTING_STARS.comment=晴朗夜空中偶尔划过流星。
+
+# Clouds
+option.CLOUD_QUALITY=Complementary 云
+option.CLOUD_QUALITY.comment=来自 Complementary Reimagined 的体积圆润体素云。
+value.CLOUD_QUALITY.0=关
+value.CLOUD_QUALITY.1=低
+value.CLOUD_QUALITY.2=中
+value.CLOUD_QUALITY.3=高
+option.CLOUD_ROUNDNESS=云圆润度
+option.CLOUD_ROUNDNESS.comment=控制体素云边缘的弯曲程度。
+value.CLOUD_ROUNDNESS.0.0=尖锐方块 (0%)
+value.CLOUD_ROUNDNESS.0.05=微圆 (5%)
+value.CLOUD_ROUNDNESS.0.08=柔和圆润 (8%)
+value.CLOUD_ROUNDNESS.0.125=互补 (12.5%)
+value.CLOUD_ROUNDNESS.0.20=超圆润 (20%)
+value.CLOUD_ROUNDNESS.0.30=最大蓬松 (30%)
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=将漂移云层的阴影投射到地面上。
+value.CLOUD_SHADOWS.true=开
+value.CLOUD_SHADOWS.false=关
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_COVERAGE.comment=云层在天空中的密度与覆盖范围。
+option.CLOUD_ALTITUDE=云层高度
+option.CLOUD_ALTITUDE.comment=云层漂浮的世界 Y 轴高度（默认：260 格）。
+option.CLOUD_SPEED=云层速度
+option.CLOUD_SPEED.comment=推动云层移动的风速。
+option.VANILLA_CLOUDS=原版云
+option.VANILLA_CLOUDS.comment=渲染 Minecraft 默认的 2D 云层并进行着色以匹配天空。
+
+# Fog & Volumetrics
+option.VOLUMETRIC_LIGHT=体积光束
+option.VOLUMETRIC_LIGHT.comment=通过树木、洞穴和地形投射的步进追踪体积光。
+option.VL_STEPS=体积光质量
+option.VL_STRENGTH=光轴强度
+option.FOG_DENSITY=主世界雾气密度
+option.MORNING_FOG=晨雾
+option.MORNING_FOG.comment=日出和日落时分的低空大气薄雾。
+option.RAIN_FOG=雨雾
+option.BORDER_FOG=边界雾
+option.BORDER_FOG.comment=在渲染距离边缘将远景地形渐隐融入天空。
+option.NETHER_FOG_DENSITY=下界雾气浓度
+
+# End Dimension
+option.END_FOG_DENSITY=末地雾密度
+option.END_VOID_MIST=虚空深渊薄雾
+option.END_VOID_MIST.comment=从末地浮岛下方虚空深渊升起的发光辐射薄雾。
+option.END_VORTEX=天体漩涡
+option.END_VORTEX.comment=头顶旋转的天体吸积盘，带有多种色调的星云旋臂。
+option.END_VORTEX_SPEED=漩涡速度
+option.END_VORTEX_SPEED.comment=调节末地天体漩涡的旋转速度。
+option.END_VORTEX_BRIGHTNESS=漩涡亮度
+option.END_VORTEX_BRIGHTNESS.comment=末地天体星云旋臂的亮度倍率。
+option.END_STARDUST=宇宙星尘
+option.END_STARDUST.comment=嵌入吸积螺旋中的闪烁星尘微光。
+option.END_BEAMS=末影光束
+option.END_BEAMS.comment=在末地虚空中漂移的高耸体积光束。
+option.END_BEAM_INTENSITY=末影光束强度
+option.END_BEAM_CENTER_ALT=末影光束中心高度
+option.END_BEAM_HEIGHT=末影光束高度
+option.END_CRYSTAL_BEAMS=末地水晶能量光束
+option.END_CRYSTAL_BEAMS.comment=末地水晶与信标光束上的动态等离子漩涡、螺旋缎带与泛光。
+option.END_CRYSTAL_BEAM_INTENSITY=水晶光束辉光
+
+# Water
+option.WATER_STYLE=水样式
+option.WATER_STYLE.comment=水体渲染样式。Reimagined 样式使用多倍频波浪、泡沫与焦散。
+value.WATER_STYLE.0=Reimagined 波浪
+value.WATER_STYLE.1=动漫赛璐璐
+value.WATER_STYLE.2=写实海洋
+option.WATER_WAVES=水面波浪
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_WAVE_SPEED=波浪速度
+option.WATER_REFRACTION=水折射
+option.WATER_FOAM=岸边浪花
+option.WATER_FOAM.comment=水体拍打岸边与潜没方块时产生的清晰自然泡沫。
+option.WATER_CAUSTICS=水下焦散
+option.WATER_CAUSTICS.comment=在海床与水下表面上舞动的焦散光纹。
+option.WATER_SSR=屏幕空间反射
+option.WATER_SSR.comment=在水面上反射屏幕内的地形与物体。
+option.SSR_STEPS=反射质量
+option.WATER_CLARITY=水体清晰度
+option.WATER_CLARITY.comment=水体衰减前的可视深度。
+option.UNDERWATER_FOG=水下雾
+
+# Waving Foliage
+option.WAVING_PLANTS=植物摆动
+option.WAVING_LEAVES=摇摆树叶
+option.WAVE_AMPLITUDE=波浪强度
+option.WAVE_SPEED=波浪速度
+
+# Materials & PBR
+option.CUSTOM_PBR=动态模糊设置
+option.CUSTOM_PBR.comment=来自受支持的 PBR 资源包的基于物理的材质。
+option.RP_MODE=PBR格式
+value.RP_MODE.1=labPBR (标准)
+value.RP_MODE.2=seus pbr
+option.NORMAL_MAP_STRENGTH=法线贴图强度
+option.CUSTOM_EMISSION_INTENSITY=PBR 自发光强度
+option.GENERATED_NORMALS=自动生成法线
+option.GENERATED_NORMALS.comment=直接从原版纹理生成 3D 凹凸法线。
+option.GENERATED_NORMAL_MULT=生成法线强度
+
+# Camera & Post-Processing
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE.comment=在明暗区域之间移动时视线会动态适应。
+option.EXPOSURE=曝光补偿
+option.TONEMAP=色调映射
+value.TONEMAP.0=BSL 色调映射
+value.TONEMAP.1=ACES (拟合)
+value.TONEMAP.2=ACES (近似)
+value.TONEMAP.3=柔和 Reinhard
+option.TONEMAP_LOWER_CURVE=色调映射下曲线
+option.TONEMAP_UPPER_CURVE=色调映射上曲线
+option.TONEMAP_WHITE_CURVE=色调映射白曲线
+option.TONEMAP_WHITE_PATH=色调映射白色路径
+option.WHITE_BALANCE=白平衡
+option.WHITE_BALANCE.comment=场景白点，单位为开尔文。数值越低越冷，越高越暖。
+option.SATURATION=饱和度
+option.VIBRANCE=鲜艳度
+option.CONTRAST=对比度
+option.SHADOW_TINT=分离色调
+option.SHADOW_TINT.comment=冷色阴影与暖色高光，并带有维度专属色调。
+option.VIGNETTE=暗角
+option.VIGNETTE_STRENGTH=暗角强度
+
+# Anime & Cel-Shading
+option.CEL_SHADING=卡通渲染
+option.CEL_SHADING.comment=动漫赛璐璐着色，带有墨水方块描边与阶梯式光照。
+option.CEL_OUTLINES=方块描边
+option.CEL_OUTLINES.comment=通过屏幕空间边缘检测在方块周围绘制墨水线条。
+value.CEL_OUTLINES.0=关
+value.CEL_OUTLINES.1=微妙
+value.CEL_OUTLINES.2=动漫清晰
+value.CEL_OUTLINES.3=粗体漫画
+option.CEL_OUTLINE_WIDTH=描边厚度
+option.CEL_OUTLINE_DISTANCE=轮廓距离
+option.CEL_OUTLINE_DISTANCE.comment=绘制描边的最大距离，单位为格。
+option.CEL_OUTLINE_COLOR_MODE=描边颜色模式
+value.CEL_OUTLINE_COLOR_MODE.1=墨黑
+value.CEL_OUTLINE_COLOR_MODE.2=柔和炭灰
+value.CEL_OUTLINE_COLOR_MODE.3=动漫靛蓝
+option.CEL_LIGHTING=阶梯式赛璐璐光照
+option.CEL_LIGHTING.comment=将漫射阳光量化为分立的动漫式光照色带。
+value.CEL_LIGHTING.0=平滑
+value.CEL_LIGHTING.1=2 段动漫
+value.CEL_LIGHTING.2=3 段动漫
+option.ANIME_RIM_LIGHT=动漫边缘光
+option.ANIME_RIM_LIGHT.comment=沿逆光轮廓渲染的柔和辉光背光。
+option.GLOWING_ORES=发光矿石
+option.GLOWING_ORES.comment=钻石、绿宝石、红石、金、青金石、铜和石英矿脉在黑暗中发光。
+option.GLOWING_ORES_BRIGHTNESS=矿石发光亮度
+option.SELECTION_OUTLINE=方块选中框
+option.SELECTION_OUTLINE.comment=指向方块时显示现代简洁的轮廓。
+option.OUTLINE_STYLE=轮廓样式
+value.OUTLINE_STYLE.0=流线白色辉光
+value.OUTLINE_STYLE.1=明亮青色
+value.OUTLINE_STYLE.2=温暖琥珀
+value.OUTLINE_STYLE.3=呼吸脉动
+value.OUTLINE_STYLE.4=柔和粉彩光谱
+value.OUTLINE_STYLE.5=经典原版
+option.OUTLINE_GLOW=轮廓辉光强度
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION.comment=屏幕边缘处电影感的动漫镜头色差。
+option.CHROMATIC_ABERRATION_STRENGTH=镜头色差强度
+
+# About Lomborebi
+option.info_creator=创作者
+value.info_creator.0=PauschaL
+option.info_creator.comment=Lomborebi 光影由 PauschaL 创作并开发。
+option.info_shader=光影包
+value.info_shader.0=Lomborebi 光影
+option.info_shader.comment=Lomborebi 光影 - 适用于 Minecraft Java 版的氛围感动漫赛璐璐渲染画面。
+option.info_version=版本
+value.info_version.0=v1.1
+option.info_version.comment=Lomborebi 光影 v1.1 - 加入了天界末地漩涡、原版水面反射以及动漫赛璐璐风格。
+option.info_features=视觉样式
+value.info_features.0=动漫与赛璐璐渲染
+option.info_features.comment=清晰的线稿、阶梯式的动漫光照、发光矿脉以及体积感大气。
+option.info_style=末地维度
+value.info_style.0=天界漩涡
+option.info_style.comment=末地维度，拥有天界宇宙漩涡、多重色调的星云旋臂与虚空薄雾。
+option.info_credits=致谢
+value.info_credits.0=制作人员与致谢
+option.info_credits.comment=特别感谢 EminGT、Chocapic13、Capt Tatsu、SixthSurge、Gri573 以及光影社区。
+option.info_compl=互补色
+value.info_compl.0=EminGT
+option.info_compl.comment=体积云与水波技术改编自 EminGT 的 Complementary Shaders。
+option.info_rv=彩色光照
+value.info_rv.0=Gri573
+option.info_rv.comment=彩色光照与方块定义改编自 Gri573 的 Rethinking Voxels。

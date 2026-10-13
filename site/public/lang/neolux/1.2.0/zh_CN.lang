@@ -1,0 +1,191 @@
+#shaders/lang/zh_CN.lang
+# NeoLux v1.2.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：NeoLux-1.2.0.zip 的 shaders/lang/en_us.lang
+# ---- Profiles ----
+profile.POTATO=土豆
+profile.LOW=低
+profile.MEDIUM=中
+profile.HIGH=高
+profile.ULTRA=超高
+profile.EXTREME=极端
+
+# ---- Sub screens ----
+screen.SCR_SHADOW=阴影
+screen.SCR_LIGHT=光照
+screen.SCR_SKY=天空
+screen.SCR_CLOUDS=云
+screen.SCR_FOG=雾
+screen.SCR_WATER=水
+screen.SCR_WORLD=世界与几何
+screen.SCR_POST=后期处理
+screen.SCR_COLOR=色彩与风格
+
+# ---- Shadows ----
+option.SHADOWS=阴影
+option.SHADOWS.comment=来自阴影贴图的太阳与月亮阴影。
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=染色玻璃和水会为阴影着色。
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=数值越高，阴影边缘越清晰，开销越大。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=计算阴影的范围。
+option.SHADOW_FILTER=阴影滤波
+option.SHADOW_FILTER.comment=滤波环数。1 = 快速，4 = 非常柔和但开销巨大。
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=阴影周围柔化边缘的大小。
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BIAS.comment=抑制受光面上条纹状阴影痤疮。过高会使阴影与物体分离。
+option.SHADOW_TINT_STRENGTH=色调强度
+option.SHADOW_TINT_STRENGTH.comment=半透明方块为阴影着色的强度。
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=太阳与月亮运行轨迹的倾角，单位为度。
+
+# ---- Lighting ----
+option.SUN_INTENSITY=阳光
+option.SUN_INTENSITY.comment=太阳与月亮直射光的强度。
+option.AMBIENT_STRENGTH=环境光
+option.AMBIENT_STRENGTH.comment=天空间接光的强度。
+option.BLOCKLIGHT_STRENGTH=方块光照
+option.BLOCKLIGHT_STRENGTH.comment=火把、灯具及其他光源的强度。
+option.TORCH_WARMTH=方块光照暖度
+option.TORCH_WARMTH.comment=0 = 中性，2 = 强烈偏橙。
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.NIGHT_BRIGHTNESS.comment=夜晚整体亮度。
+option.AMBIENT_FLOOR=最低环境光
+option.AMBIENT_FLOOR.comment=保底亮度，使洞穴不会完全变黑。
+option.SKY_LIGHT_CURVE=天空光照衰减
+option.SKY_LIGHT_CURVE.comment=数值越高，室内变暗越快。
+option.SHADE_DESATURATION=阴影去饱和度
+option.SHADE_DESATURATION.comment=仅受天空光照射的表面所失去的色彩比例。阴影呈现为灰色，而非向阳面偏蓝的复刻。
+option.HAND_LIGHT=手持光源
+option.HAND_LIGHT.comment=任意一只手持有火把、灯笼或发光方块时照亮周围。若已安装动态光源模组，请关闭此项。
+option.SSAO=环境光遮蔽
+option.SSAO.comment=角落与缝隙处的接触阴影。
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_SAMPLES=环境光遮蔽质量
+option.SSAO_SAMPLES.comment=每像素采样数。越多越平滑，但开销越大。
+option.SSAO_RADIUS=环境光遮蔽半径 
+option.SSAO_RADIUS.comment=遮蔽在拐角周围的影响范围。
+option.VOLUMETRIC_LIGHT=光线束
+option.VOLUMETRIC_LIGHT.comment=雾中可见的太阳光束。
+option.VL_STRENGTH=光轴强度
+option.VL_STEPS=光轴质量
+option.VL_STEPS.comment=沿每条光束的采样数。
+
+# ---- Sky ----
+option.SKY_BRIGHTNESS=天空亮度
+option.SKY_BRIGHTNESS.comment=缩放天空与雾的亮度。越低越不泛白。
+option.SUN_BRIGHTNESS=太阳亮度
+option.SUN_BRIGHTNESS.comment=太阳与月亮贴图的亮度，及其周围的泛光。
+option.SUN_GLOW=太阳光晕
+option.SUN_GLOW.comment=太阳周围宽广的散射光晕。
+option.MOON_BRIGHTNESS=月球亮度
+option.MOON_BRIGHTNESS.comment=月亮的亮度，与太阳分开调节。
+option.STARS=星星
+option.STARS.comment=夜空中程序化生成的星星。
+option.STAR_BRIGHTNESS=星星亮度
+option.STAR_DENSITY=星体密度
+
+# ---- Clouds ----
+option.CLOUD_STYLE=云层样式
+option.CLOUD_STYLE.comment=NeoLux = 本光影包的体积云，原版 = 游戏自带的云。
+value.CLOUD_STYLE.0=关
+value.CLOUD_STYLE.1=NeoLux
+value.CLOUD_STYLE.2=原版
+option.CLOUD_STEPS=云层质量
+option.CLOUD_STEPS.comment=穿过云层的每条射线的采样数。越多云越平滑，但开销越大。
+option.CLOUD_AMOUNT=云量
+option.CLOUD_AMOUNT.comment=云层覆盖天空的比例。
+option.CLOUD_BRIGHTNESS=云朵亮度
+option.CLOUD_HEIGHT=云层高度
+option.CLOUD_HEIGHT.comment=玩家与云层底部之间的方块数。云层会随玩家上下移动。
+option.CLOUD_THICKNESS=云层厚度
+option.CLOUD_THICKNESS.comment=云层厚度，单位为方块。
+option.CLOUD_SPEED=云层速度
+option.CLOUD_REFLECTIONS=云层倒影
+option.CLOUD_REFLECTIONS.comment=水面同时倒映云层与天空。
+
+# ---- Fog ----
+option.FOG_DENSITY=雾密度
+option.FOG_DENSITY.comment=远处方块融入天空的速度。
+option.FOG_START=雾起点
+option.FOG_START.comment=保持无雾的渲染距离占比。
+option.HAZE_STRENGTH=地表薄雾
+option.HAZE_STRENGTH.comment=低洼区域的额外薄雾。
+option.HAZE_HEIGHT=薄雾高度
+option.HAZE_HEIGHT.comment=地表薄雾在多少方块高度内逐渐消散。
+option.WATER_FOG_DENSITY=水下雾
+option.WATER_FOG_DENSITY.comment=水下的可视距离。
+
+# ---- Water ----
+option.WATER_REFLECTIONS=反射
+option.WATER_REFLECTIONS.comment=水面的屏幕空间反射。
+option.SSR_STEPS=反射范围
+option.SSR_STEPS.comment=反射射线的追踪距离。
+option.SSR_REFINE=反射清晰度
+option.SSR_REFINE.comment=命中后的二分搜索。0 = 关闭，数值越高边缘越干净。
+option.WAVING_WATER=水面波浪
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_WAVE_DETAIL=波浪细节
+option.WATER_WAVE_DETAIL.comment=叠加的波浪倍频数。
+option.WATER_OPACITY=水不透明度
+option.WATER_ABSORPTION=水体吸收度
+option.WATER_ABSORPTION.comment=光线随深度被吸收的速度。
+option.WATER_SPECULAR=太阳闪光
+option.WATER_SPECULAR.comment=水面上太阳的高光。
+option.WATER_REFRACTION=折射
+option.WATER_REFRACTION.comment=波浪对水下景物折射的强度。
+option.WATER_BLUR=水滴特效
+option.WATER_BLUR.comment=柔化透过水面看到的景物，水越深越模糊。
+option.CAUSTICS=焦散
+option.CAUSTICS.comment=潜水时在海底移动的光网。
+
+# ---- World & Geometry ----
+option.WAVING_PLANTS=植物摆动
+option.WAVING_LEAVES=摇摆树叶
+option.WAVE_SPEED=风速
+option.WETNESS=湿润表面
+option.WETNESS.comment=雨水使露天地面变暗，并带来闪光与天空倒影。
+option.ALPHA_CUTOUT=Alpha 剔除
+option.ALPHA_CUTOUT.comment=像素被丢弃的贴图不透明度阈值。
+option.LINE_WIDTH=轮廓宽度
+option.LINE_WIDTH.comment=方块选中框的线宽，单位为像素。
+option.LINE_OPACITY=轮廓不透明度
+option.LINE_OPACITY.comment=轮廓线的突出程度。越低越淡、越柔和。
+
+# ---- Post Processing ----
+option.TONEMAP=色调映射
+option.TONEMAP.comment=高亮度如何被压缩至可显示范围内的色调映射方式。
+value.TONEMAP.0=关
+value.TONEMAP.1=色彩编码的电影级色调映射
+value.TONEMAP.2=reinhard
+value.TONEMAP.3=未知海域
+value.TONEMAP.4=柔和
+option.EXPOSURE=曝光
+option.BLOOM=泛光
+option.BLOOM.comment=亮部表面周围的泛光。
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_THRESHOLD=泛光阈值
+option.BLOOM_THRESHOLD.comment=泛光开始生效的亮度。数值越高，天空越不易泛白。
+option.BLOOM_RADIUS=泛光半径
+option.BLOOM_LEVELS=泛光层级
+option.BLOOM_LEVELS.comment=层级越多，泛光越柔和、扩散范围越广。
+option.FXAA=快速近似抗锯齿
+option.FXAA.comment=平滑最终图像中的锯齿边缘。开销低，但在运动中无法抑制细小细节的闪烁。
+option.SHARPEN=锐化
+option.VIGNETTE=暗角
+option.VIGNETTE_STRENGTH=暗角强度
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE.comment=太阳处于视野内时在镜头内部产生的反射。
+option.LENS_FLARE_STRENGTH=镜头光晕强度
+
+# ---- Color & Style ----
+option.SATURATION=饱和度
+option.VIBRANCE=鲜艳度
+option.VIBRANCE.comment=提升暗淡色彩，同时不影响已饱和的色彩。
+option.CONTRAST=对比度
+option.COLOR_TEMP=色温
+option.COLOR_TEMP.comment=负值偏冷，正值偏暖。
+option.FILM_GRAIN=胶片颗粒
+option.CHROMATIC_ABERRATION=色差
+option.CHROMATIC_ABERRATION.comment=如同真实镜头一样，在画面边缘产生的色彩镶边。

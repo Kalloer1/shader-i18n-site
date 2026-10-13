@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 /**
- * 网盘镜像：把已发布的 zh_CN.lang 上传到夸克 / 百度网盘，并把分享链接写回 shaders.json。
+ * 网盘镜像：把已发布的 zh_CN.lang 上传到夸克网盘，并把分享链接写回 shaders.json。
  *
  * 设计原则：
  * 1. **wrapper，不改 CLI 本体** —— quark-drive.cjs 只做子进程调用，绝不修改其源码。
- * 2. **两个网盘互相独立** —— 任一失败只让该字段留空，不影响另一个，也不影响发布。
- * 3. **绝不伪造链接** —— 拿不到真实 share_url / link 就写空字符串，详情页因此不渲染该按钮。
- * 4. **逐条串行 + 限流** —— 避免触发网盘风控。
+ * 2. **绝不伪造链接** —— 拿不到真实 share_url 就写空字符串，详情页因此不渲染该按钮。
+ * 3. **逐条串行 + 限流** —— 避免触发网盘风控。
  *
  * 用法：
  *   node scripts/mirror.mjs --ids a,b,c   只处理指定 shaderId
@@ -17,7 +16,6 @@
  *   QUARK_CLI          quark-drive.cjs 路径（缺失则跳过夸克）
  *   QUARK_PARENT_FID   上传目标目录的父目录 FID（可选；缺失时由 CLI 内部决定）
  *   QUARK_DIR_NAME     目标目录名，默认「光影汉化」（同名幂等，自动复用已有目录）
- *   BDPAN_REMOTE_DIR   百度网盘目标目录（相对 /apps/bdpan/），默认 shader-lang
  *   WORKER_URL + INTERNAL_STATUS_TOKEN  回写 KV 状态（可选）
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
@@ -35,7 +33,6 @@ const INTERNAL_STATUS_TOKEN = process.env.INTERNAL_STATUS_TOKEN
 const QUARK_CLI = process.env.QUARK_CLI
 const QUARK_PARENT_FID = process.env.QUARK_PARENT_FID
 const QUARK_DIR_NAME = process.env.QUARK_DIR_NAME || '光影汉化'
-const BDPAN_REMOTE_DIR = process.env.BDPAN_REMOTE_DIR || 'shader-lang'
 
 const args = process.argv.slice(2)
 const dryRun = args.includes('--dry-run')
@@ -83,10 +80,6 @@ function quark(args) {
   return runCliJsonl(process.execPath, [QUARK_CLI, ...args, '--session-input', SESSION_INPUT, '--session-id', SESSION_ID])
 }
 
-function bdpan(args) {
-  return runCliJsonl('bdpan', [...args, '--json'])
-}
-
 // ---------- 夸克 ----------
 
 /** 幂等地取得「光影汉化」目录 FID。 */
@@ -118,24 +111,6 @@ async function mirrorToQuark(localPath, title) {
   return sh.share_url
 }
 
-// ---------- 百度 ----------
-
-/**
- * 上传 lang 文件并创建永久分享链接。
- * 注意：bdpan 单文件上传的远端路径必须是文件名，禁止以 / 结尾。
- * @returns {Promise<string>} 分享链接；失败抛错
- */
-async function mirrorToBaidu(localPath, remoteName) {
-  const remotePath = `${BDPAN_REMOTE_DIR}/${remoteName}`
-  bdpan(['upload', localPath, remotePath])
-
-  // period 0 = 永久有效
-  const sh = bdpan(['share', remotePath, '--period', '0'])
-  const link = sh.link || sh.short_url
-  if (!link) throw new Error(`share 未返回 link：${JSON.stringify(sh).slice(0, 200)}`)
-  return link
-}
-
 // ---------- 状态回写 ----------
 
 async function reportStatus(id, payload) {
@@ -161,7 +136,7 @@ for (const s of db.shaders) {
   const lv = (s.langVersions ?? [])[0]
   if (!lv) continue
   if (IDS.length && !IDS.includes(s.id)) continue
-  if (!IDS.length && s.quark && s.baidu) continue // 全量模式下跳过已双镜像的
+  if (!IDS.length && (s.quark || lv.quark)) continue // 全量模式下跳过已镜像的
   targets.push({ shader: s, lv })
 }
 
@@ -170,23 +145,13 @@ if (!targets.length) {
   process.exit(0)
 }
 
-console.log(`镜像 ${targets.length} 个光影（夸克: ${QUARK_CLI ? '启用' : '跳过'}，百度: ${hasBdpan() ? '启用' : '跳过'}）\n`)
+console.log(`镜像 ${targets.length} 个光影（夸克: ${QUARK_CLI ? '启用' : '跳过'}）\n`)
 
-function hasBdpan() {
-  try {
-    execFileSync('bdpan', ['--version'], { stdio: 'ignore' })
-    return true
-  } catch {
-    return false
-  }
-}
-
-let okBoth = 0, okPartial = 0, okNone = 0
+let okQuark = 0, okNone = 0
 
 for (const { shader, lv } of targets) {
   const label = `${shader.id} v${lv.shaderVersion}`
   const localPath = join(LANG_DIR, shader.id, lv.shaderVersion, 'zh_CN.lang')
-  const remoteName = `${shader.id}-${lv.shaderVersion}-zh_CN.lang`
   const title = `${shader.id} ${lv.shaderVersion} 汉化`
 
   if (!existsSync(localPath)) {
@@ -195,7 +160,6 @@ for (const { shader, lv } of targets) {
   }
 
   let quarkUrl = lv.quark || ''
-  let baiduUrl = lv.baidu || ''
 
   if (QUARK_CLI && !quarkUrl) {
     try {
@@ -208,35 +172,23 @@ for (const { shader, lv } of targets) {
     await sleep(500)
   }
 
-  if (hasBdpan() && !baiduUrl) {
-    try {
-      baiduUrl = await mirrorToBaidu(localPath, remoteName)
-      console.log(`[${label}] 百度 ✓ ${baiduUrl}`)
-    } catch (err) {
-      console.log(`[${label}] 百度 ✗ ${String(err.message).slice(0, 160)}`)
-      baiduUrl = ''
-    }
-    await sleep(500)
-  }
-
-  if (!quarkUrl && !baiduUrl) {
+  if (!quarkUrl) {
     okNone++
-    console.log(`[${label}] 两个网盘都未成功，字段留空，状态标为「${STATUS.DONE_UNMIRRORED}」`)
-    if (!dryRun) await reportStatus(shader.id, { status: STATUS.DONE_UNMIRRORED, quark: '', baidu: '' })
+    console.log(`[${label}] 夸克镜像未成功，字段留空，状态标为「${STATUS.DONE_UNMIRRORED}」`)
+    if (!dryRun) await reportStatus(shader.id, { status: STATUS.DONE_UNMIRRORED, quark: '' })
     continue
   }
 
   // 写回 shaders.json：顶层与 langVersions[0] 双写（详情页读顶层，langVersions 保持数据完整）
   if (!dryRun) {
-    if (quarkUrl) { shader.quark = quarkUrl; lv.quark = quarkUrl }
-    if (baiduUrl) { lv.baidu = baiduUrl; shader.baidu = baiduUrl }
+    shader.quark = quarkUrl
+    lv.quark = quarkUrl
     writeFileSync(SHADERS_FILE, JSON.stringify(db, null, 2) + '\n')
-    await reportStatus(shader.id, { status: STATUS.DONE, quark: quarkUrl, baidu: baiduUrl })
+    await reportStatus(shader.id, { status: STATUS.DONE, quark: quarkUrl })
   }
 
-  if (quarkUrl && baiduUrl) okBoth++
-  else okPartial++
+  okQuark++
 }
 
 if (dryRun) console.log('\n（--dry-run：未写入 shaders.json，未回写状态）')
-console.log(`\n镜像结束：双网盘成功 ${okBoth}，部分成功 ${okPartial}，全部失败 ${okNone}`)
+console.log(`\n镜像结束：夸克成功 ${okQuark}，未镜像 ${okNone}`)

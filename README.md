@@ -21,26 +21,26 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 - 资源包/材质包不能替代语言文件注入。文件应放在光影包内部的 `shaders/lang/zh_CN.lang`。
 - 语言文件输出为 UTF-8 无 BOM，键名、占位符（如 `%s`、`%value%`）和格式码（如 `§`）必须保留。
 
-## 当前状态（数据快照：2026-09-11）
+## 当前状态（数据快照：2026-10-14）
 
 | 项目 | 当前值 | 说明 |
 |---|---:|---|
-| Modrinth 光影目录 | 887 个 | `site/data/modrinth-catalog.json`，由同步脚本更新 |
-| `shaders.json` 条目 | 463 个 | 人工维护的版本映射及同步元数据 |
-| 已有 `langVersions` 的光影 | 460 个 | 对应 460 个可下载的 `zh_CN.lang`；自带中文项目不重复分发 |
-| GitHub 中的 `zh_CN.lang` 文件 | 460 个 | 位于 `site/public/lang/` |
-| 夸克镜像链接 | 460 个 | 字段名为 `quark` |
-| 自带中文的目录项目 | 8 个 | `site/data/modrinth-catalog.json` 中标记为 `hasNativeZhCN: true` |
-| 明确缺少 `en_US.lang` | 405 个 | 记录在 `site/data/missing-source.json` |
-| 尚未登记翻译的可处理项目 | 14 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
-| 翻译术语记忆 | 21,537 条 | `site/data/glossary.json` |
-| 生成的详情页 | 887 个 | `site/shaders/`，由构建脚本生成 |
+| Modrinth 光影目录 | 983 个 | `site/data/modrinth-catalog.json`，由同步脚本更新 |
+| `shaders.json` 条目 | 533 个 | 人工维护的版本映射及同步元数据 |
+| 已有 `langVersions` 的光影 | 530 个 | 含 3 个目录外的历史精选条目 |
+| GitHub 中的 `zh_CN.lang` 文件 | 588 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
+| 夸克镜像链接 | 448 个 | 字段名为 `quark` |
+| 自带中文的目录项目 | 21 个 | `site/data/modrinth-catalog.json` 中标记为 `hasNativeZhCN: true` |
+| 明确缺少 `en_US.lang` | 435 个 | 包含 `missing-source.json` 与流水线新标记的 `noEnUsLang` |
+| 尚未登记翻译的可处理项目 | 0 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
+| 翻译术语记忆 | 31,803 条 | `site/data/glossary.json` |
+| 生成的详情页 | 983 个 | `site/shaders/`，由构建脚本生成 |
 
 这些数字是当前快照，不是永久承诺；Modrinth 目录会在每日同步后变化。
 
 ### 翻译状态说明
 
-- 新的翻译统一使用 SiliconFlow 上的 `tencent/Hunyuan-MT-7B` 生成，并标记为“AI 初翻”，除非已经人工校对。历史记录中的模型名称保留作为历史来源信息。
+- 新的翻译默认使用免费模型池（`muse-spark-1.3-contributor-free` / `muse-spark-1.2-contributor-free` / `mimo-v2.6-flash-free`）生成，并标记为“AI 初翻”，除非已经人工校对。历史记录中的模型名称保留作为历史来源信息。
 - 自带中文的项目应优先使用光影包自身的 `zh_CN.lang`，正常情况下跳过本站翻译。
 - 目录中 8 个自带中文项目优先使用光影包本体自带的 `shaders/lang/zh_CN.lang`；其中原先误登记本站翻译的 2 个项目已清理。
 - “缺少 `en_US.lang`”与“尚未登记”是两种不同状态，不能合并写成一个待翻译数量。
@@ -64,7 +64,7 @@ npm run preview          # 预览已构建的静态站点
 npm run catalog          # 拉取 Modrinth 全量光影目录
 npm run sync             # 只同步 Modrinth 元数据
 npm run translate        # 启动翻译流水线（--top N 按候选取前 N 个；--ids a,b,c 只处理指定光影）
-npm run mirror -- --ids a,b,c  # 把已产出的 lang 镜像到夸克 / 百度网盘，并回写分享链接
+npm run mirror -- --ids a,b,c  # 把已产出的 lang 镜像到夸克网盘，并回写分享链接
 npm run release <id>     # 检查指定光影后，提交并推送当前工作区全部变更
 npm run detect-changes   # 检测目录新增项并尝试写入腾讯文档
 npm run validate:lang    # 全量闸门：批量校验 site/public/lang 下所有 zh_CN.lang
@@ -93,12 +93,12 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 **B. 本地手动** —— 双击仓库根目录的 `start-translation.cmd`，或执行 `npm run translate -- --top 1` / `npm run translate -- --ids a,b,c`：
 
-1. 如果当前 PowerShell 环境已经有 `SILICONFLOW_API_KEY`，脚本直接使用它；否则会在窗口中临时询问 API Key。
+1. 如果当前 PowerShell 环境已经有 `LLM_API_KEY`，脚本直接使用它；否则会在窗口中临时询问 API Key。
 2. API Key 只保存在本次进程内，不会写入仓库文件。
-3. 脚本会询问是否开始；确认后按 `--top` 数量处理候选。默认 `start-translation.cmd` 只处理 1 个候选，适合先做小规模测试。
+3. 脚本默认使用免费模型池，并以 10 并发处理前 125 个候选。
 4. 产出后由自动校验闸门判定是否可上线，不再需要人工确认。
 
-如果要长期使用，建议把 `SILICONFLOW_API_KEY` 配置为 Windows 用户环境变量；不要把 Key 写进 `.mjs`、`.cmd`、README 或 GitHub 仓库。
+如果要长期使用，建议把 `LLM_API_KEY` 配置为 Windows 用户环境变量；不要把 Key 写进 `.mjs`、`.cmd`、README 或 GitHub 仓库。
 
 ## 运行流程与自动化边界
 
@@ -131,7 +131,7 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 入口：`npm run translate`，实现：`scripts/pipeline.mjs`。由 `.github/workflows/translate.yml` 在站点 `/request` 点「开启翻译」时调用；也可在本地手动运行。
 
-前置条件：至少配置一个本地环境变量：`SILICONFLOW_API_KEY`。模型固定为 `tencent/Hunyuan-MT-7B`；接口地址可通过 `SILICONFLOW_BASE_URL` 覆盖。
+前置条件：配置 `LLM_API_KEY`（或回退 `SILICONFLOW_API_KEY`），并通过 `LLM_BASE_URL` 指向 OpenAI 兼容接口。默认模型池为 `muse-spark-1.3-contributor-free,muse-spark-1.2-contributor-free,mimo-v2.6-flash-free`，并发默认 10。
 
 逐步流程：
 
@@ -140,8 +140,8 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 3. 对候选项目请求 Modrinth 最新版本，下载主文件，并在 zip 内查找 `shaders/lang/en_US.lang` 与 `shaders/lang/zh_CN.lang`。
 4. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，写入缺源记录并跳过。
 5. 读取术语记忆 `glossary.json`；完全匹配的英文值直接复用已有中文，未命中的值交给模型翻译，新的映射在处理后写回术语记忆。
-6. 解析英文语言文件，按约 60 行拆分为多个块。当前实现按顺序逐块请求；每个块失败时会自动重试，避免免费接口并发限流和同一文件术语不一致。
-7. 使用 SiliconFlow 的 `tencent/Hunyuan-MT-7B`；当前只保留这一个翻译模型，并按候选顺序处理，避免免费接口并发限流和同一文件术语不一致。
+6. 解析英文语言文件，按约 60 行拆分为多个块。模型池按分块轮转调用；单个模型失败或回退率过高时自动尝试下一个模型。
+7. 默认使用免费模型池 `muse-spark-1.3-contributor-free`、`muse-spark-1.2-contributor-free`、`mimo-v2.6-flash-free`，光影级并发默认 10。
 8. 要求模型只翻译等号右侧，保留 key、占位符（如 `%s`、`%value%`）、`§` 格式码、注释和文件结构。
 9. 生成 `site/public/lang/<shader-id>/<shader-version>/zh_CN.lang`，文件头会明确写入“AI 初翻，未人工校对”。
 10. 调用 `scripts/validate-lang.mjs` 校验 key 集合、占位符、格式码、编码和结构；失败或回退率过高时不上线、不登记，留待下次重试。
@@ -172,7 +172,7 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 站内 `/request` 页面提交请求后，前端调用 Cloudflare Worker：Worker 校验 Modrinth 链接后写入 KV 队列（权威状态源），并尽力镜像到腾讯文档智能表格。
 
-同一页面的「翻译工作台」会轮询 `GET /queue` 显示队列与状态；管理员输入口令后 `POST /translate`，Worker 调 GitHub Actions 的 `translate.yml` 触发翻译。翻译结束后 `mirror.mjs` 把 lang 上传到夸克/百度并写回分享链接。
+同一页面的「翻译工作台」会轮询 `GET /queue` 显示队列与状态；管理员输入口令后 `POST /translate`，Worker 调 GitHub Actions 的 `translate.yml` 触发翻译。翻译结束后 `mirror.mjs` 把 lang 上传到夸克网盘并写回分享链接。
 
 ## 目录结构
 
@@ -190,9 +190,9 @@ site/
 scripts/
 ├── fetch-catalog.mjs                 # 拉取 Modrinth 目录
 ├── sync-metadata.mjs                 # 同步元数据
-├── pipeline.mjs                      # Hunyuan-MT-7B 翻译流水线（--top / --ids）
+├── pipeline.mjs                      # 免费模型池翻译流水线（--top / --ids）
 ├── validate-lang.mjs                 # lang 结构校验（唯一质量闸门）
-├── mirror.mjs                        # 上传 lang 到夸克/百度并写回分享链接
+├── mirror.mjs                        # 上传 lang 到夸克网盘并写回分享链接
 ├── gen-shader-pages.mjs              # 生成详情页
 ├── detect-changes.mjs                # 检测新增目录项目
 └── release.mjs                       # 提交并推送发布
@@ -232,7 +232,7 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 
 - API key、token、Cookie 不入库，也不要写进 Markdown、JSON 或 GitHub Actions 日志。
 - GitHub Actions 使用 GitHub Secrets。
-- 翻译流水线的本地密钥：`SILICONFLOW_API_KEY`；模型固定为 `tencent/Hunyuan-MT-7B`。
+- 翻译流水线的本地密钥：`LLM_API_KEY`（或回退 `SILICONFLOW_API_KEY`）；默认免费模型池并发 10。
 - 本机 Wrangler 可使用 Cloudflare Global API Key + 邮箱环境变量 `CLOUDFLARE_API_KEY`、`CLOUDFLARE_EMAIL`；已验证可读取账户和 Pages 项目。不要把 Global API Key 提交到仓库。
 - GitHub 的 Deploy workflow 当前使用更适合 CI 的 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID` Secrets；这与本机 Global API Key + Email 是两套认证方式。
 - Worker 使用 Wrangler Secret 配置 `TENCENT_DOCS_TOKEN`；每日同步中的同名 GitHub Secret 是可选的。

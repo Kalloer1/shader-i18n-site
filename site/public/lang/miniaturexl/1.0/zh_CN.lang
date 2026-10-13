@@ -1,0 +1,176 @@
+#shaders/lang/zh_CN.lang
+# MiniatureXL v1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：MiniatureXL 1.0.zip 的 shaders/lang/en_US.lang
+#shaders/lang/en_us.lang
+
+profile.LOWEST=最低
+profile.LOW=低
+profile.NORMAL=普通
+profile.HIGH=高
+
+screen.WATER_SCREEN=水
+option.WATER_BRIGHTNESS=水体亮度
+option.WATER_B=水体蓝度调节
+option.WATER_A=水不透明度
+option.WATER_MIN_GLINT=水体闪光强度 [?]
+option.WATER_MIN_GLINT.comment=决定水体保留多少纹理；流动的水仍保留所有纹理
+option.WATER_GLINT_BRIGHTNESS=水体闪光亮度
+option.WATER_GLINT_CUTOFF=水体闪光裁切
+option.WATER_WAVE_SIZE=波浪大小
+option.WATER_WAVE_SPEED=波浪速度
+
+# Colors tab removed: the torch gradient is now fixed; moon is in Sky colors
+option.MOON_R=月亮
+option.MOON_G=月亮 G 通道
+option.MOON_B=月亮
+
+screen.ATMOSPHERE_SCREEN=大气
+option.ENABLE_FOG=启用雾效
+option.WEATHER_OPACITY=天气不透明度
+option.ENABLE_SKY=启用天空 [?]
+option.ENABLE_SKY.comment=若您使用天空资源包，请关闭此选项
+option.OVERWORLD_FOG_MAX_SLIDER=主世界过渡雾效 [?]
+option.OVERWORLD_FOG_MAX_SLIDER.comment=日出日落时的雾效强度
+option.OVERWORLD_FOG_MIN_SLIDER=主世界雾
+option.SUN_SHAFTS=体积光 §e[?]
+option.SUN_SHAFTS.comment=太阳周围的曙暮光线（主世界）；会被地形和云层遮挡
+option.SUN_SHAFTS_STRENGTH=体积光强度
+option.END_STARS_SPEED=末地星空运动速度
+option.END_STARS_AMOUNT=末地星星数量
+option.END_STARS_OPACITY=末地星星不透明度
+
+screen.SHADOWS_SCREEN=阴影
+option.SHADOW_BLUENESS=阴影蓝度
+option.shadowDistance=阴影距离
+option.shadowMapResolution=阴影分辨率
+option.shadowIntervalSize=阴影重聚焦速率 [?]
+option.shadowIntervalSize.comment=阴影在多少方块距离后重新聚焦于玩家
+option.entityShadowDistanceMul=实体阴影距离 [?]
+option.entityShadowDistanceMul.comment=作为阴影距离的百分比
+option.SHADOW_PIXEL=阴影像素化
+option.LIGHT_BRIGHTNESS=太阳亮度
+option.sunPathRotation=太阳路径角度 [!]
+option.sunPathRotation.comment=迷你版设计时考虑了直线阴影，更改可能产生瑕疵
+option.SHADOW_DARKNESS=阴影暗度
+option.FLAT_LIGHTING=使用平面光照 [?]
+option.FLAT_LIGHTING.comment=不使用平面光照时，方块阴影将与太阳位置不匹配，如同原版
+option.ENABLE_SHADOWS=启用阴影
+option.SHADOW_ENTITY=实体阴影
+value.SHADOW_ENTITY.-1=§a关闭
+value.SHADOW_ENTITY.0=玩家
+value.SHADOW_ENTITY.1=§e全部
+
+screen.REFLECTIONS_SCREEN=反射
+option.REFLECTIONS=反射不透明度
+option.BLOCK_REFLECTIONS=方块反射不透明度 [?]
+option.BLOCK_REFLECTIONS.comment=为石砖、石英等方块添加反射
+option.SSR_MAX_STEPS=最大步数
+option.SSR_BINARY_STEPS=最大细化步数
+option.SSR_STEP_SIZE=步长
+
+screen.BLOOM_SCREEN= Glow
+option.BLOOM=启用泛光
+option.BLOOM_STRENGTH=发光强度
+option.BLOOM_RADIUS=发光半径
+option.BLOOM_QUALITY=泛光质量 §e[?]
+option.BLOOM_QUALITY.comment=在四分之一分辨率下使用较少采样进行快速模糊；精细模式使用更多采样以获得更平滑的泛光
+value.BLOOM_QUALITY.0=§b流畅
+value.BLOOM_QUALITY.1=§e均衡
+value.BLOOM_QUALITY.2=§6精美
+option.BLOOM_SATURATION=泛光饱和度 §e[?]
+option.BLOOM_SATURATION.comment=高于 1 时泛光颜色比源材质更鲜艳；低于 1 时则会变淡
+option.BLOOM_SKY=天空泛光 §e[?]
+option.BLOOM_SKY.comment=使太阳和明亮的天空产生泛光；方块不受影响——仅通过真实的光源发光产生泛光
+option.BLOOM_PIXEL_THRESHOLD=泛光像素阈值 §e[?]
+option.BLOOM_PIXEL_THRESHOLD.comment=发光方块的像素产生泛光所需的基础亮度。火焰类方块（灯笼、营火、火把）使用更严格的阈值，熔岩和荧石则使用更低的阈值。若方块本体出现泛光则调高，若火焰失去泛光则调低
+option.BLOOM_EMISSIVE_TEXTURES=材质包自发光 §e[?]
+option.BLOOM_EMISSIVE_TEXTURES.comment=为资源包中的自发光叠加材质添加泛光（以全亮度渲染）
+option.BLOOM_PARTICLES=粒子泛光 §e[?]
+option.BLOOM_PARTICLES.comment=明亮的粒子（火焰、火苗、熔岩滴落）会产生泛光。信标光柱拥有独立的泛光，启用泛光后始终开启
+screen.COLORED_LIGHT_SCREEN=彩色光照
+option.COLORED_LIGHT=彩色光照 §e[?]
+option.COLORED_LIGHT.comment=真实的逐光源彩色方块光照：光照会呈现发光方块的颜色（熔岩橙、灵魂火蓝、传送门紫）。仅支持 Iris，全维度生效；强度和范围保持原版，因此光照绝不会穿墙泄露
+option.COLORED_LIGHT_STRENGTH=颜色强度 §e[?]
+option.COLORED_LIGHT_STRENGTH.comment=数值越高，光的颜色传播得越远且饱和度越深；数值越低，颜色则越柔和且靠近光源
+option.CL_ENTITY_LIGHT=实体光源 §e[?]
+option.CL_ENTITY_LIGHT.comment=其他玩家和生物手持的发光物品会发出彩色光照，燃烧中的实体和火箭会发出暖色光，烈焰人、岩浆怪、发光鱿鱼和悦灵会发出各自的光。需要将实体阴影设为全部（阴影界面）
+option.CL_ITEM_LIGHT=掉落物光源 §e[?]
+option.CL_ITEM_LIGHT.comment=掉落的发光物品以及持有发光物品的物品展示框（火把、灯笼、荧石等）会发出彩色光照。需要将实体阴影设为全部（阴影界面）
+option.COLORED_LIGHT_RANGE=光照颜色范围 §e[?]
+option.COLORED_LIGHT_RANGE.comment=光源为彩色光照场提供颜色的最大距离（以方块为单位）。自动限制为体积大小的一半；超过 64 的范围还需要更大的体积以及至少为该范围两倍的阴影距离
+option.VOXEL_SIZE=体积大小 §e[?]
+option.VOXEL_SIZE.comment=彩色光照体素体积的宽度（以方块为单位）——光照颜色范围的硬性上限。超过 256 时高度翻倍。显存和计算开销随该值的平方增长：64-128 开销低，256 中等，384-512 开销高
+option.TORCH_FALLOFF=方块光照柔和度 §e[?]
+option.TORCH_FALLOFF.comment=重塑原版方块光照曲线：高于 1 时提亮暗角并平滑火把光照生硬的距离阶梯（全场景生效，不会漏光）；低于 1 时衰减更生硬。1.0 = 原版曲线
+option.CL_TRANSITION=颜色过渡速度 §e[?]
+option.CL_TRANSITION.comment=当光源出现、消失或进入范围时，表面在默认暖光与光源体素颜色之间转换的速度。数值越低，过渡越平滑缓慢；1.0 = 瞬时（旧版行为）
+option.CL_LAVA_TEXTURE=熔岩颜色跟随材质 §e[?]
+option.CL_LAVA_TEXTURE.comment=熔岩和岩浆的光照颜色取自实际材质而非“熔岩与岩浆”调色板滑块，会跟随重设熔岩颜色的资源包（mcmeta）。关闭 = 固定调色板颜色
+option.CL_FALLOFF=衰减柔和度 §e[?]
+option.CL_FALLOFF.comment=彩色光照随距离衰减的柔和程度。数值越高，光照传播越远，且两个相近光源的颜色会在更宽的范围内重叠融合；数值越低，每种颜色则更紧密地聚集在各自光源周围
+
+screen.CL_COLORS_SCREEN=光照颜色
+option.CL_FLAME_R=火焰（火把、灯笼等） §cR
+option.CL_FLAME_G=火焰 §2G
+option.CL_FLAME_B=火焰 §9B
+option.CL_SOUL_R=灵魂火 §cR
+option.CL_SOUL_G=灵魂火 §2G
+option.CL_SOUL_B=灵魂火 §9B
+option.CL_LAVA_R=熔岩与岩浆 §cR
+option.CL_LAVA_G=熔岩与岩浆 §2G
+option.CL_LAVA_B=熔岩与岩浆 §9B
+option.CL_REDSTONE_R=红石
+option.CL_REDSTONE_G=红石 §2G
+option.CL_REDSTONE_B=红石
+option.CL_AMETHYST_R=紫水晶
+option.CL_AMETHYST_G=紫水晶 §2G
+option.CL_AMETHYST_B=紫水晶
+option.CL_SEA_R=海晶灯与潮涌核心 §cR
+option.CL_SEA_G=海晶灯 §2G
+option.CL_SEA_B=海晶灯
+option.CL_PORTAL_R=传送门与重生锚 §cR
+option.CL_PORTAL_G=传送门 §2G
+option.CL_PORTAL_B=传送门 §9B
+option.CL_GLOW_R=荧石与菌光体 §cR
+option.CL_GLOW_G=荧石 §2G
+option.CL_GLOW_B=荧石
+option.CL_ROD_R=末地烛
+option.CL_ROD_G=末地烛 §2G
+option.CL_ROD_B=末地烛
+option.CL_LICHEN_R=发光地衣
+option.CL_LICHEN_G=发光地衣 §2G
+option.CL_LICHEN_B=发光地衣
+option.BLOOM_HIGHLIGHTS=天空辉光数量 §e[?]
+option.BLOOM_HIGHLIGHTS.comment=天空/太阳高光辉光的强度；对方块没有影响
+option.BLOOM_THRESHOLD=天空辉光阈值 §e[?]
+option.BLOOM_THRESHOLD.comment=高于此天空亮度时天空开始发光
+option.BLOOM_SOURCE_COLOR=辉光色彩度 §e[?]
+option.BLOOM_SOURCE_COLOR.comment=为 1 时光辉使用光源自身的纹理颜色；为 0 时光辉为中性白色
+
+screen.OTHER_SCREEN=其他
+option.HIGHLIGHT_WAXED=高亮涂蜡方块 [?]
+option.HIGHLIGHT_WAXED.comment=手持蜂巢会高亮被蜡封的方块
+option.GLOWING_ORES=发光矿石
+option.NETHER_COLOR_GRADING=下界色彩分级
+option.HAND_DYNAMIC_LIGHTING=手持动态光照
+value.HAND_DYNAMIC_LIGHTING.-1=§a关闭
+value.HAND_DYNAMIC_LIGHTING.0=带光照
+value.HAND_DYNAMIC_LIGHTING.1=§a总是
+screen.SKY_COLORS_SCREEN=天空颜色
+option.SUN_NOON_R=正午太阳 §cR
+option.SUN_NOON_G=正午太阳 §2G
+option.SUN_NOON_B=正午太阳 §9B
+option.SUN_DUSK_R=黄昏太阳 §cR
+option.SUN_DUSK_G=黄昏太阳 §2G
+option.SUN_DUSK_B=黄昏太阳 §9B
+option.SKY_DAY_R=白天天空色调 §cR
+option.SKY_DAY_G=白天天空色调 §2G
+option.SKY_DAY_B=白天天空色调 §9B
+option.SKY_DUSK_R=黄昏天空色调 §cR
+option.SKY_DUSK_G=黄昏天空色调 §2G
+option.SKY_DUSK_B=黄昏天空色调 §9B
+option.SKY_NIGHT_R=控制晨、昼、暮、夜各调色板在过渡期间的重叠范围。
+option.SKY_NIGHT_G=夜晚天空色调 §2G
+option.SKY_NIGHT_B=控制晨、昼、暮、夜各调色板在过渡期间的重叠范围。
+option.BLOOM_ENCHANT=附魔光泽辉光 §e[?]
+option.BLOOM_ENCHANT.comment=物品和护甲上的附魔光泽会发光，跟随光泽贴图本身——来自资源包的自定义紫色光泽会以其自身的颜色和图案发光

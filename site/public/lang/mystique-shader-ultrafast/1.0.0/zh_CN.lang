@@ -1,0 +1,76 @@
+#shaders/lang/zh_CN.lang
+# Mystique Shader | UltraFast v1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Mystique-UltraFast.zip 的 shaders/lang/en_us.lang
+profile.POTATO=土豆
+profile.LITE=轻量版
+profile.MEDIUM=中
+profile.HIGH=高
+profile.comment=Potato：仅天空阴影，帧率最高。Lite：真实太阳阴影与盒状云，专为手机打造。Medium：柔和阴影。High：全部开启，包括反射、体积光、手持物品光源与景深。
+
+screen.SHADOWS_SCREEN=阴影
+screen.COLORS_SCREEN=颜色
+screen.WATER_SCREEN=水
+screen.EFFECTS_SCREEN=泛光与雾
+
+option.SHADOWS=阴影
+option.SHADOWS.comment=来自太阳和月亮的实时阴影。对帧率影响最大。
+option.SOFT_SHADOWS=柔和阴影
+option.shadowMapResolution=阴影质量
+option.shadowMapResolution.comment=越高阴影越锐利，帧率越低。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=真实阴影的延伸距离（以方块计）。超出该范围后由天空阴影接管。1 = 最小范围。
+option.sunPathRotation=太阳角度
+option.sunPathRotation.comment=倾斜太阳的运行轨迹，使阴影角度更美观。
+
+option.SATURATION=饱和度
+option.VIBRANCE=鲜艳度
+option.VIBRANCE.comment=比本就鲜亮的颜色更多地提升暗淡颜色。
+option.EXPOSURE=亮度
+option.CONTRAST=对比度
+option.SUN_BRIGHTNESS=阳光
+option.TORCH_BRIGHTNESS=火把光照
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.VIGNETTE=暗角
+
+option.REFLECTIONS=水体反射
+option.REFLECTIONS.comment=水面倒映屏幕中的世界。关闭 = 水面只反射天空。
+option.REFLECTION_STRENGTH=反射强度
+option.SUN_REFLECTION=水面阳光闪烁
+option.UNDERWATER_FOG_DENSITY=水下雾
+
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.ATMOSPHERIC_FOG=远景雾霭
+option.MIDNIGHT_MIST=夜雾
+option.MIDNIGHT_MIST.comment=夜间山谷与水面上的低雾，日出时最浓。几乎不消耗帧率。
+option.MIST_THICKNESS=雾高度
+option.SHADOW_DEBUG=阴影调试
+option.SHADOW_DEBUG.comment=红色 = 处于阴影中，蓝色 = 在阴影贴图之外。仅在排错时开启。
+option.SKY_SHADOWS=天空阴影
+option.SKY_SHADOWS.comment=使用天空光照而非阴影贴图，为树木、悬崖和峭壁下方的一切着色。适用于所有设备，且几乎不消耗帧率。将阴影距离也设为 1 可获得最高帧率。
+
+screen.CLOUDS_SCREEN=云
+option.BLOCKY_CLOUDS=盒状云
+option.BLOCKY_CLOUDS.comment=厚重的方块状云朵，带有明暗侧面，取代扁平的原版云。对帧率影响小。
+option.CLOUD_COVERAGE=云量
+option.CLOUD_COVERAGE.comment=天空被覆盖的比例。下雨时会更多。
+option.CLOUD_OPACITY=云层不透明度
+option.CLOUD_HEIGHT=云层高度
+option.CLOUD_THICKNESS=云层厚度
+option.CLOUD_SIZE=云方块大小
+option.CLOUD_SIZE.comment=单个云方块相当于多少个 Minecraft 方块。原版为 12。
+option.CLOUD_SPEED=云层速度
+option.CLOUD_STEPS=云层质量
+option.CLOUD_STEPS.comment=沿每条视线搜索云层的步数。越低帧率越高，但靠近地平线的云会变稀薄。
+option.CLOUD_RENDER=云层距离
+
+screen.EXTRAS_SCREEN=附加选项
+option.DYNAMIC_LIGHTS=动态光源
+option.DYNAMIC_LIGHTS.comment=手持火把、灯笼或萤石时会照亮周围区域。
+option.DYNAMIC_LIGHT_RANGE=动态光照范围
+option.GODRAYS=阳光射线
+option.GODRAYS.comment=穿过树林、云层和建筑缝隙的光束。
+option.GODRAYS_STRENGTH=体积光强度
+option.DEPTH_OF_FIELD=景深
+option.DEPTH_OF_FIELD.comment=远离你所注视焦点的物体会像相机一样柔和虚化。
+option.DOF_STRENGTH=模糊强度

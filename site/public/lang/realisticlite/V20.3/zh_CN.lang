@@ -1,0 +1,65 @@
+#shaders/lang/zh_CN.lang
+# RealisticLite vV20.3 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：RealisticLiteV20.3.zip 的 shaders/lang/en_us.lang
+profile.Low=低配（最高 FPS）
+profile.Medium=中
+profile.High=高（推荐）
+profile.Ultra=超高
+
+screen.SHADOWS=阴影
+screen.LIGHTING=光照
+screen.SKY=天空与云
+screen.WEATHER=天气
+screen.ATMOSPHERE=大气
+screen.WATER=水
+screen.CAMERA=相机与色彩
+
+option.SHADOW_SOFTNESS=阴影边缘柔化
+option.SHADOW_SOFTNESS.comment=越低阴影边缘越锐利（不影响 FPS）。如果阴影出现闪烁或条纹请调高。
+option.SHADOW_SAMPLES=阴影柔化质量
+option.SHADOW_SAMPLES.comment=柔和阴影的每像素采样数。越低帧数越高。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影绘制距离（方块）。对 FPS 影响很大。
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=数值越高阴影越清晰。对 FPS 影响很大。
+option.HAND_SHADOW_STEPS=手持光源阴影
+option.HAND_SHADOW_STEPS.comment=手持火把/灯笼投射阴影的质量。0 = 关闭。
+
+option.SUN_INTENSITY=太阳强度
+option.AMBIENT_BRIGHTNESS=环境（天空）光
+option.BLOCKLIGHT_BRIGHTNESS=火把/方块光
+option.WIND=摆动的植物、树叶和海草
+option.WIND_STRENGTH=风力强度
+option.WIND_STRENGTH.comment=植物摆动幅度。雨天会自动增强。
+
+option.GODRAYS=神圣光芒 
+option.GODRAYS.comment=体积光。直视太阳时会自动淡出。
+option.GODRAYS_SAMPLES=中等性能消耗！
+option.GODRAYS_STRENGTH=丁达尔效应强度
+option.FOG_DENSITY=雾霭密度
+
+option.WATER_BRIGHTNESS=水体亮度
+option.WATER_BRIGHTNESS.comment=越低水面越暗、看起来越深。
+option.WATER_CLARITY=水体清晰度
+option.WATER_CLARITY.comment=越高在水变暗之前能看得越深。
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_FOAM=岸边浪花
+option.SSR_STEPS=水面反射质量
+option.SSR_STEPS.comment=水面上的地形/树木反射。0 = 仅反射天空。
+
+option.EXPOSURE=曝光
+option.SATURATION=饱和度
+
+option.CLOUDS=写实云
+option.CLOUDS.comment=方块状原版风格云，带有圆润的 3D 边缘和柔和光照。
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_QUALITY=云层细节
+option.CLOUD_QUALITY.comment=沿光线搜索云的距离以及追踪其圆润边缘的精度。越低帧数越高。
+option.WET_SURFACES=雨天潮湿表面
+option.WET_SURFACES.comment=雨天露天方块会变暗并产生反射，平地会出现水洼。干燥时不耗性能。0 = 关闭。
+
+option.FXAA=抗锯齿（快速近似抗锯齿）
+option.FXAA.comment=平滑锯齿边缘。开销极低：仅处理边缘像素。
+
+option.REALISTIC_RAIN=真实雨雪
+option.REALISTIC_RAIN.comment=用随风倾斜、可被墙体遮挡的 3D 雨丝和雪花替代原版雨雪。关闭 = 原版天气。

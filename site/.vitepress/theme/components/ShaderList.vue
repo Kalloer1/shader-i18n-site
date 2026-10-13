@@ -1,927 +1,590 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
-import { allShaders } from '../data.js'
+import { computed, ref } from 'vue'
+import {
+  allShaders,
+  shaderCover,
+  shaderStatus,
+  shaderVersionRange,
+} from '../data.js'
 
-const keyword = ref('')
-const onlyWithLang = ref(false)
-const sortBy = ref('downloads')
-const layoutMode = ref('spacious') // spacious | dense
-const selectedCategories = ref(new Set())
-const PAGE_SIZE = computed(() => (layoutMode.value === 'dense' ? 30 : 18))
-const page = ref(1)
+const props = defineProps({
+  query: {
+    type: String,
+    default: '',
+  },
+  sort: {
+    type: String,
+    default: 'downloads',
+  },
+  selectedId: {
+    type: String,
+    default: '',
+  },
+})
 
-// 分类标签分组 — 直接平铺在页面顶部
-const categoryGroups = [
-  {
-    label: '性能',
-    options: ['potato', 'low', 'medium', 'high'],
-  },
-  {
-    label: '风格',
-    options: ['vanilla-like', 'atmosphere', 'realistic', 'semi-realistic', 'fantasy', 'cartoon', 'cursed'],
-  },
-  {
-    label: '特效',
-    options: ['colored-lighting', 'reflections', 'bloom', 'shadows', 'pbr', 'path-tracing'],
-  },
-  {
-    label: '加载器',
-    options: ['iris', 'optifine'],
-  },
-]
+const emit = defineEmits(['update:query', 'update:sort', 'select'])
+const activeFilter = ref('all')
+const numberFormat = new Intl.NumberFormat('zh-CN')
 
-const sortOptions = [
-  { value: 'downloads', label: '按下载量' },
-  { value: 'name', label: '按名称' },
-  { value: 'newest', label: '按更新时间' },
-]
+const filterOptions = computed(() => [
+  { value: 'all', label: '全部', count: allShaders.length },
+  {
+    value: 'translated',
+    label: '已有汉化',
+    count: allShaders.filter((s) => shaderStatus(s).key === 'translated').length,
+  },
+  {
+    value: 'native',
+    label: '自带中文',
+    count: allShaders.filter((s) => shaderStatus(s).key === 'native').length,
+  },
+  {
+    value: 'missing',
+    label: '无英文源',
+    count: allShaders.filter((s) => shaderStatus(s).key === 'missing').length,
+  },
+  {
+    value: 'none',
+    label: '暂无汉化',
+    count: allShaders.filter((s) => shaderStatus(s).key === 'none').length,
+  },
+  {
+    value: 'potato',
+    label: '土豆机可跑',
+    count: allShaders.filter((s) => s.categories?.includes('potato')).length,
+  },
+])
 
 const filtered = computed(() => {
-  const kw = keyword.value.trim().toLowerCase()
-  let list = allShaders.filter((s) => {
-    if (onlyWithLang.value && !s.langVersions.length) return false
-    if (selectedCategories.value.size > 0) {
-      const cats = s.categories ?? []
-      const hasAny = [...selectedCategories.value].some((c) => cats.includes(c))
-      if (!hasAny) return false
+  const keyword = props.query.trim().toLowerCase()
+  let list = allShaders.filter((shader) => {
+    if (activeFilter.value === 'potato') {
+      if (!shader.categories?.includes('potato')) return false
+    } else if (activeFilter.value !== 'all') {
+      if (shaderStatus(shader).key !== activeFilter.value) return false
     }
-    if (!kw) return true
-    return [s.id, s.nameCN, s.title, s.author].filter(Boolean).some((v) => v.toLowerCase().includes(kw))
+
+    if (!keyword) return true
+    return [shader.id, shader.nameCN, shader.title, shader.author]
+      .filter(Boolean)
+      .some((value) => String(value).toLowerCase().includes(keyword))
   })
-  if (sortBy.value === 'downloads') {
-    list = [...list].sort((a, b) => (b.downloads ?? 0) - (a.downloads ?? 0))
-  } else if (sortBy.value === 'name') {
+
+  if (props.sort === 'name') {
     list = [...list].sort((a, b) => (a.title ?? a.id).localeCompare(b.title ?? b.id))
-  } else if (sortBy.value === 'newest') {
+  } else if (props.sort === 'newest') {
     list = [...list].sort((a, b) => {
       const aDate = a.langVersions?.[0]?.updatedAt ?? ''
       const bDate = b.langVersions?.[0]?.updatedAt ?? ''
       return bDate.localeCompare(aDate)
     })
+  } else {
+    list = [...list].sort((a, b) => (b.downloads ?? 0) - (a.downloads ?? 0))
   }
+
   return list
 })
 
-const totalPages = computed(() => Math.max(1, Math.ceil(filtered.value.length / PAGE_SIZE.value)))
-const pageItems = computed(() =>
-  filtered.value.slice((page.value - 1) * PAGE_SIZE.value, page.value * PAGE_SIZE.value),
-)
-
-watch([keyword, onlyWithLang, sortBy, layoutMode], () => {
-  page.value = 1
-})
-watch(
-  selectedCategories,
-  () => {
-    page.value = 1
-  },
-  { deep: true },
-)
-
-function toggleCategory(cat) {
-  const s = new Set(selectedCategories.value)
-  if (s.has(cat)) s.delete(cat)
-  else s.add(cat)
-  selectedCategories.value = s
+function updateQuery(event) {
+  emit('update:query', event.target.value)
 }
 
-function clearFilters() {
-  selectedCategories.value = new Set()
-  keyword.value = ''
-  onlyWithLang.value = false
-  sortBy.value = 'downloads'
-  page.value = 1
+function selectShader(id) {
+  emit('select', id)
 }
 
-function hasLang(s) {
-  return s.langVersions.length > 0
+function status(shader) {
+  return shaderStatus(shader)
 }
 
-function langBadge(s) {
-  if (hasLang(s)) return '已有汉化'
-  if (s.hasNativeZhCN) return '自带中文'
-  if (s.missingSource) return '无英文源'
-  return '暂无汉化'
+function cover(shader) {
+  return shaderCover(shader)
 }
 
-function formatDownloads(n) {
-  if (n == null) return '—'
-  return n >= 10000 ? `${(n / 10000).toFixed(1)} 万` : String(n)
+function initial(shader) {
+  return (shader?.title ?? shader?.id ?? '?').trim().charAt(0).toUpperCase()
 }
 
-function range(s) {
-  if (!s.gameVersions?.length) return ''
-  const parse = (v) => {
-    const m = String(v).match(/^(\d+)\.(\d+)(?:\.(\d+))?$/)
-    return m ? [Number(m[1]), Number(m[2]), Number(m[3] ?? 0)] : null
-  }
-  let min = null
-  let max = null
-  for (const v of s.gameVersions) {
-    const p = parse(v)
-    if (!p) continue
-    if (!min || p < min) min = p
-    if (!max || p > max) max = p
-  }
-  if (!min) return ''
-  const fmt = (p) => `${p[0]}.${p[1]}${p[2] ? `.${p[2]}` : ''}`
-  return fmt(min) === fmt(max) ? fmt(min) : `${fmt(min)} ~ ${fmt(max)}`
+function range(shader) {
+  return shaderVersionRange(shader) || '—'
 }
 
-function cover(s) {
-  return s.gallery?.[0] ?? s.iconUrl ?? ''
+function formatDownloads(value) {
+  if (value == null) return '—'
+  return numberFormat.format(Number(value) || 0)
 }
 
-function initial(s) {
-  return (s.title ?? s.id ?? '?').trim().charAt(0).toUpperCase()
-}
-
-function tint(s) {
-  const c = /^#[0-9a-fA-F]{6}$/.test(s.color ?? '') ? s.color : '#2A3B4D'
-  return { background: `linear-gradient(135deg, ${c} 0%, #141a21 100%)` }
+function actionLabel(shader) {
+  return shaderStatus(shader).key === 'translated' ? '拿文件' : '查看'
 }
 </script>
 
 <template>
-  <section class="shader-list" aria-label="光影列表">
-    <!-- 分类筛选 — 平铺在最顶部 -->
-    <div class="tag-bar" role="group" aria-label="按分类筛选光影">
-      <div v-for="group in categoryGroups" :key="group.label" class="tag-group" role="group" :aria-label="group.label">
-        <span class="tag-group__label" aria-hidden="true">{{ group.label }}</span>
-        <div class="tag-group__tags">
-          <button
-            v-for="cat in group.options"
-            :key="cat"
-            type="button"
-            class="tag"
-            :class="{ active: selectedCategories.has(cat) }"
-            :aria-pressed="selectedCategories.has(cat)"
-            @click="toggleCategory(cat)"
-          >
-            {{ cat }}
-          </button>
-        </div>
-      </div>
+  <section id="shader-list" class="shader-list" aria-labelledby="shader-list-title">
+    <div class="list-head">
+      <h2 id="shader-list-title">全部光影</h2>
+      <p>按下载量排序 · 只留图标不放画廊 · 点行切换上方下载面板</p>
     </div>
 
-    <!-- 工具栏：搜索 + 排序 + 切换 -->
-    <div class="toolbar">
-      <div class="search-wrap">
-        <svg
-          class="ico"
-          viewBox="0 0 24 24"
-          width="16"
-          height="16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          aria-hidden="true"
-        >
-          <circle cx="11" cy="11" r="7" />
-          <path d="m20 20-3.5-3.5" />
-        </svg>
-        <label class="sr-only" for="shader-search">搜索光影</label>
+    <div class="filter-bar" role="group" aria-label="筛选光影状态">
+      <button
+        v-for="option in filterOptions"
+        :key="option.value"
+        type="button"
+        class="filter-button"
+        :class="{ 'filter-button--active': activeFilter === option.value }"
+        :aria-pressed="activeFilter === option.value"
+        @click="activeFilter = option.value"
+      >
+        {{ option.label }}
+        <span>{{ formatDownloads(option.count) }}</span>
+      </button>
+    </div>
+
+    <div class="list-toolbar">
+      <label class="list-search">
+        <span class="sr-only">搜索光影名或作者</span>
         <input
-          id="shader-search"
-          v-model="keyword"
+          :value="query"
           type="search"
-          :placeholder="`搜索 ${allShaders.length} 个光影…`"
+          placeholder="搜索光影名或作者"
+          autocomplete="off"
+          @input="updateQuery"
         />
-      </div>
-
-      <label class="sort-wrap">
-        <span class="sr-only">排序方式</span>
-        <select v-model="sortBy" class="sort-select">
-          <option v-for="opt in sortOptions" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
-        </select>
       </label>
-
-      <label class="toggle">
-        <input v-model="onlyWithLang" type="checkbox" />
-        <span>仅看已有汉化</span>
-      </label>
-
-      <div class="layout-toggle" role="group" aria-label="列表布局">
-        <button
-          type="button"
-          :class="{ active: layoutMode === 'spacious' }"
-          :aria-pressed="layoutMode === 'spacious'"
-          aria-label="分散型布局"
-          title="分散型"
-          @click="layoutMode = 'spacious'"
-        >
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <rect x="3" y="3" width="7" height="7" rx="1" />
-            <rect x="14" y="3" width="7" height="7" rx="1" />
-            <rect x="3" y="14" width="7" height="7" rx="1" />
-            <rect x="14" y="14" width="7" height="7" rx="1" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          :class="{ active: layoutMode === 'dense' }"
-          :aria-pressed="layoutMode === 'dense'"
-          aria-label="紧密型布局"
-          title="紧密型"
-          @click="layoutMode = 'dense'"
-        >
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <rect x="3" y="3" width="4" height="4" rx="0.5" />
-            <rect x="10" y="3" width="4" height="4" rx="0.5" />
-            <rect x="17" y="3" width="4" height="4" rx="0.5" />
-            <rect x="3" y="10" width="4" height="4" rx="0.5" />
-            <rect x="10" y="10" width="4" height="4" rx="0.5" />
-            <rect x="17" y="10" width="4" height="4" rx="0.5" />
-            <rect x="3" y="17" width="4" height="4" rx="0.5" />
-            <rect x="10" y="17" width="4" height="4" rx="0.5" />
-            <rect x="17" y="17" width="4" height="4" rx="0.5" />
-          </svg>
-        </button>
-      </div>
+      <span class="result-count" role="status" aria-live="polite">
+        当前显示 <b>{{ formatDownloads(filtered.length) }}</b> 个光影
+      </span>
     </div>
 
-    <!-- 结果统计 -->
-    <div class="result-bar">
-      <span class="result-count" role="status" aria-live="polite">共 {{ filtered.length }} 个光影</span>
-      <div v-if="selectedCategories.size > 0 || keyword || onlyWithLang" class="active-filters">
-        <span v-for="cat in selectedCategories" :key="cat" class="filter-tag">
-          {{ cat }}
-          <button type="button" :aria-label="`移除筛选 ${cat}`" @click="toggleCategory(cat)">×</button>
-        </span>
-        <button type="button" class="clear-btn" @click="clearFilters">清除全部</button>
-      </div>
-    </div>
+    <p v-if="!filtered.length" class="empty-state" role="status">没有匹配的光影，请调整搜索或筛选条件。</p>
 
-    <p v-if="!filtered.length" class="empty" role="status">没有匹配的光影。</p>
-
-    <!-- 紧凑型 -->
-    <div v-if="layoutMode === 'dense'" class="shader-grid shader-grid--dense">
-      <a v-for="s in pageItems" :key="s.id" class="card card--dense" :href="`/shaders/${s.id}`">
-        <div class="cover cover--dense" :style="!cover(s) ? tint(s) : undefined">
-          <img
-            v-if="cover(s)"
-            :src="cover(s)"
-            :alt="`${s.title} 封面图`"
-            width="640"
-            height="400"
-            loading="lazy"
-            decoding="async"
-          />
-          <span v-else class="fallback" aria-hidden="true">{{ initial(s) }}</span>
-          <span class="badge badge--sm" :class="hasLang(s) ? 'ok' : s.hasNativeZhCN ? 'nat' : 'none'">
-            {{ langBadge(s) }}
-          </span>
-        </div>
-        <div class="body body--dense">
-          <div class="name name--dense">{{ s.title }}</div>
-          <div class="meta">
-            <span class="m">
-              <svg
-                viewBox="0 0 24 24"
-                width="11"
-                height="11"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
+    <div v-else class="table-scroll" tabindex="0" aria-label="光影列表，可横向滚动">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">光影</th>
+            <th scope="col">下载量</th>
+            <th scope="col">汉化版本</th>
+            <th scope="col">MC 版本</th>
+            <th scope="col">状态</th>
+            <th scope="col"><span class="sr-only">操作</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="shader in filtered"
+            :key="shader.id"
+            :class="{ 'row-selected': selectedId === shader.id }"
+            :aria-selected="selectedId === shader.id"
+            :aria-label="`${shader.title}，${status(shader).label}，选择查看下载信息`"
+            tabindex="0"
+            @click="selectShader(shader.id)"
+            @keydown.enter.prevent="selectShader(shader.id)"
+            @keydown.space.prevent="selectShader(shader.id)"
+          >
+            <td>
+              <div class="cell-main">
+                <span class="cell-thumb">
+                  <img
+                    v-if="cover(shader)"
+                    :src="cover(shader)"
+                    alt=""
+                    width="32"
+                    height="32"
+                    loading="lazy"
+                    decoding="async"
+                    referrerpolicy="no-referrer"
+                  />
+                  <span v-else aria-hidden="true">{{ initial(shader) }}</span>
+                </span>
+                <span class="cell-title">
+                  <b>{{ shader.title }}</b>
+                  <span>{{ shader.author }}</span>
+                </span>
+              </div>
+            </td>
+            <td class="num">{{ formatDownloads(shader.downloads) }}</td>
+            <td class="version">{{ shader.langVersions?.[0]?.shaderVersion || '—' }}</td>
+            <td class="version">{{ range(shader) }}</td>
+            <td>
+              <span
+                class="status-badge"
+                :class="`status-badge--${status(shader).key}`"
+                :title="status(shader).description"
               >
-                <path d="M12 3v12" />
-                <path d="m7 10 5 5 5-5" />
-                <path d="M5 21h14" />
-              </svg>
-              {{ formatDownloads(s.downloads) }}
-            </span>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 分散型 -->
-    <div v-else class="shader-grid shader-grid--spacious">
-      <a v-for="s in pageItems" :key="s.id" class="card card--spacious" :href="`/shaders/${s.id}`">
-        <div class="cover cover--spacious" :style="!cover(s) ? tint(s) : undefined">
-          <img
-            v-if="cover(s)"
-            :src="cover(s)"
-            :alt="`${s.title} 封面图`"
-            width="640"
-            height="400"
-            loading="lazy"
-            decoding="async"
-          />
-          <span v-else class="fallback fallback--lg" aria-hidden="true">{{ initial(s) }}</span>
-          <span class="badge" :class="hasLang(s) ? 'ok' : s.hasNativeZhCN ? 'nat' : 'none'">
-            {{ langBadge(s) }}
-          </span>
-        </div>
-        <div class="body body--spacious">
-          <div class="name">{{ s.title }}</div>
-          <div class="sub">{{ s.nameCN || s.id }}<template v-if="s.author"> · {{ s.author }}</template></div>
-          <div v-if="s.categories?.length" class="cats">
-            <span v-for="cat in s.categories.slice(0, 3)" :key="cat" class="cat-tag">{{ cat }}</span>
-          </div>
-          <div class="meta">
-            <span class="m">
-              <svg
-                viewBox="0 0 24 24"
-                width="12"
-                height="12"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
+                {{ status(shader).label }}
+              </span>
+            </td>
+            <td class="action-cell">
+              <button
+                type="button"
+                class="row-action"
+                :aria-label="`${actionLabel(shader)}：${shader.title}`"
+                @click.stop="selectShader(shader.id)"
               >
-                <path d="M12 3v12" />
-                <path d="m7 10 5 5 5-5" />
-                <path d="M5 21h14" />
-              </svg>
-              {{ formatDownloads(s.downloads) }}
-            </span>
-            <span v-if="range(s)" class="m">
-              <svg
-                viewBox="0 0 24 24"
-                width="12"
-                height="12"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                aria-hidden="true"
-              >
-                <rect x="3" y="4" width="18" height="16" rx="2" />
-                <path d="M8 2v4M16 2v4M3 10h18" />
-              </svg>
-              {{ range(s) }}
-            </span>
-          </div>
-        </div>
-      </a>
+                {{ actionLabel(shader) }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <nav v-if="totalPages > 1" class="pagination" aria-label="分页">
-      <button type="button" :disabled="page <= 1" @click="page--">← 上一页</button>
-      <span aria-live="polite">第 {{ page }} / {{ totalPages }} 页</span>
-      <button type="button" :disabled="page >= totalPages" @click="page++">下一页 →</button>
-    </nav>
   </section>
 </template>
 
 <style scoped>
-/* ============================================================
-   光影列表 — 暗色画廊风
-   移动优先：默认写窄屏样式，再用 min-width 逐级增强。
-   ============================================================ */
-
-/* 容器由全局 .shader-list 统一策略（max-width + gutter）接管，
-   消除窄视口 20px 轴线差与 min(calc) 负宽度塌陷 */
 .shader-list {
-  /* width/max-width/padding 由全局 style.css 的 .shader-list 规则提供 */
+  min-width: 0;
+  color: var(--home-text, #e9f0f4);
+  font-family: var(--home-font-ui, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif);
 }
 
-/* 视觉隐藏但保留给屏幕阅读器 */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.list-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 26px 0 12px;
 }
 
-/* ===== 标签栏 ===== */
-.tag-bar {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 16px;
-  padding: 14px 14px 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(232, 163, 61, 0.03), transparent 40%), var(--vp-c-bg-soft);
+.list-head h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: var(--home-text, #e9f0f4);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.35;
 }
-.tag-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.tag-group__label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--vp-c-text-3);
-  text-transform: uppercase;
-}
-.tag-group__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.tag {
-  padding: 5px 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--vp-c-text-2);
+
+.list-head p {
+  margin: 0;
+  color: var(--home-faint, #64707b);
   font-size: 12.5px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: color 0.18s, border-color 0.18s, background-color 0.18s;
-  user-select: none;
-}
-.tag:hover {
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
-}
-.tag.active {
-  background: var(--vp-c-brand-1);
-  color: #14100a;
-  border-color: var(--vp-c-brand-1);
-  font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-.tag:focus-visible {
-  outline: 2px solid var(--vp-c-brand-1);
-  outline-offset: 2px;
 }
 
-/* ===== 工具栏 ===== */
-.toolbar {
+.filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  align-items: center;
-  margin-bottom: 14px;
-}
-.search-wrap {
-  position: relative;
-  flex: 1 1 100%;
-  min-width: 0;
-}
-.search-wrap .ico {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--vp-c-text-3);
-  pointer-events: none;
-}
-.search-wrap input {
-  width: 100%;
-  padding: 10px 14px 10px 36px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 9px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  font-size: 13.5px;
-  font-family: inherit;
-  transition: border-color 0.18s, box-shadow 0.18s;
-}
-.search-wrap input::placeholder {
-  color: var(--vp-c-text-3);
-}
-.search-wrap input:focus {
-  outline: none;
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.16);
-}
-.sort-wrap {
-  display: inline-flex;
-}
-.sort-select {
-  padding: 9px 14px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 9px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  font-size: 13px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.18s, box-shadow 0.18s;
-}
-.sort-select:focus {
-  outline: none;
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.16);
-}
-.toggle {
-  display: flex;
-  gap: 7px;
-  align-items: center;
-  padding: 8px 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 9px;
-  font-size: 13px;
-  cursor: pointer;
-  color: var(--vp-c-text-2);
-  user-select: none;
-  transition: border-color 0.18s;
-}
-.toggle:hover {
-  border-color: var(--vp-c-text-3);
-}
-.toggle input {
-  accent-color: var(--vp-c-brand-1);
-}
-.toggle input:focus-visible {
-  outline: 2px solid var(--vp-c-brand-1);
-  outline-offset: 2px;
+  margin-bottom: 12px;
 }
 
-/* ===== 布局切换 ===== */
-.layout-toggle {
+.filter-button {
   display: inline-flex;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 9px;
-  overflow: hidden;
-  margin-left: auto;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 15px;
+  border: 1px solid var(--home-line, #242f3b);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--home-muted, #93a1ad);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.16s, background-color 0.16s, color 0.16s;
 }
-.layout-toggle button {
+
+.filter-button span {
+  color: var(--home-faint, #64707b);
+  font-family: var(--home-font-mono, Consolas, monospace);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-button:hover {
+  border-color: #526273;
+  color: var(--home-text, #e9f0f4);
+}
+
+.filter-button--active {
+  border-color: var(--home-text, #e9f0f4);
+  background: var(--home-text, #e9f0f4);
+  color: var(--home-bg, #0b0e12);
+  font-weight: 700;
+}
+
+.filter-button--active span {
+  color: var(--home-bg, #0b0e12);
+}
+
+.list-toolbar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-3);
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.list-search {
+  flex: 1 1 auto;
+  max-width: 420px;
+}
+
+.list-search input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--home-line, #242f3b);
+  border-radius: 8px;
+  background: var(--home-input, #0a0e13);
+  color: var(--home-text, #e9f0f4);
+  font-family: inherit;
+  font-size: 13.5px;
+}
+
+.list-search input::placeholder {
+  color: var(--home-faint, #64707b);
+}
+
+.result-count {
+  margin-left: auto;
+  color: var(--home-faint, #64707b);
+  font-size: 12.5px;
+}
+
+.result-count b {
+  color: var(--home-text, #e9f0f4);
+  font-family: var(--home-font-mono, Consolas, monospace);
+  font-variant-numeric: tabular-nums;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 52px 20px;
+  border: 1px solid var(--home-line-soft, #1c2530);
+  border-radius: 10px;
+  background: var(--home-bg-soft, #0e1319);
+  color: var(--home-muted, #93a1ad);
+  text-align: center;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--home-line-soft, #1c2530);
+  border-radius: 10px;
+  background: var(--home-bg-soft, #0e1319);
+  scrollbar-width: thin;
+  scrollbar-color: var(--home-line, #242f3b) transparent;
+}
+
+table {
+  width: 100%;
+  min-width: 840px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13.5px;
+}
+
+thead th {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--home-line-soft, #1c2530);
+  background: #0d1218;
+  color: var(--home-faint, #64707b);
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--home-line-soft, #1c2530);
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr {
   cursor: pointer;
-  transition: color 0.18s, background-color 0.18s;
+  transition: background-color 0.14s, box-shadow 0.14s;
 }
-.layout-toggle button + button {
-  border-left: 1px solid var(--vp-c-divider);
+
+tbody tr:hover,
+tbody tr.row-selected {
+  background: #141b24;
 }
-.layout-toggle button:hover {
-  color: var(--vp-c-text-1);
+
+tbody tr.row-selected {
+  box-shadow: inset 3px 0 0 #8b96a1;
 }
-.layout-toggle button:focus-visible {
-  outline: 2px solid var(--vp-c-brand-1);
+
+tbody tr:focus-visible {
+  outline: 2px solid #c8d2db;
   outline-offset: -2px;
 }
-.layout-toggle button.active {
-  background: var(--vp-c-brand-1);
-  color: #14100a;
+
+.cell-main {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
 }
 
-/* ===== 结果栏 ===== */
-.result-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-.result-count {
-  font-size: 13px;
-  color: var(--vp-c-text-3);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-.active-filters {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.filter-tag {
+.cell-thumb {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(232, 163, 61, 0.25);
-  background: rgba(232, 163, 61, 0.12);
-  color: var(--vp-c-brand-1);
-  font-size: 12px;
-}
-.filter-tag button {
-  border: none;
-  background: none;
-  color: var(--vp-c-brand-1);
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  padding: 0 2px;
-  border-radius: 4px;
-  opacity: 0.7;
-  transition: opacity 0.15s;
-}
-.filter-tag button:hover {
-  opacity: 1;
-}
-.filter-tag button:focus-visible {
-  outline: 2px solid var(--vp-c-brand-1);
-  outline-offset: 1px;
-}
-
-.clear-btn {
-  border: none;
-  background: none;
-  color: var(--vp-c-text-3);
-  font-size: 12px;
-  font-family: inherit;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 2px 4px;
-  border-radius: 4px;
-}
-.clear-btn:hover {
-  color: #ff6b6b;
-}
-.clear-btn:focus-visible {
-  outline: 2px solid var(--vp-c-brand-1);
-  outline-offset: 2px;
-}
-
-.empty {
-  color: var(--vp-c-text-3);
-  text-align: center;
-  padding: 56px 0;
-}
-
-/* ===== 卡片共用 ===== */
-.card--spacious,
-.card--dense {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  /* 大列表渲染优化：视口外跳过绘制，避免滚动卡顿 */
-  content-visibility: auto;
-  contain-intrinsic-size: auto 300px;
-}
-.card--spacious:focus-visible,
-.card--dense:focus-visible {
-  outline: 2px solid var(--vp-c-brand-1);
-  outline-offset: 2px;
-}
-
-/* ===== 分散型网格 ===== */
-.shader-grid--spacious {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 14px;
-}
-.card--spacious {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--vp-c-bg-soft);
-  transition: transform 0.25s ease, border-color 0.25s, box-shadow 0.25s;
-}
-.card--spacious:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 163, 61, 0.55);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
-}
-.cover--spacious {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--vp-c-bg);
-}
-.cover--spacious img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.45s ease;
-}
-.card--spacious:hover .cover--spacious img {
-  transform: scale(1.06);
-}
-.body--spacious {
-  padding: 14px 16px 16px;
-}
-.body--spacious .name {
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--vp-c-text-1);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.body--spacious .sub {
-  font-size: 13px;
-  color: var(--vp-c-text-3);
-  margin: 4px 0 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ===== 紧凑型网格 ===== */
-.shader-grid--dense {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
-}
-.card--dense {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--vp-c-bg-soft);
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-.card--dense:hover {
-  transform: translateY(-2px);
-  border-color: rgba(232, 163, 61, 0.55);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
-}
-.cover--dense {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--vp-c-bg);
-}
-.cover--dense img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s;
-}
-.card--dense:hover .cover--dense img {
-  transform: scale(1.04);
-}
-.body--dense {
-  padding: 9px 10px 10px;
-}
-.name--dense {
-  font-weight: 600;
-  font-size: 12.5px;
-  color: var(--vp-c-text-1);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ===== 共用 ===== */
-.fallback {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-family: var(--shader-display-font);
-  font-size: 36px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.55);
-}
-.fallback--lg {
-  font-size: 48px;
-}
-.badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-family: var(--vp-font-family-base);
-  backdrop-filter: blur(6px);
-}
-.badge--sm {
-  font-size: 10px;
-  padding: 2px 7px;
-  top: 7px;
-  left: 7px;
-}
-.badge.ok {
-  background: rgba(79, 178, 134, 0.92);
-  color: #0c1712;
-}
-.badge.none {
-  background: rgba(13, 17, 23, 0.72);
-  color: #c3ccd6;
-}
-.badge.nat {
-  background: rgba(80, 140, 190, 0.9);
-  color: #0a1219;
-}
-.cats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-.cat-tag {
-  font-size: 11px;
-  padding: 2px 7px;
-  border-radius: 4px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-3);
-  border: 1px solid var(--vp-c-divider);
-}
-.meta {
-  display: flex;
-  gap: 14px;
-  font-family: var(--shader-display-font);
-  font-size: 12px;
-  color: var(--vp-c-text-3);
-  font-variant-numeric: tabular-nums;
-}
-.m {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* ===== 分页 ===== */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  margin-top: 32px;
-  font-size: 13.5px;
-  color: var(--vp-c-text-2);
-}
-.pagination button {
-  padding: 8px 18px;
-  border: 1px solid var(--vp-c-divider);
+  flex: none;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border: 1px solid var(--home-line, #242f3b);
   border-radius: 8px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
+  background: var(--home-input, #0a0e13);
+  color: var(--home-faint, #64707b);
+  font-family: var(--home-font-mono, Consolas, monospace);
+  font-size: 12px;
+}
+
+.cell-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cell-title {
+  min-width: 0;
+}
+
+.cell-title b {
+  display: block;
+  overflow: hidden;
+  color: var(--home-text, #e9f0f4);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cell-title span {
+  display: block;
+  overflow: hidden;
+  color: var(--home-faint, #64707b);
+  font-size: 12px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.num,
+.version {
+  font-family: var(--home-font-mono, Consolas, monospace);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.num {
+  color: var(--home-muted, #93a1ad);
+}
+
+.version {
+  color: var(--home-text, #e9f0f4);
+  font-size: 12.5px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 11px;
+  border: 1px solid var(--home-line, #242f3b);
+  border-radius: 999px;
+  background: var(--home-input, #0a0e13);
+  color: var(--home-muted, #93a1ad);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-badge--translated {
+  border-color: rgba(216, 166, 87, 0.55);
+  color: #d8a657;
+}
+
+.status-badge--native {
+  border-color: rgba(111, 168, 220, 0.5);
+  color: #8fc4ee;
+}
+
+.status-badge--missing {
+  border-color: rgba(224, 122, 95, 0.52);
+  color: #ef9b82;
+}
+
+.status-badge--none {
+  color: var(--home-faint, #64707b);
+}
+
+.action-cell {
+  text-align: right;
+}
+
+.row-action {
+  padding: 7px 15px;
+  border: 1px solid var(--home-line, #242f3b);
+  border-radius: 8px;
+  background: #0b1016;
+  color: var(--home-text, #e9f0f4);
   font-family: inherit;
   font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  transition: border-color 0.18s, color 0.18s, background-color 0.18s;
+  white-space: nowrap;
 }
-.pagination button:hover:not(:disabled) {
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
-  background: rgba(232, 163, 61, 0.06);
+
+.row-action:hover {
+  border-color: #526273;
 }
-.pagination button:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-.pagination button:focus-visible {
-  outline: 2px solid var(--vp-c-brand-1);
+
+.shader-list :where(button, input, [tabindex]):focus-visible {
+  outline: 2px solid #c8d2db;
   outline-offset: 2px;
 }
 
-/* ===== 增强：平板 ===== */
-@media (min-width: 640px) {
-  .tag-bar {
-    padding: 16px 18px 14px;
+@media (max-width: 720px) {
+  .list-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
-  .tag-group {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+
+  .filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
   }
-  .tag-group__label {
-    flex-shrink: 0;
-    width: 42px;
-    text-align: right;
+
+  .filter-bar::-webkit-scrollbar {
+    display: none;
   }
-  .search-wrap {
-    flex: 1 1 auto;
-    min-width: 200px;
-    max-width: 380px;
+
+  .filter-button {
+    flex: none;
   }
-  .shader-grid--spacious {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+
+  .list-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
   }
-  .shader-grid--dense {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
+
+  .list-search {
+    max-width: none;
+  }
+
+  .result-count {
+    margin-left: 0;
   }
 }
 
-/* ===== 无障碍：尊重系统减弱动效偏好 ===== */
 @media (prefers-reduced-motion: reduce) {
-  .tag,
-  .search-wrap input,
-  .sort-select,
-  .toggle,
-  .layout-toggle button,
-  .filter-tag button,
-  .clear-btn,
-  .card--spacious,
-  .card--dense,
-  .cover--spacious img,
-  .cover--dense img,
-  .pagination button {
+  .filter-button,
+  tbody tr {
     transition: none !important;
-  }
-  .card--spacious:hover,
-  .card--dense:hover {
-    transform: none;
-  }
-  .card--spacious:hover .cover--spacious img,
-  .card--dense:hover .cover--dense img {
-    transform: none;
   }
 }
 </style>

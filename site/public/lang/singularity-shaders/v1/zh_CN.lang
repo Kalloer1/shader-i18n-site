@@ -1,0 +1,67 @@
+#shaders/lang/zh_CN.lang
+# Singularity-Shaders vv1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：singularity-shaders v1.zip 的 shaders/lang/en_US.lang
+# ========================================== #
+#            SHADER CONFIGURATION            #
+# ========================================== #
+
+# Profiles
+profile.CINEMATIC=§b电影感（默认）
+profile.HIGH=高
+profile.MEDIUM=§a中配
+profile.LOW=§a低配
+
+# 1. Water Reflections
+option.REFLECTION_MODE=水体反射
+option.REFLECTION_MODE.comment=选择反射管线。• §e[SSR]§r 限于屏幕内方块的快速光线步进。• §b[全空间]§r 96 步深度光线步进，附带双半球天球天空回退（默认）。
+value.REFLECTION_MODE.0=§f屏幕空间（SSR）
+value.REFLECTION_MODE.1=§f全空间光线追踪
+
+# 2. Ambient Occlusion
+option.SSAO_QUALITY=§f环境光遮蔽（SSAO）
+option.SSAO_QUALITY.comment=缝隙、接合处与体素角落处的接触阴影。• §c[关闭]§r 已禁用。• §7[低]§r 轻微接触阴影（50% 强度）。• §e[中]§r 均衡的深度表现（78% 强度）。• §b[高]§r 深而明显的缝隙遮蔽（100% 强度，默认）。
+value.SSAO_QUALITY.0=§f关
+value.SSAO_QUALITY.1=§a低配
+value.SSAO_QUALITY.2=§a中配
+value.SSAO_QUALITY.3=高
+
+# 3. Eye Adaptation (Auto-Exposure)
+option.EYE_ADAPTATION=§f明暗适应
+option.EYE_ADAPTATION.comment=模拟瞳孔在黑暗与明亮环境之间的放大与收缩。从黑暗洞穴走出时，眼睛适应前会出现短暂的阳光眩光。• §c[关闭]§r 固定相机曝光。• §7[轻微]§r 温和调节。• §e[电影感]§r 自然的动态瞳孔反应。• §b[戏剧化]§r 大幅曝光过渡（默认）。
+value.EYE_ADAPTATION.0=§f关
+value.EYE_ADAPTATION.1=微妙
+value.EYE_ADAPTATION.2=§b电影感
+value.EYE_ADAPTATION.3=§b北极
+
+# 4. Camera Motion Blur
+option.MOTION_BLUR=§e运动模糊§r
+option.MOTION_BLUR.comment=模拟移动与转身时真实相机的快门曝光。• §c[关闭]§r 清晰、即时的帧采样。• §7[低]§r 轻微平滑（35% 模糊）。• §e[中]§r 标准电影快门（65% 模糊）。• §b[高]§r 浓重的胶片拖影（100% 模糊，默认）。
+value.MOTION_BLUR.0=§f关
+value.MOTION_BLUR.1=§a低配
+value.MOTION_BLUR.2=§a中配
+value.MOTION_BLUR.3=高
+
+# 5. Vignette Intensity Slider
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE_STRENGTH.comment=调节镜头周边的光学暗角。• §c[0.00]§r 已禁用／亮度均匀。• §e[0.35]§r 自然的胶片边缘衰减（默认）。• §b[1.00]§r 最强的戏剧化边缘暗影。
+value.VIGNETTE_STRENGTH.0.00=§f关
+value.VIGNETTE_STRENGTH.0.05=§f0.05
+value.VIGNETTE_STRENGTH.0.10=§f0.10
+value.VIGNETTE_STRENGTH.0.15=§f0.15
+value.VIGNETTE_STRENGTH.0.20=§f0.20
+value.VIGNETTE_STRENGTH.0.25=§f0.25
+value.VIGNETTE_STRENGTH.0.30=§f0.30
+value.VIGNETTE_STRENGTH.0.35=§f0.35
+value.VIGNETTE_STRENGTH.0.40=§f0.40
+value.VIGNETTE_STRENGTH.0.45=§f0.45
+value.VIGNETTE_STRENGTH.0.50=§f0.50
+value.VIGNETTE_STRENGTH.0.55=§f0.55
+value.VIGNETTE_STRENGTH.0.60=§f0.60
+value.VIGNETTE_STRENGTH.0.65=§f0.65
+value.VIGNETTE_STRENGTH.0.70=§f0.70
+value.VIGNETTE_STRENGTH.0.75=§f0.75
+value.VIGNETTE_STRENGTH.0.80=§f0.80
+value.VIGNETTE_STRENGTH.0.85=§f0.85
+value.VIGNETTE_STRENGTH.0.90=§f0.90
+value.VIGNETTE_STRENGTH.0.95=§f0.95
+value.VIGNETTE_STRENGTH.1.00=§f1.00

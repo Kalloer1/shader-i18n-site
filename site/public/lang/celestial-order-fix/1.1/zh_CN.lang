@@ -1,0 +1,56 @@
+#shaders/lang/zh_CN.lang
+# Celestial Order Fix v1.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Celestial-Order-Fix-v1.1.zip 的 shaders/lang/en_us.lang
+option.WORLD_FOG=世界雾效
+
+option.CLOUD_FOG=云雾
+
+option.SKY_FOG=天空雾效果
+
+option.DIRECTIONAL_ENTITY_LIGHT=定向实体光源
+
+option.DIRECTIONAL_BLOCK_LIGHT=定向方块光源
+
+option.BLOCK_LIGHT_BRIGHTNESS_FIX=日光亮度修正
+option.BLOCK_LIGHT_BRIGHTNESS_FIX.comment=参见https://bugs.mojang.com/browse/mc/issues/mc-278012
+
+option.GLINT_STRENGTH=附魔光泽强度
+
+option.MIPMAP_TYPE=多级纹理类型
+option.MIPMAP_TYPE.comment=将多级纹理类型从"精确"更改为其他选项，可在关闭着色器时避免Iris重新加载所有区块，使比较更简便。
+value.MIPMAP_TYPE.0=精确
+value.MIPMAP_TYPE.1=全场景
+value.MIPMAP_TYPE.2=仅实体
+
+option.ECLIPSE_BODY_HALFWIDTH=天体尺寸
+option.ECLIPSE_BODY_HALFWIDTH.comment=屏幕上太阳与月亮宽度的一半，单位为度。过小会在全食时在月亮周围留下一圈太阳边缘；过大则会吞掉天体边缘以外的天空。
+
+option.ECLIPSE_STAR_PAD=星点边距
+option.ECLIPSE_STAR_PAD.comment=恒星会在比天体稍大的方形区域内被隐藏，以免在纹理淡出的边缘处残留星点。
+
+option.ECLIPSE_AXIS_SOURCE=轴向来源
+option.ECLIPSE_AXIS_SOURCE.comment=决定镂空方形以何处作为边缘对齐基准。源自太阳会自动跟随太阳路径，是推荐使用的选项。
+value.ECLIPSE_AXIS_SOURCE.0=假定世界南方
+value.ECLIPSE_AXIS_SOURCE.1=四边形框架，第 0 列
+value.ECLIPSE_AXIS_SOURCE.2=四边形框架，第 2 列
+value.ECLIPSE_AXIS_SOURCE.3=源自太阳
+
+option.ECLIPSE_SQUARE_ROLL=方形旋转
+option.ECLIPSE_SQUARE_ROLL.comment=以视线为轴旋转镂空区域，单位为度。仅用于吸收固定的偏移量。若天体划过天空时旋转角度发生变化，则属于轴向问题。
+
+option.ECLIPSE_MOON_SOURCE=月亮来源
+option.ECLIPSE_MOON_SOURCE.comment=决定月亮方向的来源。优先使用月亮位置；若镂空区域追踪到真实月亮对侧的点，则切换为漂移公式。
+value.ECLIPSE_MOON_SOURCE.0=月亮位置
+value.ECLIPSE_MOON_SOURCE.1=漂移公式
+
+option.ECLIPSE_MOON_DRIFT_SIGN=月亮漂移方向
+option.ECLIPSE_MOON_DRIFT_SIGN.comment=仅漂移公式生效。决定月亮在天球路径上领先太阳的方向。若月亮落在错误的一侧则翻转。
+
+option.PANINI=帕尼尼投影
+option.PANINI.comment=将最终画面重映射为 Panini 投影，可在广角下保持竖直线条笔直。请先将视场角（FOV）提高至 100-110；此选项仅能重新分配已渲染的视野范围，无法扩大视野。
+
+option.PANINI_STRENGTH=Panini 强度
+option.PANINI_STRENGTH.comment=0 为普通的直线投影。数值越高，对两侧的压缩越强，竖直线条保持得越直。
+
+option.PANINI_FIT=Panini 垂直适配
+option.PANINI_FIT.comment=Panini 在画面边缘需要比已渲染范围更多的垂直视野。1.0 会缩小垂直方向以保持在范围内，但会损失垂直视场角。0.0 则保持视场角不变，转而拉伸边角。

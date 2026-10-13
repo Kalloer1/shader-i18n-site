@@ -1,0 +1,239 @@
+#shaders/lang/zh_CN.lang
+# Camellia v1.2.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Camellia-v1.2.0.zip 的 shaders/lang/en_us.lang
+# Depth of Field
+screen.POST=后期处理
+screen.CLOUDS=云
+option.CLOUD_MODE=云渲染
+option.CLOUD_MODE.comment=Photon 的光线步进器或通过相同密度的采样体积路径。路径追踪模式下每 4x4 像素预览一条光线；隐藏 HUD 以累积全分辨率像素。
+value.CLOUD_MODE.0=关
+value.CLOUD_MODE.1=光线步进
+value.CLOUD_MODE.2=路径追踪
+option.CLOUD_SHADOWS                   =云层阴影
+option.CLOUD_SHADOWS.comment           =云层投射在地面上的阴影
+option.CLOUD_SHADOWS_INTENSITY         =云影强度
+option.CLOUD_SHADOWS_INTENSITY.comment = Adjusts cloud shadows in Ray Marched mode; Path Traced mode uses full shadow strength.
+option.CLOUDS_SCALE=云层缩放
+option.CLOUDS_SCALE.comment=每个 Minecraft 方块对应的云物理米数。数值越大，云越接近地面。
+option.ENABLE_BLOOM=FFT 泛光
+option.ENABLE_BLOOM.comment=将明亮区域与由相机光圈设置生成的点扩散函数进行卷积。
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=色调映射前添加的相机泛光强度。
+
+option.DOF_ENABLED=景深
+option.DOF_ENABLED.comment=启用薄透镜景深模拟。失焦区域将根据相机设置显示模糊。
+
+option.DOF_AUTOFOCUS=自动对焦
+option.DOF_AUTOFOCUS.comment=自动对焦屏幕中央的物体。禁用时改用手动对焦距离。
+
+option.DOF_FOCAL_LENGTH=焦距
+option.DOF_FOCAL_LENGTH.comment=相机镜头焦距。焦距越长，视场越窄，背景虚化越强。常用值：24mm 广角，50mm 标准，85mm 人像，200mm 长焦。
+suffix.DOF_FOCAL_LENGTH=毫米单位
+
+option.DOF_FSTOP=光圈
+option.DOF_FSTOP.comment=镜头光圈 F 值。数值越小光圈越大，景深越浅，焦外虚化越强。数值越大，清晰范围越大。
+prefix.DOF_FSTOP=f/
+
+option.DOF_FOCUS_DISTANCE=焦点距离
+option.DOF_FOCUS_DISTANCE.comment=手动对焦距离（以方块计）。仅在禁用自动对焦时使用。
+suffix.DOF_FOCUS_DISTANCE= m
+
+option.DOF_SENSOR_WIDTH=传感器尺寸
+option.DOF_SENSOR_WIDTH.comment=相机传感器宽度。在相同构图下，传感器越大景深越浅。23.5mm = APS-C，36mm = 全画幅，44mm = 中画幅。
+suffix.DOF_SENSOR_WIDTH=毫米单位
+value.DOF_SENSOR_WIDTH.23.5=APS-C (23.5)
+value.DOF_SENSOR_WIDTH.28.7=APS-H (28.7)
+value.DOF_SENSOR_WIDTH.36.0=全画幅 (36)
+value.DOF_SENSOR_WIDTH.44.0=中画幅 (44)
+value.DOF_SENSOR_WIDTH.53.0=大画幅 (53)
+
+option.DOF_BLADES=光圈叶片
+option.DOF_BLADES.comment=光圈叶片数量。控制失焦光斑（焦外）的形状。0 = 完美圆形，5-7 = 常见于真实镜头，数值越大越接近圆形。
+value.DOF_BLADES.0=圆形
+
+# Scene Capacity
+option.MAX_QUAD_COUNT=VRAM 用量
+option.MAX_QUAD_COUNT.comment=为场景几何体、BVH 和排序缓冲分配的大致 VRAM。数值越大，支持的面片越多，但显存占用越高。
+value.MAX_QUAD_COUNT.1048576=157 MiB
+value.MAX_QUAD_COUNT.2097152=314 MiB
+value.MAX_QUAD_COUNT.4194304=628 MiB
+value.MAX_QUAD_COUNT.8388608=1.23 GiB
+value.MAX_QUAD_COUNT.16777216=2.45 GiB
+value.MAX_QUAD_COUNT.33554432=4.91 GiB
+
+option.GLASS_CAUSTICS=折射焦散
+option.GLASS_CAUSTICS.comment=启用引导式日光估计器，用于折射焦散和低粗糙度高光，代价是额外的光线追踪开销。
+
+option.SUN_REFLECTIONS=太阳圆盘反射
+option.SUN_REFLECTIONS.comment=在水和玻璃的反射与折射中显示太阳圆盘。禁用可减少这些路径产生的明亮噪点。
+
+option.GLASS_CAUSTIC_DISPERSION=焦散色散
+option.GLASS_CAUSTIC_DISPERSION.comment=按波长分离玻璃和水的折射焦散。产生彩色焦散，但会增加色彩噪点。
+
+option.GLASS_CAUSTIC_SAMPLES=折射焦散采样数
+option.GLASS_CAUSTIC_SAMPLES.comment=每个着色点额外的引导式日光采样数。采样数越多，折射焦散和高光噪点越少，但渲染时间越长。
+
+option.GLASS_CAUSTIC_CONE_DEGREES=折射焦散搜索
+option.GLASS_CAUSTIC_CONE_DEGREES.comment=太阳周围用于折射焦散光线的角度搜索锥。数值越小越干净；数值越大可捕捉更强的折射偏折。
+suffix.GLASS_CAUSTIC_CONE_DEGREES=度
+
+option.GLASS_CAUSTIC_FILTER=折射焦散滤波
+option.GLASS_CAUSTIC_FILTER.comment=加宽折射焦散使用的等效太阳圆盘。数值越大，噪点和亮斑越少，但焦散细节越柔和。
+
+option.GLASS_CAUSTIC_CLAMP=折射焦散钳制
+option.GLASS_CAUSTIC_CLAMP.comment=限制异常明亮的焦散采样。数值越低，亮斑越少，但可能使锐利焦散变暗。0 为不限制。
+
+option.MODE=模式
+value.MODE.1=参考 PT
+value.MODE.2=BVH 调试
+value.MODE.3=跳过
+value.MODE.4=简单 RT
+
+option.BVH_WIDTH=BVH 宽度
+option.BVH_WIDTH.comment=BVH2 跳过宽节点转换。BVH4 以额外的构建时间和内存换取四子节点遍历。
+value.BVH_WIDTH.2=BVH2
+value.BVH_WIDTH.4=BVH4
+
+option.BVH_STACK_MODE=BVH 堆栈
+option.BVH_STACK_MODE.comment=控制光线遍历在何处存储其堆栈。
+value.BVH_STACK_MODE.0=共享内存
+value.BVH_STACK_MODE.1=图像
+value.BVH_STACK_MODE.2=本地内存
+
+option.HPLOC_SEARCH_RADIUS_SHIFT=BVH 构建搜索
+option.HPLOC_SEARCH_RADIUS_SHIFT.comment=邻域搜索半径。自动模式下简单 RT 使用一个邻居，路径追踪使用两个。更大的搜索范围可以改善遍历性能，但构建开销更高。
+value.HPLOC_SEARCH_RADIUS_SHIFT.-1=自动
+value.HPLOC_SEARCH_RADIUS_SHIFT.0= 1
+value.HPLOC_SEARCH_RADIUS_SHIFT.1= 2
+value.HPLOC_SEARCH_RADIUS_SHIFT.2= 4
+value.HPLOC_SEARCH_RADIUS_SHIFT.3= 8
+
+screen.CAPTURE=几何体捕获
+screen.PT_OPTIONS=路径追踪
+screen.DEBUG=调试
+
+option.ENABLE_GBUFFER_CAPTURE=G-buffer Capture
+option.ENABLE_GBUFFER_CAPTURE.comment=Adds geometry from G-buffer passes to the ray-traced scene.
+
+option.SHADOW_CAPTURE_DISTANCE=Capture Distance
+option.SHADOW_CAPTURE_DISTANCE.comment=Maximum camera-relative capture distance in blocks. Higher values capture more geometry and increase BVH build cost.
+value.SHADOW_CAPTURE_DISTANCE.128=128个方块
+value.SHADOW_CAPTURE_DISTANCE.256=256个方块
+value.SHADOW_CAPTURE_DISTANCE.512=512个方块
+value.SHADOW_CAPTURE_DISTANCE.1024=1024方块
+
+option.ALPHA_TEST=Alpha Testing
+option.ALPHA_TEST.comment=Uses captured texture alpha to skip transparent texels during ray tracing.
+
+option.ENTITY_TEXTURES=Entity Textures
+option.ENTITY_TEXTURES.comment=Captures and samples entity albedo textures for path tracing; uses GPU memory.
+
+option.ENTITY_PBR=Entity PBR
+option.ENTITY_PBR.comment=Uses captured entity normal and specular maps. Requires Entity Textures.
+
+option.ENABLE_QUAD_VALIDATION=Quad Validation
+option.ENABLE_QUAD_VALIDATION.comment=Displays captured-quad validation errors in the debug overlay.
+
+option.ENABLE_SUBGROUP_VALIDATION=Subgroup Validation
+option.ENABLE_SUBGROUP_VALIDATION.comment=Checks capture lane layout, selection, allocation, shuffle sources and input ranges. Shows per-path coverage and stores failure witnesses in SSBO 1; see docs/capture-debug.md.
+
+option.ENABLE_SORT_VALIDATION=Sort Validation
+option.ENABLE_SORT_VALIDATION.comment=Checks BVH sorting and leaf pairing, then displays any errors in the debug overlay.
+
+option.ENTITY_TEXTURES_DEBUG=Entity Texture Debug
+option.ENTITY_TEXTURES_DEBUG.comment=Displays entity texture table and atlas usage in the debug overlay.
+
+option.ENABLE_DEBUG_OVERLAY=Debug Overlay
+option.ENABLE_DEBUG_OVERLAY.comment=Displays scene capacity and bounds, plus any enabled validation details.
+
+# Photon cloud/weather labels; copyright Benjamin Stott (SixthSurge).
+screen.weather                         =天气
+screen.clouds_cumulus                  =积云设置
+screen.clouds_altocumulus              =高积云设置
+screen.clouds_cumulus_congestus        =浓积云设置
+screen.clouds_cirrus                   =卷云/卷积云设置
+screen.clouds_noctilucent              =夜光云设置
+option.RANDOM_WEATHER_VARIATION            =随机变化
+option.BIOME_WEATHER_VARIATION             =群系差异变化
+option.WEATHER_TEMPERATURE_BIAS            =温度偏移
+option.WEATHER_HUMIDITY_BIAS               =湿度偏移
+option.WEATHER_WIND_BIAS                   =风强度偏移
+option.WEATHER_TEMPERATURE_VARIATION_SPEED =温度变化速率
+option.WEATHER_HUMIDITY_VARIATION_SPEED    =湿度变化速率
+option.WEATHER_WIND_VARIATION_SPEED        =风强度变化速率
+option.CLOUDS_CUMULUS                       =积云
+option.CLOUDS_CUMULUS.comment               =模拟积云的低海拔体积云
+option.CLOUDS_CUMULUS_PRIMARY_STEPS_H       =主要步骤 - 地平线
+option.CLOUDS_CUMULUS_PRIMARY_STEPS_Z       =主要步骤 - 天顶
+option.CLOUDS_CUMULUS_LIGHTING_STEPS        =光照阶梯
+option.CLOUDS_CUMULUS_AMBIENT_STEPS         =环境脚步
+option.CLOUDS_CUMULUS_ALTITUDE              =海拔
+suffix.CLOUDS_CUMULUS_ALTITUDE              = m
+option.CLOUDS_CUMULUS_THICKNESS             =厚度
+option.CLOUDS_CUMULUS_DENSITY               =密度
+option.CLOUDS_CUMULUS_COVERAGE              =覆盖范围
+option.CLOUDS_CUMULUS_SIZE                  =尺寸
+option.CLOUDS_CUMULUS_DETAIL_STRENGTH       =细节强度
+option.CLOUDS_CUMULUS_WIND_SPEED            =风速
+suffix.CLOUDS_CUMULUS_WIND_SPEED            =米/秒
+option.CLOUDS_CUMULUS_WIND_ANGLE            =风向角度
+suffix.CLOUDS_CUMULUS_WIND_ANGLE            = °
+option.CLOUDS_ALTOCUMULUS                       =高积云
+option.CLOUDS_ALTOCUMULUS.comment               =模拟高积云的中海拔体积云
+option.CLOUDS_ALTOCUMULUS_PRIMARY_STEPS_H       =主要步骤 - 地平线
+option.CLOUDS_ALTOCUMULUS_PRIMARY_STEPS_Z       =主要步骤 - 天顶
+option.CLOUDS_ALTOCUMULUS_LIGHTING_STEPS        =光照阶梯
+option.CLOUDS_ALTOCUMULUS_AMBIENT_STEPS         =环境脚步
+option.CLOUDS_ALTOCUMULUS_ALTITUDE              =海拔
+suffix.CLOUDS_ALTOCUMULUS_ALTITUDE              = m
+option.CLOUDS_ALTOCUMULUS_THICKNESS             =厚度
+option.CLOUDS_ALTOCUMULUS_DENSITY               =密度
+option.CLOUDS_ALTOCUMULUS_COVERAGE              =覆盖范围
+option.CLOUDS_ALTOCUMULUS_SIZE                  =尺寸
+option.CLOUDS_ALTOCUMULUS_DETAIL_STRENGTH       =细节强度
+option.CLOUDS_ALTOCUMULUS_WIND_SPEED            =风速
+suffix.CLOUDS_ALTOCUMULUS_WIND_SPEED            =米/秒
+option.CLOUDS_ALTOCUMULUS_WIND_ANGLE            =风向角度
+suffix.CLOUDS_ALTOCUMULUS_WIND_ANGLE            = °
+option.CLOUDS_CUMULUS_CONGESTUS                       =积雨云
+option.CLOUDS_CUMULUS_CONGESTUS.comment               =巨大的远距离体积云
+option.CLOUDS_CUMULUS_CONGESTUS_LIGHTING_STEPS        =光照阶梯
+option.CLOUDS_CUMULUS_CONGESTUS_AMBIENT_STEPS         =环境脚步
+option.CLOUDS_CUMULUS_CONGESTUS_ALTITUDE              =海拔
+suffix.CLOUDS_CUMULUS_CONGESTUS_ALTITUDE              = m
+option.CLOUDS_CUMULUS_CONGESTUS_THICKNESS             =厚度
+option.CLOUDS_CUMULUS_CONGESTUS_DENSITY               =密度
+option.CLOUDS_CUMULUS_CONGESTUS_COVERAGE              =覆盖范围
+option.CLOUDS_CUMULUS_CONGESTUS_SIZE                  =尺寸
+option.CLOUDS_CUMULUS_CONGESTUS_DETAIL_STRENGTH       =细节强度
+option.CLOUDS_CUMULUS_CONGESTUS_WIND_SPEED            =风速
+suffix.CLOUDS_CUMULUS_CONGESTUS_WIND_SPEED            =米/秒
+option.CLOUDS_CUMULUS_CONGESTUS_WIND_ANGLE            =风向角度
+suffix.CLOUDS_CUMULUS_CONGESTUS_WIND_ANGLE            = °
+option.CLOUDS_NOCTILUCENT               =夜光云
+option.CLOUDS_AERIAL_PERSPECTIVE_BOOST = Ray Marched Aerial Perspective Boost
+option.CLOUDS_CIRRUS                       =卷云/卷积云
+option.CLOUDS_CIRRUS.comment               =平面卷云和卷积云
+option.CLOUDS_CIRRUS_LIGHTING_STEPS        =光照阶梯
+option.CLOUDS_CIRRUS_ALTITUDE              =海拔
+suffix.CLOUDS_CIRRUS_ALTITUDE              = m
+option.CLOUDS_CIRRUS_THICKNESS             =厚度
+option.CLOUDS_CIRRUS_DENSITY               =卷云密度
+option.CLOUDS_CIRRUS_COVERAGE              =卷云覆盖度
+option.CLOUDS_CIRRUS_SIZE                  =卷云大小
+option.CLOUDS_CIRRUS_DETAIL_STRENGTH       =卷云细节强度
+option.CLOUDS_CIRRUS_CURL_STRENGTH         =卷云卷曲强度
+option.CLOUDS_CIRRUS_WIND_SPEED            =风速
+suffix.CLOUDS_CIRRUS_WIND_SPEED            =米/秒
+option.CLOUDS_CIRRUS_WIND_ANGLE            =风向角度
+suffix.CLOUDS_CIRRUS_WIND_ANGLE            = °
+option.CLOUDS_CIRROCUMULUS_DENSITY         =卷积云密度
+option.CLOUDS_CIRROCUMULUS_COVERAGE        =卷云覆盖率
+option.CLOUDS_CIRROCUMULUS_SIZE            =卷积云大小
+option.CLOUDS_CIRROCUMULUS_DETAIL_STRENGTH =卷积云细节强度
+option.CLOUDS_CIRROCUMULUS_CURL_STRENGTH   =卷积云卷曲强度
+option.CLOUDS_NOCTILUCENT_INTENSITY    =强度
+option.CLOUDS_NOCTILUCENT_RARITY       =稀有度
+option.CLOUDS_CUMULUS_CONGESTUS_PRIMARY_STEPS=主要步骤
+option.CLOUDS_PATH_BOUNCES=Maximum Cloud Bounces
+option.CLOUDS_PATH_BOUNCES.comment=Volume scattering limit in Path Traced mode. Surface bounces use their own budget.

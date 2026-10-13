@@ -1,0 +1,222 @@
+#shaders/lang/zh_CN.lang
+# Reminisce v0.1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Reminisce_v0.1.0.zip 的 shaders/lang/en_us.lang
+# =============================================================================
+#  Display names and tooltips for the options menu.
+#  screen.X = sub-screen title, option.X = option name,
+#  option.X.comment = tooltip, value.X.N = label for a specific value.
+# =============================================================================
+
+# --- Screens ---------------------------------------------------------------------
+screen.COLOR=色彩与色调
+screen.LIGHTING=光照与环境光遮蔽
+screen.SHADOWS=阴影
+screen.SKY=天空与太阳
+screen.CLOUDS=云
+screen.ATMOSPHERE=雾霾与雾气
+screen.GODRAYS=神圣光芒 
+screen.WATER=水
+screen.WAVES=水波与闪光
+screen.REFLECTIONS=反射
+screen.FOAM=泡沫
+screen.UNDERWATER=水下
+screen.FOLIAGE=植被
+
+# --- Profile ---------------------------------------------------------------------
+option.COLOR_PROFILE=色彩配置档
+option.COLOR_PROFILE.comment=整体观感。各配置档内的单独设置仍然生效。
+value.COLOR_PROFILE.0=暖调电影
+value.COLOR_PROFILE.1=清爽夏日
+
+# --- Color & Tone ----------------------------------------------------------------
+option.GRADE_ENABLED=颜色分级
+option.GRADE_ENABLED.comment=打开或关闭整体色彩分级与暗角。
+option.VIGNETTE_STRENGTH=暗角
+option.VIGNETTE_STRENGTH.comment=屏幕边缘压暗程度。
+option.GRADE_WARMTH=暖色调
+option.GRADE_WARMTH.comment=高光部分的琥珀色偏移（暖调电影配置档）。
+option.GRADE_SATURATION=鲜艳度
+option.GRADE_SATURATION.comment=比起已鲜艳的颜色，更提升暗淡的颜色。
+option.GRADE_CONTRAST=对比度
+option.GRADE_SKIN_PROTECT=肤色保护
+option.GRADE_SKIN_PROTECT.comment=防止橙色与肤色过度偏暖。
+option.GRADE_EXPOSURE=曝光
+option.GRADE_EXPOSURE.comment=整体亮度，以曝光挡为单位。
+option.GRADE_SAT_GLOBAL=饱和度
+option.GRADE_SAT_GLOBAL.comment=等比缩放所有颜色（自然饱和度偏向暗淡颜色）。
+option.GRADE_TEMPERATURE=色温
+option.GRADE_TEMPERATURE.comment=白平衡：偏冷（蓝）到偏暖（琥珀）。
+option.GRADE_TINT=色调
+option.GRADE_TINT.comment=白平衡：偏绿到偏品红。
+
+screen.TONE=阴影 / 中间调 / 高光
+option.GRADE_LIFT=阴影（Lift）
+option.GRADE_LIFT.comment=提亮或压暗最暗部。
+option.GRADE_GAMMA=中间调（Gamma）
+option.GRADE_GAMMA.comment=在不改变纯黑与纯白的情况下提亮或压暗中间调。
+option.GRADE_GAIN=高光（Gain）
+
+screen.SPLIT_TONE=分离色调
+option.SHADOW_TINT_HUE=阴影染色颜色
+option.SHADOW_TINT_AMOUNT=阴影色调强度
+option.HIGHLIGHT_TINT_HUE=高光染色颜色
+option.HIGHLIGHT_TINT_AMOUNT=高光色调强度
+option.SPLIT_BALANCE=平衡
+option.SPLIT_BALANCE.comment=阴影染色过渡到高光染色的亮度分界点。
+value.SHADOW_TINT_HUE.0.0=红
+value.SHADOW_TINT_HUE.30.0=橙色
+value.SHADOW_TINT_HUE.60.0=黄色
+value.SHADOW_TINT_HUE.90.0=黄绿
+value.SHADOW_TINT_HUE.120.0=绿
+value.SHADOW_TINT_HUE.150.0=薄荷绿
+value.SHADOW_TINT_HUE.180.0=青色值
+value.SHADOW_TINT_HUE.210.0=青蓝
+value.SHADOW_TINT_HUE.240.0=蓝
+value.SHADOW_TINT_HUE.270.0=紫罗兰色
+value.SHADOW_TINT_HUE.300.0=品红色
+value.SHADOW_TINT_HUE.330.0=玫瑰红
+value.HIGHLIGHT_TINT_HUE.0.0=红
+value.HIGHLIGHT_TINT_HUE.30.0=橙色
+value.HIGHLIGHT_TINT_HUE.60.0=黄色
+value.HIGHLIGHT_TINT_HUE.90.0=黄绿
+value.HIGHLIGHT_TINT_HUE.120.0=绿
+value.HIGHLIGHT_TINT_HUE.150.0=薄荷绿
+value.HIGHLIGHT_TINT_HUE.180.0=青色值
+value.HIGHLIGHT_TINT_HUE.210.0=青蓝
+value.HIGHLIGHT_TINT_HUE.240.0=蓝
+value.HIGHLIGHT_TINT_HUE.270.0=紫罗兰色
+value.HIGHLIGHT_TINT_HUE.300.0=品红色
+value.HIGHLIGHT_TINT_HUE.330.0=玫瑰红
+
+screen.EFFECTS=视觉效果
+option.GRADE_SHARPEN=锐化
+option.GRADE_SHARPEN.comment=材质边缘更锐利（%）。
+option.GRADE_GRAIN=胶片颗粒
+option.GRADE_GRAIN.comment=细微动态颗粒感，中间调最明显（%）。
+
+# --- Lighting & AO ---------------------------------------------------------------
+option.SUN_BRIGHTNESS=阳光亮度
+option.AMBIENT_SKY_TINT=阴影处的天空染色
+option.AMBIENT_SKY_TINT.comment=天空颜色对阴影区域的染色程度。
+option.SSAO_ENABLED=环境光遮蔽
+option.SSAO_ENABLED.comment=角落与缝隙处的柔和压暗。
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SSAO_RADIUS=环境光遮蔽半径 
+option.SSAO_RADIUS.comment=压暗的影响范围（以方块计）。
+option.SSAO_SAMPLES=环境光遮蔽质量
+option.SSAO_SAMPLES.comment=采样数越多越平滑，但速度越慢。
+
+# --- Shadows -----------------------------------------------------------------------
+option.SHADOW_STRENGTH=阴影暗度
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_FILTER=阴影平滑
+option.SHADOW_FILTER.comment=用于柔化阴影边缘的采样数。
+value.SHADOW_FILTER.0=关
+value.SHADOW_FILTER.1=低配 (2x2)
+value.SHADOW_FILTER.2=中配 (3x3)
+value.SHADOW_FILTER.3=高配 (4x4)
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=越高越清晰，但速度越慢。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影绘制距离（方块）。
+option.sunPathRotation=太阳路径角度
+option.sunPathRotation.comment=倾斜太阳运行轨迹，使正午阴影不再直射下方。
+
+# --- Sky & Sun -----------------------------------------------------------------------
+option.SUN_RADIUS=太阳大小
+option.SUN_EDGE_SOFTNESS=太阳边缘柔化
+option.SUN_GLOW=太阳光晕亮度
+option.SUN_GLOW_WIDTH=太阳光晕大小
+option.SKY_HORIZON_WIDTH=地平线雾霾高度
+
+# --- Clouds ----------------------------------------------------------------------------
+option.CLOUDS_ENABLED=云
+option.CLOUDS_ENABLED.comment=绘制的云层。关闭则恢复原版云。
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_OPACITY=云层厚度
+option.CLOUD_SCALE=云层大小
+option.CLOUD_SOFTNESS=云层边缘柔化
+option.CLOUD_SOFTNESS.comment=越高越轻透，越低越分明。
+option.CLOUD_ALTITUDE=云层高度
+option.CLOUD_SPEED=风速
+option.CLOUD_SHADOW_STRENGTH=云影暗度
+
+# --- Haze & Mist ---------------------------------------------------------------------
+option.HAZE_ENABLED=大气雾霭
+option.HAZE_DENSITY=雾霭密度
+option.HAZE_FALLOFF=薄雾高度
+option.HAZE_FALLOFF.comment=雾霾消散前的上升高度。
+option.HAZE_SUN_GLOW=雾霾太阳辉光
+option.HAZE_SUN_GLOW.comment=朝向太阳看时雾霾中的暖色辉光。
+option.HAZE_RAIN_BOOST=雨天额外雾霾
+option.MIST_ENABLED=山雾
+option.MIST_DENSITY=薄雾密度
+option.MIST_PEAK_DENSITY=山顶雾气浓度
+option.MIST_PEAK_DENSITY.comment=附着在山顶和山脊上的额外薄雾。
+option.MIST_HEIGHT=雾高度
+option.MIST_THICKNESS=薄雾厚度
+option.MIST_PATCHINESS=薄雾斑驳度
+option.MIST_PATCHINESS.comment=将薄雾打散成漂浮的雾带。
+
+# --- God Rays --------------------------------------------------------------------------
+option.GODRAYS_ENABLED=神圣光芒 
+option.GODRAYS_QUARTER_RES=性能模式
+option.GODRAYS_QUARTER_RES.comment=以四分之一分辨率计算体积光（更快）。
+option.GODRAYS_STRENGTH=光线亮度
+option.GODRAYS_SAMPLES=光束质量
+option.GODRAYS_LENGTH=光束长度
+option.GODRAYS_DECAY=光束衰减
+option.GODRAYS_SUN_RADIUS=光源大小
+option.GODRAYS_SUN_RADIUS.comment=距太阳多远时，树木间的缝隙仍能透过光束。
+option.GODRAYS_SKY_AMOUNT=太阳周围辉光
+option.GODRAYS_AIR_DEPTH=光束累积距离
+option.GODRAYS_AIR_DEPTH.comment=光束达到完整强度前需穿过的空气方块数（减少近处物体的光晕）。
+
+# --- Water ---------------------------------------------------------------------------------
+option.WATER_DENSITY=水体浑浊度
+option.WATER_DENSITY.comment=数值越低，水体越清澈。
+option.WATER_BIOME_TINT=群系水体色调
+option.WATER_TEXTURE_AMOUNT=原版水面纹理
+option.WATER_SHEEN=反射强度
+option.WATER_WAVE_STRENGTH=波浪高度
+option.WATER_WAVE_SPEED=波浪速度
+option.WATER_DETAIL_STRENGTH=波纹细节
+option.WATER_REFRACTION=折射
+option.WATER_REFRACTION.comment=涟漪对水底景象的折射程度。
+option.WATER_DISTANT_STREAK=远景反射条纹
+option.WATER_GLINT_STRENGTH=太阳闪光
+option.WATER_GLINT_MICRO=闪烁微光
+option.SSR_ENABLED=屏幕空间反射
+option.SSR_ENABLED.comment=在水面反射场景。关闭时仅反射天空。
+option.SSR_STEPS=反射质量
+option.SSR_REFINE=反射清晰度
+option.FOAM_ENABLED=岸边浪花
+option.FOAM_STREAKS=开阔水域泡沫线
+option.FOAM_WIDTH=浪花宽度
+option.FOAM_STRENGTH=泡沫不透明度
+option.FOAM_STREAK_STRENGTH=泡沫线不透明度
+
+# --- Underwater ----------------------------------------------------------------------------
+option.UNDERWATER_DENSITY=水下浑浊度
+option.UW_SURFACE_CLARITY=水下仰视清晰度
+option.UW_WINDOW_SOFTNESS=天空窗口柔化度
+option.UNDERWATER_SUN_SPOT=透过水面的阳光
+option.UW_RIPPLE_BOOST=水下视角涟漪增强
+option.UW_RIPPLE_SHADE=水面光影图案
+option.CAUSTICS_ENABLED=焦散
+option.CAUSTICS_ENABLED.comment=海底上波动的光纹。
+option.CAUSTIC_STRENGTH=焦散亮度
+option.CAUSTIC_FOCUS=焦散锐度
+option.UNDERWATER_VOLUMETRIC=体积光
+option.UNDERWATER_GODRAYS=屏幕空间光束
+option.UNDERWATER_GODRAYS.comment=仅在体积光关闭时使用。
+option.UW_VL_STRENGTH=光束亮度
+option.UW_VL_SAMPLES=光柱质量
+option.UW_VL_DISTANCE=光束距离
+
+# --- Foliage -----------------------------------------------------------------------------------
+option.WAVING_PLANTS=植物摆动
+option.WAVE_SPEED=风速
+option.WAVE_AMPLITUDE=摆动幅度
+option.FOLIAGE_WRAP=透叶光照
