@@ -9,6 +9,11 @@ on:
         description: '逗号分隔的 shaderId 列表'
         required: true
         type: string
+      source:
+        description: '留空=Modrinth；填 curseforge 走 CurseForge'
+        required: false
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -67,6 +72,8 @@ jobs:
       - name: Translate
         run: node scripts/pipeline.mjs --ids "${{ inputs.ids }}"
         env:
+          CF_SOURCE: ${{ inputs.source }}
+          CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_MODELS: ${{ secrets.LLM_MODELS || secrets.LLM_MODEL || 'muse-spark-1.3-contributor-free,muse-spark-1.2-contributor-free,mimo-v2.6-flash-free' }}
@@ -98,7 +105,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # 显式路径，禁止 git add -A（否则会裹入无关文件）
-          for p in site/public/lang site/data/shaders.json site/data/glossary.json site/data/modrinth-catalog.json data/lang-sources.json.gz; do
+          for p in site/public/lang site/data/shaders.json site/data/glossary.json site/data/modrinth-catalog.json site/data/curseforge-catalog.json data/lang-sources.json.gz; do
             [ -e "$p" ] && git add -- "$p"
           done
           if git diff --cached --quiet; then

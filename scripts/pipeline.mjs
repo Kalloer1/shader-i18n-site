@@ -34,6 +34,8 @@ import { inflateRawSync } from 'node:zlib'
 import { STATUS } from '../shared/tencent-docs.mjs'
 import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 import { isEnUsLangPath, isLangFilePath, isZhCNLangPath } from './lib/lang-source.mjs'
+import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug } from './lib/cf-api.mjs'
+import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -442,6 +444,8 @@ const TOP = topArg >= 0 ? Number(args[topArg + 1]) : 50
 const IDS = idsArg >= 0
   ? (args[idsArg + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean)
   : []
+// 来源切换：CF_SOURCE=curseforge 时 --ids 的每个 id 都当作 CF slug，走 CurseForge 解析。
+const CF_SOURCE = process.env.CF_SOURCE
 
 const tmp = mkdtempSync(join(tmpdir(), 'shader-pipeline-'))
 let done = 0, skippedNative = 0, failed = 0, processed = 0
@@ -452,6 +456,21 @@ if (IDS.length) {
   if (topArg >= 0) console.log('⚠ 同时指定了 --ids 与 --top，以 --ids 为准（--top 被忽略）')
   worklist = []
   for (const id of IDS) {
+    // CF 来源：--ids 里的每个 id 都当作 CF slug，现场从 CurseForge 解析（不走 Modrinth API）
+    if (CF_SOURCE === 'curseforge') {
+      try {
+        const found = await cfFindBySlug(id)
+        const cfEntry = buildShaderEntry({ source: 'curseforge', slug: found.slug, cfId: found.id })
+        cfEntry.title = found.name ?? id
+        worklist.push(cfEntry)
+        console.log(`[${cfEntry.id}] 已从 CurseForge 现场解析（cfId ${found.id}）`)
+      } catch (err) {
+        console.log(`[${id}] 无法解析 CurseForge slug: ${err.message.slice(0, 120)}`)
+        failed++
+        await reportStatus(id, { status: STATUS.FAILED, error: `无法解析该 CF 光影：${err.message.slice(0, 200)}` })
+      }
+      continue
+    }
     const fromCatalog = catalog.shaders.find((c) => c.id === id)
     if (fromCatalog) { worklist.push(fromCatalog); continue }
     // catalog 外（多为玩家刚提交的新光影）：现场向 Modrinth 解析，失败只影响这一条
@@ -492,6 +511,8 @@ function persist() {
 
 async function processShader(entry, signal, localGlossary) {
   const tag = `[${entry.id}]`
+  // CurseForge 分支：下载/版本选择/降级都在 processShaderCf 内处理，行为与 Modrinth 互不影响。
+  if (isCurseforgeEntry(entry)) return processShaderCf(entry, signal, localGlossary)
   try {
     if (signal.aborted) {
       return { status: STATUS.FAILED, error: '处理超时' }
@@ -509,126 +530,230 @@ async function processShader(entry, signal, localGlossary) {
       return { status: STATUS.DONE, error: '', shaderVersion }
     }
 
-    // zip 下载带重试（大文件网络中断偶发）
-    let zipBuf
-    for (let attempt = 1; ; attempt++) {
+    const zipBuf = await downloadZipBuffer(file.url, signal, tag)
+    const zip = zipEntries(zipBuf)
+    return await translateFromZip({ entry, zip, shaderVersion, sourceFileName: file.filename, tag, signal, localGlossary })
+  } catch (err) {
+    if (signal.aborted) {
+      return { status: STATUS.FAILED, error: '处理超时' }
+    }
+    console.log(`${tag} 失败: ${err.message.slice(0, 200)}`)
+    failed++
+    return { status: STATUS.FAILED, error: err.message.slice(0, 200) }
+  }
+}
+
+/** 整包下载 zip 并解析为条目对象（带 3 次线性退避重试，与原有 Modrinth 分支行为一致）。 */
+async function downloadZipBuffer(url, signal, tag) {
+  let zipBuf
+  for (let attempt = 1; ; attempt++) {
+    try {
+      zipBuf = Buffer.from(await mfetch(url, { headers: { 'User-Agent': UA() }, signal }).then((r) => r.arrayBuffer()))
+      return zipBuf
+    } catch (err) {
+      if (attempt >= 3 || signal?.aborted) throw err
+      console.log(`${tag} 下载失败（第 ${attempt} 次）: ${err.message.slice(0, 80)}，重试`)
+      await sleep(2000 * attempt)
+    }
+  }
+}
+
+/**
+ * 已下载 zip 后的公共处理路径（Modrinth 与 CurseForge 共用）：
+ * 检测自带中文 → 抽取英文源 → LLM 初翻 → 校验落盘 → 登记 langVersions。
+ *
+ * cfMode=true 时（CF 候选文件循环）：某文件失败/无英文源不落盘、不改标记，
+ * 返回 { cfRetry: true } 让调用方尝试下一个文件；成功路径与 Modrinth 完全一致。
+ */
+async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag, signal, localGlossary, cfMode = false }) {
+  const langNames = zip.names.filter(isLangFilePath)
+  if (langNames.some(isZhCNLangPath)) {
+    if (cfMode) {
+      console.log(`${tag} 候选文件 v${shaderVersion} 自带中文，尝试下一个`)
+      return { status: STATUS.FAILED, error: '候选文件自带中文', cfRetry: true }
+    }
+    entry.hasNativeZhCN = true
+    console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
+    skippedNative++
+    persist()
+    return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
+  }
+  const enName = langNames.find(isEnUsLangPath)
+  if (!enName) {
+    if (cfMode) {
+      console.log(`${tag} 候选文件 v${shaderVersion} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），尝试下一个`)
+      return { status: STATUS.FAILED, error: `候选文件无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）`, cfRetry: true }
+    }
+    entry.noEnUsLang = true
+    console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
+    failed++
+    persist()
+    return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
+  }
+
+  const enText = (await zip.read(enName)).toString('utf8')
+  const lines = enText.split('\n')
+  const pairs = []
+  for (const line of lines) {
+    const t = line.trim()
+    if (!t || t.startsWith('#')) continue
+    const eq = t.indexOf('=')
+    if (eq <= 0) continue
+    pairs.push([t.slice(0, eq), t.slice(eq + 1)])
+  }
+  if (!pairs.length) {
+    if (cfMode) {
+      console.log(`${tag} 候选文件 v${shaderVersion} en_US.lang 无可翻译条目，尝试下一个`)
+      return { status: STATUS.FAILED, error: '候选文件 en_US.lang 无可翻译条目', cfRetry: true }
+    }
+    entry.noEnUsLang = true
+    console.log(`${tag} en_US.lang 无可翻译条目，跳过`)
+    failed++
+    persist()
+    return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
+  }
+
+  console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${LLM_MODELS.join(', ')}] 开始初翻…`)
+  const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, providers, signal, localGlossary)
+  // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
+  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}`)
+  // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
+  if (totalFallback > pairs.length * 0.3) {
+    if (cfMode) {
+      console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${totalFallback}/${pairs.length}），尝试下一个`)
+      return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）`, cfRetry: true }
+    }
+    console.log(`${tag} 回退率过高（${totalFallback}/${pairs.length}），判定失败，跳过`)
+    failed++
+    return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）` }
+  }
+  const outLines = lines.map((line) => {
+    const t = line.trim()
+    if (!t || t.startsWith('#')) return line
+    const eq = t.indexOf('=')
+    if (eq <= 0) return line
+    const key = t.slice(0, eq)
+    const value = zhMap.get(key) ?? t.slice(eq + 1)
+    // 初翻常见的格式码切断（`§e§ ` 这类）在落盘前就修掉，
+    // 避免产出会被闸门拦下的文件。
+    return `${key}=${repairMalformedSections(value).text}`
+  })
+  const header = `#shaders/lang/zh_CN.lang\n# ${entry.title ?? entry.id} v${shaderVersion} 简体中文翻译（AI 初翻，未人工校对）\n# 源文件：${sourceFileName} 的 ${enName}\n`
+  const outPath = join(LANG_DIR, entry.id, shaderVersion, 'zh_CN.lang')
+
+  // 先校验内存里的内容，通过后才落盘。
+  // 历史实现是「先写文件再校验」，校验失败时已把坏文件留在磁盘上。
+  const verdict = validatePair(enText, header + outLines.join('\n'), `${entry.id}/${shaderVersion}`)
+  if (verdict.problems.length) {
+    const msg = verdict.problems.join('; ').slice(0, 300)
+    console.log(`${tag} 校验未通过，不落盘: ${msg}`)
+    if (cfMode) return { status: STATUS.FAILED, error: msg, cfRetry: true }
+    failed++
+    persist()
+    return { status: STATUS.FAILED, error: msg }
+  }
+
+  if (signal.aborted) {
+    throw new Error('处理超时')
+  }
+  mkdirSync(dirname(outPath), { recursive: true })
+  writeFileSync(outPath, header + outLines.join('\n'))
+
+  // 同时缓存英文原文到 sources/，供 pack-lang-sources.mjs 重新打包。
+  // 否则新翻译的光影在 CI 里找不到英文源，下一次 validate:lang 会判失败。
+  const enCachePath = join(SOURCES_DIR, entry.id, shaderVersion, 'en_US.lang')
+  mkdirSync(dirname(enCachePath), { recursive: true })
+  writeFileSync(enCachePath, enText)
+
+  let shaderEntry = db.shaders.find((s) => s.id === entry.id)
+  if (!shaderEntry) {
+    shaderEntry = entry.source === 'curseforge'
+      ? buildShaderEntry({ source: 'curseforge', slug: entry.id, cfId: entry.curseforge?.cfId })
+      : buildShaderEntry({ modrinth: { slug: entry.id, projectId: entry.projectId } })
+    db.shaders.push(shaderEntry)
+  }
+  shaderEntry.langVersions = shaderEntry.langVersions ?? []
+  shaderEntry.langVersions.unshift({
+    shaderVersion,
+    langVersion: '1.0.0',
+    file: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
+    quark: '',
+    updatedAt: new Date().toISOString().slice(0, 10),
+    contributors: [`AI 初翻（免费模型池：${LLM_MODELS.join(' / ')}），未人工校对`],
+  })
+  done++
+  processed++
+  console.log(`${tag} 完成（${processed}/${worklist.length}） -> ${outPath.replace(ROOT + '\\', '').replace(/\\\\/g, '/')}`)
+  persist()
+  await sleep(300)
+  return {
+    status: STATUS.DONE,
+    error: '',
+    langPath: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
+    shaderVersion,
+  }
+}
+
+/**
+ * CurseForge 分支：按 release 优先 + fileDate 倒序取候选文件，逐个尝试；
+ * 某文件下载/解析/翻译失败就试下一个；全部失败只记一次失败并返回，不阻断其他 shader。
+ */
+async function processShaderCf(entry, signal, localGlossary) {
+  const tag = `[${entry.id}]`
+  try {
+    if (signal.aborted) {
+      return { status: STATUS.FAILED, error: '处理超时' }
+    }
+    const cfId = entry.curseforge?.cfId
+    if (cfId == null) throw new Error('CurseForge 条目缺少 curseforge.cfId')
+    const files = await cfGetFiles(cfId)
+    // release 优先（releaseType===1），同类型内按 fileDate 倒序（新在前）
+    const candidates = files
+      .slice()
+      .sort((a, b) => {
+        const aRelease = a.releaseType === 1 ? 0 : 1
+        const bRelease = b.releaseType === 1 ? 0 : 1
+        if (aRelease !== bRelease) return aRelease - bRelease
+        return String(b.fileDate).localeCompare(String(a.fileDate))
+      })
+    if (!candidates.length) {
+      console.log(`${tag} CF 无任何可下载文件，跳过`)
+      failed++
+      return { status: STATUS.FAILED, error: 'CurseForge 无任何可下载文件' }
+    }
+    let lastError = ''
+    for (const f of candidates) {
+      const shaderVersion = cfVersionFromFileName(f.fileName, f.id)
+      if (latestLangVersion.get(entry.id) === shaderVersion) {
+        console.log(`${tag} ${shaderVersion} 已有汉化，跳过`)
+        return { status: STATUS.DONE, error: '', shaderVersion }
+      }
       try {
-        zipBuf = Buffer.from(await mfetch(file.url, { headers: { 'User-Agent': UA() }, signal }).then((r) => r.arrayBuffer()))
-        break
+        const downloadUrl = await cfGetDownloadUrl(cfId, f.id)
+        const zipBuf = await downloadZipBuffer(downloadUrl, signal, tag)
+        const zip = zipEntries(zipBuf)
+        const result = await translateFromZip({
+          entry,
+          zip,
+          shaderVersion,
+          sourceFileName: f.fileName,
+          tag,
+          signal,
+          localGlossary,
+          cfMode: true,
+        })
+        if (result.status === STATUS.DONE) return result
+        lastError = result.error || '候选文件处理失败'
+        console.log(`${tag} 候选文件 ${f.id}（${shaderVersion}）失败: ${lastError}，尝试下一个`)
       } catch (err) {
-        if (attempt >= 3 || signal?.aborted) throw err
-        console.log(`${tag} 下载失败（第 ${attempt} 次）: ${err.message.slice(0, 80)}，重试`)
-        await sleep(2000 * attempt)
+        if (signal.aborted) return { status: STATUS.FAILED, error: '处理超时' }
+        lastError = err.message.slice(0, 200)
+        console.log(`${tag} 候选文件 ${f.id}（${shaderVersion}）异常: ${lastError}，尝试下一个`)
       }
     }
-    const zip = zipEntries(zipBuf)
-    const langNames = zip.names.filter(isLangFilePath)
-    if (langNames.some(isZhCNLangPath)) {
-      entry.hasNativeZhCN = true
-      console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
-      skippedNative++
-      persist()
-      return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
-    }
-    const enName = langNames.find(isEnUsLangPath)
-    if (!enName) {
-      entry.noEnUsLang = true
-      console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
-      failed++
-      persist()
-      return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
-    }
-
-    const enText = zip.read(enName).toString('utf8')
-    const lines = enText.split('\n')
-    const pairs = []
-    for (const line of lines) {
-      const t = line.trim()
-      if (!t || t.startsWith('#')) continue
-      const eq = t.indexOf('=')
-      if (eq <= 0) continue
-      pairs.push([t.slice(0, eq), t.slice(eq + 1)])
-    }
-    if (!pairs.length) {
-      entry.noEnUsLang = true
-      console.log(`${tag} en_US.lang 无可翻译条目，跳过`)
-      failed++
-      persist()
-      return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
-    }
-
-    console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${LLM_MODELS.join(', ')}] 开始初翻…`)
-    const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, providers, signal, localGlossary)
-    // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
-    console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}`)
-    // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
-    if (totalFallback > pairs.length * 0.3) {
-      console.log(`${tag} 回退率过高（${totalFallback}/${pairs.length}），判定失败，跳过`)
-      failed++
-      return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）` }
-    }
-    const outLines = lines.map((line) => {
-      const t = line.trim()
-      if (!t || t.startsWith('#')) return line
-      const eq = t.indexOf('=')
-      if (eq <= 0) return line
-      const key = t.slice(0, eq)
-      const value = zhMap.get(key) ?? t.slice(eq + 1)
-      // 初翻常见的格式码切断（`§e§ ` 这类）在落盘前就修掉，
-      // 避免产出会被闸门拦下的文件。
-      return `${key}=${repairMalformedSections(value).text}`
-    })
-    const header = `#shaders/lang/zh_CN.lang\n# ${entry.title} v${shaderVersion} 简体中文翻译（AI 初翻，未人工校对）\n# 源文件：${file.filename} 的 ${enName}\n`
-    const outPath = join(LANG_DIR, entry.id, shaderVersion, 'zh_CN.lang')
-
-    // 先校验内存里的内容，通过后才落盘。
-    // 历史实现是「先写文件再校验」，校验失败时已把坏文件留在磁盘上。
-    const verdict = validatePair(enText, header + outLines.join('\n'), `${entry.id}/${shaderVersion}`)
-    if (verdict.problems.length) {
-      failed++
-      const msg = verdict.problems.join('; ').slice(0, 300)
-      console.log(`${tag} 校验未通过，不落盘: ${msg}`)
-      persist()
-      return { status: STATUS.FAILED, error: msg }
-    }
-
-    if (signal.aborted) {
-      throw new Error('处理超时')
-    }
-    mkdirSync(dirname(outPath), { recursive: true })
-    writeFileSync(outPath, header + outLines.join('\n'))
-
-    // 同时缓存英文原文到 sources/，供 pack-lang-sources.mjs 重新打包。
-    // 否则新翻译的光影在 CI 里找不到英文源，下一次 validate:lang 会判失败。
-    const enCachePath = join(SOURCES_DIR, entry.id, shaderVersion, 'en_US.lang')
-    mkdirSync(dirname(enCachePath), { recursive: true })
-    writeFileSync(enCachePath, enText)
-
-    let shaderEntry = db.shaders.find((s) => s.id === entry.id)
-    if (!shaderEntry) {
-      shaderEntry = { id: entry.id, modrinth: { slug: entry.id, projectId: entry.projectId }, langVersions: [] }
-      db.shaders.push(shaderEntry)
-    }
-    shaderEntry.langVersions = shaderEntry.langVersions ?? []
-    shaderEntry.langVersions.unshift({
-      shaderVersion,
-      langVersion: '1.0.0',
-      file: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
-      quark: '',
-      updatedAt: new Date().toISOString().slice(0, 10),
-      contributors: [`AI 初翻（免费模型池：${LLM_MODELS.join(' / ')}），未人工校对`],
-    })
-    done++
-    processed++
-    console.log(`${tag} 完成（${processed}/${worklist.length}） -> ${outPath.replace(ROOT + '\\', '').replace(/\\\\/g, '/')}`)
-    persist()
-    await sleep(300)
-    return {
-      status: STATUS.DONE,
-      error: '',
-      langPath: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
-      shaderVersion,
-    }
+    console.log(`${tag} 所有候选文件均失败: ${lastError}`)
+    failed++
+    return { status: STATUS.FAILED, error: `CF 所有候选文件均失败: ${lastError}` }
   } catch (err) {
     if (signal.aborted) {
       return { status: STATUS.FAILED, error: '处理超时' }
