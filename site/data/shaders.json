@@ -17821,6 +17821,26 @@
           ]
         }
       ]
+    },
+    {
+      "id": "super-duper-vanilla-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "super-duper-vanilla-shaders",
+        "cfId": 534748
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-superDuperVanilla",
+          "langVersion": "1.0.0",
+          "file": "/lang/super-duper-vanilla-shaders/cf-superDuperVanilla/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：deepseek-v4.1-flash / deepseek-v4-flash / u2-flash），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }
