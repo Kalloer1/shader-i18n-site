@@ -33,6 +33,7 @@ import { dirname, join } from 'node:path'
 import { inflateRawSync } from 'node:zlib'
 import { STATUS } from '../shared/tencent-docs.mjs'
 import { validatePair, repairMalformedSections } from './validate-lang.mjs'
+import { isEnUsLangPath, isLangFilePath, isZhCNLangPath } from './lib/lang-source.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -521,15 +522,15 @@ async function processShader(entry, signal, localGlossary) {
       }
     }
     const zip = zipEntries(zipBuf)
-    const langNames = zip.names.filter((n) => /^shaders\/lang\/[^/]+$/i.test(n))
-    if (langNames.some((n) => /^shaders\/lang\/zh_CN\.lang$/i.test(n))) {
+    const langNames = zip.names.filter(isLangFilePath)
+    if (langNames.some(isZhCNLangPath)) {
       entry.hasNativeZhCN = true
       console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
       skippedNative++
       persist()
       return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
     }
-    const enName = langNames.find((n) => /^shaders\/lang\/en_US\.lang$/i.test(n))
+    const enName = langNames.find(isEnUsLangPath)
     if (!enName) {
       entry.noEnUsLang = true
       console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
