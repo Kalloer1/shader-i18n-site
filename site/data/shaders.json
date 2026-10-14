@@ -1706,38 +1706,6 @@
       "quark": "https://pan.quark.cn/s/5d80e3368961"
     },
     {
-      "id": "stereos-default+",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "stereos-default+",
-        "projectId": "OT1P0oHO"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "2.4",
-          "langVersion": "1.0.0",
-          "file": "/lang/stereos-default+/2.4/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/61fe190b3820",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Stereo's Default+",
-          "description": "Shadows, Waving Water and Lava",
-          "downloads": 411525,
-          "iconUrl": "https://cdn.modrinth.com/data/OT1P0oHO/b9111dda0207b0756494056007ae967f38719a59.png",
-          "author": "Stereo528",
-          "pageUrl": "https://modrinth.com/shader/stereos-default-plus",
-          "lastSync": "2026-10-14"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/61fe190b3820"
-    },
-    {
       "id": "opal-shaders",
       "nameCN": "",
       "modrinth": {
@@ -6132,48 +6100,6 @@
       "quark": "https://pan.quark.cn/s/dbf70cbe7d53"
     },
     {
-      "id": "unbound-visual-+",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "unbound-visual-+",
-        "projectId": "jgYsD3FV"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "PT-v10.1",
-          "langVersion": "1.0.0",
-          "file": "/lang/unbound-visual-+/PT-v10.1/zh_CN.lang",
-          "quark": "",
-          "updatedAt": "2026-10-11",
-          "contributors": [
-            "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
-          ]
-        },
-        {
-          "shaderVersion": "PT-v9.7",
-          "langVersion": "1.0.0",
-          "file": "/lang/unbound-visual-+/PT-v9.7/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/0a18c3be0d26",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Unbound Visual +",
-          "description": "Unbound Visual+ is a modified version of Complementary Unbound, featuring various added effects and visual enhancements.",
-          "downloads": 14128,
-          "iconUrl": "https://cdn.modrinth.com/data/jgYsD3FV/675aa9e68b944733ba9a83133c755b2ed63eecad.gif",
-          "author": "CornXX",
-          "pageUrl": "https://modrinth.com/shader/unbound-visual-plus",
-          "lastSync": "2026-10-14"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/0a18c3be0d26"
-    },
-    {
       "id": "nightbloom",
       "nameCN": "",
       "modrinth": {
@@ -8470,38 +8396,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/ed1118432fcd"
-    },
-    {
-      "id": "true-black-white-shader-(grayscale)",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "true-black-white-shader-(grayscale)",
-        "projectId": "LHVsUxbi"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.0.0.0",
-          "langVersion": "1.0.0",
-          "file": "/lang/true-black-white-shader-(grayscale)/1.0.0.0/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/15667e9825b4",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "True Black & White Shader (Grayscale)",
-          "description": "This shader converts the entire image in the game to black and white",
-          "downloads": 3181,
-          "iconUrl": "https://cdn.modrinth.com/data/LHVsUxbi/2a23f96f5138c290696150eb164ca82b42367bf2_96.webp",
-          "author": "CmReNano",
-          "pageUrl": "https://modrinth.com/shader/true-black-white-shader-grayscale",
-          "lastSync": "2026-10-14"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/15667e9825b4"
     },
     {
       "id": "aberration-shader",
@@ -14158,38 +14052,6 @@
       "quark": "https://pan.quark.cn/s/c7ee8e865edb"
     },
     {
-      "id": "snowhard-shader",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "snowhard-shader",
-        "projectId": "b6eOhxbm"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "b0.9.6",
-          "langVersion": "1.0.0",
-          "file": "/lang/snowhard-shader/b0.9.6/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/868694424fcc",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "SnowHard Shader",
-          "description": "A simple and lightweight shader designed for low-end devices.",
-          "downloads": 371,
-          "iconUrl": "https://cdn.modrinth.com/data/b6eOhxbm/1e34879b0ef9d34093565b8e6253b617b8a55078_96.webp",
-          "author": "RussoViller_",
-          "pageUrl": "https://modrinth.com/shader/snowhard-shader",
-          "lastSync": "2026-09-21"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/868694424fcc"
-    },
-    {
       "id": "lucent-realms-shaders",
       "nameCN": "",
       "modrinth": {
@@ -15374,6 +15236,16 @@
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        },
+        {
+          "shaderVersion": "b0.9.6",
+          "langVersion": "1.0.0",
+          "file": "/lang/vanilla-extra-shaders/b0.9.6/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/868694424fcc",
+          "updatedAt": "2026-09-09",
+          "contributors": [
+            "AI 初翻 (MiMo-v2.5)"
           ]
         }
       ],
@@ -16879,26 +16751,6 @@
       }
     },
     {
-      "id": "dawntodusk-shaders",
-      "modrinth": {
-        "slug": "dawntodusk-shaders",
-        "projectId": "4NqVZgit"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "Pixels_ReimaginedV1.1",
-          "langVersion": "1.0.0",
-          "file": "/lang/dawntodusk-shaders/Pixels_ReimaginedV1.1/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/d39ba041eff4",
-          "updatedAt": "2026-10-13",
-          "contributors": [
-            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
-          ]
-        }
-      ],
-      "quark": "https://pan.quark.cn/s/d39ba041eff4"
-    },
-    {
       "id": "aetherrealism",
       "modrinth": {
         "slug": "aetherrealism",
@@ -17564,6 +17416,16 @@
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        },
+        {
+          "shaderVersion": "PT-v9.7",
+          "langVersion": "1.0.0",
+          "file": "/lang/unbound-visual-plus/PT-v9.7/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/0a18c3be0d26",
+          "updatedAt": "2026-09-09",
+          "contributors": [
+            "AI 初翻 (MiMo-v2.5)"
           ]
         }
       ],

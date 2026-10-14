@@ -129,17 +129,12 @@ test('gen-shader-pages.mjs 存在且导出可渲染的页面内容', async () =>
 // 历史遗留孤儿条目白名单：这些 id（或对应 modrinth.projectId）在 modrinth-catalog.json 中
 // 找不到完全一致的条目（或 id 与 catalog slug 不一致），列表端已改为以 catalog 为准，
 // 因此它们不会再出现在首页列表里，也就不会产生指向不存在详情页的死链。
-// 这些是历史遗留的孤儿条目，待人工判定后清理；清理前必须保留在 shaders.json（数据不动），
+// 其余 6 条重复孤儿条目已清理（删除或迁移至 catalog 中的干净 id），
+// 仅剩 auroralite 与 veridian 两条仍待处置；清理前必须保留在 shaders.json（数据不动），
 // 但不得再让列表端把它们当作独立条目展示。
 const ORPHAN_WHITELIST = [
-  'stereos-default+',
-  'unbound-visual-+',
-  'true-black-white-shader-(grayscale)',
   'auroralite',
   'veridian',
-  'pain',
-  'snowhard-shader',
-  'dawntodusk-shaders',
 ]
 
 test('shaders.json：有 langVersions 的条目必须在 catalog 中可找到，否则进入白名单（防死链回归）', () => {
