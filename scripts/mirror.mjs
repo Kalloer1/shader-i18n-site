@@ -177,7 +177,10 @@ for (const s of db.shaders) {
   const lv = (s.langVersions ?? [])[0]
   if (!lv) continue
   if (IDS.length && !IDS.includes(s.id)) continue
-  if (!IDS.length && (s.quark || lv.quark)) continue // 全量模式下跳过已镜像的
+  // 全量模式下只跳过「本版本已有分享链接」的条目。
+  // 不能判 s.quark：顶层链接指向的是「最新版本」的分享，发布新翻译版本后它仍留在旧版本上，
+  // 于是「新版本缺链接」这一最常见形态会被静默跳过。
+  if (!IDS.length && lv.quark) continue
   targets.push({ shader: s, lv })
 }
 
