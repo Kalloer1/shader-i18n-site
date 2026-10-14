@@ -126,6 +126,44 @@ test('gen-shader-pages.mjs 存在且导出可渲染的页面内容', async () =>
   assert.match(src, /site[\/\\]shaders|shaders['"]/, '脚本未写入 site/shaders')
 })
 
+// 历史遗留孤儿条目白名单：这些 id（或对应 modrinth.projectId）在 modrinth-catalog.json 中
+// 找不到完全一致的条目（或 id 与 catalog slug 不一致），列表端已改为以 catalog 为准，
+// 因此它们不会再出现在首页列表里，也就不会产生指向不存在详情页的死链。
+// 这些是历史遗留的孤儿条目，待人工判定后清理；清理前必须保留在 shaders.json（数据不动），
+// 但不得再让列表端把它们当作独立条目展示。
+const ORPHAN_WHITELIST = [
+  'stereos-default+',
+  'unbound-visual-+',
+  'true-black-white-shader-(grayscale)',
+  'auroralite',
+  'veridian',
+  'pain',
+  'snowhard-shader',
+  'dawntodusk-shaders',
+]
+
+test('shaders.json：有 langVersions 的条目必须在 catalog 中可找到，否则进入白名单（防死链回归）', () => {
+  const catalog = JSON.parse(
+    readFileSync(join(ROOT, 'site/data/modrinth-catalog.json'), 'utf8'),
+  )
+  const catalogIds = new Set(catalog.shaders.map((e) => e.id))
+  const catalogProjectIds = new Set(catalog.shaders.map((e) => e.projectId))
+  const missing = []
+  for (const s of db.shaders) {
+    if (!(s.langVersions ?? []).length) continue
+    const found =
+      catalogIds.has(s.id) ||
+      catalogProjectIds.has(s.modrinth?.projectId) ||
+      catalogProjectIds.has(s.id)
+    if (!found && !ORPHAN_WHITELIST.includes(s.id)) missing.push(s.id)
+  }
+  assert.deepEqual(
+    missing,
+    [],
+    `以下 shaders.json 条目不在 catalog 且不在白名单，会造成列表死链: ${missing.join(', ')}`,
+  )
+})
+
 test('占位符抽取对真实 lang 文件不产生误报（回归）', () => {
   // 光影包常见的百分号用法：字面 % 与转义 %%
   assert.equal(extractPlaceholders('100%%').get('%%'), 1)

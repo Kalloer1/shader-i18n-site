@@ -118,33 +118,12 @@ const mergeSource = (e) => manualByProjectId.get(e.projectId) ?? manualBySlug.ge
 const isDisplayable = (e) =>
   e.hasNativeZhCN === true || (mergeSource(e)?.langVersions?.length ?? 0) > 0
 
+// 列表只来自 catalog（与 gen-shader-pages.mjs 的遍历源一致）：
+// shaders.json 仅用于补充字段（nameCN/langVersions/quark/_meta 等），不允许它新增 id，
+// 否则会出现「列表里有、详情页没有」的死链。
 export const allShaders = catalog.shaders
   .filter(isDisplayable)
   .map((e) => mergeManual(e, mergeSource(e)))
-
-// 精选人工条目但不在目录/已被原生中文排除的（例如刚加入还没跑 catalog），保证不丢失
-const knownIds = new Set(allShaders.map((s) => s.id))
-for (const s of db.shaders) {
-  if (knownIds.has(s.id)) continue
-  allShaders.push(
-    mergeManual(
-      {
-        id: s.id,
-        projectId: s.modrinth?.projectId ?? '',
-        title: s._meta?.modrinth?.title ?? s.id,
-        author: s._meta?.modrinth?.author ?? '',
-        downloads: s._meta?.modrinth?.downloads ?? 0,
-        iconUrl: s._meta?.modrinth?.iconUrl ?? '',
-        description: s._meta?.modrinth?.description ?? '',
-        pageUrl: s._meta?.modrinth?.pageUrl ?? '',
-        hasNativeZhCN: false,
-        lastSync: '',
-      },
-      s,
-    ),
-  )
-}
-
-allShaders.sort((a, b) => b.downloads - a.downloads)
+  .sort((a, b) => b.downloads - a.downloads)
 
 export const shaderById = Object.fromEntries(allShaders.map((s) => [s.id, s]))
