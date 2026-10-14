@@ -17,13 +17,38 @@ const submitting = ref(false)
 const submitted = ref(false)
 const error = ref('')
 
+/* 前端只做「看起来是不是这两个站点的光影链接」的宽松预检：
+   域名（含/不含 www，http/https 都收）命中 Modrinth 或 CurseForge 即放行。
+   刻意不在前端复刻 slug 解析规则：严格的 slug 合法性、项目是否存在、是不是光影项目，
+   全部交给 Worker（shared/tencent-docs.mjs 的 parseModrinthSlug / parseCurseforgeSlug
+   + Modrinth API），它会给回明确的错误文案。
+   取舍：平台规则（分类路径、slug 规则）变动时只需改 Worker 一处，不会出现两处逻辑漂移；
+   代价是前端会放过少量「域名对但路径不是光影」的链接，由 Worker 的 400 提示兜住。 */
+const SHADER_LINK_HOSTS = new Set([
+  'modrinth.com',
+  'www.modrinth.com',
+  'curseforge.com',
+  'www.curseforge.com',
+])
+
+function looksLikeShaderLink(raw) {
+  let parsed
+  try {
+    parsed = new URL(String(raw).trim())
+  } catch {
+    return false
+  }
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return false
+  return SHADER_LINK_HOSTS.has(parsed.hostname.toLowerCase())
+}
+
 async function handleSubmit() {
   if (!form.value.url) {
-    error.value = '请填写 Modrinth 链接'
+    error.value = '请填写光影链接'
     return
   }
-  if (!form.value.url.includes('modrinth.com/')) {
-    error.value = '请填写有效的 Modrinth 链接'
+  if (!looksLikeShaderLink(form.value.url)) {
+    error.value = '请填写有效的光影链接（Modrinth 或 CurseForge）'
     return
   }
 
@@ -191,9 +216,9 @@ async function handleTrigger() {
     <h2 id="submit-form-title" class="panel-title">提交新请求</h2>
     <form class="request-form" novalidate @submit.prevent="handleSubmit">
       <div class="form-group">
-        <label for="url">Modrinth 链接 <span class="required" aria-hidden="true">*</span><span class="sr-only">（必填）</span></label>
-        <input id="url" v-model="form.url" type="url" name="url" placeholder="https://modrinth.com/shader/..." autocomplete="off" required aria-required="true" aria-describedby="url-hint" />
-        <p id="url-hint" class="hint">在 Modrinth 光影页面的地址栏复制链接</p>
+        <label for="url">Modrinth / CurseForge 光影链接 <span class="required" aria-hidden="true">*</span><span class="sr-only">（必填）</span></label>
+        <input id="url" v-model="form.url" type="url" name="url" placeholder="https://modrinth.com/shader/... 或 https://www.curseforge.com/minecraft/shaders/..." autocomplete="off" required aria-required="true" aria-describedby="url-hint" />
+        <p id="url-hint" class="hint">在 Modrinth 或 CurseForge 光影页面的地址栏复制链接</p>
       </div>
       <div class="form-row">
         <div class="form-group">
