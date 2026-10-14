@@ -87,7 +87,11 @@ jobs:
           CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
-          LLM_MODELS: ${{ secrets.LLM_MODELS || secrets.LLM_MODEL || 'muse-spark-1.3-contributor-free,muse-spark-1.2-contributor-free,mimo-v2.6-flash-free' }}
+          # 这些名字必须是网关 https://api.888424.xyz/v1 上真实存在的；改动前请先实测
+          # （POST /chat/completions 发一段真实 lang 条目，看是否严格回 key=value）。
+          # 旧默认值 muse-spark-*/mimo-v2.6-flash-free 在网关上不存在，已实测确认删除。
+          # 顺序即轮转顺序（pipeline 每个分块换一个起点，见 scripts/pipeline.mjs nextProviderOrder）。
+          LLM_MODELS: ${{ secrets.LLM_MODELS || secrets.LLM_MODEL || 'deepseek-v4.1-flash,deepseek-v4-flash,u2-flash,tencent/Hunyuan-MT-7B,hy3' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
