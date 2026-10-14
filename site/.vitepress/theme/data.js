@@ -59,7 +59,7 @@ function mergeCfManual(entry, manual) {
     galleryHi: [],
     color: '',
     categories: entry.categories ?? [],
-    hasNativeZhCN: false,
+    hasNativeZhCN: manual.hasNativeZhCN === true,
     missingSource: false,
     checked: false,
     nameCN: manual.nameCN ?? '',
@@ -158,12 +158,13 @@ const modrinthShaders = catalog.shaders
 const normSlug = (s) => String(s ?? '').trim().toLowerCase().replace(/[-_\s]+/g, '')
 
 // CurseForge 独占条目：Modrinth 目录里没有同名项目（按归一化 slug 判定），
-// 但 shaders.json 已有本站汉化（source=curseforge 且 langVersions 非空）。
+// 但 shaders.json 已有本站汉化（source=curseforge 且 langVersions 非空）或已检出自带中文
+// （hasNativeZhCN===true，CF 分支的终态标记，同样没有 langVersions）。
 // 这类条目会生成详情页，必须同时合入列表，否则是「详情页存在、列表查不到」的反向死链。
 // 判据必须与 scripts/gen-shader-pages.mjs 保持一致。
 const cfManualBySlug = new Map()
 for (const s of db.shaders) {
-  if (s.source !== 'curseforge' || !(s.langVersions?.length > 0)) continue
+  if (s.source !== 'curseforge' || !(s.langVersions?.length > 0 || s.hasNativeZhCN === true)) continue
   cfManualBySlug.set(normSlug(s.id), s)
   if (s.curseforge?.slug) cfManualBySlug.set(normSlug(s.curseforge.slug), s)
 }

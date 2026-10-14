@@ -606,20 +606,35 @@ async function downloadZipBuffer(url, signal, tag) {
 }
 
 /**
+ * 取 shaders.json 里对应条目；缺失时按来源补建（CF 用 curseforge 映射，Modrinth 用 modrinth 映射）。
+ * CF 条目的 entry 是 buildShaderEntry 造的临时对象，只有写进 db.shaders 才能被站点读到。
+ */
+function ensureShaderEntry(entry) {
+  let shaderEntry = db.shaders.find((s) => s.id === entry.id)
+  if (!shaderEntry) {
+    shaderEntry = entry.source === 'curseforge'
+      ? buildShaderEntry({ source: 'curseforge', slug: entry.id, cfId: entry.curseforge?.cfId })
+      : buildShaderEntry({ modrinth: { slug: entry.id, projectId: entry.projectId } })
+    db.shaders.push(shaderEntry)
+  }
+  return shaderEntry
+}
+
+/**
  * 已下载 zip 后的公共处理路径（Modrinth 与 CurseForge 共用）：
  * 检测自带中文 → 抽取英文源 → LLM 初翻 → 校验落盘 → 登记 langVersions。
  *
  * cfMode=true 时（CF 候选文件循环）：某文件失败/无英文源不落盘、不改标记，
- * 返回 { cfRetry: true } 让调用方尝试下一个文件；成功路径与 Modrinth 完全一致。
+ * 返回 { cfRetry: true } 让调用方尝试下一个文件；检出自带中文与成功路径与 Modrinth 完全一致（都是终态，标记完成）。
  */
 async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag, signal, localGlossary, cfMode = false }) {
   const langNames = zip.names.filter(isLangFilePath)
   if (langNames.some(isZhCNLangPath)) {
-    if (cfMode) {
-      console.log(`${tag} 候选文件 v${shaderVersion} 自带中文，尝试下一个`)
-      return { status: STATUS.FAILED, error: '候选文件自带中文', cfRetry: true }
-    }
+    // 自带中文是终态：CF 候选文件循环里也直接标记完成，不再当候选失败去试下一个。
+    // CF 的 entry 是 buildShaderEntry 造的临时对象（不在 catalog/db 里），
+    // 标记必须落到 shaders.json 的对应条目，否则展示侧读不到 hasNativeZhCN。
     entry.hasNativeZhCN = true
+    if (isCurseforgeEntry(entry)) ensureShaderEntry(entry).hasNativeZhCN = true
     console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
     skippedNative++
     persist()
@@ -712,13 +727,7 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
   mkdirSync(dirname(enCachePath), { recursive: true })
   writeFileSync(enCachePath, enText)
 
-  let shaderEntry = db.shaders.find((s) => s.id === entry.id)
-  if (!shaderEntry) {
-    shaderEntry = entry.source === 'curseforge'
-      ? buildShaderEntry({ source: 'curseforge', slug: entry.id, cfId: entry.curseforge?.cfId })
-      : buildShaderEntry({ modrinth: { slug: entry.id, projectId: entry.projectId } })
-    db.shaders.push(shaderEntry)
-  }
+  const shaderEntry = ensureShaderEntry(entry)
   shaderEntry.langVersions = shaderEntry.langVersions ?? []
   shaderEntry.langVersions.unshift({
     shaderVersion,

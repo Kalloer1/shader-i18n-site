@@ -39,12 +39,13 @@ const isDisplayed = (e) => e.hasNativeZhCN === true || (manualOf(e)?.langVersion
 
 // CurseForge 独占条目：判据必须与 site/.vitepress/theme/data.js 的 cfOnlyShaders 完全一致，
 // 否则会出现「列表里有、详情页没有」或反向的死链。
+// 展示集合：已有本站汉化（langVersions 非空）或已检出自带中文（hasNativeZhCN===true）。
 // id 取 shaders.json 里的 id（CF 翻译链路以它为身份），页面文件即 site/shaders/<id>.md。
 const normSlug = (s) => String(s ?? '').trim().toLowerCase().replace(/[-_\s]+/g, '')
 const modrinthIdSet = new Set(catalog.shaders.map((e) => normSlug(e.id)))
 const cfManualBySlug = new Map()
 for (const s of db.shaders) {
-  if (s.source !== 'curseforge' || !(s.langVersions?.length > 0)) continue
+  if (s.source !== 'curseforge' || !(s.langVersions?.length > 0 || s.hasNativeZhCN === true)) continue
   cfManualBySlug.set(normSlug(s.id), s)
   if (s.curseforge?.slug) cfManualBySlug.set(normSlug(s.curseforge.slug), s)
 }
@@ -62,7 +63,7 @@ const cfEntries = (cfCatalog.mods ?? [])
     gameVersions: m.gameVersions ?? [],
     gallery: m.gallery ?? [],
     iconUrl: m.iconUrl ?? '',
-    hasNativeZhCN: false,
+    hasNativeZhCN: manual.hasNativeZhCN === true,
     noEnUsLang: false,
   }))
 const escHtml = (s) =>
