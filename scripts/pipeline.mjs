@@ -51,11 +51,31 @@ const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
+// 可被中断的等待：signal abort 后立刻结束，不再把退避时间睡满（否则超时之后还会白等）。
+function sleepAbortable(ms, signal) {
+  if (signal?.aborted) return Promise.resolve()
+  return new Promise((resolve) => {
+    const cleanup = () => {
+      clearTimeout(timer)
+      signal?.removeEventListener('abort', onAbort)
+    }
+    const onAbort = () => { cleanup(); resolve() }
+    const timer = setTimeout(() => { cleanup(); resolve() }, ms)
+    signal?.addEventListener('abort', onAbort, { once: true })
+  })
+}
+
 // 每条光影的处理上限：防止单个卡死的下载/LLM 调用拖垮整批（在 CI 里就是整个 workflow 超时）。
 const PER_SHADER_TIMEOUT_MS = (() => {
   const raw = Number(process.env.LLM_PER_SHADER_TIMEOUT_MS)
   return Number.isFinite(raw) && raw > 0 ? raw : 15 * 60 * 1000
 })()
+
+// CurseForge 分支的两层上限（外层仍有 PER_SHADER_TIMEOUT_MS 兜底）：
+// 单个候选文件最多 3 分钟，整条 CF 光影最多 6 分钟——
+// 避免「候选数 × 各自超时」叠加成长时间占用（曾经一个 CF 光影把 CI 卡住 8 小时）。
+const CF_CANDIDATE_TIMEOUT_MS = 3 * 60 * 1000
+const CF_SHADER_BUDGET_MS = 6 * 60 * 1000
 // 状态回写目标（Worker 的 /status）。两者缺一即静默跳过，不影响本地手动运行。
 const WORKER_URL = process.env.WORKER_URL
 const INTERNAL_STATUS_TOKEN = process.env.INTERNAL_STATUS_TOKEN
@@ -208,7 +228,7 @@ async function chatWithRetry(activeProvider, messages, signal) {
       // 本条已超时中断：立即结束，不再退避重试（否则会留下挂到超时之后的孤儿重试）
       if (signal?.aborted) throw err
       const delay = 2000 * 2 ** (attempt - 1)
-      await sleep(delay)
+      await sleepAbortable(delay, signal)
     }
   }
 }
@@ -553,7 +573,7 @@ async function downloadZipBuffer(url, signal, tag) {
     } catch (err) {
       if (attempt >= 3 || signal?.aborted) throw err
       console.log(`${tag} 下载失败（第 ${attempt} 次）: ${err.message.slice(0, 80)}，重试`)
-      await sleep(2000 * attempt)
+      await sleepAbortable(2000 * attempt, signal)
     }
   }
 }
@@ -706,7 +726,9 @@ async function processShaderCf(entry, signal, localGlossary) {
     }
     const cfId = entry.curseforge?.cfId
     if (cfId == null) throw new Error('CurseForge 条目缺少 curseforge.cfId')
-    const files = await cfGetFiles(cfId)
+    // 本条光影的 CF 预算：元数据请求、每个候选文件都从这份预算里扣，总占用有硬上限。
+    const deadline = Date.now() + CF_SHADER_BUDGET_MS
+    const files = await cfGetFiles(cfId, 50, AbortSignal.any([signal, AbortSignal.timeout(CF_SHADER_BUDGET_MS)]))
     // release 优先（releaseType===1），同类型内按 fileDate 倒序（新在前）
     const candidates = files
       .slice()
@@ -723,14 +745,27 @@ async function processShaderCf(entry, signal, localGlossary) {
     }
     let lastError = ''
     for (const f of candidates) {
+      if (signal.aborted) return { status: STATUS.FAILED, error: '处理超时' }
+      const budgetLeft = deadline - Date.now()
+      if (budgetLeft <= 0) {
+        lastError = `本条光影 CF 预算（${CF_SHADER_BUDGET_MS / 60000} 分钟）已用尽`
+        console.log(`${tag} ${lastError}，不再尝试剩余候选文件`)
+        break
+      }
       const shaderVersion = cfVersionFromFileName(f.fileName, f.id)
       if (latestLangVersion.get(entry.id) === shaderVersion) {
         console.log(`${tag} ${shaderVersion} 已有汉化，跳过`)
         return { status: STATUS.DONE, error: '', shaderVersion }
       }
+      // 单候选上限 = min(单候选 3 分钟, 本条剩余预算)，并与光影 signal 合并：
+      // 该候选的下载/翻译全部走这个 signal，任一中止即真正断开进行中的 fetch。
+      const candSignal = AbortSignal.any([
+        signal,
+        AbortSignal.timeout(Math.min(CF_CANDIDATE_TIMEOUT_MS, budgetLeft)),
+      ])
       try {
-        const downloadUrl = await cfGetDownloadUrl(cfId, f.id)
-        const zipBuf = await downloadZipBuffer(downloadUrl, signal, tag)
+        const downloadUrl = await cfGetDownloadUrl(cfId, f.id, candSignal)
+        const zipBuf = await downloadZipBuffer(downloadUrl, candSignal, tag)
         const zip = zipEntries(zipBuf)
         const result = await translateFromZip({
           entry,
@@ -738,7 +773,7 @@ async function processShaderCf(entry, signal, localGlossary) {
           shaderVersion,
           sourceFileName: f.fileName,
           tag,
-          signal,
+          signal: candSignal,
           localGlossary,
           cfMode: true,
         })
@@ -747,7 +782,9 @@ async function processShaderCf(entry, signal, localGlossary) {
         console.log(`${tag} 候选文件 ${f.id}（${shaderVersion}）失败: ${lastError}，尝试下一个`)
       } catch (err) {
         if (signal.aborted) return { status: STATUS.FAILED, error: '处理超时' }
-        lastError = err.message.slice(0, 200)
+        lastError = candSignal.aborted
+          ? `候选文件超时（>${CF_CANDIDATE_TIMEOUT_MS / 60000} 分钟）`
+          : err.message.slice(0, 200)
         console.log(`${tag} 候选文件 ${f.id}（${shaderVersion}）异常: ${lastError}，尝试下一个`)
       }
     }

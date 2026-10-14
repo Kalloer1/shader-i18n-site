@@ -97,7 +97,14 @@ jobs:
         # pipeline 会把本次新翻译的 en_US.lang 写入 sources/；
         # 必须重新打包，否则新光影在下次 CI 校验时找不到英文源而假失败。
         # 打包会与已有包合并，不会抹掉历史条目。
-        run: npm run pack:lang
+        # 零产出时 sources/ 不存在（gitignored），必须跳过而不是失败，
+        # 否则整个 workflow 会被判失败，后面的 Commit and push 不执行。
+        run: |
+          if [ ! -d sources ]; then
+            echo "本次没有新翻译（sources/ 不存在），跳过打包"
+            exit 0
+          fi
+          npm run pack:lang
 
       - name: Commit and push
         id: commit

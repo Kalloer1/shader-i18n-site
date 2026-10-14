@@ -9,6 +9,20 @@ const UA = 'shader-i18n-site/0.1.0'
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const api = (p) => `https://api.curseforge.com/v1${p}`
 
+/**
+ * 从项目对象里挑出与「分发许可」相关的字段：名字含 allow 或 distribution（大小写不敏感）的全部原样保留，
+ * 并额外补一个 allowModDistribution（缺失时为 null）。不猜字段名——字段名变了日志里也能直接看出来。
+ */
+function distributionFields(mod) {
+  const out = {}
+  if (!mod || typeof mod !== 'object') return out
+  for (const [k, v] of Object.entries(mod)) {
+    if (/allow|distribution/i.test(k)) out[k] = v
+  }
+  if (!('allowModDistribution' in out)) out.allowModDistribution = mod.allowModDistribution ?? null
+  return out
+}
+
 async function cfGet(url) {
   const res = await fetch(url, { headers: { 'x-api-key': KEY, 'User-Agent': UA } })
   const text = await res.text()
@@ -46,6 +60,10 @@ const rows = []
 for (const m of mods) {
   const row = { modId: m.id, slug: m.slug, name: m.name, downloads: m.downloadCount }
   try {
+    // 单独取一次项目详情：search 结果里的许可字段可能被裁剪，GET /v1/mods/{id} 才是权威来源。
+    const detail = await cfGet(api(`/mods/${m.id}`))
+    row.detailStatus = detail.status
+    row.distributionFields = distributionFields((detail.json && detail.json.data) || m)
     const files = await cfGet(api(`/mods/${m.id}/files`))
     if (files.status !== 200 || !files.json || !files.json.data || !files.json.data.length) {
       row.note = `files HTTP ${files.status}`
@@ -60,11 +78,14 @@ for (const m of mods) {
     }
     const du = await cfGet(api(`/mods/${m.id}/files/${f.id}/download-url`))
     if (du.status !== 200 || !du.json || !du.json.data) {
+      row.downloadUrlStatus = `HTTP ${du.status}`
       row.note = `download-url HTTP ${du.status}`
       rows.push(row); console.log(JSON.stringify(row)); await sleep(400); continue
     }
+    row.downloadUrlStatus = 'HTTP 200'
     row.downloadUrl = du.json.data
     const zip = await openZip(du.json.data, { totalSize: f.fileLength, headers: { 'User-Agent': UA } })
+    row.packFetchStatus = 'HTTP 200'
     const enName = zip.names.find((n) => /shaders\/lang\/en_us\.lang$/i.test(n))
     row.fetchMode = zip.fetchMode
     row.downloadedBytes = zip.bytesDownloaded
@@ -77,7 +98,9 @@ for (const m of mods) {
       row.hasEnUs = false
     }
   } catch (e) {
-    row.note = 'error: ' + (e && e.message ? e.message : String(e))
+    const msg = e && e.message ? e.message : String(e)
+    row.note = 'error: ' + msg
+    row.packFetchStatus = /HTTP\s+403/.test(msg) ? 'HTTP 403' : `其他（${msg.slice(0, 80)}）`
   }
   rows.push(row)
   console.log(JSON.stringify(row))
@@ -95,3 +118,15 @@ console.log(JSON.stringify({
   rangeMode: rows.filter((r) => r.fetchMode === 'range').length,
   fullMode: rows.filter((r) => r.fetchMode === 'full').length,
 }, null, 2))
+
+// 三列对照：slug | 分发许可字段（实际字段名+值） | download-url 下载结果（HTTP 200 / HTTP 403 / 其他）。
+console.log('===DISTRIBUTION===')
+console.log('slug | allowModDistribution(或实际字段名) | download-url 结果')
+for (const r of rows) {
+  const d = r.distributionFields || {}
+  const keys = Object.keys(d)
+  const allow = keys.length
+    ? keys.map((k) => `${k}=${JSON.stringify(d[k])}`).join(' ')
+    : '(项目对象里没有含 allow/distribution 的字段)'
+  console.log(`${r.slug} | ${allow} | ${r.packFetchStatus || r.downloadUrlStatus || r.note || '未测'}`)
+}

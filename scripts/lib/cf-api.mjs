@@ -25,9 +25,13 @@ function requireKey() {
   return key
 }
 
-async function cfGet(path) {
+// signal 由调用方显式传入（pipeline 传本条光影自己的 AbortController signal）：
+// 不传时行为与改造前一致，传了就能被该条的超时真正中断（否则请求会挂到进程结束）。
+// signal 由调用方显式传入（pipeline 传本条光影自己的 AbortController signal）；不传则与改造前一致。
+async function cfGet(path, signal) {
   const key = requireKey()
   const res = await fetch(`${CF_API_BASE}${path}`, {
+    signal,
     headers: {
       'x-api-key': key,
       'User-Agent': UA,
@@ -48,8 +52,8 @@ async function cfGet(path) {
 }
 
 /** 取单个 CF 项目（mod）元数据。返回响应体的 data 字段（含 id / slug / name 等）。 */
-export async function cfGetMod(cfIdOrSlug) {
-  const json = await cfGet(`/mods/${encodeURIComponent(cfIdOrSlug)}`)
+export async function cfGetMod(cfIdOrSlug, signal) {
+  const json = await cfGet(`/mods/${encodeURIComponent(cfIdOrSlug)}`, signal)
   return json.data
 }
 
@@ -57,16 +61,17 @@ export async function cfGetMod(cfIdOrSlug) {
  * 取项目的文件列表。返回文件数组（每个含 id / fileName / releaseType / fileDate 等）。
  * @param {number|string} cfId
  * @param {number} [pageSize=50] CF API 单页上限 50
+ * @param {AbortSignal} [signal] 本条光影的中断信号（超时后立即中断该请求）
  */
-export async function cfGetFiles(cfId, pageSize = 50) {
+export async function cfGetFiles(cfId, pageSize = 50, signal) {
   const qs = Number.isFinite(Number(pageSize)) && pageSize ? `?pageSize=${Number(pageSize)}` : ''
-  const json = await cfGet(`/mods/${encodeURIComponent(cfId)}/files${qs}`)
+  const json = await cfGet(`/mods/${encodeURIComponent(cfId)}/files${qs}`, signal)
   return Array.isArray(json.data) ? json.data : []
 }
 
 /** 取某文件的一次性下载 URL。响应体的 data 字段就是下载 URL 字符串。 */
-export async function cfGetDownloadUrl(cfId, fileId) {
-  const json = await cfGet(`/mods/${encodeURIComponent(cfId)}/files/${encodeURIComponent(fileId)}/download-url`)
+export async function cfGetDownloadUrl(cfId, fileId, signal) {
+  const json = await cfGet(`/mods/${encodeURIComponent(cfId)}/files/${encodeURIComponent(fileId)}/download-url`, signal)
   return json.data
 }
 
@@ -74,8 +79,8 @@ export async function cfGetDownloadUrl(cfId, fileId) {
  * 按 slug 搜索 CF 光影项目（gameId=432=Minecraft，classId=6552=Shaders）。
  * 返回 { id, slug, name }，其中 id 是 CF 数字项目 id（即 cfId）。
  */
-export async function cfFindBySlug(slug) {
-  const json = await cfGet(`/mods/search?gameId=432&classId=6552&slug=${encodeURIComponent(slug)}`)
+export async function cfFindBySlug(slug, signal) {
+  const json = await cfGet(`/mods/search?gameId=432&classId=6552&slug=${encodeURIComponent(slug)}`, signal)
   const data = Array.isArray(json.data) ? json.data : []
   const hit =
     data.find((m) => String(m.slug).toLowerCase() === String(slug).toLowerCase()) ?? data[0]
