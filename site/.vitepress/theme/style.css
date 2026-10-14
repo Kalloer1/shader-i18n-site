@@ -575,6 +575,8 @@ img.img-fallback {
 .sp-btn--dl {
   font-size: 13px;
   padding: 8px 18px;
+  /* 窄屏被 flex 挤压时中文会逐字换行成竖条，禁止断行 */
+  white-space: nowrap;
 }
 
 /* --- Section 标题（全局复用） --- */
@@ -1235,5 +1237,29 @@ html:has(.home-shell) .VPNavBar {
   }
   .sp-download__featured {
     padding: 16px;
+  }
+  /* 窄屏：信息与下载按钮改为上下堆叠，按钮整行，不再被挤成竖排窄条 */
+  .sp-latest-shader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sp-latest-shader__info {
+    min-width: 0;
+  }
+  .sp-btn--dl {
+    width: 100%;
+    justify-content: center;
+  }
+  /* 版本表收紧内边距，消除 .sp-table-scroll 的横向溢出（原 ~12px） */
+  .sp-version-table {
+    font-size: 12px;
+  }
+  .sp-version-table th,
+  .sp-version-table td {
+    padding-inline: 10px;
+  }
+  /* VitePress 本地导航里的“回到顶部”按钮（无类名，取容器内直接子按钮） */
+  .VPLocalNavOutlineDropdown > button {
+    min-height: var(--tap-min);
   }
 }

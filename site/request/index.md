@@ -711,6 +711,16 @@ async function handleTrigger() {
   font-weight: 700;
 }
 
+/* ===== 窄屏：队列里的链接抬到最小触控高度 ===== */
+@media (max-width: 640px) {
+  .wb-name,
+  .wb-mirror {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+  }
+}
+
 /* ===== 增强：平板起 ===== */
 @media (min-width: 640px) {
   .request-page {

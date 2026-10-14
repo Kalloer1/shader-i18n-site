@@ -411,6 +411,9 @@ function formatDate(value) {
 .home-search__icon {
   position: absolute;
   left: 12px;
+  /* 窄屏 topsearch 换行成多行时，绝对定位的静态位置会被垂直居中到整个容器，
+     图标看起来落到输入框下方；固定 top 让它始终贴在输入框（高 38px）内 */
+  top: 11px;
   z-index: 1;
   display: inline-flex;
   color: var(--home-faint);
@@ -439,7 +442,12 @@ function formatDate(value) {
 }
 
 .home-topsearch select {
-  padding: 0 10px;
+  /* 去掉原生下拉外观后自绘箭头，避免看起来像纯文本框 */
+  appearance: none;
+  padding: 0 30px 0 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%2393a1ad' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5l5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
   color: var(--home-muted);
 }
 
@@ -1047,6 +1055,11 @@ function formatDate(value) {
 
   .home-brand {
     font-size: 15px;
+  }
+
+  .home-brand,
+  .version-tab {
+    min-height: var(--tap-min);
   }
 
   .home-chip {

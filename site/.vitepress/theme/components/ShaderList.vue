@@ -238,10 +238,10 @@ function actionLabel(shader) {
                 </span>
               </div>
             </td>
-            <td class="num">{{ formatDownloads(shader.downloads) }}</td>
-            <td class="version">{{ shader.langVersions?.[0]?.shaderVersion || '—' }}</td>
-            <td class="version">{{ range(shader) }}</td>
-            <td>
+            <td class="num" data-label="下载量">{{ formatDownloads(shader.downloads) }}</td>
+            <td class="version" data-label="汉化版本">{{ shader.langVersions?.[0]?.shaderVersion || '—' }}</td>
+            <td class="version" data-label="MC 版本">{{ range(shader) }}</td>
+            <td data-label="状态">
               <span
                 class="status-badge"
                 :class="`status-badge--${status(shader).key}`"
@@ -364,7 +364,7 @@ function actionLabel(shader) {
 .filter-button span {
   color: var(--home-faint, #64707b);
   font-family: var(--home-font-mono, Consolas, monospace);
-  font-size: 11px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -544,7 +544,7 @@ function actionLabel(shader) {
 .shader-card__range {
   color: var(--home-muted, #93a1ad);
   font-family: var(--home-font-mono, Consolas, monospace);
-  font-size: 11.5px;
+  font-size: 12.5px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -773,19 +773,72 @@ tbody tr:focus-visible {
     gap: 4px;
   }
 
+  /* 筛选条换行，不再靠横向拖动（旧：nowrap + overflow-x:auto 会裁掉右侧按钮） */
   .filter-bar {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-  }
-
-  .filter-bar::-webkit-scrollbar {
-    display: none;
+    flex-wrap: wrap;
   }
 
   .filter-button {
     flex: none;
+    min-height: var(--tap-min);
+  }
+
+  .view-toggle__btn {
+    min-height: var(--tap-min);
+  }
+
+  /* 表格 → 卡片堆叠：窄屏不再依赖横向滚动，下载量整列完整可见 */
+  table {
+    display: block;
+    min-width: 0;
+  }
+
+  /* 视觉隐藏表头但保留给屏幕阅读器（列名改由 td::before 呈现） */
+  thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--home-line-soft, #1c2530);
+  }
+
+  tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  tbody td {
+    display: block;
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  tbody td:first-child {
+    flex: 1 1 100%;
+  }
+
+  tbody td[data-label]::before {
+    content: attr(data-label) ' ';
+    color: var(--home-faint, #64707b);
+    font-size: 12px;
+  }
+
+  .action-cell {
+    flex: 1 1 100%;
+    text-align: left;
   }
 
   .list-toolbar {
@@ -803,7 +856,9 @@ tbody tr:focus-visible {
   }
 
   .row-action {
+    width: 100%;
     min-height: var(--tap-min);
+    justify-content: center;
     padding: 10px 15px;
   }
 }
