@@ -10,6 +10,7 @@
     "preview": "vitepress preview site",
     "prebuild": "node scripts/gen-shader-pages.mjs",
     "catalog": "node scripts/fetch-catalog.mjs",
+    "cf-catalog": "node scripts/fetch-curseforge-catalog.mjs",
     "sync": "node scripts/sync-metadata.mjs",
     "translate": "node scripts/pipeline.mjs",
     "validate:lang": "node scripts/validate-lang.mjs",

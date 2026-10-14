@@ -37,6 +37,13 @@ jobs:
         env:
           TENCENT_DOCS_TOKEN: ${{ secrets.TENCENT_DOCS_TOKEN }}
 
+      # CurseForge 目录采集是可选步骤：CF 挂了绝不能影响 Modrinth 主链。
+      - name: Fetch CurseForge catalog
+        continue-on-error: true
+        env:
+          CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+        run: node scripts/fetch-curseforge-catalog.mjs
+
       - name: Commit changes
         id: commit
         run: |
@@ -46,7 +53,8 @@ jobs:
           for p in site/data/modrinth-catalog.json \
                    site/data/modrinth-catalog.prev.json \
                    site/data/shaders.json \
-                   site/data/glossary.json; do
+                   site/data/glossary.json \
+                   site/data/curseforge-catalog.json; do
             [ -e "$p" ] && git add -- "$p"
           done
           if git diff --cached --quiet; then
