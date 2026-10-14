@@ -17779,6 +17779,26 @@
           "lastSync": "2026-10-14"
         }
       }
+    },
+    {
+      "id": "makeup-ultra-fast-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "makeup-ultra-fast-shader",
+        "cfId": 431203
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-MakeUp-UltraFast-8.8",
+          "langVersion": "1.0.0",
+          "file": "/lang/makeup-ultra-fast-shader/cf-MakeUp-UltraFast-8.8/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }

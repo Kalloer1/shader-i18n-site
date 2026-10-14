@@ -1,0 +1,284 @@
+#shaders/lang/zh_CN.lang
+# MakeUp - Ultra Fast | Shaders vcf-MakeUp-UltraFast-8.8 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：MakeUp-UltraFast-8.8.zip 的 shaders/lang/en_US.lang
+#Profiles
+############################
+profile.no_effects=No effects
+profile.shadowless_low=Shadowless Low
+profile.shadowless_medium=Shadowless Medium
+profile.shadowless_high=Shadowless High
+profile.low=低
+profile.medium=中
+profile.high=高
+profile.extreme=极端
+profile.extremeplus=Extreme+
+
+profile.comment=The "shadowless" profiles are designed for low-performance machines, disregarding the shadows. Traditional profiles slowly add higher quality shadows and more advanced heavy effects. Please experiment with the available options and find the best combination for you.
+
+#About
+#############################
+option.ACERCADE=MakeUp
+option.ACERCADE.comment=Thanks for using this shader! :). Set Optifine native quality controls on normal or default values for better quality.
+value.ACERCADE.0=v.8.8 Code
+
+#Options
+#############################
+option.SHADOW_CASTING=阴影
+
+option.SHADOW_DISTANCE_SLIDER=阴影距离
+value.SHADOW_DISTANCE_SLIDER.0=短
+value.SHADOW_DISTANCE_SLIDER.1=中
+value.SHADOW_DISTANCE_SLIDER.2=远
+
+option.SHADOW_QTY_SLIDER=阴影质量
+value.SHADOW_QTY_SLIDER.0=无
+value.SHADOW_QTY_SLIDER.1=低
+value.SHADOW_QTY_SLIDER.2=中
+value.SHADOW_QTY_SLIDER.3=高
+
+option.REFLECTION_SLIDER=反射
+value.REFLECTION_SLIDER.0=关
+value.REFLECTION_SLIDER.1=图像翻转
+value.REFLECTION_SLIDER.2=Raymarching
+
+option.SHADOW_TYPE=阴影类型
+value.SHADOW_TYPE.0=简单
+value.SHADOW_TYPE.1=Filtered
+
+option.SHADOW_BLUR=阴影模糊强度
+
+option.COLORED_SHADOW=彩色阴影
+
+option.VOL_LIGHT=丁达尔光效
+value.VOL_LIGHT.0=已禁用
+value.VOL_LIGHT.1=Depth based
+value.VOL_LIGHT.2=体积云
+
+option.DOF=景深
+
+option.DOF_STRENGTH=景深强度
+
+option.DOF_SAMPLES_FACTOR=DoF samples factor
+
+option.AO=环境光遮蔽
+value.AO.0=关
+value.AO.1=开
+
+option.AOSTEPS=AO sample pairs
+
+option.AO_STRENGHT=AO strenght
+
+option.AA_TYPE=Temporal sampling
+value.AA_TYPE.0=关
+value.AA_TYPE.1=降噪
+value.AA_TYPE.2=自适应时间抗锯齿
+value.AA_TYPE.3=Sharp TAA
+
+option.MOTION_BLUR=动态模糊
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_SAMPLES=运动模糊采样数
+
+option.VANILLA_WATER=原版风格水面
+
+option.WATER_TEXTURE=水面纹理
+value.WATER_TEXTURE.0=否
+value.WATER_TEXTURE.1=是
+
+option.WATER_COLOR_SOURCE=水体颜色
+value.WATER_COLOR_SOURCE.0=光影配色方案
+value.WATER_COLOR_SOURCE.1=资源包
+
+option.REFLECTION=反射
+value.REFLECTION.0=关
+value.REFLECTION.1=开
+
+option.REFRACTION=折射
+value.REFRACTION.0=关
+value.REFRACTION.1=开
+
+option.SSR_TYPE=反射类型
+value.SSR_TYPE.0=图像翻转
+value.SSR_TYPE.1=Raymarching
+
+option.SUN_REFLECTION=太阳反射
+value.SUN_REFLECTION.0=关
+value.SUN_REFLECTION.1=开
+
+option.CLOUD_REFLECTION=体积云反射
+
+option.WAVING=植物摆动
+value.WAVING.0=否
+value.WAVING.1=是
+
+option.CHROMA_ABER=色差
+value.CHROMA_ABER.0=否
+value.CHROMA_ABER.1=是
+
+option.CHROMA_ABER_STRENGHT=色差强度
+
+option.WATER_ABSORPTION=水体吸收指数
+
+option.WATER_TURBULENCE=波浪强度
+value.WATER_TURBULENCE.8.0=极低
+value.WATER_TURBULENCE.3.7=低
+value.WATER_TURBULENCE.2.25=中
+value.WATER_TURBULENCE.1.3=高
+
+option.COLOR_SCHEME=色彩方案
+value.COLOR_SCHEME.0=空灵
+value.COLOR_SCHEME.1=New Shoka
+value.COLOR_SCHEME.2=Shoka
+value.COLOR_SCHEME.3=旧版
+value.COLOR_SCHEME.4=船长
+value.COLOR_SCHEME.5=迷幻效果
+value.COLOR_SCHEME.6=可可
+value.COLOR_SCHEME.99=自定义
+
+option.LIGHT_SUNSET_COLOR_R=日落光照 R
+option.LIGHT_SUNSET_COLOR_G=日落光照 G
+option.LIGHT_SUNSET_COLOR_B=日落光照 B
+
+option.LIGHT_DAY_COLOR_R=日间光照 R
+option.LIGHT_DAY_COLOR_G=日间光照 G
+option.LIGHT_DAY_COLOR_B=日间光照 B
+
+option.LIGHT_NIGHT_COLOR_R=夜间光照 R
+option.LIGHT_NIGHT_COLOR_G=夜间光照 G
+option.LIGHT_NIGHT_COLOR_B=夜间光照 B
+
+option.ZENITH_SUNSET_COLOR_R=天顶日落 R
+option.ZENITH_SUNSET_COLOR_G=天顶日落 G
+option.ZENITH_SUNSET_COLOR_B=天顶日落 B
+
+option.ZENITH_DAY_COLOR_R=天顶日间 R
+option.ZENITH_DAY_COLOR_G=天顶日间 G
+option.ZENITH_DAY_COLOR_B=天顶日间 B
+
+option.ZENITH_NIGHT_COLOR_R=天顶夜间 R
+option.ZENITH_NIGHT_COLOR_G=天顶夜间 G
+option.ZENITH_NIGHT_COLOR_B=天顶夜间 B
+
+option.HORIZON_SUNSET_COLOR_R=地平线日落 R
+option.HORIZON_SUNSET_COLOR_G=地平线日落 G
+option.HORIZON_SUNSET_COLOR_B=地平线日落 B
+
+option.HORIZON_DAY_COLOR_R=地平线日间 R
+option.HORIZON_DAY_COLOR_G=地平线日间 G
+option.HORIZON_DAY_COLOR_B=地平线日间 B
+
+option.HORIZON_NIGHT_COLOR_R=地平线夜间 R
+option.HORIZON_NIGHT_COLOR_G=地平线夜间 G
+option.HORIZON_NIGHT_COLOR_B=地平线夜间 B
+
+option.WATER_COLOR_R=水 红
+option.WATER_COLOR_G=水 绿
+option.WATER_COLOR_B=水 蓝
+
+option.OMNI_TINT_CUSTOM=Omni tint
+
+option.AVOID_DARK_LEVEL=洞穴亮度
+
+option.NIGHT_BRIGHT=夜间亮度
+
+option.V_CLOUDS=云
+value.V_CLOUDS.0=原版
+value.V_CLOUDS.1=Volumetric static
+value.V_CLOUDS.2=Volumetric dyn.
+
+option.CLOUD_VOL_STYLE=Volumetric cloud style
+value.CLOUD_VOL_STYLE.0=自然
+value.CLOUD_VOL_STYLE.1=方块状
+
+option.CLOUD_SPEED=Clouds speed
+value.CLOUD_SPEED.0=普通
+value.CLOUD_SPEED.1=Time lapse 1
+value.CLOUD_SPEED.2=Time lapse 2
+
+option.END_CLOUDS=末地云
+
+option.CLOUD_STEPS_AVG=云层采样
+
+option.BLOOM=泛光
+
+option.COLOR_BLINDNESS=色盲模式
+
+option.COLOR_BLIND_MODE=色盲类型
+value.COLOR_BLIND_MODE.0=红色盲
+value.COLOR_BLIND_MODE.1=绿色盲
+value.COLOR_BLIND_MODE.2=蓝色盲
+
+option.DEBUG_MODE=调试模式
+
+option.BLOOM_SAMPLES=Bloom sample pairs
+
+option.BLACK_ENTITY_FIX=黑色实体错误修复
+value.BLACK_ENTITY_FIX.0=关
+value.BLACK_ENTITY_FIX.1=开
+
+option.FOG_ADJUST=雾气强度
+value.FOG_ADJUST.10.0=The fog won't go away
+value.FOG_ADJUST.8.0=极低
+value.FOG_ADJUST.4.0=低
+value.FOG_ADJUST.2.0=中
+value.FOG_ADJUST.1.0=高
+
+option.BLOCKLIGHT_TEMP=Blocklight temp
+value.BLOCKLIGHT_TEMP.0=更暖
+value.BLOCKLIGHT_TEMP.1=视差贴图自阴影
+value.BLOCKLIGHT_TEMP.2=黄色
+value.BLOCKLIGHT_TEMP.3=淡黄
+value.BLOCKLIGHT_TEMP.4=白光
+
+option.sunPathRotation=太阳角度
+
+option.USE_BASIC_SH=Custom dimensions basic shader
+
+option.MATERIAL_GLOSS=材质光泽
+
+option.SIMPLE_AUTOEXP=Simpler exposure
+
+option.DYN_HAND_LIGHT=Fake dynamic light
+
+#Screens
+screen.ADVANCED_SCREEN=Advanced options
+screen.ADVANCED_SCREEN.comment=Set advanced options
+
+screen.COMPATIBILITY_SCREEN=兼容性
+screen.COMPATIBILITY_SCREEN.comment=Set compatibility options
+
+screen.SHADOWS_SCREEN=阴影
+screen.SHADOWS_SCREEN.comment=设置阴影选项
+
+screen.DOF_SCREEN=景深
+screen.DOF_SCREEN.comment=设置景深选项
+
+screen.AO_SCREEN=环境光遮蔽
+screen.AO_SCREEN.comment=Set ambient occlusion options
+
+screen.WATER_SCREEN=水
+screen.WATER_SCREEN.comment=设置水面选项。
+
+screen.POST_SCREEN=后期效果
+screen.POST_SCREEN.comment=设置后期效果选项。
+
+screen.LIGHT_SCREEN=光照
+screen.LIGHT_SCREEN.comment=Set light options.
+
+screen.CLOUDS_SCREEN=Sun & clouds
+screen.CLOUDS_SCREEN.comment=Set sun and clouds options.
+
+screen.FOG_SCREEN=雾
+screen.FOG_SCREEN.comment=设置雾选项
+
+screen.MOTION_BLUR_SCREEN=动态模糊
+screen.MOTION_BLUR_SCREEN.comment=设置运动模糊选项
+
+screen.ACCESIBILITY_SCREEN=Accesibility
+screen.ACCESIBILITY_SCREEN.comment=设置无障碍选项
+
+screen.CUSTOM_COLORS_SCREEN=Custom colors
+screen.CUSTOM_COLORS_SCREEN.comment=Set custom colors
+screen.CUSTOM_COLORS_DAY=Day custom colors
+screen.CUSTOM_COLORS_SUNSET=Sunset/dawn custom colors
+screen.CUSTOM_COLORS_NIGHT=Night custom colors
+screen.CUSTOM_COLORS_WATER=Water custom color
