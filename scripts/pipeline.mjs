@@ -39,6 +39,7 @@ import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './li
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
+const CF_CATALOG_FILE = join(ROOT, 'site/data/curseforge-catalog.json')
 const SHADERS_FILE = join(ROOT, 'site/data/shaders.json')
 const GLOSSARY_FILE = join(ROOT, 'site/data/glossary.json')
 const LANG_DIR = join(ROOT, 'site/public/lang')
@@ -440,6 +441,7 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
 
 // ---------- 主流程 ----------
 const catalog = JSON.parse(readFileSync(CATALOG_FILE, 'utf8'))
+const cfCatalog = JSON.parse(readFileSync(CF_CATALOG_FILE, 'utf8'))
 const db = JSON.parse(readFileSync(SHADERS_FILE, 'utf8'))
 
 const latestLangVersion = new Map()
@@ -464,7 +466,8 @@ const TOP = topArg >= 0 ? Number(args[topArg + 1]) : 50
 const IDS = idsArg >= 0
   ? (args[idsArg + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean)
   : []
-// 来源切换：CF_SOURCE=curseforge 时 --ids 的每个 id 都当作 CF slug，走 CurseForge 解析。
+// 老路径（向后兼容）：CF_SOURCE=curseforge 时 --ids 的每个 id 都强制当作 CF slug。
+// 现在已不需要它：--ids 默认逐 id 自行判定平台（见下方 worklist 构造）。
 const CF_SOURCE = process.env.CF_SOURCE
 
 const tmp = mkdtempSync(join(tmpdir(), 'shader-pipeline-'))
@@ -476,7 +479,7 @@ if (IDS.length) {
   if (topArg >= 0) console.log('⚠ 同时指定了 --ids 与 --top，以 --ids 为准（--top 被忽略）')
   worklist = []
   for (const id of IDS) {
-    // CF 来源：--ids 里的每个 id 都当作 CF slug，现场从 CurseForge 解析（不走 Modrinth API）
+    // 老路径（向后兼容）：CF_SOURCE=curseforge 时每个 id 都当作 CF slug，现场从 CurseForge 解析
     if (CF_SOURCE === 'curseforge') {
       try {
         const found = await cfFindBySlug(id)
@@ -493,6 +496,30 @@ if (IDS.length) {
     }
     const fromCatalog = catalog.shaders.find((c) => c.id === id)
     if (fromCatalog) { worklist.push(fromCatalog); continue }
+
+    // ② CurseForge 目录命中（按 slug）→ CF 分支，用目录里的 cfId（省一次 API 调用）
+    const cfFromCatalog = (cfCatalog.mods ?? []).find((m) => m.slug === id)
+    if (cfFromCatalog) {
+      const cfEntry = buildShaderEntry({ source: 'curseforge', slug: cfFromCatalog.slug, cfId: cfFromCatalog.cfId })
+      cfEntry.title = cfFromCatalog.name ?? id
+      worklist.push(cfEntry)
+      console.log(`[${cfEntry.id}] 命中 CurseForge 目录（cfId ${cfFromCatalog.cfId}）`)
+      continue
+    }
+
+    // ③ 两个目录都没有（多为玩家刚提交的新光影）：先试 CurseForge，再试 Modrinth。
+    // CF 未命中/未配 key/网络不可达都不算失败：Modrinth 是默认来源，继续走下面的现场解析。
+    try {
+      const found = await cfFindBySlug(id)
+      const cfEntry = buildShaderEntry({ source: 'curseforge', slug: found.slug, cfId: found.id })
+      cfEntry.title = found.name ?? id
+      worklist.push(cfEntry)
+      console.log(`[${cfEntry.id}] 不在任何目录中，已从 CurseForge 现场解析（cfId ${found.id}）`)
+      continue
+    } catch (err) {
+      console.log(`[${id}] CurseForge 未命中（${err.message.slice(0, 120)}），改试 Modrinth`)
+    }
+
     // catalog 外（多为玩家刚提交的新光影）：现场向 Modrinth 解析，失败只影响这一条
     try {
       const res = await fetch(`${MODRINTH_API}/project/${encodeURIComponent(id)}`, {
@@ -507,7 +534,7 @@ if (IDS.length) {
     } catch (err) {
       console.log(`[${id}] 无法解析: ${err.message.slice(0, 120)}`)
       failed++
-      await reportStatus(id, { status: STATUS.FAILED, error: `无法解析该光影：${err.message.slice(0, 200)}` })
+      await reportStatus(id, { status: STATUS.FAILED, error: `无法解析该光影（Modrinth 与 CurseForge 均未命中）：${err.message.slice(0, 200)}` })
     }
   }
   console.log(`本次处理 ${worklist.length} 个指定光影\n`)
