@@ -11,6 +11,8 @@ GITHUB_WORKFLOW_FILE = "translate.yml"
 # NOTIFY_ENABLED：一键停发开关（"1" 发信 / "0" 停发），不敏感，放 vars。
 # EMAIL_FROM 禁止写进本文件：仓库公开，发件地址只走 Worker secret（见 sync-worker-secrets.yml）。
 NOTIFY_ENABLED = "1"
+# 每 IP 每天「新增提交」上限（缺失/解析失败时 Worker 回退默认 3）。
+SUBMIT_LIMIT_PER_DAY = "3"
 
 # 以下为 Secrets，通过 `wrangler secret put <NAME>` 设置，不要写进本文件：
 #   TENCENT_DOCS_TOKEN      腾讯文档 API token（缺失则跳过镜像）
