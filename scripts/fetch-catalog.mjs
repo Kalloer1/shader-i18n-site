@@ -9,9 +9,10 @@
  *
  * 用法：npm run catalog
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { diffVanished } from './lib/catalog-diff.mjs'
 
 const CATALOG_FILE = join(dirname(fileURLToPath(import.meta.url)), '../site/data/modrinth-catalog.json')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
@@ -75,6 +76,43 @@ const shaders = hits
     lastSync: new Date().toISOString().slice(0, 10),
   }))
   .sort((a, b) => b.downloads - a.downloads)
+
+// —— 上游消失检测（只报告，绝不自动删）——
+// 旧快照在脚本顶部已读入 oldCatalog，覆盖写入前先对比并报告差异。
+const shadersJsonPath = join(dirname(CATALOG_FILE), 'shaders.json')
+const manualEntries = existsSync(shadersJsonPath)
+  ? (JSON.parse(readFileSync(shadersJsonPath, 'utf8')).shaders ?? [])
+  : []
+const { vanished, vanishedWithTranslations } = diffVanished(
+  oldCatalog.shaders ?? [],
+  shaders,
+  manualEntries,
+)
+if (vanished.length > 0) {
+  console.log(`⚠ 从 Modrinth 目录消失（被隐藏/下架/改名）：${vanished.join(', ')}`)
+  console.log(`  其中有汉化、需要人工跟进：${vanishedWithTranslations.join(', ') || '无'}`)
+  console.log(`::warning::从 Modrinth 目录消失了 ${vanished.length} 个光影（其中 ${vanishedWithTranslations.length} 个有汉化）`)
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const rows = vanished.map((id) => {
+      const manual = manualEntries.find((m) => m.id === id || m.modrinth?.projectId === id)
+      const hasZh = !!manual && (manual.langVersions ?? []).length > 0
+      const projectId = manual?.modrinth?.projectId ?? ''
+      return `| ${id} | ${hasZh ? '是' : '否'} | ${projectId} |`
+    })
+    const table = [
+      '',
+      '## 从 Modrinth 目录消失的光影（同步时检测）',
+      '',
+      '| id | 有汉化 | projectId |',
+      '| --- | --- | --- |',
+      ...rows,
+      '',
+    ].join('\n')
+    appendFileSync(process.env.GITHUB_STEP_SUMMARY, table)
+  }
+} else {
+  console.log('✓ 目录对比：没有条目从 Modrinth 消失')
+}
 
 mkdirSync(dirname(CATALOG_FILE), { recursive: true })
 writeFileSync(CATALOG_FILE, JSON.stringify({ shaders }, null, 2) + '\n')

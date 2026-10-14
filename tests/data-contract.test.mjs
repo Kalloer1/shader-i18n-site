@@ -126,16 +126,9 @@ test('gen-shader-pages.mjs 存在且导出可渲染的页面内容', async () =>
   assert.match(src, /site[\/\\]shaders|shaders['"]/, '脚本未写入 site/shaders')
 })
 
-// 历史遗留孤儿条目白名单：这些 id（或对应 modrinth.projectId）在 modrinth-catalog.json 中
-// 找不到完全一致的条目（或 id 与 catalog slug 不一致），列表端已改为以 catalog 为准，
-// 因此它们不会再出现在首页列表里，也就不会产生指向不存在详情页的死链。
-// 其余 6 条重复孤儿条目已清理（删除或迁移至 catalog 中的干净 id），
-// 仅剩 auroralite 与 veridian 两条仍待处置；清理前必须保留在 shaders.json（数据不动），
-// 但不得再让列表端把它们当作独立条目展示。
-const ORPHAN_WHITELIST = [
-  'auroralite',
-  'veridian',
-]
+// 当前无遗留孤儿条目。若将来出现「有 langVersions 但 id/projectId 在 catalog 中找不到」的条目，
+// 必须先在此登记并说明原因，否则测试失败。
+const ORPHAN_WHITELIST = []
 
 test('shaders.json：有 langVersions 的条目必须在 catalog 中可找到，否则进入白名单（防死链回归）', () => {
   const catalog = JSON.parse(

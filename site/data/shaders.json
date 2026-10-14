@@ -9824,38 +9824,6 @@
       "quark": "https://pan.quark.cn/s/9987ed78d874"
     },
     {
-      "id": "auroralite",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "auroralite",
-        "projectId": "oEztSFkC"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "1.0.1",
-          "langVersion": "1.0.0",
-          "file": "/lang/auroralite/1.0.1/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/b1b90614c844",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "AuroraLite",
-          "description": "Based on MakeUpUltraFast, a heavily modified vanilla-style shader.",
-          "downloads": 2610,
-          "iconUrl": "https://cdn.modrinth.com/data/oEztSFkC/0c4e2a670a303167a82a1747dfe72265698d772b_96.webp",
-          "author": "FlowerBC",
-          "pageUrl": "https://modrinth.com/shader/auroralite",
-          "lastSync": "2026-10-14"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/b1b90614c844"
-    },
-    {
       "id": "clearvision-shader",
       "nameCN": "",
       "modrinth": {
@@ -12846,38 +12814,6 @@
         }
       },
       "quark": "https://pan.quark.cn/s/943078ce8a13"
-    },
-    {
-      "id": "veridian",
-      "nameCN": "",
-      "modrinth": {
-        "slug": "veridian",
-        "projectId": "IR92NLTh"
-      },
-      "langVersions": [
-        {
-          "shaderVersion": "2",
-          "langVersion": "1.0.0",
-          "file": "/lang/veridian/2/zh_CN.lang",
-          "quark": "https://pan.quark.cn/s/abb263c7a86c",
-          "updatedAt": "2026-09-09",
-          "contributors": [
-            "AI 初翻 (MiMo-v2.5)"
-          ]
-        }
-      ],
-      "_meta": {
-        "modrinth": {
-          "title": "Veridian",
-          "description": "A shader made by 3 AI Models, to see how capable they are.",
-          "downloads": 482,
-          "iconUrl": "https://cdn.modrinth.com/data/IR92NLTh/32a60a0dfc2e0ab12c6312d5bf1d3e7d42e3b48f_96.webp",
-          "author": "billywillydilly",
-          "pageUrl": "https://modrinth.com/shader/veridian",
-          "lastSync": "2026-10-14"
-        }
-      },
-      "quark": "https://pan.quark.cn/s/abb263c7a86c"
     },
     {
       "id": "talaxs-lobotomy-shaders",
