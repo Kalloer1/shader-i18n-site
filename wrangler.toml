@@ -13,6 +13,8 @@ GITHUB_WORKFLOW_FILE = "translate.yml"
 NOTIFY_ENABLED = "1"
 # 每 IP 每天「新增提交」上限（缺失/解析失败时 Worker 回退默认 3）。
 SUBMIT_LIMIT_PER_DAY = "3"
+# LLM 网关地址（公开值，非秘密）：Worker 的 GET /models 代理与 /translate 白名单校验都读它。
+LLM_BASE_URL = "https://api.888424.xyz/v1"
 
 # 以下为 Secrets，通过 `wrangler secret put <NAME>` 设置，不要写进本文件：
 #   TENCENT_DOCS_TOKEN      腾讯文档 API token（缺失则跳过镜像）
