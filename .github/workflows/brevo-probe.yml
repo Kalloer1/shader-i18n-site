@@ -1,0 +1,41 @@
+name: brevo-probe
+
+# 一次性诊断：在 CI 里直接调 Brevo 发一封自检邮件，把 Brevo 的原始响应打出来，
+# 用于定位「玩家收不到通知邮件」的原因（发信通道被 Brevo 拒绝 vs 玩家侧拦截）。
+# 只保留 workflow_dispatch：无定时、无 push 触发，避免被反复调用。
+#
+# 发件人与收件人都取自 EMAIL_FROM（自发自收）。刻意不提供任何「收件人」输入参数：
+# 仓库是公开的，把邮箱地址作为 workflow 输入会写进 run 元数据里暴露出去。
+# 打印原始响应体是安全的：GitHub 会自动把 secret 值在日志中打码。
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send self-check mail via Brevo
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: |
+          if [ -z "${BREVO_API_KEY:-}" ] || [ -z "${EMAIL_FROM:-}" ]; then
+            echo "缺少 secret：BREVO_API_KEY 或 EMAIL_FROM 未注入，本次探针无意义"
+            exit 1
+          fi
+
+          ts="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "probe ts (UTC): $ts"
+
+          body="{\"sender\":{\"email\":\"$EMAIL_FROM\",\"name\":\"shader-i18n-site\"},\"to\":[{\"email\":\"$EMAIL_FROM\"}],\"subject\":\"【探针】Brevo 发信自检\",\"textContent\":\"Brevo 发信自检（工作流 brevo-probe）。UTC 时间戳：$ts\"}"
+
+          curl -sS -X POST "https://api.brevo.com/v3/smtp/email" \
+            -H "api-key: $BREVO_API_KEY" \
+            -H "accept: application/json" \
+            -H "Content-Type: application/json" \
+            -d "$body" \
+            -w "\nHTTP=%{http_code}\n"
