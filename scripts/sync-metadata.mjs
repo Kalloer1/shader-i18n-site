@@ -48,6 +48,8 @@ async function syncModrinth(shader) {
 
 let ok = 0
 for (const shader of db.shaders) {
+  // CF 条目不参与 Modrinth 元数据同步
+  if (shader.source === 'curseforge') continue
   const lines = [shader.id]
   try {
     if (shader.modrinth?.slug) lines.push(`  modrinth: ${await syncModrinth(shader)}`)
