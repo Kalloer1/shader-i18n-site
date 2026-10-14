@@ -1,9 +1,13 @@
 name: CF probe (CurseForge reachability from CI)
-# 一次性诊断：验证 GitHub runner（不同出口 IP）能否访问 CurseForge API 并下载包，
-# 顺便统计热门包是否含 shaders/lang/en_US.lang。
-# 背景：本机被 CurseForge 的 CloudFront 边缘 WAF 拦截（403），需在 CI 复测。
+# 一次性诊断：验证 GitHub runner 能否访问 CurseForge API 并下载包，顺便统计是否含 shaders/lang/en_US.lang。
+# 背景：本机被 CurseForge 的 CloudFront 边缘 WAF 拦截（403），CI 出口 IP 可用。
 on:
   workflow_dispatch:
+    inputs:
+      slugs:
+        description: '逗号分隔的 CF slug 列表（留空=取下载量前 20）'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -20,4 +24,5 @@ jobs:
       - name: Probe CurseForge
         env:
           CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+          PROBE_SLUGS: ${{ inputs.slugs }}
         run: node scripts/cf-probe.mjs
