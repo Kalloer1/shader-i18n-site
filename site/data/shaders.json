@@ -17814,13 +17814,14 @@
           "shaderVersion": "cf-Sildur-s-Enhanced-Default-v1.20-Fancy",
           "langVersion": "1.0.0",
           "file": "/lang/sildurs-enhanced-default/cf-Sildur-s-Enhanced-Default-v1.20-Fancy/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/1bed3dddaa34",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：deepseek-v4.1-flash / deepseek-v4-flash / u2-flash），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/1bed3dddaa34"
     },
     {
       "id": "super-duper-vanilla-shaders",
@@ -17834,13 +17835,14 @@
           "shaderVersion": "cf-superDuperVanilla",
           "langVersion": "1.0.0",
           "file": "/lang/super-duper-vanilla-shaders/cf-superDuperVanilla/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/edefd1f3fb0d",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：deepseek-v4.1-flash / deepseek-v4-flash / u2-flash），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/edefd1f3fb0d"
     }
   ]
 }
