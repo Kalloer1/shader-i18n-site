@@ -261,7 +261,7 @@ async function handleTrigger() {
           <code class="wb-id">{{ e.id }}</code>
           <span v-if="e.shaderVersion" class="wb-chip">光影 v{{ e.shaderVersion }}</span>
           <span v-if="e.error" class="wb-err" :title="e.error">{{ e.error }}</span>
-          <a v-if="e.quark" class="wb-mirror" :href="e.quark" target="_blank" rel="noopener noreferrer">夸克网盘镜像</a>
+          <a v-if="e.quark" class="wb-mirror" :href="e.quark" target="_blank" rel="noopener noreferrer">国内镜像</a>
         </div>
       </li>
     </ul>

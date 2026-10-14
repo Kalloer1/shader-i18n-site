@@ -68,6 +68,10 @@ const cfEntries = (cfCatalog.mods ?? [])
 const escHtml = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
+// 本站不再提供 /lang/... 直链下载，统一指向仓库内原始文件（GitHub raw）
+const GITHUB_RAW_BASE = 'https://github.com/Kalloer1/shader-i18n-site/raw/main/site/public'
+const githubUrlOf = (file) => `${GITHUB_RAW_BASE}/${String(file ?? '').replace(/^\/+/, '')}`
+
 function versionRange(versions) {
   const parse = (v) => {
     const m = String(v).match(/^(\d+)\.(\d+)(?:\.(\d+))?$/)
@@ -251,20 +255,20 @@ for (const e of [...catalog.shaders, ...cfEntries]) {
     const quarkUrl = newest.quark || manual?.quark || e.quark
     if (quarkUrl) {
       L.push(
-        `<a class="sp-btn sp-btn--primary sp-btn--dl" href="${escHtml(quarkUrl)}" target="_blank" rel="noopener noreferrer">夸克网盘下载</a>`,
+        `<a class="sp-btn sp-btn--primary sp-btn--dl" href="${escHtml(quarkUrl)}" target="_blank" rel="noopener noreferrer">国内镜像</a>`,
       )
     } else {
       L.push(
-        `<span class="sp-btn sp-btn--primary sp-btn--disabled sp-btn--dl" aria-disabled="true">夸克暂未镜像</span>`,
+        `<span class="sp-btn sp-btn--primary sp-btn--disabled sp-btn--dl" aria-disabled="true">国内镜像暂不可用</span>`,
       )
     }
     if (newestHasFile) {
       L.push(
-        `<a class="sp-btn sp-btn--ghost sp-btn--dl" href="${escHtml(newest.file)}" download>本站直链</a>`,
+        `<a class="sp-btn sp-btn--ghost sp-btn--dl" href="${escHtml(githubUrlOf(newest.file))}" target="_blank" rel="noopener noreferrer">GitHub</a>`,
       )
     } else {
       L.push(
-        `<span class="sp-btn sp-btn--ghost sp-btn--disabled sp-btn--dl" aria-disabled="true">本站直链（待上传）</span>`,
+        `<span class="sp-btn sp-btn--ghost sp-btn--disabled sp-btn--dl" aria-disabled="true">GitHub（待上传）</span>`,
       )
     }
     if (pageUrl) {
@@ -281,7 +285,7 @@ for (const e of [...catalog.shaders, ...cfEntries]) {
       L.push(`<div class="sp-table-scroll"><table class="sp-version-table">`)
       L.push(`<caption class="sr-only">各光影版本的汉化文件记录</caption>`)
       L.push(
-        `<thead><tr><th scope="col">光影版本</th><th scope="col">汉化版本</th><th scope="col">本站直链</th><th scope="col">夸克网盘</th><th scope="col">状态</th><th scope="col">日期</th></tr></thead>`,
+        `<thead><tr><th scope="col">光影版本</th><th scope="col">汉化版本</th><th scope="col">GitHub</th><th scope="col">国内镜像</th><th scope="col">状态</th><th scope="col">日期</th></tr></thead>`,
       )
       L.push(`<tbody>`)
       for (const [idx, v] of langVersions.entries()) {
@@ -289,11 +293,11 @@ for (const e of [...catalog.shaders, ...cfEntries]) {
         const vHasFile = v.file && existsSync(vPath)
         const isAI = (v.contributors?.[0] ?? '').startsWith('AI')
         const dl = vHasFile
-          ? `<a href="${escHtml(v.file)}" download>zh_CN.lang</a>`
+          ? `<a href="${escHtml(githubUrlOf(v.file))}" target="_blank" rel="noopener noreferrer">zh_CN.lang</a>`
           : '<code>待上传</code>'
         const versionQuarkUrl = v.quark || (idx === 0 ? manual?.quark || e.quark : '')
         const qk = versionQuarkUrl
-          ? `<a href="${escHtml(versionQuarkUrl)}" target="_blank" rel="noopener noreferrer">夸克网盘</a>`
+          ? `<a href="${escHtml(versionQuarkUrl)}" target="_blank" rel="noopener noreferrer">国内镜像</a>`
           : '—'
         const badge = isAI
           ? '<span class="sp-badge sp-badge--ai sp-badge--xs">AI 初翻</span>'

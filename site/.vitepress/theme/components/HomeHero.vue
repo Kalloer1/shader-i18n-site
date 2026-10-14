@@ -33,7 +33,13 @@ const selected = computed(
 const versions = computed(() => selected.value?.langVersions ?? [])
 const currentVersion = computed(() => versions.value[versionIndex.value] ?? null)
 const selectedStatus = computed(() => shaderStatus(selected.value))
-const directUrl = computed(() => currentVersion.value?.file || '')
+// 本站不再提供 /lang/... 直链下载，统一指向仓库内原始文件（GitHub raw）
+const githubUrl = (file) => {
+  if (!file) return ''
+  const p = String(file).replace(/^\/+/, '')
+  return `https://github.com/Kalloer1/shader-i18n-site/raw/main/site/public/${p}`
+}
+const directUrl = computed(() => githubUrl(currentVersion.value?.file || ''))
 const quarkUrl = computed(() => currentVersion.value?.quark || selected.value?.quark || '')
 const gameRange = computed(() => shaderVersionRange(selected.value))
 
@@ -232,8 +238,8 @@ function formatDate(value) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>夸克网盘下载</span>
-                <small>对应光影 {{ currentVersion.shaderVersion }} · 打开网盘</small>
+                <span>国内镜像</span>
+                <small>对应光影 {{ currentVersion.shaderVersion }} · 国内镜像</small>
               </a>
               <button
                 v-else
@@ -242,23 +248,24 @@ function formatDate(value) {
                 :aria-describedby="currentVersion && directUrl ? 'quark-unavailable' : undefined"
                 disabled
               >
-                <span>{{ currentVersion ? '夸克网盘不可用' : '暂无汉化文件' }}</span>
-                <small>{{ currentVersion && directUrl ? '可使用本站直链' : '没有可下载的语言文件' }}</small>
+                <span>{{ currentVersion ? '国内镜像不可用' : '暂无汉化文件' }}</span>
+                <small>{{ currentVersion && directUrl ? '可使用 GitHub 直链' : '没有可下载的语言文件' }}</small>
               </button>
 
               <a
                 v-if="directUrl"
                 class="download-alt"
                 :href="directUrl"
-                download
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                本站 / GitHub 直链
+                GitHub 直链
               </a>
-              <button v-else type="button" class="download-alt" disabled>本站 / GitHub 直链</button>
+              <button v-else type="button" class="download-alt" disabled>GitHub 直链</button>
             </div>
 
             <p v-if="currentVersion && !quarkUrl" id="quark-unavailable" class="download-tip">
-              当前版本暂无夸克链接，主按钮已禁用；请使用本站 / GitHub 直链下载。
+              当前版本暂无国内镜像，主按钮已禁用；请使用 GitHub 直链下载。
             </p>
             <p v-else-if="currentVersion" class="download-tip">
               版本对不上时请切换上方版本标签，避免设置项错位。
