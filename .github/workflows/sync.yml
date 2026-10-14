@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  # workflow_dispatch 需要 actions: write（否则调用 dispatch 端点 403）
+  actions: write
 
 # 与 translate.yml 共用同一 concurrency 组：两者都会 commit + push，
 # 并发运行会互相冲突（non-fast-forward）。
@@ -36,6 +38,7 @@ jobs:
           TENCENT_DOCS_TOKEN: ${{ secrets.TENCENT_DOCS_TOKEN }}
 
       - name: Commit changes
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -46,5 +49,18 @@ jobs:
                    site/data/glossary.json; do
             [ -e "$p" ] && git add -- "$p"
           done
-          git diff --cached --quiet || git commit -m "chore: daily sync $(date -u +%Y-%m-%d)"
-          git push
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: daily sync $(date -u +%Y-%m-%d)"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # GITHUB_TOKEN 的 push 不触发下游 workflow，故推送成功后显式 dispatch deploy。
+      - name: Trigger deploy
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY"

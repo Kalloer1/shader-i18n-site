@@ -12,6 +12,8 @@ on:
 
 permissions:
   contents: write
+  # workflow_dispatch 需要 actions: write（否则调用 dispatch 端点 403）
+  actions: write
 
 # 与 sync.yml 共用 concurrency 组：两者都会 commit + push。
 concurrency:
@@ -91,6 +93,7 @@ jobs:
         run: npm run pack:lang
 
       - name: Commit and push
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -100,7 +103,16 @@ jobs:
           done
           if git diff --cached --quiet; then
             echo "无变更，跳过提交"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "翻译: ${{ inputs.ids }}"
           git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      # GITHUB_TOKEN 的 push 不触发下游 workflow，故推送成功后显式 dispatch deploy。
+      - name: Trigger deploy
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY"
