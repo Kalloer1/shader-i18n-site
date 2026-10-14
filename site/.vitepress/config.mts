@@ -7,7 +7,10 @@ export default defineConfig({
   description:
     'Minecraft Java 版光影包简体中文汉化文件下载站：查找你的光影包，下载对应版本的 zh_CN.lang，游戏内光影界面显示中文。',
   appearance: 'dark', // 暗色画廊风为默认（仍可切换浅色）
-  head: [['meta', { name: 'theme-color', content: '#e8a33d' }]],
+  head: [
+    ['meta', { name: 'theme-color', content: '#e8a33d' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+  ],
 
   // /lang/ 下的汉化文件是 public 静态资源（site/public/lang/...），
   // 构建期确实存在，但 VitePress 死链检查只认 md 页面，需对该前缀豁免

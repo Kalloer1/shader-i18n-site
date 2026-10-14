@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <title>像素方块</title>
+  <!-- 泥土主体 -->
+  <rect x="0" y="5" width="16" height="11" fill="#8B5A2B"/>
+  <!-- 底部与右侧暗边，增强方块立体感 -->
+  <rect x="0" y="15" width="16" height="1" fill="#6F4620"/>
+  <rect x="15" y="5" width="1" height="10" fill="#6F4620"/>
+  <!-- 草皮（顶部 5 行） -->
+  <rect x="0" y="0" width="16" height="5" fill="#6ABF41"/>
+  <rect x="0" y="0" width="16" height="1" fill="#7CCB4F"/>
+  <rect x="2" y="1" width="2" height="1" fill="#7CCB4F"/>
+  <rect x="9" y="1" width="1" height="1" fill="#7CCB4F"/>
+  <rect x="5" y="2" width="2" height="1" fill="#58A835"/>
+  <rect x="13" y="2" width="2" height="1" fill="#58A835"/>
+  <rect x="1" y="3" width="3" height="1" fill="#58A835"/>
+  <rect x="8" y="3" width="1" height="1" fill="#58A835"/>
+  <rect x="0" y="4" width="2" height="1" fill="#58A835"/>
+  <rect x="4" y="4" width="2" height="1" fill="#58A835"/>
+  <rect x="11" y="4" width="2" height="1" fill="#58A835"/>
+  <!-- 草皮垂入泥土的锯齿 -->
+  <rect x="0" y="5" width="2" height="1" fill="#4A9430"/>
+  <rect x="3" y="5" width="2" height="1" fill="#4A9430"/>
+  <rect x="6" y="5" width="1" height="1" fill="#4A9430"/>
+  <rect x="9" y="5" width="2" height="1" fill="#4A9430"/>
+  <rect x="13" y="5" width="1" height="1" fill="#4A9430"/>
+  <rect x="15" y="5" width="1" height="1" fill="#4A9430"/>
+  <!-- 泥土斑驳纹理 -->
+  <rect x="3" y="7" width="2" height="1" fill="#7A4C22"/>
+  <rect x="10" y="7" width="1" height="1" fill="#9A6633"/>
+  <rect x="13" y="8" width="2" height="1" fill="#7A4C22"/>
+  <rect x="5" y="8" width="1" height="1" fill="#9A6633"/>
+  <rect x="1" y="9" width="1" height="1" fill="#9A6633"/>
+  <rect x="8" y="9" width="2" height="1" fill="#7A4C22"/>
+  <rect x="3" y="10" width="1" height="1" fill="#7A4C22"/>
+  <rect x="12" y="10" width="1" height="1" fill="#9A6633"/>
+  <rect x="6" y="11" width="2" height="1" fill="#9A6633"/>
+  <rect x="14" y="11" width="1" height="1" fill="#7A4C22"/>
+  <rect x="0" y="12" width="1" height="1" fill="#7A4C22"/>
+  <rect x="9" y="12" width="1" height="1" fill="#9A6633"/>
+  <rect x="4" y="13" width="2" height="1" fill="#7A4C22"/>
+  <rect x="11" y="13" width="1" height="1" fill="#9A6633"/>
+  <rect x="7" y="14" width="1" height="1" fill="#9A6633"/>
+  <rect x="13" y="14" width="2" height="1" fill="#7A4C22"/>
+</svg>
