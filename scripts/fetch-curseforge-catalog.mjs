@@ -111,6 +111,9 @@ const rows = mods.map((m) => ({
   pageUrl: m.links?.websiteUrl ?? `https://www.curseforge.com/minecraft/shaders/${m.slug}`,
   updated: m.dateModified ?? '',
   latestFileId: m.latestFiles?.[0]?.id ?? null,
+  // 项目级分发许可：false = 作者禁止 API 分发（pipeline 直接跳过，不浪费下载预算）。
+  // 原样存回；字段缺失时为 undefined，JSON 序列化会省略该键（消费侧按“未采集”处理，不排除）。
+  allowModDistribution: m.allowModDistribution,
 }))
 
 const catalog = {

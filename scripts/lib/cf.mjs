@@ -47,6 +47,15 @@ export function cfShaderId(entry) {
   return slug
 }
 
+/**
+ * 作者是否禁止 API 分发。
+ * allowModDistribution 是 CF 项目级永久属性：为 false 时下载接口一律返回 403，重试无意义。
+ * 只有**明确为 false** 才算禁止；字段缺失（undefined）表示尚未采集，不能据此排除。
+ */
+export function isApiDownloadBlocked(entry) {
+  return entry?.allowModDistribution === false
+}
+
 export function pickCfCandidates(cfCatalog, manualEntries, limit) {
   const manualSlugs = new Set()
   const manualCfIds = new Set()
@@ -58,6 +67,7 @@ export function pickCfCandidates(cfCatalog, manualEntries, limit) {
   return (cfCatalog ?? [])
     .filter((e) => {
       if (e.downloads == null || e.downloads === 0) return false
+      if (isApiDownloadBlocked(e)) return false
       if (e.slug && manualSlugs.has(e.slug)) return false
       if (e.cfId != null && manualCfIds.has(String(e.cfId))) return false
       return true

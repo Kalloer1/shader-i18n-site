@@ -34,7 +34,7 @@ import { inflateRawSync } from 'node:zlib'
 import { STATUS } from '../shared/tencent-docs.mjs'
 import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 import { isEnUsLangPath, isLangFilePath, isZhCNLangPath } from './lib/lang-source.mjs'
-import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug } from './lib/cf-api.mjs'
+import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-api.mjs'
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -728,6 +728,13 @@ async function processShaderCf(entry, signal, localGlossary) {
     if (cfId == null) throw new Error('CurseForge 条目缺少 curseforge.cfId')
     // 本条光影的 CF 预算：元数据请求、每个候选文件都从这份预算里扣，总占用有硬上限。
     const deadline = Date.now() + CF_SHADER_BUDGET_MS
+    // 项目详情里就能读到分发许可：allowModDistribution=false 是项目级永久属性，
+    // CF 下载接口一律返回 403，重试无意义 —— 在读文件列表之前就跳过，不浪费下载预算。
+    const mod = await cfGetMod(cfId, AbortSignal.any([signal, AbortSignal.timeout(CF_SHADER_BUDGET_MS)]))
+    if (mod?.allowModDistribution === false) {
+      console.log(`${tag} 跳过：作者禁止 API 分发（allowModDistribution=false），永久排除，不尝试下载`)
+      return { status: STATUS.DONE, error: '', note: '作者禁止 API 分发（allowModDistribution=false），永久排除' }
+    }
     const files = await cfGetFiles(cfId, 50, AbortSignal.any([signal, AbortSignal.timeout(CF_SHADER_BUDGET_MS)]))
     // release 优先（releaseType===1），同类型内按 fileDate 倒序（新在前）
     const candidates = files

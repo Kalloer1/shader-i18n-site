@@ -13,6 +13,7 @@ import {
   pickCfCandidates,
   buildShaderEntry,
   isCurseforgeEntry,
+  isApiDownloadBlocked,
 } from '../scripts/lib/cf.mjs'
 
 describe('cfVersionFromFileName 版本号清洗', () => {
@@ -120,6 +121,38 @@ describe('pickCfCandidates 候选池', () => {
   it('返回值只含 CF 条目', () => {
     const picked = pickCfCandidates(catalog, [], 10)
     assert.ok(picked.every((e) => typeof e.slug === 'string' && typeof e.cfId === 'number'))
+  })
+
+  it('allowModDistribution === false 的被排除（作者禁止 API 分发）', () => {
+    const blocked = [{ cfId: 9, slug: 'blocked', downloads: 999, allowModDistribution: false }]
+    assert.deepEqual(pickCfCandidates(blocked, [], 10), [])
+    // 与正常条目混排时只排除被禁的，排序不受影响
+    const picked = pickCfCandidates(
+      [...blocked, { cfId: 10, slug: 'ok', downloads: 1, allowModDistribution: true }],
+      [],
+      10,
+    )
+    assert.deepEqual(picked.map((e) => e.slug), ['ok'])
+  })
+
+  it('allowModDistribution === true 的被保留', () => {
+    const picked = pickCfCandidates([{ cfId: 11, slug: 'yes', downloads: 5, allowModDistribution: true }], [], 10)
+    assert.deepEqual(picked.map((e) => e.slug), ['yes'])
+  })
+
+  it('allowModDistribution 缺失（undefined）的被保留（未采集不误伤）', () => {
+    const picked = pickCfCandidates([{ cfId: 12, slug: 'unknown', downloads: 5 }], [], 10)
+    assert.deepEqual(picked.map((e) => e.slug), ['unknown'])
+  })
+})
+
+describe('isApiDownloadBlocked 分发许可判定', () => {
+  it('只有明确为 false 才算禁止', () => {
+    assert.equal(isApiDownloadBlocked({ allowModDistribution: false }), true)
+    assert.equal(isApiDownloadBlocked({ allowModDistribution: true }), false)
+    assert.equal(isApiDownloadBlocked({}), false)
+    assert.equal(isApiDownloadBlocked({ allowModDistribution: undefined }), false)
+    assert.equal(isApiDownloadBlocked(undefined), false)
   })
 })
 
