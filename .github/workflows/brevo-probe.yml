@@ -4,9 +4,10 @@ name: brevo-probe
 # 用于定位「玩家收不到通知邮件」的原因（发信通道被 Brevo 拒绝 vs 玩家侧拦截）。
 # 只保留 workflow_dispatch：无定时、无 push 触发，避免被反复调用。
 #
-# 发件人与收件人都取自 EMAIL_FROM（自发自收）。刻意不提供任何「收件人」输入参数：
-# 仓库是公开的，把邮箱地址作为 workflow 输入会写进 run 元数据里暴露出去。
-# 备用收件人走临时 secret NOTIFY_TEST_TO（未配置则跳过该步），同样不出现在输入参数/文件里。
+# 发件人取自 EMAIL_FROM；收件人取自临时 secret NOTIFY_TEST_TO（未配置则跳过发信测试）。
+# 刻意不提供任何「收件人」输入参数：仓库是公开的，把邮箱地址作为 workflow 输入
+# 会写进 run 元数据里暴露出去。收件地址只走 secret，不出现在输入参数/文件里。
+# 收件人不要再改回 EMAIL_FROM：它是 noreply@ 发件地址，其域无 MX（设计如此），发到它必然 bounce。
 # 打印原始响应体是安全的：GitHub 会自动把 secret 值在日志中打码。
 
 on:
@@ -19,11 +20,27 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
+      # 本步骤只用于验证「能发到真实收件箱」，收件人必须是真实收件箱（secret NOTIFY_TEST_TO）。
+      # ⚠️ 不要把收件人改回 EMAIL_FROM：EMAIL_FROM 是 noreply@mccnp.top 发件地址，
+      # 该域没有 MX 记录（设计如此，noreply@ 不该收信）→ 发到它必然 softBounces
+      # （reason: Unable to find MX of domain mccnp.top），这是假故障信号，
+      # 不能用来判断「发信是否正常」。
+      # 判断发信是否正常，应看「Inspect Brevo delivery events」里是否有 delivered；
+      # 正常投递的事件序列实测为 requests → delivered → opened。
+      # 收件地址来自临时 secret（仓库是公开的，绝不能写成输入参数/写进文件）。
+      # secret 未配置则跳过，不报错。注意红线：if: 表达式里不能引用 secrets.*，
+      # 所以这里用 env: 注入后在 shell 里判断。
       - name: Send self-check mail via Brevo
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          NOTIFY_TEST_TO: ${{ secrets.NOTIFY_TEST_TO }}
         run: |
+          if [ -z "${NOTIFY_TEST_TO:-}" ]; then
+            echo "未配置真实收件箱（secret NOTIFY_TEST_TO 为空），跳过发信测试；判断发信是否正常请看投递事件里的 delivered"
+            exit 0
+          fi
+
           if [ -z "${BREVO_API_KEY:-}" ] || [ -z "${EMAIL_FROM:-}" ]; then
             echo "缺少 secret：BREVO_API_KEY 或 EMAIL_FROM 未注入，本次探针无意义"
             exit 1
@@ -32,7 +49,7 @@ jobs:
           ts="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           echo "probe ts (UTC): $ts"
 
-          body="{\"sender\":{\"email\":\"$EMAIL_FROM\",\"name\":\"shader-i18n-site\"},\"to\":[{\"email\":\"$EMAIL_FROM\"}],\"subject\":\"【探针】Brevo 发信自检\",\"textContent\":\"Brevo 发信自检（工作流 brevo-probe）。UTC 时间戳：$ts\"}"
+          body="{\"sender\":{\"email\":\"$EMAIL_FROM\",\"name\":\"shader-i18n-site\"},\"to\":[{\"email\":\"$NOTIFY_TEST_TO\"}],\"subject\":\"【探针】Brevo 发信自检\",\"textContent\":\"Brevo 发信自检（工作流 brevo-probe）。UTC 时间戳：$ts\"}"
 
           curl -sS -X POST "https://api.brevo.com/v3/smtp/email" \
             -H "api-key: $BREVO_API_KEY" \
