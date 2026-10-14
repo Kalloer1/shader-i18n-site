@@ -6,9 +6,9 @@
  * 翻译默认使用模型池，按分块轮转调用；失败或回退过高时自动尝试下一个模型。
  * LLM_CONCURRENCY 控制光影级并发（每条光影仍各自独立超时、独立中断）。
  *
- * LLM 提供方：环境变量配置，默认仍为 SiliconFlow（硅基流动）。
- *   LLM_BASE_URL    接口地址；优先级 LLM_BASE_URL > SILICONFLOW_BASE_URL > SiliconFlow 官方
- *   LLM_API_KEY     API key；缺省回退 SILICONFLOW_API_KEY
+ * LLM 提供方：环境变量配置，默认指向自建中转站（OpenAI 兼容）。
+ *   LLM_BASE_URL    接口地址；优先级 LLM_BASE_URL > SILICONFLOW_BASE_URL（旧名别名） > 默认中转站
+ *   LLM_API_KEY     API key；缺省回退 SILICONFLOW_API_KEY（旧名别名）
  *   LLM_MODELS      模型名列表（逗号分隔）；优先于 LLM_MODEL
  *   LLM_MODEL       兼容单模型配置，也接受逗号分隔列表
  *   LLM_CONCURRENCY 并发度；默认 10
@@ -45,7 +45,7 @@ const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
 const DEFAULT_MODEL = 'tencent/Hunyuan-MT-7B'
 const DEFAULT_CONCURRENCY = 10
-const DEFAULT_BASE_URL = 'https://api.siliconflow.cn/v1/chat/completions'
+const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -145,7 +145,7 @@ function createProvider(model) {
   const isDefault = !LLM_ENV_SET && model === DEFAULT_MODEL
   return {
     id: model,
-    name: isDefault ? 'Hunyuan-MT-7B（SiliconFlow）' : `${model}（${providerHostLabel(LLM_URL())}）`,
+    name: isDefault ? `Hunyuan-MT-7B（${providerHostLabel(DEFAULT_BASE_URL)}）` : `${model}（${providerHostLabel(LLM_URL())}）`,
     url: LLM_URL,
     key: LLM_KEY,
     body: (messages) => ({
@@ -170,9 +170,9 @@ function nextProviderOrder(list = providers) {
 
 if (!LLM_KEY()) {
   if (LLM_ENV_SET) {
-    console.error('缺少 LLM API key：请设置 LLM_API_KEY（或回退 SILICONFLOW_API_KEY）')
+    console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），默认站点 ' + providerHostLabel(DEFAULT_BASE_URL))
   } else {
-    console.error('缺少 SiliconFlow API key：请设置 SILICONFLOW_API_KEY')
+    console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY）')
   }
   process.exit(2)
 }

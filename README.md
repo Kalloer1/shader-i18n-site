@@ -131,7 +131,7 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 入口：`npm run translate`，实现：`scripts/pipeline.mjs`。由 `.github/workflows/translate.yml` 在站点 `/request` 点「开启翻译」时调用；也可在本地手动运行。
 
-前置条件：配置 `LLM_API_KEY`（或回退 `SILICONFLOW_API_KEY`），并通过 `LLM_BASE_URL` 指向 OpenAI 兼容接口。默认模型池为 `muse-spark-1.3-contributor-free,muse-spark-1.2-contributor-free,mimo-v2.6-flash-free`，并发默认 10。
+前置条件：配置 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`）。接口默认指向自建中转站 `https://api.888424.xyz/v1`，换站时用 `LLM_BASE_URL` 覆盖（优先级最高），指向 OpenAI 兼容接口。默认模型池为 `muse-spark-1.3-contributor-free,muse-spark-1.2-contributor-free,mimo-v2.6-flash-free`，并发默认 10。
 
 逐步流程：
 
@@ -232,7 +232,7 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 
 - API key、token、Cookie 不入库，也不要写进 Markdown、JSON 或 GitHub Actions 日志。
 - GitHub Actions 使用 GitHub Secrets。
-- 翻译流水线的本地密钥：`LLM_API_KEY`（或回退 `SILICONFLOW_API_KEY`）；默认免费模型池并发 10。
+- 翻译流水线的本地密钥：`LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`）；接口默认指向自建中转站 `https://api.888424.xyz/v1`，换站时用 `LLM_BASE_URL` 覆盖（优先级最高）；默认免费模型池并发 10。
 - 本机 Wrangler 可使用 Cloudflare Global API Key + 邮箱环境变量 `CLOUDFLARE_API_KEY`、`CLOUDFLARE_EMAIL`；已验证可读取账户和 Pages 项目。不要把 Global API Key 提交到仓库。
 - GitHub 的 Deploy workflow 当前使用更适合 CI 的 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID` Secrets；这与本机 Global API Key + Email 是两套认证方式。
 - Worker 使用 Wrangler Secret 配置 `TENCENT_DOCS_TOKEN`；每日同步中的同名 GitHub Secret 是可选的。
