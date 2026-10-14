@@ -19,6 +19,7 @@ import { dirname, join } from 'node:path'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const SHADERS_DIR = join(ROOT, 'site/shaders')
 const catalog = JSON.parse(readFileSync(join(ROOT, 'site/data/modrinth-catalog.json'), 'utf8'))
+const cfCatalog = JSON.parse(readFileSync(join(ROOT, 'site/data/curseforge-catalog.json'), 'utf8'))
 const db = JSON.parse(readFileSync(join(ROOT, 'site/data/shaders.json'), 'utf8'))
 
 // 清掉旧的生成物
@@ -35,6 +36,35 @@ const manualByProjectId = new Map(
 // 产品决定：站点只展示两类光影 —— 已有本站汉化（langVersions 非空）或自带中文；其余不生成详情页（数据仍保留在 catalog）
 const manualOf = (e) => manualBySlug.get(e.id) ?? manualByProjectId.get(e.projectId) ?? manualBySlug.get(e.projectId)
 const isDisplayed = (e) => e.hasNativeZhCN === true || (manualOf(e)?.langVersions?.length ?? 0) > 0
+
+// CurseForge 独占条目：判据必须与 site/.vitepress/theme/data.js 的 cfOnlyShaders 完全一致，
+// 否则会出现「列表里有、详情页没有」或反向的死链。
+// id 取 shaders.json 里的 id（CF 翻译链路以它为身份），页面文件即 site/shaders/<id>.md。
+const normSlug = (s) => String(s ?? '').trim().toLowerCase().replace(/[-_\s]+/g, '')
+const modrinthIdSet = new Set(catalog.shaders.map((e) => normSlug(e.id)))
+const cfManualBySlug = new Map()
+for (const s of db.shaders) {
+  if (s.source !== 'curseforge' || !(s.langVersions?.length > 0)) continue
+  cfManualBySlug.set(normSlug(s.id), s)
+  if (s.curseforge?.slug) cfManualBySlug.set(normSlug(s.curseforge.slug), s)
+}
+const cfEntries = (cfCatalog.mods ?? [])
+  .map((m) => ({ m, manual: cfManualBySlug.get(normSlug(m.slug)) }))
+  .filter(({ m, manual }) => manual && !modrinthIdSet.has(normSlug(m.slug)))
+  .map(({ m, manual }) => ({
+    id: manual.id,
+    source: 'curseforge',
+    projectId: undefined,
+    title: m.name || manual.id,
+    author: m.author ?? '',
+    downloads: m.downloads ?? 0,
+    pageUrl: m.pageUrl ?? '',
+    gameVersions: m.gameVersions ?? [],
+    gallery: m.gallery ?? [],
+    iconUrl: m.iconUrl ?? '',
+    hasNativeZhCN: false,
+    noEnUsLang: false,
+  }))
 const escHtml = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
@@ -75,9 +105,12 @@ function getSimilarShaders(currentId, count = 6) {
 
 // ---------- 生成页面 ----------
 let generated = 0
-for (const e of catalog.shaders) {
+for (const e of [...catalog.shaders, ...cfEntries]) {
   if (!isDisplayed(e)) continue
   const manual = manualOf(e)
+  const isCf = e.source === 'curseforge'
+  // 上游入口文案：Modrinth 条目逐字不变，CF 独占条目指向 CurseForge 项目页
+  const upstreamLabel = isCf ? 'CurseForge 原页' : 'Modrinth 原页'
   const title = manual?._meta?.modrinth?.title ?? e.title
   const nameCN = manual?.nameCN ?? ''
   const author = manual?._meta?.modrinth?.author ?? e.author ?? ''
@@ -164,7 +197,7 @@ for (const e of catalog.shaders) {
   L.push(`<div class="sp-hero__actions">`)
   if (pageUrl) {
     L.push(
-      `<a class="sp-btn sp-btn--ghost" href="${escHtml(pageUrl)}" target="_blank" rel="noopener noreferrer">Modrinth 原页<span aria-hidden="true"> →</span></a>`,
+      `<a class="sp-btn sp-btn--ghost" href="${escHtml(pageUrl)}" target="_blank" rel="noopener noreferrer">${upstreamLabel}<span aria-hidden="true"> →</span></a>`,
     )
   }
   L.push(`<a class="sp-btn sp-btn--ghost" href="/guide/install">安装教程</a>`)
@@ -236,7 +269,7 @@ for (const e of catalog.shaders) {
     }
     if (pageUrl) {
       L.push(
-        `<a class="sp-btn sp-btn--ghost sp-btn--dl" href="${escHtml(pageUrl)}" target="_blank" rel="noopener noreferrer">Modrinth 原页</a>`,
+        `<a class="sp-btn sp-btn--ghost sp-btn--dl" href="${escHtml(pageUrl)}" target="_blank" rel="noopener noreferrer">${upstreamLabel}</a>`,
       )
     }
     L.push(`</div>`)
@@ -296,8 +329,12 @@ for (const e of catalog.shaders) {
     L.push(`</div>`)
   }
 
-  // 光影本体下载（客户端动态加载）
-  L.push(`<div id="modrinth-versions" data-project-id="${escHtml(e.projectId)}"></div>`)
+  // 光影本体下载（客户端动态加载）；CF 独占条目没有 Modrinth projectId，改传上游项目页地址
+  if (isCf) {
+    L.push(`<div id="modrinth-versions" data-page-url="${escHtml(pageUrl)}"></div>`)
+  } else {
+    L.push(`<div id="modrinth-versions" data-project-id="${escHtml(e.projectId)}"></div>`)
+  }
   L.push(`</section>`)
 
   // ===== Tab 2: 图库 =====
@@ -314,7 +351,11 @@ for (const e of catalog.shaders) {
   // ===== Tab 3: 介绍（客户端动态加载）=====
   L.push(`<section class="sp-tabs__panel sp-tabs__panel--desc" aria-label="介绍">`)
   L.push(`<div class="sp-desc-card">`)
-  L.push(`<div id="modrinth-desc" data-project-id="${escHtml(e.projectId)}"></div>`)
+  if (isCf) {
+    L.push(`<div id="modrinth-desc" data-page-url="${escHtml(pageUrl)}"></div>`)
+  } else {
+    L.push(`<div id="modrinth-desc" data-project-id="${escHtml(e.projectId)}"></div>`)
+  }
   L.push(`</div>`)
   L.push(`</section>`)
 

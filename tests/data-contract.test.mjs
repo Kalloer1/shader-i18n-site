@@ -37,6 +37,13 @@ test('shaders.json：id 唯一', () => {
 test('shaders.json：每个条目有合法 modrinth 映射', () => {
   for (const s of db.shaders) {
     assert.ok(typeof s.id === 'string' && s.id.length > 0, `id 非法: ${JSON.stringify(s.id)}`)
+    // CurseForge 独占条目没有 modrinth 映射，改为校验 curseforge 映射（形态见 cf-conventions.test.mjs）
+    if (s.source === 'curseforge') {
+      assert.ok(s.curseforge && typeof s.curseforge === 'object', `${s.id} 缺 curseforge`)
+      assert.ok(typeof s.curseforge.slug === 'string' && s.curseforge.slug, `${s.id} 缺 curseforge.slug`)
+      assert.ok(Number.isInteger(s.curseforge.cfId), `${s.id} 缺 curseforge.cfId`)
+      continue
+    }
     assert.ok(s.modrinth && typeof s.modrinth === 'object', `${s.id} 缺 modrinth`)
     assert.ok(typeof s.modrinth.projectId === 'string', `${s.id} 缺 modrinth.projectId`)
   }
@@ -130,16 +137,28 @@ test('gen-shader-pages.mjs 存在且导出可渲染的页面内容', async () =>
 // 必须先在此登记并说明原因，否则测试失败。
 const ORPHAN_WHITELIST = []
 
+const normSlug = (s) => String(s ?? '').trim().toLowerCase().replace(/[-_\s]+/g, '')
+
 test('shaders.json：有 langVersions 的条目必须在 catalog 中可找到，否则进入白名单（防死链回归）', () => {
   const catalog = JSON.parse(
     readFileSync(join(ROOT, 'site/data/modrinth-catalog.json'), 'utf8'),
   )
+  const cfCatalog = JSON.parse(
+    readFileSync(join(ROOT, 'site/data/curseforge-catalog.json'), 'utf8'),
+  )
   const catalogIds = new Set(catalog.shaders.map((e) => e.id))
   const catalogProjectIds = new Set(catalog.shaders.map((e) => e.projectId))
+  // CurseForge 独占条目（source=curseforge）：列表/详情页成员判据与 site/.vitepress/theme/data.js
+  // 的 cfOnlyShaders 一致 —— 归一化 slug 命中 CF 目录，即视为可找到（不再算死链）。
+  const cfSlugs = new Set((cfCatalog.mods ?? []).map((m) => normSlug(m.slug)))
   const missing = []
   for (const s of db.shaders) {
     if (!(s.langVersions ?? []).length) continue
+    const foundCf =
+      s.source === 'curseforge' &&
+      (cfSlugs.has(normSlug(s.id)) || cfSlugs.has(normSlug(s.curseforge?.slug)))
     const found =
+      foundCf ||
       catalogIds.has(s.id) ||
       catalogProjectIds.has(s.modrinth?.projectId) ||
       catalogProjectIds.has(s.id)

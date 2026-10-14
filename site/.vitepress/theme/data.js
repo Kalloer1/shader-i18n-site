@@ -3,6 +3,7 @@
 import catalog from '../../data/modrinth-catalog.json'
 import hiresRaw from '../../data/gallery-hires.json'
 import db from '../../data/shaders.json'
+import cfCatalog from '../../data/curseforge-catalog.json'
 
 // Top80 高清原图（raw_url），根治 _350 缩略图拉大必糊；缺失回退缩略图
 const hiresMap = new Map(Object.entries(hiresRaw ?? {}))
@@ -36,6 +37,34 @@ function mergeManual(entry, manual) {
     nameCN: manual?.nameCN ?? '',
     curseforge: manual?._meta?.curseforge ?? manual?.curseforge ?? null,
     langVersions: manual?.langVersions ?? [],
+  }
+}
+
+// CurseForge 独占条目：Modrinth 目录里没有对应项目，因此没有 projectId（保持 undefined，
+// 详情页不会输出 data-project-id，客户端也不会去请求 /project//version）。
+// 上游链接一律指向 CF 项目页（entry.pageUrl）。
+function mergeCfManual(entry, manual) {
+  return {
+    id: manual.id,
+    projectId: undefined,
+    source: 'curseforge',
+    title: entry.name || manual.id,
+    author: entry.author || '',
+    downloads: entry.downloads ?? 0,
+    iconUrl: entry.iconUrl ?? '',
+    description: entry.description ?? '',
+    pageUrl: entry.pageUrl ?? '',
+    gameVersions: entry.gameVersions ?? [],
+    gallery: entry.gallery ?? [],
+    galleryHi: [],
+    color: '',
+    categories: entry.categories ?? [],
+    hasNativeZhCN: false,
+    missingSource: false,
+    checked: false,
+    nameCN: manual.nameCN ?? '',
+    curseforge: manual.curseforge ?? { slug: entry.slug, cfId: entry.cfId },
+    langVersions: manual.langVersions ?? [],
   }
 }
 
@@ -101,8 +130,9 @@ export function shaderCover(shader) {
 
 export function shaderCoverSource(shader) {
   if (shader?.galleryHi?.[0]) return 'gallery-hires.json'
-  if (shader?.gallery?.[0]) return 'modrinth-catalog.json'
-  if (shader?.iconUrl) return 'Modrinth icon'
+  const isCf = shader?.source === 'curseforge'
+  if (shader?.gallery?.[0]) return isCf ? 'curseforge-catalog.json' : 'modrinth-catalog.json'
+  if (shader?.iconUrl) return isCf ? 'CurseForge icon' : 'Modrinth icon'
   return '暂无图片'
 }
 
@@ -121,9 +151,31 @@ const isDisplayable = (e) =>
 // 列表只来自 catalog（与 gen-shader-pages.mjs 的遍历源一致）：
 // shaders.json 仅用于补充字段（nameCN/langVersions/quark/_meta 等），不允许它新增 id，
 // 否则会出现「列表里有、详情页没有」的死链。
-export const allShaders = catalog.shaders
+const modrinthShaders = catalog.shaders
   .filter(isDisplayable)
   .map((e) => mergeManual(e, mergeSource(e)))
-  .sort((a, b) => b.downloads - a.downloads)
+
+const normSlug = (s) => String(s ?? '').trim().toLowerCase().replace(/[-_\s]+/g, '')
+
+// CurseForge 独占条目：Modrinth 目录里没有同名项目（按归一化 slug 判定），
+// 但 shaders.json 已有本站汉化（source=curseforge 且 langVersions 非空）。
+// 这类条目会生成详情页，必须同时合入列表，否则是「详情页存在、列表查不到」的反向死链。
+// 判据必须与 scripts/gen-shader-pages.mjs 保持一致。
+const cfManualBySlug = new Map()
+for (const s of db.shaders) {
+  if (s.source !== 'curseforge' || !(s.langVersions?.length > 0)) continue
+  cfManualBySlug.set(normSlug(s.id), s)
+  if (s.curseforge?.slug) cfManualBySlug.set(normSlug(s.curseforge.slug), s)
+}
+const modrinthIdSet = new Set(catalog.shaders.map((e) => normSlug(e.id)))
+const cfOnlyShaders = (cfCatalog.mods ?? [])
+  .map((entry) => ({ entry, manual: cfManualBySlug.get(normSlug(entry.slug)) }))
+  .filter(({ entry, manual }) => manual && !modrinthIdSet.has(normSlug(entry.slug)))
+  .map(({ entry, manual }) => mergeCfManual(entry, manual))
+
+// 合并后统一按下载量排序（Array#sort 稳定：Modrinth 条目相对顺序与字段不变，CF 条目按下载量插入）
+export const allShaders = [...modrinthShaders, ...cfOnlyShaders].sort(
+  (a, b) => (b.downloads ?? 0) - (a.downloads ?? 0),
+)
 
 export const shaderById = Object.fromEntries(allShaders.map((s) => [s.id, s]))

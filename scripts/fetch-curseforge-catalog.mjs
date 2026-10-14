@@ -102,6 +102,21 @@ if (mods.length < MIN_EXPECTED) {
   process.exit(1)
 }
 
+// CF search 响应里的字段名未在本机实访验证（本机直连 CF 被 WAF 403 拦截），
+// 因此渲染相关字段一律防御式取值：多候选键，取不到就省略/留空。
+// 取不到时前端有兜底：无封面走首字母占位、无 gameVersions 不渲染 MC 版本行。
+const pick = (obj, ...keys) => {
+  for (const k of keys) {
+    const v = k.split('.').reduce((o, p) => (o == null ? undefined : o[p]), obj)
+    if (v !== undefined && v !== null && v !== '') return v
+  }
+  return undefined
+}
+const pickArray = (obj, ...keys) => {
+  const v = pick(obj, ...keys)
+  return Array.isArray(v) ? v : undefined
+}
+
 const rows = mods.map((m) => ({
   cfId: m.id,
   slug: m.slug,
@@ -111,6 +126,15 @@ const rows = mods.map((m) => ({
   pageUrl: m.links?.websiteUrl ?? `https://www.curseforge.com/minecraft/shaders/${m.slug}`,
   updated: m.dateModified ?? '',
   latestFileId: m.latestFiles?.[0]?.id ?? null,
+  // 以下为详情页/列表渲染所需字段（CF v1 search：logo.thumbnailUrl / screenshots[].thumbnailUrl /
+  // gameVersions / categories[].name / summary）
+  iconUrl: pick(m, 'logo.thumbnailUrl', 'logo.url', 'thumbnailUrl') ?? '',
+  gallery: (pickArray(m, 'screenshots') ?? [])
+    .map((s) => pick(s, 'thumbnailUrl', 'url'))
+    .filter(Boolean),
+  gameVersions: pickArray(m, 'gameVersions') ?? [],
+  categories: (pickArray(m, 'categories') ?? []).map((c) => pick(c, 'name')).filter(Boolean),
+  description: pick(m, 'summary', 'description') ?? '',
   // 项目级分发许可：false = 作者禁止 API 分发（pipeline 直接跳过，不浪费下载预算）。
   // 原样存回；字段缺失时为 undefined，JSON 序列化会省略该键（消费侧按“未采集”处理，不排除）。
   allowModDistribution: m.allowModDistribution,

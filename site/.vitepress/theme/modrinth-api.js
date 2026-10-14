@@ -38,6 +38,25 @@ function setCache(key, data) {
 }
 
 /**
+ * 非 Modrinth 条目（CurseForge 独占光影）没有 projectId：直接短路，不发请求、不显示「加载失败」，
+ * 改为指向上游项目页的外链（地址由页面容器上的 data-page-url 传入）。
+ * @param {HTMLElement} container - 目标容器
+ * @param {string} title - 面板标题
+ */
+function renderUpstreamLink(container, title) {
+  const url = String(container?.dataset?.pageUrl ?? '')
+  if (!url) {
+    container.innerHTML = '<p class="error">该光影未收录于 Modrinth，暂无在线数据。</p>'
+    return
+  }
+  const safe = url.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+  container.innerHTML =
+    `<div class="sp-shader-downloads"><h2 class="sp-section-title">${title}</h2>` +
+    `<p class="sp-shader-downloads__hint">该光影由 CurseForge 独家发布，请前往上游项目页获取光影本体与最新版本。</p>` +
+    `<a class="sp-btn sp-btn--primary sp-btn--dl" href="${safe}" target="_blank" rel="noopener noreferrer">前往 CurseForge 项目页</a></div>`
+}
+
+/**
  * 获取光影项目详情（包含介绍正文）
  * @param {string} projectId - Modrinth 项目 ID
  * @returns {Promise<object>} 项目详情
@@ -81,6 +100,11 @@ export async function fetchVersions(projectId) {
  * @param {HTMLElement} container - 目标容器
  */
 export async function renderDescription(projectId, container) {
+  // CF 独占条目没有 Modrinth projectId：短路，避免请求 /project/undefined 报 404 显示「加载失败」
+  if (!projectId) {
+    renderUpstreamLink(container, '介绍')
+    return
+  }
   try {
     container.innerHTML = '<p class="loading">加载中...</p>'
     const project = await fetchProject(projectId)
@@ -110,6 +134,11 @@ export async function renderDescription(projectId, container) {
  * @param {HTMLElement} container - 目标容器
  */
 export async function renderVersions(projectId, container) {
+  // CF 独占条目没有 Modrinth projectId：短路，避免请求 /project//version 报 404 显示「加载失败」
+  if (!projectId) {
+    renderUpstreamLink(container, '光影本体下载')
+    return
+  }
   try {
     container.innerHTML = '<p class="loading">加载中...</p>'
     const versions = await fetchVersions(projectId)
