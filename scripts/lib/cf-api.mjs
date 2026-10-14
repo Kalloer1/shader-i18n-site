@@ -27,7 +27,6 @@ function requireKey() {
 
 // signal 由调用方显式传入（pipeline 传本条光影自己的 AbortController signal）：
 // 不传时行为与改造前一致，传了就能被该条的超时真正中断（否则请求会挂到进程结束）。
-// signal 由调用方显式传入（pipeline 传本条光影自己的 AbortController signal）；不传则与改造前一致。
 async function cfGet(path, signal) {
   const key = requireKey()
   const res = await fetch(`${CF_API_BASE}${path}`, {
