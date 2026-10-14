@@ -95,10 +95,14 @@ jobs:
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}
 
       - name: Mirror to cloud drives
-        # 这里**故意不加 continue-on-error**：mirror.mjs 只在「真的尝试过上传/分享但一条都没成功」时
-        # 退出码非 0（典型原因就是登录态过期），此时必须让 run 变红；
+        id: mirror
+        # 两段式设计：镜像失败**不阻断**发布 —— 翻译产物（lang + 页面）是主要价值，先让它入库；
+        # 但「零链接却绿灯」不可接受，故本步骤的失败由**下面独立的一步**（Fail if quark mirror
+        # totally failed）在 Commit and push / Trigger deploy 之后统一判红。
+        # mirror.mjs 只在「真的尝试过上传/分享但一条都没成功」时退出码非 0（典型原因就是登录态过期）；
         # 部分成功仍退出 0，已拿到的链接照常写入，不因个别失败丢弃整轮。
         # 注意：env: 里的值不会被 shell 展开，所以 QUARK_CLI 的 $HOME 在 run 里 export。
+        continue-on-error: true
         run: |
           CLI="$HOME/.pi/agent/skills/quarkclouddrive/scripts/quark-drive.cjs"
           if [ -f "$CLI" ]; then
@@ -184,3 +188,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY"
+
+      # 夸克镜像总失败（典型：登录态过期）必须变红，但要在产物入库之后 ——
+      # 这样"翻译已发布、只是网盘链接为空"这个事实能被明确看见，而不是静默绿灯。
+      - name: Fail if quark mirror totally failed
+        if: steps.mirror.outcome == 'failure'
+        run: |
+          echo "::error::夸克镜像全部失败（多为登录态过期）。翻译产物已入库；网盘字段为空，需重新导出登录态后重跑镜像。"
+          exit 1
