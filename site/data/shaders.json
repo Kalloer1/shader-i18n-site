@@ -17801,6 +17801,26 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/8735a0983f17"
+    },
+    {
+      "id": "sildurs-enhanced-default",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "sildurs-enhanced-default",
+        "cfId": 544140
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Sildur-s-Enhanced-Default-v1.20-Fancy",
+          "langVersion": "1.0.0",
+          "file": "/lang/sildurs-enhanced-default/cf-Sildur-s-Enhanced-Default-v1.20-Fancy/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：deepseek-v4.1-flash / deepseek-v4-flash / u2-flash），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }
