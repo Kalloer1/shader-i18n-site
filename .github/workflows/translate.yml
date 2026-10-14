@@ -127,6 +127,13 @@ jobs:
         #   b) QUARK_REQUIRED=1 时 QUARK_CLI 缺失（Install quark CLI 下载/安装失败），根本没尝试上传。
         # 部分成功仍退出 0，已拿到的链接照常写入，不因个别失败丢弃整轮。
         # 注意：env: 里的值不会被 shell 展开，所以 QUARK_CLI 的 $HOME 在 run 里 export。
+        #
+        # 为什么用全量模式（不带 --ids）：mirror.mjs 全量模式只补「有汉化文件但没有分享链接」
+        # 的条目（有链接的会跳过，见 scripts/mirror.mjs 的跳过判据）。因此它同时覆盖两件事：
+        #   ① 本轮新翻译的条目；
+        #   ② 历史遗留的缺口（镜像失败的条目过去会永久停在「镜像缺失」，无人重试）。
+        # 顺带：这些条目的队列状态会被 mirror.mjs 回写成「已完成」。
+        # 不要改回 --ids —— 那会丢掉「自动补历史缺口」的能力。
         continue-on-error: true
         run: |
           CLI="$HOME/.pi/agent/skills/quarkclouddrive/scripts/quark-drive.cjs"
@@ -137,7 +144,7 @@ jobs:
             # 安装步骤是容错的，CLI 缺失时这里明确跳过（不静默），也不置红。
             echo "::warning::夸克 CLI 不存在（Install quark CLI 未成功），本轮跳过夸克镜像；该网盘字段留空，不影响翻译发布。"
           fi
-          node scripts/mirror.mjs --ids "${{ inputs.ids }}"
+          node scripts/mirror.mjs
         env:
           # CLI 运行时门禁
           QODER_PRODUCT_ID: qoder

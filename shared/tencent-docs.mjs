@@ -22,7 +22,7 @@ export const STATUS = {
   TRANSLATING: '翻译中',
   DONE: '已完成',
   FAILED: '失败',
-  DONE_UNMIRRORED: '已完成待镜像',
+  DONE_UNMIRRORED: '镜像缺失',
 }
 
 /** 来源枚举 */

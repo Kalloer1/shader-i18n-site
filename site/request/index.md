@@ -117,7 +117,7 @@ const STATUS_META = {
   待翻译: { cls: 'st-pending', label: '待翻译' },
   翻译中: { cls: 'st-running', label: '翻译中' },
   已完成: { cls: 'st-done', label: '已完成' },
-  已完成待镜像: { cls: 'st-mirror', label: '已完成待镜像' },
+  镜像缺失: { cls: 'st-mirror', label: '镜像缺失' },
   失败: { cls: 'st-failed', label: '失败' },
 }
 

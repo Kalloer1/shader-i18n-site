@@ -85,13 +85,13 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    TY["translate.yml 翻译结束"] --> MIR["scripts/mirror.mjs --ids ...<br/>continue-on-error"]
+    TY["translate.yml 翻译结束"] --> MIR["scripts/mirror.mjs（全量补缺）<br/>continue-on-error"]
     MIR --> Q{"夸克可用？"}
     Q -->|"是"| QU["create-folder 幂等取目录<br/>upload → share（永久公开）"]
     Q -->|"否"| SKIPQ["跳过，quark 留空"]
     QU --> WRITE[("写回 shaders.json<br/>顶层 + langVersions 双写")]
     SKIPQ --> WRITE
-    WRITE --> ST2["POST /status 回写<br/>已完成 / 已完成待镜像"]
+    WRITE --> ST2["POST /status 回写<br/>已完成 / 镜像缺失"]
 
     ST2 --> PACK["npm run pack:lang<br/>合并式重打包英文源"]
     PACK --> COMMIT["显式路径 git add<br/>site/public/lang, site/data/*,<br/>data/lang-sources.json.gz"]
@@ -133,7 +133,7 @@ flowchart TD
 
 - 状态权威源是 **KV**；腾讯文档只作「尽力而为」的镜像，任何失败都只记日志。
 - 同一光影重复提交只更新时间（`updatedAt`），不重复入队。
-- 状态枚举：`待翻译` → `翻译中` → `已完成` / `已完成待镜像` / `失败`。
+- 状态枚举：`待翻译` → `翻译中` → `已完成` / `镜像缺失` / `失败`。
 - `/translate` 触发成功后立即把条目置为 `翻译中`，避免重复点击导致重复触发。
 
 ## 5. 站点消费层
