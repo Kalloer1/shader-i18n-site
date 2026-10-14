@@ -181,6 +181,19 @@ async function sendBrevoEmail({ apiKey, from, to, subject, text }) {
   }
 }
 
+/**
+ * 把发信结果写回队列条目（notifyError / notifiedAt）。
+ * 只改这两个字段，绝不改 status；记录本身失败也只 warn，不影响 /status 返回。
+ */
+async function recordNotifyOutcome(env, entry, patch) {
+  Object.assign(entry, patch)
+  try {
+    await writeEntry(env, entry)
+  } catch (err) {
+    console.warn('notify outcome record failed (ignored):', err?.message ?? err)
+  }
+}
+
 /** 状态从非完成翻转到完成时发一次；掉出完成态则删去重键以便下次重发。整体 try/catch，失败只 warn。 */
 async function maybeNotifyPlayer(env, entry, existing, request) {
   try {
@@ -232,9 +245,14 @@ async function maybeNotifyPlayer(env, entry, existing, request) {
     await sendBrevoEmail({ apiKey, from, to: contact, subject: `【光影汉化】${title} 已完成`, text })
     await env.TRANSLATION_QUEUE.put(sentKey, '1')
     await env.TRANSLATION_QUEUE.put(limitKey, String(used + 1), { expirationTtl: 172800 })
+    // 发信成功：清掉上次的失败原因，并记下成功时间
+    await recordNotifyOutcome(env, entry, { notifyError: '', notifiedAt: new Date().toISOString() })
   } catch (err) {
-    // 发信失败绝不回滚状态、绝不影响 /status 返回
-    console.warn('notify failed (ignored):', err?.message ?? err)
+    // 发信失败绝不回滚状态、绝不影响 /status 返回；但必须记进队列条目，
+    // 否则「玩家没收到信」只能靠玩家自己发现（Brevo 401 曾被完全吞掉）。
+    const reason = String(err?.message ?? err)
+    console.warn('notify failed (recorded):', reason)
+    await recordNotifyOutcome(env, entry, { notifyError: reason.slice(0, 200) })
   }
 }
 
@@ -373,7 +391,11 @@ async function handleQueue(env, origin) {
   const index = await readIndex(env)
   const entries = await Promise.all(index.map((id) => readEntry(env, id)))
   const list = entries.filter(Boolean)
-  const PUBLIC = ({ contact: _dropped, ...rest }) => rest // 明确丢弃：仅 contact
+  // 公开端点只暴露「是否已成功发信」的布尔；notifyError 属内部细节，不外泄。
+  const PUBLIC = ({ contact: _dropped, notifyError: _internal, notifiedAt, ...rest }) => ({
+    ...rest,
+    notified: Boolean(notifiedAt),
+  })
   return json({ success: true, count: list.length, entries: list.map(PUBLIC) }, 200, origin)
 }
 
@@ -475,7 +497,19 @@ async function handleStatus(request, env, origin) {
   // 翻转到完成即通知玩家；内部整体 try/catch，失败不影响本次返回
   await maybeNotifyPlayer(env, entry, existing, request)
 
-  return json({ success: true, id: entry.id, status: entry.status, mirrored }, 200, origin)
+  return json(
+    {
+      success: true,
+      id: entry.id,
+      status: entry.status,
+      mirrored,
+      // 内部端点回显发信结果，便于运维发现「状态已完成但邮件没发出去」
+      notifyError: entry.notifyError || '',
+      notifiedAt: entry.notifiedAt || '',
+    },
+    200,
+    origin,
+  )
 }
 
 // ---------- 入口 ----------
