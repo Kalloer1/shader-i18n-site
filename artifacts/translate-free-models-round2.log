@@ -1,0 +1,173 @@
+LLM 提供方：muse-spark-1.3-contributor-free（api.888424.xyz）（muse-spark-1.3-contributor-free） / muse-spark-1.2-contributor-free（api.888424.xyz）（muse-spark-1.2-contributor-free） / mimo-v2.6-flash-free（api.888424.xyz）（mimo-v2.6-flash-free）
+
+LLM 并发度：10
+
+翻译记忆加载：30526 条
+
+候选 12 个，本次处理前 125 个
+
+[fesglow] v1.0.2：26 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（26/26），跳过 LLM
+[fesglow] 翻译完成：记忆命中 26，LLM 调用 0 次，回退 0/26
+[fesglow] 完成（1/12） -> site\public\lang\fesglow\1.0.2\zh_CN.lang
+[astralis-shader] v0.1.0：1 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（1/1），跳过 LLM
+[astralis-shader] 翻译完成：记忆命中 1，LLM 调用 0 次，回退 0/1
+[astralis-shader] 完成（2/12） -> site\public\lang\astralis-shader\0.1.0\zh_CN.lang
+[verity-shader] v1.2：32 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（32/32），跳过 LLM
+[verity-shader] 翻译完成：记忆命中 32，LLM 调用 0 次，回退 0/32
+[verity-shader] 完成（3/12） -> site\public\lang\verity-shader\1.2\zh_CN.lang
+[ps-fps-shader] vFull-Shadows-3：9 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（9/9），跳过 LLM
+[ps-fps-shader] 翻译完成：记忆命中 9，LLM 调用 0 次，回退 0/9
+[ps-fps-shader] 完成（4/12） -> site\public\lang\ps-fps-shader\Full-Shadows-3\zh_CN.lang
+[auroralite-voidnyx_yt] v1.1：52 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（52/52），跳过 LLM
+[auroralite-voidnyx_yt] 翻译完成：记忆命中 52，LLM 调用 0 次，回退 0/52
+[auroralite-voidnyx_yt] 完成（5/12） -> site\public\lang\auroralite-voidnyx_yt\1.1\zh_CN.lang
+[singularity-shaders] vv1：49 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 45/49，剩余 4 个需 LLM 翻译
+[reasonableview] v0.3.0：815 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 529/815，剩余 286 个需 LLM 翻译
+[amiarchiveshader] vv1.0.0：98 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 93/98，剩余 5 个需 LLM 翻译
+[colorblindness-shaders] v0.2.0：9 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（9/9），跳过 LLM
+[colorblindness-shaders] 翻译完成：记忆命中 9，LLM 调用 0 次，回退 0/9
+[colorblindness-shaders] 完成（6/12） -> site\public\lang\colorblindness-shaders\0.2.0\zh_CN.lang
+[lumenite-shaders] v2.9.1：704 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 334/704，剩余 370 个需 LLM 翻译
+[eventhorizon-salut_46eeee] v1.6.2.1：961 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 591/961，剩余 370 个需 LLM 翻译
+[frangilus-shaders] v1.0.0：938 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 609/938，剩余 329 个需 LLM 翻译
+[singularity-shaders] 翻译完成：记忆命中 45，LLM 调用 1 次，回退 0/49
+[singularity-shaders] 完成（7/12） -> site\public\lang\singularity-shaders\v1\zh_CN.lang
+    第 1 次分块回退率 5/5，重试
+    第 2 次分块回退率 5/5，重试
+    第 1 次分块回退率 12/60，重试
+    第 1 次分块回退率 9/60，重试
+    第 3 次分块回退率 5/5，重试
+    第 1 次分块回退率 21/60，重试
+    第 1 次分块回退率 5/5，重试
+    第 2 次分块回退率 12/60，重试
+    第 2 次分块回退率 5/5，重试
+    第 3 次分块回退率 12/60，重试
+    第 2 次分块回退率 21/60，重试
+    第 3 次分块回退率 5/5，重试
+    第 1 次分块回退率 5/5，重试
+    第 3 次分块回退率 21/60，重试
+    第 2 次分块回退率 5/5，重试
+    第 3 次分块回退率 5/5，重试
+[amiarchiveshader] 翻译完成：记忆命中 93，LLM 调用 1 次，回退 5/98
+[amiarchiveshader] 完成（8/12） -> site\public\lang\amiarchiveshader\v1.0.0\zh_CN.lang
+    第 1 次分块回退率 8/60，重试
+    第 1 次分块回退率 22/60，重试
+    第 2 次分块回退率 8/60，重试
+    第 2 次分块回退率 22/60，重试
+    第 3 次分块回退率 22/60，重试
+    第 1 次分块回退率 12/60，重试
+    第 1 次分块回退率 21/60，重试
+    第 3 次分块回退率 8/60，重试
+    第 2 次分块回退率 21/60，重试
+    第 3 次分块回退率 21/60，重试
+    第 1 次分块回退率 22/60，重试
+    第 1 次分块回退率 26/60，重试
+    第 2 次分块回退率 12/60，重试
+    第 2 次分块回退率 22/60，重试
+    第 3 次分块回退率 22/60，重试
+    第 1 次分块回退率 30/60，重试
+    第 1 次分块回退率 22/60，重试
+    第 2 次分块回退率 22/60，重试
+    第 3 次分块回退率 12/60，重试
+    第 3 次分块回退率 22/60，重试
+    第 1 次分块回退率 12/60，重试
+    第 2 次分块回退率 8/60，重试
+    第 1 次分块回退率 22/60，重试
+    第 2 次分块回退率 22/60，重试
+    第 2 次分块回退率 12/60，重试
+    第 1 次分块回退率 44/60，重试
+    第 3 次分块回退率 22/60，重试
+    第 3 次分块回退率 12/60，重试
+    第 3 次分块回退率 8/60，重试
+    第 1 次分块回退率 21/60，重试
+    第 1 次分块回退率 8/60，重试
+    第 1 次分块回退率 7/60，重试
+    第 2 次分块回退率 13/60，重试
+    第 3 次分块回退率 13/60，重试
+    第 2 次分块回退率 8/60，重试
+    第 1 次分块回退率 30/60，重试
+    第 3 次分块回退率 8/60，重试
+    第 1 次分块回退率 8/60，重试
+    第 1 次分块回退率 9/60，重试
+    第 2 次分块回退率 7/60，重试
+    第 2 次分块回退率 43/60，重试
+    第 2 次分块回退率 9/60，重试
+    第 3 次分块回退率 9/60，重试
+    第 3 次分块回退率 7/60，重试
+    第 1 次分块回退率 9/60，重试
+    第 2 次分块回退率 21/60，重试
+    第 2 次分块回退率 9/60，重试
+    第 1 次分块回退率 7/60，重试
+    第 3 次分块回退率 9/60，重试
+    第 3 次分块回退率 36/60，重试
+    第 3 次分块回退率 21/60，重试
+    第 1 次分块回退率 9/60，重试
+    第 2 次分块回退率 7/60，重试
+    第 1 次分块回退率 21/60，重试
+    第 3 次分块回退率 7/60，重试
+    第 2 次分块回退率 21/60，重试
+    第 1 次分块回退率 7/60，重试
+    第 2 次分块回退率 9/60，重试
+    第 2 次分块回退率 7/60，重试
+    第 3 次分块回退率 21/60，重试
+    第 3 次分块回退率 9/60，重试
+    第 1 次分块回退率 35/60，重试
+    第 3 次分块回退率 7/60，重试
+    第 1 次分块回退率 8/60，重试
+[reasonableview] 翻译完成：记忆命中 529，LLM 调用 5 次，回退 22/815
+[reasonableview] 完成（9/12） -> site\public\lang\reasonableview\0.3.0\zh_CN.lang
+    第 1 次分块回退率 7/60，重试
+    第 2 次分块回退率 8/60，重试
+    第 2 次分块回退率 7/60，重试
+    第 3 次分块回退率 8/60，重试
+    第 2 次分块回退率 20/60，重试
+    第 3 次分块回退率 7/60，重试
+    第 1 次分块回退率 8/60，重试
+    第 2 次分块回退率 17/60，重试
+[lumenite-shaders] 超过 15 分钟未完成，已中止，跳过
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+[lumenite-shaders] 翻译完成：记忆命中 334，LLM 调用 7 次，回退 37/704
+[eventhorizon-salut_46eeee] 超过 15 分钟未完成，已中止，跳过
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+[eventhorizon-salut_46eeee] 翻译完成：记忆命中 591，LLM 调用 7 次，回退 216/961
+[frangilus-shaders] 超过 15 分钟未完成，已中止，跳过
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+
+流水线结束：完成 9，自带中文排除 0，失败/跳过 3
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [mimo-v2.6-flash-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.3-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+    [muse-spark-1.2-contributor-free] 分块翻译失败（重试耗尽）: This operation was aborted
+[frangilus-shaders] 翻译完成：记忆命中 609，LLM 调用 6 次，回退 148/938

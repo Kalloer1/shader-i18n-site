@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>光影汉化下载器 · 方向C原型</title>
+<style>
+:root{
+  --bg:#0b0e12; --bg2:#0e1319; --panel:#131a22; --panel2:#161e28;
+  --line:#242f3b; --line-soft:#1c2530;
+  --text:#e9f0f4; --muted:#93a1ad; --faint:#64707b;
+  --go:#3ddc84; --go-deep:#0e3d24; --warn:#ffb454;
+  --font-ui:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --font-code:"JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font-ui);font-size:15px;line-height:1.65}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.topbar{border-bottom:1px solid var(--line-soft);background:rgba(11,14,18,.94);position:sticky;top:0;z-index:20}
+.topbar .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;white-space:nowrap}
+.logo i{width:26px;height:26px;border-radius:7px;background:#1b232e;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:14px}
+.chip{font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.chip b{color:var(--text)}
+.topsearch{margin-left:auto;display:flex;gap:8px}
+.topsearch input{width:300px;background:#0a0e13;border:1px solid var(--line);border-radius:8px;color:var(--text);padding:9px 12px;font-family:var(--font-ui);font-size:13.5px;outline:none}
+.topsearch input:focus{border-color:#3a4756}
+.topsearch select{background:#0a0e13;border:1px solid var(--line);border-radius:8px;color:var(--muted);padding:9px 10px;font-family:var(--font-ui);font-size:13px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:44px 0 30px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);background:#10161d;border:1px solid var(--line);border-radius:999px;padding:5px 13px;margin-bottom:16px}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:#8b96a1}
+h1{font-size:42px;line-height:1.25;font-weight:900;margin-bottom:14px}
+h1 .hl{color:inherit}
+.lede{color:var(--muted);font-size:15.5px;max-width:52ch;margin-bottom:20px}
+.lede code{font-family:var(--font-code);font-size:13px;color:var(--text);background:#0a0e13;border:1px solid var(--line);border-radius:6px;padding:1px 7px}
+.meter{display:flex;gap:28px;margin:6px 0 22px}
+.meter b{display:block;font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.meter span{font-size:12.5px;color:var(--faint)}
+.hero-cta{display:flex;gap:10px}
+.btn{border-radius:9px;padding:12px 22px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:var(--font-ui);border:1px solid transparent}
+.btn-go{background:#e9f0f4;color:#0b0e12}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.hero-note{margin-top:12px;font-size:12.5px;color:var(--faint)}
+.hero-shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg2)}
+.hero-shot img{display:block;width:100%;height:340px;object-fit:cover}
+.hero-shot figcaption{display:flex;justify-content:space-between;padding:10px 14px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line-soft)}
+.hero-shot figcaption code{font-family:var(--font-code);font-size:12px;color:var(--faint)}
+.panel{margin:14px 0 26px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.panel-head{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--line-soft)}
+.panel-head img{width:44px;height:44px;border-radius:10px;border:1px solid var(--line)}
+.panel-head .t b{display:block;font-size:17px}
+.panel-head .t span{font-size:12.5px;color:var(--muted)}
+.dl-count{margin-left:auto;text-align:right;font-size:12px;color:var(--faint)}
+.dl-count b{display:block;font-size:16px;color:var(--text);font-variant-numeric:tabular-nums}
+.panel-body{display:grid;grid-template-columns:1.15fr .85fr}
+.ver-zone{padding:22px;border-right:1px solid var(--line-soft)}
+.ver-label{font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.ver-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.ver-tab{font-family:var(--font-code);font-size:13px;padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:#0b1016;color:var(--muted);cursor:pointer}
+.ver-tab.on{border-color:#c8d2db;color:var(--text);background:#0b1016;font-weight:700}
+.file-card{background:#0a0e13;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.file-card code{font-family:var(--font-code);font-size:13px;color:var(--text);word-break:break-all}
+.file-card .meta{display:flex;gap:16px;margin-top:8px;font-size:12px;color:var(--faint);flex-wrap:wrap}
+.file-card .meta b{color:var(--muted);font-weight:400}
+.dl-row{display:flex;gap:10px;margin-bottom:8px}
+.dl-main{flex:1;background:var(--go);color:#062415;font-weight:800;font-size:16px;border:none;border-radius:10px;padding:14px;cursor:pointer;font-family:var(--font-ui)}
+.dl-main small{display:block;font-weight:400;font-size:12px;opacity:.75}
+.dl-alt{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:0 16px;font-size:13px;cursor:pointer;font-family:var(--font-ui)}
+.dl-tip{font-size:12px;color:var(--faint)}
+.install{padding:22px;background:rgba(0,0,0,.18)}
+.install h3{font-size:14px;margin-bottom:14px}
+.install h3 span{color:var(--faint);font-weight:400;font-size:12.5px}
+.step{display:flex;gap:12px;margin-bottom:14px}
+.step .n{flex:none;width:22px;font-size:13px;color:var(--muted);font-family:var(--font-code);line-height:1.8}
+.step p{font-size:13.5px;color:var(--muted)}
+.step p b{color:var(--text)}
+.step code{font-family:var(--font-code);font-size:12.5px;background:#0a0e13;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--text);white-space:nowrap}
+.list-head{display:flex;align-items:baseline;gap:14px;margin:26px 0 12px}
+.list-head h2{font-size:19px}
+.list-head p{font-size:12.5px;color:var(--faint)}
+.filters{display:flex;gap:8px;margin-bottom:12px}
+.filters button{font-size:13px;padding:7px 15px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--font-ui)}
+.filters button.on{background:var(--text);color:#0b0e12;border-color:var(--text);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:12px;overflow:hidden}
+thead th{text-align:left;font-weight:400;font-size:12px;color:var(--faint);padding:10px 14px;border-bottom:1px solid var(--line-soft);background:#0d1218}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr{cursor:pointer}
+tbody tr:hover,tbody tr.sel{background:#141b24}
+tbody tr.sel{box-shadow:inset 3px 0 0 #8b96a1}
+.cell-main{display:flex;align-items:center;gap:11px}
+.cell-main img{width:32px;height:32px;border-radius:8px;border:1px solid var(--line)}
+.cell-main b{display:block;font-size:13.5px;font-weight:600}
+.cell-main span{font-size:12px;color:var(--faint)}
+.num{font-variant-numeric:tabular-nums;color:var(--muted)}
+.ver{font-family:var(--font-code);font-size:12.5px;color:var(--text)}
+.badge{font-size:12px;border-radius:999px;padding:3px 11px;white-space:nowrap}
+.badge.ok{background:#10161d;color:var(--muted);border:1px solid var(--line)}
+.badge.no{background:transparent;color:var(--faint);border:1px solid var(--line)}
+.get{font-size:13px;font-weight:700;border-radius:8px;padding:7px 15px;border:1px solid var(--line);background:#0b1016;color:var(--text);cursor:pointer;white-space:nowrap;font-family:var(--font-ui)}
+tr.sel .get{background:#0b1016;border-color:var(--line);color:var(--text)}
+.foot{margin:22px 0 40px;padding:16px 4px;border-top:1px solid var(--line-soft);font-size:12.5px;color:var(--faint);display:flex;justify-content:space-between;gap:20px}
+.foot code{font-family:var(--font-code);font-size:12px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="logo"><i>影</i>光影汉化下载器</div>
+  <span class="chip"><b>983</b> 收录 · <b>454</b> 已有汉化</span>
+  <span class="chip">数据更新于 2026-10-11</span>
+  <div class="topsearch">
+    <input id="q" type="search" placeholder="搜光影名或作者，比如 BSL、EminGT">
+    <select><option>全部游戏版本</option><option>1.21.x</option><option>1.20.1</option><option>1.16.5</option></select>
+  </div>
+</div></div>
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <span class="kicker"><span class="dot"></span>只做一件事：帮你把汉化文件拿走</span>
+      <h1>找到光影，<span class="hl">拿走汉化</span>，<br>三步丢进游戏。</h1>
+      <p class="lede">下载 <code>zh_CN.lang</code> 放进光影包里的 <code>shaders/lang/</code> 就行。不用注册、不用看教程——下面这块面板就是全部流程。</p>
+      <div class="meter">
+        <div><b>983</b><span>收录光影（Modrinth 目录）</span></div>
+        <div><b>454</b><span>已有汉化版本文件</span></div>
+        <div><b>69,346,880</b><span>最高下载（Complementary 重制版）</span></div>
+      </div>
+      <div class="hero-cta">
+        <button class="btn btn-go" data-goto="dlpanel">直接去下载面板</button>
+        <button class="btn btn-ghost" data-goto="list">先浏览全部光影</button>
+      </div>
+      <p class="hero-note">原型说明：点下方列表任意行，下载面板会切换到该光影；版本号切换是本地模拟交互。</p>
+    </div>
+    <figure class="hero-shot">
+      <img src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9.jpeg" alt="Complementary Reimagined 游戏内截图">
+      <figcaption><span>Complementary 重制版 · 游戏内实拍（在线加载原图）</span><code>gallery-hires.json</code></figcaption>
+    </figure>
+  </section>
+  <section class="panel" id="dlpanel">
+    <div class="panel-head">
+      <img id="p-icon" src="https://cdn.modrinth.com/data/HVnmMxH1/79cb7c8123bbc54945305b2ebad6b8881efdf5f8_96.webp" alt="">
+      <div class="t"><b id="p-title">Complementary Shaders - Reimagined</b><span id="p-author">作者 EminGT · 适配 Iris / OptiFine</span></div>
+      <div class="dl-count"><b id="p-dl">69,346,880</b>Modrinth 累计下载</div>
+    </div>
+    <div class="panel-body">
+      <div class="ver-zone">
+        <p class="ver-label">选你的光影版本（必须和汉化版本对应）：</p>
+        <div class="ver-tabs" id="vtabs"></div>
+        <div class="file-card">
+          <div><code id="p-file">/lang/complementary-reimagined/r5.9.3/zh_CN.lang</code></div>
+          <div class="meta"><span>汉化更新 <b id="p-date">2026-10-11</b></span><span>MC <b id="p-mc">1.21.1 / 26.3</b></span><span>大小 <b id="p-size">12.4 KB</b></span><span>语言版本 <b>1.0.0</b></span></div>
+        </div>
+        <div class="dl-row">
+          <button class="dl-main" id="dlbtn">下载 zh_CN.lang<small id="p-sub">对应光影 r5.9.3 · 点击即得文件</small></button>
+          <button class="dl-alt">夸克网盘</button>
+        </div>
+        <p class="dl-tip">版本对不上？历史版本页保留全部旧汉化（r5.9 及更早），选对版本再下载，设置项才不会错位。</p>
+      </div>
+      <div class="install">
+        <h3>装进游戏 <span>· 三步，不用看视频教程</span></h3>
+        <div class="step"><span class="n">1</span><p><b>解压光影包</b>，找到包里面的 <code>shaders</code> 文件夹。</p></div>
+        <div class="step"><span class="n">2</span><p>把刚下载的 <code>zh_CN.lang</code> 放进 <code>shaders/lang/</code></p></div>
+        <div class="step"><span class="n">3</span><p>进游戏 → <b>视频设置 → 光影设置 → 语言选简体中文</b>，重进即生效。</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="list-head" id="list">
+    <h2>全部光影</h2>
+    <p>按下载量排序 · 只留图标不放画廊，列表优先 · 点行切换上方下载面板</p>
+  </div>
+  <div class="filters">
+    <button class="on">全部</button><button>已有汉化</button><button>暂缺汉化</button><button>土豆机可跑</button>
+  </div>
+  <table>
+    <thead><tr><th style="width:28%">光影</th><th>下载量</th><th>汉化版本</th><th>MC 版本</th><th>大小</th><th>状态</th><th style="width:90px"></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="foot">
+    <span>数据：modrinth-catalog.json（983 条）· shaders.json（454 个已汉化版本）· 高清图 gallery-hires.json 在线加载</span>
+    <span>方向C原型 · 单文件 · 未引用任何旧 theme 代码</span>
+  </div>
+</div>
+<script>
+var DATA=[
+ {id:"complementary-reimagined",t:"Complementary Shaders - Reimagined",a:"EminGT",dl:"69,346,880",icon:"https://cdn.modrinth.com/data/HVnmMxH1/79cb7c8123bbc54945305b2ebad6b8881efdf5f8_96.webp",vers:[{v:"r5.9.3",f:"/lang/complementary-reimagined/r5.9.3/zh_CN.lang",d:"2026-10-11",mc:"1.21.1 / 26.3",sz:"63.8 KB"},{v:"r5.9",f:"/lang/complementary-reimagined/r5.9/zh_CN.lang",d:"2026-09-09",mc:"1.21 / 26.2",sz:"64.6 KB"}],ok:true},
+ {id:"complementary-unbound",t:"Complementary Shaders - Unbound",a:"EminGT",dl:"45,099,628",icon:"https://cdn.modrinth.com/data/R6NEzAwj/c85ce4049aac76360d2cd24fd9a7003de01ef312_96.webp",vers:[{v:"r5.9.3",f:"/lang/complementary-unbound/r5.9.3/zh_CN.lang",d:"2026-10-11",mc:"1.21.1 / 26.3",sz:"63.4 KB"},{v:"r5.9",f:"/lang/complementary-unbound/r5.9/zh_CN.lang",d:"2026-09-09",mc:"1.21 / 26.2",sz:"65.6 KB"}],ok:true},
+ {id:"bsl-shaders",t:"BSL Shaders",a:"CaptTatsu",dl:"30,464,438",icon:"https://cdn.modrinth.com/data/Q1vvjJYV/2a611a3cb434fb52fb81fa5dace13c5d8b67e55d_96.webp",vers:[{v:"10.1.8",f:"/lang/bsl-shaders/10.1.8/zh_CN.lang",d:"2026-10-11",mc:"1.21.1 / 26.3",sz:"42.5 KB"},{v:"10.1.5",f:"/lang/bsl-shaders/10.1.5/zh_CN.lang",d:"2026-09-06",mc:"1.21 / 26.2",sz:"41.8 KB"}],ok:true},
+ {id:"photon-shader",t:"Photon Shaders",a:"sixthsurge",dl:"28,027,276",icon:"https://cdn.modrinth.com/data/lLqFfGNs/39cb5f12e7dcc68d6cb666f225fcb2b801dd70fb_96.webp",vers:[],ok:false},
+ {id:"solas-shader",t:"Solas Shader",a:"Septonious",dl:"17,772,797",icon:"https://cdn.modrinth.com/data/EpQFjzrQ/e3efc6ba7a63f9e1cf473a794d0224a6daf243c7_96.webp",vers:[],ok:false},
+ {id:"bliss-shader",t:"Bliss Shaders",a:"Xonk",dl:"15,129,282",icon:"https://cdn.modrinth.com/data/ZvMtQlho/90145c971ea24387775108fc86c89bed9bd2c8f1_96.webp",vers:[],ok:false},
+ {id:"rethinking-voxels",t:"Rethinking Voxels",a:"gri573",dl:"13,413,697",icon:"https://cdn.modrinth.com/data/kmwfVOoi/fc89eadad417dd376b14c3b31e1a2b87acaca034_96.webp",vers:[{v:"r0.1-beta9",f:"/lang/rethinking-voxels/r0.1-beta9/zh_CN.lang",d:"2026-09-06",mc:"1.21.1",sz:"71.7 KB"}],ok:true},
+ {id:"makeup-ultra-fast-shaders",t:"MakeUp - Ultra Fast",a:"KDXavier",dl:"13,386,557",icon:"https://cdn.modrinth.com/data/izsIPI7a/a08432baa86b8ffd58c08f4b3a001ef976ff764d_96.webp",vers:[],ok:false},
+ {id:"insanity-shader",t:"Insanity Shader",a:"ElocinDev",dl:"7,687,210",icon:"https://cdn.modrinth.com/data/EQWX2WiO/cc7a7e0bb758af1ed4208d297ab14c92e695c999_96.webp",vers:[{v:"1.650",f:"/lang/insanity-shader/1.650/zh_CN.lang",d:"2026-09-09",mc:"1.21.1",sz:"26.5 KB"}],ok:true},
+ {id:"mellow",t:"Mellow",a:"TheCMK",dl:"7,427,741",icon:"https://cdn.modrinth.com/data/BUxf36AP/b2cc2e9b97e5e0c4c7fcd89b9e295f29a29b9c6d_96.webp",vers:[],ok:false},
+ {id:"astralex",t:"AstraLex Shaders",a:"LexBoosT",dl:"5,440,697",icon:"https://cdn.modrinth.com/data/RphJSnEs/3e25ea407447bf2ff8ffa8926cd2db295307cf68_96.webp",vers:[],ok:false},
+ {id:"miniature-shader",t:"Miniature Shader",a:"ukrech",dl:"4,856,770",icon:"https://cdn.modrinth.com/data/UaS8ROxa/85f373314addaf840d9c8667c797da6e0f7e7034_96.webp",vers:[{v:"2.19",f:"/lang/miniature-shader/2.19/zh_CN.lang",d:"2026-09-06",mc:"1.21.1",sz:"3.4 KB"}],ok:true}
+];
+var cur=0,verIdx=0;
+function esc(s){return s;}
+function renderRows(){
+  var q=document.getElementById("q").value.toLowerCase();
+  var tb=document.getElementById("rows");
+  tb.innerHTML="";
+  DATA.forEach(function(s,i){
+    var hay=(s.t+" "+s.a).toLowerCase();
+    if(q&&hay.indexOf(q)<0){return;}
+    var tr=document.createElement("tr");
+    if(i===cur){tr.className="sel";}
+    var ver=s.vers.length?s.vers[0].v:"—";
+    var mc=s.vers.length?(s.vers[0].mc||"1.21.1"):"—";
+    var sz=s.vers.length?(s.vers[0].sz||"—"):"—";
+    var badge=s.ok?"<span class='badge ok'>已有汉化</span>":"<span class='badge no'>暂缺汉化</span>";
+    var btn=s.ok?"拿文件":"求汉化";
+    var html="<td><div class='cell-main'><img src='"+s.icon+"' width='32' height='32' loading='lazy' alt=''>";
+    html=html+"<div><b>"+s.t+"</b><span>"+s.a+"</span></div></div></td>";
+    html=html+"<td class='num'>"+s.dl+"</td><td class='ver'>"+ver+"</td><td class='num'>"+mc+"</td><td class='num'>"+sz+"</td><td>"+badge+"</td>";
+    html=html+"<td><button class='get'>"+btn+"</button></td>";
+    tr.innerHTML=html;
+    tr.onclick=(function(idx){return function(){cur=idx;verIdx=0;renderPanel();renderRows();};})(i);
+    tb.appendChild(tr);
+  });
+}
+function renderPanel(){
+  var s=DATA[cur];
+  document.getElementById("p-icon").src=s.icon;
+  document.getElementById("p-title").textContent=s.t;
+  document.getElementById("p-author").textContent="作者 "+s.a+" · 适配 Iris / OptiFine";
+  document.getElementById("p-dl").textContent=s.dl;
+  var tabs=document.getElementById("vtabs");
+  tabs.innerHTML="";
+  if(!s.vers.length){
+    var tip=document.createElement("span");
+    tip.style.cssText="font-size:13px;color:var(--muted)";
+    tip.textContent="该光影暂无汉化文件，可以点“求汉化”登记需求。";
+    tabs.appendChild(tip);
+    document.getElementById("p-file").textContent="暂无 /lang/"+s.id+"/…/zh_CN.lang";
+    document.getElementById("p-date").textContent="—";
+    document.getElementById("p-sub").textContent="暂缺汉化 · 先去登记需求";
+  }else{
+    s.vers.forEach(function(v,i){
+      var b=document.createElement("button");
+      b.className="ver-tab"+(i===verIdx?" on":"");
+      b.textContent=v.v;
+      b.onclick=(function(idx){return function(){verIdx=idx;renderPanel();};})(i);
+      tabs.appendChild(b);
+    });
+    var v=s.vers[verIdx];
+    document.getElementById("p-file").textContent=v.f;
+    document.getElementById("p-date").textContent=v.d;
+    document.getElementById("p-mc").textContent=v.mc||"1.21.1 / 26.3";
+    document.getElementById("p-size").textContent=v.sz||"—";
+    document.getElementById("p-sub").textContent="对应光影 "+v.v+" · 点击即得文件";
+  }
+}
+document.getElementById("q").addEventListener("input",renderRows);
+document.getElementById("dlbtn").addEventListener("click",function(){alert("原型演示：正式站这里直链下载 zh_CN.lang");});
+var gotos=document.querySelectorAll("[data-goto]");
+gotos.forEach(function(b){b.addEventListener("click",function(){document.getElementById(b.getAttribute("data-goto")).scrollIntoView();});});
+renderPanel();
+renderRows();
+</script>
+</body>
+</html>

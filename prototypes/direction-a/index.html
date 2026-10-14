@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>光影汉化站 · 按 Modrinth 找光影</title>
+<style>
+:root{
+  --bg:#16181c;
+  --raised:#1d1f23;
+  --raised2:#27292e;
+  --line:#34363c;
+  --line2:#42444a;
+  --text:#e6e2d1;
+  --text2:#c3c4b3;
+  --muted:#9b9e98;
+  --brand:#1bd96a;
+  --brand-d:#0faa4f;
+  --brand-ink:#04120a;
+  --r-card:16px;
+  --r-btn:12px;
+  --r-thumb:8px;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text2);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.7}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+/* top bar: solid, hairline bottom, like app header */
+.topbar{position:sticky;top:0;z-index:5;background:var(--raised);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:650;font-size:15px}
+.brand svg{width:22px;height:22px;color:var(--brand)}
+.topbar .meta{font-size:13px;color:var(--muted)}
+.topbar .meta a{text-decoration:underline;text-underline-offset:3px}
+/* hero: one full-bleed screenshot, single legibility scrim only */
+.hero{position:relative;min-height:86vh;min-height:86svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 42%,rgba(0,0,0,.62) 100%)}
+.hero-body{position:relative;z-index:2;padding:48px 0}
+.hero-body h1{color:#fff;font-weight:700;font-size:44px;line-height:1.3;letter-spacing:.01em;max-width:16em}
+.lede{margin-top:12px;max-width:44em;font-size:15px;line-height:1.9;color:#d7d8cd}
+.hero-meta{margin-top:12px;font-size:13px;color:#c9cac0}
+.hero-meta a{text-decoration:underline;text-underline-offset:3px}
+.cta-row{margin-top:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:var(--brand-ink);font-weight:650;font-size:15px;padding:11px 20px;border-radius:8px;text-decoration:none;border:1px solid rgba(0,0,0,.25);box-shadow:0 1px 1px rgba(0,0,0,.25)}
+.btn-primary:hover{background:var(--brand-d)}
+.btn-primary svg{width:17px;height:17px}
+.shot-note{font-size:12.5px;color:var(--muted)}
+/* source strip: one honest line */
+.strip{border-bottom:1px solid var(--line);background:var(--raised)}
+.strip .wrap{padding-top:12px;padding-bottom:12px;font-size:13px;color:var(--muted)}
+/* finder */
+.finder{padding:48px 0 8px}
+.finder h2{color:var(--text);font-size:22px;font-weight:700;letter-spacing:.01em}
+.finder p.sub{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.9;max-width:60em}
+.searchbox{margin-top:20px;display:flex;align-items:center;gap:10px;background:var(--raised2);border:1px solid var(--line2);border-radius:var(--r-btn);padding:0 14px;height:46px}
+.searchbox svg{width:18px;height:18px;color:var(--muted);flex:none}
+.searchbox input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font-size:15px;font-family:var(--sans);height:100%}
+.searchbox input::placeholder{color:var(--muted)}
+.chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--raised);border:1px solid var(--line2);color:var(--text2);border-radius:8px;padding:7px 13px;font-size:13.5px;cursor:pointer;box-shadow:0 1px 1px rgba(0,0,0,.2)}
+.chip[aria-pressed="true"]{background:var(--raised2);color:var(--text);border-color:var(--muted);font-weight:650}
+.count{margin:14px 0 0;font-size:12.5px;color:var(--muted)}
+/* entries: divider-separated rows, icon + text + thumb */
+.entries{padding:6px 0 24px}
+.entry{display:grid;grid-template-columns:52px minmax(0,1fr) 330px;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid var(--line)}
+.entry .icon{width:52px;height:52px;border-radius:8px;border:1px solid var(--line2);background:var(--raised2);object-fit:cover}
+.info h3{color:var(--text);font-size:16.5px;font-weight:650;letter-spacing:.01em;line-height:1.5}
+.info .by{margin-top:4px;font-size:13px;color:var(--muted);line-height:1.7}
+.info .by a{text-decoration:underline;text-underline-offset:3px}
+.info .desc{margin-top:8px;font-size:14px;line-height:1.8;color:var(--text2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ph{overflow:hidden;border-radius:var(--r-thumb);border:1px solid var(--line);background:var(--raised)}
+.ph img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.ph figcaption{padding:7px 10px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+.actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line2);background:var(--raised);padding:9px 15px;border-radius:8px;font-size:13.5px;text-decoration:none;color:var(--text);box-shadow:0 1px 1px rgba(0,0,0,.2)}
+.btn-ghost:hover{background:var(--raised2)}
+.btn-ghost svg{width:15px;height:15px}
+details.how{font-size:13px;color:var(--muted)}
+details.how summary{cursor:pointer;color:var(--text2);font-size:13.5px;text-decoration:underline;text-underline-offset:3px}
+details.how ol{margin:8px 0 0 20px;line-height:1.9}
+details.how code{background:rgba(255,255,255,.08);padding:1px 7px;border-radius:5px;font-size:12.5px;color:var(--text)}
+.empty{display:none;padding:32px 0;color:var(--muted);font-size:14px}
+footer{padding:28px 0 48px;color:var(--muted);font-size:12.5px;line-height:2}
+footer .wrap{border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:960px){
+  .hero-body h1{font-size:30px}
+  .entry{grid-template-columns:44px minmax(0,1fr);gap:14px}
+  .entry .ph{grid-column:1/-1;order:3}
+  .entry .icon{width:44px;height:44px}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>光影汉化站</div>
+  <div class="meta">数据来自 Modrinth 目录，共 983 个光影 · <a href="https://modrinth.com/shaders">Modrinth shaders 列表</a></div>
+</div></div>
+<header class="hero">
+  <img class="bg" src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9.jpeg" alt="Complementary Shaders Reimagined 游戏内截图" fetchpriority="high">
+  <div class="hero-body"><div class="wrap">
+    <h1>先看画面，再拿汉化。</h1>
+    <p class="lede">按 Modrinth 下载量从高往下排。标题、作者、下载量、简介、截图都用目录原数据，不加滤镜式文案。</p>
+    <p class="hero-meta">首屏截图：Complementary Shaders - Reimagined · 作者 EminGT · 69,346,880 下载 · <a href="https://modrinth.com/shader/complementary-reimagined">Modrinth 原页</a></p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#find"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>浏览下载量前 8</a>
+      <span class="shot-note">在线原图直引，未下载到本地</span>
+    </div>
+  </div></div>
+</header>
+<div class="strip"><div class="wrap">收录 983 个 Modrinth 光影项目（site/data/modrinth-catalog.json，同步于 2026-10-10）。下方只展示下载量前 8 名，截图为 gallery-hires 高清原图直链。</div></div>
+<main class="finder" id="find"><div class="wrap">
+  <h2>按下载量看前 8 个</h2>
+  <p class="sub">搜索框过滤标题与作者。下载请走 Modrinth 原页；语言文件位置各包基本一致，见每条下的“语言文件放哪里”。</p>
+  <div class="searchbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" x2="16.5" y1="21" y2="16.5"/></svg><input id="q" type="search" placeholder="搜索标题或作者，比如 BSL、EminGT…" autocomplete="off"></div>
+  <div class="chips" role="group" aria-label="筛选">
+    <button class="chip" data-min="0" aria-pressed="true">全部 8</button>
+    <button class="chip" data-min="30000000" aria-pressed="false">3000 万以上 3</button>
+    <button class="chip" data-min="15000000" aria-pressed="false">1500 万以上 6</button>
+  </div>
+  <p class="count" id="count"></p>
+  <div class="entries" id="entries">
+    <article class="entry" data-name="complementary shaders - reimagined emingt complementary-reimagined" data-dl="69346880">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/HVnmMxH1/79cb7c8123bbc54945305b2ebad6b8881efdf5f8_96.webp" alt="">
+      <div class="info"><h3>Complementary Shaders - Reimagined</h3><p class="by">EminGT · 69,346,880 下载 · <a href="https://modrinth.com/shader/complementary-reimagined">Modrinth 原页</a></p><p class="desc">Preserving the elements of Minecraft with exceptional quality, detail, and performance.</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/complementary-reimagined"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9.jpeg" alt="Complementary Shaders - Reimagined 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+    <article class="entry" data-name="complementary shaders - unbound emingt complementary-unbound" data-dl="45099628">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/R6NEzAwj/c85ce4049aac76360d2cd24fd9a7003de01ef312_96.webp" alt="">
+      <div class="info"><h3>Complementary Shaders - Unbound</h3><p class="by">EminGT · 45,099,628 下载 · <a href="https://modrinth.com/shader/complementary-unbound">Modrinth 原页</a></p><p class="desc">Transforming the visuals of Minecraft with exceptional quality, detail, and performance.</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/complementary-unbound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/R6NEzAwj/images/7c45cec837f459ef49571d230e54952c42717cab.png" alt="Complementary Shaders - Unbound 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+    <article class="entry" data-name="bsl shaders capttatsu bsl-shaders" data-dl="30464438">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/Q1vvjJYV/2a611a3cb434fb52fb81fa5dace13c5d8b67e55d_96.webp" alt="">
+      <div class="info"><h3>BSL Shaders</h3><p class="by">CaptTatsu · 30,464,438 下载 · <a href="https://modrinth.com/shader/bsl-shaders">Modrinth 原页</a></p><p class="desc">Shaderpack for Minecraft: Java Edition. It&#39;s bright, colorful, and distinct.</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/bsl-shaders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/Q1vvjJYV/images/6196a455f84be3071fd99b4dc182694be0e30343.jpeg" alt="BSL Shaders 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+    <article class="entry" data-name="photon shaders sixthsurge photon-shader" data-dl="28027276">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/lLqFfGNs/39cb5f12e7dcc68d6cb666f225fcb2b801dd70fb_96.webp" alt="">
+      <div class="info"><h3>Photon Shaders</h3><p class="by">sixthsurge · 28,027,276 下载 · <a href="https://modrinth.com/shader/photon-shader">Modrinth 原页</a></p><p class="desc">A gameplay-focused shader pack with a semi-realistic style</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/photon-shader"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/lLqFfGNs/images/38d736b56ff2e374efb8005249a98a7db8580816.png" alt="Photon Shaders 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+    <article class="entry" data-name="solas shader septonious solas-shader" data-dl="17772797">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/EpQFjzrQ/e3efc6ba7a63f9e1cf473a794d0224a6daf243c7_96.webp" alt="">
+      <div class="info"><h3>Solas Shader</h3><p class="by">Septonious · 17,772,797 下载 · <a href="https://modrinth.com/shader/solas-shader">Modrinth 原页</a></p><p class="desc">A modern fantasy stylized shaderpack with colored lighting and stunning visuals</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/solas-shader"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/EpQFjzrQ/images/ce6ca2fab6173e6fcf4454487e320c041291fecd.png" alt="Solas Shader 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+    <article class="entry" data-name="bliss shaders xonk bliss-shader" data-dl="15129282">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/ZvMtQlho/90145c971ea24387775108fc86c89bed9bd2c8f1_96.webp" alt="">
+      <div class="info"><h3>Bliss Shaders</h3><p class="by">Xonk · 15,129,282 下载 · <a href="https://modrinth.com/shader/bliss-shader">Modrinth 原页</a></p><p class="desc">A well performing fantasy styled shaderpack with emphasis on scene variation and customization.</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/bliss-shader"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5.png" alt="Bliss Shaders 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+    <article class="entry" data-name="rethinking voxels gri573 rethinking-voxels" data-dl="13413697">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/kmwfVOoi/fc89eadad417dd376b14c3b31e1a2b87acaca034_96.webp" alt="">
+      <div class="info"><h3>Rethinking Voxels</h3><p class="by">gri573 · 13,413,697 下载 · <a href="https://modrinth.com/shader/rethinking-voxels">Modrinth 原页</a></p><p class="desc">[WIP] A gameplay shaderpack based on complementary reimagined that has coloured block light with sharp shadows</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/rethinking-voxels"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/kmwfVOoi/images/5de1c81f0bc383e607993c76c81aa56c37a63a7a.png" alt="Rethinking Voxels 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+    <article class="entry" data-name="makeup - ultra fast kdxavier makeup-ultra-fast-shaders" data-dl="13386557">
+      <img class="icon" loading="lazy" src="https://cdn.modrinth.com/data/izsIPI7a/a08432baa86b8ffd58c08f4b3a001ef976ff764d_96.webp" alt="">
+      <div class="info"><h3>MakeUp - Ultra Fast</h3><p class="by">KDXavier · 13,386,557 下载 · <a href="https://modrinth.com/shader/makeup-ultra-fast-shaders">Modrinth 原页</a></p><p class="desc">MakeUp aims to provide the best quality / performance ratio, building a shader that can be adapted to anyone&#39;s resources.</p><div class="actions"><a class="btn-ghost" href="https://modrinth.com/shader/makeup-ultra-fast-shaders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>去 Modrinth 下载</a><details class="how"><summary>语言文件放哪里</summary><ol><li>打开光影包 <code>.zip</code> 里的 <code>shaders/lang</code> 文件夹</li><li>把对应版本的 <code>zh_CN.lang</code> 放进去</li><li>游戏内依次打开 光影设置 → 语言 → 简体中文</li></ol></details></div></div>
+      <figure class="ph"><img loading="lazy" src="https://cdn.modrinth.com/data/izsIPI7a/images/cfe215bc974937ad50ace1ccbe865026dc985094.jpeg" alt="MakeUp - Ultra Fast 实机截图"><figcaption>实机截图 · Modrinth 原图直引</figcaption></figure>
+    </article>
+  </div>
+  <p class="empty" id="empty">没有找到匹配的光影，换个关键词试试，比如 BSL、EminGT。</p>
+</div></main>
+<footer><div class="wrap">方向A返工版 · 标题/作者/下载量/简介取自 modrinth-catalog.json，截图取自 gallery-hires.json（在线直引，本地零图片二进制）· 样式对照 Modrinth 深色 token。</div></footer>
+<script>
+var q=document.getElementById('q'),count=document.getElementById('count'),empty=document.getElementById('empty');
+var cards=[].slice.call(document.querySelectorAll('.entry'));
+var min=0,kw='';
+function apply(){
+  var n=0;
+  cards.forEach(function(c){
+    var hitName=(c.getAttribute('data-name')+' '+c.querySelector('h3').textContent).toLowerCase().indexOf(kw)>=0;
+    var show=hitName&&(+c.getAttribute('data-dl')>=min);c.style.display=show?'':'none';if(show)n++;
+  });
+  count.textContent='当前展示 '+n+' / '+cards.length+' 个';
+  empty.style.display=n?'none':'block';
+}
+q.addEventListener('input',function(){kw=q.value.trim().toLowerCase();apply()});
+document.querySelectorAll('.chip').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed','false')});
+  b.setAttribute('aria-pressed','true');min=+b.getAttribute('data-min');apply();
+})});
+apply();
+</script>
+</body>
+</html>

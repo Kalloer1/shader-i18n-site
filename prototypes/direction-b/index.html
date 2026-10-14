@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>方块画廊 · 方向B去AI味版</title>
+<style>
+:root{--bg:#0E100E;--ink:#EDEAE0;--muted:#A3ABA3;--faint:#717873;--line:#232723;--accent:#D7F651;--sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.mast{border-bottom:1px solid var(--line);padding:14px 0;font-size:13px}
+.mast .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-size:16px;font-weight:700;letter-spacing:.06em}
+.brand small{font-size:11px;color:var(--muted);font-weight:400;margin-left:10px;letter-spacing:.12em}
+.mast nav{display:flex;gap:22px;color:var(--muted)}
+.mast nav a{text-decoration:none}
+.mast nav a:hover{color:var(--ink)}
+.issue{color:var(--faint);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hero{padding:56px 0 36px;border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.22em;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--sans);font-weight:700;font-size:52px;line-height:1.2;letter-spacing:0;margin:0 0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lede{color:var(--muted);font-size:14px;max-width:72em;margin:0 0 28px}
+.searchbar{display:flex;gap:12px;align-items:stretch}
+.searchbox{flex:1;display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#121512;padding:0 14px}
+.searchbox:focus-within{border-color:var(--ink)}
+.searchbox svg{flex:none}
+.searchbox input{flex:1;background:transparent;border:0;outline:0;color:var(--ink);font-size:16px;padding:13px 0;font-family:var(--sans)}
+.searchbox input::placeholder{color:#565d56}
+.searchbar select{background:#121512;color:var(--ink);border:1px solid var(--line);font-size:13px;padding:0 12px}
+.searchbar button{background:var(--accent);border:0;color:#11140f;font-weight:700;font-size:14px;padding:0 28px;cursor:pointer}
+.facets{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.facets .fl{font-size:12px;color:var(--faint);margin-right:4px}
+.facets button{font-size:12.5px;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer;font-variant-numeric:tabular-nums}
+.facets button.on{color:var(--ink);border-color:var(--ink);background:transparent}
+.facets button:hover{color:var(--ink)}
+.resultline{display:flex;justify-content:space-between;margin:22px 0 0;font-size:12.5px;color:var(--faint)}
+.resultline b{color:var(--ink);font-variant-numeric:tabular-nums}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin:56px 0 24px;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.section-head h2{font-size:19px;margin:0;font-weight:700}
+.section-head p{margin:0;color:var(--faint);font-size:12.5px}
+.feat{display:grid;grid-template-columns:repeat(12,1fr);gap:28px;align-items:start}
+.feat figure{margin:0}
+.feat img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#000}
+.feat-a{grid-column:1/8}
+.feat-a img{aspect-ratio:16/9;object-fit:cover}
+.feat-b{grid-column:8/13;margin-top:96px}
+.feat-b img{aspect-ratio:4/3;object-fit:cover}
+.cap{border-top:1px solid var(--line);margin-top:12px;padding-top:10px;display:grid;gap:5px}
+.cap .tag{font-size:11px;letter-spacing:.22em;color:var(--muted)}
+.cap h3{font-size:21px;line-height:1.35;margin:0;font-weight:700}
+.feat-a .cap h3{font-size:24px}
+.cap .meta{font-size:12.5px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.cap .meta b{color:var(--ink);font-weight:600}
+.cap p{margin:2px 0 0;font-size:13px;color:var(--muted);max-width:44em}
+.cap a.more{font-size:13px;color:var(--ink);text-decoration:underline;text-underline-offset:4px;width:fit-content;margin-top:4px}
+.rule-note{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:56px;padding:14px 0;color:var(--faint);font-size:12.5px;display:flex;justify-content:space-between;gap:16px}
+.index{margin-top:8px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:120px 1fr auto;gap:18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.row:hover{background:#121512}
+.row img{width:120px;height:68px;object-fit:cover;border:1px solid var(--line);display:block;background:#000}
+.row h3{margin:0;font-size:15.5px;font-weight:700;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.row h3 .by{font-size:12px;color:var(--faint);font-weight:400}
+.row .sub{margin:3px 0 0;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62ch}
+.row .tags{margin:3px 0 0;font-size:11.5px;color:var(--faint)}
+.row .dl{text-align:right;font-variant-numeric:tabular-nums;min-width:110px}
+.row .dl b{font-size:15px}
+.row .dl span{display:block;font-size:11px;color:var(--faint)}
+.empty{padding:48px 0;color:var(--muted);text-align:center;font-size:14px}
+.strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin:24px 0 0}
+.strip figure{margin:0}
+.strip img{width:100%;aspect-ratio:16/10;object-fit:cover;border:1px solid var(--line);display:block;background:#000}
+.strip figcaption{margin-top:8px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;font-variant-numeric:tabular-nums}
+.strip figcaption b{color:var(--ink);font-weight:600}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line);margin-bottom:32px}
+.steps>div{padding:20px 24px 24px 0}
+.steps>div+div{border-left:1px solid var(--line);padding-left:24px}
+.steps .k{font-size:12px;letter-spacing:.2em;color:var(--muted)}
+.steps .t{font-size:17px;margin:6px 0;font-weight:700}
+.steps .d{font-size:13px;color:var(--muted)}
+footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 64px;color:var(--faint);font-size:12px}
+footer .wrap{display:flex;justify-content:space-between;gap:32px}
+mark{background:#2b302b;color:var(--ink);padding:0 2px}
+@media (max-width:900px){h1{font-size:30px;white-space:normal}.wrap{padding:0 18px}.feat-a,.feat-b{grid-column:1/13;margin-top:0}.strip{grid-template-columns:1fr}.row{grid-template-columns:96px 1fr}.row img{width:96px;height:56px}.row .dl{display:none}.row .sub{white-space:normal}.searchbar{flex-wrap:wrap}.steps{grid-template-columns:1fr}.steps>div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}}
+</style>
+</head>
+<body>
+<header class="mast"><div class="wrap">
+<div class="brand">方块画廊 <small>BLOCK GALLERY · MC 光影中文站</small></div>
+<nav><a href="#feat">主打</a><a href="#index">索引</a><a href="#guide">安装</a></nav>
+<div class="issue">收录 983 · 原生中文 18</div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<p class="kicker">给中文玩家的光影目录 — 数据同步 Modrinth 2026-10-10</p>
+<h1>搜光影，下得准，玩得稳。</h1>
+<p class="lede">983 款光影，Iris 892 / OptiFine 709。输入名字、作者或标签筛，行里直接看下载量和支持版本。</p>
+<div class="searchbar">
+<div class="searchbox">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A3ABA3" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>
+<input id="q" type="search" placeholder="搜索光影、作者、标签 … 如 BSL / potato / horror" autocomplete="off" aria-label="搜索光影">
+</div>
+<select id="sort" aria-label="排序"><option value="dl">按下载量</option><option value="name">按名称</option></select>
+<button id="go" type="button">找光影</button>
+</div>
+<div class="facets" id="styleOpts">
+<span class="fl">分类</span>
+<button data-f="" class="on">全部</button><button data-f="potato">potato · 515</button><button data-f="vanilla-like">vanilla-like · 500</button><button data-f="low">low · 427</button><button data-f="fantasy">fantasy · 215</button><button data-f="semi-realistic">semi-realistic · 250</button><button data-f="horror">恐怖</button>
+<span class="fl" style="margin-left:12px">加载器</span>
+<button data-f="iris">Iris · 892</button><button data-f="optifine">OptiFine · 709</button>
+</div>
+<div class="resultline"><span id="hitcount">当前命中 <b>12</b> / 983 款</span><span>排序：下载量 · 缩略图在线直读</span></div>
+</section>
+<div class="section-head" id="feat"><h2>本期主打</h2><p>3 款先看：下载量 Top + 编辑一句话</p></div>
+<section class="feat">
+<figure class="feat-a">
+<img src="https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9.jpeg" alt="Complementary Reimagined 实拍" loading="eager">
+<div class="cap"><span class="tag">TOP 1 · 69,346,880 下载</span>
+<h3>Complementary Shaders - Reimagined</h3>
+<div class="meta"><span>by EminGT</span><span><b>69.3M</b> 下载</span><span>支持 26.2 / 26.3</span><span>Iris · OptiFine</span></div>
+<p>Preserving the elements of Minecraft with exceptional quality, detail, and performance. 原版味保留，只动光水云，新手第一款。</p>
+<a class="more" href="https://modrinth.com/shader/complementary-reimagined">modrinth.com/shader/complementary-reimagined →</a>
+</div>
+</figure>
+<figure class="feat-b">
+<img src="https://cdn.modrinth.com/data/lLqFfGNs/images/38d736b56ff2e374efb8005249a98a7db8580816.png" alt="Photon Shaders 实拍" loading="lazy">
+<div class="cap"><span class="tag">TOP 4 · 28,027,276 下载</span>
+<h3>Photon Shaders</h3>
+<div class="meta"><span>by sixthsurge</span><span><b>28.0M</b> 下载</span><span>支持 26.2 / 26.3</span><span>原生中文</span></div>
+<p>A gameplay-focused shader pack with a semi-realistic style. 为玩游戏调的半写实，帧数稳。</p>
+</div>
+</figure>
+</section>
+<div class="rule-note"><span>下面是索引：无卡片，只有细线和字，和 Modrinth 列表同一逻辑。</span><span>120px 缩略图 + 标题 + 作者 + 下载量 + 版本</span></div>
+<div class="section-head" id="index" style="margin-top:24px"><h2>光影索引</h2><p>默认按下载量 Top 12</p></div>
+<section class="index" id="list"></section>
+<div class="section-head"><h2>低配也能跑</h2><p>potato 515 款里挑的三款</p></div>
+<section class="strip">
+<figure><img loading="lazy" src="https://cdn.modrinth.com/data/Q1vvjJYV/images/6196a455f84be3071fd99b4dc182694be0e30343.jpeg" alt="BSL"><figcaption><b>BSL Shaders · CaptTatsu</b><span>30.5M</span></figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.modrinth.com/data/BUxf36AP/images/b2c0f12ee532c026930cd03390c101dcebd0d2e8.png" alt="Mellow"><figcaption><b>Mellow · TheCMK</b><span>7.4M</span></figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.modrinth.com/data/xEItlMn3/images/1700c1e7e94a77b3a4693dea401671d356521701.jpeg" alt="Nostalgia · RRe36"><figcaption><b>Nostalgia · RRe36</b><span>4.4M</span></figcaption></figure>
+</section>
+<div class="section-head" id="guide"><h2>三步装好</h2><p>第一次来只看这三行</p></div>
+<section class="steps">
+<div><div class="k">01 · 先装</div><div class="t">Iris + Sodium</div><div class="d">现在最稳的组合，892 款标 Iris。OptiFine 老包多数也兼容。</div></div>
+<div><div class="k">02 · 再下</div><div class="t">拖进 shaderpacks</div><div class="d">从 Modrinth 详情页下 .zip，丢进 shaderpacks 文件夹，进游戏点一下。</div></div>
+<div><div class="k">03 · 最后</div><div class="t">按配置降一档</div><div class="d">卡先降渲染距离和阴影。土豆机认准 potato(515) / low(427) 标签。</div></div>
+</section>
+</main>
+<footer><div class="wrap">
+<div>方块画廊 · 方向B去AI味稿 —— 单文件静态稿，图片全部 cdn.modrinth.com 在线直读。<br>数据：site/data/modrinth-catalog.json（983 款，同步 2026-10-10）+ gallery-hires.json（80 组高清原图）。</div>
+<div style="text-align:right">深色 · 无衬线标题<br>无轮播 · 无卡片阴影 · 无渐变</div>
+</div></footer>
+<script>
+const DATA=[
+{id:"complementary-reimagined",t:"Complementary Shaders - Reimagined",a:"EminGT",dl:69346880,v:"26.2 / 26.3",tags:"vanilla-like · iris · optifine · potato",s:"preserving elements minecraft exceptional quality detail performance",img:"https://cdn.modrinth.com/data/HVnmMxH1/images/8434da89fc850fa2af2917c1fb4e82ed9e7ef1e9_350.webp"},
+{id:"complementary-unbound",t:"Complementary Shaders - Unbound",a:"EminGT",dl:45099628,v:"26.2 / 26.3",tags:"semi-realistic · iris · optifine",s:"transforming visuals minecraft exceptional quality detail performance",img:"https://cdn.modrinth.com/data/R6NEzAwj/images/7c45cec837f459ef49571d230e54952c42717cab_350.webp"},
+{id:"bsl-shaders",t:"BSL Shaders",a:"CaptTatsu",dl:30464438,v:"26.2 / 26.3",tags:"iris · optifine · low",s:"bright colorful distinct java",img:"https://cdn.modrinth.com/data/Q1vvjJYV/images/f5b5407d8a034c32fb9ab21fd000320413cf18bc_350.webp"},
+{id:"photon-shader",t:"Photon Shaders",a:"sixthsurge",dl:28027276,v:"26.2 / 26.3",tags:"semi-realistic · iris · optifine · 原生中文",s:"gameplay-focused semi-realistic style",img:"https://cdn.modrinth.com/data/lLqFfGNs/images/8d5657f12c52084d64e2edccc4dfc0b6083b127f_350.webp"},
+{id:"solas-shader",t:"Solas Shader",a:"Septonious",dl:17772797,v:"26.1.2 / 26.2",tags:"fantasy · iris · optifine · 原生中文",s:"modern fantasy stylized colored lighting stunning visuals",img:"https://cdn.modrinth.com/data/EpQFjzrQ/images/ce6ca2fab6173e6fcf4454487e320c041291fecd_350.webp"},
+{id:"bliss-shader",t:"Bliss Shaders",a:"Xonk",dl:15129282,v:"26.2 / 26.3",tags:"fantasy · iris · optifine · 原生中文",s:"well performing fantasy scene variation customization",img:"https://cdn.modrinth.com/data/ZvMtQlho/images/41a5952f7c554a05b2c43348ba1b11d3f2e69fc5_350.webp"},
+{id:"rethinking-voxels",t:"Rethinking Voxels",a:"gri573",dl:13413697,v:"1.21.9 / 1.21.10",tags:"iris · optifine · WIP",s:"gameplay complementary coloured block light sharp shadows",img:"https://cdn.modrinth.com/data/kmwfVOoi/images/5de1c81f0bc383e607993c76c81aa56c37a63a7a_350.webp"},
+{id:"makeup-ultra-fast-shaders",t:"MakeUp - Ultra Fast",a:"KDXavier",dl:13386557,v:"26.2 / 26.3",tags:"potato · low · iris · 原生中文",s:"best quality performance ratio adapted resources",img:"https://cdn.modrinth.com/data/izsIPI7a/images/7fad6f7be5d313e9cd9c2dc4378250299ea29950_350.webp"},
+{id:"super-duper-vanilla",t:"Super Duper Vanilla",a:"Eldeston",dl:8065663,v:"1.21.7 / 1.21.8",tags:"vanilla-like · low · iris · 原生中文",s:"super duper graphics pack cancelled style",img:"https://cdn.modrinth.com/data/LMIZZNxZ/images/ad3b243c4ca2e8d5190fd76ddd6ec4c49a351bf3_350.webp"},
+{id:"insanity-shader",t:"Insanity Shader",a:"ElocinDev",dl:7687210,v:"1.21.2 / 1.21.3",tags:"horror · 恐怖 · iris · low",s:"stylized horror iris high customizability performance",img:"https://cdn.modrinth.com/data/EQWX2WiO/images/293677d965339398965a5addeb1fd7d4117282b1_350.webp"},
+{id:"mellow",t:"Mellow",a:"TheCMK",dl:7427741,v:"26.2 / 26.3",tags:"potato · iris · optifine",s:"painterly aesthetic actually play performance",img:"https://cdn.modrinth.com/data/BUxf36AP/images/df1fcff4703e11d9f45c49658699068ba6478362_350.webp"},
+{id:"astralex",t:"AstraLex Shaders",a:"LexBoosT",dl:5440697,v:"26.2 / 26.3",tags:"fantasy · iris · optifine",s:"high customization effects",img:"https://cdn.modrinth.com/data/RphJSnEs/images/94cba843df8f5ee3c995b92bfe9baeb69e40462d_350.webp"}
+];
+const fmt=n=>n>=1000000?(n/1000000).toFixed(1)+"M":(n>=10000?(n/10000).toFixed(1)+"万":""+n);
+let styleF="",sort="dl";
+const list=document.getElementById("list"),q=document.getElementById("q"),hit=document.getElementById("hitcount");
+function render(){
+let kw=q.value.trim().toLowerCase();
+let arr=DATA.filter(d=>{
+if(styleF && (d.tags+" "+d.s).toLowerCase().indexOf(styleF.toLowerCase())<0) return false;
+if(!kw) return true;
+return (d.t+" "+d.a+" "+d.s+" "+d.tags+" "+d.id).toLowerCase().indexOf(kw)>=0;
+});
+arr.sort((a,b)=>sort==="dl"?b.dl-a.dl:a.t.localeCompare(b.t));
+hit.innerHTML="当前命中 <b>"+arr.length+"</b> / 983 款";
+if(!arr.length){list.innerHTML='<div class="empty">没找到 —— 换个词试试，比如 BSL / potato / horror。</div>';return;}
+list.innerHTML=arr.map(d=>{
+let title=d.t;
+if(kw){try{title=d.t.replace(new RegExp("("+kw.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")}catch(e){}}
+return '<a class="row" href="https://modrinth.com/shader/'+d.id+'">'
++'<img loading="lazy" src="'+d.img+'" alt="">'
++'<div><h3>'+title+'<span class="by">by '+d.a+'</span></h3><div class="sub">'+d.s+'</div><div class="tags">'+d.tags+' · '+d.v+'</div></div>'
++'<div class="dl"><b>'+fmt(d.dl)+'</b><span>下载 · '+d.v+'</span></div></a>';
+}).join("");
+}
+q.addEventListener("input",render);
+document.getElementById("go").onclick=()=>{document.getElementById("index").scrollIntoView({behavior:"smooth"});render();};
+document.getElementById("sort").onchange=e=>{sort=e.target.value;render();};
+document.querySelectorAll("#styleOpts button").forEach(b=>b.onclick=()=>{
+document.querySelectorAll("#styleOpts button").forEach(x=>x.classList.remove("on"));
+b.classList.add("on");styleF=b.dataset.f;render();
+});
+render();
+</script>
+</body>
+</html>

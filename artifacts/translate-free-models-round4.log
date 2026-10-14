@@ -1,0 +1,91 @@
+LLM 提供方：muse-spark-1.3-contributor-free（api.888424.xyz）（muse-spark-1.3-contributor-free） / muse-spark-1.2-contributor-free（api.888424.xyz）（muse-spark-1.2-contributor-free） / mimo-v2.6-flash-free（api.888424.xyz）（mimo-v2.6-flash-free）
+
+LLM 并发度：10
+
+翻译记忆加载：31803 条
+
+候选 27 个，本次处理前 27 个
+
+[stereos-default-plus] v2.4：17 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 8/17，剩余 9 个需 LLM 翻译
+[super-fps-shader-boracore] v1.0.0：5 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 2/5，剩余 3 个需 LLM 翻译
+[fsr-plusshader] 无 en_US.lang（lang 文件: 无），跳过
+[ultravanilla-plus] 无 en_US.lang（lang 文件: 无），跳过
+[true-black-white-shader-grayscale] v1.0.0.0：13 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（13/13），跳过 LLM
+[true-black-white-shader-grayscale] 翻译完成：记忆命中 13，LLM 调用 0 次，回退 0/13
+[true-black-white-shader-grayscale] 完成（1/27） -> site\public\lang\true-black-white-shader-grayscale\1.0.0.0\zh_CN.lang
+[motionblur-plus-glacierdevelopment] 无 en_US.lang（lang 文件: 无），跳过
+[colorless-black-and-white] 无 en_US.lang（lang 文件: 无），跳过
+[highframes-plus] 无 en_US.lang（lang 文件: 无），跳过
+[pixels-reimagined] vPixels_ReimaginedV1.1：47 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（47/47），跳过 LLM
+[pixels-reimagined] 翻译完成：记忆命中 47，LLM 调用 0 次，回退 0/47
+[pixels-reimagined] 完成（2/27） -> site\public\lang\pixels-reimagined\Pixels_ReimaginedV1.1\zh_CN.lang
+[nivora-shaders] 无 en_US.lang（lang 文件: 无），跳过
+[featherlight-ralph-abdo] v1.0.0：146 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 93/146，剩余 53 个需 LLM 翻译
+[lumavale-shaders] 无 en_US.lang（lang 文件: 无），跳过
+[unbound-visual-plus] vPT-v10.1：553 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆全覆盖（553/553），跳过 LLM
+[unbound-visual-plus] 翻译完成：记忆命中 553，LLM 调用 0 次，回退 0/553
+[unbound-visual-plus] 完成（3/27） -> site\public\lang\unbound-visual-plus\PT-v10.1\zh_CN.lang
+[ultimatefusionshaders] vUltimateFusionShaders：52 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 28/52，剩余 24 个需 LLM 翻译
+[neurolight-shaders] v1.2：133 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 68/133，剩余 65 个需 LLM 翻译
+[livelycinematic] 自带中文（v1.0.0），已标记并排除
+[aetheris-medium] v1.0：12 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 5/12，剩余 7 个需 LLM 翻译
+[hazelle-shaders] v1.0.0：924 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 890/924，剩余 34 个需 LLM 翻译
+[light-crystal-pvp-shader] 无 en_US.lang（lang 文件: 无），跳过
+[lumina-hiimnottellingyoumyname] v1.0：81 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 54/81，剩余 27 个需 LLM 翻译
+[feather-lite-xiao_kg] 自带中文（valpha-1.0.0），已标记并排除
+[matrix-signal-fault] v0.1.0：78 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 21/78，剩余 57 个需 LLM 翻译
+[yukeeshaders] v0.8.0：56 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 28/56，剩余 28 个需 LLM 翻译
+[super-fps-shader-boracore] 翻译完成：记忆命中 2，LLM 调用 1 次，回退 0/5
+[super-fps-shader-boracore] 完成（4/27） -> site\public\lang\super-fps-shader-boracore\1.0.0\zh_CN.lang
+[adi-core-shader] 无 en_US.lang（lang 文件: 无），跳过
+[stereos-default-plus] 翻译完成：记忆命中 8，LLM 调用 1 次，回退 0/17
+[stereos-default-plus] 完成（5/27） -> site\public\lang\stereos-default-plus\2.4\zh_CN.lang
+[spy-shaders] v0.2：6 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 0/6，剩余 6 个需 LLM 翻译
+[aetheris-medium] 翻译完成：记忆命中 5，LLM 调用 1 次，回退 0/12
+[aetheris-medium] 完成（6/27） -> site\public\lang\aetheris-medium\1.0\zh_CN.lang
+[blinding-void] 无 en_US.lang（lang 文件: 无），跳过
+[aurelia-shader] v1.0：73 个键，[muse-spark-1.3-contributor-free, muse-spark-1.2-contributor-free, mimo-v2.6-flash-free] 开始初翻…
+    翻译记忆命中 48/73，剩余 25 个需 LLM 翻译
+[hazelle-shaders] 翻译完成：记忆命中 890，LLM 调用 1 次，回退 1/924
+[hazelle-shaders] 完成（7/27） -> site\public\lang\hazelle-shaders\1.0.0\zh_CN.lang
+[lumina-hiimnottellingyoumyname] 翻译完成：记忆命中 54，LLM 调用 1 次，回退 0/81
+[lumina-hiimnottellingyoumyname] 完成（8/27） -> site\public\lang\lumina-hiimnottellingyoumyname\1.0\zh_CN.lang
+    第 1 次分块回退率 6/6，重试
+[matrix-signal-fault] 翻译完成：记忆命中 21，LLM 调用 1 次，回退 0/78
+[matrix-signal-fault] 完成（9/27） -> site\public\lang\matrix-signal-fault\0.1.0\zh_CN.lang
+[yukeeshaders] 翻译完成：记忆命中 28，LLM 调用 1 次，回退 0/56
+[yukeeshaders] 完成（10/27） -> site\public\lang\yukeeshaders\0.8.0\zh_CN.lang
+[ultimatefusionshaders] 翻译完成：记忆命中 28，LLM 调用 1 次，回退 0/52
+[ultimatefusionshaders] 完成（11/27） -> site\public\lang\ultimatefusionshaders\UltimateFusionShaders\zh_CN.lang
+    第 2 次分块回退率 6/6，重试
+[neurolight-shaders] 翻译完成：记忆命中 68，LLM 调用 2 次，回退 1/133
+[neurolight-shaders] 完成（12/27） -> site\public\lang\neurolight-shaders\1.2\zh_CN.lang
+[aurelia-shader] 翻译完成：记忆命中 48，LLM 调用 1 次，回退 0/73
+[aurelia-shader] 完成（13/27） -> site\public\lang\aurelia-shader\1.0\zh_CN.lang
+    第 3 次分块回退率 6/6，重试
+[featherlight-ralph-abdo] 翻译完成：记忆命中 93，LLM 调用 1 次，回退 0/146
+[featherlight-ralph-abdo] 完成（14/27） -> site\public\lang\featherlight-ralph-abdo\1.0.0\zh_CN.lang
+    第 1 次分块回退率 6/6，重试
+    第 2 次分块回退率 6/6，重试
+    第 3 次分块回退率 6/6，重试
+    第 1 次分块回退率 6/6，重试
+    第 2 次分块回退率 6/6，重试
+    第 3 次分块回退率 6/6，重试
+[spy-shaders] 翻译完成：记忆命中 0，LLM 调用 1 次，回退 6/6
+[spy-shaders] 回退率过高（6/6），判定失败，跳过
+
+流水线结束：完成 14，自带中文排除 2，失败/跳过 11
