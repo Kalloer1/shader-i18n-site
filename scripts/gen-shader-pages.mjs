@@ -28,6 +28,13 @@ for (const f of readdirSync(SHADERS_DIR)) {
 }
 
 const manualBySlug = new Map(db.shaders.map((s) => [s.id, s]))
+// 部分光影在 Modrinth 改名后 catalog id 与 shaders.json id 不一致，用 projectId 兜底（与 data.js 的 mergeSource 同判据，否则两边成员不一致）
+const manualByProjectId = new Map(
+  db.shaders.filter((s) => s.modrinth?.projectId).map((s) => [s.modrinth.projectId, s]),
+)
+// 产品决定：站点只展示两类光影 —— 已有本站汉化（langVersions 非空）或自带中文；其余不生成详情页（数据仍保留在 catalog）
+const manualOf = (e) => manualBySlug.get(e.id) ?? manualByProjectId.get(e.projectId) ?? manualBySlug.get(e.projectId)
+const isDisplayed = (e) => e.hasNativeZhCN === true || (manualOf(e)?.langVersions?.length ?? 0) > 0
 const escHtml = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
@@ -53,7 +60,9 @@ function versionRange(versions) {
 const fmtW = (n) => (n >= 10000 ? `${(n / 10000).toFixed(1)} 万` : String(n))
 
 // ---------- 类似光影推荐 ----------
-const popularPool = catalog.shaders.filter((s) => s.gallery?.length && s.downloads >= 5000).slice(0, 80)
+const popularPool = catalog.shaders
+  .filter((s) => s.gallery?.length && s.downloads >= 5000 && isDisplayed(s))
+  .slice(0, 80)
 
 function getSimilarShaders(currentId, count = 6) {
   const pool = popularPool.filter((s) => s.id !== currentId)
@@ -67,7 +76,8 @@ function getSimilarShaders(currentId, count = 6) {
 // ---------- 生成页面 ----------
 let generated = 0
 for (const e of catalog.shaders) {
-  const manual = manualBySlug.get(e.id) ?? manualBySlug.get(e.projectId)
+  if (!isDisplayed(e)) continue
+  const manual = manualOf(e)
   const title = manual?._meta?.modrinth?.title ?? e.title
   const nameCN = manual?.nameCN ?? ''
   const author = manual?._meta?.modrinth?.author ?? e.author ?? ''

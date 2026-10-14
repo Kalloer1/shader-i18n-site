@@ -25,16 +25,16 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 
 | 项目 | 当前值 | 说明 |
 |---|---:|---|
-| Modrinth 光影目录 | 1001 个 | `site/data/modrinth-catalog.json`，由同步脚本更新 |
-| `shaders.json` 条目 | 548 个 | 人工维护的版本映射及同步元数据 |
-| 已有 `langVersions` 的光影 | 545 个 | 含目录外的历史精选条目 |
-| GitHub 中的 `zh_CN.lang` 文件 | 603 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
-| 夸克镜像链接 | 603 个 | 字段名为 `quark`，已覆盖全部已汉化版本 |
+| Modrinth 光影目录 | 1000 个 | `site/data/modrinth-catalog.json`，由同步脚本更新 |
+| `shaders.json` 条目 | 549 个 | 人工维护的版本映射及同步元数据（含新增 doomplus 翻译） |
+| 已有 `langVersions` 的光影 | 546 个 | 含目录外的历史精选条目（auroralite、veridian） |
+| GitHub 中的 `zh_CN.lang` 文件 | 604 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
+| 夸克镜像链接 | 545 个版本有 `quark` 字段 | 546 个已汉化光影中 545 个的最新版本可用（含 catalog/manual 兜底），doomplus 暂无 |
 | 自带中文的目录项目 | 23 个 | 页面按四态优先级统计 |
 | 明确缺少 `en_US.lang` | 439 个 | 以 `modrinth-catalog.json` 条目的 `noEnUsLang` 标记为准 |
 | 尚未登记翻译的可处理项目 | 0 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
-| 翻译术语记忆 | 32,131 条 | `site/data/glossary.json` |
-| 生成的详情页 | 1001 个 | `site/shaders/`，由构建脚本生成 |
+| 翻译术语记忆 | 32,160 条 | `site/data/glossary.json` |
+| 生成的详情页 | 562 个 | `site/shaders/`，由构建脚本生成；仅展示已汉化（539）与自带中文（23），其余 438 条无英文源数据保留在 catalog 但不生成页面 |
 
 这些数字是当前快照，不是永久承诺；Modrinth 目录会在每日同步后变化。
 

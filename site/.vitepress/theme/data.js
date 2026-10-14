@@ -113,8 +113,14 @@ export function shaderVersionRange(shader) {
 }
 
 // 全量目录（含自带中文的光影，UI 打"自带中文"标签）
+const mergeSource = (e) => manualByProjectId.get(e.projectId) ?? manualBySlug.get(e.id)
+// 与详情页生成一致：列表只取展示集合（已有本站汉化 或 自带中文）
+const isDisplayable = (e) =>
+  e.hasNativeZhCN === true || (mergeSource(e)?.langVersions?.length ?? 0) > 0
+
 export const allShaders = catalog.shaders
-  .map((e) => mergeManual(e, manualByProjectId.get(e.projectId) ?? manualBySlug.get(e.id)))
+  .filter(isDisplayable)
+  .map((e) => mergeManual(e, mergeSource(e)))
 
 // 精选人工条目但不在目录/已被原生中文排除的（例如刚加入还没跑 catalog），保证不丢失
 const knownIds = new Set(allShaders.map((s) => s.id))
