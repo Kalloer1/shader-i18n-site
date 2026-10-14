@@ -16,6 +16,9 @@
  * - GITHUB_PAT               仅需本仓库 actions: write
  * - GITHUB_REPO              "owner/repo"，默认 Kall oer1/shader-i18n-site（见 wrangler.toml vars）
  * - GITHUB_WORKFLOW_FILE     workflow 文件名，默认 translate.yml
+ * - BREVO_API_KEY            Brevo 发信 API key（Worker secret；缺失则跳过通知）
+ * - EMAIL_FROM               发信地址（Worker secret，公开仓库禁写 wrangler.toml）
+ * - NOTIFY_ENABLED           "1"/"0"（wrangler.toml [vars]，一键停发，不敏感）
  *
  * KV binding: TRANSLATION_QUEUE
  */
@@ -131,6 +134,130 @@ async function mirrorToTencentDocs(env, entry, note) {
     // 腾讯文档读/改 API 未验证，写入失败是预期内的可接受降级。
     console.warn('Tencent Docs mirror failed (ignored):', err?.message ?? err)
     return false
+  }
+}
+
+// ---------- 完成通知（Brevo 邮件） ----------
+// 状态从非完成翻转到完成时发一次；任何失败只记日志，不回滚状态、不影响返回
+// （同镜像降级风格）。KV 中只存邮箱哈希，绝不存明文邮箱：
+// hash = sha256(INTERNAL_STATUS_TOKEN + "|" + 小写邮箱)，盐复用已有 secret，不新增。
+function isDoneStatus(s) {
+  return s === STATUS.DONE || s === STATUS.DONE_UNMIRRORED
+}
+
+function isValidEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || '')
+}
+
+async function sha256Hex(text) {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text))
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('')
+}
+
+function notifyEmailHash(email, salt) {
+  return sha256Hex(`${salt}|${email.trim().toLowerCase()}`)
+}
+
+async function notifyHmac(email, key) {
+  const cryptoKey = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(key),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign'],
+  )
+  const sig = await crypto.subtle.sign('HMAC', cryptoKey, new TextEncoder().encode(email.trim().toLowerCase()))
+  return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, '0')).join('')
+}
+
+async function sendBrevoEmail({ apiKey, from, to, subject, text }) {
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'api-key': apiKey },
+    body: JSON.stringify({ sender: { email: from }, to: [{ email: to }], subject, textContent: text }),
+  })
+  if (!res.ok) {
+    throw new Error(`Brevo rejected (${res.status}): ${(await res.text()).slice(0, 200)}`)
+  }
+}
+
+/** 状态从非完成翻转到完成时发一次；掉出完成态则删去重键以便下次重发。整体 try/catch，失败只 warn。 */
+async function maybeNotifyPlayer(env, entry, existing, request) {
+  try {
+    const wasDone = isDoneStatus(existing?.status)
+    const isDone = isDoneStatus(entry?.status)
+    const sentKey = `notify:sent:${entry.id}`
+    if (wasDone && !isDone) {
+      // 掉出完成态（如重翻失败）：删去重键，重译完成时才能再通知
+      try {
+        await env.TRANSLATION_QUEUE.delete(sentKey)
+      } catch (err) {
+        console.warn('notify dedup unlock failed (ignored):', err?.message ?? err)
+      }
+      return
+    }
+    if (!isDone || wasDone) return // 仅「非完成 → 完成」的翻转继续
+    if (env.NOTIFY_ENABLED === '0') return // 一键停发
+    const contact = (entry.contact || '').trim()
+    if (!isValidEmail(contact)) return // 为空或 QQ 号等非邮箱格式：跳过
+    const apiKey = env.BREVO_API_KEY
+    const from = env.EMAIL_FROM
+    if (!apiKey || !from) {
+      console.warn('notify skipped (ignored): 缺少 BREVO_API_KEY / EMAIL_FROM')
+      return
+    }
+    const salt = env.INTERNAL_STATUS_TOKEN
+    if (!salt) {
+      console.warn('notify skipped (ignored): 缺少 INTERNAL_STATUS_TOKEN（哈希盐）')
+      return
+    }
+    if (await env.TRANSLATION_QUEUE.get(sentKey)) return // 已通知过
+    const hash = await notifyEmailHash(contact, salt)
+    if (await env.TRANSLATION_QUEUE.get(`notify:block:${hash}`)) return // 已退订
+    const today = new Date().toISOString().slice(0, 10).replace(/-/g, '')
+    const limitKey = `notify:limit:${hash}:${today}`
+    const used = Number((await env.TRANSLATION_QUEUE.get(limitKey)) || 0)
+    if (used >= 3) {
+      console.warn('notify skipped (ignored): 同一邮箱今日已达上限')
+      return
+    }
+    const workerOrigin = new URL(request.url).origin
+    const token = await notifyHmac(contact, salt)
+    const unsub = `${workerOrigin}/unsubscribe?e=${encodeURIComponent(contact)}&t=${token}`
+    const title = entry.name || entry.id
+    const text =
+      `你请求的光影「${title}」状态已更新为：${entry.status}\n` +
+      `页面链接：${entry.url || ''}\n` +
+      `不再接收此类通知？退订：${unsub}\n`
+    await sendBrevoEmail({ apiKey, from, to: contact, subject: `【光影汉化】${title} 已完成`, text })
+    await env.TRANSLATION_QUEUE.put(sentKey, '1')
+    await env.TRANSLATION_QUEUE.put(limitKey, String(used + 1), { expirationTtl: 172800 })
+  } catch (err) {
+    // 发信失败绝不回滚状态、绝不影响 /status 返回
+    console.warn('notify failed (ignored):', err?.message ?? err)
+  }
+}
+
+/** GET /unsubscribe?e=<邮箱>&t=<hmac> —— 通过则写 block 键，回纯文本 */
+async function handleUnsubscribe(url, env, origin) {
+  const headers = { 'Content-Type': 'text/plain; charset=utf-8', ...corsHeaders(origin) }
+  try {
+    const email = (url.searchParams.get('e') || '').trim()
+    const token = url.searchParams.get('t') || ''
+    const salt = env.INTERNAL_STATUS_TOKEN
+    if (!isValidEmail(email) || !token || !salt) {
+      return new Response('退订链接无效', { status: 400, headers })
+    }
+    const expected = await notifyHmac(email, salt)
+    if (token !== expected) {
+      return new Response('退订链接无效', { status: 400, headers })
+    }
+    const hash = await notifyEmailHash(email, salt)
+    await env.TRANSLATION_QUEUE.put(`notify:block:${hash}`, '1')
+    return new Response('已退订该邮箱的完成通知。', { status: 200, headers })
+  } catch (err) {
+    console.error('unsubscribe error:', err)
+    return new Response('服务器内部错误', { status: 500, headers })
   }
 }
 
@@ -345,6 +472,8 @@ async function handleStatus(request, env, origin) {
 
   await writeEntry(env, entry)
   const mirrored = await mirrorToTencentDocs(env, entry, entry.error)
+  // 翻转到完成即通知玩家；内部整体 try/catch，失败不影响本次返回
+  await maybeNotifyPlayer(env, entry, existing, request)
 
   return json({ success: true, id: entry.id, status: entry.status, mirrored }, 200, origin)
 }
@@ -379,6 +508,11 @@ export default {
       if (pathname === '/translate') {
         if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, origin)
         return await handleTranslate(request, env, origin)
+      }
+
+      if (pathname === '/unsubscribe') {
+        if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405, origin)
+        return await handleUnsubscribe(new URL(request.url), env, origin)
       }
 
       if (pathname === '/status') {

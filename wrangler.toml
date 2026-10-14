@@ -8,12 +8,17 @@ compatibility_date = "2024-01-01"
 # GITHUB_REPO 与 GITHUB_WORKFLOW_FILE 用于 /translate 触发 Actions。
 GITHUB_REPO = "Kalloer1/shader-i18n-site"
 GITHUB_WORKFLOW_FILE = "translate.yml"
+# NOTIFY_ENABLED：一键停发开关（"1" 发信 / "0" 停发），不敏感，放 vars。
+# EMAIL_FROM 禁止写进本文件：仓库公开，发件地址只走 Worker secret（见 sync-worker-secrets.yml）。
+NOTIFY_ENABLED = "1"
 
 # 以下为 Secrets，通过 `wrangler secret put <NAME>` 设置，不要写进本文件：
 #   TENCENT_DOCS_TOKEN      腾讯文档 API token（缺失则跳过镜像）
 #   TRANSLATE_PASSPHRASE    /translate 口令
-#   INTERNAL_STATUS_TOKEN   /status 内部 token
+#   INTERNAL_STATUS_TOKEN   /status 内部 token（兼作通知哈希盐/HMAC 密钥）
 #   GITHUB_PAT              仅需本仓库 actions: write
+#   BREVO_API_KEY           Brevo 发信 API key（缺失则跳过通知）
+#   EMAIL_FROM              发件地址（GitHub secret，经 sync-worker-secrets.yml 同步进 Worker）
 
 # 翻译队列（权威状态源）。ID 由 `wrangler kv namespace create TRANSLATION_QUEUE` 生成。
 # 注意：binding 必须是 TRANSLATION_QUEUE（worker/index.js 读 env.TRANSLATION_QUEUE），
