@@ -1,0 +1,67 @@
+#shaders/lang/zh_CN.lang
+# Yukee Shaders v0.8.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Yukee Shaders 0.7.30 for Minecraft 1.20.1.zip 的 shaders/lang/en_us.lang
+option.WARMTH=暖色调
+option.SATURATION=饱和度
+option.GLOW=柔和泛光
+profile.LOW=低
+profile.MEDIUM=中
+option.OUTLINE_STRENGTH=轮廓强度
+option.OUTLINE_WIDTH=轮廓宽度
+option.SKY_STYLE=粉彩天空强度
+option.CLOUD_AMOUNT=云朵覆盖度
+option.SUN_RAYS=阳光射线
+option.SHADOWS=世界阴影
+option.ANIME_SKY=插画风动漫天空
+option.LOCAL_LIGHTS=局地方块光阴影
+option.LOCAL_STRENGTH=局部灯光强度
+option.AA_STRENGTH=边缘平滑
+option.AA_STRENGTH.comment=仅在物体边界处应用基于深度的抗锯齿，纹理内部保持精确不变，设为 0 可禁用。
+screen.ATMOSPHERE=天空与大气
+screen.LIGHTING=光照与阴影
+screen.STYLE=颜色与描边
+screen.QUALITY=抗锯齿
+profile.HIGH=高
+option.shadowMapResolution=太阳阴影分辨率
+option.LOCAL_SHADOW_SOFTNESS=灯光阴影柔和度
+option.LOCAL_SHADOW_SOFTNESS.comment=无随机噪点的稳定帐篷滤波，柔和度越高使用的深度比较次数越多。
+option.NIGHT_AMBIENT=夜间环境亮度
+option.NIGHT_AMBIENT.comment=在保留灯光颜色的同时调整背景亮度。
+option.GALAXY_STRENGTH=银河亮度
+
+option.SKY_SHARPNESS=天空锐度
+option.DYNAMIC_SHADOWS=动态光源阴影
+option.DYNAMIC_SHADOWS.comment=最多支持两个活动的移动 LDL 实体光源，总上限为四个光源，每帧更新。
+
+option.SHADOW_STABILITY=太阳阴影稳定性
+option.SHADOW_STABILITY.comment=在帧之间重投影阴影可见性，不累积场景颜色，并剔除遮挡失效的表面。
+
+option.DIMENSION_SKIES=下界与末地天空
+option.DIMENSION_SKIES.comment=柔和的深红下界雾霭与淡紫色末地星云，星星固定于世界坐标。
+option.DIMENSION_FOG=维度大气雾霭
+
+option.DISTANT_FILTERING=远距离纹理过滤
+option.DISTANT_FILTERING.comment=减少缩小纹理的闪烁，同时保持近处纹素精确不变，采样钳制在当前精灵图内。
+
+option.PASTEL_STRENGTH=淡雅粉彩色调
+option.PASTEL_STRENGTH.comment=非常柔和的暖色高光与淡紫中间调，保留亮度与纹理细节；设为 0 可禁用。
+option.shadowDistance=太阳阴影距离
+option.shadowDistance.comment=64、96 或 128 格，在边界处平滑淡出；距离越远渲染开销越大。
+value.shadowDistance.64.0=64个方块
+value.shadowDistance.96.0=96个方块
+value.shadowDistance.128.0=128个方块
+
+option.CLOUD_SPEED=云移动速度
+option.CLOUD_MORPH=云形态变化
+value.CLOUD_SPEED.0.0=关
+value.CLOUD_SPEED.1.0=温和
+value.CLOUD_SPEED.2.0=更快
+value.CLOUD_SPEED.3.0=快速
+
+option.SHOOTING_STARS=流星
+
+screen.WATER=水
+option.WATER_REFLECTION=水体反射
+option.WATER_WAVES=水面波浪
+option.WATER_SPARKLES=水面闪光
+option.WATER_OPACITY=水不透明度

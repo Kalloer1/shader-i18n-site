@@ -1,0 +1,8 @@
+#shaders/lang/zh_CN.lang
+# Super FPS Shader v1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Super_FPS_Shader_.zip 的 shaders/lang/en_us.lang
+option.WAVE_HEIGHT=波浪高度
+option.WAVE_HEIGHT.comment=水面波浪的高度。水体外观与颜色保持原版。
+option.WAVE_SPEED=波浪速度
+option.BRIGHT_BOOST=亮度提升
+option.BRIGHT_BOOST.comment=轻微提亮原版光照。

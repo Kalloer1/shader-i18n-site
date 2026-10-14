@@ -1,0 +1,18 @@
+#shaders/lang/zh_CN.lang
+# Aetheris Medium v1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：AetherisMedium.zip 的 shaders/lang/en_us.lang
+option.BLOCK_WAVES=水与熔岩波浪
+option.BLOCK_WAVES.comment=使水面和熔岩的表面产生波动。
+
+option.ALPHA_KEEP=柔和透明度
+option.ALPHA_KEEP.comment=让生物和方块保持部分透明可见。
+
+option.USE_ENTITY_COLOR=受击颜色
+option.USE_ENTITY_COLOR.comment=生物受到伤害时闪现的红色。
+
+option.AETHERIS_BEND=阴影扭曲
+option.AETHERIS_SHADE=光照
+option.AETHERIS_SETTINGS=设置
+option.AETHERIS_SHADOWS=阴影
+option.AETHERIS_SUNLIGHT=太阳与月亮
+option.AETHERIS_SWAY=植物摇曳

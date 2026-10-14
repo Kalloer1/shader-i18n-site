@@ -1,0 +1,84 @@
+#shaders/lang/zh_CN.lang
+# Evergreen Sights v1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：EvergreenSights.zip 的 shaders/lang/en_US.lang
+option.shadowMapResolution=阴影质量
+option.shadowMapResolution.comment=阴影贴图分辨率。仅次于环境光遮蔽，对帧数影响最大的选项。
+value.shadowMapResolution.1024=低
+value.shadowMapResolution.2048=中
+value.shadowMapResolution.3072=高
+value.shadowMapResolution.4096=超高
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=真实阴影贴图的范围（单位：方块）。数值越低，阴影越清晰、性能越高。超出后由远景阴影接管。
+option.FAR_SHADOWS=远距离阴影
+option.FAR_SHADOWS.comment=让阴影延续至阴影贴图范围之外，避免出现可见的阴影圈。关闭=最快，快速=10 步，平滑=16 步（仅在贴图边缘外运行）。
+value.FAR_SHADOWS.0=关
+value.FAR_SHADOWS.1=快速
+value.FAR_SHADOWS.2=平滑
+option.AO_QUALITY=环境光遮蔽
+option.AO_QUALITY.comment=半分辨率屏幕空间环境光遮蔽。中配及以上还会添加接触阴影。
+value.AO_QUALITY.0=关
+value.AO_QUALITY.1=低
+value.AO_QUALITY.2=中
+value.AO_QUALITY.3=高
+option.CLOUD_QUALITY=云层质量
+value.CLOUD_QUALITY.0=关
+value.CLOUD_QUALITY.1=低
+value.CLOUD_QUALITY.2=中
+value.CLOUD_QUALITY.3=高
+option.CLOUD_SHADOWS=云层阴影
+value.CLOUD_SHADOWS.0=关
+value.CLOUD_SHADOWS.1=开
+option.WATER_QUALITY=水体质量
+value.WATER_QUALITY.0=平面模式
+value.WATER_QUALITY.1=波浪
+value.WATER_QUALITY.2=波浪 + 闪光
+option.REFLECTIONS=水体反射
+option.REFLECTIONS.comment=水面的屏幕空间反射。关闭=仅天空反射（开销最低）。
+value.REFLECTIONS.0=仅天空
+value.REFLECTIONS.1=SSR 低配
+value.REFLECTIONS.2=SSR 高配
+option.BLOOM_LEVEL=泛光
+value.BLOOM_LEVEL.0=关
+value.BLOOM_LEVEL.1=微妙
+value.BLOOM_LEVEL.2=中
+value.BLOOM_LEVEL.3=强
+option.FOG_LEVEL=雾
+value.FOG_LEVEL.0=仅边缘
+value.FOG_LEVEL.1=自然
+value.FOG_LEVEL.2=浓密
+option.ATMOSPHERE=大气效果
+option.ATMOSPHERE.comment=太阳光晕、日落散射和地平线薄雾。
+value.ATMOSPHERE.0=简单
+value.ATMOSPHERE.1=普通
+value.ATMOSPHERE.2=丰富
+option.FXAA=抗锯齿（快速近似抗锯齿）
+option.FXAA.comment=廉价的边缘平滑，性能开销极低。
+value.FXAA.0=关
+value.FXAA.1=开
+option.EXPOSURE=曝光
+option.SATURATION=饱和度
+option.TEMPERATURE=色温
+option.TEMPERATURE.comment=负值偏冷，正值偏暖。
+profile.POTATO=土豆
+profile.LOW=低
+profile.MEDIUM=中
+profile.HIGH=高
+profile.ULTRA=超高
+option.SHADOW_WARP=阴影扭曲
+option.SHADOW_WARP.comment=将阴影贴图细节集中在近处而非远处。0=无扭曲（细节均匀分布）。若阴影显示异常可尝试设为 0。
+option.SHADOW_DEBUG=阴影调试视图
+option.SHADOW_DEBUG.comment=故障排查叠加层。1=覆盖范围，2=原始阴影贴图，3=在真实（红色）和请求（蓝色）阴影距离处的圆环。
+value.SHADOW_DEBUG.0=关
+value.SHADOW_DEBUG.1=覆盖范围
+value.SHADOW_DEBUG.2=原始贴图
+value.SHADOW_DEBUG.3=距离圆环
+value.SHADOW_DEBUG.4=已存储深度
+value.SHADOW_DEBUG.5=像素深度
+value.SHADOW_DEBUG.6=深度差值
+value.SHADOW_DEBUG.7=来源对比
+option.SHADOW_SRC=阴影深度来源
+option.SHADOW_SRC.comment=阴影深度的读取来源。自动会测试各个来源，若均不可用则回退至屏幕空间阴影（推荐）。
+value.SHADOW_SRC.0=深度纹理（不透明）
+value.SHADOW_SRC.1=深度纹理（全部）
+value.SHADOW_SRC.2=颜色拷贝
+value.SHADOW_SRC.3=自动

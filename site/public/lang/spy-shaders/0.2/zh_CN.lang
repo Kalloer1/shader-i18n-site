@@ -1,0 +1,10 @@
+#shaders/lang/zh_CN.lang
+# Spy Shaders v0.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Spy Shaders.zip 的 shaders/lang/en_us.lang
+option.WIGGLE_SPEED = 摆动速度
+option.COLOR_AMOUNT = 颜色强度
+option.WORLD_CURVE = 世界弯曲度
+
+option.WIGGLE_SPEED.comment = 控制物体移动的速度以及颜色变化的速度。癫痫患者请勿调高
+option.COLOR_AMOUNT.comment = 控制颜色效果的影响程度
+option.WORLD_CURVE.comment = 控制世界的弯曲程度，使用负数可产生“球内”效果，正数可产生“球上”效果

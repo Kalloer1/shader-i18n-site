@@ -16549,6 +16549,291 @@
           ]
         }
       ]
+    },
+    {
+      "id": "true-black-white-shader-grayscale",
+      "modrinth": {
+        "slug": "true-black-white-shader-grayscale",
+        "projectId": "LHVsUxbi"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.0.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/true-black-white-shader-grayscale/1.0.0.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pixels-reimagined",
+      "modrinth": {
+        "slug": "pixels-reimagined",
+        "projectId": "4NqVZgit"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "Pixels_ReimaginedV1.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/pixels-reimagined/Pixels_ReimaginedV1.1/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unbound-visual-plus",
+      "modrinth": {
+        "slug": "unbound-visual-plus",
+        "projectId": "jgYsD3FV"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "PT-v10.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/unbound-visual-plus/PT-v10.1/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "super-fps-shader-boracore",
+      "modrinth": {
+        "slug": "super-fps-shader-boracore",
+        "projectId": "o3z6MbSg"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/super-fps-shader-boracore/1.0.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stereos-default-plus",
+      "modrinth": {
+        "slug": "stereos-default-plus",
+        "projectId": "OT1P0oHO"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "2.4",
+          "langVersion": "1.0.0",
+          "file": "/lang/stereos-default-plus/2.4/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aetheris-medium",
+      "modrinth": {
+        "slug": "aetheris-medium",
+        "projectId": "whtMJjFZ"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/aetheris-medium/1.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hazelle-shaders",
+      "modrinth": {
+        "slug": "hazelle-shaders",
+        "projectId": "g8XFxSeP"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/hazelle-shaders/1.0.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lumina-hiimnottellingyoumyname",
+      "modrinth": {
+        "slug": "lumina-hiimnottellingyoumyname",
+        "projectId": "SQvhCttl"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/lumina-hiimnottellingyoumyname/1.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matrix-signal-fault",
+      "modrinth": {
+        "slug": "matrix-signal-fault",
+        "projectId": "pC9mvjo2"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "0.1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/matrix-signal-fault/0.1.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yukeeshaders",
+      "modrinth": {
+        "slug": "yukeeshaders",
+        "projectId": "v0ls167y"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "0.8.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/yukeeshaders/0.8.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ultimatefusionshaders",
+      "modrinth": {
+        "slug": "ultimatefusionshaders",
+        "projectId": "HkMe13oU"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "UltimateFusionShaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/ultimatefusionshaders/UltimateFusionShaders/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "neurolight-shaders",
+      "modrinth": {
+        "slug": "neurolight-shaders",
+        "projectId": "bXCmt4WM"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/neurolight-shaders/1.2/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aurelia-shader",
+      "modrinth": {
+        "slug": "aurelia-shader",
+        "projectId": "yHwtds5X"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/aurelia-shader/1.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "featherlight-ralph-abdo",
+      "modrinth": {
+        "slug": "featherlight-ralph-abdo",
+        "projectId": "tDNoLyAo"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/featherlight-ralph-abdo/1.0.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spy-shaders",
+      "modrinth": {
+        "slug": "spy-shaders",
+        "projectId": "pH4riL7j"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "0.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/spy-shaders/0.2/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }

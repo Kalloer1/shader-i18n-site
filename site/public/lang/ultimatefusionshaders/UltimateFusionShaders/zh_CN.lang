@@ -1,0 +1,55 @@
+#shaders/lang/zh_CN.lang
+# UltimateFusionShaders vUltimateFusionShaders 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：UltimateFusionShaders.zip 的 shaders/lang/en_US.lang
+profile.LOW=低配 - 性能优先
+profile.BALANCED=中配 - 日常使用 (推荐)
+profile.HIGH=高配 - 精美画质
+profile.ULTRA=极高 - 最高画质 (需要强劲 GPU)
+screen.Clouds=云
+screen.Shadows=阴影
+screen.Water=水面与反射
+screen.Atmosphere=大气与雾效
+screen.Lighting=光照
+screen.PostFX=后期处理
+screen.Foliage=植被
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=数值越高阴影越清晰，但会占用更多显存并消耗 GPU 时间。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=渲染阴影的距离 (方块)。越低越流畅。
+option.SHADOW_FILTER=阴影柔和度
+option.SHADOW_FILTER.comment=阴影滤波采样数：硬阴影 / 4 / 8 / 12。
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=染色玻璃和水会对阴影染色 (少量额外开销)。
+option.CLOUD_QUALITY=云层质量
+option.CLOUD_QUALITY.comment=0 关闭，1 简单，2 带明暗的分层云，3 体积云，4 超精细体积云 (开销大)。
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=云会在地面投射移动的阴影 (开销小，逐顶点计算)。
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_SPEED=云风速 (%)
+option.WATER_QUALITY=水体质量
+option.WATER_QUALITY.comment=0 平面，1 波浪法线，2 + 波浪位移/泡沫/云反射，3 + 更多细节。
+option.REFLECTION_QUALITY=屏幕空间反射
+option.REFLECTION_QUALITY.comment=0 关闭 (仅天空反射)，1-3 增加光线步数。
+option.AO_QUALITY=环境光遮蔽
+option.AO_QUALITY.comment=0 关闭，1 = 4 采样，2 = 8 采样。
+option.BLOOM_INTENSITY=泛光强度
+option.VL_QUALITY=体积雾质量
+option.VL_QUALITY.comment=基于阴影贴图的体积光和雾效。0 关闭，1-3 增加步数。
+option.VL_STRENGTH=体积雾强度
+option.GOD_RAYS=体积光 (屏幕空间)
+option.GOD_RAYS.comment=0 关闭，1 = 8 采样，2 = 16 采样。
+option.FOLIAGE_ANIM=植被摆动
+option.WIND_SPEED=风速 (%)
+option.AA_MODE=边缘平滑
+option.AA_MODE.comment=基于亮度的简单边缘平滑 (FXAA 风格)。非时域抗锯齿。
+option.EMISSIVE_STRENGTH=发光强度
+option.BLOCKLIGHT_WARMTH= Block Light Color
+option.BLOCKLIGHT_WARMTH.comment=0 中性，1 暖色，2 橙色。
+option.MIN_LIGHT=最低亮度（洞穴）
+option.FOG_DENSITY=雾密度
+option.EXPOSURE=曝光 (%)
+option.SATURATION=饱和度 (%)
+option.MOTION_BLUR=动态模糊
+option.MOTION_BLUR_STRENGTH=运动模糊强度 (%)
+option.DOF=景深
+option.DOF_STRENGTH=景深强度 (%)

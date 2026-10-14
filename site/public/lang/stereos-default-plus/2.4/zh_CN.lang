@@ -1,0 +1,20 @@
+#shaders/lang/zh_CN.lang
+# Stereo's Default+ v2.4 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Stereo's_Default+_v2.4.zip 的 shaders/lang/en_US.lang
+screen.Water=水
+option.WaveAmount=波浪大小
+option.WaveAmount.comment=更改波浪的大小。
+option.WaveSpeed=波浪速度
+option.WaveSpeed.comment=更改波浪的速度。
+screen.Lava=岩浆
+option.LavaSpeed=岩浆波浪速度
+option.LavaSpeed.comment=更改岩浆波浪的速度。
+screen.Shadows=阴影
+option.ShadowSamples=阴影采样数
+option.ShadowSamples.comment=更改阴影边缘的“平滑”程度。高数值会影响性能！
+option.Ambient=环境光
+option.Ambient.comment=更改世界中的环境光强度。会影响所有与光照相关的内容！
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowMapResolution.comment=更改阴影边缘的“锐利”程度。高数值会影响性能！
+option.TransparentShadowHardness=透明阴影硬度
+option.TransparentShadowHardness.comment=更改显示来自透明物体的颜色量。高数值可能会影响性能！

@@ -17350,7 +17350,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "ascii-shader",
@@ -23102,7 +23103,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "xpcoins",
@@ -28959,7 +28961,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "noire",
@@ -55040,7 +55043,8 @@
         "medium"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "henrys-drunk",
@@ -63010,7 +63014,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "optifine-old-lighting",
@@ -75495,7 +75500,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "echoshader",
@@ -75652,7 +75658,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "7amada-panini-projection",
@@ -75821,7 +75828,7 @@
         "shadows",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-13"
     },
     {
@@ -76077,7 +76084,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "feather-lite-xiao_kg",
@@ -76107,7 +76115,7 @@
         "shadows",
         "vanilla-like"
       ],
-      "hasNativeZhCN": null,
+      "hasNativeZhCN": true,
       "lastSync": "2026-10-13"
     },
     {
@@ -76192,7 +76200,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "spy-shaders",
@@ -76271,7 +76280,8 @@
         "low"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-13"
+      "lastSync": "2026-10-13",
+      "noEnUsLang": true
     },
     {
       "id": "aurelia-shader",
