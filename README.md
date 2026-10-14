@@ -31,7 +31,7 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 | GitHub 中的 `zh_CN.lang` 文件 | 603 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
 | 夸克镜像链接 | 603 个 | 字段名为 `quark`，已覆盖全部已汉化版本 |
 | 自带中文的目录项目 | 23 个 | 页面按四态优先级统计 |
-| 明确缺少 `en_US.lang` | 440 个 | 包含 `missing-source.json` 与流水线新标记的 `noEnUsLang` |
+| 明确缺少 `en_US.lang` | 439 个 | 以 `modrinth-catalog.json` 条目的 `noEnUsLang` 标记为准 |
 | 尚未登记翻译的可处理项目 | 0 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
 | 翻译术语记忆 | 32,131 条 | `site/data/glossary.json` |
 | 生成的详情页 | 1001 个 | `site/shaders/`，由构建脚本生成 |
@@ -135,10 +135,10 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 逐步流程：
 
-1. 读取 `site/data/modrinth-catalog.json`、`site/data/shaders.json`、`site/data/missing-source.json` 和 `site/data/glossary.json`。
-2. 筛选候选项目：排除已自带 `zh_CN.lang` 的项目、已有最新汉化映射的项目，以及缺少 `en_US.lang` 的项目；当前快照为 887 个目录项目，其中 8 个自带中文、460 个已有本站汉化、405 个缺少英文源，剩余 14 个进入候选范围。
+1. 读取 `site/data/modrinth-catalog.json`、`site/data/shaders.json` 和 `site/data/glossary.json`。
+2. 筛选候选项目：排除已自带 `zh_CN.lang` 的项目、已有最新汉化映射的项目，以及 `noEnUsLang === true`（缺少 `en_US.lang`）的项目。
 3. 对候选项目请求 Modrinth 最新版本，下载主文件，并在 zip 内查找 `shaders/lang/en_US.lang` 与 `shaders/lang/zh_CN.lang`。
-4. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，写入缺源记录并跳过。
+4. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，置 `noEnUsLang` 标记并跳过。
 5. 读取术语记忆 `glossary.json`；完全匹配的英文值直接复用已有中文，未命中的值交给模型翻译，新的映射在处理后写回术语记忆。
 6. 解析英文语言文件，按约 60 行拆分为多个块。模型池按分块轮转调用；单个模型失败或回退率过高时自动尝试下一个模型。
 7. 默认使用免费模型池 `muse-spark-1.3-contributor-free`、`muse-spark-1.2-contributor-free`、`mimo-v2.6-flash-free`，光影级并发默认 10。
@@ -186,7 +186,6 @@ site/
 │   ├── modrinth-catalog.json         # Modrinth 目录
 │   ├── shaders.json                  # 人工维护的版本映射
 │   ├── glossary.json                 # 翻译记忆
-│   └── missing-source.json           # 缺少英文源的项目 ID
 scripts/
 ├── fetch-catalog.mjs                 # 拉取 Modrinth 目录
 ├── sync-metadata.mjs                 # 同步元数据

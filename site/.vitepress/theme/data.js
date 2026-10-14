@@ -3,12 +3,9 @@
 import catalog from '../../data/modrinth-catalog.json'
 import hiresRaw from '../../data/gallery-hires.json'
 import db from '../../data/shaders.json'
-import missingSourceRaw from '../../data/missing-source.json'
 
 // Top80 高清原图（raw_url），根治 _350 缩略图拉大必糊；缺失回退缩略图
 const hiresMap = new Map(Object.entries(hiresRaw ?? {}))
-
-const missingSet = new Set(missingSourceRaw)
 
 const manualByProjectId = new Map(
   db.shaders.filter((s) => s.modrinth?.projectId).map((s) => [s.modrinth.projectId, s]),
@@ -33,7 +30,7 @@ function mergeManual(entry, manual) {
     color: entry.color ?? '',
     categories: entry.categories ?? [],
     hasNativeZhCN: entry.hasNativeZhCN === true,
-    missingSource: missingSet.has(entry.id) || missingSet.has(entry.projectId) || entry.noEnUsLang === true,
+    missingSource: entry.noEnUsLang === true,
     checked: entry.hasNativeZhCN !== null && entry.hasNativeZhCN !== undefined,
     // 人工字段
     nameCN: manual?.nameCN ?? '',

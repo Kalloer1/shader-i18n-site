@@ -37,7 +37,6 @@ import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
 const SHADERS_FILE = join(ROOT, 'site/data/shaders.json')
-const MISSING_SOURCE_FILE = join(ROOT, 'site/data/missing-source.json')
 const GLOSSARY_FILE = join(ROOT, 'site/data/glossary.json')
 const LANG_DIR = join(ROOT, 'site/public/lang')
 const SOURCES_DIR = join(ROOT, 'sources')
@@ -419,7 +418,6 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
 // ---------- 主流程 ----------
 const catalog = JSON.parse(readFileSync(CATALOG_FILE, 'utf8'))
 const db = JSON.parse(readFileSync(SHADERS_FILE, 'utf8'))
-const missingSource = new Set(JSON.parse(readFileSync(MISSING_SOURCE_FILE, 'utf8')))
 
 const latestLangVersion = new Map()
 for (const s of db.shaders) {
@@ -431,7 +429,7 @@ for (const s of db.shaders) {
 
 const candidates = catalog.shaders.filter((c) => {
   if (c.hasNativeZhCN === true) return false
-  if (c.noEnUsLang || missingSource.has(c.id)) return false
+  if (c.noEnUsLang === true) return false
   if (latestLangVersion.get(c.id)) return false // 最新版本已有汉化
   return true
 })

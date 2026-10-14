@@ -20,8 +20,6 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const SHADERS_DIR = join(ROOT, 'site/shaders')
 const catalog = JSON.parse(readFileSync(join(ROOT, 'site/data/modrinth-catalog.json'), 'utf8'))
 const db = JSON.parse(readFileSync(join(ROOT, 'site/data/shaders.json'), 'utf8'))
-const missingSource = JSON.parse(readFileSync(join(ROOT, 'site/data/missing-source.json'), 'utf8'))
-const missingSet = new Set(missingSource)
 
 // 清掉旧的生成物
 mkdirSync(SHADERS_DIR, { recursive: true })
@@ -79,8 +77,7 @@ for (const e of catalog.shaders) {
     e.pageUrl ??
     (e.projectId ? `https://modrinth.com/shader/${encodeURIComponent(e.projectId)}` : '')
   const langVersions = manual?.langVersions ?? []
-  const isMissingSource =
-    e.missingSource === true || missingSet.has(e.id) || missingSet.has(e.projectId)
+  const isMissingSource = e.noEnUsLang === true
   const status = langVersions.length
     ? {
         badge: '已有汉化',
