@@ -76,6 +76,8 @@ jobs:
       # CLI 是 620KB 自包含单文件，进不了 secret（>48KB）也不入库，只能每次从服务端下载。
       # 安装失败只警告不阻断：镜像失败只让网盘字段留空，不该卡住翻译发布；
       # 失败痕迹由 ::warning:: 与下面 Mirror 步骤的跳过日志承担，不静默。
+      # 但本步骤容错（exit 0）不等于本轮可以没有夸克：Mirror 步骤带 QUARK_REQUIRED=1，
+      # CLI 缺失时会在产物入库之后统一判红（见末尾 Fail if quark mirror totally failed）。
       - name: Install quark CLI
         continue-on-error: true
         run: bash scripts/install-quark-cli.sh
@@ -113,7 +115,9 @@ jobs:
         # 两段式设计：镜像失败**不阻断**发布 —— 翻译产物（lang + 页面）是主要价值，先让它入库；
         # 但「零链接却绿灯」不可接受，故本步骤的失败由**下面独立的一步**（Fail if quark mirror
         # totally failed）在 Commit and push / Trigger deploy 之后统一判红。
-        # mirror.mjs 只在「真的尝试过上传/分享但一条都没成功」时退出码非 0（典型原因就是登录态过期）；
+        # mirror.mjs 在两种「有活要干却零链接」时退出码非 0，都必须变红：
+        #   a) 真的尝试过上传/分享但一条都没成功（典型原因就是登录态过期）；
+        #   b) QUARK_REQUIRED=1 时 QUARK_CLI 缺失（Install quark CLI 下载/安装失败），根本没尝试上传。
         # 部分成功仍退出 0，已拿到的链接照常写入，不因个别失败丢弃整轮。
         # 注意：env: 里的值不会被 shell 展开，所以 QUARK_CLI 的 $HOME 在 run 里 export。
         continue-on-error: true
@@ -133,6 +137,9 @@ jobs:
           QODER_AGENT: 'true'
           QUARK_DIR_NAME: 光影汉化
           QUARK_PARENT_FID: ${{ secrets.QUARK_PARENT_FID }}
+          # 本轮「必须」完成夸克镜像：有目标待镜像而 QUARK_CLI 缺失时 mirror.mjs 置退出码 1。
+          # 不设（或非 '1'）时 mirror.mjs 保持原行为：CLI 缺失只跳过、不报错。
+          QUARK_REQUIRED: '1'
           WORKER_URL: ${{ secrets.WORKER_URL }}
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}
 
@@ -203,10 +210,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY"
 
-      # 夸克镜像总失败（典型：登录态过期）必须变红，但要在产物入库之后 ——
+      # 夸克镜像没干成（登录态过期 / CLI 缺失）必须变红，但要在产物入库之后 ——
       # 这样"翻译已发布、只是网盘链接为空"这个事实能被明确看见，而不是静默绿灯。
       - name: Fail if quark mirror totally failed
         if: steps.mirror.outcome == 'failure'
         run: |
-          echo "::error::夸克镜像全部失败（多为登录态过期）。翻译产物已入库；网盘字段为空，需重新导出登录态后重跑镜像。"
+          echo "::error::夸克镜像未完成（多为登录态过期，或 CLI 下载/安装失败）。翻译产物已入库；网盘字段为空，需修好后重跑镜像。"
           exit 1

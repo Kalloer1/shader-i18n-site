@@ -14,6 +14,8 @@
  *
  * 环境变量：
  *   QUARK_CLI          quark-drive.cjs 路径（缺失则跳过夸克）
+ *   QUARK_REQUIRED     设为 1 表示本轮「必须」完成夸克镜像：有目标待镜像而 QUARK_CLI 缺失时置退出码 1
+ *                      （CI 注入；本地不设 —— 没配夸克时跳过而不报错）
  *   QUARK_PARENT_FID   上传目标目录的父目录 FID（可选；缺失时由 CLI 内部决定）
  *   QUARK_DIR_NAME     目标目录名，默认「光影汉化」（同名幂等，自动复用已有目录）
  *   WORKER_URL + INTERNAL_STATUS_TOKEN  回写 KV 状态（可选）
@@ -32,6 +34,7 @@ const LANG_DIR = join(ROOT, 'site/public/lang')
 const WORKER_URL = process.env.WORKER_URL
 const INTERNAL_STATUS_TOKEN = process.env.INTERNAL_STATUS_TOKEN
 const QUARK_CLI = process.env.QUARK_CLI
+const QUARK_REQUIRED = process.env.QUARK_REQUIRED === '1'
 const QUARK_PARENT_FID = process.env.QUARK_PARENT_FID
 const QUARK_DIR_NAME = process.env.QUARK_DIR_NAME || '光影汉化'
 
@@ -189,6 +192,16 @@ if (!targets.length) {
   process.exit(0)
 }
 
+// 「有活要干但干不了」必须变红。旧判据只覆盖「尝试过但全失败」（attemptedQuark > 0 && succeededQuark === 0），
+// 而 CLI 缺失时本脚本根本不进入上传分支，attemptedQuark 停在 0 → 判据不触发 → 有目标却零链接仍然绿灯
+// （真实事故 run 38646635827：下载 CLI 超时 → 夸克被跳过 → 字段留空，run 结论却是 success）。
+// QUARK_REQUIRED=1 是调用方显式声明「本轮必须有夸克」；**不设开关时保持原行为** ——
+// 本地开发通常没配夸克 CLI，跳过夸克是正常的，绝不能因此报错。
+const quarkUnavailable = QUARK_REQUIRED && !QUARK_CLI
+if (quarkUnavailable) {
+  console.log(`[夸克] QUARK_REQUIRED=1 但 QUARK_CLI 未配置：本轮 ${targets.length} 个目标都将无法镜像。`)
+}
+
 console.log(`镜像 ${targets.length} 个光影（夸克: ${QUARK_CLI ? '启用' : '跳过'}）\n`)
 
 let okQuark = 0, okNone = 0
@@ -196,6 +209,9 @@ let okQuark = 0, okNone = 0
 // CI 里登录态过期会表现为每条上传/分享都抛错，而下面的逐条 catch 只打印并把 quark 置空，
 // 整进程仍然 exit 0 —— 那就是「绿色通过但零链接」的静默失败。故必须单独计数并在收尾时暴露。
 let attemptedQuark = 0, succeededQuark = 0
+// CLI 缺失导致「根本没尝试」的目标数。必须与 attemptedQuark 分开计：两者都让网盘字段留空，
+// 但原因完全不同（没装 CLI vs 装了但上传/分享失败），收尾日志要能一眼区分 —— run 38646635827 就是前者。
+let skippedNoCli = 0
 
 const batchTargets = targets
   .map(({ shader, lv }) => ({ shader, lv, localPath: join(LANG_DIR, shader.id, lv.shaderVersion, 'zh_CN.lang') }))
@@ -243,7 +259,12 @@ for (const { shader, lv } of targets) {
 
   if (!quarkUrl) {
     okNone++
-    console.log(`[${label}] 夸克镜像未成功，字段留空，状态标为「${STATUS.DONE_UNMIRRORED}」`)
+    if (!QUARK_CLI) skippedNoCli++
+    console.log(
+      QUARK_CLI
+        ? `[${label}] 夸克镜像未成功，字段留空，状态标为「${STATUS.DONE_UNMIRRORED}」`
+        : `[${label}] 夸克跳过（QUARK_CLI 未配置，未尝试上传），字段留空，状态标为「${STATUS.DONE_UNMIRRORED}」`,
+    )
     if (!dryRun) await reportStatus(shader.id, { status: STATUS.DONE_UNMIRRORED, quark: '' })
     continue
   }
@@ -261,10 +282,21 @@ for (const { shader, lv } of targets) {
 
 if (dryRun) console.log('\n（--dry-run：未写入 shaders.json，未回写状态）')
 console.log(`\n镜像结束：夸克成功 ${okQuark}，未镜像 ${okNone}`)
+if (skippedNoCli > 0) {
+  console.log(`  （未镜像的 ${skippedNoCli} 个目标是因为 QUARK_CLI 未配置而完全没尝试上传）`)
+}
 
-// 零产出不能静默：尝试过上传/分享却一条都没成功，几乎总是登录态失效（QUARK_CONFIG_JSON 过期）
-// 或 CLI 环境异常。CI 必须变红，否则会「绿色通过但零链接」。
-if (attemptedQuark > 0 && succeededQuark === 0) {
+// 零产出不能静默：
+// 1. 调用方声明本轮必须有夸克（QUARK_REQUIRED=1）却连 CLI 都没有 → 有活要干一条没干，必须变红。
+//    典型原因：Install quark CLI 下载/安装失败。
+// 2. 尝试过上传/分享却一条都没成功，几乎总是登录态失效（QUARK_CONFIG_JSON 过期）或 CLI 环境异常。
+// 两种都会造成「绿色通过但零链接」。
+if (quarkUnavailable) {
+  console.log(
+    `::error::夸克镜像必须有但不可用：本轮 ${targets.length} 个目标未镜像（QUARK_CLI 未配置，通常是 Install quark CLI 下载/安装失败）。置退出码 1，让 CI 变红。`,
+  )
+  process.exitCode = 1
+} else if (attemptedQuark > 0 && succeededQuark === 0) {
   console.log(`::error::夸克镜像全部失败：尝试 ${attemptedQuark} 条，成功 0 条。常见原因：登录态过期/失效（QUARK_CONFIG_JSON）或 CLI 环境异常。置退出码 1，让 CI 变红。`)
   process.exitCode = 1
 } else if (succeededQuark > 0 && attemptedQuark > succeededQuark) {
