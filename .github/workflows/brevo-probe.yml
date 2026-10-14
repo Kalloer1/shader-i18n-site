@@ -64,6 +64,46 @@ jobs:
             echo
           done
 
+      # 创建/认证发件域名 mccnp.top：senders/domains 为空说明没有任何认证域名，
+      # EMAIL_FROM 又挂在免费邮箱（foxmail.com）上，没有 DKIM/SPF 对齐，QQ 侧会直接丢弃。
+      # POST 的响应体里就带着「需要到 DNS 添加的记录」（DKIM 的 name/value、Brevo 域名验证 code），
+      # 所以这里把状态码与响应体原文原样打出来，不做任何加工。
+      # 若返回「域名已存在」之类的 4xx，不放弃：回退到 GET 查该域名详情，记录同样在响应里。
+      # 本步只在 Brevo 侧建域名/查记录，不碰任何 DNS，也不回显 secret 值。
+      - name: Create Brevo sending domain and dump DNS records
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: |
+          if [ -z "${BREVO_API_KEY:-}" ]; then
+            echo "缺少 secret：BREVO_API_KEY 未注入，无法创建/查询发件域名"
+            exit 1
+          fi
+
+          resp_file="$(mktemp)"
+          code="$(curl -sS -o "$resp_file" -w '%{http_code}' -X POST "https://api.brevo.com/v3/senders/domains" \
+            -H "api-key: $BREVO_API_KEY" \
+            -H "accept: application/json" \
+            -H "Content-Type: application/json" \
+            -d '{"name":"mccnp.top"}')"
+          echo "=== POST https://api.brevo.com/v3/senders/domains ==="
+          echo "HTTP=$code"
+          echo "--- raw body ---"
+          cat "$resp_file"
+          echo
+          rm -f "$resp_file"
+
+          if [ "$code" -ge 400 ]; then
+            echo "创建未成功（HTTP=$code），回退查询已存在域名的详情："
+            for ep in "senders/domains" "senders/domains/mccnp.top"; do
+              echo "=== GET https://api.brevo.com/v3/$ep ==="
+              curl -sS -X GET "https://api.brevo.com/v3/$ep" \
+                -H "api-key: $BREVO_API_KEY" \
+                -H "accept: application/json" \
+                -w "\nHTTP=%{http_code}\n"
+              echo
+            done
+          fi
+
       # 换一个收件邮箱再发一封：区分「某个收件方拦了」还是「普遍送不达」。
       # 收件地址来自临时 secret NOTIFY_TEST_TO（仓库是公开的，绝不能写成输入参数/写进文件）。
       # secret 未配置则跳过，不报错。注意红线：if: 表达式里不能引用 secrets.*，
