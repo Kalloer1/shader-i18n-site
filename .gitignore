@@ -50,6 +50,10 @@ pelican-bicycle.svg
 
 # === 其他 ===
 *.zip
+# 上游 Modrinth 版本号可能自带 .zip 后缀（如 solislite 的 SolisLite_0.1.0_BETA_26.x.zip），
+# scripts/pipeline.mjs 用版本号原文做目录名（pipeline.mjs:583），会生成以 .zip 结尾的目录，
+# 被 *.zip 误杀。尾斜杠只匹配目录：仅放行 lang 树下的 .zip 结尾目录，真实 .zip 文件仍被忽略。
+!site/public/lang/**/
 *.bak
 *.tmp
 todo.json

@@ -1,0 +1,26 @@
+#shaders/lang/zh_CN.lang
+# SolisLite vSolisLite_0.1.0_BETA_26.x.zip 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：SolisLite_v26.zip 的 shaders/lang/en_us.lang
+screen.LIGHTING=光照与阴影
+screen.WORLD= World & weather
+screen.COLOR=颜色分级
+
+option.SHADOW_QUALITY=阴影质量
+value.SHADOW_QUALITY.0=关
+value.SHADOW_QUALITY.1=柔和（核显推荐）
+value.SHADOW_QUALITY.2=高
+
+option.SHADOW_DISTANCE_BLOCKS=阴影距离
+option.DYNAMIC_LIGHT_STRENGTH=动态手持光源强度
+option.WATER_QUALITY=水体质量
+option.CLOUD_OPACITY=云层不透明度
+option.WIND_STRENGTH=风 / 植被摆动
+option.FOG_STRENGTH=雾气强度
+option.EXPOSURE=曝光
+option.CONTRAST=对比度
+option.SATURATION=饱和度
+
+profile.POTATO=土豆
+profile.LOW=低
+profile.BALANCED=平衡（默认）
+profile.HIGH=高

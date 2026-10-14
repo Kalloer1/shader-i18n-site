@@ -40,6 +40,7 @@ const MAX_INDEX = 500
 // shader-i18n-site-<hash>.pages.dev 或 <branch>.shader-i18n-site.pages.dev）
 const ALLOWED_ORIGINS_EXACT = [
   'https://shader-i18n-site.pages.dev',
+  'https://shader.mccnp.top',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ]
