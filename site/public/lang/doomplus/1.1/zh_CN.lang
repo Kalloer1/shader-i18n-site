@@ -1,0 +1,45 @@
+#shaders/lang/zh_CN.lang
+# Doom+ v1.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Doom+ V1.1.zip 的 shaders/lang/en_us.lang
+option.VP_GLOBAL_DARKNESS=全局黑暗度
+option.VP_GLOBAL_DARKNESS.comment=整体场景黑暗度
+option.VP_FINAL_BRIGHTNESS=最终亮度
+option.VP_FINAL_BRIGHTNESS.comment=最终画面亮度
+option.VP_CONTRAST=对比度
+option.VP_CONTRAST.comment=最终画面对比度
+option.VP_SHADOW_STRENGTH=阴影强度
+option.VP_SHADOW_STRENGTH.comment=阴影暗度
+option.VP_SHADOW_BIAS=阴影偏移
+option.VP_SHADOW_BIAS.comment=阴影偏移
+option.VP_SUNLIGHT=阳光
+option.VP_SUNLIGHT.comment=地形阳光强度
+option.VP_TERRAIN_LIGHT=地形光照
+option.VP_TERRAIN_LIGHT.comment=地形光照
+option.VP_ENTITY_LIGHT=实体光照
+option.VP_ENTITY_LIGHT.comment= Entity Lighting
+option.VP_PARTICLE_LIGHT=粒子光照
+option.VP_PARTICLE_LIGHT.comment=粒子光照
+option.VP_EMITTER_INTENSITY=自发光强度
+option.VP_EMITTER_INTENSITY.comment=自发光强度
+option.VP_EMITTER_THRESHOLD=自发光阈值
+option.VP_EMITTER_THRESHOLD.comment=自发光阈值
+option.VP_WATER_WOBBLE=水面波动
+option.VP_WATER_WOBBLE.comment=水面波动效果
+option.VP_WOBBLE_SPEED=抖动速度
+option.VP_WOBBLE_SPEED.comment=水面波动速度
+option.VP_WATER_RIPPLE=水波纹
+option.VP_WATER_RIPPLE.comment=水面涟漪强度
+option.VP_WATER_LIGHT=水体光照
+option.VP_WATER_LIGHT.comment=水体光照
+option.VP_WEATHER_MOTION=天气动态
+option.VP_WEATHER_MOTION.comment=天气运动效果
+option.VP_STORM_TINT=风暴染色
+option.VP_STORM_TINT.comment=风暴染色强度
+option.VP_WEATHER_GRADING=天气调色
+option.VP_WEATHER_GRADING.comment=天气色彩分级
+option.VP_HAZE_STRENGTH=霾强度
+option.VP_HAZE_STRENGTH.comment=大气雾霭
+option.VP_WATER_TINT=水体色调
+option.VP_WATER_TINT.comment=水体染色强度
+option.VP_NIGHT_TINT=夜晚染色
+option.VP_NIGHT_TINT.comment=夜晚染色强度

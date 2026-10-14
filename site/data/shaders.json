@@ -17951,6 +17951,25 @@
           "lastSync": "2026-10-14"
         }
       }
+    },
+    {
+      "id": "doomplus",
+      "modrinth": {
+        "slug": "doomplus",
+        "projectId": "iH4c78ai"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "1.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/doomplus/1.1/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-14",
+          "contributors": [
+            "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }
