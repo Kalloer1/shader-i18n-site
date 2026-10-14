@@ -48,6 +48,10 @@ const oldCatalog = existsSync(CATALOG_FILE)
 const knownNative = new Map(
   (oldCatalog.shaders ?? []).filter((s) => s.hasNativeZhCN !== undefined).map((s) => [s.id, s.hasNativeZhCN]),
 )
+// `noEnUsLang` 同样由 pipeline.mjs 回写（缺英文源标记），同步时保留旧值，避免每天被抹掉
+const knownNoEn = new Set(
+  (oldCatalog.shaders ?? []).filter((s) => s.noEnUsLang === true).map((s) => s.id),
+)
 
 const hits = await fetchAllShaders()
 const shaders = hits
@@ -66,6 +70,8 @@ const shaders = hits
     categories: h.categories ?? [],
     // 已检测过的保留检测结果，未检测的为 null（pipeline 检测 zip 后回写）
     hasNativeZhCN: knownNative.get(h.slug) ?? null,
+    // 旧值优先：该条目曾被标 noEnUsLang 即保留（新抓取本身不带此字段）
+    ...(knownNoEn.has(h.slug) ? { noEnUsLang: true } : {}),
     lastSync: new Date().toISOString().slice(0, 10),
   }))
   .sort((a, b) => b.downloads - a.downloads)

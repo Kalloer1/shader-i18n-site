@@ -3496,7 +3496,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bvs",
@@ -4280,7 +4281,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "simply-upscaled",
@@ -5245,7 +5247,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vector",
@@ -5721,7 +5724,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "epoch",
@@ -5949,7 +5953,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "yofps",
@@ -6275,7 +6280,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dirt-rt",
@@ -6662,7 +6668,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "stracciatella-shaders",
@@ -8182,7 +8189,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "astralcore",
@@ -8618,7 +8626,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "kuda-shaders",
@@ -8734,7 +8743,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bds-better-default-shaders",
@@ -8874,7 +8884,8 @@
         "tweaks"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lymboshader",
@@ -9019,7 +9030,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "energy-shaders-java",
@@ -9077,7 +9089,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "openshad",
@@ -9174,7 +9187,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "monophonic-shaderpack",
@@ -9215,7 +9229,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "acidshaders15",
@@ -9868,7 +9883,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "eclipselite",
@@ -9926,7 +9942,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "flashlight-shader",
@@ -10385,7 +10402,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "noshader",
@@ -10455,7 +10473,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "prismarine-shader",
@@ -10781,7 +10800,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "wynncraft-tooltips",
@@ -10818,7 +10838,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "hyshaders-horror",
@@ -10860,7 +10881,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "relumination",
@@ -10902,7 +10924,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "retrus",
@@ -10942,7 +10965,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "reflective-vanilla-shaders",
@@ -11091,7 +11115,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "crusher-shader",
@@ -11190,7 +11215,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vanilla-advanced",
@@ -11222,7 +11248,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "kute",
@@ -11484,7 +11511,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "wem-white-entities-mask",
@@ -11674,7 +11702,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nms-normal-map-shaders",
@@ -11862,7 +11891,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vanilish-shaders",
@@ -11964,7 +11994,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "psx-core",
@@ -12223,7 +12254,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lyrae-shaders",
@@ -12317,7 +12349,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bitmap-vanilla-shader",
@@ -12361,7 +12394,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "the-better-default",
@@ -12404,7 +12438,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "miasma",
@@ -12674,7 +12709,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "2ks",
@@ -12740,7 +12776,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fluffy-fancy-clouds",
@@ -12779,7 +12816,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "hexlightsimulationproject",
@@ -12851,7 +12889,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cinematic-color-correction",
@@ -12936,7 +12975,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "steadfast-shaders",
@@ -13029,7 +13069,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "glaciershaders",
@@ -13906,7 +13947,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "muuf-a.g.i-shaders",
@@ -14154,7 +14196,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "itemed-arrows",
@@ -14199,7 +14242,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "optimism-shader",
@@ -14237,7 +14281,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "minimal-shader",
@@ -14370,7 +14415,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cms-cloud-mask-shaders",
@@ -14462,7 +14508,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "thunders-mb",
@@ -14599,7 +14646,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fabulous-vhs",
@@ -14644,7 +14692,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "psx-shader-nb",
@@ -14778,7 +14827,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "mc-outline-shader",
@@ -14911,7 +14961,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "verlixia",
@@ -15128,7 +15179,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cursedview",
@@ -15494,7 +15546,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "earthshaders",
@@ -15642,7 +15695,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "baked-potato-shaders",
@@ -15773,7 +15827,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "pineshaders",
@@ -15876,7 +15931,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "scan",
@@ -15998,7 +16054,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "raincore",
@@ -16334,7 +16391,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cartoony",
@@ -16720,7 +16778,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "sketchbound",
@@ -16946,7 +17005,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "crucify",
@@ -17008,7 +17068,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "crt-shader",
@@ -17134,7 +17195,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vulkanite-demo-pack",
@@ -17348,7 +17410,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ascii-shader",
@@ -17529,7 +17592,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "white-sharp-shader",
@@ -17584,7 +17648,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "liquorice",
@@ -17667,7 +17732,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "oct-path",
@@ -17774,7 +17840,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ascii-like-shader",
@@ -17823,7 +17890,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cel-shader",
@@ -17883,7 +17951,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "chowder",
@@ -17921,7 +17990,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "terders-potato-shader",
@@ -18256,7 +18326,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "freevibrant-shaders",
@@ -18423,7 +18494,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "low-water",
@@ -18858,7 +18930,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nostalgia-ultra",
@@ -18970,7 +19043,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "terrafirmagreg-shaders",
@@ -19092,7 +19166,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "makeup-breezy-shaders",
@@ -19325,7 +19400,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "wither-rose",
@@ -19562,7 +19638,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "taa-distant-horizons-port",
@@ -19907,7 +19984,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dynamic-light-shader",
@@ -19958,7 +20036,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "foundfootage",
@@ -20314,7 +20393,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "phial",
@@ -20396,7 +20476,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lumeau",
@@ -20486,7 +20567,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nova-reimagined",
@@ -20827,7 +20909,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "screen-mirror-shader",
@@ -20953,7 +21036,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "quarter",
@@ -21005,7 +21089,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "paintbound",
@@ -21101,7 +21186,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "crumb",
@@ -21152,7 +21238,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "pumpkin-shaders",
@@ -21449,7 +21536,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "event-horizon-shader",
@@ -21497,7 +21585,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "maxrealstic-shader",
@@ -21563,7 +21652,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "roses-new-shades",
@@ -22541,7 +22631,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cinematic-vanilla",
@@ -22693,7 +22784,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lux-brickcraft-edition",
@@ -22876,7 +22968,8 @@
         "low"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dither",
@@ -23095,7 +23188,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "xpcoins",
@@ -23205,7 +23299,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nightbloom",
@@ -23476,7 +23571,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "pencil",
@@ -23519,7 +23615,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cinematic-villa",
@@ -23669,7 +23766,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "apexshader",
@@ -23777,7 +23875,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "amidrunk",
@@ -24563,7 +24662,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "realistic-dark",
@@ -24624,7 +24724,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "badwifi",
@@ -25409,7 +25510,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "black_and_white",
@@ -25458,7 +25560,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lower-clouds",
@@ -25556,7 +25659,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lost-signal-vhs",
@@ -25760,7 +25864,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "missing-textures",
@@ -25861,7 +25966,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aerie-shaders",
@@ -25891,7 +25997,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "pumpkins",
@@ -25943,7 +26050,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vertalux",
@@ -26646,7 +26754,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bloom-shader",
@@ -26884,7 +26993,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "hyshaders-vanilla-edition",
@@ -26917,7 +27027,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "glint-shaders",
@@ -27053,7 +27164,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ritegvhs",
@@ -27407,7 +27519,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "better-end-portal-shader",
@@ -27440,7 +27553,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "misty",
@@ -27803,7 +27917,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fisheye-shaders",
@@ -27869,7 +27984,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "negative-colors",
@@ -27962,7 +28078,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "super-duper-vanilla-2",
@@ -28068,7 +28185,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "outlines-contours",
@@ -28098,7 +28216,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "phero-visuals",
@@ -28171,7 +28290,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "pack-and-white",
@@ -28219,7 +28339,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "realisticlite-shader",
@@ -28257,7 +28378,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "luxora-shaders",
@@ -28685,7 +28807,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dark-fantasy-shader",
@@ -28716,7 +28839,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "round-world",
@@ -28746,7 +28870,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "simple-shader-one",
@@ -28770,7 +28895,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "visual-shaders",
@@ -28802,7 +28928,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vividness",
@@ -28859,7 +28986,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "slight",
@@ -28906,7 +29034,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "pagodashaders",
@@ -28961,7 +29090,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "noire",
@@ -29558,7 +29688,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "highframes-plus",
@@ -29607,7 +29738,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "invertcolors-shader",
@@ -30594,7 +30726,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "valentine",
@@ -31344,7 +31477,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aurora-astral",
@@ -31633,7 +31767,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "grayblack-shader",
@@ -31822,7 +31957,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "simple-shadows",
@@ -31874,7 +32010,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aurorart",
@@ -31936,7 +32073,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "recastional",
@@ -32045,7 +32183,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "skyboxtemplate",
@@ -32086,7 +32225,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "retrofy",
@@ -32127,7 +32267,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lumora-shader",
@@ -32473,7 +32614,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nostalgic-crisp",
@@ -32514,7 +32656,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "colorblind-swap",
@@ -33300,7 +33443,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aerial",
@@ -34445,7 +34589,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "found-vhs-tapes",
@@ -34559,7 +34704,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "perrylight",
@@ -34737,7 +34883,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "essentials-shader",
@@ -34849,7 +34996,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "camellia-shaders",
@@ -34934,7 +35082,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cripe",
@@ -35718,7 +35867,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "shader_vanilla",
@@ -35749,7 +35899,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "retroview",
@@ -36135,7 +36286,8 @@
         "low"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "astralcorev2",
@@ -36164,7 +36316,8 @@
         "medium"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "after-hours-shader",
@@ -36275,7 +36428,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "notenoughglints",
@@ -36315,7 +36469,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "emissive-cape-portals",
@@ -36366,7 +36521,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "world-outline-shader",
@@ -36575,7 +36731,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "realisticallyoptimized",
@@ -37385,7 +37542,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "magicshader",
@@ -37419,7 +37577,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "novas-vibrant-lite-shaders",
@@ -38291,7 +38450,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "resident-craft",
@@ -38342,7 +38502,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "verdantlight-lite",
@@ -38637,7 +38798,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "true-stars",
@@ -38669,7 +38831,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "axolotlshaders",
@@ -38696,7 +38859,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "glamoroussp-shaders",
@@ -38787,7 +38951,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dreamfall-shaders",
@@ -38983,7 +39148,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bodycam_rp",
@@ -39010,7 +39176,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lidar-visualizer",
@@ -39069,7 +39236,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "8-bit-trial-chambers",
@@ -39097,7 +39265,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "base-shader",
@@ -39220,7 +39389,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "taa69",
@@ -39348,7 +39518,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "color",
@@ -39458,7 +39629,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "solstice-shaderpack",
@@ -39662,7 +39834,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dap-shaders",
@@ -40423,7 +40596,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "horizon-reimagined",
@@ -40601,7 +40775,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "motionflow",
@@ -40655,7 +40830,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "liminal-shader",
@@ -40792,7 +40968,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "wavy-world",
@@ -40966,7 +41143,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ultimate-nausea",
@@ -40993,7 +41171,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "sarp",
@@ -41107,7 +41286,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aesyins-shaders",
@@ -41372,7 +41552,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "acid-shaders-refurbished",
@@ -41430,7 +41611,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aetherstone-by-tark-projects",
@@ -41564,7 +41746,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bright-shades",
@@ -41603,7 +41786,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "globed",
@@ -41698,7 +41882,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "shader-terror-vhs",
@@ -41744,7 +41929,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "filterlite-shaders",
@@ -41829,7 +42015,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "tri-valor-realistic-shader",
@@ -41955,7 +42142,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "retro-pixel-shader-nes-style-minecraft",
@@ -42001,7 +42189,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "focal-shader",
@@ -42269,7 +42458,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "drift-pov",
@@ -42363,7 +42553,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fs-shaders",
@@ -43236,7 +43427,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "retrowave-shader",
@@ -43289,7 +43481,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aberration-shader",
@@ -44303,7 +44496,8 @@
         "waterfall"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "avalux-reimagined",
@@ -44520,7 +44714,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "onward-shader",
@@ -44612,7 +44807,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "potato-lite-shader",
@@ -44642,7 +44838,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bit-glyphs",
@@ -44701,7 +44898,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ultra-realistic-pbr-shader-pack",
@@ -44764,7 +44962,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "rose-world-shader",
@@ -44820,7 +45019,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "soleron",
@@ -45610,7 +45810,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "colorcone",
@@ -46123,7 +46324,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "highframes",
@@ -46325,7 +46527,8 @@
         "reflections"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vanilla-extra-shaders",
@@ -46659,7 +46862,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nigthly-fix",
@@ -46688,7 +46892,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "retro_vhs_screen",
@@ -46715,7 +46920,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "animetro",
@@ -47501,7 +47707,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "helios-shaders",
@@ -47649,7 +47856,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "static-shader",
@@ -47683,7 +47891,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "faentasy-shaders",
@@ -47739,7 +47948,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lowshader",
@@ -47786,7 +47996,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "performance-shader",
@@ -47830,7 +48041,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "velora-shader-turbo",
@@ -48667,7 +48879,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lost-tape-shader",
@@ -48803,7 +49016,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "polaroid90s",
@@ -48857,7 +49071,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lumenite-shaders",
@@ -48952,7 +49167,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nuar",
@@ -48980,7 +49196,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ecoshift-lite",
@@ -49173,7 +49390,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "source-water",
@@ -49292,7 +49510,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "swiftshade",
@@ -49374,7 +49593,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "drunk-n-high",
@@ -49425,7 +49645,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "senabyssshader",
@@ -49545,7 +49766,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "spirit-shader",
@@ -49594,7 +49816,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cherry-reimagined",
@@ -49668,7 +49891,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "doshader",
@@ -49700,7 +49924,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "upside-down-shader",
@@ -49822,7 +50047,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "feathc2",
@@ -50031,7 +50257,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "carmine",
@@ -50072,7 +50299,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cartoon-dreams-shader",
@@ -50154,7 +50382,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "discoshaders",
@@ -50197,7 +50426,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "full-invert-shader",
@@ -50300,7 +50530,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lumen-shaders",
@@ -50383,7 +50614,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "softshade-shader",
@@ -50588,7 +50820,8 @@
         "reflections"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "optimize-shader",
@@ -50631,7 +50864,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vhs_nostalgic",
@@ -50736,7 +50970,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vantage-pvp",
@@ -50795,7 +51030,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bsrshaders",
@@ -51128,7 +51364,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "kinescope-shaders",
@@ -51278,7 +51515,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "rainbow-redstone",
@@ -51362,7 +51600,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aurorafx-ultra-lite",
@@ -51419,7 +51658,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "just-vanilla.",
@@ -51447,7 +51687,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "clearvision-shader",
@@ -51681,7 +51922,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cozy-shader",
@@ -51724,7 +51966,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "simple-grayscale",
@@ -51778,7 +52021,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lumeon-shaders",
@@ -51821,7 +52065,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aetheria-fantasy",
@@ -51968,7 +52213,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "marigold-shaders",
@@ -52144,7 +52390,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "trimsfault",
@@ -52174,7 +52421,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "exshade",
@@ -52196,7 +52444,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ranolds-better-breaking",
@@ -52244,7 +52493,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vanillashaders",
@@ -52397,7 +52647,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "velpix-shaders",
@@ -52496,7 +52747,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "despatras-crt",
@@ -52609,7 +52861,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bitnixelet",
@@ -52675,7 +52928,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "entitymask-shader",
@@ -52715,7 +52969,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cinderframe",
@@ -53130,7 +53385,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "hyperion-shaders",
@@ -53254,7 +53510,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "slugs-vibrant-visuals",
@@ -53309,7 +53566,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "naturalvision",
@@ -53399,7 +53657,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "blind-shader",
@@ -53444,7 +53703,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lucidus",
@@ -53523,7 +53783,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ezsaturation",
@@ -53741,7 +54002,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lost-signal",
@@ -53915,7 +54177,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "doruks-shader",
@@ -53998,7 +54261,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "atherial-shaders",
@@ -54136,7 +54400,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "simply-dithered",
@@ -54265,7 +54530,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nounderwaterfog",
@@ -54317,7 +54583,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "candela-shaders",
@@ -54424,7 +54691,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cyberspace-shaders",
@@ -54478,7 +54746,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "salicylicshaders",
@@ -54628,7 +54897,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "forceskin",
@@ -54676,7 +54946,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "r-t-s",
@@ -54799,7 +55070,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "extraterrestrial-expanse",
@@ -54941,7 +55213,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "shoggy-shader",
@@ -54980,7 +55253,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bright-pixels",
@@ -55095,7 +55369,8 @@
         "medium"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "hsn-shaders",
@@ -55223,7 +55498,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "memory-leaks",
@@ -56002,7 +56278,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "zigcrt",
@@ -56787,7 +57064,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "terminator-vision-shader",
@@ -56841,7 +57119,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "npc-shaders",
@@ -57551,7 +57830,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "enhanced-vision",
@@ -57591,7 +57871,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "summervibes",
@@ -57635,7 +57916,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "goldelion-shaders",
@@ -57712,7 +57994,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vanila-reimagined",
@@ -57747,7 +58030,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "super-halftone-shaders",
@@ -57792,7 +58076,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lunaris-shader",
@@ -57845,7 +58130,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "visuality-shaders",
@@ -57930,7 +58216,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "eerie-craft",
@@ -57962,7 +58249,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lightweight-atmospherica",
@@ -58082,7 +58370,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nostalens",
@@ -58126,7 +58415,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "holog",
@@ -58905,7 +59195,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "solis-blend",
@@ -59072,7 +59363,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "mcf-shaders",
@@ -59211,7 +59503,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "simple-brightness-shader",
@@ -59266,7 +59559,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "embervoid-shader",
@@ -59560,7 +59854,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "voiddream",
@@ -59603,7 +59898,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "white-noise-shaders",
@@ -59642,7 +59938,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "its-cherry-shaders",
@@ -59773,7 +60070,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "creep-shader",
@@ -60276,7 +60574,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "majestico-shaders-pro",
@@ -60323,7 +60622,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "singularity-shaders",
@@ -60436,7 +60736,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "motion-blur-test3",
@@ -60635,7 +60936,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "actmos",
@@ -60782,7 +61084,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "colorfulshader",
@@ -60810,7 +61113,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "white-black-shader",
@@ -60996,7 +61300,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "retropixel",
@@ -61044,7 +61349,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "analogcraft",
@@ -61311,7 +61617,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aragorns-light-shader",
@@ -61431,7 +61738,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "toon-cel-shader-anime-style",
@@ -61485,7 +61793,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "gleam-shaders",
@@ -61586,7 +61895,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "uls-shader",
@@ -61610,7 +61920,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cinnamon-shader",
@@ -61640,7 +61951,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "0-shader",
@@ -61731,7 +62043,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "chandlers-retro-shader",
@@ -61938,7 +62251,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "skew",
@@ -62723,7 +63037,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "omega-shaders",
@@ -62772,7 +63087,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "robs-vanilla-reshaded",
@@ -62999,7 +63315,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aethervisuals",
@@ -63173,7 +63490,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "catnip-shaders",
@@ -63262,7 +63580,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "luminol-republic-shade-project",
@@ -63322,7 +63641,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "only-shadows-shader",
@@ -63443,7 +63763,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vividvanilla-shaders",
@@ -63624,7 +63945,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "galaxy-shader",
@@ -63648,7 +63970,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ziran-shaders",
@@ -63701,7 +64024,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vanilla-shade",
@@ -63795,7 +64119,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "java-vibrance",
@@ -63820,7 +64145,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "realyty-shaders",
@@ -63946,7 +64272,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "havens-inversion",
@@ -63983,7 +64310,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vomit-shaders",
@@ -64034,7 +64362,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "depth-of-field-test3",
@@ -64330,7 +64659,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "the-beat-of-a-heart",
@@ -64463,7 +64793,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "old-doggo-shaders",
@@ -64613,7 +64944,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "animecraftshader",
@@ -64670,7 +65002,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "abys",
@@ -64819,7 +65152,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "heliox",
@@ -64864,7 +65198,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "out-of-focus",
@@ -65008,7 +65343,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "make-your-own-rt-shaders",
@@ -65096,7 +65432,8 @@
         "reflections"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "visual-addons",
@@ -65125,7 +65462,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nyolxel",
@@ -65158,7 +65496,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fesglow",
@@ -65257,7 +65596,8 @@
         "reflections"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ezexposure",
@@ -65420,7 +65760,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "expanse-shaders",
@@ -65507,7 +65848,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "relighting",
@@ -65685,7 +66027,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "highframesextra",
@@ -65775,7 +66118,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "og-shaders",
@@ -66147,7 +66491,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dtm-shader",
@@ -66205,7 +66550,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "neolux",
@@ -66628,7 +66974,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ascii-craft",
@@ -66676,7 +67023,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "solislite",
@@ -66774,7 +67122,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vanilla-camera",
@@ -66869,7 +67218,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bountyshader",
@@ -66928,7 +67278,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "crownlight-shader",
@@ -67045,7 +67396,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lost_tape_remastered",
@@ -67095,7 +67447,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vinecs-cartoony-shaders",
@@ -67121,7 +67474,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "greenvoid",
@@ -67251,7 +67605,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "sytex-shader-sound",
@@ -67347,7 +67702,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cealith-shaders",
@@ -67515,7 +67871,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "dizzyshaders",
@@ -67547,7 +67904,8 @@
         "reflections"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "rivet-lite-animatic-1",
@@ -67717,7 +68075,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "wiresight",
@@ -68042,7 +68401,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "flow-reimagined",
@@ -68128,7 +68488,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "chillcrafter-shaders",
@@ -68172,7 +68533,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "milkshader",
@@ -68238,7 +68600,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "roblox-2008-hud",
@@ -68300,7 +68663,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "prism-skies",
@@ -68357,7 +68721,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fryed-vibrant-shader",
@@ -68439,7 +68804,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "firmament-shaders",
@@ -68524,7 +68890,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "softshader",
@@ -68733,7 +69100,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "quaint-shaders",
@@ -68801,7 +69169,8 @@
         "low"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "animtr",
@@ -68872,7 +69241,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ome-shaders",
@@ -69099,7 +69469,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ghost-shader-rp",
@@ -69125,7 +69496,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bloomy-shaders",
@@ -69206,7 +69578,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "litecraft-shader",
@@ -69295,7 +69668,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "super-fps-shader-boracore",
@@ -69485,7 +69859,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "toon-shades",
@@ -69516,7 +69891,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ultralow-shader",
@@ -69545,7 +69921,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "the-nastiests-rp",
@@ -69572,7 +69949,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "native-shaders",
@@ -69695,7 +70073,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vhs44",
@@ -69747,7 +70126,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "vertigo-shader",
@@ -69831,7 +70211,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ascending-fade",
@@ -69857,7 +70238,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "nimbuslite",
@@ -69905,7 +70287,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "crossfrogs-soft-outlines",
@@ -69953,7 +70336,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "auroralite-voidnyx_yt",
@@ -70014,7 +70398,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "no-more-brightness",
@@ -70167,7 +70552,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "elasion",
@@ -70344,7 +70730,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lemony-shaders",
@@ -70399,7 +70786,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "tuff-shaders",
@@ -70609,7 +70997,8 @@
         "low"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fadedclouds",
@@ -70637,7 +71026,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "luxor-shader-low-end",
@@ -70676,7 +71066,8 @@
         "iris"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "fnaf-static-cam-shader",
@@ -70950,7 +71341,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "drdfrm",
@@ -71192,7 +71584,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aestheric-shaders",
@@ -71239,7 +71632,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cutelite-shader",
@@ -71269,7 +71663,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "text_effecter-rp",
@@ -71299,7 +71694,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "kourin-shaders",
@@ -71334,7 +71730,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "zer0s-beta-shaders",
@@ -71445,7 +71842,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cartoon-rp",
@@ -71469,7 +71867,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "crustshader",
@@ -71494,7 +71893,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "adreno-shader",
@@ -71559,7 +71959,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "astral-cinema",
@@ -71647,7 +72048,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "astralis-shader",
@@ -71794,7 +72196,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cherryjazz",
@@ -71834,7 +72237,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "1-shader",
@@ -72251,7 +72655,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ambr",
@@ -72395,7 +72800,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "hearthlight",
@@ -72573,7 +72979,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "flux_shaders",
@@ -72611,7 +73018,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "celestial-order-fix",
@@ -72852,7 +73260,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "brisa-lite",
@@ -72990,7 +73399,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lve-sunward-shader",
@@ -73092,7 +73502,8 @@
         "semi-realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "forbis-shader",
@@ -73136,7 +73547,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "boralancesshaders",
@@ -73256,7 +73668,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "catsune",
@@ -73351,7 +73764,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "procedural_magic_uhd",
@@ -73378,7 +73792,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "yukeeshaders",
@@ -73446,7 +73861,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ozza-shader",
@@ -73545,7 +73961,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "elytrune-shaders",
@@ -73644,7 +74061,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "colorblindness-shaders",
@@ -73754,7 +74172,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cirrus-shader",
@@ -73815,7 +74234,8 @@
         "potato"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "valtique",
@@ -74817,7 +75237,8 @@
         "screenshot"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ps-vibe-shaders",
@@ -74845,7 +75266,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "kuwahara-shader",
@@ -74884,7 +75306,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "livelymagic",
@@ -74978,7 +75401,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "colorful-life",
@@ -75107,7 +75531,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lumen_nm",
@@ -75132,7 +75557,8 @@
         "optifine"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "cineframe-faspadio",
@@ -75222,7 +75648,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "bloho-shaders",
@@ -75302,7 +75729,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lighter-game",
@@ -75332,7 +75760,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "aalab",
@@ -75474,7 +75903,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "font-curtains",
@@ -75504,7 +75934,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "inkdot-shaders",
@@ -75591,7 +76022,8 @@
         "medium"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "pbs",
@@ -75634,7 +76066,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "conversely-rp",
@@ -75658,7 +76091,8 @@
         "vanilla"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "livelycinematic",
@@ -75856,7 +76290,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "simplifyshaderpack",
@@ -75884,7 +76319,8 @@
         "realistic"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "ultimatefusionshaders",
@@ -76044,7 +76480,8 @@
         "vanilla-like"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "lumina-hiimnottellingyoumyname",
@@ -76161,7 +76598,8 @@
         "shadows"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     },
     {
       "id": "feather-lite-xiao_kg",
@@ -76333,7 +76771,8 @@
         "low"
       ],
       "hasNativeZhCN": null,
-      "lastSync": "2026-10-14"
+      "lastSync": "2026-10-14",
+      "noEnUsLang": true
     }
   ]
 }
