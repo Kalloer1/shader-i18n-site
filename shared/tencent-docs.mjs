@@ -85,3 +85,36 @@ export function parseModrinthSlug(url) {
   if (!slug || !/^[a-z0-9][a-z0-9._-]*$/i.test(slug)) return null
   return slug
 }
+
+/**
+ * 从 CurseForge 页面链接中抽取 slug。
+ * 支持 https://www.curseforge.com/minecraft/shaders/<slug>；同时容忍 http、有无 www、
+ * 尾部子路径（如 /files）、末尾斜杠与查询串。
+ * 只认 shaders 分类：/minecraft/mc-mods/xxx 之类一律返回 null。
+ *
+ * @param {string} url
+ * @returns {string|null} slug，无法解析时返回 null（绝不抛）
+ */
+export function parseCurseforgeSlug(url) {
+  if (typeof url !== 'string') return null
+  let parsed
+  try {
+    parsed = new URL(url)
+  } catch {
+    return null
+  }
+  if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return null
+  if (parsed.hostname !== 'curseforge.com' && parsed.hostname !== 'www.curseforge.com') return null
+
+  const m = parsed.pathname.match(/^\/minecraft\/shaders\/([^/]+)/i)
+  if (!m) return null
+
+  let slug
+  try {
+    slug = decodeURIComponent(m[1]).trim()
+  } catch {
+    return null // 非法百分号转义：当解析失败处理，不抛
+  }
+  if (!slug || !/^[a-z0-9][a-z0-9._-]*$/i.test(slug)) return null
+  return slug
+}

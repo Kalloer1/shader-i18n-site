@@ -2,7 +2,7 @@
  * Cloudflare Worker: 光影汉化请求代理 + 翻译队列。
  *
  * 职责：
- * 1. POST /          玩家提交 Modrinth 链接 → 解析并校验 → 写 KV（权威）+ 腾讯文档（尽力镜像）
+ * 1. POST /          玩家提交光影链接（Modrinth 或 CurseForge）→ 解析并校验 → 写 KV（权威）+ 腾讯文档（尽力镜像）
  * 2. GET  /queue     返回全部队列条目，供站点轮询
  * 3. POST /translate 口令校验 → 取全部「待翻译」→ 触发 GitHub Actions → 置「翻译中」
  * 4. POST /status    Actions 回写单条状态（内部 token）→ 更新 KV + 尽力镜像腾讯文档
@@ -30,6 +30,7 @@ import {
   SOURCE,
   buildFieldValues,
   parseModrinthSlug,
+  parseCurseforgeSlug,
 } from '../shared/tencent-docs.mjs'
 
 const MODRINTH_API = 'https://api.modrinth.com/v2'
@@ -316,37 +317,53 @@ async function handleSubmit(request, env, origin) {
 
   const { url, contact, note } = body
   if (!url) {
-    return json({ error: 'Modrinth 链接为必填' }, 400, origin)
+    return json({ error: '光影链接为必填' }, 400, origin)
   }
 
-  const slug = parseModrinthSlug(url)
-  if (!slug) {
-    return json({ error: '请填写有效的 Modrinth 光影链接（https://modrinth.com/shader/...）' }, 400, origin)
+  // 先按 Modrinth 解析（原行为不变）；失败再试 CurseForge；两者都不认才 400。
+  // CF 侧不在提交时调 CF API 校验：那需要给 Worker 加 CF key（增加维护面），
+  // 项目名与合法性交由 pipeline 的 CF 分支处理。
+  const modrinthSlug = parseModrinthSlug(url)
+  let target
+  if (modrinthSlug) {
+    const resolved = await resolveModrinthProject(modrinthSlug)
+    if (resolved.error === 'not_found') {
+      return json({ error: 'Modrinth 上找不到该项目，请检查链接' }, 400, origin)
+    }
+    if (resolved.error === 'not_shader') {
+      return json({ error: `该链接是 ${resolved.projectType}，不是光影项目` }, 400, origin)
+    }
+    if (resolved.error === 'upstream') {
+      return json({ error: 'Modrinth 暂时不可用，请稍后重试' }, 502, origin)
+    }
+    target = {
+      id: resolved.project.id,
+      projectId: resolved.project.projectId,
+      name: resolved.project.title,
+      url: resolved.project.pageUrl,
+      platform: 'modrinth',
+    }
+  } else {
+    const cfSlug = parseCurseforgeSlug(url)
+    if (!cfSlug) {
+      return json({ error: '请填写有效的光影链接（Modrinth 或 CurseForge）' }, 400, origin)
+    }
+    // id 与 name 都用 slug：name 留待 pipeline 从 CF 取回项目名后补全。
+    target = { id: cfSlug, name: cfSlug, url, platform: 'curseforge' }
   }
 
-  const resolved = await resolveModrinthProject(slug)
-  if (resolved.error === 'not_found') {
-    return json({ error: 'Modrinth 上找不到该项目，请检查链接' }, 400, origin)
-  }
-  if (resolved.error === 'not_shader') {
-    return json({ error: `该链接是 ${resolved.projectType}，不是光影项目` }, 400, origin)
-  }
-  if (resolved.error === 'upstream') {
-    return json({ error: 'Modrinth 暂时不可用，请稍后重试' }, 502, origin)
-  }
-
-  const project = resolved.project
   const now = new Date().toISOString()
-  const existing = await readEntry(env, project.id)
+  const existing = await readEntry(env, target.id)
 
   // 去重：同一光影已入队则只更新时间，不重复登记（不足 M8）
   const entry = existing
-    ? { ...existing, updatedAt: now, name: project.title, url: project.pageUrl }
+    ? { ...existing, updatedAt: now, name: target.name, url: target.url, platform: target.platform }
     : {
-        id: project.id,
-        projectId: project.projectId,
-        name: project.title,
-        url: project.pageUrl,
+        id: target.id,
+        ...(target.projectId ? { projectId: target.projectId } : {}),
+        name: target.name,
+        url: target.url,
+        platform: target.platform,
         source: SOURCE.PLAYER,
         status: STATUS.PENDING,
         submittedAt: now,
