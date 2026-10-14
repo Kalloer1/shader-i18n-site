@@ -90,8 +90,18 @@ jobs:
           # 这些名字必须是网关 https://api.888424.xyz/v1 上真实存在的；改动前请先实测
           # （POST /chat/completions 发一段真实 lang 条目，看是否严格回 key=value）。
           # 旧默认值 muse-spark-*/mimo-v2.6-flash-free 在网关上不存在，已实测确认删除。
-          # 顺序即轮转顺序（pipeline 每个分块换一个起点，见 scripts/pipeline.mjs nextProviderOrder）。
-          LLM_MODELS: ${{ secrets.LLM_MODELS || secrets.LLM_MODEL || 'deepseek-v4.1-flash,deepseek-v4-flash,u2-flash,tencent/Hunyuan-MT-7B,hy3' }}
+          #
+          # ⚠️ 这个列表是**轮班**，不是优先级回退链：pipeline 每个分块从 providers[i % N] 开始
+          # （见 scripts/pipeline.mjs nextProviderOrder），所以**列表里每个模型都会分到约 1/N 的分块**。
+          # 因此**只有「格式严格遵守 + 零丢键」的模型才能进这个列表** —— 「能用」不是入选理由，
+          # 弱模型放进来会实打实拉低 1/N 的产出（不会因为排在后面就被跳过）。
+          # 入选前必须实测：POST /chat/completions 发 7~12 行真实 lang 条目（含 .comment 键与 § 颜色码），
+          # 检查是否严格回 key=value、有没有丢键、§ 码是否原样保留。
+          # 已实测淘汰：tencent/Hunyuan-MT-7B（改写键名、丢 option.WATER_WAVES.comment）、
+          # hy3（推理 token 吃光预算 → 正文全空）、tencent/Hy4-preview 与 A13B（21.5s/12.7s 过慢）、
+          # step-5-preview（推理模型、截断）、aixhub/*（429 限流）、gpt-6-astra（402 额度耗尽）。
+          # 当前三个：零丢键、§ 颜色码原样保留、2~9 秒。
+          LLM_MODELS: ${{ secrets.LLM_MODELS || secrets.LLM_MODEL || 'deepseek-v4.1-flash,deepseek-v4-flash,u2-flash' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
