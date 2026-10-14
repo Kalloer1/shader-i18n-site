@@ -135,3 +135,45 @@ jobs:
             -H "Content-Type: application/json" \
             -d "$body" \
             -w "\nHTTP=%{http_code}\n"
+
+      # 取 Brevo 自己的投递事件：前面两封都只看到 HTTP=201（= Brevo 受理），但收件方收件箱/垃圾箱都没有，
+      # 说明信在「受理」之后被丢弃。事件记录（delivered / blocked / bounced / spam + reason）是唯一能定性的证据。
+      # 响应里的邮箱地址来自 secret，GitHub 会自动打码。
+      - name: Inspect Brevo delivery events
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: |
+          if [ -z "${BREVO_API_KEY:-}" ]; then
+            echo "缺少 secret：BREVO_API_KEY 未注入，无法查询投递事件"
+            exit 1
+          fi
+
+          resp_file="$(mktemp)"
+          code="$(curl -sS -o "$resp_file" -w '%{http_code}' -X GET \
+            "https://api.brevo.com/v3/smtp/statistics/events?limit=30&sort=desc" \
+            -H "api-key: $BREVO_API_KEY" \
+            -H "accept: application/json")"
+          echo "=== GET https://api.brevo.com/v3/smtp/statistics/events?limit=30&sort=desc ==="
+          echo "HTTP=$code"
+          echo "--- raw body ---"
+          cat "$resp_file"
+          echo
+          rm -f "$resp_file"
+
+          if [ "$code" -ge 400 ]; then
+            echo "默认参数被拒（HTTP=$code），补上官方要求的 days 参数重试："
+            curl -sS -X GET "https://api.brevo.com/v3/smtp/statistics/events?limit=30&days=1&sort=desc" \
+              -H "api-key: $BREVO_API_KEY" \
+              -H "accept: application/json" \
+              -w "\nHTTP=%{http_code}\n"
+          fi
+
+          # 自检信是自发自收（收件人=发件人=EMAIL_FROM），所以按该地址过滤两种情况都能覆盖。
+          if [ -n "${EMAIL_FROM:-}" ]; then
+            echo "=== 按邮箱过滤（$EMAIL_FROM）==="
+            curl -sS -X GET "https://api.brevo.com/v3/smtp/statistics/events?limit=30&sort=desc&email=$EMAIL_FROM" \
+              -H "api-key: $BREVO_API_KEY" \
+              -H "accept: application/json" \
+              -w "\nHTTP=%{http_code}\n"
+          fi
