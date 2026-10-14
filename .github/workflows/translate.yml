@@ -121,8 +121,29 @@ jobs:
             exit 0
           fi
           git commit -m "翻译: ${{ inputs.ids }}"
-          git push
-          echo "pushed=true" >> "$GITHUB_OUTPUT"
+          # 并发保护：别的 workflow/提交可能刚推到 main，先 rebase 再推，失败重试一次。
+          # 只 rebase，绝不 force push；rebase 输出原样打印，失败原因可见。
+          pushed=false
+          for attempt in 1 2; do
+            if ! git pull --rebase --autostash origin main; then
+              echo "rebase 失败（第 ${attempt} 次），原因见上方输出"
+              git rebase --abort 2>/dev/null || true
+              exit 1
+            fi
+            if git push; then
+              pushed=true
+              break
+            fi
+            echo "push 第 ${attempt} 次失败，重试"
+            sleep 5
+          done
+          # 只有确实推送成功才输出 pushed=true；两次都失败则让 run 变红。
+          if [ "$pushed" = "true" ]; then
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "push 连续 2 次失败，退出非 0"
+            exit 1
+          fi
 
       # GITHUB_TOKEN 的 push 不触发下游 workflow，故推送成功后显式 dispatch deploy。
       - name: Trigger deploy
