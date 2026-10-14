@@ -12,14 +12,14 @@ const POLL_INTERVAL_MS = 15000
 
 /* ---------- 提交表单 ---------- */
 
-const form = ref({ name: '', url: '', contact: '', note: '' })
+const form = ref({ url: '', contact: '', note: '' })
 const submitting = ref(false)
 const submitted = ref(false)
 const error = ref('')
 
 async function handleSubmit() {
-  if (!form.value.name || !form.value.url) {
-    error.value = '请填写光影名称和 Modrinth 链接'
+  if (!form.value.url) {
+    error.value = '请填写 Modrinth 链接'
     return
   }
   if (!form.value.url.includes('modrinth.com/')) {
@@ -53,7 +53,7 @@ async function handleSubmit() {
 function resetForm() {
   submitted.value = false
   error.value = ''
-  form.value = { name: '', url: '', contact: '', note: '' }
+  form.value = { url: '', contact: '', note: '' }
 }
 
 /* ---------- 队列（GET /queue 轮询） ---------- */
@@ -190,10 +190,6 @@ async function handleTrigger() {
   <section v-else class="panel panel--form" aria-labelledby="submit-form-title">
     <h2 id="submit-form-title" class="panel-title">提交新请求</h2>
     <form class="request-form" novalidate @submit.prevent="handleSubmit">
-      <div class="form-group">
-        <label for="name">光影名称 <span class="required" aria-hidden="true">*</span><span class="sr-only">（必填）</span></label>
-        <input id="name" v-model="form.name" type="text" name="name" placeholder="例如：Complementary Reimagined" autocomplete="off" required aria-required="true" />
-      </div>
       <div class="form-group">
         <label for="url">Modrinth 链接 <span class="required" aria-hidden="true">*</span><span class="sr-only">（必填）</span></label>
         <input id="url" v-model="form.url" type="url" name="url" placeholder="https://modrinth.com/shader/..." autocomplete="off" required aria-required="true" aria-describedby="url-hint" />

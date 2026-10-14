@@ -169,9 +169,9 @@ async function handleSubmit(request, env, origin) {
     return json({ error: '请求体不是合法 JSON' }, 400, origin)
   }
 
-  const { name, url, contact, note } = body
-  if (!name || !url) {
-    return json({ error: '光影名称和 Modrinth 链接为必填' }, 400, origin)
+  const { url, contact, note } = body
+  if (!url) {
+    return json({ error: 'Modrinth 链接为必填' }, 400, origin)
   }
 
   const slug = parseModrinthSlug(url)
@@ -196,11 +196,11 @@ async function handleSubmit(request, env, origin) {
 
   // 去重：同一光影已入队则只更新时间，不重复登记（不足 M8）
   const entry = existing
-    ? { ...existing, updatedAt: now, name: name || existing.name, url: project.pageUrl }
+    ? { ...existing, updatedAt: now, name: project.title, url: project.pageUrl }
     : {
         id: project.id,
         projectId: project.projectId,
-        name: name || project.title,
+        name: project.title,
         url: project.pageUrl,
         source: SOURCE.PLAYER,
         status: STATUS.PENDING,
@@ -245,7 +245,9 @@ async function handleSubmit(request, env, origin) {
 async function handleQueue(env, origin) {
   const index = await readIndex(env)
   const entries = await Promise.all(index.map((id) => readEntry(env, id)))
-  return json({ success: true, count: entries.length, entries: entries.filter(Boolean) }, 200, origin)
+  const list = entries.filter(Boolean)
+  const PUBLIC = ({ contact: _dropped, ...rest }) => rest // 明确丢弃：仅 contact
+  return json({ success: true, count: list.length, entries: list.map(PUBLIC) }, 200, origin)
 }
 
 /** POST /translate —— 口令校验后触发 GitHub Actions */
