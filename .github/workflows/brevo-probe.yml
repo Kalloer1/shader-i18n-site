@@ -39,3 +39,26 @@ jobs:
             -H "Content-Type: application/json" \
             -d "$body" \
             -w "\nHTTP=%{http_code}\n"
+
+      # 上一步只看「Brevo 是否受理」，看不到「发件身份是否被收件方信任」。
+      # 这里查发件人（sender）与发件域名（domain）的认证状态：
+      #   senders          -> 每个 sender 的 active 字段（false 或不在列表 = 未验证）
+      #   senders/domains  -> 已认证的发件域名（空数组 = 没有认证域名，SPF/DKIM 无对齐）
+      # 响应里只有发件人地址与状态，不含密钥；GitHub 也会自动打码 secret 值。
+      - name: Inspect Brevo sender/domain authentication status
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: |
+          if [ -z "${BREVO_API_KEY:-}" ]; then
+            echo "缺少 secret：BREVO_API_KEY 未注入，无法查询发件人/域名认证状态"
+            exit 1
+          fi
+
+          for ep in senders senders/domains; do
+            echo "=== GET https://api.brevo.com/v3/$ep ==="
+            curl -sS -X GET "https://api.brevo.com/v3/$ep" \
+              -H "api-key: $BREVO_API_KEY" \
+              -H "accept: application/json" \
+              -w "\nHTTP=%{http_code}\n"
+            echo
+          done
