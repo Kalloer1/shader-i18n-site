@@ -65,9 +65,20 @@ jobs:
           fi
           set -e
           SKILL_DIR="$HOME/.pi/agent/skills/quarkclouddrive"
-          mkdir -p "$SKILL_DIR/.quarkclouddrive/openclaw"
-          printf '%s' "$QUARK_CONFIG_JSON" > "$SKILL_DIR/.quarkclouddrive/openclaw/config.json"
-          chmod 600 "$SKILL_DIR/.quarkclouddrive/openclaw/config.json"
+          # 路径必须是 CLI 真正读取的位置：<技能根>/qoder/config.json。
+          # 旧写法 <技能根>/.quarkclouddrive/openclaw/config.json 不生效（本机实测），
+          # 会让 CLI 表现为未登录，进而“绿色通过但零链接”。
+          mkdir -p "$SKILL_DIR/qoder"
+          printf '%s' "$QUARK_CONFIG_JSON" > "$SKILL_DIR/qoder/config.json"
+          chmod 600 "$SKILL_DIR/qoder/config.json"
+          echo "登录态已写入 $SKILL_DIR/qoder/config.json（$(wc -c < "$SKILL_DIR/qoder/config.json" | tr -d ' ') 字节，内容不打印）"
+
+      # CLI 是 620KB 自包含单文件，进不了 secret（>48KB）也不入库，只能每次从服务端下载。
+      # 安装失败只警告不阻断：镜像失败只让网盘字段留空，不该卡住翻译发布；
+      # 失败痕迹由 ::warning:: 与下面 Mirror 步骤的跳过日志承担，不静默。
+      - name: Install quark CLI
+        continue-on-error: true
+        run: bash scripts/install-quark-cli.sh
 
       - name: Translate
         run: node scripts/pipeline.mjs --ids "${{ inputs.ids }}"
@@ -84,11 +95,25 @@ jobs:
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}
 
       - name: Mirror to cloud drives
-        # 网盘不可用时不阻断发布：镜像失败只让对应字段留空。
-        continue-on-error: true
-        run: node scripts/mirror.mjs --ids "${{ inputs.ids }}"
+        # 这里**故意不加 continue-on-error**：mirror.mjs 只在「真的尝试过上传/分享但一条都没成功」时
+        # 退出码非 0（典型原因就是登录态过期），此时必须让 run 变红；
+        # 部分成功仍退出 0，已拿到的链接照常写入，不因个别失败丢弃整轮。
+        # 注意：env: 里的值不会被 shell 展开，所以 QUARK_CLI 的 $HOME 在 run 里 export。
+        run: |
+          CLI="$HOME/.pi/agent/skills/quarkclouddrive/scripts/quark-drive.cjs"
+          if [ -f "$CLI" ]; then
+            export QUARK_CLI="$CLI"
+            echo "夸克 CLI：$CLI（$(wc -c < "$CLI" | tr -d ' ') 字节）"
+          else
+            # 安装步骤是容错的，CLI 缺失时这里明确跳过（不静默），也不置红。
+            echo "::warning::夸克 CLI 不存在（Install quark CLI 未成功），本轮跳过夸克镜像；该网盘字段留空，不影响翻译发布。"
+          fi
+          node scripts/mirror.mjs --ids "${{ inputs.ids }}"
         env:
-          QUARK_CLI: ${{ secrets.QUARK_CLI_PATH }}
+          # CLI 运行时门禁
+          QODER_PRODUCT_ID: qoder
+          QODER_AGENT: 'true'
+          QUARK_DIR_NAME: 光影汉化
           QUARK_PARENT_FID: ${{ secrets.QUARK_PARENT_FID }}
           WORKER_URL: ${{ secrets.WORKER_URL }}
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}

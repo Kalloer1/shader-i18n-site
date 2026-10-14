@@ -1,0 +1,90 @@
+name: quark-smoke
+
+# 用途：**只读**验证 CI 里的夸克登录态（secret QUARK_CONFIG_JSON）是否真的可用。
+# 背景：登录态过期时 mirror.mjs 会「每条都失败」，必须在 CI 里能提前、单独地看出来，
+# 而不是等翻译跑完才发现零链接。
+#
+# 只允许手动触发，绝不自动运行；只做只读查询（search），**不上传文件、不创建分享**。
+#   gh workflow run quark-smoke.yml -R Kalloer1/shader-i18n-site
+#
+# 判据：Read-only login probe 步骤能成功返回 → CI 登录态可用。
+# 失败时按报错区分：CLI 没装好 / 配置路径不对 / 登录态过期（-1408）/ 网络问题。
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 与 translate.yml 共用同一脚本，避免两处安装逻辑漂移。
+      - name: Install quark CLI
+        continue-on-error: true
+        run: bash scripts/install-quark-cli.sh
+
+      - name: Restore quark config
+        env:
+          QUARK_CONFIG_JSON: ${{ secrets.QUARK_CONFIG_JSON }}
+        run: |
+          if [ -z "$QUARK_CONFIG_JSON" ]; then
+            echo "::warning::未提供 QUARK_CONFIG_JSON，无法验证登录态"
+            exit 0
+          fi
+          set -e
+          SKILL_DIR="$HOME/.pi/agent/skills/quarkclouddrive"
+          # CLI 真正读取的位置是 <技能根>/qoder/config.json（不是 .quarkclouddrive/openclaw/）
+          mkdir -p "$SKILL_DIR/qoder"
+          printf '%s' "$QUARK_CONFIG_JSON" > "$SKILL_DIR/qoder/config.json"
+          chmod 600 "$SKILL_DIR/qoder/config.json"
+          echo "登录态已写入 $SKILL_DIR/qoder/config.json（$(wc -c < "$SKILL_DIR/qoder/config.json" | tr -d ' ') 字节，内容不打印）"
+
+      - name: Read-only login probe
+        run: |
+          SKILL_DIR="$HOME/.pi/agent/skills/quarkclouddrive"
+          CLI="$SKILL_DIR/scripts/quark-drive.cjs"
+          echo "CLI 路径：$CLI"
+          if [ ! -f "$CLI" ]; then
+            echo "::error::CLI 不存在（Install quark CLI 没装成功），无法验证登录态"
+            exit 1
+          fi
+          echo "CLI 大小：$(wc -c < "$CLI" | tr -d ' ') 字节"
+          if [ ! -f "$SKILL_DIR/qoder/config.json" ]; then
+            echo "::error::配置不存在 $SKILL_DIR/qoder/config.json（Restore quark config 未执行或 secret 为空）"
+            exit 1
+          fi
+
+          # CLI 运行时门禁：缺少这两个环境变量会直接拒绝执行。
+          export QODER_PRODUCT_ID=qoder
+          export QODER_AGENT=true
+
+          set +e
+          OUT=$(node "$CLI" search --keyword "光影汉化" \
+            --session-input "验证 CI 登录态" \
+            --session-id "$(date +%s)-smoke" 2>&1)
+          RC=$?
+          set -e
+
+          echo "--- 原始输出（尾部 1200 字符）---"
+          printf '%s\n' "$OUT" | tail -c 1200
+          echo ""
+          echo "--- CLI 退出码：$RC ---"
+
+          if [ "$RC" -ne 0 ]; then
+            echo "::error::只读查询失败，CLI 退出码 $RC（-1408 = 登录态过期；ENOENT = CLI 缺失；其余见上方原始输出）"
+            exit 1
+          fi
+          if printf '%s' "$OUT" | grep -qE '"code"[[:space:]]*:[[:space:]]*-1408'; then
+            echo "::error::只读查询返回 -1408，登录态已过期，需要更新 secret QUARK_CONFIG_JSON"
+            exit 1
+          fi
+          echo "::notice::只读查询成功，CI 里的夸克登录态可用"

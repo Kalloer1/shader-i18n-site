@@ -192,6 +192,10 @@ if (!targets.length) {
 console.log(`镜像 ${targets.length} 个光影（夸克: ${QUARK_CLI ? '启用' : '跳过'}）\n`)
 
 let okQuark = 0, okNone = 0
+// 夸克「尝试」与「成功」计数。
+// CI 里登录态过期会表现为每条上传/分享都抛错，而下面的逐条 catch 只打印并把 quark 置空，
+// 整进程仍然 exit 0 —— 那就是「绿色通过但零链接」的静默失败。故必须单独计数并在收尾时暴露。
+let attemptedQuark = 0, succeededQuark = 0
 
 const batchTargets = targets
   .map(({ shader, lv }) => ({ shader, lv, localPath: join(LANG_DIR, shader.id, lv.shaderVersion, 'zh_CN.lang') }))
@@ -222,11 +226,13 @@ for (const { shader, lv } of targets) {
   let quarkUrl = lv.quark || ''
 
   if (QUARK_CLI && !quarkUrl) {
+    attemptedQuark++
     try {
       const uploadedFid = uploadedFids.get(shader.id)
       quarkUrl = uploadedFid
         ? await shareQuark(uploadedFid, title)
         : await mirrorToQuark(localPath, title)
+      succeededQuark++
       console.log(`[${label}] 夸克 ✓ ${quarkUrl}`)
     } catch (err) {
       console.log(`[${label}] 夸克 ✗ ${String(err.message).slice(0, 160)}`)
@@ -255,3 +261,13 @@ for (const { shader, lv } of targets) {
 
 if (dryRun) console.log('\n（--dry-run：未写入 shaders.json，未回写状态）')
 console.log(`\n镜像结束：夸克成功 ${okQuark}，未镜像 ${okNone}`)
+
+// 零产出不能静默：尝试过上传/分享却一条都没成功，几乎总是登录态失效（QUARK_CONFIG_JSON 过期）
+// 或 CLI 环境异常。CI 必须变红，否则会「绿色通过但零链接」。
+if (attemptedQuark > 0 && succeededQuark === 0) {
+  console.log(`::error::夸克镜像全部失败：尝试 ${attemptedQuark} 条，成功 0 条。常见原因：登录态过期/失效（QUARK_CONFIG_JSON）或 CLI 环境异常。置退出码 1，让 CI 变红。`)
+  process.exitCode = 1
+} else if (succeededQuark > 0 && attemptedQuark > succeededQuark) {
+  // 部分成功仍有价值（已拿到的链接已写回 shaders.json），不置红，但必须让人看见。
+  console.log(`::warning::夸克镜像部分失败：成功 ${succeededQuark} 条，失败 ${attemptedQuark - succeededQuark} 条（共尝试 ${attemptedQuark} 条）。已成功的链接已写入，本轮不置红。`)
+}
