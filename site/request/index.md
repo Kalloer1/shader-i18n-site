@@ -148,14 +148,85 @@ const triggering = ref(false)
 const triggerMsg = ref('')
 const triggerErr = ref('')
 
-onMounted(() => {
+/* ---------- 模型多选（口令门禁后渲染；选择存 localStorage） ---------- */
+
+const unlocked = ref(false)
+const modelList = ref([])
+const selectedModels = ref([])
+const modelsLoading = ref(false)
+const modelsError = ref('')
+
+const MODELS_STORAGE_KEY = 'translate-selected-models'
+
+async function loadModels() {
+  modelsLoading.value = true
+  modelsError.value = ''
+  try {
+    const res = await fetch(`${WORKER_URL}/models`)
+    const data = await res.json()
+    if (!data.success) throw new Error(data.error || '拉取失败')
+    modelList.value = Array.isArray(data.models) ? data.models : []
+    // 上次选择只保留仍在网关列表里的模型，网关已删的自动丢弃
+    let saved = []
+    try {
+      const parsed = JSON.parse(localStorage.getItem(MODELS_STORAGE_KEY) || '[]')
+      if (Array.isArray(parsed)) saved = parsed
+    } catch { /* 忽略损坏的本地存储 */ }
+    selectedModels.value = modelList.value.filter((m) => saved.includes(m))
+    // 无历史选择时默认全选：网关返回什么就默认用全部（轮班机制下每个模型都会分到约 1/N 段落）
+    if (!selectedModels.value.length) selectedModels.value = [...modelList.value]
+  } catch {
+    modelsError.value = '拉取模型列表失败，请稍后重试'
+  } finally {
+    modelsLoading.value = false
+  }
+}
+
+function persistModels() {
+  localStorage.setItem(MODELS_STORAGE_KEY, JSON.stringify(selectedModels.value))
+}
+
+async function verifyPassphrase() {
+  if (!passphrase.value) {
+    triggerErr.value = '请输入口令'
+    return
+  }
+  modelsLoading.value = true
+  triggerErr.value = ''
+  triggerMsg.value = ''
+  try {
+    const res = await fetch(`${WORKER_URL}/verify-passphrase`, {
+      method: 'POST',
+      headers: { 'X-Passphrase': passphrase.value },
+    })
+    if (res.status === 401) {
+      triggerErr.value = '口令不正确'
+      sessionStorage.removeItem('translate-passphrase')
+      unlocked.value = false
+      return
+    }
+    if (!res.ok) {
+      triggerErr.value = '验证失败，请稍后重试'
+      return
+    }
+    sessionStorage.setItem('translate-passphrase', passphrase.value)
+    unlocked.value = true
+    await loadModels()
+  } catch {
+    triggerErr.value = '网络错误，请稍后重试'
+  } finally {
+    modelsLoading.value = false
+  }
+}
+
+onMounted(async () => {
   passphrase.value = sessionStorage.getItem('translate-passphrase') || ''
+  if (passphrase.value) await verifyPassphrase()
 })
 
 async function handleTrigger() {
-  if (!passphrase.value) {
-    triggerErr.value = '请输入口令'
-    triggerMsg.value = ''
+  if (!unlocked.value || !passphrase.value) {
+    triggerErr.value = '请先验证口令'
     return
   }
   triggering.value = true
@@ -165,13 +236,15 @@ async function handleTrigger() {
   try {
     const res = await fetch(`${WORKER_URL}/translate`, {
       method: 'POST',
-      headers: { 'X-Passphrase': passphrase.value },
+      headers: { 'Content-Type': 'application/json', 'X-Passphrase': passphrase.value },
+      body: JSON.stringify({ models: selectedModels.value }),
     })
     const data = await res.json()
 
     if (res.status === 401) {
       triggerErr.value = '口令不正确'
       sessionStorage.removeItem('translate-passphrase')
+      unlocked.value = false
       return
     }
     if (!data.success) {
@@ -180,8 +253,11 @@ async function handleTrigger() {
     }
 
     sessionStorage.setItem('translate-passphrase', passphrase.value)
+    const modelNote = selectedModels.value.length
+      ? `，模型：${selectedModels.value.join(' / ')}`
+      : '（未选择，使用仓库默认模型）'
     triggerMsg.value = data.triggered
-      ? `已触发 ${data.count} 个光影的翻译，状态会自动刷新`
+      ? `已触发 ${data.count} 个光影的翻译${modelNote}，状态会自动刷新`
       : data.message || '没有待翻译的条目'
     await loadQueue()
   } catch {
@@ -268,14 +344,34 @@ async function handleTrigger() {
     <p v-else-if="!queueLoading" class="wb-empty">队列为空，欢迎提交第一个请求。</p>
     <form class="wb-trigger" @submit.prevent="handleTrigger">
       <h3 class="wb-trigger-title">管理员操作</h3>
-      <label for="passphrase" class="wb-label">管理员口令</label>
-      <div class="wb-trigger-row">
-        <input id="passphrase" v-model="passphrase" type="password" name="passphrase" autocomplete="current-password" placeholder="输入口令后开启翻译" />
-        <button type="submit" class="btn btn-primary" :disabled="triggering" :aria-busy="triggering ? 'true' : 'false'">{{ triggering ? '触发中…' : '开启翻译' }}</button>
-      </div>
-      <p v-if="triggerErr" class="form-error" role="alert">{{ triggerErr }}</p>
-      <p v-if="triggerMsg" class="wb-ok" role="status">{{ triggerMsg }}</p>
-      <p class="hint">口令仅保存在本标签页的 sessionStorage，不会写入 URL 或发送给第三方。触发后由 GitHub Actions 自动翻译并发布。</p>
+      <!-- 轮班说明：这是流水线机制，不是对模型的评价（门禁前后都可见） -->
+      <p class="hint wb-rotation-hint">模型是轮班而非优先级：每个被选中的模型都会分到约 1/N 的段落。</p>
+      <template v-if="!unlocked">
+        <label for="passphrase" class="wb-label">管理员口令</label>
+        <div class="wb-trigger-row">
+          <input id="passphrase" v-model="passphrase" type="password" name="passphrase" autocomplete="current-password" placeholder="输入口令后选择翻译模型" />
+          <button type="button" class="btn btn-primary" :disabled="modelsLoading" :aria-busy="modelsLoading ? 'true' : 'false'">{{ modelsLoading ? '验证中…' : '验证口令' }}</button>
+        </div>
+        <p v-if="triggerErr" class="form-error" role="alert">{{ triggerErr }}</p>
+        <p class="hint">口令仅保存在本标签页的 sessionStorage，不会写入 URL 或发送给第三方。</p>
+      </template>
+      <template v-else>
+        <p class="wb-label">选择本轮翻译模型</p>
+        <p v-if="modelsError" class="form-error" role="alert">{{ modelsError }}</p>
+        <p v-else-if="modelsLoading && !modelList.length" class="hint">正在加载模型列表…</p>
+        <div v-else-if="modelList.length" class="wb-models">
+          <label v-for="m in modelList" :key="m" class="wb-model">
+            <input type="checkbox" v-model="selectedModels" :value="m" @change="persistModels" />
+            <code>{{ m }}</code>
+          </label>
+        </div>
+        <div class="wb-trigger-row wb-trigger-row--submit">
+          <button type="submit" class="btn btn-primary" :disabled="triggering" :aria-busy="triggering ? 'true' : 'false'">{{ triggering ? '翻译中…' : '开始翻译' }}</button>
+        </div>
+        <p v-if="triggerErr" class="form-error" role="alert">{{ triggerErr }}</p>
+        <p v-if="triggerMsg" class="wb-ok" role="status">{{ triggerMsg }}</p>
+        <p class="hint">选择会保存在本机 localStorage，下次自动恢复；不选任何模型时使用仓库默认模型。</p>
+      </template>
     </form>
   </section>
   <!-- 工作流程 -->
@@ -699,6 +795,16 @@ async function handleTrigger() {
   border: none !important;
   text-transform: uppercase;
 }
+.wb-rotation-hint {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--vp-c-text-3);
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  border-left: 3px solid var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  border-radius: 0 6px 6px 0;
+}
 .wb-label {
   display: block;
   font-size: 13px;
@@ -718,6 +824,47 @@ async function handleTrigger() {
 .wb-trigger-row .btn {
   white-space: nowrap;
   flex: none;
+}
+.wb-trigger-row--submit {
+  margin-top: 14px;
+}
+
+/* ---- 模型多选（移动端点击目标 ≥44px，字号 ≥12px） ---- */
+.wb-models {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 2px;
+}
+.wb-model {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 9px;
+  background: var(--vp-c-bg);
+  cursor: pointer;
+  transition: border-color 0.18s, background-color 0.18s;
+}
+.wb-model:hover {
+  border-color: var(--vp-c-brand-1);
+}
+.wb-model input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  accent-color: var(--vp-c-brand-1);
+  cursor: pointer;
+}
+.wb-model code {
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-all;
+  color: var(--vp-c-text-1);
 }
 
 /* ---- 工作流程 ---- */

@@ -6,6 +6,8 @@
  * 2. GET  /queue     返回全部队列条目，供站点轮询
  * 3. POST /translate 口令校验 → 取全部「待翻译」→ 触发 GitHub Actions → 置「翻译中」
  * 4. POST /status    Actions 回写单条状态（内部 token）→ 更新 KV + 尽力镜像腾讯文档
+ * 5. GET  /models    代理网关 /models，返回当前可用模型 id 列表（公开；不含秘密）
+ * 6. POST /verify-passphrase 仅校验 /translate 口令，供 /request 页门禁渲染模型多选
  *
  * 状态权威源是 KV；腾讯文档只作为「尽力而为」的镜像，任何失败都不阻断主流程。
  *
@@ -19,6 +21,9 @@
  * - BREVO_API_KEY            Brevo 发信 API key（Worker secret；缺失则跳过通知）
  * - EMAIL_FROM               发信地址（Worker secret，公开仓库禁写 wrangler.toml）
  * - NOTIFY_ENABLED           "1"/"0"（wrangler.toml [vars]，一键停发，不敏感）
+ * - SUBMIT_LIMIT_PER_DAY     每 IP 每天「新增提交」上限（wrangler.toml [vars]，缺失/解析失败回退 3）
+ * - LLM_BASE_URL             网关地址（默认 https://api.888424.xyz/v1，与 GitHub secret 同源）
+ * - LLM_API_KEY              网关 API key（Worker secret，经 sync-worker-secrets.yml 同步）
  *
  * KV binding: TRANSLATION_QUEUE
  */
@@ -32,6 +37,15 @@ import {
   parseModrinthSlug,
   parseCurseforgeSlug,
 } from '../shared/tencent-docs.mjs'
+import {
+  DEFAULT_SUBMIT_LIMIT_PER_DAY,
+  SUBMIT_LIMIT_TTL_SECONDS,
+  parseSubmitLimit,
+  submitLimit,
+  shouldCountSubmit,
+  submitDayKey,
+  clientIp,
+} from '../shared/submit-limit.mjs'
 
 const MODRINTH_API = 'https://api.modrinth.com/v2'
 const UA = 'shader-i18n-site/0.2.0 (request worker)'
@@ -74,6 +88,51 @@ function json(body, status, origin) {
     status,
     headers: { 'Content-Type': 'application/json; charset=utf-8', ...corsHeaders(origin) },
   })
+}
+
+// ---------- 网关模型列表（实时拉取） ----------
+// 模型列表来自管理员自己的中转网关（OpenAI 兼容 /models），不是写死的策展清单：
+// 管理员会实时增删模型，写死列表必然过时。Worker 用 LLM_BASE_URL / LLM_API_KEY
+// （与 GitHub secret 同源，经 sync-worker-secrets.yml 同步）代理该请求，
+// 这样浏览器端永远接触不到网关 key。
+
+const DEFAULT_LLM_BASE_URL = 'https://api.888424.xyz/v1'
+
+async function fetchGatewayModels(env) {
+  const base = (env.LLM_BASE_URL || DEFAULT_LLM_BASE_URL).replace(/\/+$/, '')
+  const key = env.LLM_API_KEY
+  if (!key) return { error: '缺少 LLM_API_KEY（服务配置错误）' }
+  let res
+  try {
+    res = await fetch(`${base}/models`, {
+      headers: { Authorization: `Bearer ${key}`, 'User-Agent': UA },
+    })
+  } catch (err) {
+    console.error('gateway /models fetch failed:', err?.message ?? err)
+    return { error: '模型网关不可达' }
+  }
+  if (!res.ok) {
+    return { error: `模型网关返回 ${res.status}` }
+  }
+  const data = await res.json().catch(() => null)
+  const models = Array.isArray(data?.data) ? data.data.map((m) => m?.id).filter(Boolean) : []
+  return { models }
+}
+
+/** GET /models —— 公开返回网关当前模型 id 列表（不含任何秘密） */
+async function handleModels(env, origin) {
+  const { models, error } = await fetchGatewayModels(env)
+  if (error) return json({ success: false, error }, 502, origin)
+  return json({ success: true, models }, 200, origin)
+}
+
+/** POST /verify-passphrase —— 仅校验口令，供 /request 页门禁渲染模型多选 */
+async function handleVerifyPassphrase(request, env, origin) {
+  const passphrase = request.headers.get('X-Passphrase') || ''
+  const expected = env.TRANSLATE_PASSPHRASE
+  if (!expected) return json({ error: '服务配置错误：缺少 TRANSLATE_PASSPHRASE' }, 500, origin)
+  if (passphrase !== expected) return json({ error: '口令不正确' }, 401, origin)
+  return json({ success: true }, 200, origin)
 }
 
 // ---------- KV 队列 ----------
@@ -355,6 +414,39 @@ async function handleSubmit(request, env, origin) {
   const now = new Date().toISOString()
   const existing = await readEntry(env, target.id)
 
+  // 每 IP 每天「新增提交」限流：只统计新增（同一 id 已入队 → 重复提交不计数）。
+  // 只存 IP 哈希（sha256(INTERNAL_STATUS_TOKEN + '|' + ip)），绝不存原始 IP；
+  // 无 IP / 缺盐时降级为不限流。上限见 SUBMIT_LIMIT_PER_DAY，缺失/解析失败回退 3。
+  // 所有请求一律计数（无管理员豁免）。
+  let remainingToday = null
+  let limitKey = null
+  let usedToday = 0
+  let limitPerDay = DEFAULT_SUBMIT_LIMIT_PER_DAY
+  if (shouldCountSubmit(existing)) {
+    const { ip } = clientIp(request)
+    if (ip) {
+      const salt = env.INTERNAL_STATUS_TOKEN
+      if (!salt) {
+        console.warn('::warning:: 缺少 INTERNAL_STATUS_TOKEN，本次提交跳过 IP 限流')
+      } else {
+        const hash = await sha256Hex(`${salt}|${ip}`)
+        limitKey = submitDayKey(new Date(), hash)
+        usedToday = Number((await env.TRANSLATION_QUEUE.get(limitKey)) || 0)
+        limitPerDay = parseSubmitLimit(env.SUBMIT_LIMIT_PER_DAY)
+        const decision = submitLimit(usedToday, limitPerDay)
+        if (!decision.allowed) {
+          return json(
+            { error: `今日提交次数已达上限（${limitPerDay} 次/天），请明天再试` },
+            429,
+            origin,
+          )
+        }
+      }
+    } else {
+      console.warn('::warning:: 无法获取客户端 IP（无 CF-Connecting-IP 且无 X-Forwarded-For），本次提交不限流')
+    }
+  }
+
   // 去重：同一光影已入队则只更新时间，不重复登记（不足 M8）
   const entry = existing
     ? { ...existing, updatedAt: now, name: target.name, url: target.url, platform: target.platform }
@@ -387,6 +479,13 @@ async function handleSubmit(request, env, origin) {
     }
   }
 
+  // 新增提交成功写入后才计数（写库失败不会消耗当日额度）
+  if (limitKey) {
+    const nextUsed = usedToday + 1
+    await env.TRANSLATION_QUEUE.put(limitKey, String(nextUsed), { expirationTtl: SUBMIT_LIMIT_TTL_SECONDS })
+    remainingToday = Math.max(0, limitPerDay - nextUsed)
+  }
+
   // 腾讯文档仅作尽力镜像；失败不影响返回成功
   const mirrored = await mirrorToTencentDocs(env, entry, note || (existing ? '重复提交' : ''))
 
@@ -397,6 +496,7 @@ async function handleSubmit(request, env, origin) {
       id: entry.id,
       status: entry.status,
       mirrored,
+      remainingToday,
     },
     200,
     origin,
@@ -427,6 +527,30 @@ async function handleTranslate(request, env, origin) {
     return json({ error: '口令不正确' }, 401, origin)
   }
 
+  // 可选 models：来自 /request 管理区的模型多选（口令门禁后）。
+  // 必须命中网关实时列表（白名单校验），绝不允许把任意字符串透传进 workflow。
+  // 空选择 / 未传 → 不传 models，由仓库默认值兜底。
+  // 网关不可达时宁可 400 拒绝，也不能跳过校验透传。
+  let modelsInput = ''
+  const body = await request.json().catch(() => null)
+  const rawModels = body && body.models != null ? body.models : null
+  if (rawModels != null) {
+    const candidate = (Array.isArray(rawModels) ? rawModels : String(rawModels).split(','))
+      .map((s) => String(s).trim())
+      .filter(Boolean)
+    if (candidate.length) {
+      const { models: available, error } = await fetchGatewayModels(env)
+      if (error) {
+        return json({ error: `无法校验模型列表：${error}` }, 400, origin)
+      }
+      const invalid = candidate.filter((m) => !available.includes(m))
+      if (invalid.length) {
+        return json({ error: `以下模型不在网关列表中：${invalid.join(', ')}` }, 400, origin)
+      }
+      modelsInput = candidate.join(',')
+    }
+  }
+
   const index = await readIndex(env)
   const entries = (await Promise.all(index.map((id) => readEntry(env, id)))).filter(Boolean)
   const pending = entries.filter((e) => e.status === STATUS.PENDING)
@@ -443,6 +567,9 @@ async function handleTranslate(request, env, origin) {
   const repo = env.GITHUB_REPO || 'Kalloer1/shader-i18n-site'
   const workflow = env.GITHUB_WORKFLOW_FILE || 'translate.yml'
 
+  const inputs = { ids: ids.join(',') }
+  if (modelsInput) inputs.models = modelsInput
+
   const dispatch = await fetch(
     `https://api.github.com/repos/${repo}/actions/workflows/${workflow}/dispatches`,
     {
@@ -453,7 +580,7 @@ async function handleTranslate(request, env, origin) {
         'User-Agent': UA,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ref: 'main', inputs: { ids: ids.join(',') } }),
+      body: JSON.stringify({ ref: 'main', inputs }),
     },
   )
 
@@ -554,6 +681,16 @@ export default {
       if (pathname === '/queue') {
         if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405, origin)
         return await handleQueue(env, origin)
+      }
+
+      if (pathname === '/models') {
+        if (request.method !== 'GET') return json({ error: 'Method not allowed' }, 405, origin)
+        return await handleModels(env, origin)
+      }
+
+      if (pathname === '/verify-passphrase') {
+        if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, origin)
+        return await handleVerifyPassphrase(request, env, origin)
       }
 
       if (pathname === '/translate') {

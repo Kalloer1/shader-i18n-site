@@ -14,6 +14,11 @@ on:
         required: false
         type: string
         default: ''
+      models:
+        description: '逗号分隔的模型名；留空则用仓库默认（来自 /request 页管理员勾选，Worker 已对网关列表做白名单校验）'
+        required: false
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -103,7 +108,9 @@ jobs:
           # hy3（推理 token 吃光预算 → 正文全空）、tencent/Hy4-preview 与 A13B（21.5s/12.7s 过慢）、
           # step-5-preview（推理模型、截断）、aixhub/*（429 限流）、gpt-6-astra（402 额度耗尽）。
           # 当前三个：零丢键、§ 颜色码原样保留、2~9 秒。
-          LLM_MODELS: ${{ secrets.LLM_MODELS || secrets.LLM_MODEL || 'deepseek-v4.1-flash,deepseek-v4-flash,u2-flash' }}
+          # 该输入来自 /request 页管理员口令门禁后的模型多选（Worker 已对网关实时列表做白名单校验，
+          # 绝不允许任意字符串透传进 workflow）。留空时回退到仓库默认列表。
+          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'deepseek-v4.1-flash,deepseek-v4-flash,u2-flash' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
