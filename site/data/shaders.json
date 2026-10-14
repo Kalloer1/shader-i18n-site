@@ -23,7 +23,7 @@
           "shaderVersion": "r5.9.3",
           "langVersion": "1.0.0",
           "file": "/lang/complementary-reimagined/r5.9.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/cc07a83481bd",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -40,7 +40,7 @@
           ]
         }
       ],
-      "quark": "https://pan.quark.cn/s/5714acf2e192"
+      "quark": "https://pan.quark.cn/s/cc07a83481bd"
     },
     {
       "id": "complementary-unbound",
@@ -64,7 +64,7 @@
           "shaderVersion": "r5.9.3",
           "langVersion": "1.0.0",
           "file": "/lang/complementary-unbound/r5.9.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/96c5fc6c4180",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -81,7 +81,7 @@
           ]
         }
       ],
-      "quark": "https://pan.quark.cn/s/657305545f3d"
+      "quark": "https://pan.quark.cn/s/96c5fc6c4180"
     },
     {
       "id": "bsl-shaders",
@@ -94,7 +94,7 @@
           "shaderVersion": "10.1.8",
           "langVersion": "1.0.0",
           "file": "/lang/bsl-shaders/10.1.8/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/ac7a0abd26b6",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -122,7 +122,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/20956452e721"
+      "quark": "https://pan.quark.cn/s/ac7a0abd26b6"
     },
     {
       "id": "photon-shader",
@@ -537,7 +537,7 @@
           "shaderVersion": "v1.5.0b",
           "langVersion": "1.0.0",
           "file": "/lang/i-like-vanilla/v1.5.0b/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d8781698b62f",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -565,7 +565,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/413f59b277cf"
+      "quark": "https://pan.quark.cn/s/d8781698b62f"
     },
     {
       "id": "noble",
@@ -579,7 +579,7 @@
           "shaderVersion": "1.9.9",
           "langVersion": "1.0.0",
           "file": "/lang/noble/1.9.9/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/9a8e3e91f6ab",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -607,7 +607,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/f3e5a1a57ff7"
+      "quark": "https://pan.quark.cn/s/9a8e3e91f6ab"
     },
     {
       "id": "bsl-shaders-classic",
@@ -869,7 +869,7 @@
           "shaderVersion": "1.3",
           "langVersion": "1.0.0",
           "file": "/lang/lux-v1/1.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/e3e4df2225ab",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -897,7 +897,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/8fbfbb3dedd5"
+      "quark": "https://pan.quark.cn/s/e3e4df2225ab"
     },
     {
       "id": "fantasy-shader-unbound",
@@ -1069,7 +1069,7 @@
           "shaderVersion": "0.8.1",
           "langVersion": "1.0.0",
           "file": "/lang/pegasus/0.8.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/06782421470e",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -1097,7 +1097,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/cb46a2463f27"
+      "quark": "https://pan.quark.cn/s/06782421470e"
     },
     {
       "id": "pixel-perfect-shaders",
@@ -1271,7 +1271,7 @@
           "shaderVersion": "1.0.10",
           "langVersion": "1.0.0",
           "file": "/lang/cursed-fog/1.0.10/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d1e6c4cb2bdb",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -1299,7 +1299,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/6ca02998dbf3"
+      "quark": "https://pan.quark.cn/s/d1e6c4cb2bdb"
     },
     {
       "id": "ebin-resurrected",
@@ -1345,7 +1345,7 @@
           "shaderVersion": "1.0.2",
           "langVersion": "1.0.0",
           "file": "/lang/just-colored-lighting/1.0.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/928a9b083cd1",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -1373,7 +1373,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/dfc9624cf80f"
+      "quark": "https://pan.quark.cn/s/928a9b083cd1"
     },
     {
       "id": "soft-voxels-lite",
@@ -1579,7 +1579,7 @@
           "shaderVersion": "2.02",
           "langVersion": "1.0.0",
           "file": "/lang/sildurs-vibrant-shaders/2.02/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/99e9b10af0e8",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -1607,7 +1607,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/2c2e0ab7a59c"
+      "quark": "https://pan.quark.cn/s/99e9b10af0e8"
     },
     {
       "id": "simply-upscaled",
@@ -1717,7 +1717,7 @@
           "shaderVersion": "v1.2.1",
           "langVersion": "1.0.0",
           "file": "/lang/opal-shaders/v1.2.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/77dbab0dc8d3",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -1745,7 +1745,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/453fca840798"
+      "quark": "https://pan.quark.cn/s/77dbab0dc8d3"
     },
     {
       "id": "vanilletix",
@@ -1823,7 +1823,7 @@
           "shaderVersion": "v1.0",
           "langVersion": "1.0.0",
           "file": "/lang/reverie_shader/v1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/88c9bc273ed0",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -1851,7 +1851,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/168ac20315a1"
+      "quark": "https://pan.quark.cn/s/88c9bc273ed0"
     },
     {
       "id": "musk-rose-shaders",
@@ -2409,7 +2409,7 @@
           "shaderVersion": "1.20",
           "langVersion": "1.0.0",
           "file": "/lang/sildurs-enhanced-default-shaders/1.20/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c2475dcb9f55",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -2437,7 +2437,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/075ff3e6a046"
+      "quark": "https://pan.quark.cn/s/c2475dcb9f55"
     },
     {
       "id": "pixelcraft-shaders",
@@ -2483,7 +2483,7 @@
           "shaderVersion": "5.5.2",
           "langVersion": "1.0.0",
           "file": "/lang/aurora-fantasy/5.5.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/ab4e7906297a",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -2511,7 +2511,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/26b39765e9f5"
+      "quark": "https://pan.quark.cn/s/ab4e7906297a"
     },
     {
       "id": "tea-shaders",
@@ -2589,7 +2589,7 @@
           "shaderVersion": "v5.6.3",
           "langVersion": "1.0.0",
           "file": "/lang/truelight-fx-lite/v5.6.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/8b7014606097",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -2617,7 +2617,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/16b66ecec53d"
+      "quark": "https://pan.quark.cn/s/8b7014606097"
     },
     {
       "id": "motion-blur-fx",
@@ -2791,7 +2791,7 @@
           "shaderVersion": "1.3.9",
           "langVersion": "1.0.0",
           "file": "/lang/lumina-shader-event-horizon/1.3.9/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/9cda59c21ca8",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -2819,7 +2819,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/5d9c351efba7"
+      "quark": "https://pan.quark.cn/s/9cda59c21ca8"
     },
     {
       "id": "ch-motion",
@@ -3089,7 +3089,7 @@
           "shaderVersion": "0.4B",
           "langVersion": "1.0.0",
           "file": "/lang/artshade/0.4B/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/775dc2b5390f",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -3117,7 +3117,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/2db34ec04808"
+      "quark": "https://pan.quark.cn/s/775dc2b5390f"
     },
     {
       "id": "lymboshader",
@@ -3195,7 +3195,7 @@
           "shaderVersion": "1.5.1",
           "langVersion": "1.0.0",
           "file": "/lang/taa/1.5.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/327cb56ae80b",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -3223,7 +3223,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/dac2483fdfa3"
+      "quark": "https://pan.quark.cn/s/327cb56ae80b"
     },
     {
       "id": "open4es-renewed",
@@ -3365,7 +3365,7 @@
           "shaderVersion": "9.0",
           "langVersion": "1.0.0",
           "file": "/lang/zayko/9.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/8eca32a978da",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -3393,7 +3393,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/3151c87f75d5"
+      "quark": "https://pan.quark.cn/s/8eca32a978da"
     },
     {
       "id": "flashlight-shader",
@@ -3471,7 +3471,7 @@
           "shaderVersion": "2.7",
           "langVersion": "1.0.0",
           "file": "/lang/sildurs-basic-shaders/2.7/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b8031e1799fd",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -3499,7 +3499,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/ae29a51c00d7"
+      "quark": "https://pan.quark.cn/s/b8031e1799fd"
     },
     {
       "id": "vtxs-screen-space-demo",
@@ -3609,7 +3609,7 @@
           "shaderVersion": "0.2.2",
           "langVersion": "1.0.0",
           "file": "/lang/nwoofs-wynn-shader/0.2.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/621c8a6adf7e",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -3637,7 +3637,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/21c11d02592a"
+      "quark": "https://pan.quark.cn/s/621c8a6adf7e"
     },
     {
       "id": "truelightfx",
@@ -3779,7 +3779,7 @@
           "shaderVersion": "1.2.9",
           "langVersion": "1.0.0",
           "file": "/lang/lumina-shader-lite/1.2.9/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/e4bfec620adb",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -3807,7 +3807,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/4fdac6bb1eab"
+      "quark": "https://pan.quark.cn/s/e4bfec620adb"
     },
     {
       "id": "kute",
@@ -4045,7 +4045,7 @@
           "shaderVersion": "0.1.7",
           "langVersion": "1.0.0",
           "file": "/lang/psx-core/0.1.7/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/edc84a910856",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -4073,7 +4073,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/622e59f8adef"
+      "quark": "https://pan.quark.cn/s/edc84a910856"
     },
     {
       "id": "sundial-lite",
@@ -4375,7 +4375,7 @@
           "shaderVersion": "Rebuild-9",
           "langVersion": "1.0.0",
           "file": "/lang/muuf-a.g.i-shaders/Rebuild-9/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d89d1d5e0e63",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -4403,7 +4403,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/abcef3c78eb7"
+      "quark": "https://pan.quark.cn/s/d89d1d5e0e63"
     },
     {
       "id": "yamashita-shimejize",
@@ -4737,7 +4737,7 @@
           "shaderVersion": "1.8",
           "langVersion": "1.0.0",
           "file": "/lang/bettervoxels/1.8/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d24d2ace8cca",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -4765,7 +4765,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/f607328f7b13"
+      "quark": "https://pan.quark.cn/s/d24d2ace8cca"
     },
     {
       "id": "pineshaders",
@@ -5291,7 +5291,7 @@
           "shaderVersion": "16.2",
           "langVersion": "1.0.0",
           "file": "/lang/nostalgia-ultra/16.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/01c8a7dd6f01",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -5319,7 +5319,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/729392fa27d1"
+      "quark": "https://pan.quark.cn/s/01c8a7dd6f01"
     },
     {
       "id": "extremely-simple-camera-effects",
@@ -5493,7 +5493,7 @@
           "shaderVersion": "2.0",
           "langVersion": "1.0.0",
           "file": "/lang/baked-potato-shaders/2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/0a6272df8a4f",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -5521,7 +5521,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/fe4203bd3481"
+      "quark": "https://pan.quark.cn/s/0a6272df8a4f"
     },
     {
       "id": "makeup-breezy-shaders",
@@ -6143,7 +6143,7 @@
           "shaderVersion": "be1.3",
           "langVersion": "1.0.0",
           "file": "/lang/lux-brickcraft-edition/be1.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b75df1c7ac9b",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -6171,7 +6171,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/bf4ce883960d"
+      "quark": "https://pan.quark.cn/s/b75df1c7ac9b"
     },
     {
       "id": "serendipity-shader",
@@ -7241,7 +7241,7 @@
           "shaderVersion": "1.0.4.2",
           "langVersion": "1.0.0",
           "file": "/lang/contour-shaders/1.0.4.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/ff9bd7a9166e",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -7269,7 +7269,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/8c21548e4e07"
+      "quark": "https://pan.quark.cn/s/ff9bd7a9166e"
     },
     {
       "id": "vertalux",
@@ -7283,7 +7283,7 @@
           "shaderVersion": "6.0",
           "langVersion": "1.0.0",
           "file": "/lang/vertalux/6.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/dc393aba9e7f",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -7311,7 +7311,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/c42d043336d2"
+      "quark": "https://pan.quark.cn/s/dc393aba9e7f"
     },
     {
       "id": "gradius-vibrantshader",
@@ -7357,7 +7357,7 @@
           "shaderVersion": "1.3.1",
           "langVersion": "1.0.0",
           "file": "/lang/hypershader/1.3.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b7ab77f8405f",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -7385,7 +7385,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/96670a79a4a7"
+      "quark": "https://pan.quark.cn/s/b7ab77f8405f"
     },
     {
       "id": "realisticallyoptimized",
@@ -7463,7 +7463,7 @@
           "shaderVersion": "latest",
           "langVersion": "1.0.0",
           "file": "/lang/essentials-shader/latest/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/79bdc57a9037",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -7491,7 +7491,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/2698ee183801"
+      "quark": "https://pan.quark.cn/s/79bdc57a9037"
     },
     {
       "id": "cinematic-villa",
@@ -8017,7 +8017,7 @@
           "shaderVersion": "3.1.0",
           "langVersion": "1.0.0",
           "file": "/lang/mode-13h/3.1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/07056df37ee7",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8045,7 +8045,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/7209f1755bb0"
+      "quark": "https://pan.quark.cn/s/07056df37ee7"
     },
     {
       "id": "adaptiveoutline",
@@ -8123,7 +8123,7 @@
           "shaderVersion": "1.1",
           "langVersion": "1.0.0",
           "file": "/lang/aerial/1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/af85cbf600e6",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8151,7 +8151,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/dc0ef1f70ee0"
+      "quark": "https://pan.quark.cn/s/af85cbf600e6"
     },
     {
       "id": "etherea-shader",
@@ -8229,7 +8229,7 @@
           "shaderVersion": "2",
           "langVersion": "1.0.0",
           "file": "/lang/solstice-shaderpack/2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/5b77d6d348f8",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8257,7 +8257,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/914b0ad0bf54"
+      "quark": "https://pan.quark.cn/s/5b77d6d348f8"
     },
     {
       "id": "dap-shaders",
@@ -8271,7 +8271,7 @@
           "shaderVersion": "10.0",
           "langVersion": "1.0.0",
           "file": "/lang/dap-shaders/10.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/06424eafd03b",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8299,7 +8299,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/56552a7ff74e"
+      "quark": "https://pan.quark.cn/s/06424eafd03b"
     },
     {
       "id": "knightshaders",
@@ -8633,7 +8633,7 @@
           "shaderVersion": "5.3.0",
           "langVersion": "1.0.0",
           "file": "/lang/vividhorizon/5.3.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/fd0764f3a7c8",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8661,7 +8661,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/fe2aea6a1905"
+      "quark": "https://pan.quark.cn/s/fd0764f3a7c8"
     },
     {
       "id": "serie",
@@ -8739,7 +8739,7 @@
           "shaderVersion": "2.1",
           "langVersion": "1.0.0",
           "file": "/lang/pixel-shades/2.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/01b6f205ba89",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8767,7 +8767,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/07774f1f9eee"
+      "quark": "https://pan.quark.cn/s/01b6f205ba89"
     },
     {
       "id": "modern-psx-shaders",
@@ -8813,7 +8813,7 @@
           "shaderVersion": "1.1",
           "langVersion": "1.0.0",
           "file": "/lang/colorcone/1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/1c9f57648c52",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8841,7 +8841,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/1218127e60ce"
+      "quark": "https://pan.quark.cn/s/1c9f57648c52"
     },
     {
       "id": "helios-shaders",
@@ -8951,7 +8951,7 @@
           "shaderVersion": "1.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/aurelia-shaders/1.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/9b0559fb6371",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -8979,7 +8979,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/5ec3f47dc733"
+      "quark": "https://pan.quark.cn/s/9b0559fb6371"
     },
     {
       "id": "visualmcshader",
@@ -9409,7 +9409,7 @@
           "shaderVersion": "4",
           "langVersion": "1.0.0",
           "file": "/lang/sublime-visuals/4/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c78f2c33b4e4",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -9437,7 +9437,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/674cc0cbf533"
+      "quark": "https://pan.quark.cn/s/c78f2c33b4e4"
     },
     {
       "id": "velora-shader-turbo",
@@ -10859,7 +10859,7 @@
           "shaderVersion": "1.2.1.B",
           "langVersion": "1.0.0",
           "file": "/lang/aetherstone-by-tark-projects/1.2.1.B/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/e2a977ae6635",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -10887,7 +10887,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/c69bd8bfaa36"
+      "quark": "https://pan.quark.cn/s/e2a977ae6635"
     },
     {
       "id": "solis-blend",
@@ -11029,7 +11029,7 @@
           "shaderVersion": "8.1.0-MacOS",
           "langVersion": "1.0.0",
           "file": "/lang/eddyveil/8.1.0-MacOS/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/0b92bed51737",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -11057,7 +11057,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/45c9b6ba7727"
+      "quark": "https://pan.quark.cn/s/0b92bed51737"
     },
     {
       "id": "atherial-shaders",
@@ -11391,7 +11391,7 @@
           "shaderVersion": "0.5.4",
           "langVersion": "1.0.0",
           "file": "/lang/embervoid-shader/0.5.4/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/de97944c8241",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（longcat-2.5-preview-free），未人工校对"
@@ -11419,7 +11419,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/755cea6a753d"
+      "quark": "https://pan.quark.cn/s/de97944c8241"
     },
     {
       "id": "salicylicshaders",
@@ -11593,7 +11593,7 @@
           "shaderVersion": "1.3",
           "langVersion": "1.0.0",
           "file": "/lang/npc-shaders/1.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/88d4f3080103",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -11621,7 +11621,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/9bea8589751b"
+      "quark": "https://pan.quark.cn/s/88d4f3080103"
     },
     {
       "id": "lightweight-atmospherica",
@@ -11859,7 +11859,7 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/silva-pro/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/045790799ed5",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -11887,7 +11887,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/de3dd9245e04"
+      "quark": "https://pan.quark.cn/s/045790799ed5"
     },
     {
       "id": "rift-shaders",
@@ -11965,7 +11965,7 @@
           "shaderVersion": "1.2.2",
           "langVersion": "1.0.0",
           "file": "/lang/incredible-graphics/1.2.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/3b9da85edba8",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -11993,7 +11993,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/356c5349e8ff"
+      "quark": "https://pan.quark.cn/s/3b9da85edba8"
     },
     {
       "id": "ezexposure",
@@ -12039,7 +12039,7 @@
           "shaderVersion": "1.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/source-water/1.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/93561638039e",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -12067,7 +12067,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/6613012e77aa"
+      "quark": "https://pan.quark.cn/s/93561638039e"
     },
     {
       "id": "amberveil-shaders",
@@ -12305,7 +12305,7 @@
           "shaderVersion": "1.1.0",
           "langVersion": "1.0.0",
           "file": "/lang/zarya/1.1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/a0f5e13c9dfe",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -12333,7 +12333,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/eea2e37fc8ea"
+      "quark": "https://pan.quark.cn/s/a0f5e13c9dfe"
     },
     {
       "id": "cinematix-shader",
@@ -13211,7 +13211,7 @@
           "shaderVersion": "V9",
           "langVersion": "1.0.0",
           "file": "/lang/the-beat-of-a-heart/V9/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/33f2b0fb384a",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -13239,7 +13239,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/ca086e5a2120"
+      "quark": "https://pan.quark.cn/s/33f2b0fb384a"
     },
     {
       "id": "bcu-shades",
@@ -13253,7 +13253,7 @@
           "shaderVersion": "1.0.7",
           "langVersion": "1.0.0",
           "file": "/lang/bcu-shades/1.0.7/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/5f1bdfc95820",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -13281,7 +13281,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/bc7ecd9abe9f"
+      "quark": "https://pan.quark.cn/s/5f1bdfc95820"
     },
     {
       "id": "no-more-brightness",
@@ -14255,7 +14255,7 @@
           "shaderVersion": "1.0.1",
           "langVersion": "1.0.0",
           "file": "/lang/bcr-shades/1.0.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/1e0d16fd5fad",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -14283,7 +14283,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/572d7b8e6097"
+      "quark": "https://pan.quark.cn/s/1e0d16fd5fad"
     },
     {
       "id": "lumen-shader",
@@ -14425,7 +14425,7 @@
           "shaderVersion": "3.3",
           "langVersion": "1.0.0",
           "file": "/lang/cinderframe/3.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b0f5f21c9ce1",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -14453,7 +14453,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/0e510d53b983"
+      "quark": "https://pan.quark.cn/s/b0f5f21c9ce1"
     },
     {
       "id": "vanilla-shade",
@@ -14531,7 +14531,7 @@
           "shaderVersion": "8.1.0-Windows",
           "langVersion": "1.0.0",
           "file": "/lang/eddyveil-shaders-windows/8.1.0-Windows/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d186db70424e",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -14559,7 +14559,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/74f9e15fa6fd"
+      "quark": "https://pan.quark.cn/s/d186db70424e"
     },
     {
       "id": "zaryashader",
@@ -14605,7 +14605,7 @@
           "shaderVersion": "1.0.5",
           "langVersion": "1.0.0",
           "file": "/lang/robs-vanilla-reshaded/1.0.5/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/a32464d1b2d7",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -14633,7 +14633,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/59895f9f0857"
+      "quark": "https://pan.quark.cn/s/a32464d1b2d7"
     },
     {
       "id": "zer0s-beta-shaders",
@@ -14679,7 +14679,7 @@
           "shaderVersion": "2.0.0-alpha",
           "langVersion": "1.0.0",
           "file": "/lang/prismatic-shaders/2.0.0-alpha/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/49c0c5f94828",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -14707,7 +14707,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/545e9c6d1edf"
+      "quark": "https://pan.quark.cn/s/49c0c5f94828"
     },
     {
       "id": "sel-shaders",
@@ -14753,7 +14753,7 @@
           "shaderVersion": "Ready_v7",
           "langVersion": "1.0.0",
           "file": "/lang/goldelion-shaders/Ready_v7/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b58f685714cc",
           "updatedAt": "2026-10-11",
           "contributors": [
             "AI 初翻（muse-spark-1.2-contributor-free），未人工校对"
@@ -14781,7 +14781,7 @@
           "lastSync": "2026-10-14"
         }
       },
-      "quark": "https://pan.quark.cn/s/bd87fa32546a"
+      "quark": "https://pan.quark.cn/s/b58f685714cc"
     },
     {
       "id": "lve-sunward-shader",
@@ -17761,7 +17761,7 @@
           "shaderVersion": "1.1",
           "langVersion": "1.0.0",
           "file": "/lang/doomplus/1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c40286d80f2b",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
@@ -17778,7 +17778,8 @@
           "pageUrl": "https://modrinth.com/shader/doomplus",
           "lastSync": "2026-10-14"
         }
-      }
+      },
+      "quark": "https://pan.quark.cn/s/c40286d80f2b"
     },
     {
       "id": "makeup-ultra-fast-shader",
@@ -17792,13 +17793,14 @@
           "shaderVersion": "cf-MakeUp-UltraFast-8.8",
           "langVersion": "1.0.0",
           "file": "/lang/makeup-ultra-fast-shader/cf-MakeUp-UltraFast-8.8/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/8735a0983f17",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/8735a0983f17"
     }
   ]
 }
