@@ -15060,13 +15060,14 @@
           "shaderVersion": "r1",
           "langVersion": "1.0.0",
           "file": "/lang/pholas-shaders/r1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/0d52ce693425",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/0d52ce693425"
     },
     {
       "id": "aetheria-fantasy",
@@ -15079,13 +15080,14 @@
           "shaderVersion": "V1",
           "langVersion": "1.0.0",
           "file": "/lang/aetheria-fantasy/V1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/fe6472e9749b",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/fe6472e9749b"
     },
     {
       "id": "hsn-shaders",
@@ -15098,13 +15100,14 @@
           "shaderVersion": "1.7",
           "langVersion": "1.0.0",
           "file": "/lang/hsn-shaders/1.7/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/fd8a59140786",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/fd8a59140786"
     },
     {
       "id": "its-cherry-shaders",
@@ -15117,13 +15120,14 @@
           "shaderVersion": "r1",
           "langVersion": "1.0.0",
           "file": "/lang/its-cherry-shaders/r1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c48989d53065",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/c48989d53065"
     },
     {
       "id": "wind-shaders",
@@ -15136,13 +15140,14 @@
           "shaderVersion": "r1.0",
           "langVersion": "1.0.0",
           "file": "/lang/wind-shaders/r1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/362b9b3efadc",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/362b9b3efadc"
     },
     {
       "id": "ray-tracing-potato",
@@ -15155,13 +15160,14 @@
           "shaderVersion": "2.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/ray-tracing-potato/2.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/a901c720d6c6",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/a901c720d6c6"
     },
     {
       "id": "miniaturexl",
@@ -15174,13 +15180,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/miniaturexl/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/4f4118bfe14d",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/4f4118bfe14d"
     },
     {
       "id": "analogcraft",
@@ -15193,13 +15200,14 @@
           "shaderVersion": "v1",
           "langVersion": "1.0.0",
           "file": "/lang/analogcraft/v1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/387f27f4c181",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/387f27f4c181"
     },
     {
       "id": "0-shader",
@@ -15212,13 +15220,14 @@
           "shaderVersion": "26.3",
           "langVersion": "1.0.0",
           "file": "/lang/0-shader/26.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/0cd48c5fb890",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/0cd48c5fb890"
     },
     {
       "id": "i-like-blu",
@@ -15231,13 +15240,14 @@
           "shaderVersion": "r1",
           "langVersion": "1.0.0",
           "file": "/lang/i-like-blu/r1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/128b7a24c57c",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/128b7a24c57c"
     },
     {
       "id": "vanilla-extra-shaders",
@@ -15250,13 +15260,14 @@
           "shaderVersion": "r1.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/vanilla-extra-shaders/r1.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/1b4c6d456909",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/1b4c6d456909"
     },
     {
       "id": "blackhole-shhenu",
@@ -15269,13 +15280,14 @@
           "shaderVersion": "1",
           "langVersion": "1.0.0",
           "file": "/lang/blackhole-shhenu/1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/5feabecd959e",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/5feabecd959e"
     },
     {
       "id": "abys",
@@ -15288,13 +15300,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/abys/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/fb4d25935a5a",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/fb4d25935a5a"
     },
     {
       "id": "gleam-shaders",
@@ -15307,13 +15320,14 @@
           "shaderVersion": "v1.9",
           "langVersion": "1.0.0",
           "file": "/lang/gleam-shaders/v1.9/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/4053d55116f2",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/4053d55116f2"
     },
     {
       "id": "halcyondrift",
@@ -15326,13 +15340,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/halcyondrift/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/71f1d3042e31",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/71f1d3042e31"
     },
     {
       "id": "aetheria-shader",
@@ -15345,13 +15360,14 @@
           "shaderVersion": "4.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/aetheria-shader/4.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d63703b92643",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/d63703b92643"
     },
     {
       "id": "ambiance-rt",
@@ -15364,13 +15380,14 @@
           "shaderVersion": "ambiance.008",
           "langVersion": "1.0.0",
           "file": "/lang/ambiance-rt/ambiance.008/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/7282a5ba3d4c",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/7282a5ba3d4c"
     },
     {
       "id": "neolux",
@@ -15383,13 +15400,14 @@
           "shaderVersion": "1.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/neolux/1.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/67c2ddcf7bc1",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/67c2ddcf7bc1"
     },
     {
       "id": "luminol-republic-shade-project",
@@ -15402,13 +15420,14 @@
           "shaderVersion": "2.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/luminol-republic-shade-project/2.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c7b97376390e",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/c7b97376390e"
     },
     {
       "id": "solislite",
@@ -15421,13 +15440,14 @@
           "shaderVersion": "SolisLite_0.1.0_BETA_26.x.zip",
           "langVersion": "1.0.0",
           "file": "/lang/solislite/SolisLite_0.1.0_BETA_26.x.zip/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/0df05a263d86",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/0df05a263d86"
     },
     {
       "id": "camellia-shaders",
@@ -15440,13 +15460,14 @@
           "shaderVersion": "1.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/camellia-shaders/1.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/efda9493e619",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/efda9493e619"
     },
     {
       "id": "inkboil",
@@ -15459,13 +15480,14 @@
           "shaderVersion": "1.1.1",
           "langVersion": "1.0.0",
           "file": "/lang/inkboil/1.1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/5a5519d93f80",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/5a5519d93f80"
     },
     {
       "id": "dappled-shaders",
@@ -15478,13 +15500,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/dappled-shaders/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b0ab67bc8285",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/b0ab67bc8285"
     },
     {
       "id": "united-shader",
@@ -15497,13 +15520,14 @@
           "shaderVersion": "26.3",
           "langVersion": "1.0.0",
           "file": "/lang/united-shader/26.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/7549f8e2372c",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/7549f8e2372c"
     },
     {
       "id": "pain",
@@ -15516,13 +15540,14 @@
           "shaderVersion": "1",
           "langVersion": "1.0.0",
           "file": "/lang/pain/1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/a70c81d5e9a9",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/a70c81d5e9a9"
     },
     {
       "id": "cealith-shaders",
@@ -15535,13 +15560,14 @@
           "shaderVersion": "1.1.2",
           "langVersion": "1.0.0",
           "file": "/lang/cealith-shaders/1.1.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/28898489c098",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/28898489c098"
     },
     {
       "id": "relighting",
@@ -15554,13 +15580,14 @@
           "shaderVersion": "1.0.5-Beta6",
           "langVersion": "1.0.0",
           "file": "/lang/relighting/1.0.5-Beta6/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/943891974ae7",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/943891974ae7"
     },
     {
       "id": "bloomy-shaders",
@@ -15573,13 +15600,14 @@
           "shaderVersion": "v1",
           "langVersion": "1.0.0",
           "file": "/lang/bloomy-shaders/v1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/dd32c163ea86",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/dd32c163ea86"
     },
     {
       "id": "mystique-shader-ultrafast",
@@ -15592,13 +15620,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/mystique-shader-ultrafast/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/190fe7d0831d",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/190fe7d0831d"
     },
     {
       "id": "vhs44",
@@ -15611,13 +15640,14 @@
           "shaderVersion": "1",
           "langVersion": "1.0.0",
           "file": "/lang/vhs44/1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/e360a5c9d6e2",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/e360a5c9d6e2"
     },
     {
       "id": "potatoglow",
@@ -15630,13 +15660,14 @@
           "shaderVersion": "3.0",
           "langVersion": "1.0.0",
           "file": "/lang/potatoglow/3.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/ffbb6e38b2a0",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/ffbb6e38b2a0"
     },
     {
       "id": "firmament-shaders",
@@ -15649,13 +15680,14 @@
           "shaderVersion": "0.3",
           "langVersion": "1.0.0",
           "file": "/lang/firmament-shaders/0.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/0cc47118df04",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/0cc47118df04"
     },
     {
       "id": "litecraft-shader",
@@ -15668,13 +15700,14 @@
           "shaderVersion": "1.3",
           "langVersion": "1.0.0",
           "file": "/lang/litecraft-shader/1.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/2d73cdf5d4e6",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/2d73cdf5d4e6"
     },
     {
       "id": "drdfrm",
@@ -15687,13 +15720,14 @@
           "shaderVersion": "2.0",
           "langVersion": "1.0.0",
           "file": "/lang/drdfrm/2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/59ec9c6221c5",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/59ec9c6221c5"
     },
     {
       "id": "astral-cinema",
@@ -15706,13 +15740,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/astral-cinema/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/42e7b0bc58f1",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/42e7b0bc58f1"
     },
     {
       "id": "crownlight-shader",
@@ -15725,13 +15760,14 @@
           "shaderVersion": "1.2-rc.26.3.rc.3",
           "langVersion": "1.0.0",
           "file": "/lang/crownlight-shader/1.2-rc.26.3.rc.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/bfe66cd956f9",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/bfe66cd956f9"
     },
     {
       "id": "humid-shaders",
@@ -15744,13 +15780,14 @@
           "shaderVersion": "v1.0",
           "langVersion": "1.0.0",
           "file": "/lang/humid-shaders/v1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/015708c9270b",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/015708c9270b"
     },
     {
       "id": "1-shader",
@@ -15763,13 +15800,14 @@
           "shaderVersion": "26.2",
           "langVersion": "1.0.0",
           "file": "/lang/1-shader/26.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/bac891bc5962",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/bac891bc5962"
     },
     {
       "id": "flow-reimagined",
@@ -15782,13 +15820,14 @@
           "shaderVersion": "v1",
           "langVersion": "1.0.0",
           "file": "/lang/flow-reimagined/v1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/845a48c74f53",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/845a48c74f53"
     },
     {
       "id": "realis",
@@ -15801,13 +15840,14 @@
           "shaderVersion": "1.2",
           "langVersion": "1.0.0",
           "file": "/lang/realis/1.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/a7c9647d7f1a",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/a7c9647d7f1a"
     },
     {
       "id": "black-hole-shader",
@@ -15820,13 +15860,14 @@
           "shaderVersion": "v1",
           "langVersion": "1.0.0",
           "file": "/lang/black-hole-shader/v1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/bc7db9cf67fb",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/bc7db9cf67fb"
     },
     {
       "id": "ambr",
@@ -15839,13 +15880,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/ambr/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c6fc8e69b08f",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/c6fc8e69b08f"
     },
     {
       "id": "salicyliclite",
@@ -15858,13 +15900,14 @@
           "shaderVersion": "v1",
           "langVersion": "1.0.0",
           "file": "/lang/salicyliclite/v1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/ce9558e0ec93",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/ce9558e0ec93"
     },
     {
       "id": "reminisce",
@@ -15877,13 +15920,14 @@
           "shaderVersion": "0.1.0",
           "langVersion": "1.0.0",
           "file": "/lang/reminisce/0.1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/7cbefc06fc60",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/7cbefc06fc60"
     },
     {
       "id": "realisticlite",
@@ -15896,13 +15940,14 @@
           "shaderVersion": "V20.3",
           "langVersion": "1.0.0",
           "file": "/lang/realisticlite/V20.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/75db4800f301",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/75db4800f301"
     },
     {
       "id": "cosmicglow-itslivex",
@@ -15915,13 +15960,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/cosmicglow-itslivex/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/3ab8651cd32d",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/3ab8651cd32d"
     },
     {
       "id": "astral-reimagined",
@@ -15934,13 +15980,14 @@
           "shaderVersion": "r1",
           "langVersion": "1.0.0",
           "file": "/lang/astral-reimagined/r1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/cfe7ad6f918a",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/cfe7ad6f918a"
     },
     {
       "id": "hearthlight",
@@ -15953,13 +16000,14 @@
           "shaderVersion": "0.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/hearthlight/0.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/1f5c4efc7e90",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/1f5c4efc7e90"
     },
     {
       "id": "elytrune-shaders",
@@ -15972,13 +16020,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/elytrune-shaders/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/9ddb3571ed03",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/9ddb3571ed03"
     },
     {
       "id": "komorebi-shaders",
@@ -15991,13 +16040,14 @@
           "shaderVersion": "26.3",
           "langVersion": "1.0.0",
           "file": "/lang/komorebi-shaders/26.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/8d94272ed968",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/8d94272ed968"
     },
     {
       "id": "celestial-order-fix",
@@ -16010,13 +16060,14 @@
           "shaderVersion": "1.1",
           "langVersion": "1.0.0",
           "file": "/lang/celestial-order-fix/1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d3ff4721944f",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/d3ff4721944f"
     },
     {
       "id": "aetherglow",
@@ -16029,13 +16080,14 @@
           "shaderVersion": "1.1",
           "langVersion": "1.0.0",
           "file": "/lang/aetherglow/1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/ebc091ed467b",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/ebc091ed467b"
     },
     {
       "id": "ome-shaders",
@@ -16048,13 +16100,14 @@
           "shaderVersion": "r1",
           "langVersion": "1.0.0",
           "file": "/lang/ome-shaders/r1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/26b73685ae8e",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/26b73685ae8e"
     },
     {
       "id": "bloho-shaders",
@@ -16067,13 +16120,14 @@
           "shaderVersion": "3.0",
           "langVersion": "1.0.0",
           "file": "/lang/bloho-shaders/3.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/1a9835b46d57",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/1a9835b46d57"
     },
     {
       "id": "cirrus-shader",
@@ -16086,13 +16140,14 @@
           "shaderVersion": "v1.3.0",
           "langVersion": "1.0.0",
           "file": "/lang/cirrus-shader/v1.3.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/a2a59a27dcac",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/a2a59a27dcac"
     },
     {
       "id": "depthstyle-shaders",
@@ -16105,13 +16160,14 @@
           "shaderVersion": "V1.0",
           "langVersion": "1.0.0",
           "file": "/lang/depthstyle-shaders/V1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c378e6e8c16b",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/c378e6e8c16b"
     },
     {
       "id": "aalab",
@@ -16124,13 +16180,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/aalab/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/4fe4e6363d65",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/4fe4e6363d65"
     },
     {
       "id": "boralancesshaders",
@@ -16143,13 +16200,14 @@
           "shaderVersion": "1.20.1",
           "langVersion": "1.0.0",
           "file": "/lang/boralancesshaders/1.20.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/85479bc105fe",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/85479bc105fe"
     },
     {
       "id": "lavi_bloomz",
@@ -16162,13 +16220,14 @@
           "shaderVersion": "1.3",
           "langVersion": "1.0.0",
           "file": "/lang/lavi_bloomz/1.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/107e9abc17a7",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/107e9abc17a7"
     },
     {
       "id": "dawntodusk-shaders",
@@ -16181,13 +16240,14 @@
           "shaderVersion": "Pixels_ReimaginedV1.1",
           "langVersion": "1.0.0",
           "file": "/lang/dawntodusk-shaders/Pixels_ReimaginedV1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d39ba041eff4",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/d39ba041eff4"
     },
     {
       "id": "aetherrealism",
@@ -16200,13 +16260,14 @@
           "shaderVersion": "AetherRealism.v1",
           "langVersion": "1.0.0",
           "file": "/lang/aetherrealism/AetherRealism.v1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/f932628379bd",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/f932628379bd"
     },
     {
       "id": "7amada-panini-projection",
@@ -16219,13 +16280,14 @@
           "shaderVersion": "release1.1",
           "langVersion": "1.0.0",
           "file": "/lang/7amada-panini-projection/release1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/5638b1fcbccc",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/5638b1fcbccc"
     },
     {
       "id": "echoshader",
@@ -16238,13 +16300,14 @@
           "shaderVersion": "2.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/echoshader/2.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/56137e6ad9a6",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/56137e6ad9a6"
     },
     {
       "id": "brisa-lite",
@@ -16257,13 +16320,14 @@
           "shaderVersion": "2.0",
           "langVersion": "1.0.0",
           "file": "/lang/brisa-lite/2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/9d829c325dbf",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/9d829c325dbf"
     },
     {
       "id": "rocketshaders",
@@ -16276,13 +16340,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/rocketshaders/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/a9fba78fa4de",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/a9fba78fa4de"
     },
     {
       "id": "native-shaders",
@@ -16295,13 +16360,14 @@
           "shaderVersion": "1.5",
           "langVersion": "1.0.0",
           "file": "/lang/native-shaders/1.5/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/f8a7d8672613",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/f8a7d8672613"
     },
     {
       "id": "procpromo",
@@ -16314,13 +16380,14 @@
           "shaderVersion": "0.8.3",
           "langVersion": "1.0.0",
           "file": "/lang/procpromo/0.8.3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b5e0062d9c5a",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/b5e0062d9c5a"
     },
     {
       "id": "fesglow",
@@ -16333,13 +16400,14 @@
           "shaderVersion": "1.0.2",
           "langVersion": "1.0.0",
           "file": "/lang/fesglow/1.0.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/8fa8bdf46e64",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/8fa8bdf46e64"
     },
     {
       "id": "astralis-shader",
@@ -16352,13 +16420,14 @@
           "shaderVersion": "0.1.0",
           "langVersion": "1.0.0",
           "file": "/lang/astralis-shader/0.1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/ae53556be67e",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/ae53556be67e"
     },
     {
       "id": "verity-shader",
@@ -16371,13 +16440,14 @@
           "shaderVersion": "1.2",
           "langVersion": "1.0.0",
           "file": "/lang/verity-shader/1.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/49ec545408b3",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/49ec545408b3"
     },
     {
       "id": "ps-fps-shader",
@@ -16390,13 +16460,14 @@
           "shaderVersion": "Full-Shadows-3",
           "langVersion": "1.0.0",
           "file": "/lang/ps-fps-shader/Full-Shadows-3/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/3d241b7042f6",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/3d241b7042f6"
     },
     {
       "id": "auroralite-voidnyx_yt",
@@ -16409,13 +16480,14 @@
           "shaderVersion": "1.1",
           "langVersion": "1.0.0",
           "file": "/lang/auroralite-voidnyx_yt/1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/db9ec5a8dd67",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/db9ec5a8dd67"
     },
     {
       "id": "colorblindness-shaders",
@@ -16428,13 +16500,14 @@
           "shaderVersion": "0.2.0",
           "langVersion": "1.0.0",
           "file": "/lang/colorblindness-shaders/0.2.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/931bb7fa3b23",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/931bb7fa3b23"
     },
     {
       "id": "singularity-shaders",
@@ -16447,13 +16520,14 @@
           "shaderVersion": "v1",
           "langVersion": "1.0.0",
           "file": "/lang/singularity-shaders/v1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/9e0a34140431",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/9e0a34140431"
     },
     {
       "id": "amiarchiveshader",
@@ -16466,13 +16540,14 @@
           "shaderVersion": "v1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/amiarchiveshader/v1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/3e77283a7bc2",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/3e77283a7bc2"
     },
     {
       "id": "reasonableview",
@@ -16485,13 +16560,14 @@
           "shaderVersion": "0.3.0",
           "langVersion": "1.0.0",
           "file": "/lang/reasonableview/0.3.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/4677d4244afe",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/4677d4244afe"
     },
     {
       "id": "frangilus-shaders",
@@ -16504,13 +16580,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/frangilus-shaders/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/7834d2fb767e",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/7834d2fb767e"
     },
     {
       "id": "lumenite-shaders",
@@ -16523,13 +16600,14 @@
           "shaderVersion": "2.9.1",
           "langVersion": "1.0.0",
           "file": "/lang/lumenite-shaders/2.9.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/886476dac120",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/886476dac120"
     },
     {
       "id": "eventhorizon-salut_46eeee",
@@ -16542,13 +16620,14 @@
           "shaderVersion": "1.6.2.1",
           "langVersion": "1.0.0",
           "file": "/lang/eventhorizon-salut_46eeee/1.6.2.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d1008cba6702",
           "updatedAt": "2026-10-13",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/d1008cba6702"
     },
     {
       "id": "true-black-white-shader-grayscale",
@@ -16561,13 +16640,14 @@
           "shaderVersion": "1.0.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/true-black-white-shader-grayscale/1.0.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/06b0e13d8bbb",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/06b0e13d8bbb"
     },
     {
       "id": "pixels-reimagined",
@@ -16580,13 +16660,14 @@
           "shaderVersion": "Pixels_ReimaginedV1.1",
           "langVersion": "1.0.0",
           "file": "/lang/pixels-reimagined/Pixels_ReimaginedV1.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b560ffe0c3d2",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/b560ffe0c3d2"
     },
     {
       "id": "unbound-visual-plus",
@@ -16599,13 +16680,14 @@
           "shaderVersion": "PT-v10.1",
           "langVersion": "1.0.0",
           "file": "/lang/unbound-visual-plus/PT-v10.1/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/1f8e508b0fb4",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/1f8e508b0fb4"
     },
     {
       "id": "super-fps-shader-boracore",
@@ -16618,13 +16700,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/super-fps-shader-boracore/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/5abae7358ed2",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/5abae7358ed2"
     },
     {
       "id": "stereos-default-plus",
@@ -16637,13 +16720,14 @@
           "shaderVersion": "2.4",
           "langVersion": "1.0.0",
           "file": "/lang/stereos-default-plus/2.4/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/d3904bfa7c73",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/d3904bfa7c73"
     },
     {
       "id": "aetheris-medium",
@@ -16656,13 +16740,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/aetheris-medium/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/752f316aa3cf",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/752f316aa3cf"
     },
     {
       "id": "hazelle-shaders",
@@ -16675,13 +16760,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/hazelle-shaders/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/b21f5bbf1753",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/b21f5bbf1753"
     },
     {
       "id": "lumina-hiimnottellingyoumyname",
@@ -16694,13 +16780,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/lumina-hiimnottellingyoumyname/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c06e8704b734",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/c06e8704b734"
     },
     {
       "id": "matrix-signal-fault",
@@ -16713,13 +16800,14 @@
           "shaderVersion": "0.1.0",
           "langVersion": "1.0.0",
           "file": "/lang/matrix-signal-fault/0.1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/0a24b3fe6da6",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/0a24b3fe6da6"
     },
     {
       "id": "yukeeshaders",
@@ -16732,13 +16820,14 @@
           "shaderVersion": "0.8.0",
           "langVersion": "1.0.0",
           "file": "/lang/yukeeshaders/0.8.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/f9d21a3f27ad",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/f9d21a3f27ad"
     },
     {
       "id": "ultimatefusionshaders",
@@ -16751,13 +16840,14 @@
           "shaderVersion": "UltimateFusionShaders",
           "langVersion": "1.0.0",
           "file": "/lang/ultimatefusionshaders/UltimateFusionShaders/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/7435b24c1a5a",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/7435b24c1a5a"
     },
     {
       "id": "neurolight-shaders",
@@ -16770,13 +16860,14 @@
           "shaderVersion": "1.2",
           "langVersion": "1.0.0",
           "file": "/lang/neurolight-shaders/1.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/43c31d48ea10",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/43c31d48ea10"
     },
     {
       "id": "aurelia-shader",
@@ -16789,13 +16880,14 @@
           "shaderVersion": "1.0",
           "langVersion": "1.0.0",
           "file": "/lang/aurelia-shader/1.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/f6b788a603fb",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/f6b788a603fb"
     },
     {
       "id": "featherlight-ralph-abdo",
@@ -16808,13 +16900,14 @@
           "shaderVersion": "1.0.0",
           "langVersion": "1.0.0",
           "file": "/lang/featherlight-ralph-abdo/1.0.0/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/c3fc2367e66f",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/c3fc2367e66f"
     },
     {
       "id": "spy-shaders",
@@ -16827,13 +16920,14 @@
           "shaderVersion": "0.2",
           "langVersion": "1.0.0",
           "file": "/lang/spy-shaders/0.2/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/e2e36bf6e289",
           "updatedAt": "2026-10-14",
           "contributors": [
             "AI 初翻（免费模型池：muse-spark-1.3-contributor-free / muse-spark-1.2-contributor-free / mimo-v2.6-flash-free），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/e2e36bf6e289"
     }
   ]
 }

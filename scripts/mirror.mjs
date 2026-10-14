@@ -18,9 +18,10 @@
  *   QUARK_DIR_NAME     目标目录名，默认「光影汉化」（同名幂等，自动复用已有目录）
  *   WORKER_URL + INTERNAL_STATUS_TOKEN  回写 KV 状态（可选）
  */
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync, copyFileSync, mkdtempSync, mkdirSync, rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { tmpdir } from 'node:os'
 import { execFileSync } from 'node:child_process'
 import { STATUS } from '../shared/tencent-docs.mjs'
 
@@ -48,10 +49,9 @@ const SESSION_INPUT = '批量镜像光影汉化语言文件到网盘并生成分
 // ---------- CLI 调用 ----------
 
 /**
- * 执行一个 CLI 并解析其 JSONL 输出，返回最后一行的 JSON 对象。
- * CLI 输出多行（progress / list / result），只有 result 行带 code 与 data。
+ * 执行一个 CLI 并解析其 JSONL 输出，返回 result 与所有 list/progress 行。
  */
-function runCliJsonl(bin, cliArgs) {
+function runCliJsonlAll(bin, cliArgs) {
   const stdout = execFileSync(bin, cliArgs, {
     cwd: ROOT,
     encoding: 'utf8',
@@ -60,24 +60,30 @@ function runCliJsonl(bin, cliArgs) {
   })
 
   let result = null
+  const lines = []
   for (const line of stdout.split('\n')) {
     const t = line.trim()
     if (!t.startsWith('{')) continue
     try {
       const obj = JSON.parse(t)
       if (obj && obj.type === 'result') result = obj
+      else if (obj && (obj.type === 'list' || obj.type === 'progress')) lines.push(obj)
     } catch {
       /* 非 JSON 行忽略 */
     }
   }
   if (!result) throw new Error(`CLI 未输出 result 行：${stdout.slice(-300)}`)
   if (result.code !== 0) throw new Error(`CLI 返回 code ${result.code}: ${result.msg ?? ''}`)
-  return result.data ?? {}
+  return { result: result.data ?? {}, lines }
+}
+
+function quarkAll(args) {
+  if (!QUARK_CLI) throw new Error('未配置 QUARK_CLI')
+  return runCliJsonlAll(process.execPath, [QUARK_CLI, ...args, '--session-input', SESSION_INPUT, '--session-id', SESSION_ID])
 }
 
 function quark(args) {
-  if (!QUARK_CLI) throw new Error('未配置 QUARK_CLI')
-  return runCliJsonl(process.execPath, [QUARK_CLI, ...args, '--session-input', SESSION_INPUT, '--session-id', SESSION_ID])
+  return quarkAll(args).result
 }
 
 // ---------- 夸克 ----------
@@ -96,6 +102,17 @@ async function ensureQuarkDir() {
 }
 
 /**
+ * 为已上传的文件创建永久公开分享链接。
+ * @returns {Promise<string>} 分享链接；失败抛错
+ */
+async function shareQuark(fileFid, title) {
+  // url-type 1 = 公开链接，expired-type 1 = 永久有效
+  const sh = quark(['share', fileFid, '--title', title, '--url-type', '1', '--expired-type', '1'])
+  if (!sh.share_url) throw new Error(`share 未返回 share_url：${JSON.stringify(sh).slice(0, 200)}`)
+  return sh.share_url
+}
+
+/**
  * 上传 lang 文件并创建永久公开分享链接。
  * @returns {Promise<string>} 分享链接；失败抛错
  */
@@ -104,11 +121,35 @@ async function mirrorToQuark(localPath, title) {
   const up = quark(['upload', localPath, '--parent-fid', fid])
   const fileFid = (up.fids ?? [])[0]
   if (!fileFid) throw new Error(`upload 未返回 fids：${JSON.stringify(up).slice(0, 200)}`)
+  return shareQuark(fileFid, title)
+}
 
-  // url-type 1 = 公开链接，expired-type 1 = 永久有效
-  const sh = quark(['share', fileFid, '--title', title, '--url-type', '1', '--expired-type', '1'])
-  if (!sh.share_url) throw new Error(`share 未返回 share_url：${JSON.stringify(sh).slice(0, 200)}`)
-  return sh.share_url
+/**
+ * 把一批 lang 文件放进同一个暂存目录，一次上传整个目录。
+ * 返回 Map<shaderId, fileFid>。失败时抛错，由调用方回退逐条上传。
+ */
+async function batchUploadToQuark(targets) {
+  const parentFid = await ensureQuarkDir()
+  const staging = mkdtempSync(join(tmpdir(), 'quark-lang-batch-'))
+  const ordered = []
+  try {
+    for (const target of targets) {
+      const { shader, lv, localPath } = target
+      const rel = join(shader.id, lv.shaderVersion, 'zh_CN.lang')
+      const dest = join(staging, rel)
+      mkdirSync(dirname(dest), { recursive: true })
+      copyFileSync(localPath, dest)
+      ordered.push({ shaderId: shader.id, rel })
+    }
+    const { result } = quarkAll(['upload', staging, '--parent-fid', parentFid])
+    const fids = result.fids ?? []
+    if (fids.length !== ordered.length) {
+      throw new Error(`批量上传 FID 数量不一致：期望 ${ordered.length}，实际 ${fids.length}`)
+    }
+    return new Map(ordered.map((item, index) => [item.shaderId, fids[index]]))
+  } finally {
+    rmSync(staging, { recursive: true, force: true })
+  }
 }
 
 // ---------- 状态回写 ----------
@@ -149,6 +190,22 @@ console.log(`镜像 ${targets.length} 个光影（夸克: ${QUARK_CLI ? '启用'
 
 let okQuark = 0, okNone = 0
 
+const batchTargets = targets
+  .map(({ shader, lv }) => ({ shader, lv, localPath: join(LANG_DIR, shader.id, lv.shaderVersion, 'zh_CN.lang') }))
+  .filter((target) => !(target.lv.quark || target.shader.quark) && existsSync(target.localPath))
+
+let uploadedFids = new Map()
+if (QUARK_CLI && batchTargets.length > 1) {
+  try {
+    console.log(`  [夸克] 批量上传 ${batchTargets.length} 个文件…`)
+    uploadedFids = await batchUploadToQuark(batchTargets)
+    console.log(`  [夸克] 批量上传完成，开始生成分享链接`)
+  } catch (err) {
+    console.log(`  [夸克] 批量上传失败，回退逐条上传：${String(err.message).slice(0, 160)}`)
+    uploadedFids = new Map()
+  }
+}
+
 for (const { shader, lv } of targets) {
   const label = `${shader.id} v${lv.shaderVersion}`
   const localPath = join(LANG_DIR, shader.id, lv.shaderVersion, 'zh_CN.lang')
@@ -163,13 +220,16 @@ for (const { shader, lv } of targets) {
 
   if (QUARK_CLI && !quarkUrl) {
     try {
-      quarkUrl = await mirrorToQuark(localPath, title)
+      const uploadedFid = uploadedFids.get(shader.id)
+      quarkUrl = uploadedFid
+        ? await shareQuark(uploadedFid, title)
+        : await mirrorToQuark(localPath, title)
       console.log(`[${label}] 夸克 ✓ ${quarkUrl}`)
     } catch (err) {
       console.log(`[${label}] 夸克 ✗ ${String(err.message).slice(0, 160)}`)
       quarkUrl = ''
     }
-    await sleep(500)
+    await sleep(300)
   }
 
   if (!quarkUrl) {

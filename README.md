@@ -29,7 +29,7 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 | `shaders.json` 条目 | 548 个 | 人工维护的版本映射及同步元数据 |
 | 已有 `langVersions` 的光影 | 545 个 | 含目录外的历史精选条目 |
 | GitHub 中的 `zh_CN.lang` 文件 | 603 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
-| 夸克镜像链接 | 451 个 | 字段名为 `quark` |
+| 夸克镜像链接 | 603 个 | 字段名为 `quark`，已覆盖全部已汉化版本 |
 | 自带中文的目录项目 | 23 个 | 页面按四态优先级统计 |
 | 明确缺少 `en_US.lang` | 440 个 | 包含 `missing-source.json` 与流水线新标记的 `noEnUsLang` |
 | 尚未登记翻译的可处理项目 | 0 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
