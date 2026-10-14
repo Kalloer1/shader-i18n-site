@@ -245,7 +245,7 @@ for (const e of catalog.shaders) {
     if (langVersions.length > 1) {
       L.push(`<details class="sp-history">`)
       L.push(`<summary>查看全部 ${langVersions.length} 个历史版本</summary>`)
-      L.push(`<table class="sp-version-table">`)
+      L.push(`<div class="sp-table-scroll"><table class="sp-version-table">`)
       L.push(`<caption class="sr-only">各光影版本的汉化文件记录</caption>`)
       L.push(
         `<thead><tr><th scope="col">光影版本</th><th scope="col">汉化版本</th><th scope="col">本站直链</th><th scope="col">夸克网盘</th><th scope="col">状态</th><th scope="col">日期</th></tr></thead>`,
@@ -270,7 +270,7 @@ for (const e of catalog.shaders) {
         )
       }
       L.push(`</tbody>`)
-      L.push(`</table>`)
+      L.push(`</table></div>`)
       L.push(`</details>`)
     }
     L.push(`</div>`)

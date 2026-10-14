@@ -24,6 +24,11 @@ const props = defineProps({
 
 const emit = defineEmits(['update:query', 'update:sort', 'select'])
 const activeFilter = ref('all')
+const viewMode = ref(
+  typeof localStorage !== 'undefined' && localStorage.getItem('shader-view-mode') === 'gallery'
+    ? 'gallery'
+    : 'list',
+)
 const numberFormat = new Intl.NumberFormat('zh-CN')
 
 const filterOptions = computed(() => [
@@ -89,6 +94,15 @@ function updateQuery(event) {
   emit('update:query', event.target.value)
 }
 
+function setViewMode(mode) {
+  viewMode.value = mode
+  try {
+    localStorage.setItem('shader-view-mode', mode)
+  } catch {
+    /* 隐私模式等场景下忽略持久化失败 */
+  }
+}
+
 function selectShader(id) {
   emit('select', id)
 }
@@ -123,7 +137,7 @@ function actionLabel(shader) {
   <section id="shader-list" class="shader-list" aria-labelledby="shader-list-title">
     <div class="list-head">
       <h2 id="shader-list-title">全部光影</h2>
-      <p>按下载量排序 · 只留图标不放画廊 · 点行切换上方下载面板</p>
+      <p>按下载量排序 · 列表/画廊可切换 · 点行切换上方下载面板</p>
     </div>
 
     <div class="filter-bar" role="group" aria-label="筛选光影状态">
@@ -152,6 +166,26 @@ function actionLabel(shader) {
           @input="updateQuery"
         />
       </label>
+      <div class="view-toggle" role="group" aria-label="切换视图">
+        <button
+          type="button"
+          class="view-toggle__btn"
+          :class="{ 'view-toggle__btn--active': viewMode === 'list' }"
+          :aria-pressed="viewMode === 'list'"
+          @click="setViewMode('list')"
+        >
+          列表
+        </button>
+        <button
+          type="button"
+          class="view-toggle__btn"
+          :class="{ 'view-toggle__btn--active': viewMode === 'gallery' }"
+          :aria-pressed="viewMode === 'gallery'"
+          @click="setViewMode('gallery')"
+        >
+          画廊
+        </button>
+      </div>
       <span class="result-count" role="status" aria-live="polite">
         当前显示 <b>{{ formatDownloads(filtered.length) }}</b> 个光影
       </span>
@@ -159,7 +193,7 @@ function actionLabel(shader) {
 
     <p v-if="!filtered.length" class="empty-state" role="status">没有匹配的光影，请调整搜索或筛选条件。</p>
 
-    <div v-else class="table-scroll" tabindex="0" aria-label="光影列表，可横向滚动">
+    <div v-else-if="viewMode === 'list'" class="table-scroll" tabindex="0" aria-label="光影列表，可横向滚动">
       <table>
         <thead>
           <tr>
@@ -217,18 +251,60 @@ function actionLabel(shader) {
               </span>
             </td>
             <td class="action-cell">
-              <button
-                type="button"
+              <a
                 class="row-action"
+                :href="`/shaders/${shader.id}`"
                 :aria-label="`${actionLabel(shader)}：${shader.title}`"
-                @click.stop="selectShader(shader.id)"
+                @click.stop
               >
                 {{ actionLabel(shader) }}
-              </button>
+              </a>
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div v-else class="shader-grid">
+      <a
+        v-for="shader in filtered"
+        :key="shader.id"
+        class="shader-card"
+        :href="`/shaders/${shader.id}`"
+        :aria-label="`${shader.title}${shader.nameCN ? '（' + shader.nameCN + '）' : ''}，${status(shader).label}，进入详情页`"
+      >
+        <span v-if="cover(shader)" class="shader-card__cover">
+          <img
+            :src="cover(shader)"
+            alt=""
+            width="1600"
+            height="900"
+            loading="lazy"
+            decoding="async"
+            referrerpolicy="no-referrer"
+          />
+        </span>
+        <span v-else class="shader-card__cover shader-card__cover--empty" aria-hidden="true">
+          {{ initial(shader) }}
+        </span>
+        <span class="shader-card__body">
+          <span class="shader-card__title">
+            <b>{{ shader.title }}</b>
+            <span v-if="shader.nameCN" class="shader-card__cn">{{ shader.nameCN }}</span>
+          </span>
+          <span class="shader-card__meta">
+            <span
+              class="status-badge"
+              :class="`status-badge--${status(shader).key}`"
+              :title="status(shader).description"
+            >
+              {{ status(shader).label }}
+            </span>
+            <span class="shader-card__downloads">{{ formatDownloads(shader.downloads) }} 下载</span>
+            <span class="shader-card__range">{{ range(shader) }}</span>
+          </span>
+        </span>
+      </a>
     </div>
   </section>
 </template>
@@ -346,6 +422,149 @@ function actionLabel(shader) {
   color: var(--home-text, #e9f0f4);
   font-family: var(--home-font-mono, Consolas, monospace);
   font-variant-numeric: tabular-nums;
+}
+
+.view-toggle {
+  display: inline-flex;
+  flex: none;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--home-line, #242f3b);
+  border-radius: 8px;
+  background: var(--home-input, #0a0e13);
+}
+
+.view-toggle__btn {
+  padding: 5px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--home-muted, #93a1ad);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.view-toggle__btn--active {
+  background: var(--home-text, #e9f0f4);
+  color: var(--home-bg, #0b0e12);
+}
+
+.shader-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.shader-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--home-line, #242f3b);
+  border-radius: 12px;
+  background: var(--home-bg-soft, #0e1319);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.16s, transform 0.16s;
+}
+
+.shader-card:hover {
+  border-color: #526273;
+}
+
+.shader-card__cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--home-input, #0a0e13);
+}
+
+.shader-card__cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shader-card__cover--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--home-faint, #64707b);
+  font-family: var(--home-font-mono, Consolas, monospace);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.shader-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  min-width: 0;
+}
+
+.shader-card__title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.shader-card__title b {
+  overflow: hidden;
+  color: var(--home-text, #e9f0f4);
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shader-card__cn {
+  overflow: hidden;
+  color: var(--home-faint, #64707b);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shader-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  min-width: 0;
+}
+
+.shader-card__downloads,
+.shader-card__range {
+  color: var(--home-muted, #93a1ad);
+  font-family: var(--home-font-mono, Consolas, monospace);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (min-width: 600px) {
+  .shader-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .shader-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .shader-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .empty-state {
@@ -523,6 +742,8 @@ tbody tr:focus-visible {
 }
 
 .row-action {
+  display: inline-flex;
+  align-items: center;
   padding: 7px 15px;
   border: 1px solid var(--home-line, #242f3b);
   border-radius: 8px;
@@ -532,6 +753,7 @@ tbody tr:focus-visible {
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
   white-space: nowrap;
 }
 
@@ -578,6 +800,11 @@ tbody tr:focus-visible {
 
   .result-count {
     margin-left: 0;
+  }
+
+  .row-action {
+    min-height: var(--tap-min);
+    padding: 10px 15px;
   }
 }
 

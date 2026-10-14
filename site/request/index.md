@@ -297,7 +297,7 @@ async function handleTrigger() {
 }
 .request-kicker {
   font-family: var(--shader-display-font);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--vp-c-brand-1);
@@ -573,7 +573,7 @@ async function handleTrigger() {
   outline-offset: 2px;
 }
 .wb-badge {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   padding: 3px 9px;
   border-radius: 999px;
@@ -620,14 +620,14 @@ async function handleTrigger() {
   color: var(--vp-c-text-3);
 }
 .wb-id {
-  font-size: 11px;
+  font-size: 12px;
   padding: 2px 6px;
   border-radius: 4px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
 }
 .wb-chip {
-  font-size: 11px;
+  font-size: 12px;
   padding: 2px 7px;
   border-radius: 4px;
   background: rgba(232, 163, 61, 0.1);

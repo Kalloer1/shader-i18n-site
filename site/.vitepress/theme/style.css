@@ -33,6 +33,16 @@
 
   /* 首页标题字体（Latin 部分走 Chakra Petch） */
   --shader-display-font: 'Chakra Petch', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  /* 间距/触控刻度（仅本次新规则使用；存量字号一律不动） */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px;
+  --tap-min: 44px;
+  /* 断点约定（@media 不能用 var，只能统一字面量）：640 / 768 / 1040 */
+}
+
+/* 防御 100vw 全出血造成的横向溢出（clip 不建立滚动容器，不影响 sticky） */
+html {
+  overflow-x: clip;
 }
 
 /* 导航与页脚：去默认 VitePress 味，收成画廊风 */
@@ -615,6 +625,7 @@ img.img-fallback {
 }
 .sp-download__featured-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 16px;
 }
@@ -669,6 +680,10 @@ img.img-fallback {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: -2px;
   border-radius: 4px;
+}
+.sp-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .sp-version-table {
   width: 100%;
@@ -1211,4 +1226,14 @@ html:has(.home-shell) .VPNavBar {
 #dl-panel,
 #shader-list {
   scroll-margin-top: calc(var(--vp-nav-height, 64px) + 76px);
+}
+
+@media (max-width: 640px) {
+  .sp-btn--dl,
+  .sp-history summary {
+    min-height: var(--tap-min);
+  }
+  .sp-download__featured {
+    padding: 16px;
+  }
 }
