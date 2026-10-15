@@ -43,6 +43,7 @@ import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './li
 import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
 import { EmptyResponseError, isProviderNoOutput, providerUnusableMessage } from './lib/llm-guard.mjs'
 import { stripSkeleton, isUsableMemory, shouldRememberMemory } from './lib/glossary.mjs'
+import { runPool, DEFAULT_CHUNK_CONCURRENCY, MAX_CHUNK_CONCURRENCY } from './lib/pool.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -55,11 +56,6 @@ const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
 const DEFAULT_MODEL = 'tencent/Hunyuan-MT-7B'
 const DEFAULT_CONCURRENCY = 10
-// 单条光影内的分块并发度：默认 3（保守值），上限 4。
-// 光影级并发 LLM_CONCURRENCY=10 在「只提交 1 条」时用不上，而块级串行会让这条慢慢翻；
-// 但网关有账号级并发上限（实测并发过高会 503「无可用账号」），所以不跟着 10 走。
-const DEFAULT_CHUNK_CONCURRENCY = 3
-const MAX_CHUNK_CONCURRENCY = 4
 const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -1046,22 +1042,6 @@ async function processShaderWithTimeout(entry) {
 
 function UA() {
   return 'shader-i18n-site/0.1.0 (translation pipeline)'
-}
-
-/**
- * 固定并发度的 worker pool。concurrency = 1 时与改造前的串行 for 完全等价。
- * queue.shift() 与空值判断之间没有 await，单线程下不会把同一条派发给两个 worker。
- */
-async function runPool(items, worker, concurrency) {
-  const queue = [...items]
-  const workers = Math.min(concurrency, queue.length)
-  await Promise.all(Array.from({ length: workers }, async () => {
-    for (;;) {
-      const entry = queue.shift()
-      if (!entry) return
-      await worker(entry)
-    }
-  }))
 }
 
 try {
