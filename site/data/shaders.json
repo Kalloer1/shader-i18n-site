@@ -17843,6 +17843,16 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/edefd1f3fb0d"
+    },
+    {
+      "id": "cinedream-plus-java-version",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "cinedream-plus-java-version",
+        "cfId": 1489601
+      },
+      "langVersions": [],
+      "hasNativeZhCN": true
     }
   ]
 }
