@@ -17853,6 +17853,16 @@
       },
       "langVersions": [],
       "hasNativeZhCN": true
+    },
+    {
+      "id": "astralex-shader-bsl-edit",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "astralex-shader-bsl-edit",
+        "cfId": 406081
+      },
+      "langVersions": [],
+      "hasNativeZhCN": true
     }
   ]
 }
