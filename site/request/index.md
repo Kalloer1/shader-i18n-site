@@ -350,7 +350,7 @@ async function handleTrigger() {
         <label for="passphrase" class="wb-label">管理员口令</label>
         <div class="wb-trigger-row">
           <input id="passphrase" v-model="passphrase" type="password" name="passphrase" autocomplete="current-password" placeholder="输入口令后选择翻译模型" />
-          <button type="button" class="btn btn-primary" :disabled="modelsLoading" :aria-busy="modelsLoading ? 'true' : 'false'">{{ modelsLoading ? '验证中…' : '验证口令' }}</button>
+          <button type="button" class="btn btn-primary" @click="verifyPassphrase" :disabled="modelsLoading" :aria-busy="modelsLoading ? 'true' : 'false'">{{ modelsLoading ? '验证中…' : '验证口令' }}</button>
         </div>
         <p v-if="triggerErr" class="form-error" role="alert">{{ triggerErr }}</p>
         <p class="hint">口令仅保存在本标签页的 sessionStorage，不会写入 URL 或发送给第三方。</p>
