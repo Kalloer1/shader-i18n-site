@@ -187,7 +187,10 @@ function persistModels() {
 }
 
 async function verifyPassphrase() {
-  if (!passphrase.value) {
+  /* 口令发送前必须先 trim：粘贴时极易带首尾空格/换行，而 Worker 是精确比对，
+     多一个字符就是 401（页面显示「口令不正确」）。trim 后的值才是真正有效的口令。 */
+  const value = passphrase.value.trim()
+  if (!value) {
     triggerErr.value = '请输入口令'
     return
   }
@@ -197,7 +200,7 @@ async function verifyPassphrase() {
   try {
     const res = await fetch(`${WORKER_URL}/verify-passphrase`, {
       method: 'POST',
-      headers: { 'X-Passphrase': passphrase.value },
+      headers: { 'X-Passphrase': value },
     })
     if (res.status === 401) {
       triggerErr.value = '口令不正确'
@@ -209,7 +212,7 @@ async function verifyPassphrase() {
       triggerErr.value = '验证失败，请稍后重试'
       return
     }
-    sessionStorage.setItem('translate-passphrase', passphrase.value)
+    sessionStorage.setItem('translate-passphrase', value)
     unlocked.value = true
     await loadModels()
   } catch {
@@ -225,7 +228,9 @@ onMounted(async () => {
 })
 
 async function handleTrigger() {
-  if (!unlocked.value || !passphrase.value) {
+  /* 与 verifyPassphrase 用的是同一个口令，同样先 trim：只改一处会漏。 */
+  const value = passphrase.value.trim()
+  if (!unlocked.value || !value) {
     triggerErr.value = '请先验证口令'
     return
   }
@@ -236,7 +241,7 @@ async function handleTrigger() {
   try {
     const res = await fetch(`${WORKER_URL}/translate`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Passphrase': passphrase.value },
+      headers: { 'Content-Type': 'application/json', 'X-Passphrase': value },
       body: JSON.stringify({ models: selectedModels.value }),
     })
     const data = await res.json()
@@ -252,7 +257,7 @@ async function handleTrigger() {
       return
     }
 
-    sessionStorage.setItem('translate-passphrase', passphrase.value)
+    sessionStorage.setItem('translate-passphrase', value)
     const modelNote = selectedModels.value.length
       ? `，模型：${selectedModels.value.join(' / ')}`
       : '（未选择，使用仓库默认模型）'
@@ -349,7 +354,7 @@ async function handleTrigger() {
       <template v-if="!unlocked">
         <label for="passphrase" class="wb-label">管理员口令</label>
         <div class="wb-trigger-row">
-          <input id="passphrase" v-model="passphrase" type="password" name="passphrase" autocomplete="current-password" placeholder="输入口令后选择翻译模型" />
+          <input id="passphrase" v-model="passphrase" type="password" name="passphrase" autocomplete="new-password" placeholder="输入口令后选择翻译模型" />
           <button type="button" class="btn btn-primary" @click="verifyPassphrase" :disabled="modelsLoading" :aria-busy="modelsLoading ? 'true' : 'false'">{{ modelsLoading ? '验证中…' : '验证口令' }}</button>
         </div>
         <p v-if="triggerErr" class="form-error" role="alert">{{ triggerErr }}</p>
