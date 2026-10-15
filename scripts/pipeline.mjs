@@ -423,7 +423,9 @@ async function translateChunk(chunk, activeProviders, signal, { label = '', isFi
           { role: 'user', content: input },
         ], signal)
       } catch (err) {
-        console.log(`    ${label}[${activeProvider.id}] 分块翻译失败（重试耗尽）: ${err.message.slice(0, 120)}`)
+        // 正文为空是专门错误类型：不重试，文案要区分开（否则会把「没重试」写成「重试耗尽」）。
+        const why = err instanceof EmptyResponseError ? '正文为空，不重试' : '重试耗尽'
+        console.log(`    ${label}[${activeProvider.id}] 分块翻译失败（${why}）: ${err.message.slice(0, 120)}`)
         if (isFirstChunk && err instanceof EmptyResponseError) {
           unusableProviders.add(activeProvider.id)
           console.log(`    ${label}[${activeProvider.id}] 首块正文为空（疑似推理模型把内容写在 reasoning_content），本轮弃用该模型`)
