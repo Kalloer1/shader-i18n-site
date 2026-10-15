@@ -4,7 +4,8 @@
  * 职责：
  * 1. POST /          玩家提交光影链接（Modrinth 或 CurseForge）→ 解析并校验 → 写 KV（权威）+ 腾讯文档（尽力镜像）
  * 2. GET  /queue     返回全部队列条目，供站点轮询
- * 3. POST /translate 口令校验 → 取全部「待翻译」→ 触发 GitHub Actions → 置「翻译中」
+ * 3. POST /translate 口令校验 → 取全部「待翻译」（body.retryFailed=true 时并含「失败」）
+ *    → 触发 GitHub Actions → 置「翻译中」
  * 4. POST /status    Actions 回写单条状态（内部 token）→ 更新 KV + 尽力镜像腾讯文档
  * 5. GET  /models    代理网关 /models，返回当前可用模型 id 列表（公开；不含秘密）
  * 6. POST /verify-passphrase 仅校验 /translate 口令，供 /request 页门禁渲染模型多选
@@ -503,6 +504,24 @@ async function handleSubmit(request, env, origin) {
   )
 }
 
+/**
+ * 选取本次要触发的条目（纯函数，便于直接单测）。
+ *
+ * - 默认只取「待翻译」。**不**默认重跑「失败」条目：否则每次点「开始翻译」
+ *   都会把历史失败项再烧一遍翻译额度，必须由调用方显式要求。
+ * - retryFailed 为 true（管理区「重试失败的光影」入口）时，额外取「失败」条目。
+ * - 「翻译中」永不入选：可能真有 workflow 在跑，重复触发会并发烧预算。
+ *
+ * @param {Array<{ id: string, status: string }>} entries
+ * @param {{ retryFailed?: boolean }} [options]
+ * @returns {Array<{ id: string, status: string }>}
+ */
+export function selectTranslateTargets(entries, { retryFailed = false } = {}) {
+  return entries.filter(
+    (e) => e.status === STATUS.PENDING || (retryFailed && e.status === STATUS.FAILED),
+  )
+}
+
 /** GET /queue —— 队列全量（供站点轮询） */
 async function handleQueue(env, origin) {
   const index = await readIndex(env)
@@ -551,15 +570,28 @@ async function handleTranslate(request, env, origin) {
     }
   }
 
+  // 可选 retryFailed：管理区显式勾选「重试失败的光影」时，本次额外收集「失败」条目。
+  // 必须是显式布尔 true —— 缺省不重跑失败项，避免每次点击都重复消耗翻译额度。
+  const retryFailed = body?.retryFailed === true
+
   const index = await readIndex(env)
   const entries = (await Promise.all(index.map((id) => readEntry(env, id)))).filter(Boolean)
-  const pending = entries.filter((e) => e.status === STATUS.PENDING)
+  const targets = selectTranslateTargets(entries, { retryFailed })
 
-  if (!pending.length) {
-    return json({ success: true, triggered: false, message: '没有待翻译的条目', ids: [] }, 200, origin)
+  if (!targets.length) {
+    return json(
+      {
+        success: true,
+        triggered: false,
+        message: retryFailed ? '没有待翻译或失败的条目' : '没有待翻译的条目',
+        ids: [],
+      },
+      200,
+      origin,
+    )
   }
 
-  const ids = pending.map((e) => e.id)
+  const ids = targets.map((e) => e.id)
 
   if (!env.GITHUB_PAT) {
     return json({ error: '服务配置错误：缺少 GITHUB_PAT' }, 500, origin)
@@ -593,7 +625,7 @@ async function handleTranslate(request, env, origin) {
   // dispatch 已成功，立即置为「翻译中」，避免重复点击导致重复触发
   const now = new Date().toISOString()
   await Promise.all(
-    pending.map((e) => writeEntry(env, { ...e, status: STATUS.TRANSLATING, updatedAt: now, error: '' })),
+    targets.map((e) => writeEntry(env, { ...e, status: STATUS.TRANSLATING, updatedAt: now, error: '' })),
   )
 
   return json({ success: true, triggered: true, ids, count: ids.length }, 200, origin)

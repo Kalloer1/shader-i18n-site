@@ -148,6 +148,11 @@ const triggering = ref(false)
 const triggerMsg = ref('')
 const triggerErr = ref('')
 
+/* 失败条目重试：只有勾选时请求体才带 retryFailed=true（Worker 侧显式语义）。
+   默认不勾：失败项重跑会重新消耗翻译额度，不能每次点「开始翻译」都自动带上。
+   触发成功后自动取消勾选，避免手滑连点重复烧额度。 */
+const retryFailed = ref(false)
+
 /* ---------- 模型多选（口令门禁后渲染；选择存 localStorage） ---------- */
 
 const unlocked = ref(false)
@@ -242,7 +247,7 @@ async function handleTrigger() {
     const res = await fetch(`${WORKER_URL}/translate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Passphrase': value },
-      body: JSON.stringify({ models: selectedModels.value }),
+      body: JSON.stringify({ models: selectedModels.value, retryFailed: retryFailed.value }),
     })
     const data = await res.json()
 
@@ -261,9 +266,11 @@ async function handleTrigger() {
     const modelNote = selectedModels.value.length
       ? `，模型：${selectedModels.value.join(' / ')}`
       : '（未选择，使用仓库默认模型）'
+    const retryNote = retryFailed.value ? '（含失败重试，已重新消耗翻译额度）' : ''
     triggerMsg.value = data.triggered
-      ? `已触发 ${data.count} 个光影的翻译${modelNote}，状态会自动刷新`
+      ? `已触发 ${data.count} 个光影的翻译${retryNote}${modelNote}，状态会自动刷新`
       : data.message || '没有待翻译的条目'
+    if (data.triggered) retryFailed.value = false
     await loadQueue()
   } catch {
     triggerErr.value = '网络错误，请稍后重试'
@@ -370,6 +377,10 @@ async function handleTrigger() {
             <code>{{ m }}</code>
           </label>
         </div>
+        <label class="wb-model wb-retry">
+          <input type="checkbox" v-model="retryFailed" :disabled="!counts.failed" />
+          <span>重试失败的光影（会重新消耗翻译额度）<em v-if="counts.failed">当前 {{ counts.failed }} 条</em><em v-else>当前没有失败项</em></span>
+        </label>
         <div class="wb-trigger-row wb-trigger-row--submit">
           <button type="submit" class="btn btn-primary" :disabled="triggering" :aria-busy="triggering ? 'true' : 'false'">{{ triggering ? '翻译中…' : '开始翻译' }}</button>
         </div>
@@ -832,6 +843,21 @@ async function handleTrigger() {
 }
 .wb-trigger-row--submit {
   margin-top: 14px;
+}
+
+/* ---- 失败重试（口令门禁后；复用 .wb-model 的触控尺寸与勾选框样式） ---- */
+.wb-retry {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+.wb-retry em {
+  font-style: normal;
+  color: var(--vp-c-text-3);
+  margin-left: 4px;
+}
+.wb-retry input[type='checkbox']:disabled {
+  cursor: not-allowed;
 }
 
 /* ---- 模型多选（移动端点击目标 ≥44px，字号 ≥12px） ---- */
