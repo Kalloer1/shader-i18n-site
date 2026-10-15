@@ -69,19 +69,6 @@ const cfEntries = (cfCatalog.mods ?? [])
 const escHtml = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
-// hero 用大图：CF 的截图/图标 URL 形如
-//   https://media.forgecdn.net/attachments/thumbnails/406/33/310/172/banner.png
-// 去掉 /thumbnails/<w>/<h>/ 即原图（.../attachments/406/33/banner.png）。
-// 只对 media.forgecdn.net 生效（Modrinth 的 cdn.modrinth.com 图 URL 无 /thumbnails/ 段，不受影响）。
-// 实测（node fetch，2026-10-15）：本站当前会渲染的 4 条 CF hero URL（3 条截图 + 1 条图标）去缩略图后
-// 全部 200 且 content-type 为 image/*。构建期不做网络探测，故只对这条已实测的 URL 形态改写。
-// 另实测（同批）：forgecdn 不做按需缩放，/thumbnails/<a>/<b>/1280/720/ 等中间尺寸一律 404
-// （310/172 与原图两档之外均无，query 参数也被忽略），故不引入中间尺寸，继续用原图。
-const cfHeroFullSize = (url) =>
-  String(url ?? '').startsWith('https://media.forgecdn.net/')
-    ? String(url).replace(/\/thumbnails\/(\d+)\/(\d+)\/\d+\/\d+\//, '/$1/$2/')
-    : String(url ?? '')
-
 // 本站不再提供 /lang/... 直链下载，统一指向仓库内原始文件（GitHub raw）
 const GITHUB_RAW_BASE = 'https://github.com/Kalloer1/shader-i18n-site/raw/main/site/public'
 const githubUrlOf = (file) => `${GITHUB_RAW_BASE}/${String(file ?? '').replace(/^\/+/, '')}`
@@ -171,7 +158,8 @@ for (const e of [...catalog.shaders, ...cfEntries]) {
   // hero 图：优先第一张截图；无截图时退回项目图标（CF 747/747、Modrinth 984/1000 有 iconUrl，
   // 字段名两个数据源一致，见 scripts/fetch-catalog.mjs:65 与 scripts/fetch-curseforge-catalog.mjs:131）。
   // 与列表页 site/.vitepress/theme/data.js 的 shaderCover() 同判据。
-  const heroImg = cfHeroFullSize(gallery[0] ?? e.iconUrl ?? '')
+  // hero 用 catalog 原样 URL（CF 侧是 310×172 缩略图；实测 forgecdn 不支持其它尺寸，只有原图与 310/172 两档）。
+  const heroImg = gallery[0] ?? e.iconUrl ?? ''
   const similar = getSimilarShaders(e.id, 6)
 
   // ⚠️ 所有 HTML 块顶格写；块内不写空行（见文件头说明）
