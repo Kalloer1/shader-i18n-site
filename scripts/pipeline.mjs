@@ -42,6 +42,7 @@ import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-a
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
 import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
 import { EmptyResponseError, isProviderNoOutput, providerUnusableMessage } from './lib/llm-guard.mjs'
+import { stripSkeleton, isUsableMemory, shouldRememberMemory } from './lib/glossary.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -284,14 +285,7 @@ try {
   console.log('翻译记忆不存在，将从头构建\n')
 }
 
-// 骨架提取：剥离合法 § 格式码、小写、压缩空白
-function stripSkeleton(value) {
-  return value
-    .replace(/§[0-9a-fk-or]+/gi, '')   // 剥离合法 § 码（§e、§r、§a[+]§c[-] 等）
-    .toLowerCase()
-    .replace(/\s+/g, ' ')               // 压缩空白
-    .trim()
-}
+// 骨架提取与记忆读写守卫见 scripts/lib/glossary.mjs（与 scripts/rebuild-glossary.mjs 共用同一实现）。
 
 // ---------- 落盘队列（并发安全） ----------
 // 并发 worker 会同时改 catalog / db / glossary。所有写盘任务排进同一条队列串行执行，
@@ -473,7 +467,9 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
   for (const [k, v] of pairs) {
     const skel = stripSkeleton(v)
     const hit = skel ? lookup(skel) : undefined
-    if (hit) {
+    // 读取端守卫：值等于英文原文的条目（历史「回退被当译文缓存」污染）视为未命中，
+    // 既有的污染不会再被当译文用（也不去删它们）。
+    if (isUsableMemory(hit, v)) {
       out.set(k, hit)
       glossaryHit++
     } else {
@@ -528,8 +524,11 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
       out.set(k, v)
       // 新翻译结果按英文原文记入本条的局部翻译记忆，不直接改共享的 glossary；
       // 本条处理结束后由调用方一次性合并，避免并发 worker 同时写同一对象。
-      const sourceSkeleton = stripSkeleton(chunk.find(([key]) => key === k)?.[1] ?? '')
-      if (sourceSkeleton && !lookup(sourceSkeleton)) {
+      const source = chunk.find(([key]) => key === k)?.[1] ?? ''
+      const sourceSkeleton = stripSkeleton(source)
+      // 写入端守卫：值不是英文原文回显时才记入记忆（模型回显原文会被 translateChunk 原样放进 map，
+      // 那不是译文；判据与 translateChunk 判回退的 `zh !== v` 同口径，大小写/空格差异不误判）。
+      if (shouldRememberMemory(sourceSkeleton, v, source, lookup(sourceSkeleton))) {
         localGlossary.set(sourceSkeleton, v)
       }
     }
