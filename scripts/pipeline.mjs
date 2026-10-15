@@ -5,6 +5,9 @@
  * 候选：目录中按下载量排序、未被流水线覆盖且不在缺少英文源清单中的光影（无汉化映射、未检出自带中文）。
  * 翻译默认使用模型池，按分块轮转调用；失败或回退过高时自动尝试下一个模型。
  * LLM_CONCURRENCY 控制光影级并发（每条光影仍各自独立超时、独立中断）。
+ * LLM_CHUNK_CONCURRENCY 控制单条光影内部的分块并发（只提交 1 条时也能用上闲置并发）。
+ * 某个模型在首块一行译文都产不出时立即弃用该模型（见 scripts/lib/llm-guard.mjs），
+ * 全部模型都被弃用则整条立刻判失败，不再空烧预算。
  *
  * LLM 提供方：环境变量配置，默认指向自建中转站（OpenAI 兼容）。
  *   LLM_BASE_URL    接口地址；优先级 LLM_BASE_URL > SILICONFLOW_BASE_URL（旧名别名） > 默认中转站
@@ -12,6 +15,7 @@
  *   LLM_MODELS      模型名列表（逗号分隔）；优先于 LLM_MODEL
  *   LLM_MODEL       兼容单模型配置，也接受逗号分隔列表
  *   LLM_CONCURRENCY 并发度；默认 10
+ *   LLM_CHUNK_CONCURRENCY 单条光影内的分块并发度；默认 3，上限 4
  *   LLM_EXTRA_BODY  额外请求体（JSON 字符串，浅合并进 body，用于透传中转站参数）
  * 不设任何 LLM_* 环境变量时，报错文案 / provider 打印 / 请求体 / 模型与改造前完全一致。
  * 密钥通过环境变量读取，不入库；接口使用 OpenAI 兼容 chat/completions。
@@ -36,6 +40,8 @@ import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 import { isEnUsLangPath, isLangFilePath, isZhCNLangPath } from './lib/lang-source.mjs'
 import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-api.mjs'
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
+import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
+import { EmptyResponseError, isProviderNoOutput, providerUnusableMessage } from './lib/llm-guard.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -48,6 +54,11 @@ const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
 const DEFAULT_MODEL = 'tencent/Hunyuan-MT-7B'
 const DEFAULT_CONCURRENCY = 10
+// 单条光影内的分块并发度：默认 3（保守值），上限 4。
+// 光影级并发 LLM_CONCURRENCY=10 在「只提交 1 条」时用不上，而块级串行会让这条慢慢翻；
+// 但网关有账号级并发上限（实测并发过高会 503「无可用账号」），所以不跟着 10 走。
+const DEFAULT_CHUNK_CONCURRENCY = 3
+const MAX_CHUNK_CONCURRENCY = 4
 const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -160,6 +171,31 @@ function readConcurrency() {
 }
 const LLM_CONCURRENCY = readConcurrency()
 
+// 分块并发度：默认 3，上限 4；非法值回退为默认值。
+function readChunkConcurrency() {
+  const raw = envStr('LLM_CHUNK_CONCURRENCY')
+  if (raw === undefined) return DEFAULT_CHUNK_CONCURRENCY
+  const n = Number(raw)
+  if (!Number.isInteger(n) || n < 1) {
+    console.error(`LLM_CHUNK_CONCURRENCY 无效（${raw}），回退为 ${DEFAULT_CHUNK_CONCURRENCY}`)
+    return DEFAULT_CHUNK_CONCURRENCY
+  }
+  if (n > MAX_CHUNK_CONCURRENCY) {
+    console.log(`LLM_CHUNK_CONCURRENCY=${n} 超过上限 ${MAX_CHUNK_CONCURRENCY}（网关账号级并发限制），按 ${MAX_CHUNK_CONCURRENCY} 使用\n`)
+    return MAX_CHUNK_CONCURRENCY
+  }
+  return n
+}
+const LLM_CHUNK_CONCURRENCY = readChunkConcurrency()
+
+// 本轮已被判定「产不出译文」的模型 id。跨光影共享：坏模型不重复烧预算。
+const unusableProviders = new Set()
+
+/** 给定模型列表是否全部已被判定不可用（空列表不算，避免把「没模型」误当整体失败）。 */
+function allProvidersUnusable(list = providers) {
+  return list.length > 0 && list.every((p) => unusableProviders.has(p.id))
+}
+
 function providerHostLabel(url) {
   try { return new URL(url).host } catch { return url }
 }
@@ -205,6 +241,7 @@ const providerLabel = providers.length === 1 && !LLM_ENV_SET
 console.log(`LLM 提供方：${providerLabel}\n`)
 // 仅在显式配置时打印，保证「不设环境变量」时的输出与改造前逐字一致。
 if (envStr('LLM_CONCURRENCY') !== undefined) console.log(`LLM 并发度：${LLM_CONCURRENCY}\n`)
+if (envStr('LLM_CHUNK_CONCURRENCY') !== undefined) console.log(`LLM 分块并发度：${LLM_CHUNK_CONCURRENCY}\n`)
 
 async function chatOnce(activeProvider, messages, signal) {
   const res = await mfetch(activeProvider.url(), {
@@ -216,7 +253,8 @@ async function chatOnce(activeProvider, messages, signal) {
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`)
   const j = await res.json()
   const text = activeProvider.extract(j)
-  if (!text) throw new Error('返回为空')
+  // 空正文（含纯空白）是模型的稳定行为，不是网络抖动，用专门错误类型区分。
+  if (!text || text.trim() === '') throw new EmptyResponseError()
   return text
 }
 
@@ -226,6 +264,9 @@ async function chatWithRetry(activeProvider, messages, signal) {
       return await chatOnce(activeProvider, messages, signal)
     } catch (err) {
       if (attempt === MAX_RETRIES) throw err
+      // 正文为空：重试同一个模型只会拿到同样的空正文（推理模型把内容写在 reasoning_content），
+      // 原实现的退避重试会把预算烧在必然失败的重试上，这里直接抛出交给 translateChunk 判定。
+      if (err instanceof EmptyResponseError) throw err
       // 本条已超时中断：立即结束，不再退避重试（否则会留下挂到超时之后的孤儿重试）
       if (signal?.aborted) throw err
       const delay = 2000 * 2 ** (attempt - 1)
@@ -349,12 +390,30 @@ function parseLangLines(text) {
   return got
 }
 
-// 翻译一个分块。模型偶发空响应/回显原文，因此回退率超过 10% 即重试，最多 3 次，取回退最少的版本。
-async function translateChunk(chunk, activeProviders, signal) {
-  const providerList = Array.isArray(activeProviders) ? activeProviders : [activeProviders]
+// 日志时间戳（UTC HH:MM:SS.mmm）：并发下用来核对分块确实在重叠执行。
+function timestamp() {
+  return new Date().toISOString().slice(11, 23)
+}
+
+/**
+ * 翻译一个分块。模型偶发空响应/回显原文，因此回退率超过 10% 即重试，最多 3 次，取回退最少的版本。
+ *
+ * 首块早停：某个模型在首块就「一行译文都没产出」时（判据见 isProviderNoOutput），
+ * 说明它不是翻得差、而是根本没在产出译文，立刻放弃该模型：不再重试、记入本轮不可用集合、
+ * 换下一个模型（全部不可用时由调用方整体判失败）。
+ *
+ * @param {Array<[string, string]>} chunk
+ * @param {Array<object>|object} activeProviders
+ * @param {AbortSignal} signal
+ * @param {{label?: string, isFirstChunk?: boolean}} [options] label 只用于日志前缀
+ */
+async function translateChunk(chunk, activeProviders, signal, { label = '', isFirstChunk = false } = {}) {
+  const providerList = (Array.isArray(activeProviders) ? activeProviders : [activeProviders])
+    .filter((p) => !unusableProviders.has(p.id))
   const input = chunk.map(([k, v]) => `${k}=${v}`).join('\n')
   let best = null, bestFallback = chunk.length
   const threshold = Math.ceil(chunk.length * 0.1)
+  const translatableLines = chunk.filter(([, v]) => /[A-Za-z]/.test(v)).length
   for (const activeProvider of providerList) {
     for (let attempt = 1; attempt <= 3 && bestFallback > threshold; attempt++) {
       let text
@@ -364,7 +423,11 @@ async function translateChunk(chunk, activeProviders, signal) {
           { role: 'user', content: input },
         ], signal)
       } catch (err) {
-        console.log(`    [${activeProvider.id}] 分块翻译失败（重试耗尽）: ${err.message.slice(0, 120)}`)
+        console.log(`    ${label}[${activeProvider.id}] 分块翻译失败（重试耗尽）: ${err.message.slice(0, 120)}`)
+        if (isFirstChunk && err instanceof EmptyResponseError) {
+          unusableProviders.add(activeProvider.id)
+          console.log(`    ${label}[${activeProvider.id}] 首块正文为空（疑似推理模型把内容写在 reasoning_content），本轮弃用该模型`)
+        }
         break
       }
       const got = parseLangLines(text)
@@ -379,8 +442,13 @@ async function translateChunk(chunk, activeProviders, signal) {
         best = out
         bestFallback = fallback
       }
+      if (isFirstChunk && isProviderNoOutput({ chunkLength: chunk.length, parsedLines: got.size, fallback, translatableLines })) {
+        unusableProviders.add(activeProvider.id)
+        console.log(`    ${label}[${activeProvider.id}] 首块零译文（回退 ${fallback}/${chunk.length}，解析出 ${got.size} 行），本轮弃用该模型，不重试`)
+        break
+      }
       if (bestFallback > threshold) {
-        console.log(`    第 ${attempt} 次分块回退率 ${fallback}/${chunk.length}，重试`)
+        console.log(`    ${label}第 ${attempt} 次分块回退率 ${fallback}/${chunk.length}，重试`)
       }
     }
     if (bestFallback <= threshold) break
@@ -418,11 +486,42 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
 
   console.log(`    翻译记忆命中 ${glossaryHit}/${pairs.length}，剩余 ${unmatched.length} 个需 LLM 翻译`)
 
-  // 第二步：未命中的发给 LLM
-  for (let i = 0; i < unmatched.length; i += CHUNK_LINES) {
-    const chunk = unmatched.slice(i, i + CHUNK_LINES)
-    const orderedProviders = providerList.length > 1 ? nextProviderOrder(providerList) : providerList
-    const { map, fallback } = await translateChunk(chunk, orderedProviders, signal)
+  // 全部模型都已判定「产不出译文」：直接失败，不再逐个分块空跑（文案会经 reportStatus 回传到队列）。
+  const modelIds = providerList.map((p) => p.id)
+  if (allProvidersUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
+
+  // 第二步：未命中的发给 LLM。同一光影内的分块小并发（LLM_CHUNK_CONCURRENCY），
+  // 结果按块序合并，保证与串行时一致：out 的插入顺序、totalFallback、llmCalls 口径都相同，
+  // localGlossary 也按块序、带上与串行相同的「已有则不覆盖」守卫写入。
+  const chunks = []
+  for (let i = 0; i < unmatched.length; i += CHUNK_LINES) chunks.push(unmatched.slice(i, i + CHUNK_LINES))
+  if (chunks.length > 1) {
+    console.log(`    分块并发 ${Math.min(LLM_CHUNK_CONCURRENCY, chunks.length)}（共 ${chunks.length} 块）`)
+  }
+  const results = new Array(chunks.length)
+  await runPool(
+    chunks.map((chunk, index) => ({ chunk, index })),
+    async ({ chunk, index }) => {
+      const label = `分块 ${index + 1}/${chunks.length} `
+      console.log(`    ${label}开始（${chunk.length} 行，${timestamp()}）`)
+      const started = Date.now()
+      // 轮班计数器是共享的：并发下各分块按「取到分块的先后」轮转，模型不会重复选或跳过，
+      // 但与串行相比，同一分块拿到的起始模型可能不同（只是起始位置不同，池子不变）。
+      const orderedProviders = providerList.length > 1 ? nextProviderOrder(providerList) : providerList
+      results[index] = await translateChunk(chunk, orderedProviders, signal, {
+        label,
+        isFirstChunk: index === 0,
+      })
+      console.log(`    ${label}完成：回退 ${results[index].fallback}/${chunk.length}，耗时 ${Date.now() - started}ms（${timestamp()}）`)
+      // 本轮所有模型都已不可用 → 立即整体失败，不再空跑剩余分块。
+      if (allProvidersUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
+    },
+    LLM_CHUNK_CONCURRENCY,
+  )
+
+  for (let index = 0; index < chunks.length; index++) {
+    const chunk = chunks[index]
+    const { map, fallback } = results[index]
     for (const [k, v] of map) {
       out.set(k, v)
       // 新翻译结果按英文原文记入本条的局部翻译记忆，不直接改共享的 glossary；
@@ -450,6 +549,32 @@ for (const s of db.shaders) {
     latestLangVersion.set(s.id, v.shaderVersion) // langVersions 按新在前
     break
   }
+}
+
+// 跨平台去重用的 Modrinth 标题索引（判据与误判防护见 scripts/lib/cross-platform.mjs）。
+const modrinthTitleIndex = buildTitleIndex(catalog.shaders, (e) => e.title)
+
+/**
+ * CF 条目在 Modrinth 侧已有汉化时返回那条 Modrinth 条目，否则 null。
+ * 旁证（作者名/描述）取自 CF 目录：目录里没有该条目时只剩 slug 强证据，不按名称匹配（宁漏勿错）。
+ */
+function findTranslatedTwinForEntry(entry) {
+  if (!isCurseforgeEntry(entry)) return null
+  const cfRecord = (cfCatalog.mods ?? []).find(
+    (m) =>
+      m.slug === entry.curseforge?.slug ||
+      (entry.curseforge?.cfId != null && m.cfId === entry.curseforge.cfId),
+  )
+  return findTranslatedTwin(
+    {
+      slug: cfRecord?.slug ?? entry.curseforge?.slug ?? entry.id,
+      title: cfRecord?.name ?? entry.title,
+      author: cfRecord?.author,
+      description: cfRecord?.description,
+    },
+    modrinthTitleIndex,
+    db.shaders,
+  )
 }
 
 const candidates = catalog.shaders.filter((c) => {
@@ -558,6 +683,23 @@ function persist() {
 
 async function processShader(entry, signal, localGlossary) {
   const tag = `[${entry.id}]`
+  // 跨平台去重：同一个光影在 Modrinth 侧已有汉化时直接判完成，不消耗任何 LLM 预算。
+  // 必须放在最前面（早于 CF API / 下载），否则会先把时间花在下载上。
+  const twin = findTranslatedTwinForEntry(entry)
+  if (twin) {
+    console.log(`${tag} 该光影的 Modrinth 版本（id=${twin.id}，名称「${twin.title}」v${twin.shaderVersion}）已有汉化，跳过`)
+    return {
+      status: STATUS.DONE,
+      error: '',
+      note: `该光影的 Modrinth 版本（id=${twin.id}）已有汉化，无需重复翻译`,
+    }
+  }
+  // 模型级熔断：本轮已判定所有模型都产不出译文时，后续条目直接失败，不再下载、不再调 LLM。
+  if (allProvidersUnusable()) {
+    const message = providerUnusableMessage(providers.map((p) => p.id))
+    console.log(`${tag} 跳过：${message}`)
+    return { status: STATUS.FAILED, error: message }
+  }
   // CurseForge 分支：下载/版本选择/降级都在 processShaderCf 内处理，行为与 Modrinth 互不影响。
   if (isCurseforgeEntry(entry)) return processShaderCf(entry, signal, localGlossary)
   try {
@@ -789,6 +931,12 @@ async function processShaderCf(entry, signal, localGlossary) {
     let lastError = ''
     for (const f of candidates) {
       if (signal.aborted) return { status: STATUS.FAILED, error: '处理超时' }
+      // 模型级熔断：所有模型都产不出译文时，不再为剩余候选文件重复下载/试错。
+      if (allProvidersUnusable()) {
+        lastError = providerUnusableMessage(providers.map((p) => p.id))
+        console.log(`${tag} ${lastError}，不再尝试剩余候选文件`)
+        break
+      }
       const budgetLeft = deadline - Date.now()
       if (budgetLeft <= 0) {
         lastError = `本条光影 CF 预算（${CF_SHADER_BUDGET_MS / 60000} 分钟）已用尽`
