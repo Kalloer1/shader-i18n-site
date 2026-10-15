@@ -277,3 +277,4 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 - 本文件：项目架构、状态、流程、决策和待办的唯一来源。
 - `site/guide/install.md`、`site/request/index.md` 等：网站面向用户的页面内容，不与本文件重复维护项目状态。
 - `AGENTS.md`：本地 Agent/MCP 环境配置，不是产品说明。
+- [`docs/项目结构.md`](docs/项目结构.md)：目录职责速查表（哪些是人写的源、哪些是生成的产物、哪些不能动）。
