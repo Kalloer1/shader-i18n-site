@@ -75,6 +75,8 @@ const escHtml = (s) =>
 // 只对 media.forgecdn.net 生效（Modrinth 的 cdn.modrinth.com 图 URL 无 /thumbnails/ 段，不受影响）。
 // 实测（node fetch，2026-10-15）：本站当前会渲染的 4 条 CF hero URL（3 条截图 + 1 条图标）去缩略图后
 // 全部 200 且 content-type 为 image/*。构建期不做网络探测，故只对这条已实测的 URL 形态改写。
+// 另实测（同批）：forgecdn 不做按需缩放，/thumbnails/<a>/<b>/1280/720/ 等中间尺寸一律 404
+// （310/172 与原图两档之外均无，query 参数也被忽略），故不引入中间尺寸，继续用原图。
 const cfHeroFullSize = (url) =>
   String(url ?? '').startsWith('https://media.forgecdn.net/')
     ? String(url).replace(/\/thumbnails\/(\d+)\/(\d+)\/\d+\/\d+\//, '/$1/$2/')

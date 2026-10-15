@@ -20,7 +20,7 @@ export default defineConfig({
     nav: [
       { text: '光影列表', link: '/#光影列表' },
       { text: '安装教程', link: '/guide/install' },
-      { text: '请求翻译', link: '/request' },
+      { text: '请求翻译', link: '/request/' },
     ],
     sidebar: {
       '/guide/': [
