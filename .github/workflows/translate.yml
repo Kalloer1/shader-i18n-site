@@ -120,6 +120,15 @@ jobs:
           LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'opencode-zen-free/space-bunny-free,opencode-zen-free/beam-free,opencode-zen-free/big-pickle' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
+          # ---------- 免费层（默认主路，独立于 LLM_MODELS） ----------
+          # bilibili Index-Translate 公开 API：无需 key、无 SLA。失败快速降级到上面的回退池
+          # （单次尝试、无退避、60 秒超时；连续 2 次失败才熔断）。
+          # 用独立环境变量是**有意为之**：它不参与 inputs.models，
+          # 否则管理员在 /request 页一勾模型就会静默关掉免费层，而界面上完全看不出来。
+          # 临时关闭只需把 FREE_TIER_ENABLED 设为 0。
+          FREE_TIER_ENABLED: ${{ secrets.FREE_TIER_ENABLED || '1' }}
+          FREE_TIER_BASE_URL: ${{ secrets.FREE_TIER_BASE_URL }}
+          FREE_TIER_MODEL: ${{ secrets.FREE_TIER_MODEL }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
           WORKER_URL: ${{ secrets.WORKER_URL }}
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}

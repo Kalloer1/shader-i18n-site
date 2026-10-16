@@ -3,7 +3,8 @@
  * 自动汉化流水线（ADR-0005）：下载 → 检测自带中文 → LLM 初翻 → 校验 → 登记。
  *
  * 候选：目录中按下载量排序、未被流水线覆盖且不在缺少英文源清单中的光影（无汉化映射、未检出自带中文）。
- * 翻译默认使用模型池，按分块轮转调用；失败或回退过高时自动尝试下一个模型。
+ * 翻译默认走两层：免费层（无 SLA 的公开服务）优先，失败或产出不合格才落到模型池回退。
+ * 回退池按分块轮转调用；失败或回退过高时自动尝试下一个模型。
  * LLM_CONCURRENCY 控制光影级并发（每条光影仍各自独立超时、独立中断）。
  * LLM_CHUNK_CONCURRENCY 控制单条光影内部的分块并发（只提交 1 条时也能用上闲置并发）。
  * 某个模型在首块一行译文都产不出时立即弃用该模型（见 scripts/lib/llm-guard.mjs），
@@ -17,7 +18,18 @@
  *   LLM_CONCURRENCY 并发度；默认 10
  *   LLM_CHUNK_CONCURRENCY 单条光影内的分块并发度；默认 3，上限 4
  *   LLM_EXTRA_BODY  额外请求体（JSON 字符串，浅合并进 body，用于透传中转站参数）
- * 不设任何 LLM_* 环境变量时，报错文案 / provider 打印 / 请求体 / 模型与改造前完全一致。
+ *
+ * 免费层（默认开启的**主路**，独立于 LLM_MODELS）：
+ *   FREE_TIER_ENABLED   0/false/no/off 时关闭；缺省开启
+ *   FREE_TIER_BASE_URL  默认 bilibili Index-Translate 公开 API；给到 /v1 会自动补 /chat/completions
+ *   FREE_TIER_MODEL     默认 Index-Translate-35B-A3B
+ * 它是无 SLA 的公开服务，失败快速降级到回退池（单次尝试、无退避、60 秒超时；
+ * 连续 2 次失败才熔断）。**刻意不参与 LLM_MODELS**：否则站点管理员一勾模型
+ * 就会静默关掉免费层，而界面上完全看不出来。
+ *
+ * 没有 LLM_API_KEY 时不再硬失败：回退池留空，以「免费层单跑」模式运行。
+ * （这有意打破了「不设任何 LLM_* 环境变量时行为逐字一致」的原不变量，见 README 决策摘要。）
+ * 不设任何 LLM_* 环境变量且免费层开启时，启动输出与改造前的差异仅限免费层那两行。
  * 密钥通过环境变量读取，不入库；接口使用 OpenAI 兼容 chat/completions。
  *
  * 用法：
@@ -46,7 +58,11 @@ import { stripSkeleton, isUsableMemory, shouldRememberMemory } from './lib/gloss
 import { runPool, DEFAULT_CHUNK_CONCURRENCY, MAX_CHUNK_CONCURRENCY } from './lib/pool.mjs'
 // 提示词与请求体形状是 **provider 的属性**，不是模块级常量：免费层要走官方 instTrans 形态、
 // 且不继承 LLM_EXTRA_BODY。抽象在 lib 里，超时/重试/熔断仍留在本文件（那是流水线策略）。
-import { createGatewayProvider } from './lib/providers.mjs'
+import { createGatewayProvider, createFreeTierProvider, buildContributorLine } from './lib/providers.mjs'
+import {
+  parseLangLines as parseLangLinesLib,
+  createChunkTranslator,
+} from './lib/provider-chain.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -60,6 +76,12 @@ const CHUNK_LINES = 60
 const DEFAULT_MODEL = 'opencode-zen-free/space-bunny-free'
 const DEFAULT_CONCURRENCY = 10
 const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
+// 免费层（bilibili Index-Translate 公开 API）：**无需 API key**，无 SLA。
+// 它是流水线的默认主路，失败才落到上面的网关回退池。
+const DEFAULT_FREE_TIER_URL = 'https://index-translate.bilibili.com/v1/chat/completions'
+const DEFAULT_FREE_TIER_MODEL = 'Index-Translate-35B-A3B'
+// 免费层连续失败多少次才标记「本轮不可用」。单次抖动只降级当前分块，不熔断。
+const FREE_TIER_FAILURE_THRESHOLD = 2
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -137,6 +159,23 @@ if (!LLM_MODELS.length) {
 const LLM_URL = () => envStr('LLM_BASE_URL') ?? envStr('SILICONFLOW_BASE_URL') ?? DEFAULT_BASE_URL
 const LLM_KEY = () => envStr('LLM_API_KEY') ?? envStr('SILICONFLOW_API_KEY')
 
+// ---------- 免费层（独立配置，**不参与 LLM_MODELS**） ----------
+// 为什么必须隔离：站点管理员在 /request 页勾选的是**回退池**。若免费层也走 LLM_MODELS，
+// 管理员一勾模型就会静默关掉免费层（默认主路），而界面上完全看不出来。
+function freeTierEnabled() {
+  const raw = envStr('FREE_TIER_ENABLED')
+  if (raw === undefined) return true // 默认开启
+  return !/^(0|false|no|off)$/i.test(raw.trim())
+}
+
+/** 免费层地址：允许只给到 `/v1`（README 里的写法），自动补 `/chat/completions`。 */
+function freeTierUrl() {
+  const raw = envStr('FREE_TIER_BASE_URL') ?? DEFAULT_FREE_TIER_URL
+  return /\/chat\/completions$/.test(raw) ? raw : `${raw.replace(/\/+$/, '')}/chat/completions`
+}
+const FREE_TIER_MODEL = () => envStr('FREE_TIER_MODEL') ?? DEFAULT_FREE_TIER_MODEL
+const FREE_TIER_ON = freeTierEnabled()
+
 // 仅当「提供方本身」被改写（换模型/换地址）时按自定义提供方呈现；
 // 只设 LLM_CONCURRENCY / LLM_API_KEY 时不改打印，保持与改造前一致的字面输出。
 const LLM_ENV_SET = envStr('LLM_MODELS') !== undefined
@@ -191,9 +230,15 @@ const LLM_CHUNK_CONCURRENCY = readChunkConcurrency()
 // 本轮已被判定「产不出译文」的模型 id。跨光影共享：坏模型不重复烧预算。
 const unusableProviders = new Set()
 
-/** 给定模型列表是否全部已被判定不可用（空列表不算，避免把「没模型」误当整体失败）。 */
+/**
+ * 给定模型列表是否全部已被判定不可用。
+ *
+ * **空列表算「不可用」**（issue #4）：回退池为空是「免费层单跑」模式的合法状态，
+ * 不是「没问题」。若这里返回 false，`everythingUnusable()` 就永远为 false，
+ * 免费层也挂掉时整轮会静默「成功但零产出」。
+ */
 function allProvidersUnusable(list = providers) {
-  return list.length > 0 && list.every((p) => unusableProviders.has(p.id))
+  return list.length === 0 || list.every((p) => unusableProviders.has(p.id))
 }
 
 function providerHostLabel(url) {
@@ -211,37 +256,99 @@ function createProvider(model) {
   })
 }
 
-const providers = LLM_MODELS.map(createProvider)
+// 无 key 时回退池**真的为空**：不能留一个必 401 的 provider 列表，否则每个分块都要先撞一次
+// 401 才落回免费层（浪费预算且日志噪声）。有 key 时行为与改造前一致。
+const providers = LLM_KEY() ? LLM_MODELS.map(createProvider) : []
 const provider = providers[0]
 let providerCursor = 0
 
 function nextProviderOrder(list = providers) {
+  if (list.length === 0) return list
   const start = providerCursor++ % list.length
   return [...list.slice(start), ...list.slice(0, start)]
 }
 
-if (!LLM_KEY()) {
-  if (LLM_ENV_SET) {
-    console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），默认站点 ' + providerHostLabel(DEFAULT_BASE_URL))
-  } else {
-    console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY）')
-  }
-  process.exit(2)
+// ---------- 免费层实例与熔断状态 ----------
+const freeTierProvider = createFreeTierProvider({
+  model: FREE_TIER_MODEL(),
+  url: freeTierUrl,
+  label: `${FREE_TIER_MODEL()}（${providerHostLabel(freeTierUrl())}）`,
+})
+
+// 免费层连续失败计数。达 FREE_TIER_FAILURE_THRESHOLD 才熔断（单次抖动只降级当前分块）。
+let freeTierConsecutiveFailures = 0
+let freeTierDisabledReason = ''
+
+function freeTierUsable() {
+  return FREE_TIER_ON && !unusableProviders.has(freeTierProvider.id)
 }
-const providerLabel = providers.length === 1 && !LLM_ENV_SET
-  ? `${provider.name}（${provider.body([]).model}）`
-  : providers.map((p) => `${p.name}（${p.body([]).model}）`).join(' / ')
+
+/**
+ * 记一次免费层失败。**连续**两次才熔断：单次超时/5xx 是公开服务的正常抖动，
+ * 把它当成「服务挂了」会让免费层抖一下就整轮不用它。
+ */
+function noteFreeTierFailure() {
+  freeTierConsecutiveFailures++
+  if (freeTierConsecutiveFailures >= FREE_TIER_FAILURE_THRESHOLD && !unusableProviders.has(freeTierProvider.id)) {
+    unusableProviders.add(freeTierProvider.id)
+    freeTierDisabledReason = `连续 ${freeTierConsecutiveFailures} 次失败`
+    console.log(`  [免费层] ${freeTierDisabledReason}，本轮不再尝试免费层，全部走回退池`)
+  }
+}
+
+function noteFreeTierSuccess() {
+  freeTierConsecutiveFailures = 0
+}
+
+// 署名行是纯函数，放在 lib 里（pipeline.mjs 无法被单测 import：它顶层就会跑整个流水线）。
+const contributorLine = (providerIds) => buildContributorLine(providerIds, freeTierProvider.id)
+
+// 没有网关 key 时不再硬失败：免费层不需要 key，回退池留空，以「免费层单跑」模式运行（issue #4）。
+// ⚠️ 这**有意打破**了一条原不变量（「不设任何 LLM_* 环境变量时行为与改造前逐字一致」）——
+// 用户已于 2026-10-17 明确点头，此处记录在案。
+// 但免费层也被显式关掉时（FREE_TIER_ENABLED=0）确实没有任何可用提供方，仍保持原有的硬失败。
+const LLM_KEY_MISSING = !LLM_KEY()
+if (LLM_KEY_MISSING) {
+  if (!FREE_TIER_ON) {
+    if (LLM_ENV_SET) {
+      console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），默认站点 ' + providerHostLabel(DEFAULT_BASE_URL))
+    } else {
+      console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY）')
+    }
+    console.error('且免费层已通过 FREE_TIER_ENABLED 关闭，没有任何可用提供方')
+    process.exit(2)
+  }
+  console.warn('警告：未设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），回退池为空，将以「免费层单跑」模式运行\n')
+}
+const providerLabel = providers.length === 0
+  ? '（无，回退池为空）'
+  : providers.length === 1 && !LLM_ENV_SET
+    ? `${provider.name}（${provider.body([]).model}）`
+    : providers.map((p) => `${p.name}（${p.body([]).model}）`).join(' / ')
 console.log(`LLM 提供方：${providerLabel}\n`)
+// 免费层是**独立于 LLM_MODELS** 的一层，因此单独打印。
+if (FREE_TIER_ON) {
+  console.log(`免费层（优先）：${freeTierProvider.name}\n`)
+} else {
+  console.log('免费层（优先）：已通过 FREE_TIER_ENABLED 关闭\n')
+}
 // 仅在显式配置时打印，保证「不设环境变量」时的输出与改造前逐字一致。
 if (envStr('LLM_CONCURRENCY') !== undefined) console.log(`LLM 并发度：${LLM_CONCURRENCY}\n`)
 if (envStr('LLM_CHUNK_CONCURRENCY') !== undefined) console.log(`LLM 分块并发度：${LLM_CHUNK_CONCURRENCY}\n`)
 
 async function chatOnce(activeProvider, messages, signal) {
+  const key = activeProvider.key()
+  // 免费层无需鉴权：不能发 `Bearer undefined`（实测免费层忽略该头，但发出去是脏请求）。
+  const headers = { 'Content-Type': 'application/json' }
+  if (key) headers.Authorization = `Bearer ${key}`
+  // 免费层自带 60 秒超时，与调用方传入的 signal 合并：任一触发即中止。
+  const timeoutMs = activeProvider.requestTimeoutMs
+  const reqSignal = timeoutMs ? AbortSignal.any([signal, AbortSignal.timeout(timeoutMs)].filter(Boolean)) : signal
   const res = await mfetch(activeProvider.url(), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${activeProvider.key()}` },
+    headers,
     body: JSON.stringify(activeProvider.body(messages)),
-    signal,
+    signal: reqSignal,
   })
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`)
   const j = await res.json()
@@ -251,12 +358,19 @@ async function chatOnce(activeProvider, messages, signal) {
   return text
 }
 
+/**
+ * 带退避重试的调用。重试次数是 **provider 的属性**：
+ * - 网关（默认 10 次，与原实现一致）；
+ * - 免费层 `maxAttempts: 1` —— 单次尝试、无退避（见 issue #3：不让无 SLA 的公开服务
+ *   把每条光影的 15 分钟预算烧光，失败就交给回退池）。
+ */
 async function chatWithRetry(activeProvider, messages, signal) {
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+  const maxAttempts = activeProvider.maxAttempts ?? MAX_RETRIES
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
       return await chatOnce(activeProvider, messages, signal)
     } catch (err) {
-      if (attempt === MAX_RETRIES) throw err
+      if (attempt === maxAttempts) throw err
       // 正文为空：重试同一个模型只会拿到同样的空正文（推理模型把内容写在 reasoning_content），
       // 原实现的退避重试会把预算烧在必然失败的重试上，这里直接抛出交给 translateChunk 判定。
       if (err instanceof EmptyResponseError) throw err
@@ -342,16 +456,9 @@ function zipEntries(buf) {
 }
 
 // ---------- 翻译 ----------
-// 解析模型输出：提取 键=值 对（容忍代码块围栏、前后杂讯）
-function parseLangLines(text) {
-  const got = new Map()
-  for (const line of text.split('\n')) {
-    const eq = line.indexOf('=')
-    if (eq <= 0) continue
-    got.set(line.slice(0, eq).trim(), line.slice(eq + 1).trim())
-  }
-  return got
-}
+// 两层的决策逻辑（免费层优先 → 回退池）在 scripts/lib/provider-chain.mjs 里，
+// 那是纯逻辑、可离线单测；这里只负责把真实网络调用与环境状态注入进去。
+const parseLangLines = parseLangLinesLib
 
 // 日志时间戳（UTC HH:MM:SS.mmm）：并发下用来核对分块确实在重叠执行。
 function timestamp() {
@@ -359,65 +466,31 @@ function timestamp() {
 }
 
 /**
- * 翻译一个分块。模型偶发空响应/回显原文，因此回退率超过 10% 即重试，最多 3 次，取回退最少的版本。
- *
- * 首块早停：某个模型在首块就「一行译文都没产出」时（判据见 isProviderNoOutput），
- * 说明它不是翻得差、而是根本没在产出译文，立刻放弃该模型：不再重试、记入本轮不可用集合、
- * 换下一个模型（全部不可用时由调用方整体判失败）。
- *
- * @param {Array<[string, string]>} chunk
- * @param {Array<object>|object} activeProviders
- * @param {AbortSignal} signal
- * @param {{label?: string, isFirstChunk?: boolean}} [options] label 只用于日志前缀
+ * 注入用的网络调用：把 provider 的提示词/请求体/超时/重试都套上，返回正文。
+ * 免费层的 `maxAttempts: 1`（单次、无退避）与 `requestTimeoutMs` 在 chatOnce/chatWithRetry 里生效。
  */
-async function translateChunk(chunk, activeProviders, signal, { label = '', isFirstChunk = false } = {}) {
-  const providerList = (Array.isArray(activeProviders) ? activeProviders : [activeProviders])
-    .filter((p) => !unusableProviders.has(p.id))
-  const input = chunk.map(([k, v]) => `${k}=${v}`).join('\n')
-  let best = null, bestFallback = chunk.length
-  const threshold = Math.ceil(chunk.length * 0.1)
-  const translatableLines = chunk.filter(([, v]) => /[A-Za-z]/.test(v)).length
-  for (const activeProvider of providerList) {
-    for (let attempt = 1; attempt <= 3 && bestFallback > threshold; attempt++) {
-      let text
-      try {
-        // 提示词由 provider 自己给：网关 provider 返回的 messages 与改造前逐字一致。
-        text = await chatWithRetry(activeProvider, activeProvider.buildPrompt(input), signal)
-      } catch (err) {
-        // 正文为空是专门错误类型：不重试，文案要区分开（否则会把「没重试」写成「重试耗尽」）。
-        const why = err instanceof EmptyResponseError ? '正文为空，不重试' : '重试耗尽'
-        console.log(`    ${label}[${activeProvider.id}] 分块翻译失败（${why}）: ${err.message.slice(0, 120)}`)
-        if (isFirstChunk && err instanceof EmptyResponseError) {
-          unusableProviders.add(activeProvider.id)
-          console.log(`    ${label}[${activeProvider.id}] 首块正文为空（疑似推理模型把内容写在 reasoning_content），本轮弃用该模型`)
-        }
-        break
-      }
-      const got = parseLangLines(text)
-      const out = new Map()
-      let fallback = 0
-      for (const [k, v] of chunk) {
-        const zh = got.get(k)
-        if (zh && zh !== v) out.set(k, zh)
-        else { out.set(k, v); fallback++ }
-      }
-      if (fallback < bestFallback) {
-        best = out
-        bestFallback = fallback
-      }
-      if (isFirstChunk && isProviderNoOutput({ chunkLength: chunk.length, parsedLines: got.size, fallback, translatableLines })) {
-        unusableProviders.add(activeProvider.id)
-        console.log(`    ${label}[${activeProvider.id}] 首块零译文（回退 ${fallback}/${chunk.length}，解析出 ${got.size} 行），本轮弃用该模型，不重试`)
-        break
-      }
-      if (bestFallback > threshold) {
-        console.log(`    ${label}第 ${attempt} 次分块回退率 ${fallback}/${chunk.length}，重试`)
-      }
-    }
-    if (bestFallback <= threshold) break
-  }
-  return { map: best ?? new Map(chunk.map(([k, v]) => [k, v])), fallback: bestFallback }
+function callProvider(activeProvider, messages, signal) {
+  return chatWithRetry(activeProvider, messages, signal)
 }
+
+/** 本轮所有模型都已不可用**且**免费层也不可用 —— 才算整体失败。 */
+function everythingUnusable(list = providers) {
+  return allProvidersUnusable(list) && !freeTierUsable()
+}
+
+// 分块翻译器的**装配**也在 lib 里（createChunkTranslator）：这里只注入真实依赖。
+// 把装配搬出 pipeline.mjs 是为了堵住一个真实覆盖盲区 —— 这段胶水层曾经从没被跑过，
+// 重构时接连踩到 `timestamp is not defined` 与 `log is not defined`。
+const translateChunk = createChunkTranslator({
+  freeTierProvider,
+  isFreeTierUsable: freeTierUsable,
+  onFreeTierFailure: noteFreeTierFailure,
+  onFreeTierSuccess: noteFreeTierSuccess,
+  isUnusable: (id) => unusableProviders.has(id),
+  markUnusable: (id) => unusableProviders.add(id),
+  callProvider: (activeProvider, messages, sig) => callProvider(activeProvider, messages, sig),
+  isNoOutput: isProviderNoOutput,
+})
 
 async function translateEntries(pairs, activeProviders, signal, localGlossary) {
   const providerList = Array.isArray(activeProviders) ? activeProviders : [activeProviders]
@@ -446,14 +519,15 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
 
   if (unmatched.length === 0) {
     console.log(`    翻译记忆全覆盖（${glossaryHit}/${pairs.length}），跳过 LLM`)
-    return { map: out, totalFallback: 0, glossaryHit, llmCalls: 0 }
+    return { map: out, totalFallback: 0, glossaryHit, llmCalls: 0, providersUsed: [] }
   }
 
   console.log(`    翻译记忆命中 ${glossaryHit}/${pairs.length}，剩余 ${unmatched.length} 个需 LLM 翻译`)
 
   // 全部模型都已判定「产不出译文」：直接失败，不再逐个分块空跑（文案会经 reportStatus 回传到队列）。
+  // 免费层可用时不算整体失败 —— 它是独立的一层，回退池全挂也能单跑。
   const modelIds = providerList.map((p) => p.id)
-  if (allProvidersUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
+  if (everythingUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
 
   // 第二步：未命中的发给 LLM。同一光影内的分块小并发（LLM_CHUNK_CONCURRENCY），
   // 结果按块序合并，保证与串行时一致：out 的插入顺序、totalFallback、llmCalls 口径都相同，
@@ -478,15 +552,18 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
         isFirstChunk: index === 0,
       })
       console.log(`    ${label}完成：回退 ${results[index].fallback}/${chunk.length}，耗时 ${Date.now() - started}ms（${timestamp()}）`)
-      // 本轮所有模型都已不可用 → 立即整体失败，不再空跑剩余分块。
-      if (allProvidersUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
+      // 本轮所有模型都已不可用**且免费层也不可用** → 立即整体失败，不再空跑剩余分块。
+      if (everythingUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
     },
     LLM_CHUNK_CONCURRENCY,
   )
 
+  // 提供方署名：免费层产出与回退池产出要分得清（issue #5）。
+  const providersUsed = new Set()
   for (let index = 0; index < chunks.length; index++) {
     const chunk = chunks[index]
-    const { map, fallback } = results[index]
+    const { map, fallback, providerIds } = results[index]
+    for (const pid of providerIds ?? []) providersUsed.add(pid)
     for (const [k, v] of map) {
       out.set(k, v)
       // 新翻译结果按英文原文记入本条的局部翻译记忆，不直接改共享的 glossary；
@@ -503,7 +580,7 @@ async function translateEntries(pairs, activeProviders, signal, localGlossary) {
     llmCalls++
   }
 
-  return { map: out, totalFallback, glossaryHit, llmCalls }
+  return { map: out, totalFallback, glossaryHit, llmCalls, providersUsed: [...providersUsed] }
 }
 
 // ---------- 主流程 ----------
@@ -663,7 +740,7 @@ async function processShader(entry, signal, localGlossary) {
     }
   }
   // 模型级熔断：本轮已判定所有模型都产不出译文时，后续条目直接失败，不再下载、不再调 LLM。
-  if (allProvidersUnusable()) {
+  if (everythingUnusable()) {
     const message = providerUnusableMessage(providers.map((p) => p.id))
     console.log(`${tag} 跳过：${message}`)
     return { status: STATUS.FAILED, error: message }
@@ -785,10 +862,13 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
     return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
   }
 
-  console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，[${LLM_MODELS.join(', ')}] 开始初翻…`)
-  const { map: zhMap, totalFallback, glossaryHit, llmCalls } = await translateEntries(pairs, providers, signal, localGlossary)
+  // 日志要如实反映「谁在干活」：免费层是默认主路，只列 LLM_MODELS 会误导排查。
+  const poolLabel = providers.length ? `回退池 [${LLM_MODELS.join(', ')}]` : '回退池（空）'
+  const freeLabel = FREE_TIER_ON ? `免费层 [${freeTierProvider.id}] 优先，` : ''
+  console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，${freeLabel}${poolLabel} 开始初翻…`)
+  const { map: zhMap, totalFallback, glossaryHit, llmCalls, providersUsed } = await translateEntries(pairs, providers, signal, localGlossary)
   // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
-  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}`)
+  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}，来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
   // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
   if (totalFallback > pairs.length * 0.3) {
     if (cfMode) {
@@ -845,7 +925,7 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
     file: `/lang/${entry.id}/${shaderVersion}/zh_CN.lang`,
     quark: '',
     updatedAt: new Date().toISOString().slice(0, 10),
-    contributors: [`AI 初翻（免费模型池：${LLM_MODELS.join(' / ')}），未人工校对`],
+    contributors: [contributorLine(providersUsed)],
   })
   done++
   processed++
@@ -900,7 +980,7 @@ async function processShaderCf(entry, signal, localGlossary) {
     for (const f of candidates) {
       if (signal.aborted) return { status: STATUS.FAILED, error: '处理超时' }
       // 模型级熔断：所有模型都产不出译文时，不再为剩余候选文件重复下载/试错。
-      if (allProvidersUnusable()) {
+      if (everythingUnusable()) {
         lastError = providerUnusableMessage(providers.map((p) => p.id))
         console.log(`${tag} ${lastError}，不再尝试剩余候选文件`)
         break
