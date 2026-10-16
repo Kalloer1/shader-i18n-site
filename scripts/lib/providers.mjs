@@ -66,8 +66,8 @@ export const FREE_TIER_MAX_TOKENS = 8192
  * 含 `【源文】` / `【约束要求】` 两段，术语以 `A→B` 形式列出。
  *
  * 为什么不用 SYSTEM_PROMPT：实测免费层会**把键名一起翻掉**（`option.A` → `选项A`），
- * 因此必须用 instTrans 的显式约束，并在调用方用「键集合完整性」做硬校验
- * （见 pipeline.mjs 的 requiresCompleteKeys）。
+ * 因此必须用 instTrans 的显式约束；且实测它会**丢掉孤立的 `.comment` 后缀**，
+ * 所以调用方按行回退漏掉的行（见 createFreeTierProvider 的说明）。
  *
  * @param {string} input 已按 \n 拼好的 `键=值` 文本
  */
@@ -89,11 +89,16 @@ export function buildInstTransPrompt(input) {
 /**
  * 构造免费层提供方。
  *
- * 三个「免费层专属」的策略字段由 pipeline 读取，它们不是提示词/请求体，但同样是
+ * 两个「免费层专属」的策略字段由 pipeline 读取，它们不是提示词/请求体，但同样是
  * provider 的属性（见 issue #3）：
  * - `maxAttempts: 1` —— 单次尝试，**无退避重试**；
- * - `requestTimeoutMs: 60000` —— 单请求 60 秒超时；
- * - `requiresCompleteKeys: true` —— 键集合不完整即判该提供方本次失败（不是「翻得差」）。
+ * - `requestTimeoutMs: 60000` —— 单请求 60 秒超时。
+ *
+ * **刻意没有「键集合必须完整」这个硬开关**。实测免费层会以约 60% 的概率丢掉孤立的
+ * `.comment` 后缀（同名主键已命中记忆、输入里只剩 `.comment` 时），若按整块失败处理，
+ * 28 行丢 2 个键会把 26 条好译文全扔掉 —— 在「免费层单跑」模式下等于整个光影失败。
+ * 改为**按行回退**（漏掉的行留英文，其余译文照用），整体质量由调用方的
+ * 回退率阈值（>10% 转交回退池）把关。
  *
  * @param {object} p
  * @param {string} p.model 模型 id
@@ -101,7 +106,8 @@ export function buildInstTransPrompt(input) {
  * @param {string} p.label 日志里显示的提供方名称
  * @param {number} [p.requestTimeoutMs] 单请求超时
  */
-export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000 }) {  return {
+export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000 }) {
+  return {
     id: model,
     name: label,
     url,
@@ -117,7 +123,6 @@ export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 6
     extract: (j) => j.choices?.[0]?.message?.content,
     maxAttempts: 1,
     requestTimeoutMs,
-    requiresCompleteKeys: true,
   }
 }
 

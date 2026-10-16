@@ -13,6 +13,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
   parseLangLines,
+  parseLangResponse,
   evaluateOutput,
   fallbackThreshold,
   tryFreeTier,
@@ -109,29 +110,60 @@ for (const [label, boom] of [
   })
 }
 
-test('免费层把键名也翻掉（键集合不完整）→ 判失败并落到网关', async () => {
+test('免费层漏掉个别键 → **按行回退**，其余译文照用（不整块丢弃）', async () => {
+  // 20 行丢 4 个 = 20% > 10% 阈值 → 应转交回退池；但**关键是没把 16 条好译文扔掉**
+  const chunk = Array.from({ length: 20 }, (_, i) => [`option.K${i}`, `Setting number ${i}`])
+  const input20 = chunk.map(([k, v]) => `${k}=${v}`).join('\n')
   const free = freeProvider()
   const pool = poolProvider()
-  // 实测形态：免费层会把 option.A 翻成 选项A
-  const mangled = zh([['选项.SHADOWS', '阴影'], ['选项.BLOOM', '泛光'], ['选项.AO', '环境光遮蔽']])
-  const { call, calls } = makeCall((p) => (p.id === free.id ? mangled : GOOD))
+  // 免费层只给出前 16 行（漏掉 K16..K19）
+  const partial = chunk.slice(0, 16).map(([k]) => `${k}=译${k.replace('option.', '')}`).join('\n')
+  // 让回退池也失败：这样最终结果就是免费层的部分产出，直接证明「16 条好译文没被扔掉」
+  const { call, calls } = makeCall((p) => (p.id === free.id ? partial : new Error('HTTP 503')))
+
+  const r = await translateChunkTwoLayer({ chunk, input: input20, freeTier: free, poolProviders: [pool], call })
+
+  // 关键：20 行里 16 行拿到译文，只回退 4 行（旧行为会整块丢弃 → 回退 20）
+  assert.equal(r.fallback, 4, '只回退漏掉的 4 行，而不是整块 20 行')
+  assert.equal(r.map.get('option.K0'), '译K0')
+  assert.equal(r.map.get('option.K15'), '译K15')
+  assert.equal(r.map.get('option.K16'), 'Setting number 16', '漏掉的键保留英文原值')
+  // 回退率 20% > 10% → 仍转交回退池再试（由阈值把关，而不是「键不全就全丢」）
+  assert.equal(calls[0], free.id, '先试免费层')
+  assert.equal(calls[1], pool.id, '回退率超标应交回退池再试')
+})
+
+test('免费层漏键但不超阈值 → 直接采纳部分译文，不惊动网关', async () => {
+  const chunk = Array.from({ length: 20 }, (_, i) => [`option.K${i}`, `Setting number ${i}`])
+  const free = freeProvider()
+  const pool = poolProvider()
+  const text = chunk.slice(0, 19).map(([k]) => `${k}=译${k.replace('option.', '')}`).join('\n') // 漏最后 1 个 = 5%
+  const { call, calls } = makeCall((p) => (p.id === free.id ? text : 'SHOULD_NOT_BE_CALLED'))
+
+  const r = await translateChunkTwoLayer({ chunk, input: chunk.map(([k, v]) => `${k}=${v}`).join('\n'), freeTier: free, poolProviders: [pool], call })
+
+  assert.deepEqual(calls, [free.id], '漏 1/20 不该惊动网关')
+  assert.equal(r.fallback, 1)
+  assert.deepEqual(r.providerIds, [free.id])
+})
+
+test('免费层回话里有重复键 → 该键按回退处理（防静默污染）', async () => {
+  const free = freeProvider()
+  const pool = poolProvider()
+  // 键名重命名撞车：option.SHADOWS.comment 被写成 option.SHADOWS
+  const collided = [
+    'option.SHADOWS=阴影',
+    'option.SHADOWS=§e[+]§r 切换阴影渲染的长句说明', // 撞车
+    'option.BLOOM=泛光',
+    'option.AO=环境光遮蔽',
+  ].join('\n')
+  const { call } = makeCall((p) => (p.id === free.id ? collided : GOOD))
 
   const r = await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: free, poolProviders: [pool], call })
 
-  assert.deepEqual(calls, [free.id, pool.id], '键不完整应判失败并落网关')
-  assert.equal(r.fallback, 0)
-  assert.deepEqual(r.providerIds, [pool.id])
-})
-
-test('免费层只丢一个键也算失败（不容忍部分键）', async () => {
-  const free = freeProvider()
-  const pool = poolProvider()
-  const partial = zh([['option.SHADOWS', '阴影'], ['option.BLOOM', '泛光']]) // 缺 option.AO
-  const { call, calls } = makeCall((p) => (p.id === free.id ? partial : GOOD))
-
-  await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: free, poolProviders: [pool], call })
-
-  assert.deepEqual(calls, [free.id, pool.id])
+  // 重复键不可信 → 回退成英文，绝不把长句写进 option.SHADOWS
+  assert.equal(r.map.get('option.SHADOWS'), 'Shadows', '重复键必须回退，不能采信任何一行')
+  assert.ok(r.fallback >= 1)
 })
 
 test('免费层回话完整但回退率偏高 → 仍转交网关，但**不**算失败', async () => {
@@ -325,19 +357,19 @@ test('免费层请求体与网关请求体的 max_tokens 口径一致（都是 8
   assert.equal(FREE_TIER_MAX_TOKENS, GATEWAY_MAX_TOKENS)
 })
 
-test('免费层 provider 自带快速降级与完整性策略', () => {
+test('免费层 provider 自带快速降级策略（无退避、60 秒超时、无需 key）', () => {
   const free = createFreeTierProvider({ model: 'm', url: () => 'u', label: 'x' })
   assert.equal(free.maxAttempts, 1, '单次尝试，无退避重试')
   assert.equal(free.requestTimeoutMs, 60000, '单请求 60 秒超时')
-  assert.equal(free.requiresCompleteKeys, true, '键集合必须完整')
   assert.equal(free.key(), undefined, '免费层不需要 key')
+  // 刻意没有 requiresCompleteKeys：漏键按行回退，由回退率阈值把关
+  assert.equal(free.requiresCompleteKeys, undefined)
 })
 
 test('网关 provider 没有免费层专属字段（行为不许变）', () => {
   const gw = createGatewayProvider({ model: 'm', url: () => 'u', key: () => 'k', label: 'x' })
   assert.equal(gw.maxAttempts, undefined, '网关仍走 MAX_RETRIES')
   assert.equal(gw.requestTimeoutMs, undefined, '网关不加单请求超时')
-  assert.equal(gw.requiresCompleteKeys, undefined)
 })
 
 test('术语表两边不漂移：SYSTEM_PROMPT 的术语都在 INST_TRANS_TERMS 里', () => {

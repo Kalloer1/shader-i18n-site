@@ -122,7 +122,7 @@ if (phDrift) problems.push(`占位符漂移 ${phDrift}`)
 
 if (problems.length) {
   console.error(`\n❌ 产出不合格：${problems.join('、')}`)
-  console.error('   注意：丢键说明免费层把键名也翻掉了，requiresCompleteKeys 会判它失败并降级。')
+  console.error('   丢键说明免费层丢了键名后缀（实测会丢掉孤立的 .comment），流水线会把这些行回退成英文。')
   process.exit(1)
 }
 

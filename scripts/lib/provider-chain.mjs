@@ -14,22 +14,41 @@
  */
 
 /**
- * 解析模型回话里的 `键=值` 行。
+ * 解析模型回话里的 `键=值` 行，**同时**报告重复键。
+ *
+ * 为什么必须报告重复键：模型有时会把 `option.X.comment` 重命名成 `option.X`。
+ * 若 `option.X` 本身也在本块里，两个键就撞车——单纯 last-wins 会让 `option.X` 拿到
+ * `.comment` 的长句，**静默污染界面文案**（键集合反而看起来是完整的，回退率也是 0，
+ * 现有判据完全拦不住）。实测该情形在真实分块上 20 轮 0 次，但它一旦发生就是脏数据，
+ * 因此把重复键单独标出来，由调用方降级处理。
  *
  * 注意 `eq <= 0`：等号在行首（空键）或整行没有等号都跳过，
  * 这样模型输出的解释性文字不会污染键集合。
  *
  * @param {string} text
- * @returns {Map<string,string>}
+ * @returns {{got: Map<string,string>, duplicated: Set<string>}}
  */
-export function parseLangLines(text) {
+export function parseLangResponse(text) {
   const got = new Map()
+  const duplicated = new Set()
   for (const line of text.split('\n')) {
     const eq = line.indexOf('=')
     if (eq <= 0) continue
-    got.set(line.slice(0, eq).trim(), line.slice(eq + 1).trim())
+    const key = line.slice(0, eq).trim()
+    if (got.has(key)) duplicated.add(key)
+    got.set(key, line.slice(eq + 1).trim())
   }
-  return got
+  return { got, duplicated }
+}
+
+/**
+ * 解析模型回话里的 `键=值` 行（只要 Map 的便捷形式）。
+ *
+ * @param {string} text
+ * @returns {Map<string,string>}
+ */
+export function parseLangLines(text) {
+  return parseLangResponse(text).got
 }
 
 /**
@@ -38,19 +57,38 @@ export function parseLangLines(text) {
  * 「译文 === 原文」计回退是有意的：模型回显英文不是译文，
  * 与 pipeline 判回退的 `zh !== v` 同口径（大小写/空格差异不误判）。
  *
+ * **部分回退是合法的**：模型漏掉几个键（实测免费层会丢掉孤立的 `.comment` 后缀）时，
+ * 只把那几行回退成英文，其余译文照用。全有或全无的判据会把整块好译文扔掉 ——
+ * 在「免费层单跑」模式下（网关不可用）那等于整个光影失败。
+ *
+ * 重复键视为**该键不可信**，同样按行回退（防静默污染，见 parseLangResponse）。
+ *
  * @param {Array<[string,string]>} chunk
  * @param {Map<string,string>} got
+ * @param {Set<string>} [duplicated] 回话里重复出现的键
  */
-export function evaluateOutput(chunk, got) {
+export function evaluateOutput(chunk, got, duplicated = new Set()) {
   const map = new Map()
   let fallback = 0
+  const missingKeys = []
+  const duplicatedKeys = []
   for (const [k, v] of chunk) {
+    // 重复键不可信：哪一行对应哪一行分不清，宁可回退也不要写错。
+    if (duplicated.has(k)) {
+      map.set(k, v)
+      fallback++
+      duplicatedKeys.push(k)
+      continue
+    }
     const zh = got.get(k)
     if (zh && zh !== v) map.set(k, zh)
-    else { map.set(k, v); fallback++ }
+    else {
+      map.set(k, v)
+      fallback++
+      if (!got.has(k)) missingKeys.push(k)
+    }
   }
-  const missingKeys = chunk.filter(([k]) => !got.has(k)).map(([k]) => k)
-  return { map, fallback, missingKeys }
+  return { map, fallback, missingKeys, duplicatedKeys }
 }
 
 /** 回退率阈值：超过则视为该提供方这次翻得不够好。 */
@@ -63,9 +101,13 @@ export function fallbackThreshold(chunkLength, ratio = 0.1) {
  *
  * 免费层的失败处理与回退池**故意不同**（见 issue #3）：
  * - 单次尝试、无退避（由 provider 的 `maxAttempts` 在调用方生效）、60 秒超时；
- * - **键集合必须完整**（`requiresCompleteKeys`）：实测免费层会把键名一起翻掉
- *   （`option.A` → `选项A`），那种回话不能当「翻得差」处理，直接算失败；
  * - 失败时调 `onFailure()`（**连续 2 次**才熔断），并返回 null 让调用方落回退池。
+ *
+ * **部分回退不算失败**：模型漏掉几个键时只把那几行回退成英文，其余译文照用。
+ * 实测免费层会以约 60% 的概率丢掉孤立的 `.comment` 后缀（同名主键已命中记忆、
+ * 输入里只剩 `.comment` 时），若按「键集合不完整即整块失败」处理，
+ * 28 行丢 2 个键就会把 26 条好译文全扔掉 —— 在「免费层单跑」模式下等于整个光影失败。
+ * 整体质量由调用方的回退率阈值把关（>10% 才转交回退池）。
  *
  * @returns {Promise<{map: Map<string,string>, fallback: number}|null>}
  */
@@ -78,11 +120,13 @@ export async function tryFreeTier({ chunk, provider, call, signal, log = () => {
     log(`[免费层] 失败（${err?.message?.slice(0, 120) ?? err}），降级到回退池`)
     return null
   }
-  const got = parseLangLines(text)
-  const evaluated = evaluateOutput(chunk, got)
-  if (provider.requiresCompleteKeys && evaluated.missingKeys.length > 0) {
-    log(`[免费层] 回话键集合不完整（丢 ${evaluated.missingKeys.length}/${chunk.length} 个键），判失败，降级到回退池`)
-    return null
+  const { got, duplicated } = parseLangResponse(text)
+  const evaluated = evaluateOutput(chunk, got, duplicated)
+  if (evaluated.duplicatedKeys.length > 0) {
+    log(`[免费层] 回话里有重复键 ${evaluated.duplicatedKeys.length} 个（疑似键名重命名撞车），这些行按回退处理`)
+  }
+  if (evaluated.missingKeys.length > 0) {
+    log(`[免费层] 漏掉 ${evaluated.missingKeys.length}/${chunk.length} 个键，这些行回退成英文（其余译文照用）`)
   }
   return evaluated
 }
@@ -223,8 +267,9 @@ export async function translateChunkTwoLayer({
         }
         break
       }
-      const got = parseLangLines(text)
-      const evaluated = evaluateOutput(chunk, got)
+      // 重复键也要挡：键名重命名撞车会让短键拿到 .comment 的长句（静默污染）。
+      const { got, duplicated } = parseLangResponse(text)
+      const evaluated = evaluateOutput(chunk, got, duplicated)
       if (evaluated.fallback < bestFallback) {
         best = evaluated.map
         bestFallback = evaluated.fallback
