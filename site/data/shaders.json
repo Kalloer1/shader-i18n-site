@@ -17863,6 +17863,26 @@
       },
       "langVersions": [],
       "hasNativeZhCN": true
+    },
+    {
+      "id": "plusm1",
+      "modrinth": {
+        "slug": "plusm1",
+        "projectId": "fIae0ZD5"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "2.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/plusm1/2.0/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/958850fbfb1c",
+          "updatedAt": "2026-10-16",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/958850fbfb1c"
     }
   ]
 }
