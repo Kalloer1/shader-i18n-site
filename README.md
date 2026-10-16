@@ -21,28 +21,27 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 - 资源包/材质包不能替代语言文件注入。文件应放在光影包内部的 `shaders/lang/zh_CN.lang`。
 - 语言文件输出为 UTF-8 无 BOM，键名、占位符（如 `%s`、`%value%`）和格式码（如 `§`）必须保留。
 
-## 当前状态（数据快照：2026-10-14）
+## 当前状态（数据快照：2026-10-16）
 
 | 项目 | 当前值 | 说明 |
 |---|---:|---|
 | Modrinth 光影目录 | 1000 个 | `site/data/modrinth-catalog.json`，由同步脚本更新 |
-| `shaders.json` 条目 | 549 个 | 人工维护的版本映射及同步元数据（含新增 doomplus 翻译） |
-| 已有 `langVersions` 的光影 | 546 个 | 含目录外的历史精选条目（auroralite、veridian） |
-| GitHub 中的 `zh_CN.lang` 文件 | 604 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
-| 夸克镜像链接 | 545 个版本有 `quark` 字段 | 546 个已汉化光影中 545 个的最新版本可用（含 catalog/manual 兜底），doomplus 暂无 |
-| 自带中文的目录项目 | 23 个 | 页面按四态优先级统计 |
+| CurseForge 目录 | 749 个 | `site/data/curseforge-catalog.json`，由同步脚本更新（采集失败不影响主链） |
+| `shaders.json` 条目 | 547 个 | 人工维护的版本映射及同步元数据 |
+| 已有 `langVersions` 的光影 | 542 个 | 含目录外的历史精选条目 |
+| GitHub 中的 `zh_CN.lang` 文件 | 601 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
+| 自带中文的目录项目 | 33 个 | 以 `modrinth-catalog.json` 条目的 `hasNativeZhCN` 标记为准 |
 | 明确缺少 `en_US.lang` | 439 个 | 以 `modrinth-catalog.json` 条目的 `noEnUsLang` 标记为准 |
-| 尚未登记翻译的可处理项目 | 0 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
-| 翻译术语记忆 | 32,160 条 | `site/data/glossary.json` |
-| 生成的详情页 | 562 个 | `site/shaders/`，由构建脚本生成；仅展示已汉化（539）与自带中文（23），其余 438 条无英文源数据保留在 catalog 但不生成页面 |
+| 尚未登记翻译的可处理项目 | 1 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
+| 翻译术语记忆 | 39,448 条 | `site/data/glossary.json` |
+| 生成的详情页 | 构建期生成 | `site/shaders/`（**未入库**，`.gitignore` 排除）；只展示已有本站汉化或自带中文的项目 |
 
 这些数字是当前快照，不是永久承诺；Modrinth 目录会在每日同步后变化。
 
 ### 翻译状态说明
 
-- 新的翻译默认使用免费模型池（`muse-spark-1.3-contributor-free` / `muse-spark-1.2-contributor-free` / `mimo-v2.6-flash-free`）生成，并标记为“AI 初翻”，除非已经人工校对。历史记录中的模型名称保留作为历史来源信息。
+- 新的翻译由自建网关模型池生成（默认 `deepseek-v4.1-flash,deepseek-v4-flash,u2-flash`），并标记为“AI 初翻”，除非已经人工校对。历史记录中的模型名称保留作为历史来源信息。翻译提供方即将改为**免费层优先、网关回退**，见《历史决策摘要》第 7 条。
 - 自带中文的项目应优先使用光影包自身的 `zh_CN.lang`，正常情况下跳过本站翻译。
-- 目录中 8 个自带中文项目优先使用光影包本体自带的 `shaders/lang/zh_CN.lang`；其中原先误登记本站翻译的 2 个项目已清理。
 - “缺少 `en_US.lang`”与“尚未登记”是两种不同状态，不能合并写成一个待翻译数量。
 
 ## 用户安装方法
@@ -77,7 +76,7 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 ### 语言校验闸门
 
-`npm run validate:lang`（`scripts/validate-lang.mjs`）在本地与 CI 都会跑，不传参时批量校验 `site/public/lang` 下全部 460 个文件。
+`npm run validate:lang`（`scripts/validate-lang.mjs`）在本地与 CI 都会跑，不传参时批量校验 `site/public/lang` 下全部 601 个 `zh_CN.lang` 文件。
 
 - **失败（退出码 1）**：缺键/多键、译文引入的畸形 `§` 序列、非 `%%` 占位符差异、BOM、翻译新增的重复键、找不到英文源。
 - **警告（不阻断）**：`§` 格式码数量差异、`%%` 差异、上游 EN 自带的乱码、继承自上游的重复键、值与英文相同。
@@ -93,12 +92,13 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 **B. 本地手动** —— 双击仓库根目录的 `start-translation.cmd`，或执行 `npm run translate -- --top 1` / `npm run translate -- --ids a,b,c`：
 
-1. 如果当前 PowerShell 环境已经有 `LLM_API_KEY`，脚本直接使用它；否则会在窗口中临时询问 API Key。
-2. API Key 只保存在本次进程内，不会写入仓库文件。
-3. 脚本默认使用免费模型池，并以 10 并发处理前 125 个候选。
-4. 产出后由自动校验闸门判定是否可上线，不再需要人工确认。
+1. **当前**：需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`），否则脚本直接报错退出；脚本会在窗口中临时询问 API Key。
+2. **待实现**：翻译提供方改为免费层优先后，免费层不需要任何 key，无 key 也能跑（只在落到网关回退池时才需要 key）。
+3. API Key 只保存在本次进程内，不会写入仓库文件。
+4. 脚本以 10 并发处理候选，单条光影内的分块并发默认 3。
+5. 产出后由自动校验闸门判定是否可上线，不再需要人工确认。
 
-如果要长期使用，建议把 `LLM_API_KEY` 配置为 Windows 用户环境变量；不要把 Key 写进 `.mjs`、`.cmd`、README 或 GitHub 仓库。
+如果要长期使用回退池，建议把 `LLM_API_KEY` 配置为 Windows 用户环境变量；不要把 Key 写进 `.mjs`、`.cmd`、README 或 GitHub 仓库。
 
 ## 运行流程与自动化边界
 
@@ -123,25 +123,33 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 6. 保存本次目录快照 `site/data/modrinth-catalog.prev.json`。
 7. 如果 JSON 有变化，Actions 自动执行 `git add`、commit、push；没有变化则不产生提交。
 
-该流只负责“发现项目、同步 Modrinth 元数据、登记新增项”，**不会执行 `npm run translate`，也不会调用任何 LLM**。当前已移除 CurseForge/CosForge 集成，因此不需要 `CURSEFORGE_API_KEY` 或 CosForge API Key。
+该流只负责“发现项目、同步 Modrinth 元数据、登记新增项”，**不会执行 `npm run translate`，也不会调用任何 LLM**。
 
-本次隔离实测结果（不修改生产数据）：Modrinth 目录成功拉取 886 个项目；抽取 `complementary-reimagined`、`complementary-unbound`、`bsl-shaders` 三个项目后，三者元数据均成功写入，未设置 CurseForge API Key 也能完成同步，并成功生成 catalog 快照。生产仓库当前目录快照为 887 个项目，数量会随 Modrinth 变化。
+CurseForge 目录采集是 `continue-on-error: true` 的可选步骤（`scripts/fetch-curseforge-catalog.mjs`，写 `site/data/curseforge-catalog.json`）：CF 挂了绝不能影响 Modrinth 主链，因此需要 `CURSEFORGE_API_KEY`；未配置时该步骤失败但整条 workflow 仍为绿。
+
+**写者耦合**：`sync.yml` 与 `translate.yml` 都会 commit + push `main`，两者共用 `concurrency: group: repo-write`（`cancel-in-progress: false`）以避免互相挤掉；两个 workflow 都用**显式路径** `git add`，禁止 `git add -A`。
 
 ### 2. 翻译流水线（站点触发或本地手动）
 
 入口：`npm run translate`，实现：`scripts/pipeline.mjs`。由 `.github/workflows/translate.yml` 在站点 `/request` 点「开启翻译」时调用；也可在本地手动运行。
 
-前置条件：配置 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`）。接口默认指向自建中转站 `https://api.888424.xyz/v1`，换站时用 `LLM_BASE_URL` 覆盖（优先级最高），指向 OpenAI 兼容接口。默认模型池为 `muse-spark-1.3-contributor-free,muse-spark-1.2-contributor-free,mimo-v2.6-flash-free`，并发默认 10。
+前置条件（**当前已实现的行为**）：翻译提供方为单一自建中转站 `https://api.888424.xyz/v1`（OpenAI 兼容），需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`），换站时用 `LLM_BASE_URL` 覆盖。默认模型池 `deepseek-v4.1-flash,deepseek-v4-flash,u2-flash`（来自 `.github/workflows/translate.yml`）。无 key 时脚本直接报错退出。
+
+> 📌 **已定案、尚未实现：免费层优先**。决策是把提供方改为**两层**：免费层（bilibili 官方免费公网 API `https://index-translate.bilibili.com/v1`，模型 `Index-Translate-35B-A3B`，**无需 API key**）先跑，失败才落到上文的网关回退池。它是无 SLA 的公开服务，可能随时变化或下线，因此**不替代**回退池。选它的依据是实测：用本站真实英文源跑 60 行分块，键 60/60 保留、`§` 零差异、回退 0~1 行、4.8~11 秒。详细决定见《历史决策摘要》第 7 条；本节其余内容描述的是**当前**行为。
+
+并发默认 10（`LLM_CONCURRENCY`）；单条光影内的分块并发默认 3、上限 4（`LLM_CHUNK_CONCURRENCY`）。
+
+> ⚠️ **回退池是“轮班”，不是优先级链**：`nextProviderOrder` 按 `providerCursor++ % list.length` 轮转，因此列表里每个模型都会分到约 1/N 的分块。**只有「格式严格遵守 + 零丢键」的模型才能进这个列表**——「能用」不是入选理由，弱模型放进来会实打实拉低 1/N 的产出。历史已实测淘汰：`tencent/Hunyuan-MT-7B`（改写键名、丢键）、`hy3`（推理 token 吃光预算、正文全空）、`muse-spark-*` / `mimo-v2.6-flash-free`（网关上已不存在）。
 
 逐步流程：
 
-1. 读取 `site/data/modrinth-catalog.json`、`site/data/shaders.json` 和 `site/data/glossary.json`。
+1. 读取 `site/data/modrinth-catalog.json`、`site/data/curseforge-catalog.json`、`site/data/shaders.json` 和 `site/data/glossary.json`。
 2. 筛选候选项目：排除已自带 `zh_CN.lang` 的项目、已有最新汉化映射的项目，以及 `noEnUsLang === true`（缺少 `en_US.lang`）的项目。
-3. 对候选项目请求 Modrinth 最新版本，下载主文件，并在 zip 内查找 `shaders/lang/en_US.lang` 与 `shaders/lang/zh_CN.lang`。
-4. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，置 `noEnUsLang` 标记并跳过。
-5. 读取术语记忆 `glossary.json`；完全匹配的英文值直接复用已有中文，未命中的值交给模型翻译，新的映射在处理后写回术语记忆。
-6. 解析英文语言文件，按约 60 行拆分为多个块。模型池按分块轮转调用；单个模型失败或回退率过高时自动尝试下一个模型。
-7. 默认使用免费模型池 `muse-spark-1.3-contributor-free`、`muse-spark-1.2-contributor-free`、`mimo-v2.6-flash-free`，光影级并发默认 10。
+3. 跨平台去重：若同一光影在 Modrinth 侧已有汉化，直接判完成，不消耗任何 LLM 预算。
+4. 对候选项目请求最新版本，下载主文件，并在 zip 内查找 `shaders/lang/en_US.lang` 与 `shaders/lang/zh_CN.lang`（CurseForge 分支按 release 优先 + fileDate 倒序逐个候选文件尝试）。
+5. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，置 `noEnUsLang` 标记并跳过。
+6. 读取术语记忆 `glossary.json`；按剥离 `§` 格式码后的英文骨架完全匹配的直接复用已有中文，未命中的值交给模型翻译，新的映射在处理后写回术语记忆。
+7. 解析英文语言文件，按 60 行（`CHUNK_LINES`）拆分为多个块。**待实现**：先全部走免费层，失败（超时/非 2xx/空正文）才落到回退池；**当前**：直接由模型池按分块轮转调用，单个模型失败或回退率过高时自动尝试下一个模型。
 8. 要求模型只翻译等号右侧，保留 key、占位符（如 `%s`、`%value%`）、`§` 格式码、注释和文件结构。
 9. 生成 `site/public/lang/<shader-id>/<shader-version>/zh_CN.lang`，文件头会明确写入“AI 初翻，未人工校对”。
 10. 调用 `scripts/validate-lang.mjs` 校验 key 集合、占位符、格式码、编码和结构；失败或回退率过高时不上线、不登记，留待下次重试。
@@ -149,6 +157,8 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 12. 产出后立即进入发布链路（Git commit/push → Cloudflare 部署），不再有「人工确认」这一步。
 
 **质量来源**：唯一的质量闸门是自动校验（`scripts/validate-lang.mjs`：键集合、`§` 格式码数量、占位符种类与数量、UTF-8 无 BOM），加上玩家反馈。校验不通过则**不写文件、不登记、不上线**。玩家反馈触发重译。
+
+**已知漂移（仅适用于待实现的免费层）**：免费层会把 `%%`（转义的字面百分号）压成 `%`，实测约 0.01% 的行。`validate-lang.mjs` 已把 `%%` 差异归为**只警告不阻断**，故不会卡发布；此处如实记录，不做后处理。
 
 所以，翻译内容生成与启动都是自动的：站点 `/request` 页点「开启翻译」→ Worker 触发 GitHub Actions → 逐条翻译 → 自动校验 → 自动提交发布。API key 与额度由仓库 Secrets 负责。
 
@@ -180,28 +190,35 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 site/
 ├── index.md                          # 首页页面源文件
 ├── guide/install.md                  # 安装教程页面
-├── shaders/<id>.md                   # 构建期生成的详情页
+├── shaders/<id>.md                   # 构建期生成的详情页（未入库，.gitignore 排除）
 ├── public/lang/<id>/<ver>/zh_CN.lang # 可分发汉化文件
 ├── data/
 │   ├── modrinth-catalog.json         # Modrinth 目录
+│   ├── curseforge-catalog.json       # CurseForge 目录
 │   ├── shaders.json                  # 人工维护的版本映射
-│   ├── glossary.json                 # 翻译记忆
+│   └── glossary.json                 # 翻译记忆
+├── .vitepress/                       # VitePress 配置与主题（data.js 的展示判据必须与生成器逐字一致）
 scripts/
 ├── fetch-catalog.mjs                 # 拉取 Modrinth 目录
+├── fetch-curseforge-catalog.mjs      # 拉取 CurseForge 目录（可选）
 ├── sync-metadata.mjs                 # 同步元数据
-├── pipeline.mjs                      # 免费模型池翻译流水线（--top / --ids）
+├── pipeline.mjs                      # 翻译流水线（--top / --ids）
+├── lib/                              # 纯函数模块：llm-guard / pool / glossary / cross-platform / cf-api
 ├── validate-lang.mjs                 # lang 结构校验（唯一质量闸门）
+├── pack-lang-sources.mjs             # 合并式重打包英文源 → data/lang-sources.json.gz
 ├── mirror.mjs                        # 上传 lang 到夸克网盘并写回分享链接
 ├── gen-shader-pages.mjs              # 生成详情页
 ├── detect-changes.mjs                # 检测新增目录项目
 └── release.mjs                       # 提交并推送发布
-shared/tencent-docs.mjs               # 腾讯文档字段/状态枚举的唯一来源（Worker 与 Node 共用）
+shared/                               # Worker 与 Node 共用：tencent-docs / submit-limit / zip-range
 tests/                                # node --test：数据契约 + 校验器回归
+data/lang-sources.json.gz             # 英文源压缩包（CI 校验用，sources/ 未入库）
 worker/index.js                       # 请求表单 + KV 队列 + 翻译触发的 Cloudflare Worker
 .github/workflows/
 ├── deploy.yml                        # 测试/校验 → 构建 → 部署 Worker 与 Pages
 ├── sync.yml                          # 每日目录/元数据同步
-└── translate.yml                     # 站点触发的翻译 + 镜像 + 自动提交
+├── translate.yml                     # 站点触发的翻译 + 镜像 + 自动提交
+└── sync-worker-secrets.yml           # GitHub secret → Worker（含空值闸门）
 ```
 
 `sources/` 是本地英文源文件目录，已加入 `.gitignore`，不会进入公开仓库。
@@ -212,26 +229,28 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 
 - 文件：`.github/workflows/deploy.yml`
 - 触发：推送到 `main` 或手动触发
-- 步骤：安装依赖 → `npm run build` → 使用 Wrangler 部署到 Cloudflare Pages
+- 步骤：安装依赖 → `npm test` → `npm run validate:lang` → `npm run build` → **先** Deploy Worker（wrangler）→ **再** Deploy Pages
 - Secrets：`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`
+- 顺序不能颠倒：Worker 必须先于 Pages 部署，否则线上 API 仍是旧版本。删除人工质量确认后，这里的测试 + 全量 lang 校验是唯一的质量防线。
 
 ### 每日同步
 
 - 文件：`.github/workflows/sync.yml`
 - 触发：每天 UTC 21:00，即北京时间次日 05:00；也支持手动触发
-- 步骤：同步 Modrinth 目录 → 同步元数据 → 检测新增目录项目 → 尝试写入腾讯文档 → 自动提交变更
-- Secret：`TENCENT_DOCS_TOKEN`（可选；仅用于写入腾讯文档智能表格）
+- 步骤：同步 Modrinth 目录 → 同步元数据 → 检测新增目录项目 → 尝试写入腾讯文档 → 拉取 CurseForge 目录（可选）→ 自动提交变更
+- Secret：`TENCENT_DOCS_TOKEN`（可选；仅用于写入腾讯文档智能表格）、`CURSEFORGE_API_KEY`（可选；仅用于拉取 CurseForge 目录，缺失时该步骤失败但整条 workflow 仍为绿）
 - 注意：此工作流不执行翻译，不会自动调用 LLM。
+- 写者耦合：本工作流与 `translate.yml` 共用 `concurrency: group: repo-write`，因为两者都会 commit + push `main`。
 
 ### 请求翻译链路
 
-站内 `/request` 页面将请求发送到 Cloudflare Worker，Worker 再调用腾讯文档智能表格 API。Worker 使用的 Secret 是 `TENCENT_DOCS_TOKEN`。
+站内 `/request` 页面将请求发送到 Cloudflare Worker，Worker 写入 KV 队列（权威状态源）并**尽力**镜像到腾讯文档智能表格；管理区口令校验后 `POST /translate` 触发 GitHub Actions。Worker 使用的 Secret 包括 `TENCENT_DOCS_TOKEN`、`TRANSLATE_PASSPHRASE`、`INTERNAL_STATUS_TOKEN`、`GITHUB_PAT`、`BREVO_API_KEY`、`EMAIL_FROM`、`LLM_API_KEY`（经 `sync-worker-secrets.yml` 从 GitHub secret 同步）。
 
 ## 密钥与安全
 
 - API key、token、Cookie 不入库，也不要写进 Markdown、JSON 或 GitHub Actions 日志。
 - GitHub Actions 使用 GitHub Secrets。
-- 翻译流水线的本地密钥：`LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`）；接口默认指向自建中转站 `https://api.888424.xyz/v1`，换站时用 `LLM_BASE_URL` 覆盖（优先级最高）；默认免费模型池并发 10。
+- 翻译流水线的本地密钥：`LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`）；接口默认指向自建中转站 `https://api.888424.xyz/v1`，换站时用 `LLM_BASE_URL` 覆盖（优先级最高）；默认模型池并发 10。
 - 本机 Wrangler 可使用 Cloudflare Global API Key + 邮箱环境变量 `CLOUDFLARE_API_KEY`、`CLOUDFLARE_EMAIL`；已验证可读取账户和 Pages 项目。不要把 Global API Key 提交到仓库。
 - GitHub 的 Deploy workflow 当前使用更适合 CI 的 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID` Secrets；这与本机 Global API Key + Email 是两套认证方式。
 - Worker 使用 Wrangler Secret 配置 `TENCENT_DOCS_TOKEN`；每日同步中的同名 GitHub Secret 是可选的。
@@ -245,6 +264,8 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 4. **全量目录**：从 Modrinth 拉取已发布的 shader 项目，不再使用下载量门槛；自带中文项目仍展示在目录中。
 5. **自动翻译直接发布**：AI 初翻经自动校验闸门通过后直接提供下载，文件头醒目标注“未人工校对”；不再有人工确认环节，玩家反馈触发重译。
 6. **双仓方案已废弃**：早期曾计划将数据和公开站点分仓，2026-09-11 已合并为单仓；当前不再按双仓方案维护。
+7. **翻译提供方分层：免费层优先、自建网关回退**（已定案，待实现）。主路改为 bilibili 官方免费公网 API（`https://index-translate.bilibili.com/v1`，`Index-Translate-35B-A3B`，无需 key），自建网关降为回退池。它**不替代**回退池：免费层是无 SLA 的公开服务，可能随时变化或下线。免费层用独立环境变量，**不参与 `LLM_MODELS` 与站点管理员勾选**（否则管理员一勾模型就会静默关掉免费层）。免费层失败快速降级（单次尝试、无退避、60 秒超时），不占满每条光影的 15 分钟预算。
+8. **不再新增 ADR 目录**：`docs/adr/` 已于 2026-10-09 随文档合并删除（提交 `1540269`），本项目正式说明文档就是本 README；后续决策追加到本节，不重新拆目录。
 
 ## 待办事项
 
@@ -253,7 +274,7 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 - 将 `release.mjs` 与夸克上传流程整合；当前 release 只负责 git add/commit/push。
 - 完成 Worker 端到端测试：前端表单 → Worker → 腾讯文档智能表格。
 - 继续观察 `sync.yml` 的定时运行结果；主链路已在隔离目录完成实测。
-- 处理 14 个尚未登记翻译、且已有可获取英文源的目录项目。
+- 处理尚未登记翻译、且已有可获取英文源的目录项目（当前快照：1 个）。
 
 ### 低优先级
 
@@ -271,6 +292,8 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 - **自带中文**：光影包自身已经包含 `shaders/lang/zh_CN.lang`。
 - **AI 初翻**：由 LLM 生成、尚未人工校对的汉化文件。
 - **全量目录**：由 Modrinth API 同步的站内项目列表，不代表每个项目都有本站汉化文件。
+- **免费层**：翻译流水线默认优先使用的公开翻译接口（bilibili Index-Translate 免费公网 API），无需 API key，无 SLA。已定案待实现。
+- **回退池**：免费层不可用时承接翻译的自建网关模型集合（`LLM_MODELS`）。成员是**轮班**而非优先级，且只允许「零丢键」的模型进入。
 
 ## 文档边界
 
