@@ -102,15 +102,22 @@ jobs:
           # （见 scripts/pipeline.mjs nextProviderOrder），所以**列表里每个模型都会分到约 1/N 的分块**。
           # 因此**只有「格式严格遵守 + 零丢键」的模型才能进这个列表** —— 「能用」不是入选理由，
           # 弱模型放进来会实打实拉低 1/N 的产出（不会因为排在后面就被跳过）。
-          # 入选前必须实测：POST /chat/completions 发 7~12 行真实 lang 条目（含 .comment 键与 § 颜色码），
+          # 入选前必须实测：POST /chat/completions 发真实 lang 条目（含 .comment 键与 § 颜色码），
           # 检查是否严格回 key=value、有没有丢键、§ 码是否原样保留。
           # 已实测淘汰：tencent/Hunyuan-MT-7B（改写键名、丢 option.WATER_WAVES.comment）、
           # hy3（推理 token 吃光预算 → 正文全空）、tencent/Hy4-preview 与 A13B（21.5s/12.7s 过慢）、
-          # step-5-preview（推理模型、截断）、aixhub/*（429 限流）、gpt-6-astra（402 额度耗尽）。
-          # 当前三个：零丢键、§ 颜色码原样保留、2~9 秒。
+          # step-5-preview（推理模型、截断）、aixhub/*（429 限流）、gpt-6-astra（402 额度耗尽）、
+          # deepseek-v4.1-flash / deepseek-v4-flash / u2-flash（2026-10-17 网关账号池空，全部 503
+          # No available channel）、opencode-zen-free/nemotron-3.5-lightning-free（90s 超时）。
+          #
+          # 当前三个（2026-10-17 实测，网关 opencode-zen-free 免费层）：
+          #   space-bunny-free  2.1~3.2s  37/37 键、§ 与占位符零漂移
+          #   beam-free         2.6~3.9s  同上；30 并发三轮 90/90 成功
+          #   big-pickle        5.3~7.9s  同上
+          # 实测口径：真实形态 37~74 行分块（含 .comment 长句、%s / %1$s 占位符、§e[+]§r 颜色码）。
           # 该输入来自 /request 页管理员口令门禁后的模型多选（Worker 已对网关实时列表做白名单校验，
           # 绝不允许任意字符串透传进 workflow）。留空时回退到仓库默认列表。
-          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'deepseek-v4.1-flash,deepseek-v4-flash,u2-flash' }}
+          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'opencode-zen-free/space-bunny-free,opencode-zen-free/beam-free,opencode-zen-free/big-pickle' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
