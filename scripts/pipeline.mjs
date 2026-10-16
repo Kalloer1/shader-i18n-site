@@ -44,6 +44,9 @@ import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
 import { EmptyResponseError, isProviderNoOutput, providerUnusableMessage } from './lib/llm-guard.mjs'
 import { stripSkeleton, isUsableMemory, shouldRememberMemory } from './lib/glossary.mjs'
 import { runPool, DEFAULT_CHUNK_CONCURRENCY, MAX_CHUNK_CONCURRENCY } from './lib/pool.mjs'
+// 提示词与请求体形状是 **provider 的属性**，不是模块级常量：免费层要走官方 instTrans 形态、
+// 且不继承 LLM_EXTRA_BODY。抽象在 lib 里，超时/重试/熔断仍留在本文件（那是流水线策略）。
+import { createGatewayProvider } from './lib/providers.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_FILE = join(ROOT, 'site/data/modrinth-catalog.json')
@@ -54,7 +57,7 @@ const LANG_DIR = join(ROOT, 'site/public/lang')
 const SOURCES_DIR = join(ROOT, 'sources')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
-const DEFAULT_MODEL = 'tencent/Hunyuan-MT-7B'
+const DEFAULT_MODEL = 'opencode-zen-free/space-bunny-free'
 const DEFAULT_CONCURRENCY = 10
 const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 const MAX_RETRIES = 10
@@ -199,20 +202,13 @@ function providerHostLabel(url) {
 
 function createProvider(model) {
   const isDefault = !LLM_ENV_SET && model === DEFAULT_MODEL
-  return {
-    id: model,
-    name: isDefault ? `Hunyuan-MT-7B（${providerHostLabel(DEFAULT_BASE_URL)}）` : `${model}（${providerHostLabel(LLM_URL())}）`,
+  return createGatewayProvider({
+    model,
     url: LLM_URL,
     key: LLM_KEY,
-    body: (messages) => ({
-      model,
-      messages,
-      temperature: 0.2,
-      max_tokens: 8192,
-      ...LLM_EXTRA_BODY,
-    }),
-    extract: (j) => j.choices?.[0]?.message?.content,
-  }
+    extraBody: LLM_EXTRA_BODY,
+    label: isDefault ? `space-bunny-free（${providerHostLabel(DEFAULT_BASE_URL)}）` : `${model}（${providerHostLabel(LLM_URL())}）`,
+  })
 }
 
 const providers = LLM_MODELS.map(createProvider)
@@ -306,29 +302,6 @@ function persistGlossary() {
   })
 }
 
-// ---------- 翻译提示词 ----------
-const SYSTEM_PROMPT = `你是 Minecraft Java 版光影包（Iris / OptiFine）语言文件（.lang）的专业本地化译者。输入每行形如 "键=英文值"，输出 "键=中文值"。
-
-硬性规则（违反即任务失败）：
-1. 键名（= 左侧）一字不改；输出行数与输入一致、顺序相同；禁止合并或拆分行。
-2. 占位符（%s、%value%、%n$s 等）与格式码（§ 及其后一个字符，如 §e、§r、§a[+]§c[-]）的数量、种类、相对位置必须与原文完全一致。
-3. 只输出结果行，禁止解释、禁止序号、禁止 markdown 代码块。
-
-术语表（全篇统一，符合 Minecraft 社区习惯）：
-chunk=区块｜biome=群系｜vanilla=原版｜shaderpack=光影包｜resource pack=资源包
-ambient occlusion/AO=环境光遮蔽｜bloom=泛光｜light shafts/volumetric light=体积光｜god rays=体积光
-depth of field/DoF=景深｜caustics=焦散｜specular=高光｜normal mapping=法线贴图｜parallax=视差
-emissive=自发光｜anti-aliasing=抗锯齿｜tonemap=色调映射｜saturation=饱和度｜vibrance=自然饱和度
-profile=配置档｜shadowmap=阴影贴图｜skybox=天空盒｜fog=雾｜translucent=半透明
-motion blur=运动模糊｜vignette=暗角｜chromatic aberration=色差｜lens flare=镜头光晕｜refraction=折射
-
-风格规则：
-4. "More xxx Config" 类界面名译为「xxx 高级设置」；"xxx Strength/Amount" 译为「xxx 强度/数量」。
-5. 质量档位用 低配/中配/高配/极高；数值型取值（"0.50"、"8K"、"5 cm"、"10%"）保持原样。
-6. 专有名词保留原文：TAA、FXAA、labPBR、SEUS、PBR、LOD、Voxy、Distant Horizons、Perlin、Worley、OptiFine、Iris、BSL。
-7. 界面文案要简洁（游戏设置空间有限），长说明句（.comment）译得通顺完整、不偷懒减行。
-8. 语义不明的键保持英文原值，不要猜。`
-
 // ---------- 极简 zip 读取（只读，支持 Stored/Deflate，不处理 zip64） ----------
 function zipEntries(buf) {
   const eocdSig = 0x06054b50
@@ -408,10 +381,8 @@ async function translateChunk(chunk, activeProviders, signal, { label = '', isFi
     for (let attempt = 1; attempt <= 3 && bestFallback > threshold; attempt++) {
       let text
       try {
-        text = await chatWithRetry(activeProvider, [
-          { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'user', content: input },
-        ], signal)
+        // 提示词由 provider 自己给：网关 provider 返回的 messages 与改造前逐字一致。
+        text = await chatWithRetry(activeProvider, activeProvider.buildPrompt(input), signal)
       } catch (err) {
         // 正文为空是专门错误类型：不重试，文案要区分开（否则会把「没重试」写成「重试耗尽」）。
         const why = err instanceof EmptyResponseError ? '正文为空，不重试' : '重试耗尽'
