@@ -1,0 +1,32 @@
+name: free-tier probe (bilibili reachability from CI)
+
+# 一次性诊断（同 cf-probe.yml 的先例）：**只读、不写仓库、不碰 secrets**。
+#
+# 为什么必须探：免费层 index-translate.bilibili.com 是国内公开服务，
+# 而 GitHub runner 在境外。若它被地域限制，那么「免费层优先」在 CI 里根本跑不起来，
+# 整个方案需要重新考虑（例如改回网关优先、或换 runner）。
+#
+# 本机实测 200/1.0s 不能替代 CI 出口的实测 —— 出口 IP 完全不同。
+#
+# 另外顺带记录真实 lang 分块的产出质量（键集合 / § 码 / 占位符漂移），
+# 这是 issue #6 需要的证据的一部分。
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Probe bilibili free tier from CI egress
+        run: node scripts/free-tier-probe.mjs
