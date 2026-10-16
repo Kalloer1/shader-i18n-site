@@ -40,7 +40,7 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 
 ### 翻译状态说明
 
-- 新的翻译由自建网关模型池生成（默认 `deepseek-v4.1-flash,deepseek-v4-flash,u2-flash`），并标记为“AI 初翻”，除非已经人工校对。历史记录中的模型名称保留作为历史来源信息。翻译提供方即将改为**免费层优先、网关回退**，见《历史决策摘要》第 7 条。
+- 新的翻译默认由**免费层**（bilibili Index-Translate 公开 API）生成，失败才落到自建网关模型池；两者都标记为“AI 初翻”，除非已经人工校对。`langVersions[].contributors` 会写明实际产出方（「免费层 X」或「回退池 Y」），混合产出两边都写。历史记录中的模型名称保留作为历史来源信息。见《历史决策摘要》第 7 条。
 - 自带中文的项目应优先使用光影包自身的 `zh_CN.lang`，正常情况下跳过本站翻译。
 - “缺少 `en_US.lang`”与“尚未登记”是两种不同状态，不能合并写成一个待翻译数量。
 
@@ -92,8 +92,8 @@ npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合
 
 **B. 本地手动** —— 双击仓库根目录的 `start-translation.cmd`，或执行 `npm run translate -- --top 1` / `npm run translate -- --ids a,b,c`：
 
-1. **当前**：需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`），否则脚本直接报错退出；脚本会在窗口中临时询问 API Key。
-2. **待实现**：翻译提供方改为免费层优先后，免费层不需要任何 key，无 key 也能跑（只在落到网关回退池时才需要 key）。
+1. **已实现**：免费层不需要任何 key，**无 key 也能跑**（以「免费层单跑」模式运行，缺 key 时只打印警告）；只在落到网关回退池时才需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`）。同时用 `FREE_TIER_ENABLED=0` 关掉免费层且没有 key 时，仍然报错退出。
+2. 有 key 时脚本会在窗口中临时询问 API Key。
 3. API Key 只保存在本次进程内，不会写入仓库文件。
 4. 脚本以 10 并发处理候选，单条光影内的分块并发默认 3。
 5. 产出后由自动校验闸门判定是否可上线，不再需要人工确认。
@@ -133,13 +133,20 @@ CurseForge 目录采集是 `continue-on-error: true` 的可选步骤（`scripts/
 
 入口：`npm run translate`，实现：`scripts/pipeline.mjs`。由 `.github/workflows/translate.yml` 在站点 `/request` 点「开启翻译」时调用；也可在本地手动运行。
 
-前置条件（**当前已实现的行为**）：翻译提供方为单一自建中转站 `https://api.888424.xyz/v1`（OpenAI 兼容），需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`），换站时用 `LLM_BASE_URL` 覆盖。默认模型池 `deepseek-v4.1-flash,deepseek-v4-flash,u2-flash`（来自 `.github/workflows/translate.yml`）。无 key 时脚本直接报错退出。
+前置条件（**当前已实现的行为**）：翻译提供方是**两层**。
 
-> 📌 **已定案、尚未实现：免费层优先**。决策是把提供方改为**两层**：免费层（bilibili 官方免费公网 API `https://index-translate.bilibili.com/v1`，模型 `Index-Translate-35B-A3B`，**无需 API key**）先跑，失败才落到上文的网关回退池。它是无 SLA 的公开服务，可能随时变化或下线，因此**不替代**回退池。选它的依据是实测：用本站真实英文源跑 60 行分块，键 60/60 保留、`§` 零差异、回退 0~1 行、4.8~11 秒。详细决定见《历史决策摘要》第 7 条；本节其余内容描述的是**当前**行为。
+1. **免费层（默认主路）**：bilibili 官方免费公网 API `https://index-translate.bilibili.com/v1`，模型 `Index-Translate-35B-A3B`，**无需 API key**。用独立环境变量配置（`FREE_TIER_ENABLED` / `FREE_TIER_BASE_URL` / `FREE_TIER_MODEL`），**不参与 `LLM_MODELS`，也不参与站点管理员的模型勾选**。
+2. **回退池（兜底）**：自建中转站 `https://api.888424.xyz/v1`（OpenAI 兼容），需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`），换站时用 `LLM_BASE_URL` 覆盖。默认模型池 `opencode-zen-free/space-bunny-free,opencode-zen-free/beam-free,opencode-zen-free/big-pickle`（来自 `.github/workflows/translate.yml`）。
+
+**没有 `LLM_API_KEY` 时不再报错退出**：回退池留空，以「免费层单跑」模式运行（缺 key 时打印警告）。但若同时用 `FREE_TIER_ENABLED=0` 关掉了免费层，则仍然报错退出——没有任何可用提供方时不该假装能干活。
+
+> 免费层是无 SLA 的公开服务，可能随时变化或下线，因此**不替代**回退池。选它的依据是实测：用本站真实英文源跑 60 行分块，键 60/60 保留、`§` 零差异、回退 0~1 行、1.0~4.4 秒。详细决定见《历史决策摘要》第 7 条。
 
 并发默认 10（`LLM_CONCURRENCY`）；单条光影内的分块并发默认 3、上限 4（`LLM_CHUNK_CONCURRENCY`）。
 
-> ⚠️ **回退池是“轮班”，不是优先级链**：`nextProviderOrder` 按 `providerCursor++ % list.length` 轮转，因此列表里每个模型都会分到约 1/N 的分块。**只有「格式严格遵守 + 零丢键」的模型才能进这个列表**——「能用」不是入选理由，弱模型放进来会实打实拉低 1/N 的产出。历史已实测淘汰：`tencent/Hunyuan-MT-7B`（改写键名、丢键）、`hy3`（推理 token 吃光预算、正文全空）、`muse-spark-*` / `mimo-v2.6-flash-free`（网关上已不存在）。
+> ⚠️ **回退池是“轮班”，不是优先级链**：`nextProviderOrder` 按 `providerCursor++ % list.length` 轮转，因此列表里每个模型都会分到约 1/N 的分块。**只有「格式严格遵守 + 零丢键」的模型才能进这个列表**——「能用」不是入选理由，弱模型放进来会实打实拉低 1/N 的产出。历史已实测淘汰：`tencent/Hunyuan-MT-7B`（改写键名、丢键）、`hy3`（推理 token 吃光预算、正文全空）、`muse-spark-*` / `mimo-v2.6-flash-free`（网关上已不存在）、`deepseek-v4.1-flash` / `deepseek-v4-flash` / `u2-flash`（2026-10-17 网关账号池空，全部 503）、`opencode-zen-free/nemotron-3.5-lightning-free`（90 秒超时）。
+
+> ⚠️ **免费层的失败处理与回退池刻意不同**：单次尝试、**无退避重试**、单请求 **60 秒超时**（回退池仍是 `MAX_RETRIES=10` 带退避）。另外免费层**连续 2 次**失败才熔断——单次抖动只降级当前分块，不熔断整轮。实测免费层会把键名一起翻掉（`option.A` → `选项A`），因此它的回话**键集合必须完整**，否则直接判失败（那种回话不能当「翻得差」）。回话完整但回退率 >10% 时转交回退池再试，但**不**记失败。
 
 逐步流程：
 
@@ -149,7 +156,7 @@ CurseForge 目录采集是 `continue-on-error: true` 的可选步骤（`scripts/
 4. 对候选项目请求最新版本，下载主文件，并在 zip 内查找 `shaders/lang/en_US.lang` 与 `shaders/lang/zh_CN.lang`（CurseForge 分支按 release 优先 + fileDate 倒序逐个候选文件尝试）。
 5. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，置 `noEnUsLang` 标记并跳过。
 6. 读取术语记忆 `glossary.json`；按剥离 `§` 格式码后的英文骨架完全匹配的直接复用已有中文，未命中的值交给模型翻译，新的映射在处理后写回术语记忆。
-7. 解析英文语言文件，按 60 行（`CHUNK_LINES`）拆分为多个块。**待实现**：先全部走免费层，失败（超时/非 2xx/空正文）才落到回退池；**当前**：直接由模型池按分块轮转调用，单个模型失败或回退率过高时自动尝试下一个模型。
+7. 解析英文语言文件，按 60 行（`CHUNK_LINES`）拆分为多个块。每个块**先走免费层**；失败（超时 / 非 2xx / 空正文 / 键集合不完整）或回退率 >10% 才落到回退池。回退池内按分块轮转调用，单个模型失败或回退率过高时自动尝试下一个模型。
 8. 要求模型只翻译等号右侧，保留 key、占位符（如 `%s`、`%value%`）、`§` 格式码、注释和文件结构。
 9. 生成 `site/public/lang/<shader-id>/<shader-version>/zh_CN.lang`，文件头会明确写入“AI 初翻，未人工校对”。
 10. 调用 `scripts/validate-lang.mjs` 校验 key 集合、占位符、格式码、编码和结构；失败或回退率过高时不上线、不登记，留待下次重试。
@@ -158,7 +165,7 @@ CurseForge 目录采集是 `continue-on-error: true` 的可选步骤（`scripts/
 
 **质量来源**：唯一的质量闸门是自动校验（`scripts/validate-lang.mjs`：键集合、`§` 格式码数量、占位符种类与数量、UTF-8 无 BOM），加上玩家反馈。校验不通过则**不写文件、不登记、不上线**。玩家反馈触发重译。
 
-**已知漂移（仅适用于待实现的免费层）**：免费层会把 `%%`（转义的字面百分号）压成 `%`，实测约 0.01% 的行。`validate-lang.mjs` 已把 `%%` 差异归为**只警告不阻断**，故不会卡发布；此处如实记录，不做后处理。
+**已知漂移（免费层）**：免费层会把 `%%`（转义的字面百分号）压成 `%`，实测约 0.01% 的行。`validate-lang.mjs` 已把 `%%` 差异归为**只警告不阻断**，故不会卡发布；此处如实记录，不做后处理。
 
 所以，翻译内容生成与启动都是自动的：站点 `/request` 页点「开启翻译」→ Worker 触发 GitHub Actions → 逐条翻译 → 自动校验 → 自动提交发布。API key 与额度由仓库 Secrets 负责。
 
@@ -203,7 +210,7 @@ scripts/
 ├── fetch-curseforge-catalog.mjs      # 拉取 CurseForge 目录（可选）
 ├── sync-metadata.mjs                 # 同步元数据
 ├── pipeline.mjs                      # 翻译流水线（--top / --ids）
-├── lib/                              # 纯函数模块：llm-guard / pool / glossary / cross-platform / cf-api
+├── lib/                              # 纯函数模块：providers / provider-chain / llm-guard / pool / glossary / cross-platform / cf-api
 ├── validate-lang.mjs                 # lang 结构校验（唯一质量闸门）
 ├── pack-lang-sources.mjs             # 合并式重打包英文源 → data/lang-sources.json.gz
 ├── mirror.mjs                        # 上传 lang 到夸克网盘并写回分享链接
@@ -264,7 +271,7 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 4. **全量目录**：从 Modrinth 拉取已发布的 shader 项目，不再使用下载量门槛；自带中文项目仍展示在目录中。
 5. **自动翻译直接发布**：AI 初翻经自动校验闸门通过后直接提供下载，文件头醒目标注“未人工校对”；不再有人工确认环节，玩家反馈触发重译。
 6. **双仓方案已废弃**：早期曾计划将数据和公开站点分仓，2026-09-11 已合并为单仓；当前不再按双仓方案维护。
-7. **翻译提供方分层：免费层优先、自建网关回退**（已定案，待实现）。主路改为 bilibili 官方免费公网 API（`https://index-translate.bilibili.com/v1`，`Index-Translate-35B-A3B`，无需 key），自建网关降为回退池。它**不替代**回退池：免费层是无 SLA 的公开服务，可能随时变化或下线。免费层用独立环境变量，**不参与 `LLM_MODELS` 与站点管理员勾选**（否则管理员一勾模型就会静默关掉免费层）。免费层失败快速降级（单次尝试、无退避、60 秒超时），不占满每条光影的 15 分钟预算。
+7. **翻译提供方分层：免费层优先、自建网关回退**（**已实现**，2026-10-17）。主路为 bilibili 官方免费公网 API（`https://index-translate.bilibili.com/v1`，`Index-Translate-35B-A3B`，无需 key），自建网关降为回退池。它**不替代**回退池：免费层是无 SLA 的公开服务，可能随时变化或下线。免费层用独立环境变量，**不参与 `LLM_MODELS` 与站点管理员勾选**（否则管理员一勾模型就会静默关掉免费层）。免费层失败快速降级（单次尝试、无退避、60 秒超时），不占满每条光影的 15 分钟预算。**附带决定**：没有 `LLM_API_KEY` 时不再硬失败，改为以「免费层单跑」模式运行——这有意打破了「不设任何 `LLM_*` 环境变量时行为逐字一致」的原不变量，用户已明确同意。
 8. **不再新增 ADR 目录**：`docs/adr/` 已于 2026-10-09 随文档合并删除（提交 `1540269`），本项目正式说明文档就是本 README；后续决策追加到本节，不重新拆目录。
 
 ## 待办事项
@@ -292,7 +299,7 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 - **自带中文**：光影包自身已经包含 `shaders/lang/zh_CN.lang`。
 - **AI 初翻**：由 LLM 生成、尚未人工校对的汉化文件。
 - **全量目录**：由 Modrinth API 同步的站内项目列表，不代表每个项目都有本站汉化文件。
-- **免费层**：翻译流水线默认优先使用的公开翻译接口（bilibili Index-Translate 免费公网 API），无需 API key，无 SLA。已定案待实现。
+- **免费层**：翻译流水线默认优先使用的公开翻译接口（bilibili Index-Translate 免费公网 API），无需 API key，无 SLA。默认开启，用 `FREE_TIER_ENABLED=0` 关闭。
 - **回退池**：免费层不可用时承接翻译的自建网关模型集合（`LLM_MODELS`）。成员是**轮班**而非优先级，且只允许「零丢键」的模型进入。
 
 ## 文档边界
