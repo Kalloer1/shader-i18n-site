@@ -133,9 +133,31 @@ test('gen-shader-pages.mjs 存在且导出可渲染的页面内容', async () =>
   assert.match(src, /site[\/\\]shaders|shaders['"]/, '脚本未写入 site/shaders')
 })
 
-// 当前无遗留孤儿条目。若将来出现「有 langVersions 但 id/projectId 在 catalog 中找不到」的条目，
-// 必须先在此登记并说明原因，否则测试失败。
-const ORPHAN_WHITELIST = []
+// 孤儿条目白名单：`shaders.json` 里有 `langVersions`，但项目本身已从 Modrinth 目录消失
+// （下架/隐藏/改名），因此列表与详情页的自动成员判据都找不到它。
+//
+// 为什么允许存在而不是直接删：`langVersions` 是**人工/LLM 劳动产物**，删了就要重做；
+// 而 Modrinth 下架不等于永久消失（作者常先隐藏再改名，projectId 稳定）。
+// 保留数据 + 登记白名单，是唯一「不销毁劳动、又不阻断部署」的选项。
+//
+// 登记规则（测试会强制校验，见下一个 test）：
+//   - `reason`：为什么它不在 catalog 里（查到的证据，不是「不知道」）；
+//   - `reviewBy`：复查日期 `YYYY-MM-DD`，过期未复查会让测试失败，避免白名单变成垃圾场。
+const ORPHAN_WHITELIST = [
+  {
+    id: 'avalux-reimagined',
+    projectId: 'piJlVDtP',
+    reason: 'Modrinth 项目已消失：/v2/project/piJlVDtP 返回 404，搜索 "AVALux" 命中 0 条（2026-10-19 实测）',
+    reviewBy: '2027-01-19',
+  },
+  {
+    id: 'cinematix-shader',
+    projectId: 'AAUN4OCM',
+    reason: 'Modrinth 项目已消失：/v2/project/AAUN4OCM 返回 404，搜索 "Cinematix" 命中 0 条（2026-10-19 实测）',
+    reviewBy: '2027-01-19',
+  },
+]
+const ORPHAN_IDS = ORPHAN_WHITELIST.map((e) => e.id)
 
 const normSlug = (s) => String(s ?? '').trim().toLowerCase().replace(/[-_\s]+/g, '')
 
@@ -162,13 +184,45 @@ test('shaders.json：有 langVersions 的条目必须在 catalog 中可找到，
       catalogIds.has(s.id) ||
       catalogProjectIds.has(s.modrinth?.projectId) ||
       catalogProjectIds.has(s.id)
-    if (!found && !ORPHAN_WHITELIST.includes(s.id)) missing.push(s.id)
+    if (!found && !ORPHAN_IDS.includes(s.id)) missing.push(s.id)
   }
   assert.deepEqual(
     missing,
     [],
     `以下 shaders.json 条目不在 catalog 且不在白名单，会造成列表死链: ${missing.join(', ')}`,
   )
+})
+
+test('孤儿白名单自身必须合格：字段完整、复查未过期、条目真实存在且有 langVersions', () => {
+  // 白名单不是垃圾场。没有这层校验，`ORPHAN_WHITELIST` 很快会变成
+  // 「只要测试红了就往里塞一行」的垃圾桶，防死链回归就失效了。
+  for (const e of ORPHAN_WHITELIST) {
+    assert.ok(e.id, '白名单条目必须有 id')
+    assert.ok(
+      typeof e.reason === 'string' && e.reason.trim().length >= 10,
+      `白名单条目 ${e.id} 必须写清 reason（为什么它不在 catalog 里），不能留空或写「不知道」`,
+    )
+    assert.match(
+      String(e.reviewBy ?? ''),
+      /^\d{4}-\d{2}-\d{2}$/,
+      `白名单条目 ${e.id} 的 reviewBy 必须是 YYYY-MM-DD`,
+    )
+    // 过期即失败：强制下一次维护时真的去复查（项目恢复了吗？还是该删汉化了？）。
+    const today = new Date().toISOString().slice(0, 10)
+    assert.ok(
+      e.reviewBy >= today,
+      `白名单条目 ${e.id} 已过期（reviewBy=${e.reviewBy} < 今天 ${today}），请复查后更新日期`,
+    )
+    // 条目必须真实存在于 shaders.json 且有 langVersions，否则白名单本身是死条目。
+    const entry = db.shaders.find((s) => s.id === e.id)
+    assert.ok(entry, `白名单条目 ${e.id} 在 shaders.json 里不存在，应删掉这条白名单`)
+    assert.ok(
+      (entry.langVersions ?? []).length > 0,
+      `白名单条目 ${e.id} 已经没有 langVersions 了，应删掉这条白名单`,
+    )
+  }
+  // id 不能重复，否则很难看出到底登记了几条。
+  assert.equal(new Set(ORPHAN_IDS).size, ORPHAN_IDS.length, '白名单 id 不得重复')
 })
 
 test('占位符抽取对真实 lang 文件不产生误报（回归）', () => {
