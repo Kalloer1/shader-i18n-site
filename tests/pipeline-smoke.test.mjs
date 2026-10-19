@@ -17,6 +17,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
+import { statSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -76,4 +77,32 @@ test('胶水层无未定义标识符：启动路径不抛 ReferenceError', () =>
   const { out } = runPipeline()
   assert.ok(!/is not defined/.test(out), `不该有未定义标识符；实际输出：\n${out}`)
   assert.ok(!/ReferenceError/.test(out), `不该有 ReferenceError；实际输出：\n${out}`)
+})
+
+/**
+ * 回归：什么都没做时不得重写数据文件。
+ *
+ * 真实缺陷（2026-10-19）：`persist()` / `persistGlossary()` 曾无条件重写
+ * catalog(2MB) + shaders + glossary(39k 条)，连 `--ids __nonexistent__` 这种
+ * 零工作量运行也写。`npm test` 会**并行**跑多个测试文件，多个 pipeline 子进程
+ * 同时重写同一对文件 → Windows 上偶发
+ * `UNKNOWN: unknown error, open 'glossary.json'` → deploy 闸门随机变红
+ * （实测修前 5 次里红 3 次，修后 10/10 绿）。
+ *
+ * 这里用 mtime + 内容双重断言：文件必须**完全没被碰过**。
+ */
+test('无改动时不得重写数据文件（防并发写文件锁导致 deploy 随机变红）', () => {
+  const files = ['site/data/modrinth-catalog.json', 'site/data/shaders.json', 'site/data/glossary.json']
+  const before = files.map((f) => {
+    const p = join(ROOT, f)
+    return { f, mtime: statSync(p).mtimeMs, size: statSync(p).size }
+  })
+  const { code } = runPipeline({ LLM_API_KEY: 'dummy' })
+  assert.equal(code, 0)
+  for (const b of before) {
+    const p = join(ROOT, b.f)
+    const now = statSync(p)
+    assert.equal(now.mtimeMs, b.mtime, `${b.f} 不该被重写（mtime 变了）`)
+    assert.equal(now.size, b.size, `${b.f} 不该被重写（大小变了）`)
+  }
 })

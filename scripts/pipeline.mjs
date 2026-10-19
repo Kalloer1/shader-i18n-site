@@ -42,7 +42,7 @@
  * 超时或抛错只影响该条，不阻断整批。
  * 设置 WORKER_URL + INTERNAL_STATUS_TOKEN 时，每条结束即回写 KV 状态（尽力而为）。
  */
-import { mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync, renameSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
@@ -409,10 +409,32 @@ function enqueueWrite(label, write) {
   return writeQueue
 }
 
+/**
+ * 内容没变就不写；变了则原子写（先写同目录临时文件再 rename）。
+ *
+ * 为什么要原子写：直接 writeFileSync 覆盖大文件时，进程被杀或并发写会留下
+ * 半截 JSON。rename 在同一分区上是原子的，读到的永远是完整版本。
+ */
+function writeJsonIfChanged(file, value) {
+  const next = JSON.stringify(value, null, 2) + '\n'
+  try {
+    if (readFileSync(file, 'utf8') === next) return // 无改动，不碰文件
+  } catch {
+    // 文件不存在或读不了：照常写
+  }
+  const tmpFile = `${file}.tmp-${process.pid}`
+  writeFileSync(tmpFile, next)
+  renameSync(tmpFile, file)
+}
+
 // 保存翻译记忆
 function persistGlossary() {
   return enqueueWrite('glossary', () => {
-    writeFileSync(GLOSSARY_FILE, JSON.stringify(glossary, null, 2) + '\n')
+    // 同 writeJsonIfChanged 的理由：无改动就不写。
+    // 之前这里无条件重写 39k 条的记忆库，`--ids __nonexistent__`（什么都没干）
+    // 也会重写它 —— `npm test` 并行跑多个 pipeline 子进程时会在 Windows 上
+    // 撞文件锁（`UNKNOWN: unknown error, open 'glossary.json'`），让 deploy 闸门随机变红。
+    writeJsonIfChanged(GLOSSARY_FILE, glossary)
   })
 }
 
@@ -713,16 +735,24 @@ if (IDS.length) {
   console.log(`候选 ${candidates.length} 个，本次处理前 ${TOP} 个\n`)
 }
 
-// 写回 catalog + shaders。同一 tick 内的重复请求合并为一次写（persistDirty），
+// 写回 catalog + shaders。同一 tick 内的重复请求合并为一次写（persistPending），
 // 实际写盘在微任务中执行，此时各 worker 的同步改动都已生效。
-let persistDirty = false
+//
+// ⚠️ 2026-10-19 修：这里曾经在**没有任何改动**时也无条件重写两个 JSON（合计约 4MB）。
+// 后果：`--ids __nonexistent__` 这种「什么都没做」的运行也会重写文件，而
+// `npm test` 会把多个测试文件**并行**跑，多个 pipeline 子进程同时重写同一对文件 →
+// Windows 上偶发 `UNKNOWN: unknown error, open 'modrinth-catalog.json'` →
+// `pipeline-smoke` 间歇性变红（实测 5 次里红 3 次）。
+// deploy.yml 的闸门就是 `npm test`，所以这不是「测试不稳」，是**部署会随机失败**。
+// 修法：写前先比内容，没变就不写；变了则原子写（临时文件 + rename）。
+let persistPending = false
 function persist() {
-  if (persistDirty) return writeQueue
-  persistDirty = true
+  if (persistPending) return writeQueue
+  persistPending = true
   return enqueueWrite('catalog/shaders', () => {
-    persistDirty = false
-    writeFileSync(CATALOG_FILE, JSON.stringify(catalog, null, 2) + '\n')
-    writeFileSync(SHADERS_FILE, JSON.stringify(db, null, 2) + '\n')
+    persistPending = false
+    writeJsonIfChanged(CATALOG_FILE, catalog)
+    writeJsonIfChanged(SHADERS_FILE, db)
   })
 }
 

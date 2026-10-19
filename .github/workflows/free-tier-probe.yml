@@ -12,6 +12,13 @@ name: free-tier probe (bilibili reachability from CI)
 # 这是 issue #6 需要的证据的一部分。
 
 on:
+  # 每日自动探（北京时间 05:30，紧跟在 sync 之后）。
+  # 为什么必须自动：免费层是无 SLA 的公开服务，且是流水线的**默认主路**。
+  # 之前只有 workflow_dispatch，没人点就永远不知道它已经死了——
+  # 2026-10-19 实测它已经挂了（主模型持续 504），而「免费层优先」的上线验收
+  # 还停在 10-16 的 HTTP 200 记录上。每日跑一次，红了就能看见。
+  schedule:
+    - cron: '30 21 * * *'  # UTC 21:30 = 北京时间 05:30
   workflow_dispatch:
 
 permissions:
