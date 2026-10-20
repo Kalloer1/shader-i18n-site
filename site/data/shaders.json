@@ -17894,6 +17894,26 @@
           "lastSync": "2026-10-18"
         }
       }
+    },
+    {
+      "id": "revesperashader",
+      "modrinth": {
+        "slug": "revesperashader",
+        "projectId": "8g4QdJbB"
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "6",
+          "langVersion": "1.0.0",
+          "file": "/lang/revesperashader/6/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/6937eb2f5a52",
+          "updatedAt": "2026-10-20",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/6937eb2f5a52"
     }
   ]
 }
