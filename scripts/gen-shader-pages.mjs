@@ -15,6 +15,9 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+// 展示集合判据与 site/.vitepress/theme/data.js 共用同一份实现（shared/display-set.mjs）。
+// 判据分叉 → 「列表里有、详情页没有」或反向的死链，这里必须调同一个函数。
+import { isDisplayableEntry, resolveManual } from '../shared/display-set.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const SHADERS_DIR = join(ROOT, 'site/shaders')
@@ -33,9 +36,12 @@ const manualBySlug = new Map(db.shaders.map((s) => [s.id, s]))
 const manualByProjectId = new Map(
   db.shaders.filter((s) => s.modrinth?.projectId).map((s) => [s.modrinth.projectId, s]),
 )
-// 产品决定：站点只展示两类光影 —— 已有本站汉化（langVersions 非空）或自带中文；其余不生成详情页（数据仍保留在 catalog）
-const manualOf = (e) => manualBySlug.get(e.id) ?? manualByProjectId.get(e.projectId) ?? manualBySlug.get(e.projectId)
-const isDisplayed = (e) => e.hasNativeZhCN === true || (manualOf(e)?.langVersions?.length ?? 0) > 0
+// 产品决定：站点展示三类光影 —— 已有本站汉化（langVersions 非空）、自带中文、**无英文源**；
+// 其余（暂无汉化）不生成详情页（数据仍保留在 catalog）。判据见 shared/display-set.mjs。
+// 注意 manualOf 的兜底顺序（id → projectId → 拿 projectId 当 id 再试）也是判据的一部分，
+// 已在 shared/display-set.mjs 的 resolveManual 里固化，两边不能再各写一份。
+const manualOf = (e) => resolveManual(e, { byId: manualBySlug, byProjectId: manualByProjectId })
+const isDisplayed = (e) => isDisplayableEntry(e, manualOf(e))
 
 // CurseForge 独占条目：判据必须与 site/.vitepress/theme/data.js 的 cfOnlyShaders 完全一致，
 // 否则会出现「列表里有、详情页没有」或反向的死链。
@@ -95,6 +101,8 @@ function versionRange(versions) {
 const fmtW = (n) => (n >= 10000 ? `${(n / 10000).toFixed(1)} 万` : String(n))
 
 // ---------- 类似光影推荐 ----------
+// 推荐卡片是链接：池子必须与「生成了详情页的集合」完全一致，否则会出现指向不存在页面的死链。
+// 「无英文源」条目现在也会生成详情页，所以它们可以进池子（且对用户有信息价值：说明为什么没有汉化）。
 const popularPool = catalog.shaders
   .filter((s) => s.gallery?.length && s.downloads >= 5000 && isDisplayed(s))
   .slice(0, 80)
