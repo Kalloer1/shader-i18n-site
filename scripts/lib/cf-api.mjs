@@ -75,6 +75,41 @@ export async function cfGetDownloadUrl(cfId, fileId, signal) {
 }
 
 /**
+ * 把 CF 的下载地址解析成**真正支持 Range 的最终 URL**。
+ *
+ * 实测（2026-10-21，Serv00 出口）：API 返回的地址主机是 `edge.forgecdn.net`，
+ * 该主机在**请求头带 `Range` 时直接返回 404**（CloudFront "Error from cloudfront"，
+ * content-length: 0），而不是先 302 让下游处理。后果是 `openZip` 的每次 Range
+ * 都拿到 404 → 重试 → 回退整包，CF 侧的 Range 探测收益归零（359 个候选实测节省 0%）。
+ *
+ * 而同一文件解析后的 `mediafilez.forgecdn.net` 对 Range 正常返回 206。
+ *
+ * 这里用一次 **HEAD（跟随重定向）** 拿到最终 URL：HEAD 不下载正文，
+ * 代价接近一次普通 API 调用。HEAD 失败时退回原始 URL —— 整包下载仍然可用，
+ * 只是这一条拿不到 Range 收益，绝不让解析失败变成功能失败。
+ *
+ * @param {string} url cfGetDownloadUrl 的返回值
+ * @param {AbortSignal} [signal]
+ * @returns {Promise<string>} 支持 Range 的最终 URL（解析失败时原样返回）
+ */
+export async function resolveCfDownloadUrl(url, signal) {
+  if (!url) return url
+  try {
+    const res = await fetch(url, { method: 'HEAD', redirect: 'follow', signal })
+    // 有些 CDN 对 HEAD 返回 405/403，此时不跟随重定向的 url 与响应里的 url 相同，没有收益。
+    if (res.ok && res.url && res.url !== url) {
+      if (res.body) await res.body.cancel().catch(() => {})
+      return res.url
+    }
+    if (res.body) await res.body.cancel().catch(() => {})
+  } catch (err) {
+    if (signal?.aborted) throw err
+    // 网络抖动/不支持 HEAD：保持原 URL，行为与改造前一致。
+  }
+  return url
+}
+
+/**
  * 按 slug 搜索 CF 光影项目（gameId=432=Minecraft，classId=6552=Shaders）。
  * 返回 { id, slug, name }，其中 id 是 CF 数字项目 id（即 cfId）。
  */

@@ -488,6 +488,12 @@ async function startFakeServer(state) {
     if (url.pathname.startsWith('/download/')) {
       const key = url.pathname.slice('/download/'.length).replace(/\.zip$/, '')
       const buf = ZIPS[key]
+      // HEAD 是 resolveCfDownloadUrl 解析最终地址用的探测请求，不下载正文，
+      // 不计入 zipRequests（否则会被误判成「下载了整包」）。
+      if (req.method === 'HEAD') {
+        res.writeHead(200, { 'Content-Length': String(buf.length) })
+        return res.end()
+      }
       const range = req.headers.range
       const record = { key, range: range ?? null, bytes: 0, status: 0 }
       state.zipRequests.push(record)

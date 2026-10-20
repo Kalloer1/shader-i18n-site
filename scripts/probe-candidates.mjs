@@ -49,7 +49,7 @@ import {
   selectCfCandidates,
   summarize,
 } from './lib/probe-candidates.mjs'
-import { cfGetDownloadUrl, cfGetFiles } from './lib/cf-api.mjs'
+import { cfGetDownloadUrl, cfGetFiles, resolveCfDownloadUrl } from './lib/cf-api.mjs'
 import { cfVersionFromFileName } from './lib/cf.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -172,8 +172,10 @@ async function getCfLatestFile(cfId) {
     return String(b.fileDate).localeCompare(String(a.fileDate))
   })
   const f = sorted[0]
-  const url = await cfGetDownloadUrl(cfId, f.id)
-  if (!url) throw new Error('CurseForge 未返回下载地址')
+  const raw = await cfGetDownloadUrl(cfId, f.id)
+  if (!raw) throw new Error('CurseForge 未返回下载地址')
+  // edge.forgecdn.net 带 Range 头会直接 404，必须解析成 mediafilez.forgecdn.net（见 cf-api.mjs）。
+  const url = await resolveCfDownloadUrl(raw)
   return {
     url,
     size: Number.isFinite(f.fileLength) ? f.fileLength : undefined,

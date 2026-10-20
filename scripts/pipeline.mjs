@@ -54,7 +54,7 @@ import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 import { isEnUsLangPath, isLangFilePath, isZhCNLangPath } from './lib/lang-source.mjs'
 import { PROBE_VERDICT, probeZipTerminalState } from './lib/zip-probe.mjs'
 import { openZip } from '../shared/zip-range.mjs'
-import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-api.mjs'
+import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod, resolveCfDownloadUrl } from './lib/cf-api.mjs'
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
 import {
   clearNoEnUsLang,
@@ -1170,7 +1170,9 @@ async function processShaderCf(entry, signal, localGlossary) {
         AbortSignal.timeout(Math.min(CF_CANDIDATE_TIMEOUT_MS, budgetLeft)),
       ])
       try {
-        const downloadUrl = await cfGetDownloadUrl(cfId, f.id, candSignal)
+        // 必须解析成最终 URL：API 给的 edge.forgecdn.net 带 Range 头直接 404，
+        // 解析后的 mediafilez.forgecdn.net 才支持 206（详见 cf-api.mjs 的说明）。
+        const downloadUrl = await resolveCfDownloadUrl(await cfGetDownloadUrl(cfId, f.id, candSignal), candSignal)
         // 探测阶段：每个候选文件都先只读中央目录判终态，命中就不下载这个候选的整包。
         // 探测请求挂在 candSignal 上，与下载/翻译共用同一条预算与中断链路；
         // totalSize 用 CF 文件列表里的 fileLength（缺失时 openZip 内部直接走整包）。
