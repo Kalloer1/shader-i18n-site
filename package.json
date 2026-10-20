@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Minecraft Java 版光影包简体中文本地化资源站",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "vitepress dev site",
     "build": "vitepress build site",
