@@ -54,7 +54,18 @@ import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-a
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
 import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
 import { EmptyResponseError, isProviderNoOutput, providerUnusableMessage } from './lib/llm-guard.mjs'
-import { stripSkeleton, isUsableMemory, shouldRememberMemory } from './lib/glossary.mjs'
+// 骨架提取与记忆读写守卫见 scripts/lib/glossary.mjs（与 scripts/rebuild-glossary.mjs 共用同一实现）。
+// 本文件不再直接使用它们：记忆/进度/LLM 的编排在 lib/translate-entries.mjs，进度判据在 lib/resume-progress.mjs。
+import {
+  progressRelativePath,
+  parseProgress,
+  serializeProgress,
+  pruneProgress,
+  progressSummary,
+} from './lib/resume-progress.mjs'
+import { readFileQuietly, writeFileAtomic, removeFileQuietly } from './lib/atomic-file.mjs'
+import { renderZhLang } from './lib/lang-render.mjs'
+import { createTranslateEntries } from './lib/translate-entries.mjs'
 import { runPool, DEFAULT_CHUNK_CONCURRENCY, MAX_CHUNK_CONCURRENCY } from './lib/pool.mjs'
 // 提示词与请求体形状是 **provider 的属性**，不是模块级常量：免费层要走官方 instTrans 形态、
 // 且不继承 LLM_EXTRA_BODY。抽象在 lib 里，超时/重试/熔断仍留在本文件（那是流水线策略）。
@@ -408,6 +419,50 @@ try {
 
 // 骨架提取与记忆读写守卫见 scripts/lib/glossary.mjs（与 scripts/rebuild-glossary.mjs 共用同一实现）。
 
+// ---------- 断点续翻进度文件 ----------
+// 放 sources/<id>/<version>/.progress.json，理由：
+// 1. 它按「光影 + 版本」严格隔离，与 sources/ 里 en_US.lang 的目录结构天然对应；
+// 2. sources/ 已被 .gitignore 排除，进度是**中间态**，不该进仓库（进度全成功后会删掉，
+//    但进程被杀时留下的那份也不该污染 git status）；
+// 3. 不放进 site/public/lang/<id>/<version>/：那是**站点静态产物目录**，构建会原样发布，
+//    放一个 .progress.json 进去等于把内部中间态暴露到公网。
+// 删掉进度文件最多导致重跑；进度里的译文**必须**逐行重新过 judgeLine 才复用（见 resume-progress.mjs）。
+function progressPathFor(id, version) {
+  return join(ROOT, progressRelativePath(id, version))
+}
+
+/** 读本条进度；文件不存在 / 损坏 / 不属于本条的一律返回 null（当作没翻过）。 */
+function loadProgress(id, version) {
+  const text = readFileQuietly(progressPathFor(id, version))
+  return text === null ? null : parseProgress(text)
+}
+
+/**
+ * 写本条进度（原子写，内容没变不碰文件）。
+ *
+ * 一行都没翻成时**不写空文件**：否则每次失败的运行都会在 sources/ 里留下
+ * 一堆 `{"lines":{}}`，下次还会被当成「有进度」读一遍。
+ * 失败只记日志：进度是**加速手段**，写不进去最多让下次重跑，不应让本条失败。
+ */
+function saveProgress(progress) {
+  if (!progress || progress.lines.size === 0) return
+  try {
+    writeFileAtomic(progressPathFor(progress.id, progress.version), serializeProgress(progress))
+  } catch (err) {
+    console.log(`  [progress] ${progress.id}/${progress.version} 进度写入失败（不影响本次产出）: ${err.message.slice(0, 120)}`)
+  }
+}
+
+/**
+ * 翻译全部成功后删除进度文件。
+ *
+ * 为什么必须删：产物已经落盘并登记，这一版不再需要断点；留着只会在 sources/ 里堆垃圾。
+ * 什么时候**不**删：本条以 cfMode 失败（还要试候选文件）、或整条超时——那些情况下进度仍是有效信息。
+ */
+function clearProgress(id, version) {
+  removeFileQuietly(progressPathFor(id, version))
+}
+
 // ---------- 落盘队列（并发安全） ----------
 // 并发 worker 会同时改 catalog / db / glossary。所有写盘任务排进同一条队列串行执行，
 // 且写盘时才序列化当前内存状态，因此两个写任务不会交错写坏同一个 JSON。
@@ -535,96 +590,18 @@ const translateChunk = createChunkTranslator({
   isNoOutput: isProviderNoOutput,
 })
 
-async function translateEntries(pairs, activeProviders, signal, localGlossary) {
-  const providerList = Array.isArray(activeProviders) ? activeProviders : [activeProviders]
-  const out = new Map()
-  let totalFallback = 0
-  let glossaryHit = 0
-  let llmCalls = 0
-
-  // 翻译记忆读取：全局（已合并的历史）优先，其次本条已累积的局部记忆。
-  const lookup = (skel) => glossary[skel] ?? localGlossary.get(skel)
-
-  // 第一步：查翻译记忆，命中的直接复用
-  const unmatched = []
-  for (const [k, v] of pairs) {
-    const skel = stripSkeleton(v)
-    const hit = skel ? lookup(skel) : undefined
-    // 读取端守卫：值等于英文原文的条目（历史「回退被当译文缓存」污染）视为未命中，
-    // 既有的污染不会再被当译文用（也不去删它们）。
-    if (isUsableMemory(hit, v)) {
-      out.set(k, hit)
-      glossaryHit++
-    } else {
-      unmatched.push([k, v])
-    }
-  }
-
-  if (unmatched.length === 0) {
-    console.log(`    翻译记忆全覆盖（${glossaryHit}/${pairs.length}），跳过 LLM`)
-    return { map: out, totalFallback: 0, glossaryHit, llmCalls: 0, providersUsed: [] }
-  }
-
-  console.log(`    翻译记忆命中 ${glossaryHit}/${pairs.length}，剩余 ${unmatched.length} 个需 LLM 翻译`)
-
-  // 全部模型都已判定「产不出译文」：直接失败，不再逐个分块空跑（文案会经 reportStatus 回传到队列）。
-  // 免费层可用时不算整体失败 —— 它是独立的一层，回退池全挂也能单跑。
-  const modelIds = providerList.map((p) => p.id)
-  if (everythingUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
-
-  // 第二步：未命中的发给 LLM。同一光影内的分块小并发（LLM_CHUNK_CONCURRENCY），
-  // 结果按块序合并，保证与串行时一致：out 的插入顺序、totalFallback、llmCalls 口径都相同，
-  // localGlossary 也按块序、带上与串行相同的「已有则不覆盖」守卫写入。
-  const chunks = []
-  for (let i = 0; i < unmatched.length; i += CHUNK_LINES) chunks.push(unmatched.slice(i, i + CHUNK_LINES))
-  if (chunks.length > 1) {
-    console.log(`    分块并发 ${Math.min(LLM_CHUNK_CONCURRENCY, chunks.length)}（共 ${chunks.length} 块）`)
-  }
-  const results = new Array(chunks.length)
-  await runPool(
-    chunks.map((chunk, index) => ({ chunk, index })),
-    async ({ chunk, index }) => {
-      const label = `分块 ${index + 1}/${chunks.length} `
-      console.log(`    ${label}开始（${chunk.length} 行，${timestamp()}）`)
-      const started = Date.now()
-      // 轮班计数器是共享的：并发下各分块按「取到分块的先后」轮转，模型不会重复选或跳过，
-      // 但与串行相比，同一分块拿到的起始模型可能不同（只是起始位置不同，池子不变）。
-      const orderedProviders = providerList.length > 1 ? nextProviderOrder(providerList) : providerList
-      results[index] = await translateChunk(chunk, orderedProviders, signal, {
-        label,
-        isFirstChunk: index === 0,
-      })
-      console.log(`    ${label}完成：回退 ${results[index].fallback}/${chunk.length}，耗时 ${Date.now() - started}ms（${timestamp()}）`)
-      // 本轮所有模型都已不可用**且免费层也不可用** → 立即整体失败，不再空跑剩余分块。
-      if (everythingUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
-    },
-    LLM_CHUNK_CONCURRENCY,
-  )
-
-  // 提供方署名：免费层产出与回退池产出要分得清（issue #5）。
-  const providersUsed = new Set()
-  for (let index = 0; index < chunks.length; index++) {
-    const chunk = chunks[index]
-    const { map, fallback, providerIds } = results[index]
-    for (const pid of providerIds ?? []) providersUsed.add(pid)
-    for (const [k, v] of map) {
-      out.set(k, v)
-      // 新翻译结果按英文原文记入本条的局部翻译记忆，不直接改共享的 glossary；
-      // 本条处理结束后由调用方一次性合并，避免并发 worker 同时写同一对象。
-      const source = chunk.find(([key]) => key === k)?.[1] ?? ''
-      const sourceSkeleton = stripSkeleton(source)
-      // 写入端守卫：值不是英文原文回显时才记入记忆（模型回显原文会被 translateChunk 原样放进 map，
-      // 那不是译文；判据与 translateChunk 判回退的 `zh !== v` 同口径，大小写/空格差异不误判）。
-      if (shouldRememberMemory(sourceSkeleton, v, source, lookup(sourceSkeleton))) {
-        localGlossary.set(sourceSkeleton, v)
-      }
-    }
-    totalFallback += fallback
-    llmCalls++
-  }
-
-  return { map: out, totalFallback, glossaryHit, llmCalls, providersUsed: [...providersUsed] }
-}
+// 一条光影的初翻编排在 lib 里（createTranslateEntries）：记忆 → 进度 → LLM。
+// 抽出去的理由同上：pipeline.mjs 无法被单测 import，而「三者优先级」「逐块记进度」
+// 恰恰是决定产物的逻辑，必须能被离线复现（tests/translate-entries.test.mjs）。
+// 全局记忆的读取在这里注入，本条局部增量由调用方按每条光影现建。
+const translateEntries = createTranslateEntries({
+  translateChunk,
+  nextProviderOrder,
+  everythingUnusable,
+  providerUnusableMessage,
+  chunkLines: CHUNK_LINES,
+  chunkConcurrency: LLM_CHUNK_CONCURRENCY,
+})
 
 // ---------- 主流程 ----------
 const catalog = JSON.parse(readFileSync(CATALOG_FILE, 'utf8'))
@@ -913,40 +890,68 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
     return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
   }
 
+  // 断点续翻：读本条这一版的进度（不存在 / 损坏 / 版本不符 → 当作没翻过）。
+  // 进度里的译文会在 planLines 里**逐行重新过 judgeLine** 才复用，所以文件被外部改坏
+  // 最多让那几行重翻，不会产出错译。
+  const heldProgress = loadProgress(entry.id, shaderVersion)
+  // 收敛：丢掉「英文源已改 / 键已删 / 译文不合格」的旧记录，并保证 id/version 是**本条**的
+  // （否则后续保存会按旧 id 写回错误路径）。
+  const progress = pruneProgress(heldProgress, { id: entry.id, version: shaderVersion, pairs })
+  const resumeSummary = progressSummary(progress, pairs)
+  if (resumeSummary.done > 0) {
+    console.log(`${tag} 发现断点进度：${resumeSummary.done}/${resumeSummary.total} 行已翻（剩余 ${resumeSummary.remaining} 行）`)
+  }
+
   // 日志要如实反映「谁在干活」：免费层是默认主路，只列 LLM_MODELS 会误导排查。
   const poolLabel = providers.length ? `回退池 [${LLM_MODELS.join(', ')}]` : '回退池（空）'
   const freeLabel = FREE_TIER_ON ? `免费层 [${freeTierProvider.id}] 优先，` : ''
   console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，${freeLabel}${poolLabel} 开始初翻…`)
-  const { map: zhMap, totalFallback, glossaryHit, llmCalls, providersUsed } = await translateEntries(pairs, providers, signal, localGlossary)
+  // 翻译记忆读取：全局（已合并的历史）优先，其次本条已累积的局部记忆。
+  // 放在这里（而不是模块顶层）是因为它依赖本条的 localGlossary。
+  const lookup = (skel) => glossary[skel] ?? localGlossary.get(skel)
+  // 进度落盘放在 finally：translateEntries 抛错（模型全挂 / 整体失败）时，
+  // 已完成分块的译文仍要留下痕迹，下次只补没翻成的。
+  // 内部按分块完成即时 recordProgress，所以这里拿到的是「抛错前已翻好的部分」。
+  let translated
+  try {
+    translated = await translateEntries(pairs, providers, signal, localGlossary, {
+      lookup,
+      progress,
+      id: entry.id,
+      version: shaderVersion,
+      // 每块完成即落盘：整条被超时打断时，最多丢掉正跑到一半的那一块。
+      onChunkDone: () => saveProgress(progress),
+    })
+  } finally {
+    saveProgress(progress)
+  }
+  const { map: zhMap, totalFallback, glossaryHit, progressHit, llmCalls, providersUsed } = translated
   // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
   console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}，来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
   // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
   if (totalFallback > pairs.length * 0.3) {
+    const done = progressSummary(progress, pairs)
     if (cfMode) {
       console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${totalFallback}/${pairs.length}），尝试下一个`)
+      console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
       return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）`, cfRetry: true }
     }
     console.log(`${tag} 回退率过高（${totalFallback}/${pairs.length}），判定失败，跳过`)
+    console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
     failed++
     return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）` }
   }
-  const outLines = lines.map((line) => {
-    const t = line.trim()
-    if (!t || t.startsWith('#')) return line
-    const eq = t.indexOf('=')
-    if (eq <= 0) return line
-    const key = t.slice(0, eq)
-    const value = zhMap.get(key) ?? t.slice(eq + 1)
-    // 初翻常见的格式码切断（`§e§ ` 这类）在落盘前就修掉，
-    // 避免产出会被闸门拦下的文件。
-    return `${key}=${repairMalformedSections(value).text}`
+  // 渲染在 lib 里（纯函数），保证「复用进度的译文」与「重新翻出的译文」
+  // 渲染出的字节完全一致；tests/lang-render.test.mjs 用仓库真实文件做往返比对。
+  const content = renderZhLang({
+    title: entry.title, id: entry.id, shaderVersion, sourceFileName, enName, lines, zhMap,
+    repair: repairMalformedSections,
   })
-  const header = `#shaders/lang/zh_CN.lang\n# ${entry.title ?? entry.id} v${shaderVersion} 简体中文翻译（AI 初翻，未人工校对）\n# 源文件：${sourceFileName} 的 ${enName}\n`
   const outPath = join(LANG_DIR, entry.id, shaderVersion, 'zh_CN.lang')
 
   // 先校验内存里的内容，通过后才落盘。
   // 历史实现是「先写文件再校验」，校验失败时已把坏文件留在磁盘上。
-  const verdict = validatePair(enText, header + outLines.join('\n'), `${entry.id}/${shaderVersion}`)
+  const verdict = validatePair(enText, content, `${entry.id}/${shaderVersion}`)
   if (verdict.problems.length) {
     const msg = verdict.problems.join('; ').slice(0, 300)
     console.log(`${tag} 校验未通过，不落盘: ${msg}`)
@@ -960,7 +965,11 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
     throw new Error('处理超时')
   }
   mkdirSync(dirname(outPath), { recursive: true })
-  writeFileSync(outPath, header + outLines.join('\n'))
+  writeFileSync(outPath, content)
+
+  // 全部成功：删除进度文件（这一版不再需要断点）。
+  // 只有产物真正落盘后才删——否则「校验未通过」分支会连断点一起丢掉。
+  clearProgress(entry.id, shaderVersion)
 
   // 同时缓存英文原文到 sources/，供 pack-lang-sources.mjs 重新打包。
   // 否则新翻译的光影在 CI 里找不到英文源，下一次 validate:lang 会判失败。

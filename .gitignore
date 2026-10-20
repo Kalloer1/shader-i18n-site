@@ -30,6 +30,12 @@ site/shaders/
 # === 源 shader 文件（太大，不入库）===
 sources/
 
+# 断点续翻的中间态（sources/<id>/<version>/.progress.json）。
+# 上面整目录忽略已覆盖，这里单独再写一遍是**契约固化**：进度文件是中间态，
+# 万一将来 sources/ 的忽略规则被改，这一行保证它仍然不会进仓库。
+# 删掉进度文件最多导致重跑，不会产出错误产物（见 scripts/lib/resume-progress.mjs）。
+sources/**/.progress.json
+
 # === 本地翻译实验/临时文件 ===
 docs/translate-chunks/
 docs/missing-en-values.json

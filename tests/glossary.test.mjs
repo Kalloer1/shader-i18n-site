@@ -101,10 +101,14 @@ describe('shouldRememberMemory 写入端守卫', () => {
 describe('pipeline 与重建脚本共用同一份实现（防漂移）', () => {
   const pipeline = readFileSync(join(ROOT, 'scripts/pipeline.mjs'), 'utf8')
   const rebuild = readFileSync(join(ROOT, 'scripts/rebuild-glossary.mjs'), 'utf8')
+  // 记忆/进度的编排已从 pipeline.mjs 抽到 lib/translate-entries.mjs（pipeline 无法被单测 import）。
+  // 防漂移的**实质**不变：骨架与守卫只能有一份实现，任何用到它们的地方都必须 import lib。
+  const translateEntries = readFileSync(join(ROOT, 'scripts/lib/translate-entries.mjs'), 'utf8')
 
-  it('pipeline 从 lib/glossary.mjs 导入骨架与守卫，不再自带实现', () => {
-    assert.match(pipeline, /from '\.\/lib\/glossary\.mjs'/)
-    assert.doesNotMatch(pipeline, /function stripSkeleton/)
+  it('pipeline 的翻译编排从 lib/glossary.mjs 导入骨架与守卫，不再自带实现', () => {
+    assert.match(translateEntries, /from '\.\/glossary\.mjs'/)
+    assert.doesNotMatch(translateEntries, /function stripSkeleton\b/)
+    assert.doesNotMatch(pipeline, /function stripSkeleton\b/)
   })
 
   it('重建脚本同样 import 线上实现，不复制骨架写法', () => {
