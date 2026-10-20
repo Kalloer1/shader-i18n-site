@@ -160,26 +160,37 @@ const modelList = ref([])
 const selectedModels = ref([])
 const modelsLoading = ref(false)
 const modelsError = ref('')
+/* 免费层模型（bilibili Index-Translate）单独一组：它们不在网关 /models 里。
+   勾选后由 Worker 分别校验；免费层失败会由流水线自动降级到网关模型，所以可以放心勾。 */
+const freeTierModels = ref([])
+const freeTierError = ref('')
+const lastRefreshedAt = ref('')
 
 const MODELS_STORAGE_KEY = 'translate-selected-models'
 
 async function loadModels() {
   modelsLoading.value = true
   modelsError.value = ''
+  freeTierError.value = ''
   try {
     const res = await fetch(`${WORKER_URL}/models`)
     const data = await res.json()
     if (!data.success) throw new Error(data.error || '拉取失败')
     modelList.value = Array.isArray(data.models) ? data.models : []
-    // 上次选择只保留仍在网关列表里的模型，网关已删的自动丢弃
+    freeTierModels.value = Array.isArray(data.freeTierModels) ? data.freeTierModels : []
+    // 免费层探测失败不影响网关模型：只提示一句，不阻断选择。
+    freeTierError.value = data.freeTierError || ''
+    const all = [...modelList.value, ...freeTierModels.value]
+    // 上次选择只保留仍在可用列表里的模型，已下线的自动丢弃
     let saved = []
     try {
       const parsed = JSON.parse(localStorage.getItem(MODELS_STORAGE_KEY) || '[]')
       if (Array.isArray(parsed)) saved = parsed
     } catch { /* 忽略损坏的本地存储 */ }
-    selectedModels.value = modelList.value.filter((m) => saved.includes(m))
-    // 无历史选择时默认全选：网关返回什么就默认用全部（轮班机制下每个模型都会分到约 1/N 段落）
-    if (!selectedModels.value.length) selectedModels.value = [...modelList.value]
+    selectedModels.value = all.filter((m) => saved.includes(m))
+    // 无历史选择时默认全选：返回什么就默认用全部（轮班机制下每个模型都会分到约 1/N 段落）
+    if (!selectedModels.value.length) selectedModels.value = [...all]
+    lastRefreshedAt.value = new Date().toLocaleTimeString('zh-CN', { hour12: false })
   } catch {
     modelsError.value = '拉取模型列表失败，请稍后重试'
   } finally {
@@ -368,7 +379,11 @@ async function handleTrigger() {
         <p class="hint">口令仅保存在本标签页的 sessionStorage，不会写入 URL 或发送给第三方。</p>
       </template>
       <template v-else>
-        <p class="wb-label">选择本轮翻译模型</p>
+        <p class="wb-label">
+          选择本轮翻译模型
+          <button type="button" class="btn-refresh-models" :disabled="modelsLoading" @click="loadModels">{{ modelsLoading ? '刷新中…' : '刷新模型列表' }}</button>
+        </p>
+        <p v-if="lastRefreshedAt" class="hint">模型列表更新于 {{ lastRefreshedAt }}。点「刷新」可重新探测当前可用模型。</p>
         <p v-if="modelsError" class="form-error" role="alert">{{ modelsError }}</p>
         <p v-else-if="modelsLoading && !modelList.length" class="hint">正在加载模型列表…</p>
         <div v-else-if="modelList.length" class="wb-models">
@@ -377,6 +392,17 @@ async function handleTrigger() {
             <code>{{ m }}</code>
           </label>
         </div>
+        <template v-if="freeTierModels.length">
+          <p class="wb-label">免费层模型（bilibili Index-Translate）</p>
+          <p class="hint">免费层失败会自动降级到上面勾选的模型，可放心勾选。逐句模型按行翻译，质量稳定但请求数多。</p>
+          <div class="wb-models">
+            <label v-for="m in freeTierModels" :key="m" class="wb-model">
+              <input type="checkbox" v-model="selectedModels" :value="m" @change="persistModels" />
+              <code>{{ m }}</code>
+            </label>
+          </div>
+        </template>
+        <p v-else-if="freeTierError" class="hint">免费层暂不可用（{{ freeTierError }}），本轮只使用上面的网关模型。</p>
         <label class="wb-model wb-retry">
           <input type="checkbox" v-model="retryFailed" :disabled="!counts.failed" />
           <span>重试失败的光影（会重新消耗翻译额度）<em v-if="counts.failed">当前 {{ counts.failed }} 条</em><em v-else>当前没有失败项</em></span>
@@ -828,6 +854,20 @@ async function handleTrigger() {
   color: var(--vp-c-text-1);
   margin-bottom: 8px;
 }
+/* 模型列表是实时探测的（网关会增删模型、免费层会整组挂掉），必须能手动重探。 */
+.btn-refresh-models {
+  margin-left: 10px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  background: transparent;
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-refresh-models:hover:not(:disabled) { background: var(--vp-c-brand-soft); }
+.btn-refresh-models:disabled { opacity: 0.5; cursor: default; }
 .wb-trigger-row {
   display: flex;
   flex-direction: column;

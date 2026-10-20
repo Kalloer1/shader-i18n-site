@@ -13,6 +13,8 @@
  * 3. `translateChunkTwoLayer` —— 编排：先免费层，再回退池
  */
 
+import { translateChunkByLine, DEFAULT_LINE_CONCURRENCY } from './line-translator.mjs'
+
 /**
  * 解析模型回话里的 `键=值` 行，**同时**报告重复键。
  *
@@ -132,6 +134,32 @@ export async function tryFreeTier({ chunk, provider, call, signal, log = () => {
 }
 
 /**
+ * 试一次**逐句**免费层（`index-mt-*-syllable`）。
+ *
+ * 与 `tryFreeTier` 的差异：整块路径一次请求翻 N 行，这里一行一个请求。
+ * 失败语义相同——抛错返回 null 让调用方落回退池；**部分回退不算失败**，
+ * 漏掉的行留英文，整体质量仍由回退率阈值把关。
+ *
+ * @returns {Promise<{map: Map<string,string>, fallback: number}|null>}
+ */
+export async function tryFreeTierByLine({ chunk, provider, call, signal, log = () => {} }) {
+  if (!provider) return null
+  try {
+    const { map, fallback } = await translateChunkByLine({
+      chunk,
+      call: (text, sig) => call(provider, text, sig),
+      signal,
+      concurrency: provider.lineConcurrency ?? DEFAULT_LINE_CONCURRENCY,
+      log,
+    })
+    return { map, fallback }
+  } catch (err) {
+    log(`[免费层] 逐句失败（${err?.message?.slice(0, 120) ?? err}），降级到回退池`)
+    return null
+  }
+}
+
+/**
  * 装配一个 `translateChunk(chunk, activeProviders, signal, opts)` 函数。
  *
  * 为什么连装配也要抽出来：这里曾经是**真实覆盖盲区**。pipeline.mjs 顶层就会跑整个
@@ -175,8 +203,15 @@ export function createChunkTranslator(deps) {
       input,
       freeTier: isFreeTierUsable() ? freeTierProvider : null,
       poolProviders: providerList,
-      // 提示词由 provider 自己给（免费层 instTrans、网关 SYSTEM_PROMPT）。
-      call: (activeProvider, sig) => callProvider(activeProvider, activeProvider.buildPrompt(input), sig ?? signal),
+      // 整块路径：提示词由 provider 自己给（免费层 instTrans、网关 SYSTEM_PROMPT）。
+      // 逐句路径不走这里——它传的是单行文本，见 translateChunkTwoLayer 的 perLine 分支。
+      call: (activeProvider, textOrSignal, maybeSignal) => {
+        // 三参形态 = 逐句路径（第 2 参是待译文本）；两参形态 = 整块路径。
+        if (typeof textOrSignal === 'string') {
+          return callProvider(activeProvider, textOrSignal, maybeSignal ?? signal)
+        }
+        return callProvider(activeProvider, activeProvider.buildPrompt(input), textOrSignal ?? signal)
+      },
       signal,
       isFirstChunk,
       log: emit,
@@ -235,7 +270,19 @@ export async function translateChunkTwoLayer({
   const usedProviderIds = new Set()
 
   if (freeTier && isUsable(freeTier)) {
-    const free = await tryFreeTier({ chunk, provider: freeTier, call: (p, s) => call(p, s), signal, log })
+    // 逐句模型（syllable）必须一行一个请求：实测给 N 行只回 1 行，且回哪行不可控。
+    // 两条路径的 `call` 签名不同，**不能共用一个 (p, s) 包装**：
+    // - 整块：`call(provider, signal)` —— 提示词已由调用方按 input 建好；
+    // - 逐句：`call(provider, 单行文本, signal)` —— 每行现建提示词。
+    const free = freeTier.perLine
+      ? await tryFreeTierByLine({
+        chunk,
+        provider: freeTier,
+        call: (p, text, sig) => call(p, text, sig),
+        signal,
+        log,
+      })
+      : await tryFreeTier({ chunk, provider: freeTier, call: (p, s) => call(p, s), signal, log })
     if (free) {
       onFreeTierSuccess()
       best = free.map

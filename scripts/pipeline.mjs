@@ -271,10 +271,23 @@ function nextProviderOrder(list = providers) {
 }
 
 // ---------- 免费层实例与熔断状态 ----------
+// 逐句模型（syllable）的并发度：本机实测 32 是拐点，CI 出口未验证故默认 16。
+function readFreeTierConcurrency() {
+  const raw = envStr('FREE_TIER_CONCURRENCY')
+  if (raw === undefined) return undefined // 交给 provider 的默认值
+  const n = Number(raw)
+  if (!Number.isFinite(n) || n < 1) {
+    console.error(`FREE_TIER_CONCURRENCY 无效（${raw}），使用默认值`)
+    return undefined
+  }
+  return Math.min(Math.floor(n), 64) // 64 是实测吞吐已开始下降的上限，再高只是排队
+}
+
 const freeTierProvider = createFreeTierProvider({
   model: FREE_TIER_MODEL(),
   url: freeTierUrl,
   label: `${FREE_TIER_MODEL()}（${providerHostLabel(freeTierUrl())}）`,
+  lineConcurrency: readFreeTierConcurrency(),
 })
 
 // 免费层连续失败计数。达 FREE_TIER_FAILURE_THRESHOLD 才熔断（单次抖动只降级当前分块）。
@@ -492,9 +505,15 @@ function timestamp() {
 /**
  * 注入用的网络调用：把 provider 的提示词/请求体/超时/重试都套上，返回正文。
  * 免费层的 `maxAttempts: 1`（单次、无退避）与 `requestTimeoutMs` 在 chatOnce/chatWithRetry 里生效。
+ *
+ * `messages` 有两种形态：
+ * - 数组（整块路径）：直接发给模型；
+ * - 字符串（逐句路径）：**已经是一行待译文本**，由 line-translator 传入，
+ *   这里包成单条 user 消息。逐句模型的提示词在 line-translator 里，不在 provider 上。
  */
 function callProvider(activeProvider, messages, signal) {
-  return chatWithRetry(activeProvider, messages, signal)
+  const payload = typeof messages === 'string' ? [{ role: 'user', content: messages }] : messages
+  return chatWithRetry(activeProvider, payload, signal)
 }
 
 /** 本轮所有模型都已不可用**且**免费层也不可用 —— 才算整体失败。 */

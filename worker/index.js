@@ -120,11 +120,85 @@ async function fetchGatewayModels(env) {
   return { models }
 }
 
-/** GET /models —— 公开返回网关当前模型 id 列表（不含任何秘密） */
+// ---------- 免费层（bilibili Index-Translate）模型探测 ----------
+// 免费层是**独立于网关**的另一层，它的模型不在网关 /models 里。
+// 为什么要探而不是写死：服务方随时增删模型，且 2026-10-19 起 35B 持续 504 而
+// syllable 存活——写死列表会让管理员选中一个必然失败的模型。
+//
+// ⚠️ 探测必须**发真实请求**，不能用 /health 或 /v1/models（2026-10-20 实测）：
+// - `/health` 只报主模型与内部 checkpoint，**根本不列 syllable 系列**；
+// - `/v1/models` 同样只列 `Index-Translate-35B-A3B`；
+// - 而 35B 在 /health 里是 true、在 /v1/models 里也有，**实际却持续 504**。
+// 即两个元数据端点既不完整也不准确。唯一可靠判据是「拿一句话真的翻一次」。
+//
+// 公开模型名不随元数据走，改为常量表；表里没有的新模型靠错误信息发现
+// （错模型名会 400 并列出全部公开模型，见 /v1/chat/completions 的 detail）。
+const DEFAULT_FREE_TIER_BASE = 'https://index-translate.bilibili.com'
+const FREE_TIER_CANDIDATES = [
+  'Index-Translate-35B-A3B',
+  'index-mt-2b',
+  'index-mt-9b',
+  'index-mt-2b-syllable',
+  'index-mt-9b-syllable',
+]
+// 探测请求：短、快、失败即判死。8 秒足够——实测死模型要么 30 秒 504，要么秒回 500。
+const FREE_TIER_PROBE_TIMEOUT_MS = 8000
+const FREE_TIER_PROBE_PROMPT = '请将以下文本翻译为简体中文，直接输出翻译结果，不要保留英文原文，不要进行任何解释。\n\nShadow Strength'
+
+/**
+ * 判定一次探测回话是否算「模型活着」。
+ *
+ * 必须有中文：回显英文说明模型没在翻译（或已被替换成别的东西）。
+ * 纯函数，供离线单测覆盖（worker 顶层依赖 Cloudflare 绑定，无法整体 import）。
+ */
+export function isFreeTierProbeAlive(status, data) {
+  if (status !== 200) return false
+  const text = data?.choices?.[0]?.message?.content
+  return Boolean(text) && /[一-鿿]/.test(text)
+}
+
+async function probeFreeTierModel(base, model) {
+  try {
+    const res = await fetch(`${base}/v1/chat/completions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'User-Agent': UA },
+      signal: AbortSignal.timeout(FREE_TIER_PROBE_TIMEOUT_MS),
+      body: JSON.stringify({
+        model,
+        messages: [{ role: 'user', content: FREE_TIER_PROBE_PROMPT }],
+        temperature: 0,
+        max_tokens: 64,
+        stream: false,
+        chat_template_kwargs: { enable_thinking: false },
+      }),
+    })
+    const data = await res.json().catch(() => null)
+    return isFreeTierProbeAlive(res.status, data)
+  } catch {
+    // 超时 / 网络错误一律判死：无 SLA 的公开服务，探不到就当不可用。
+    return false
+  }
+}
+
+async function fetchFreeTierModels(env) {
+  const base = (env.FREE_TIER_BASE_URL || DEFAULT_FREE_TIER_BASE).replace(/\/+$/, '').replace(/\/v1$/, '')
+  // 并行探测：串行最坏要 5×8 秒，会把整个模型列表拖慢。
+  const results = await Promise.all(
+    FREE_TIER_CANDIDATES.map(async (m) => [m, await probeFreeTierModel(base, m)]),
+  )
+  const models = results.filter(([, ok]) => ok).map(([m]) => m).sort()
+  // 全挂时**不报错**：免费层本就是无 SLA 的公开服务，整组不可用是正常状态，
+  // 前端只显示网关模型即可（与「探测失败优雅降级」同一原则）。
+  return { models }
+}
+
+/** GET /models —— 公开返回可用模型：网关模型 + 免费层模型（不含任何秘密） */
 async function handleModels(env, origin) {
   const { models, error } = await fetchGatewayModels(env)
   if (error) return json({ success: false, error }, 502, origin)
-  return json({ success: true, models }, 200, origin)
+  // 免费层探测失败**不影响**网关模型返回：只是少一组选项，不报错。
+  const free = await fetchFreeTierModels(env)
+  return json({ success: true, models, freeTierModels: free.models, freeTierError: free.error }, 200, origin)
 }
 
 /** POST /verify-passphrase —— 仅校验口令，供 /request 页门禁渲染模型多选 */
@@ -562,9 +636,16 @@ async function handleTranslate(request, env, origin) {
       if (error) {
         return json({ error: `无法校验模型列表：${error}` }, 400, origin)
       }
-      const invalid = candidate.filter((m) => !available.includes(m))
+      // 免费层模型不在网关列表里，单独校验。**探测失败时按"不可用"处理**：
+      // 宁可拒绝，也不要把一个现在调不通的模型透传进 workflow 烧一轮预算。
+      const { models: freeAvailable } = await fetchFreeTierModels(env)
+      const gatewaySet = new Set(available)
+      const freeSet = new Set(freeAvailable)
+      const invalid = candidate.filter((m) => !gatewaySet.has(m) && !freeSet.has(m))
       if (invalid.length) {
-        return json({ error: `以下模型不在网关列表中：${invalid.join(', ')}` }, 400, origin)
+        return json({
+          error: `以下模型不在可用列表中（网关与免费层均未提供）：${invalid.join(', ')}`,
+        }, 400, origin)
       }
       modelsInput = candidate.join(',')
     }

@@ -634,3 +634,91 @@ test('装配层：信号透传给 callProvider（超时/中止能真正断开）
 
   assert.equal(seenSignal, ac.signal, '应把调用方的 signal 传下去')
 })
+
+// ---------- 逐句模型（syllable）分流 ----------
+
+test('逐句模型：走 line-translator，一行一个请求，且不把 key 发给模型', async () => {
+  const perLine = createFreeTierProvider({
+    model: 'index-mt-9b-syllable',
+    url: () => 'https://free.invalid/v1',
+    label: 'free',
+  })
+  assert.equal(perLine.perLine, true, 'syllable 模型必须被识别为逐句')
+
+  const sent = []
+  const translate = createChunkTranslator({
+    freeTierProvider: perLine,
+    isFreeTierUsable: () => true,
+    onFreeTierFailure: () => {},
+    onFreeTierSuccess: () => {},
+    isUnusable: () => false,
+    markUnusable: () => {},
+    // 逐句路径会传三参（provider, 单行文本, signal）
+    callProvider: (p, text) => {
+      sent.push(text)
+      return '译文' + sent.length
+    },
+    isNoOutput: () => false,
+    log: () => {},
+  })
+
+  const r = await translate(CHUNK, [], undefined, {})
+
+  assert.equal(sent.length, CHUNK.length, `应一行一个请求；实际 ${sent.length} 次`)
+  // 每行请求都只含 value，不含 key（实测把回显率从 15.5% 压到 6.5%）
+  for (const [k, v] of CHUNK) {
+    assert.ok(sent.some((s) => s.endsWith(v)), `应发过 value "${v}"`)
+    assert.ok(!sent.some((s) => s.includes(k)), `不该把 key "${k}" 发给模型`)
+  }
+  assert.equal(r.providerIds[0], perLine.id)
+  assert.equal(r.fallback, 0)
+})
+
+test('整块模型仍走整块路径（一行请求都不该拆）', async () => {
+  const whole = createFreeTierProvider({ model: 'Index-Translate-35B-A3B', url: () => 'u', label: 'x' })
+  assert.equal(whole.perLine, false)
+
+  const sent = []
+  const translate = createChunkTranslator({
+    freeTierProvider: whole,
+    isFreeTierUsable: () => true,
+    onFreeTierFailure: () => {},
+    onFreeTierSuccess: () => {},
+    isUnusable: () => false,
+    markUnusable: () => {},
+    callProvider: (p, messages) => {
+      sent.push(messages)
+      return GOOD
+    },
+    isNoOutput: () => false,
+    log: () => {},
+  })
+
+  await translate(CHUNK, [], undefined, {})
+  assert.equal(sent.length, 1, '整块模型只该发一次')
+  assert.ok(Array.isArray(sent[0]), '整块路径传的是 messages 数组')
+})
+
+test('逐句模型部分回退不判失败（漏掉的行留英文，其余照用）', async () => {
+  const perLine = createFreeTierProvider({ model: 'index-mt-2b-syllable', url: () => 'u', label: 'x' })
+  let n = 0
+  const translate = createChunkTranslator({
+    freeTierProvider: perLine,
+    isFreeTierUsable: () => true,
+    onFreeTierFailure: () => {},
+    onFreeTierSuccess: () => {},
+    isUnusable: () => false,
+    markUnusable: () => {},
+    callProvider: (p, text) => {
+      n++
+      // 第一行原样回显（模拟实测的 6.5% echo），其余正常
+      return n === 1 ? text.replace(/^.*?\n\n/s, '') : '译文'
+    },
+    isNoOutput: () => false,
+    log: () => {},
+  })
+
+  const r = await translate(CHUNK, [], undefined, {})
+  assert.equal(r.fallback, 1, '只有回显那一行算回退')
+  assert.equal(r.providerIds[0], perLine.id, '免费层仍然算产出方')
+})

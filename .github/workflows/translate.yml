@@ -127,15 +127,24 @@ jobs:
           LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'kilo/kilo-auto/free,kilo/poolside/laguna-s-2.1:free' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
-          # ---------- 免费层（默认主路，独立于 LLM_MODELS） ----------
+          # ---------- 免费层（独立于 LLM_MODELS） ----------
           # bilibili Index-Translate 公开 API：无需 key、无 SLA。失败快速降级到上面的回退池
           # （单次尝试、无退避、60 秒超时；连续 2 次失败才熔断）。
-          # 用独立环境变量是**有意为之**：它不参与 inputs.models，
-          # 否则管理员在 /request 页一勾模型就会静默关掉免费层，而界面上完全看不出来。
-          # 临时关闭只需把 FREE_TIER_ENABLED 设为 0。
+          #
+          # ⚠️ 2026-10-20 实测：主模型 `Index-Translate-35B-A3B` **持续 504**（服务端推理卡死，
+          # /health 仍报 true，属元数据不可信）。同服务上只剩两个 syllable 模型可用：
+          #   index-mt-9b-syllable  200 / 约 300ms / § 与占位符零漂移
+          #   index-mt-2b-syllable  200 / 约 250ms（会出繁体，优先 9b）
+          # syllable 是**逐句模型**：给它 N 行只回 1 行且回哪行不可控，因此流水线按模型名
+          # 自动切到「一行一个请求」的逐句路径（scripts/lib/line-translator.mjs）。
+          # 本机实测并发 32 是拐点（58 行/秒），CI 出口未验证，故取 16 留余量。
+          #
+          # 若 35B 恢复，把 FREE_TIER_MODEL 改回 Index-Translate-35B-A3B 即可回到整块模式
+          # （逐句标记由模型名判定，无需改代码）。
           FREE_TIER_ENABLED: ${{ secrets.FREE_TIER_ENABLED || '1' }}
           FREE_TIER_BASE_URL: ${{ secrets.FREE_TIER_BASE_URL }}
-          FREE_TIER_MODEL: ${{ secrets.FREE_TIER_MODEL }}
+          FREE_TIER_MODEL: ${{ secrets.FREE_TIER_MODEL || 'index-mt-9b-syllable' }}
+          FREE_TIER_CONCURRENCY: ${{ secrets.FREE_TIER_CONCURRENCY || '16' }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
           WORKER_URL: ${{ secrets.WORKER_URL }}
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}

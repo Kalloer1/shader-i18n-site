@@ -66,6 +66,9 @@ export const FREE_TIER_TEMPERATURE = 0.0
 export const FREE_TIER_MAX_TOKENS = 1024
 export const FREE_TIER_CHAT_TEMPLATE_KWARGS = { enable_thinking: false }
 
+/** 逐句模型的默认并发度（本机实测 32 是拐点，CI 出口未验证故取一半）。 */
+export const DEFAULT_LINE_CONCURRENCY = 16
+
 /**
  * 免费层的提示词：官方 instTrans 形态 —— **单条 user 消息**（无 system），
  * 含 `【源文】` / `【约束要求】` 两段，术语以 `A→B` 形式列出。
@@ -111,7 +114,10 @@ export function buildInstTransPrompt(input) {
  * @param {string} p.label 日志里显示的提供方名称
  * @param {number} [p.requestTimeoutMs] 单请求超时
  */
-export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000 }) {
+export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000, lineConcurrency = DEFAULT_LINE_CONCURRENCY }) {
+  // 逐句模型（syllable 系列）必须一行一个请求：实测给 N 行只回 1 行，且回哪行不可控。
+  // 标记由模型名判定，不靠外部配置——配错模型名时行为可预期（按整块走，回退率会暴露）。
+  const perLine = /-syllable$/i.test(model)
   return {
     id: model,
     name: label,
@@ -130,6 +136,10 @@ export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 6
     extract: (j) => j.choices?.[0]?.message?.content,
     maxAttempts: 1,
     requestTimeoutMs,
+    // 下面两个字段只有逐句路径读：provider-chain 据此分流到 line-translator。
+    // 并发度由调用方注入（pipeline 读 FREE_TIER_CONCURRENCY），provider 不读环境变量。
+    perLine,
+    lineConcurrency: perLine ? lineConcurrency : undefined,
   }
 }
 
