@@ -31,10 +31,10 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 | 已有 `langVersions` 的光影 | 542 个 | 含目录外的历史精选条目 |
 | GitHub 中的 `zh_CN.lang` 文件 | 601 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
 | 自带中文的目录项目 | 33 个 | 以 `modrinth-catalog.json` 条目的 `hasNativeZhCN` 标记为准 |
-| 明确缺少 `en_US.lang` | 439 个 | 以 `modrinth-catalog.json` 条目的 `noEnUsLang` 标记为准 |
+| 明确缺少 `en_US.lang` | 439 个 | 以 `modrinth-catalog.json` 条目的 `noEnUsLang` 标记为准；`noEnUsLangVersion` 记录判定版本，版本变了会重探 |
 | 尚未登记翻译的可处理项目 | 1 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
 | 翻译术语记忆 | 39,448 条 | `site/data/glossary.json` |
-| 生成的详情页 | 构建期生成 | `site/shaders/`（**未入库**，`.gitignore` 排除）；只展示已有本站汉化或自带中文的项目 |
+| 生成的详情页 | 构建期生成 | `site/shaders/`（**未入库**，`.gitignore` 排除）；展示已有本站汉化、自带中文、**无英文源**三类（「暂无汉化」不展示） |
 
 这些数字是当前快照，不是永久承诺；Modrinth 目录会在每日同步后变化。
 
@@ -70,6 +70,7 @@ npm run validate:lang    # 全量闸门：批量校验 site/public/lang 下所�
 npm run validate:lang -- <en_US.lang> <zh_CN.lang>   # 单文件模式
 npm run fix:lang         # 修复译文引入的畸形 § 序列（--dry-run 只报告）
 npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合并式）
+npm run probe:candidates -- --source all --order asc --limit 20   # 只读 Range 摸包结构，选可翻目标
 ```
 
 `npm run build` 通过 npm 的 `prebuild` 钩子执行一次 `scripts/gen-shader-pages.mjs`，然后执行 VitePress 构建；详情页不会重复生成。
@@ -151,10 +152,10 @@ CurseForge 目录采集是 `continue-on-error: true` 的可选步骤（`scripts/
 逐步流程：
 
 1. 读取 `site/data/modrinth-catalog.json`、`site/data/curseforge-catalog.json`、`site/data/shaders.json` 和 `site/data/glossary.json`。
-2. 筛选候选项目：排除已自带 `zh_CN.lang` 的项目、已有最新汉化映射的项目，以及 `noEnUsLang === true`（缺少 `en_US.lang`）的项目。
+2. 筛选候选项目：排除已自带 `zh_CN.lang` 的项目、已有最新汉化映射的项目。**「无英文源」黑名单按版本判定**（`scripts/lib/blacklist.mjs`）：只有 `noEnUsLangVersion` 与当前最新版本相同才跳过；上游发了新版本、或旧数据没有版本号，都会重新探测。`--top N` 时黑名单候选排到队尾，不挤占正常候选。
 3. 跨平台去重：若同一光影在 Modrinth 侧已有汉化，直接判完成，不消耗任何 LLM 预算。
 4. 对候选项目请求最新版本，下载主文件，并在 zip 内查找 `shaders/lang/en_US.lang` 与 `shaders/lang/zh_CN.lang`（CurseForge 分支按 release 优先 + fileDate 倒序逐个候选文件尝试）。
-5. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，置 `noEnUsLang` 标记并跳过。
+5. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过（同时清掉过期的 `noEnUsLang`）；如果找不到英文源，置 `noEnUsLang: true` 并记录判定版本 `noEnUsLangVersion` 后跳过；重新探测发现英文源时清掉这两个字段。
 6. 读取术语记忆 `glossary.json`；按剥离 `§` 格式码后的英文骨架完全匹配的直接复用已有中文，未命中的值交给模型翻译，新的映射在处理后写回术语记忆。
 7. 解析英文语言文件，按 60 行（`CHUNK_LINES`）拆分为多个块。每个块**先走免费层**；失败（超时 / 非 2xx / 空正文 / 键集合不完整）或回退率 >10% 才落到回退池。回退池内按分块轮转调用，单个模型失败或回退率过高时自动尝试下一个模型。
 8. 要求模型只翻译等号右侧，保留 key、占位符（如 `%s`、`%value%`）、`§` 格式码、注释和文件结构。

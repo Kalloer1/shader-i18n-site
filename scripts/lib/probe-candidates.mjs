@@ -13,6 +13,7 @@
  */
 
 import { PROBE_VERDICT, classifyLangNames } from './zip-probe.mjs'
+import { isApiDownloadBlocked } from './cf.mjs'
 
 /**
  * openZip 的 Range 阈值：小于它直接整包（见 shared/zip-range.mjs 的 minRangeBytes 默认值）。
@@ -63,8 +64,43 @@ export function countLangEntries(text) {
   return { lines: rawLines, entries }
 }
 
+/** 归一化 slug：与站点/详情页判定 CF 独占条目时同一口径（小写、去分隔符）。 */
+export const normSlug = (s) => String(s ?? '').trim().toLowerCase().replace(/[-_\s]+/g, '')
+
+/** 扫描顺序：默认从高到低（与历史行为一致）；`asc` 从末尾/最低下载量开始。 */
+export const ORDERS = Object.freeze(['desc', 'asc'])
+
+/** 归一化排序参数：非法值回落到默认 `desc`，避免拼错参数导致行为静默改变。 */
+export function normalizeOrder(order) {
+  const v = String(order ?? '').toLowerCase()
+  return ORDERS.includes(v) ? v : 'desc'
+}
+
+/** 按下载量排序 + 截断。同下载量按 id 升序，保证输出稳定（便于 diff 两次探测结果）。 */
+function sortAndLimit(list, limit, order) {
+  const sorted = list.slice().sort((a, b) => {
+    const diff = (a.downloads ?? 0) - (b.downloads ?? 0)
+    const byDownloads = order === 'asc' ? diff : -diff
+    if (byDownloads !== 0) return byDownloads
+    return String(a.id).localeCompare(String(b.id))
+  })
+  return sorted.slice(0, Math.max(0, limit))
+}
+
+/** shaders.json 里已有汉化的 id 集合（Modrinth id 与 CF slug 都存在这个集合里）。 */
+function translatedIds(db) {
+  const set = new Set()
+  for (const s of db?.shaders ?? []) {
+    if ((s.langVersions?.length ?? 0) > 0) {
+      if (s.id) set.add(s.id)
+      if (s.curseforge?.slug) set.add(s.curseforge.slug)
+    }
+  }
+  return set
+}
+
 /**
- * 从目录 + 已汉化库里挑出待探测条目。
+ * 从 Modrinth 目录 + 已汉化库里挑出待探测条目。
  *
  * 排除规则（只排两类，理由都写在这里）：
  * 1. 已有本站汉化（shaders.json 里 langVersions 非空）—— 不需要再翻；
@@ -78,13 +114,11 @@ export function countLangEntries(text) {
  * @param {{shaders: Array<object>}} opts.db site/data/shaders.json
  * @param {string[]} [opts.ids] 只探测这些 id（为空则全目录）
  * @param {number} [opts.limit=50] 最多返回多少条
- * @returns {Array<{id:string, title:string, downloads:number, projectId:string}>} 按下载量降序
+ * @param {'desc'|'asc'} [opts.order='desc'] 下载量排序方向
+ * @returns {Array<{id:string, title:string, downloads:number, projectId:string, source:'modrinth'}>}
  */
-export function selectCandidates({ catalog, db, ids = [], limit = 50 }) {
-  const translated = new Set()
-  for (const s of db?.shaders ?? []) {
-    if ((s.langVersions?.length ?? 0) > 0) translated.add(s.id)
-  }
+export function selectCandidates({ catalog, db, ids = [], limit = 50, order = 'desc' }) {
+  const translated = translatedIds(db)
   const wanted = ids.length ? new Set(ids) : null
   const list = (catalog?.shaders ?? []).filter((e) => {
     if (e.hasNativeZhCN === true) return false
@@ -92,16 +126,61 @@ export function selectCandidates({ catalog, db, ids = [], limit = 50 }) {
     if (wanted && !wanted.has(e.id)) return false
     return true
   })
-  return list
-    .slice()
-    .sort((a, b) => (b.downloads ?? 0) - (a.downloads ?? 0))
-    .slice(0, Math.max(0, limit))
-    .map((e) => ({
-      id: e.id,
-      title: e.title ?? e.id,
-      downloads: e.downloads ?? 0,
-      projectId: e.projectId ?? e.id,
-    }))
+  return sortAndLimit(list, limit, normalizeOrder(order)).map((e) => ({
+    id: e.id,
+    title: e.title ?? e.id,
+    downloads: e.downloads ?? 0,
+    projectId: e.projectId ?? e.id,
+    source: 'modrinth',
+  }))
+}
+
+/**
+ * 从 CurseForge 目录挑出待探测条目。
+ *
+ * 排除规则：
+ * 1. `allowModDistribution === false` —— 作者禁止 API 分发，下载接口一律 403，
+ *    探测必然失败且毫无信息量（当前目录里 275 条）。**必须提前排掉**，否则会把
+ *    探测额度全花在这些条目上。
+ * 2. 已有本站汉化（按 shaders.json 的 id / curseforge.slug 匹配）—— 不需要再翻。
+ * 3. `excludeIds`：调用方给的归一化 slug 集合。`--source all` 时用它去掉「Modrinth 目录里
+ *    已有同名项目」的 CF 条目，避免同一个光影被探两遍。
+ *
+ * 与 Modrinth 侧一致：**不排除**已带 noEnUsLang 的条目（旧结论可能过期）。
+ *
+ * @param {object} opts
+ * @param {{mods: Array<object>}} opts.cfCatalog site/data/curseforge-catalog.json
+ * @param {{shaders: Array<object>}} opts.db site/data/shaders.json
+ * @param {string[]} [opts.ids] 只探测这些 slug
+ * @param {number} [opts.limit=50]
+ * @param {'desc'|'asc'} [opts.order='desc']
+ * @param {Set<string>} [opts.excludeIds] 归一化 slug 集合（跳过）
+ * @returns {Array<{id:string, title:string, downloads:number, cfId:number, slug:string, source:'curseforge'}>}
+ */
+export function selectCfCandidates({ cfCatalog, db, ids = [], limit = 50, order = 'desc', excludeIds = new Set() }) {
+  const translated = translatedIds(db)
+  const translatedCfIds = new Set()
+  for (const s of db?.shaders ?? []) {
+    if ((s.langVersions?.length ?? 0) > 0 && s.curseforge?.cfId != null) translatedCfIds.add(String(s.curseforge.cfId))
+  }
+  const wanted = ids.length ? new Set(ids) : null
+  const list = (cfCatalog?.mods ?? []).filter((m) => {
+    if (!m?.slug) return false
+    if (isApiDownloadBlocked(m)) return false
+    if (translated.has(m.slug)) return false
+    if (m.cfId != null && translatedCfIds.has(String(m.cfId))) return false
+    if (excludeIds.has(normSlug(m.slug))) return false
+    if (wanted && !wanted.has(m.slug)) return false
+    return true
+  })
+  return sortAndLimit(list, limit, normalizeOrder(order)).map((m) => ({
+    id: m.slug,
+    title: m.name ?? m.slug,
+    downloads: m.downloads ?? 0,
+    cfId: m.cfId,
+    slug: m.slug,
+    source: 'curseforge',
+  }))
 }
 
 /**
@@ -113,12 +192,13 @@ export function selectCandidates({ catalog, db, ids = [], limit = 50 }) {
  * @param {number} [opts.totalSize]
  * @param {object} [opts.headers]
  * @param {number} [opts.minEntries=DEFAULT_MIN_EN_ENTRIES]
+ * @param {AbortSignal} [opts.signal] 中断信号（与流水线 CF 分支同一条链路）
  * @returns {Promise<{status:string, fetchMode?:string, downloadedBytes?:number, packBytes?:number,
  *   enLines?:number, enEntries?:number, enName?:string|null, langNames?:string[], error?:string}>}
  */
-export async function probeOne({ openZip, url, totalSize, headers, minEntries = DEFAULT_MIN_EN_ENTRIES }) {
+export async function probeOne({ openZip, url, totalSize, headers, minEntries = DEFAULT_MIN_EN_ENTRIES, signal }) {
   try {
-    const zip = await openZip(url, { totalSize, headers })
+    const zip = await openZip(url, { totalSize, headers, signal })
     const { verdict, langNames, enName } = classifyLangNames(zip.names)
     const base = {
       langNames,
@@ -159,11 +239,15 @@ export async function probeOne({ openZip, url, totalSize, headers, minEntries = 
  *
  * @param {object} opts
  * @param {Array<{id:string,title:string,downloads:number,projectId:string}>} opts.items
- * @param {(projectId: string) => Promise<{url:string, size?:number, version?:string, filename?:string}>} opts.getLatestFile
+ * @param {(projectId: string, item: object) => Promise<{url:string, size?:number, version?:string, filename?:string}>} opts.getLatestFile
+ *   第一个参数是 `item.projectId`（CF 条目没有 projectId，此时是 `undefined`）；
+ *   第二个参数是完整条目，需要按来源分派时用它（见 scripts/probe-candidates.mjs）。
  * @param {(url: string, opts: object) => Promise<object>} opts.openZip
  * @param {number} [opts.concurrency=5]
  * @param {object} [opts.headers]
  * @param {number} [opts.minEntries]
+ * @param {number} [opts.timeoutMs=0] 单条总超时（0 = 不限）。CF 下载地址是时效性签名链接，
+ *   卡住的那一条不该拖住整批。
  * @param {(row: object) => void} [opts.onRow] 每完成一条回调（CLI 用来打印进度）
  * @returns {Promise<Array<object>>} 与 items 同序的结果行
  */
@@ -174,6 +258,7 @@ export async function runProbeCandidates({
   concurrency = 5,
   headers,
   minEntries = DEFAULT_MIN_EN_ENTRIES,
+  timeoutMs = 0,
   onRow,
 }) {
   const results = new Array(items.length)
@@ -183,16 +268,19 @@ export async function runProbeCandidates({
       const i = next++
       if (i >= items.length) return
       const item = items[i]
+      const signal = timeoutMs > 0 ? AbortSignal.timeout(timeoutMs) : undefined
       let row
       try {
-        const file = await getLatestFile(item.projectId)
-        if (!file?.url) throw new Error('Modrinth 最新版本无可下载文件')
-        const probed = await probeOne({ openZip, url: file.url, totalSize: file.size, headers, minEntries })
+        const file = await getLatestFile(item.projectId, item)
+        if (!file?.url) throw new Error('最新版本无可下载文件')
+        const probed = await probeOne({ openZip, url: file.url, totalSize: file.size, headers, minEntries, signal })
         row = {
           id: item.id,
           title: item.title,
           downloads: item.downloads,
+          // Modrinth 条目带 projectId，CF 条目带 cfId/slug（source 用来区分两边）。
           projectId: item.projectId,
+          ...(item.source === 'curseforge' ? { cfId: item.cfId, source: 'curseforge' } : { source: 'modrinth' }),
           shaderVersion: file.version,
           sourceFile: file.filename,
           ...probed,
@@ -205,6 +293,7 @@ export async function runProbeCandidates({
           title: item.title,
           downloads: item.downloads,
           projectId: item.projectId,
+          ...(item.source === 'curseforge' ? { cfId: item.cfId, source: 'curseforge' } : { source: 'modrinth' }),
           status: PROBE_STATUS.PROBE_FAILED,
           error: String(err?.message ?? err).slice(0, 300),
         }

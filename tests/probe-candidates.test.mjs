@@ -22,11 +22,15 @@ import {
   DEFAULT_MIN_EN_ENTRIES,
   PROBE_STATUS,
   RANGE_MIN_BYTES,
+  ORDERS,
   countLangEntries,
   fullModeReason,
+  normalizeOrder,
+  normSlug,
   probeOne,
   runProbeCandidates,
   selectCandidates,
+  selectCfCandidates,
   summarize,
 } from '../scripts/lib/probe-candidates.mjs'
 import { PROBE_VERDICT, classifyLangNames } from '../scripts/lib/zip-probe.mjs'
@@ -154,6 +158,112 @@ describe('selectCandidates：只排「已有汉化」与「已知自带中文」
 
   it('limit 截断', () => {
     assert.equal(selectCandidates({ catalog, db, limit: 1 }).length, 1)
+  })
+
+  it('--order asc：从下载量最低的开始（用户要求从末尾扫）', () => {
+    const picked = selectCandidates({ catalog, db, limit: 50, order: 'asc' })
+    assert.deepEqual(picked.map((x) => x.id), ['c', 'a'])
+  })
+
+  it('--order asc + limit：取最低的 N 个', () => {
+    const picked = selectCandidates({ catalog, db, limit: 1, order: 'asc' })
+    assert.deepEqual(picked.map((x) => x.id), ['c'])
+  })
+
+  it('非法 order 回落到 desc（拼错参数不能静默改行为）', () => {
+    assert.deepEqual(
+      selectCandidates({ catalog, db, limit: 50, order: 'ascending' }).map((x) => x.id),
+      ['a', 'c'],
+    )
+    assert.equal(normalizeOrder('ASC'), 'asc', '大小写不敏感')
+    assert.equal(normalizeOrder(undefined), 'desc')
+    assert.deepEqual(ORDERS, ['desc', 'asc'])
+  })
+
+  it('同下载量按 id 升序，输出稳定', () => {
+    const tie = {
+      shaders: [
+        { id: 'z', downloads: 10, projectId: 'pz' },
+        { id: 'a', downloads: 10, projectId: 'pa' },
+      ],
+    }
+    assert.deepEqual(selectCandidates({ catalog: tie, db, limit: 5 }).map((x) => x.id), ['a', 'z'])
+    assert.deepEqual(selectCandidates({ catalog: tie, db, limit: 5, order: 'asc' }).map((x) => x.id), ['a', 'z'])
+  })
+
+  it('结果带 source=modrinth（混扫时用于区分来源）', () => {
+    assert.equal(selectCandidates({ catalog, db, limit: 1 })[0].source, 'modrinth')
+  })
+})
+
+describe('selectCfCandidates：CurseForge 目录（含禁止分发排除与排序）', () => {
+  const cfCatalog = {
+    mods: [
+      { cfId: 1, slug: 'hot', name: 'Hot', downloads: 9000 },
+      { cfId: 2, slug: 'blocked', name: 'Blocked', downloads: 8000, allowModDistribution: false },
+      { cfId: 3, slug: 'translated', name: 'Translated', downloads: 7000 },
+      { cfId: 4, slug: 'cold', name: 'Cold', downloads: 100 },
+      { cfId: 5, slug: 'unknown-license', name: 'Unknown', downloads: 500 },
+      { cfId: 6, slug: 'dup-of-modrinth', name: 'Dup', downloads: 50 },
+      { cfId: 7, slug: '', name: 'NoSlug', downloads: 9999 },
+    ],
+  }
+  const db = { shaders: [{ id: 'translated', langVersions: [{ shaderVersion: '1.0' }] }] }
+
+  it('排除禁止分发（allowModDistribution===false）、已有汉化、缺 slug', () => {
+    const picked = selectCfCandidates({ cfCatalog, db, limit: 50 })
+    assert.deepEqual(picked.map((x) => x.id), ['hot', 'unknown-license', 'cold', 'dup-of-modrinth'])
+  })
+
+  it('allowModDistribution 缺失（undefined）不排除（未采集 ≠ 禁止）', () => {
+    const picked = selectCfCandidates({ cfCatalog, db, limit: 50 })
+    assert.ok(picked.some((x) => x.id === 'unknown-license'))
+  })
+
+  it('按下载量降序 / 升序', () => {
+    assert.deepEqual(
+      selectCfCandidates({ cfCatalog, db, limit: 2 }).map((x) => x.id),
+      ['hot', 'unknown-license'],
+    )
+    assert.deepEqual(
+      selectCfCandidates({ cfCatalog, db, limit: 2, order: 'asc' }).map((x) => x.id),
+      ['dup-of-modrinth', 'cold'],
+    )
+  })
+
+  it('excludeIds（归一化 slug）跳过 Modrinth 已有同名项目', () => {
+    const picked = selectCfCandidates({
+      cfCatalog,
+      db,
+      limit: 50,
+      excludeIds: new Set([normSlug('dup-of-modrinth')]),
+    })
+    assert.ok(!picked.some((x) => x.id === 'dup-of-modrinth'))
+  })
+
+  it('按 curseforge.cfId 排除已有汉化（id 与 slug 不一致时也能命中）', () => {
+    const dbById = {
+      shaders: [{ id: 'renamed-shader', curseforge: { slug: 'old-slug', cfId: 1 }, langVersions: [{ shaderVersion: '1' }] }],
+    }
+    const picked = selectCfCandidates({ cfCatalog, db: dbById, limit: 50 })
+    assert.ok(!picked.some((x) => x.id === 'hot'), 'cfId=1 已有汉化，应被排除')
+  })
+
+  it('结果带 cfId / slug / source=curseforge（CLI 用它取下载地址）', () => {
+    const [first] = selectCfCandidates({ cfCatalog, db, limit: 1 })
+    assert.equal(first.source, 'curseforge')
+    assert.equal(first.cfId, 1)
+    assert.equal(first.slug, 'hot')
+    assert.equal(first.title, 'Hot')
+  })
+
+  it('--ids 只保留指定 slug', () => {
+    assert.deepEqual(selectCfCandidates({ cfCatalog, db, ids: ['cold'], limit: 50 }).map((x) => x.id), ['cold'])
+  })
+
+  it('空目录 / 缺失目录不崩', () => {
+    assert.deepEqual(selectCfCandidates({ cfCatalog: {}, db, limit: 5 }), [])
+    assert.deepEqual(selectCfCandidates({ cfCatalog: null, db, limit: 5 }), [])
   })
 })
 
@@ -354,6 +464,27 @@ async function startFakeServer(state) {
         files: [{ primary: true, url: `${state.baseUrl}/download/${key}.zip`, filename: `${key}.zip`, size: ZIPS[key].length }],
       }])
     }
+    // ---- CurseForge v1：文件列表 / 下载地址 ----
+    if (/^\/v1\/mods\/\d+\/files$/.test(url.pathname)) {
+      const cfId = Number(url.pathname.split('/')[3])
+      state.cfFileListRequests.push(cfId)
+      const key = state.cfFiles[cfId]
+      if (!key) { res.writeHead(404); return res.end('no such mod') }
+      return json({
+        data: [{
+          id: cfId * 100,
+          fileName: `${key}.zip`,
+          releaseType: 1,
+          fileDate: '2026-10-01T00:00:00Z',
+          // 真实 CF 文件列表必带 fileLength；探测靠它决定能否走 Range。
+          fileLength: ZIPS[key].length,
+        }],
+      })
+    }
+    if (/^\/v1\/mods\/\d+\/files\/\d+\/download-url$/.test(url.pathname)) {
+      const cfId = Number(url.pathname.split('/')[3])
+      return json({ data: `${state.baseUrl}/download/${state.cfFiles[cfId]}.zip` })
+    }
     if (url.pathname.startsWith('/download/')) {
       const key = url.pathname.slice('/download/'.length).replace(/\.zip$/, '')
       const buf = ZIPS[key]
@@ -386,7 +517,7 @@ async function startFakeServer(state) {
   return server
 }
 
-function makeRepo(projects) {
+function makeRepo(projects, cfMods = null) {
   const dir = mkdtempSync(join(tmpdir(), 'probe-candidates-e2e-'))
   cpSync(join(ROOT, 'scripts'), join(dir, 'scripts'), { recursive: true })
   cpSync(join(ROOT, 'shared'), join(dir, 'shared'), { recursive: true })
@@ -398,6 +529,10 @@ function makeRepo(projects) {
       shaders: projects.map((p) => ({ id: p.id, projectId: p.projectId, title: p.title, downloads: p.downloads })),
     }),
   )
+  // CF 目录可选：只有 CF 用例才写（同时验证「没有 CF 目录时 --source modrinth 仍能跑」）。
+  if (cfMods) {
+    writeFileSync(join(dir, 'site/data/curseforge-catalog.json'), JSON.stringify({ mods: cfMods }))
+  }
   writeFileSync(join(dir, 'site/data/shaders.json'), JSON.stringify({ shaders: [] }))
   writeFileSync(join(dir, 'site/data/glossary.json'), JSON.stringify({}))
   return dir
@@ -406,7 +541,7 @@ function makeRepo(projects) {
 function runCli(repo, state, args) {
   const env = { ...process.env }
   for (const k of ['HTTPS_PROXY', 'NODE_USE_ENV_PROXY', 'LLM_API_KEY']) delete env[k]
-  // 用 shim 把 Modrinth API 改写到本地服务（下载 URL 由假服务直接给出，无需改写）。
+  // 用 shim 把 Modrinth / CurseForge API 改写到本地服务（下载 URL 由假服务直接给出，无需改写）。
   const shim = join(tmpdir(), `probe-cand-shim-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2)}.mjs`)
   writeFileSync(shim, `
 const realFetch = globalThis.fetch
@@ -415,11 +550,18 @@ globalThis.fetch = (url, opts) => {
   if (s.startsWith('https://api.modrinth.com/v2')) {
     return realFetch(s.replace('https://api.modrinth.com/v2', '${state.baseUrl}/v2'), opts)
   }
+  if (s.startsWith('https://api.curseforge.com/v1')) {
+    return realFetch(s.replace('https://api.curseforge.com/v1', '${state.baseUrl}/v1'), opts)
+  }
   return realFetch(s, opts)
 }
 export {}
 `)
-  Object.assign(env, { NODE_OPTIONS: `--import ${new URL(`file://${shim.replace(/\\/g, '/')}`).href}` })
+  Object.assign(env, {
+    NODE_OPTIONS: `--import ${new URL(`file://${shim.replace(/\\/g, '/')}`).href}`,
+    // CF API 需要 key（lib/cf-api.mjs 缺 key 直接抛错）；假服务不校验值。
+    CURSEFORGE_API_KEY: 'dummy-cf-key',
+  })
   return new Promise((resolve) => {
     const p = spawn(process.execPath, ['scripts/probe-candidates.mjs', ...args], { cwd: repo, env })
     let out = ''
@@ -446,6 +588,7 @@ test('CLI：五种判定齐全，探测命中时不下载整包，回退整包�
     baseUrl: '',
     rangeMode: true,
     zipRequests: [],
+    cfFileListRequests: [],
     failVersions: new Set(['p-dead']),
     projectToZip: {
       'p-big': 'big', 'p-native': 'native', 'p-noen': 'noen', 'p-tiny': 'tiny', 'p-broken': 'broken',
@@ -514,6 +657,7 @@ test('CLI：服务端不支持 Range → 回退整包，fetchMode=full 被统计
     baseUrl: '',
     rangeMode: false,
     zipRequests: [],
+    cfFileListRequests: [],
     failVersions: new Set(),
     projectToZip: { 'p-native': 'native' },
   }
@@ -543,6 +687,7 @@ test('CLI：--ids 只探测指定条目；--out 写文件、stdout 留空', { ti
     baseUrl: '',
     rangeMode: true,
     zipRequests: [],
+    cfFileListRequests: [],
     failVersions: new Set(),
     projectToZip: { 'p-big': 'big', 'p-native': 'native' },
   }
@@ -559,6 +704,132 @@ test('CLI：--ids 只探测指定条目；--out 写文件、stdout 留空', { ti
     assert.equal(state.zipRequests.some((x) => x.key === 'native'), false, '--ids 之外的包不该被探测')
   } finally {
     server?.close()
+    rmSync(repo, { recursive: true, force: true })
+  }
+})
+
+// ---------- CurseForge 端到端 ----------
+
+const CF_MODS = [
+  { cfId: 101, slug: 'cf-big', name: 'CF Big', downloads: 5000 },
+  { cfId: 102, slug: 'cf-blocked', name: 'CF Blocked', downloads: 4000, allowModDistribution: false },
+  { cfId: 103, slug: 'cf-noen', name: 'CF NoEn', downloads: 3000 },
+  { cfId: 104, slug: 'cf-cold', name: 'CF Cold', downloads: 10 },
+]
+
+test('CLI --source curseforge：用文件列表的 fileLength 走 Range，禁止分发的条目不发请求', { timeout: 180000 }, async () => {
+  const state = {
+    baseUrl: '',
+    rangeMode: true,
+    zipRequests: [],
+    cfFileListRequests: [],
+    failVersions: new Set(),
+    projectToZip: {},
+    cfFiles: { 101: 'big', 103: 'noen', 104: 'native' },
+  }
+  const repo = makeRepo([], CF_MODS)
+  let server
+  try {
+    server = await startFakeServer(state)
+    const r = await runCli(repo, state, ['--source', 'curseforge', '--limit', '10', '--concurrency', '2'])
+    assert.equal(r.code, 0, r.err)
+
+    const out = JSON.parse(r.out)
+    assert.equal(out.options.source, 'curseforge')
+    const byId = Object.fromEntries(out.candidates.map((c) => [c.id, c]))
+    assert.equal(byId['cf-big'].status, 'translatable')
+    assert.equal(byId['cf-big'].source, 'curseforge')
+    assert.equal(byId['cf-big'].cfId, 101)
+    assert.equal(byId['cf-big'].shaderVersion, 'cf-big')
+    assert.equal(byId['cf-noen'].status, 'no-en')
+    assert.equal(byId['cf-cold'].status, 'native-zh')
+
+    // 禁止分发的条目不参与：既不进结果，也不发文件列表请求。
+    assert.equal(byId['cf-blocked'], undefined, 'allowModDistribution=false 必须提前排除')
+    assert.ok(!state.cfFileListRequests.includes(102), '不该为禁止分发的项目请求文件列表')
+
+    // 关键：有 fileLength → 走 Range，不下载整包。
+    for (const key of ['big', 'noen', 'native']) {
+      const reqs = state.zipRequests.filter((x) => x.key === key)
+      assert.ok(reqs.length >= 1, `${key} 应被探测`)
+      assert.equal(reqs.filter((x) => x.range === null).length, 0, `${key} 不该下载整包（fileLength 已提供）`)
+    }
+    const bigBytes = state.zipRequests.filter((x) => x.key === 'big').reduce((s, x) => s + x.bytes, 0)
+    assert.ok(bigBytes < ZIPS.big.length / 2, `Range 读取 ${bigBytes} 应远小于整包 ${ZIPS.big.length}`)
+  } finally {
+    server?.close()
+    rmSync(repo, { recursive: true, force: true })
+  }
+})
+
+test('CLI --order asc：从下载量最低的开始（Modrinth）', { timeout: 180000 }, async () => {
+  const projects = [
+    { id: 'big', projectId: 'p-big', title: 'Big', downloads: 5000 },
+    { id: 'native', projectId: 'p-native', title: 'Native', downloads: 4000 },
+    { id: 'noen', projectId: 'p-noen', title: 'NoEn', downloads: 3000 },
+  ]
+  const state = {
+    baseUrl: '',
+    rangeMode: true,
+    zipRequests: [],
+    cfFileListRequests: [],
+    failVersions: new Set(),
+    projectToZip: { 'p-big': 'big', 'p-native': 'native', 'p-noen': 'noen' },
+  }
+  const repo = makeRepo(projects)
+  let server
+  try {
+    server = await startFakeServer(state)
+    const r = await runCli(repo, state, ['--limit', '2', '--order', 'asc'])
+    assert.equal(r.code, 0, r.err)
+    const out = JSON.parse(r.out)
+    assert.equal(out.options.order, 'asc')
+    assert.deepEqual(out.candidates.map((c) => c.id), ['noen', 'native'], '升序：先探最低下载量')
+  } finally {
+    server?.close()
+    rmSync(repo, { recursive: true, force: true })
+  }
+})
+
+test('CLI --source all：两边混扫，跳过 Modrinth 已有同名项目的 CF 条目', { timeout: 180000 }, async () => {
+  const projects = [{ id: 'big', projectId: 'p-big', title: 'Big', downloads: 5000 }]
+  // cf-big 与 Modrinth 的 big 不是同名；再加一条与 Modrinth 同名的，验证去重。
+  const cfMods = [
+    { cfId: 101, slug: 'cf-big', name: 'CF Big', downloads: 4000 },
+    { cfId: 105, slug: 'big', name: 'Dup of Modrinth', downloads: 3000 },
+  ]
+  const state = {
+    baseUrl: '',
+    rangeMode: true,
+    zipRequests: [],
+    cfFileListRequests: [],
+    failVersions: new Set(),
+    projectToZip: { 'p-big': 'big' },
+    cfFiles: { 101: 'native', 105: 'noen' },
+  }
+  const repo = makeRepo(projects, cfMods)
+  let server
+  try {
+    server = await startFakeServer(state)
+    const r = await runCli(repo, state, ['--source', 'all', '--limit', '10'])
+    assert.equal(r.code, 0, r.err)
+    const out = JSON.parse(r.out)
+    const sources = out.candidates.map((c) => `${c.source}:${c.id}`)
+    assert.deepEqual(sources.sort(), ['curseforge:cf-big', 'modrinth:big'].sort())
+    assert.ok(!state.cfFileListRequests.includes(105), 'Modrinth 已有同名项目，CF 侧不该重复探测')
+  } finally {
+    server?.close()
+    rmSync(repo, { recursive: true, force: true })
+  }
+})
+
+test('CLI：非法 --source 直接退出码 2，不静默跑错源', { timeout: 60000 }, async () => {
+  const repo = makeRepo([])
+  try {
+    const r = await runCli(repo, { baseUrl: 'http://127.0.0.1:1' }, ['--source', 'spigot'])
+    assert.equal(r.code, 2)
+    assert.match(r.err, /--source 只能是/)
+  } finally {
     rmSync(repo, { recursive: true, force: true })
   }
 })

@@ -136,7 +136,7 @@ const ZIPS = {
  * modrinthIds 里的 id 写进 Modrinth 目录，让 `--ids` 命中 Modrinth 分支
  * （不在目录里的 id 会先被当作 CF slug 现场解析，走不到 Modrinth 路径）。
  */
-function makeMinimalRepo(modrinthIds = []) {
+function makeMinimalRepo(modrinthIds = [], extraEntries = []) {
   const dir = mkdtempSync(join(tmpdir(), 'range-probe-e2e-'))
   cpSync(join(ROOT, 'scripts'), join(dir, 'scripts'), { recursive: true })
   cpSync(join(ROOT, 'shared'), join(dir, 'shared'), { recursive: true })
@@ -144,7 +144,14 @@ function makeMinimalRepo(modrinthIds = []) {
   writeFileSync(join(dir, 'package.json'), JSON.stringify({ name: 'e2e', type: 'module', private: true }))
   writeFileSync(
     join(dir, 'site/data/modrinth-catalog.json'),
-    JSON.stringify({ shaders: modrinthIds.map((id) => ({ id, projectId: id, title: `Title ${id}` })) }),
+    JSON.stringify({
+      shaders: [
+        // 元素可以是 id 字符串，也可以是完整目录条目（黑名单用例需要预置
+        // noEnUsLang / noEnUsLangVersion 字段）。
+        ...modrinthIds.map((e) => (typeof e === 'string' ? { id: e, projectId: e, title: `Title ${e}` } : e)),
+        ...extraEntries,
+      ],
+    }),
   )
   writeFileSync(join(dir, 'site/data/curseforge-catalog.json'), JSON.stringify({ mods: [] }))
   writeFileSync(join(dir, 'site/data/shaders.json'), JSON.stringify({ shaders: [] }))
@@ -168,10 +175,12 @@ async function startFakeServer(state) {
     // ---- Modrinth ----
     if (url.pathname.endsWith('/version') && url.pathname.startsWith('/v2/project/')) {
       const slug = url.pathname.split('/')[3]
+      state.versionRequests.push(slug)
       const file = state.modrinthFiles[slug]
       if (!file) return json([])
       return json([{
-        version_number: '1.0.0',
+        // 黑名单用例需要「上游发了新版本」：按 slug 覆盖版本号。
+        version_number: state.modrinthVersions[slug] ?? '1.0.0',
         files: [{ primary: true, url: `${state.baseUrl}/download/${file}.zip`, filename: `${file}.zip`, size: ZIPS[file].length }],
       }])
     }
@@ -238,6 +247,11 @@ async function startFakeServer(state) {
 
     // ---- 假 LLM ----
     if (url.pathname === '/llm/chat/completions') {
+      // state.llmFails：翻译阶段全部失败（验证「找到英文源但翻译失败」时的黑名单清理）
+      if (state.llmFails) {
+        res.writeHead(500)
+        return res.end('llm down')
+      }
       let body = ''
       req.on('data', (c) => { body += c })
       req.on('end', () => {
@@ -330,9 +344,12 @@ function newState(overrides = {}) {
     baseUrl: '',
     rangeMode: true,
     throwProbe: false,
+    llmFails: false,
     zipRequests: [],
     llmRequests: [],
+    versionRequests: [],
     modrinthFiles: {},
+    modrinthVersions: {},
     cfFiles: {},
     cfCandidates: [],
     ...overrides,
@@ -342,7 +359,15 @@ function newState(overrides = {}) {
 /** 起服务 + 仓库 + shim，跑完自动清理。 */
 async function withEnv(state, fn) {
   // 目录里有 Modrinth 文件桩的 id 一律写进 Modrinth 目录；其余（CF 用例）留空。
-  const repo = makeMinimalRepo(Object.keys(state.modrinthFiles))
+  // state.extraCatalogEntries 用于预置黑名单字段（noEnUsLang / noEnUsLangVersion）。
+  // 预置条目（黑名单字段）优先于自动生成的基础条目：同 id 时用预置的那条替换，
+  // 避免目录里出现两条同 id 条目（--ids 只会命中第一条）。
+  const extrasById = new Map((state.extraCatalogEntries ?? []).map((e) => [e.id, e]))
+  const stubbedIds = Object.keys(state.modrinthFiles)
+  const baseEntries = stubbedIds.map(
+    (id) => extrasById.get(id) ?? { id, projectId: id, title: `Title ${id}` },
+  )
+  const repo = makeMinimalRepo(baseEntries, [...extrasById.values()].filter((e) => !stubbedIds.includes(e.id)))
   let server
   let shim
   try {
@@ -394,8 +419,144 @@ test('探测命中「无 en_US.lang」：不下载整包，noEnUsLang 标记保�
 
     // 原路径的 noEnUsLang 写在 catalog 的候选条目上（Modrinth 分支不补建 shaders.json 条目）
     const catalog = JSON.parse(readFileSync(join(repo, 'site/data/modrinth-catalog.json'), 'utf8'))
-    assert.equal(catalog.shaders.find((s) => s.id === 'noen-demo')?.noEnUsLang, true, '必须写 noEnUsLang')
+    const entry = catalog.shaders.find((s) => s.id === 'noen-demo')
+    assert.equal(entry?.noEnUsLang, true, '必须写 noEnUsLang')
+    // 黑名单必须记录「在哪个版本上判定」：否则上游发了新版本也永远不会重探。
+    assert.equal(entry?.noEnUsLangVersion, '1.0.0', '必须写判定版本')
     assert.equal(existsSync(join(repo, 'site/public/lang/noen-demo')), false)
+  })
+})
+
+// ---------- 黑名单版本号 ----------
+
+test('黑名单版本一致：跳过，不发版本接口、不探测、不下载', { timeout: 120000 }, async () => {
+  const state = newState({
+    modrinthFiles: { 'noen-demo': 'noen' },
+    extraCatalogEntries: [
+      { id: 'noen-demo', projectId: 'noen-demo', title: 'NoEn', noEnUsLang: true, noEnUsLangVersion: '1.0.0' },
+    ],
+  })
+  await withEnv(state, async ({ repo, shim }) => {
+    const r = await runPipeline(repo, state, shim, ['noen-demo'])
+    assert.equal(r.code, 0, r.out)
+    assert.match(r.out, /已判定无 en_US\.lang（记录版本一致），跳过/, r.out)
+
+    // 必须查一次最新版本（否则无从判断「版本是否变了」），但**不能**探测或下载 zip。
+    assert.equal(state.versionRequests.filter((s) => s === 'noen-demo').length, 1, '应恰好查一次版本接口')
+    assert.equal(state.zipRequests.length, 0, '版本一致时不该发任何 zip 请求')
+
+    // 数据不被改写（标记与版本原样保留）。
+    const catalog = JSON.parse(readFileSync(join(repo, 'site/data/modrinth-catalog.json'), 'utf8'))
+    const entry = catalog.shaders.find((s) => s.id === 'noen-demo')
+    assert.equal(entry?.noEnUsLang, true)
+    assert.equal(entry?.noEnUsLangVersion, '1.0.0')
+  })
+})
+
+test('黑名单版本不同（上游发新版本）：重新探测，仍无英文源则更新版本号', { timeout: 120000 }, async () => {
+  const state = newState({
+    modrinthFiles: { 'noen-demo': 'noen' },
+    modrinthVersions: { 'noen-demo': '2.0.0' },
+    extraCatalogEntries: [
+      { id: 'noen-demo', projectId: 'noen-demo', title: 'NoEn', noEnUsLang: true, noEnUsLangVersion: '1.0.0' },
+    ],
+  })
+  await withEnv(state, async ({ repo, shim }) => {
+    const r = await runPipeline(repo, state, shim, ['noen-demo'])
+    assert.equal(r.code, 0, r.out)
+    assert.match(r.out, /黑名单版本为 1\.0\.0，当前 v2\.0\.0，重新探测/, r.out)
+    assert.match(r.out, /无 en_US\.lang/, r.out)
+
+    // 真的重探了（Range），但没有下载整包（探测命中终态）。
+    assert.ok(rangeRequests(state, 'noen').length >= 1, '版本变了必须重新探测')
+    assert.equal(fullDownloads(state, 'noen').length, 0, '探测命中终态时不该下载整包')
+
+    const catalog = JSON.parse(readFileSync(join(repo, 'site/data/modrinth-catalog.json'), 'utf8'))
+    const entry = catalog.shaders.find((s) => s.id === 'noen-demo')
+    assert.equal(entry?.noEnUsLang, true)
+    assert.equal(entry?.noEnUsLangVersion, '2.0.0', '版本号必须更新为本次判定版本')
+  })
+})
+
+test('旧数据只有 noEnUsLang、没有版本号：当作「版本未知」重探一次', { timeout: 120000 }, async () => {
+  const state = newState({
+    modrinthFiles: { 'noen-demo': 'noen' },
+    extraCatalogEntries: [{ id: 'noen-demo', projectId: 'noen-demo', title: 'NoEn', noEnUsLang: true }],
+  })
+  await withEnv(state, async ({ repo, shim }) => {
+    const r = await runPipeline(repo, state, shim, ['noen-demo'])
+    assert.equal(r.code, 0, r.out)
+    assert.match(r.out, /黑名单版本为 未记录，当前 v1\.0\.0，重新探测/, r.out)
+    assert.ok(rangeRequests(state, 'noen').length >= 1, '无版本号的旧数据必须重探')
+
+    const catalog = JSON.parse(readFileSync(join(repo, 'site/data/modrinth-catalog.json'), 'utf8'))
+    assert.equal(catalog.shaders.find((s) => s.id === 'noen-demo')?.noEnUsLangVersion, '1.0.0', '重探后补上版本号')
+  })
+})
+
+test('黑名单条目上游补了 en_US.lang：清掉过期标记并继续翻译', { timeout: 180000 }, async () => {
+  const state = newState({
+    modrinthFiles: { 'translate-demo': 'translate' },
+    modrinthVersions: { 'translate-demo': '2.0.0' },
+    extraCatalogEntries: [
+      { id: 'translate-demo', projectId: 'translate-demo', title: 'T', noEnUsLang: true, noEnUsLangVersion: '1.0.0' },
+    ],
+  })
+  await withEnv(state, async ({ repo, shim }) => {
+    const r = await runPipeline(repo, state, shim, ['translate-demo'])
+    assert.equal(r.code, 0, r.out)
+    assert.match(r.out, /8 个键/, r.out)
+
+    const catalog = JSON.parse(readFileSync(join(repo, 'site/data/modrinth-catalog.json'), 'utf8'))
+    const entry = catalog.shaders.find((s) => s.id === 'translate-demo')
+    assert.equal(entry?.noEnUsLang, undefined, '英文源回来了，过期黑名单必须清掉')
+    assert.equal(entry?.noEnUsLangVersion, undefined)
+    assert.equal(existsSync(join(repo, 'site/public/lang/translate-demo/2.0.0/zh_CN.lang')), true)
+  })
+})
+
+test('黑名单条目上游改成自带中文：清掉过期黑名单标记', { timeout: 120000 }, async () => {
+  const state = newState({
+    modrinthFiles: { 'native-demo': 'native' },
+    modrinthVersions: { 'native-demo': '3.0.0' },
+    extraCatalogEntries: [
+      { id: 'native-demo', projectId: 'native-demo', title: 'N', noEnUsLang: true, noEnUsLangVersion: '1.0.0' },
+    ],
+  })
+  await withEnv(state, async ({ repo, shim }) => {
+    const r = await runPipeline(repo, state, shim, ['native-demo'])
+    assert.equal(r.code, 0, r.out)
+    assert.match(r.out, /自带中文/, r.out)
+
+    const catalog = JSON.parse(readFileSync(join(repo, 'site/data/modrinth-catalog.json'), 'utf8'))
+    const entry = catalog.shaders.find((s) => s.id === 'native-demo')
+    assert.equal(entry?.hasNativeZhCN, true)
+    assert.equal(entry?.noEnUsLang, undefined, '自带中文是更终态的结论，旧黑名单必须清掉')
+    assert.equal(entry?.noEnUsLangVersion, undefined)
+  })
+})
+
+test('探测不可用 + 翻译失败：读到英文源就清黑名单（不让过期结论借失败赖着）', { timeout: 180000 }, async () => {
+  // 最坏组合：Range 探测抛错（回退整包路径），LLM 又全挂。
+  // 如果只在「翻译成功」时清黑名单，这条会一直停在 noEnUsLang，下一轮按版本一致直接跳过。
+  const state = newState({
+    modrinthFiles: { 'translate-demo': 'translate' },
+    modrinthVersions: { 'translate-demo': '2.0.0' },
+    throwProbe: true,
+    llmFails: true,
+    extraCatalogEntries: [
+      { id: 'translate-demo', projectId: 'translate-demo', title: 'T', noEnUsLang: true, noEnUsLangVersion: '1.0.0' },
+    ],
+  })
+  await withEnv(state, async ({ repo, shim }) => {
+    const r = await runPipeline(repo, state, shim, ['translate-demo'])
+    assert.equal(r.code, 0, r.out)
+    assert.match(r.out, /探测失败.*回退整包路径/, r.out)
+
+    const catalog = JSON.parse(readFileSync(join(repo, 'site/data/modrinth-catalog.json'), 'utf8'))
+    const entry = catalog.shaders.find((s) => s.id === 'translate-demo')
+    assert.equal(entry?.noEnUsLang, undefined, '整包路径读到 en_US.lang，过期黑名单必须清掉')
+    assert.equal(entry?.noEnUsLangVersion, undefined)
   })
 })
 

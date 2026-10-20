@@ -3,6 +3,8 @@
  * 自动汉化流水线（ADR-0005）：下载 → 检测自带中文 → LLM 初翻 → 校验 → 登记。
  *
  * 候选：目录中按下载量排序、未被流水线覆盖且不在缺少英文源清单中的光影（无汉化映射、未检出自带中文）。
+ * 缺英文源清单按**版本**判定（见 scripts/lib/blacklist.mjs）：只有「记录的版本 === 当前最新版本」才跳过，
+ * 上游发新版本后会重新探测（旧数据没有版本号，因此会各重探一次）。
  * 翻译默认走两层：免费层（无 SLA 的公开服务）优先，失败或产出不合格才落到模型池回退。
  * 回退池按分块轮转调用；失败或回退过高时自动尝试下一个模型。
  * LLM_CONCURRENCY 控制光影级并发（每条光影仍各自独立超时、独立中断）。
@@ -54,6 +56,11 @@ import { PROBE_VERDICT, probeZipTerminalState } from './lib/zip-probe.mjs'
 import { openZip } from '../shared/zip-range.mjs'
 import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-api.mjs'
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
+import {
+  clearNoEnUsLang,
+  isBlacklistedForVersion,
+  markNoEnUsLang,
+} from './lib/blacklist.mjs'
 import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
 import { EmptyResponseError, isProviderNoOutput, providerUnusableMessage } from './lib/llm-guard.mjs'
 // 骨架提取与记忆读写守卫见 scripts/lib/glossary.mjs（与 scripts/rebuild-glossary.mjs 共用同一实现）。
@@ -647,12 +654,21 @@ function findTranslatedTwinForEntry(entry) {
   )
 }
 
-const candidates = catalog.shaders.filter((c) => {
+// 「无英文源」黑名单不再在筛选阶段一刀切排除：判据是**版本**（scripts/lib/blacklist.mjs），
+// 而这里没有网络、拿不到当前最新版本，无法证明旧结论仍成立。
+// 真正的跳过发生在 processShader 取到最新版本之后（isBlacklistedForVersion）。
+// 为了不让 --top N 被黑名单条目挤占，这里做一次**稳定分区**：普通候选在前，黑名单候选在后
+// （--ids 路径不受影响：用户点名的条目会照常逐个重探）。
+const candidatesAll = catalog.shaders.filter((c) => {
   if (c.hasNativeZhCN === true) return false
-  if (c.noEnUsLang === true) return false
   if (latestLangVersion.get(c.id)) return false // 最新版本已有汉化
   return true
 })
+const candidates = [
+  ...candidatesAll.filter((c) => c.noEnUsLang !== true),
+  ...candidatesAll.filter((c) => c.noEnUsLang === true),
+]
+const blacklistCandidateCount = candidatesAll.filter((c) => c.noEnUsLang === true).length
 
 const args = process.argv.slice(2)
 const topArg = args.indexOf('--top')
@@ -735,7 +751,7 @@ if (IDS.length) {
   console.log(`本次处理 ${worklist.length} 个指定光影\n`)
 } else {
   worklist = candidates.slice(0, TOP)
-  console.log(`候选 ${candidates.length} 个，本次处理前 ${TOP} 个\n`)
+  console.log(`候选 ${candidates.length} 个（其中缺英文源待重探 ${blacklistCandidateCount} 个），本次处理前 ${TOP} 个\n`)
 }
 
 // 写回 catalog + shaders。同一 tick 内的重复请求合并为一次写（persistPending），
@@ -797,12 +813,30 @@ async function processShader(entry, signal, localGlossary) {
       return { status: STATUS.DONE, error: '', shaderVersion }
     }
 
+    // 「无英文源」黑名单：只有**判定版本 === 当前最新版本**才跳过。
+    // 上游发了新版本 → 重新探测（旧数据没有版本号，也会走到这里重探一次）。
+    if (isBlacklistedForVersion(entry, shaderVersion)) {
+      console.log(`${tag} v${shaderVersion} 已判定无 en_US.lang（记录版本一致），跳过；上游发新版本后自动重探`)
+      return { status: STATUS.FAILED, error: `无 en_US.lang（v${shaderVersion} 已判定，版本未变）` }
+    }
+    if (entry.noEnUsLang === true) {
+      console.log(`${tag} 黑名单版本为 ${entry.noEnUsLangVersion ?? '未记录'}，当前 v${shaderVersion}，重新探测`)
+    }
+
     // 探测阶段：先只读中央目录判终态（自带中文 / 无 en_US.lang），命中就不下载整包。
     // 探测失败（UNKNOWN）→ 原样走下面的整包路径，结论与改造前完全一致。
     const probed = await probeZip(file.url, { totalSize: file.size, signal, tag })
     if (probed.verdict === PROBE_VERDICT.NATIVE_ZH) return markNativeZh(entry, shaderVersion, tag)
     if (probed.verdict === PROBE_VERDICT.NO_EN_US) {
       return skipNoEnUsLang({ entry, shaderVersion, tag, langNames: probed.langNames, cfMode: false })
+    }
+    // 有 en_US.lang：旧黑名单结论在当前版本上不成立，必须立刻清掉。
+    // 不能等翻译成功再清 —— 翻译失败（LLM 故障等）时标记会留着，下一轮又按「版本一致」跳过。
+    // 注意：探测失败（UNKNOWN）时 `probed.verdict` 不是 NEEDS_TRANSLATION，这里不能下结论；
+    // 那种情况由 translateFromZip 在读到英文源时清（同一条规则只写一处结论、两处触发）。
+    if (probed.verdict === PROBE_VERDICT.NEEDS_TRANSLATION && entry.noEnUsLang === true) {
+      clearNoEnUsLang(entry)
+      persist()
     }
 
     const zipBuf = await downloadZipBuffer(file.url, signal, tag)
@@ -854,6 +888,8 @@ function markNativeZh(entry, shaderVersion, tag) {
   // 标记必须落到 shaders.json 的对应条目，否则展示侧读不到 hasNativeZhCN。
   entry.hasNativeZhCN = true
   if (isCurseforgeEntry(entry)) ensureShaderEntry(entry).hasNativeZhCN = true
+  // 上游新版本自带了中文：旧的「无英文源」结论已不成立，顺手清掉，免得站点显示自相矛盾的状态。
+  if (!isCurseforgeEntry(entry) && entry.noEnUsLang === true) clearNoEnUsLang(entry)
   console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
   skippedNative++
   persist()
@@ -866,8 +902,9 @@ function skipNoEnUsLang({ entry, shaderVersion, tag, langNames, cfMode }) {
     console.log(`${tag} 候选文件 v${shaderVersion} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），尝试下一个`)
     return { status: STATUS.FAILED, error: `候选文件无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）`, cfRetry: true }
   }
-  entry.noEnUsLang = true
-  console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
+  // 只记 id（条目本身）+ 判定时的版本号：下次当前版本变了就重新探测（scripts/lib/blacklist.mjs）。
+  markNoEnUsLang(entry, shaderVersion)
+  console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），已记录 v${shaderVersion}，跳过`)
   failed++
   persist()
   return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
@@ -929,6 +966,12 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
   if (hasNativeZh) return markNativeZh(entry, shaderVersion, tag)
   const enName = probed ? probed.enName : langNames.find(isEnUsLangPath)
   if (!enName) return skipNoEnUsLang({ entry, shaderVersion, tag, langNames, cfMode })
+  // 英文源存在 → 旧黑名单在当前版本上不成立。整包路径（探测失败回退）也必须清，
+  // 否则「探测不可用 + 翻译失败」会让过期标记一直留着，下一轮按版本一致直接跳过。
+  if (!cfMode && entry.noEnUsLang === true) {
+    clearNoEnUsLang(entry)
+    persist()
+  }
 
   const enText = (await zip.read(enName)).toString('utf8')
   const lines = enText.split('\n')
@@ -945,8 +988,8 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
       console.log(`${tag} 候选文件 v${shaderVersion} en_US.lang 无可翻译条目，尝试下一个`)
       return { status: STATUS.FAILED, error: '候选文件 en_US.lang 无可翻译条目', cfRetry: true }
     }
-    entry.noEnUsLang = true
-    console.log(`${tag} en_US.lang 无可翻译条目，跳过`)
+    markNoEnUsLang(entry, shaderVersion)
+    console.log(`${tag} en_US.lang 无可翻译条目，已记录 v${shaderVersion}，跳过`)
     failed++
     persist()
     return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
@@ -1098,6 +1141,8 @@ async function processShaderCf(entry, signal, localGlossary) {
       failed++
       return { status: STATUS.FAILED, error: 'CurseForge 无任何可下载文件' }
     }
+    // 注：「无英文源」黑名单只作用于 Modrinth 目录条目。CF 侧从不写 noEnUsLang
+    // （cfMode 下无英文源只让候选循环继续下一个文件，不算终态），因此这里不需要版本判据。
     let lastError = ''
     for (const f of candidates) {
       if (signal.aborted) return { status: STATUS.FAILED, error: '处理超时' }
