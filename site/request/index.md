@@ -126,20 +126,28 @@ function statusMeta(status) {
 }
 
 const counts = computed(() => {
-  const c = { total: entries.value.length, pending: 0, running: 0, done: 0, failed: 0 }
+  const c = { total: entries.value.length, pending: 0, running: 0, done: 0, failed: 0, autoRetry: 0, manual: 0 }
   for (const e of entries.value) {
     if (e.status === '待翻译') c.pending++
     else if (e.status === '翻译中') c.running++
-    else if (e.status === '失败') c.failed++
-    else c.done++
+    else if (e.status === '失败') {
+      c.failed++
+      /* retry 由 Worker 算好（上限口径只有 Worker 一处）：autoRetry=下次触发会自动带上；
+         manual=已达自动重试上限，需人工介入（手动勾「重试失败」仍可强制重试）。 */
+      if (e.retry?.autoRetry) c.autoRetry++
+      else if (e.retry?.manual) c.manual++
+    } else c.done++
   }
   return c
 })
 
-const summary = computed(
-  () =>
-    `共 ${counts.value.total} 项 · 待翻译 ${counts.value.pending} · 翻译中 ${counts.value.running} · 已完成 ${counts.value.done} · 失败 ${counts.value.failed}`,
-)
+const summary = computed(() => {
+  const c = counts.value
+  const failedNote = c.failed
+    ? `（其中 ${c.autoRetry} 条会自动重试，${c.manual} 条需人工介入）`
+    : ''
+  return `共 ${c.total} 项 · 待翻译 ${c.pending} · 翻译中 ${c.running} · 已完成 ${c.done} · 失败 ${c.failed}${failedNote}`
+})
 
 /* ---------- 触发翻译（口令存 sessionStorage，不落 URL） ---------- */
 
@@ -148,8 +156,9 @@ const triggering = ref(false)
 const triggerMsg = ref('')
 const triggerErr = ref('')
 
-/* 失败条目重试：只有勾选时请求体才带 retryFailed=true（Worker 侧显式语义）。
-   默认不勾：失败项重跑会重新消耗翻译额度，不能每次点「开始翻译」都自动带上。
+/* 失败条目重试：
+   - 默认不勾也会自动重试失败项，但 Worker 会封顶（AUTO_RETRY_LIMIT 次），防无限烧预算；
+   - 勾选时请求体带 retryFailed=true，**无视次数上限**强制重试（含「需人工介入」的条目）。
    触发成功后自动取消勾选，避免手滑连点重复烧额度。 */
 const retryFailed = ref(false)
 
@@ -274,13 +283,19 @@ async function handleTrigger() {
     }
 
     sessionStorage.setItem('translate-passphrase', value)
-    const modelNote = selectedModels.value.length
-      ? `，模型：${selectedModels.value.join(' / ')}`
-      : '（未选择，使用仓库默认模型）'
-    const retryNote = retryFailed.value ? '（含失败重试，已重新消耗翻译额度）' : ''
+    /* 免费层与网关是两条独立路径，提示里必须分开写：
+       否则「勾了免费层模型」看起来和网关模型一样，实际作用完全不同。 */
+    const gatewayNote = modelList.value.some((m) => selectedModels.value.includes(m))
+      ? `网关模型：${selectedModels.value.filter((m) => modelList.value.includes(m)).join(' / ')}`
+      : '网关模型：仓库默认'
+    const freeNote = data.freeTierModel
+      ? `免费层：${data.freeTierModel}${data.freeTierSelectedCount > 1 ? `（勾了 ${data.freeTierSelectedCount} 个，取第一个）` : ''}`
+      : '免费层：仓库默认'
+    const modelNote = selectedModels.value.length ? `（${gatewayNote}；${freeNote}）` : '（未选择，使用仓库默认模型）'
+    const retryNote = retryFailed.value ? '（含强制重试失败项，已重新消耗翻译额度）' : ''
     triggerMsg.value = data.triggered
       ? `已触发 ${data.count} 个光影的翻译${retryNote}${modelNote}，状态会自动刷新`
-      : data.message || '没有待翻译的条目'
+      : (data.message || '没有待翻译的条目')
     if (data.triggered) retryFailed.value = false
     await loadQueue()
   } catch {
@@ -359,6 +374,8 @@ async function handleTrigger() {
         <div class="wb-item-sub">
           <code class="wb-id">{{ e.id }}</code>
           <span v-if="e.shaderVersion" class="wb-chip">光影 v{{ e.shaderVersion }}</span>
+          <!-- 失败项的重试状态：自动重试次数 / 需人工介入（口径由 Worker 的 retryState 给） -->
+          <span v-if="e.retry?.label" class="wb-chip" :class="e.retry.manual ? 'wb-retry-manual' : 'wb-retry-count'">{{ e.retry.label }}</span>
           <span v-if="e.error" class="wb-err" :title="e.error">{{ e.error }}</span>
           <a v-if="e.quark" class="wb-mirror" :href="e.quark" target="_blank" rel="noopener noreferrer">国内镜像</a>
         </div>
@@ -394,7 +411,7 @@ async function handleTrigger() {
         </div>
         <template v-if="freeTierModels.length">
           <p class="wb-label">免费层模型（bilibili Index-Translate）</p>
-          <p class="hint">免费层失败会自动降级到上面勾选的模型，可放心勾选。逐句模型按行翻译，质量稳定但请求数多。</p>
+          <p class="hint">免费层失败会自动降级到上面勾选的模型，可放心勾选。一轮只会用一个免费层模型——勾多个时取第一个；一个都不勾则使用仓库默认值（免费层不会被关闭）。逐句模型按行翻译，质量稳定但请求数多。</p>
           <div class="wb-models">
             <label v-for="m in freeTierModels" :key="m" class="wb-model">
               <input type="checkbox" v-model="selectedModels" :value="m" @change="persistModels" />
@@ -403,9 +420,12 @@ async function handleTrigger() {
           </div>
         </template>
         <p v-else-if="freeTierError" class="hint">免费层暂不可用（{{ freeTierError }}），本轮只使用上面的网关模型。</p>
+        <p class="hint wb-auto-retry-hint">
+          失败项会自动重试（最多 3 次），无需手动勾选；达到上限后标为「需人工介入」，仍可手动强制重试。
+        </p>
         <label class="wb-model wb-retry">
           <input type="checkbox" v-model="retryFailed" :disabled="!counts.failed" />
-          <span>重试失败的光影（会重新消耗翻译额度）<em v-if="counts.failed">当前 {{ counts.failed }} 条</em><em v-else>当前没有失败项</em></span>
+          <span>强制重试失败的光影（无视次数上限，会重新消耗翻译额度）<em v-if="counts.failed">当前 {{ counts.failed }} 条，需人工介入 {{ counts.manual }} 条</em><em v-else>当前没有失败项</em></span>
         </label>
         <div class="wb-trigger-row wb-trigger-row--submit">
           <button type="submit" class="btn btn-primary" :disabled="triggering" :aria-busy="triggering ? 'true' : 'false'">{{ triggering ? '翻译中…' : '开始翻译' }}</button>
@@ -795,6 +815,16 @@ async function handleTrigger() {
   border-radius: 4px;
   background: rgba(232, 163, 61, 0.1);
   color: var(--vp-c-brand-1);
+}
+/* 失败重试状态：自动重试（中性）vs 需人工介入（警示） */
+.wb-retry-count {
+  background: rgba(232, 163, 61, 0.1);
+  color: #f0b55e;
+}
+.wb-retry-manual {
+  background: rgba(255, 107, 107, 0.14);
+  color: #ff8f8f;
+  border: 1px solid rgba(255, 107, 107, 0.35);
 }
 .wb-err {
   color: #ff8f8f;

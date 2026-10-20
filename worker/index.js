@@ -3,8 +3,9 @@
  *
  * 职责：
  * 1. POST /          玩家提交光影链接（Modrinth 或 CurseForge）→ 解析并校验 → 写 KV（权威）+ 腾讯文档（尽力镜像）
- * 2. GET  /queue     返回全部队列条目，供站点轮询
- * 3. POST /translate 口令校验 → 取全部「待翻译」（body.retryFailed=true 时并含「失败」）
+ * 2. GET  /queue     返回全部队列条目，供站点轮询（含重试计数与「需人工介入」标记）
+ * 3. POST /translate 口令校验 → 取「待翻译」+「失败且未达自动重试上限」
+ *    （body.retryFailed=true 时无视上限，收集全部「失败」）
  *    → 触发 GitHub Actions → 置「翻译中」
  * 4. POST /status    Actions 回写单条状态（内部 token）→ 更新 KV + 尽力镜像腾讯文档
  * 5. GET  /models    代理网关 /models，返回当前可用模型 id 列表（公开；不含秘密）
@@ -157,6 +158,9 @@ export function isFreeTierProbeAlive(status, data) {
   return Boolean(text) && /[一-鿿]/.test(text)
 }
 
+/** 探测候选表（导出仅供测试断言「表没被改空」；运行时请用 fetchFreeTierModels）。 */
+export const FREE_TIER_CANDIDATES_FOR_TEST = Object.freeze([...FREE_TIER_CANDIDATES])
+
 async function probeFreeTierModel(base, model) {
   try {
     const res = await fetch(`${base}/v1/chat/completions`, {
@@ -190,6 +194,44 @@ async function fetchFreeTierModels(env) {
   // 全挂时**不报错**：免费层本就是无 SLA 的公开服务，整组不可用是正常状态，
   // 前端只显示网关模型即可（与「探测失败优雅降级」同一原则）。
   return { models }
+}
+
+/**
+ * 把管理员勾选的模型拆成两组（纯函数，便于单测）。
+ *
+ * 为什么必须拆：免费层与网关是**两条独立的翻译路径**，分别由 workflow 的两个
+ * input 落到两个环境变量——`freeTierModel` → `FREE_TIER_MODEL`，`models` → `LLM_MODELS`。
+ * 改造前两者一起塞进 `inputs.models`，免费层模型会被 `createProvider` 当成网关模型名
+ * 去请求网关（`pipeline.mjs` 用 LLM_URL + LLM_KEY），必然失败。
+ *
+ * 规则：
+ * - 未选择（空/未传）→ 两组都空，调用方不传任何 input：行为与改造前完全一致，
+ *   免费层照旧由仓库默认值（`FREE_TIER_MODEL`）控制。**没勾 ≠ 关掉免费层**。
+ * - 勾了多个免费层模型 → 取**第一个**（按管理员勾选/列表顺序），完整列表一并返回，
+ *   供日志如实说出「勾选了 N 个，取第一个」。
+ * - 同名同时在两组时按网关处理：分组信息一旦丢失，保持旧行为（网关优先）最安全。
+ * - 去重、trim、忽略空串：避免 `LLM_MODELS` 出现重复提供方而白占轮班份额。
+ *
+ * @param {string[]|string|undefined|null} raw 管理员选择（逗号分隔字符串也接受）
+ * @param {{ gatewayModels: string[], freeTierModels: string[] }} available 已校验的可用列表
+ * @returns {{ gateway: string[], freeTier: string[], freeTierModel: string, invalid: string[] }}
+ */
+export function splitModelSelection(raw, { gatewayModels = [], freeTierModels = [] } = {}) {
+  const candidates = (Array.isArray(raw) ? raw : String(raw ?? '').split(','))
+    .map((s) => (s == null ? '' : String(s).trim()))
+    .filter(Boolean)
+  const gatewaySet = new Set(gatewayModels)
+  const freeSet = new Set(freeTierModels)
+
+  const gateway = []
+  const freeTier = []
+  const invalid = []
+  for (const m of new Set(candidates)) {
+    if (gatewaySet.has(m)) gateway.push(m)
+    else if (freeSet.has(m)) freeTier.push(m)
+    else invalid.push(m)
+  }
+  return { gateway, freeTier, freeTierModel: freeTier[0] ?? '', invalid }
 }
 
 /** GET /models —— 公开返回可用模型：网关模型 + 免费层模型（不含任何秘密） */
@@ -579,21 +621,82 @@ async function handleSubmit(request, env, origin) {
 }
 
 /**
+ * 失败条目的**自动**重试上限。
+ *
+ * 为什么需要上限：失败条目若不设上限，每次触发都会把它们再烧一遍翻译额度，
+ * 一个必然失败的光影（如上游永久 404）会变成每日固定支出。达上限后停在「需人工介入」，
+ * 由管理员手动勾「重试失败的光影」显式放行（那条路径无视上限）。
+ *
+ * 为什么以 Worker 的 `retryCount` 为准、不读 pipeline 回写的 `attempts`：
+ * pipeline 的 `attempts: (entry.attempts ?? 0) + 1` 里的 entry 来自目录条目，
+ * 而目录里根本没有这个字段（只有 Worker 新建队列条目时写过 attempts: 0），
+ * 所以那个值实际恒为 1 —— 拿它做上限判断会永远「只重试过一次」。
+ */
+export const AUTO_RETRY_LIMIT = 3
+
+/** 读出条目已自动重试的次数；缺失/非法一律按 0（历史条目不该被永久跳过）。 */
+export function retryCountOf(entry) {
+  const n = Number(entry?.retryCount)
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 0
+}
+
+/**
+ * 失败条目的重试状态（纯函数，供 Worker 与页面共用同一套口径）。
+ *
+ * - `retriedTimes`：已自动重试次数，页面上显示「已自动重试 N 次」；
+ * - `canAutoRetry`：下次触发会被自动带上；
+ * - `manual`：已达上限，需要人工介入（或手动勾选重试）。
+ *
+ * @param {{ status: string, retryCount?: number }} entry
+ */
+export function retryState(entry) {
+  const retriedTimes = retryCountOf(entry)
+  // 非失败状态：不参与自动重试，但仍如实展示历史重试次数（重试中的条目会短暂落到这里）。
+  if (entry?.status !== STATUS.FAILED) {
+    return {
+      manual: false,
+      retriedTimes,
+      autoRetry: false,
+      canAutoRetry: false,
+      label: retriedTimes > 0 ? `已自动重试 ${retriedTimes} 次` : '',
+    }
+  }
+  const canAutoRetry = retriedTimes < AUTO_RETRY_LIMIT
+  return {
+    manual: !canAutoRetry,
+    retriedTimes,
+    autoRetry: canAutoRetry,
+    canAutoRetry,
+    label: canAutoRetry
+      ? (retriedTimes > 0 ? `已自动重试 ${retriedTimes} 次` : '')
+      : '需人工介入',
+  }
+}
+
+/**
  * 选取本次要触发的条目（纯函数，便于直接单测）。
  *
- * - 默认只取「待翻译」。**不**默认重跑「失败」条目：否则每次点「开始翻译」
- *   都会把历史失败项再烧一遍翻译额度，必须由调用方显式要求。
- * - retryFailed 为 true（管理区「重试失败的光影」入口）时，额外取「失败」条目。
+ * - 默认取「待翻译」，**并自动带上「失败且未达 AUTO_RETRY_LIMIT」的条目**：
+ *   失败项自动重试，但次数封顶，防无限重试烧预算。
+ * - retryFailed 为 true（管理区「重试失败的光影」入口）时，取**全部**「失败」条目，
+ *   **无视次数上限**——用户已明确要求重试。
  * - 「翻译中」永不入选：可能真有 workflow 在跑，重复触发会并发烧预算。
+ * - 向后兼容：队列里只有「待翻译」时，选中结果与改造前逐条一致。
  *
- * @param {Array<{ id: string, status: string }>} entries
- * @param {{ retryFailed?: boolean }} [options]
- * @returns {Array<{ id: string, status: string }>}
+ * @param {Array<{ id: string, status: string, retryCount?: number }>} entries
+ * @param {{ retryFailed?: boolean, maxAutoRetries?: number }} [options]
+ * @returns {Array<{ id: string, status: string, retryCount?: number }>}
  */
-export function selectTranslateTargets(entries, { retryFailed = false } = {}) {
-  return entries.filter(
-    (e) => e.status === STATUS.PENDING || (retryFailed && e.status === STATUS.FAILED),
-  )
+export function selectTranslateTargets(
+  entries,
+  { retryFailed = false, maxAutoRetries = AUTO_RETRY_LIMIT } = {},
+) {
+  const limit = Number.isFinite(maxAutoRetries) ? maxAutoRetries : AUTO_RETRY_LIMIT
+  return entries.filter((e) => {
+    if (e.status === STATUS.PENDING) return true
+    if (e.status !== STATUS.FAILED) return false
+    return retryFailed || retryCountOf(e) < limit
+  })
 }
 
 /** GET /queue —— 队列全量（供站点轮询） */
@@ -602,9 +705,11 @@ async function handleQueue(env, origin) {
   const entries = await Promise.all(index.map((id) => readEntry(env, id)))
   const list = entries.filter(Boolean)
   // 公开端点只暴露「是否已成功发信」的布尔；notifyError 属内部细节，不外泄。
+  // retry 是服务端算好的展示状态：页面只渲染，不再自己判断上限（口径只能有一处）。
   const PUBLIC = ({ contact: _dropped, notifyError: _internal, notifiedAt, ...rest }) => ({
     ...rest,
     notified: Boolean(notifiedAt),
+    retry: retryState(rest),
   })
   return json({ success: true, count: list.length, entries: list.map(PUBLIC) }, 200, origin)
 }
@@ -621,10 +726,13 @@ async function handleTranslate(request, env, origin) {
   }
 
   // 可选 models：来自 /request 管理区的模型多选（口令门禁后）。
-  // 必须命中网关实时列表（白名单校验），绝不允许把任意字符串透传进 workflow。
-  // 空选择 / 未传 → 不传 models，由仓库默认值兜底。
+  // 必须命中实时列表（白名单校验），绝不允许把任意字符串透传进 workflow。
+  // 选中的模型会拆成两组分别传：免费层 → freeTierModel，网关 → models。
+  // 空选择 / 未传 → 两个 input 都不传，由仓库默认值兜底。
   // 网关不可达时宁可 400 拒绝，也不能跳过校验透传。
   let modelsInput = ''
+  let freeTierModelInput = ''
+  let freeTierSelectedCount = 0
   const body = await request.json().catch(() => null)
   const rawModels = body && body.models != null ? body.models : null
   if (rawModels != null) {
@@ -639,33 +747,51 @@ async function handleTranslate(request, env, origin) {
       // 免费层模型不在网关列表里，单独校验。**探测失败时按"不可用"处理**：
       // 宁可拒绝，也不要把一个现在调不通的模型透传进 workflow 烧一轮预算。
       const { models: freeAvailable } = await fetchFreeTierModels(env)
-      const gatewaySet = new Set(available)
-      const freeSet = new Set(freeAvailable)
-      const invalid = candidate.filter((m) => !gatewaySet.has(m) && !freeSet.has(m))
-      if (invalid.length) {
+      const selection = splitModelSelection(candidate, {
+        gatewayModels: available,
+        freeTierModels: freeAvailable,
+      })
+      if (selection.invalid.length) {
         return json({
-          error: `以下模型不在可用列表中（网关与免费层均未提供）：${invalid.join(', ')}`,
+          error: `以下模型不在可用列表中（网关与免费层均未提供）：${selection.invalid.join(', ')}`,
         }, 400, origin)
       }
-      modelsInput = candidate.join(',')
+      // 两组分开传：免费层模型混进 LLM_MODELS 会被当成网关模型名去请求网关，必然失败。
+      modelsInput = selection.gateway.join(',')
+      freeTierModelInput = selection.freeTierModel
+      freeTierSelectedCount = selection.freeTier.length
+      if (freeTierSelectedCount > 1) {
+        // 免费层一路只能跑一个模型：取第一个。写 Worker 日志供排查「UI 到底传了什么」；
+        // Actions 侧另有一步打印实际生效的 FREE_TIER_MODEL（管理员通常只看那边）。
+        console.log(
+          `勾选了 ${freeTierSelectedCount} 个免费层模型（${selection.freeTier.join(', ')}），`
+          + `取第一个：${freeTierModelInput}`,
+        )
+      }
     }
   }
 
-  // 可选 retryFailed：管理区显式勾选「重试失败的光影」时，本次额外收集「失败」条目。
-  // 必须是显式布尔 true —— 缺省不重跑失败项，避免每次点击都重复消耗翻译额度。
+  // 可选 retryFailed：管理区显式勾选「重试失败的光影」时，本次收集**全部**失败条目，
+  // 并无视自动重试次数上限（用户明确要求重试，不能被封顶拦住）。
+  // 必须是显式布尔 true —— 缺省时失败项仍会自动重试，但受 AUTO_RETRY_LIMIT 约束。
   const retryFailed = body?.retryFailed === true
 
   const index = await readIndex(env)
   const entries = (await Promise.all(index.map((id) => readEntry(env, id)))).filter(Boolean)
   const targets = selectTranslateTargets(entries, { retryFailed })
+  // 「需人工介入」：已达自动重试上限（且此时未被选中，即未手动强制重试）。
+  const needsManual = retryFailed ? 0 : entries.filter((e) => retryState(e).manual).length
 
   if (!targets.length) {
     return json(
       {
         success: true,
         triggered: false,
-        message: retryFailed ? '没有待翻译或失败的条目' : '没有待翻译的条目',
+        message: needsManual
+          ? `没有可自动重试的条目；${needsManual} 条失败项已达自动重试上限 ${AUTO_RETRY_LIMIT} 次，需人工介入（可勾选「重试失败的光影」强制重试）`
+          : retryFailed ? '没有待翻译或失败的条目' : '没有待翻译的条目',
         ids: [],
+        needsManual,
       },
       200,
       origin,
@@ -681,7 +807,10 @@ async function handleTranslate(request, env, origin) {
   const workflow = env.GITHUB_WORKFLOW_FILE || 'translate.yml'
 
   const inputs = { ids: ids.join(',') }
+  // 两个 input 刻意分开：免费层 → FREE_TIER_MODEL，网关 → LLM_MODELS。
+  // 只在非空时传，保证「不传 models」的旧路径逐字不变。
   if (modelsInput) inputs.models = modelsInput
+  if (freeTierModelInput) inputs.freeTierModel = freeTierModelInput
 
   const dispatch = await fetch(
     `https://api.github.com/repos/${repo}/actions/workflows/${workflow}/dispatches`,
@@ -703,13 +832,37 @@ async function handleTranslate(request, env, origin) {
     return json({ error: '触发翻译失败，请稍后重试', detail }, 502, origin)
   }
 
-  // dispatch 已成功，立即置为「翻译中」，避免重复点击导致重复触发
+  // dispatch 已成功，立即置为「翻译中」，避免重复点击导致重复触发。
+  // 失败条目在这里把自动重试计数 +1：计数必须落在「确实派发了」之后，
+  // 否则 GitHub 派发失败也会消耗一次额度（计数就不再是「实际重试次数」）。
   const now = new Date().toISOString()
   await Promise.all(
-    targets.map((e) => writeEntry(env, { ...e, status: STATUS.TRANSLATING, updatedAt: now, error: '' })),
+    targets.map((e) => {
+      const retried = e.status === STATUS.FAILED
+      return writeEntry(env, {
+        ...e,
+        status: STATUS.TRANSLATING,
+        updatedAt: now,
+        error: '',
+        // 待翻译条目保持原样（不凭空写入字段，历史行为不变）。
+        ...(retried ? { retryCount: retryCountOf(e) + 1, lastRetryAt: now } : {}),
+      })
+    }),
   )
 
-  return json({ success: true, triggered: true, ids, count: ids.length }, 200, origin)
+  return json(
+    {
+      success: true,
+      triggered: true,
+      ids,
+      count: ids.length,
+      freeTierModel: freeTierModelInput,
+      freeTierSelectedCount,
+      needsManual,
+    },
+    200,
+    origin,
+  )
 }
 
 /** POST /status —— Actions 回写单条状态 */

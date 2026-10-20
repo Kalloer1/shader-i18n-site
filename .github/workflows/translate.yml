@@ -15,7 +15,12 @@ on:
         type: string
         default: ''
       models:
-        description: '逗号分隔的模型名；留空则用仓库默认（来自 /request 页管理员勾选，Worker 已对网关列表做白名单校验）'
+        description: '逗号分隔的**网关**模型名（→ LLM_MODELS）；留空则用仓库默认。来自 /request 页管理员勾选，Worker 已对网关实时列表做白名单校验'
+        required: false
+        type: string
+        default: ''
+      freeTierModel:
+        description: '**免费层**模型名（→ FREE_TIER_MODEL）；留空=用 secrets.FREE_TIER_MODEL 或默认值。免费层模型绝不能混进 models（那会被当成网关模型名请求网关）'
         required: false
         type: string
         default: ''
@@ -87,6 +92,19 @@ jobs:
         continue-on-error: true
         run: bash scripts/install-quark-cli.sh
 
+      # 把「本轮实际用了哪两条路径」打出来。免费层与网关是独立环境变量，只打印 pipeline 的输出
+      # 不够——出问题时第一个要确认的就是「UI 勾的东西到底有没有到这一步」。
+      - name: Show selected translation models
+        run: |
+          echo "网关模型 LLM_MODELS：${LLM_MODELS}"
+          echo "免费层模型 FREE_TIER_MODEL（inputs.freeTierModel=${FREE_TIER_INPUT:+已传}）：${FREE_TIER_MODEL}"
+          echo "免费层开关 FREE_TIER_ENABLED：${FREE_TIER_ENABLED}"
+        env:
+          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'kilo/kilo-auto/free,kilo/poolside/laguna-s-2.1:free' }}
+          FREE_TIER_MODEL: ${{ inputs.freeTierModel || secrets.FREE_TIER_MODEL || 'index-mt-9b-syllable' }}
+          FREE_TIER_ENABLED: ${{ secrets.FREE_TIER_ENABLED || '1' }}
+          FREE_TIER_INPUT: ${{ inputs.freeTierModel }}
+
       - name: Translate
         run: node scripts/pipeline.mjs --ids "${{ inputs.ids }}"
         env:
@@ -141,9 +159,14 @@ jobs:
           #
           # 若 35B 恢复，把 FREE_TIER_MODEL 改回 Index-Translate-35B-A3B 即可回到整块模式
           # （逐句标记由模型名判定，无需改代码）。
+          # FREE_TIER_ENABLED 优先级最高：设成 0 时无论管理员勾了什么，免费层都整体关闭
+          # （pipeline 侧 freeTierEnabled() 直接不构造免费层 provider）。
           FREE_TIER_ENABLED: ${{ secrets.FREE_TIER_ENABLED || '1' }}
           FREE_TIER_BASE_URL: ${{ secrets.FREE_TIER_BASE_URL }}
-          FREE_TIER_MODEL: ${{ secrets.FREE_TIER_MODEL || 'index-mt-9b-syllable' }}
+          # 免费层模型来源优先级：本页勾选（inputs.freeTierModel）> 仓库 secret > 默认值。
+          # **没勾选 ≠ 关闭免费层**：inputs 为空时照旧走 secret/默认值，免费层始终优先。
+          # 勾选由 Worker 单独走 inputs.freeTierModel 传入，不会混进上面的 LLM_MODELS。
+          FREE_TIER_MODEL: ${{ inputs.freeTierModel || secrets.FREE_TIER_MODEL || 'index-mt-9b-syllable' }}
           FREE_TIER_CONCURRENCY: ${{ secrets.FREE_TIER_CONCURRENCY || '16' }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
           WORKER_URL: ${{ secrets.WORKER_URL }}
