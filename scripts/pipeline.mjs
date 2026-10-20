@@ -50,6 +50,8 @@ import { inflateRawSync } from 'node:zlib'
 import { STATUS } from '../shared/tencent-docs.mjs'
 import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 import { isEnUsLangPath, isLangFilePath, isZhCNLangPath } from './lib/lang-source.mjs'
+import { PROBE_VERDICT, probeZipTerminalState } from './lib/zip-probe.mjs'
+import { openZip } from '../shared/zip-range.mjs'
 import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-api.mjs'
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
 import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
@@ -123,6 +125,9 @@ const PER_SHADER_TIMEOUT_MS = (() => {
 // 避免「候选数 × 各自超时」叠加成长时间占用（曾经一个 CF 光影把 CI 卡住 8 小时）。
 const CF_CANDIDATE_TIMEOUT_MS = 3 * 60 * 1000
 const CF_SHADER_BUDGET_MS = 6 * 60 * 1000
+// 探测阶段的最小包体积：与 shared/zip-range.mjs 的 minRangeBytes 默认值一致。
+// 低于它的包 openZip 会直接整包，探测只会白花一倍流量，因此直接跳过探测走原路径。
+const PROBE_MIN_BYTES = 65536
 // 状态回写目标（Worker 的 /status）。两者缺一即静默跳过，不影响本地手动运行。
 const WORKER_URL = process.env.WORKER_URL
 const INTERNAL_STATUS_TOKEN = process.env.INTERNAL_STATUS_TOKEN
@@ -792,9 +797,28 @@ async function processShader(entry, signal, localGlossary) {
       return { status: STATUS.DONE, error: '', shaderVersion }
     }
 
+    // 探测阶段：先只读中央目录判终态（自带中文 / 无 en_US.lang），命中就不下载整包。
+    // 探测失败（UNKNOWN）→ 原样走下面的整包路径，结论与改造前完全一致。
+    const probed = await probeZip(file.url, { totalSize: file.size, signal, tag })
+    if (probed.verdict === PROBE_VERDICT.NATIVE_ZH) return markNativeZh(entry, shaderVersion, tag)
+    if (probed.verdict === PROBE_VERDICT.NO_EN_US) {
+      return skipNoEnUsLang({ entry, shaderVersion, tag, langNames: probed.langNames, cfMode: false })
+    }
+
     const zipBuf = await downloadZipBuffer(file.url, signal, tag)
     const zip = zipEntries(zipBuf)
-    return await translateFromZip({ entry, zip, shaderVersion, sourceFileName: file.filename, tag, signal, localGlossary })
+    return await translateFromZip({
+      entry,
+      zip,
+      shaderVersion,
+      sourceFileName: file.filename,
+      tag,
+      signal,
+      localGlossary,
+      // NEEDS_TRANSLATION 时传 probed：判据同源，省掉一次 filter；
+      // UNKNOWN 时不传，translateFromZip 完全按原路径自己判。
+      probed: probed.verdict === PROBE_VERDICT.NEEDS_TRANSLATION ? probed : null,
+    })
   } catch (err) {
     if (signal.aborted) {
       return { status: STATUS.FAILED, error: '处理超时' }
@@ -821,6 +845,61 @@ async function downloadZipBuffer(url, signal, tag) {
 }
 
 /**
+ * 「自带中文」终态的全部副作用。**整包路径与探测路径共用这一个函数**，
+ * 保证两条路径的标记、计数、写盘、返回结构逐字一致（探测只是省掉下载，不改变语义）。
+ */
+function markNativeZh(entry, shaderVersion, tag) {
+  // 自带中文是终态：CF 候选文件循环里也直接标记完成，不再当候选失败去试下一个。
+  // CF 的 entry 是 buildShaderEntry 造的临时对象（不在 catalog/db 里），
+  // 标记必须落到 shaders.json 的对应条目，否则展示侧读不到 hasNativeZhCN。
+  entry.hasNativeZhCN = true
+  if (isCurseforgeEntry(entry)) ensureShaderEntry(entry).hasNativeZhCN = true
+  console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
+  skippedNative++
+  persist()
+  return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
+}
+
+/** 「无 en_US.lang」终态的全部副作用（整包路径与探测路径共用，cfMode 语义不变）。 */
+function skipNoEnUsLang({ entry, shaderVersion, tag, langNames, cfMode }) {
+  if (cfMode) {
+    console.log(`${tag} 候选文件 v${shaderVersion} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），尝试下一个`)
+    return { status: STATUS.FAILED, error: `候选文件无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）`, cfRetry: true }
+  }
+  entry.noEnUsLang = true
+  console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
+  failed++
+  persist()
+  return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
+}
+
+/**
+ * 探测阶段：下载整包之前用 HTTP Range 读中央目录，判断这个包是否已是终态。
+ *
+ * 返回 { verdict, zip, langNames, enName }：
+ * - NATIVE_ZH / NO_EN_US：调用方直接走上面的终态函数，**不下载整包**；
+ * - NEEDS_TRANSLATION：需要翻译，调用方下载整包（探测没命中时不得复用 Range 对象）；
+ * - UNKNOWN：探测失败，调用方走原整包路径（宁可多下载，不能少判断）。
+ *
+ * 探测失败只记日志、不计数、不改变任何判定：它只是加速手段。
+ */
+async function probeZip(url, { totalSize, signal, tag }) {
+  // 没有文件大小、或包本身小于 Range 阈值时**不探测**：openZip 在这种情况下会直接整包下载，
+  // 探测等于先下了一遍整包、随后原路径再下一遍 —— 白花一倍流量且没有任何判定收益。
+  if (!Number.isFinite(totalSize) || totalSize < PROBE_MIN_BYTES) {
+    return { verdict: PROBE_VERDICT.UNKNOWN }
+  }
+  return probeZipTerminalState({
+    openZip,
+    url,
+    totalSize,
+    headers: { 'User-Agent': UA() },
+    signal,
+    log: (msg) => console.log(`${tag} ${msg}`),
+  })
+}
+
+/**
  * 取 shaders.json 里对应条目；缺失时按来源补建（CF 用 curseforge 映射，Modrinth 用 modrinth 映射）。
  * CF 条目的 entry 是 buildShaderEntry 造的临时对象，只有写进 db.shaders 才能被站点读到。
  */
@@ -842,31 +921,14 @@ function ensureShaderEntry(entry) {
  * cfMode=true 时（CF 候选文件循环）：某文件失败/无英文源不落盘、不改标记，
  * 返回 { cfRetry: true } 让调用方尝试下一个文件；检出自带中文与成功路径与 Modrinth 完全一致（都是终态，标记完成）。
  */
-async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag, signal, localGlossary, cfMode = false }) {
-  const langNames = zip.names.filter(isLangFilePath)
-  if (langNames.some(isZhCNLangPath)) {
-    // 自带中文是终态：CF 候选文件循环里也直接标记完成，不再当候选失败去试下一个。
-    // CF 的 entry 是 buildShaderEntry 造的临时对象（不在 catalog/db 里），
-    // 标记必须落到 shaders.json 的对应条目，否则展示侧读不到 hasNativeZhCN。
-    entry.hasNativeZhCN = true
-    if (isCurseforgeEntry(entry)) ensureShaderEntry(entry).hasNativeZhCN = true
-    console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
-    skippedNative++
-    persist()
-    return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
-  }
-  const enName = langNames.find(isEnUsLangPath)
-  if (!enName) {
-    if (cfMode) {
-      console.log(`${tag} 候选文件 v${shaderVersion} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），尝试下一个`)
-      return { status: STATUS.FAILED, error: `候选文件无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）`, cfRetry: true }
-    }
-    entry.noEnUsLang = true
-    console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
-    failed++
-    persist()
-    return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
-  }
+async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag, signal, localGlossary, cfMode = false, probed = null }) {
+  // probed：探测阶段（lib/zip-probe.mjs）已经按同一组判据算过条目名分类时传进来，
+  // 直接复用，不再对 Range 对象 filter 一遍。判据同源，结论必然一致。
+  const langNames = probed ? probed.langNames : zip.names.filter(isLangFilePath)
+  const hasNativeZh = probed ? probed.verdict === PROBE_VERDICT.NATIVE_ZH : langNames.some(isZhCNLangPath)
+  if (hasNativeZh) return markNativeZh(entry, shaderVersion, tag)
+  const enName = probed ? probed.enName : langNames.find(isEnUsLangPath)
+  if (!enName) return skipNoEnUsLang({ entry, shaderVersion, tag, langNames, cfMode })
 
   const enText = (await zip.read(enName)).toString('utf8')
   const lines = enText.split('\n')
@@ -1064,6 +1126,20 @@ async function processShaderCf(entry, signal, localGlossary) {
       ])
       try {
         const downloadUrl = await cfGetDownloadUrl(cfId, f.id, candSignal)
+        // 探测阶段：每个候选文件都先只读中央目录判终态，命中就不下载这个候选的整包。
+        // 探测请求挂在 candSignal 上，与下载/翻译共用同一条预算与中断链路；
+        // totalSize 用 CF 文件列表里的 fileLength（缺失时 openZip 内部直接走整包）。
+        // 探测失败（UNKNOWN）→ 原样走下面的整包路径。
+        const probed = await probeZip(downloadUrl, { totalSize: f.fileLength, signal: candSignal, tag })
+        if (probed.verdict === PROBE_VERDICT.NATIVE_ZH) {
+          return markNativeZh(entry, shaderVersion, tag)
+        }
+        if (probed.verdict === PROBE_VERDICT.NO_EN_US) {
+          const skipped = skipNoEnUsLang({ entry, shaderVersion, tag, langNames: probed.langNames, cfMode: true })
+          lastError = skipped.error
+          console.log(`${tag} 候选文件 ${f.id}（${shaderVersion}）失败: ${lastError}，尝试下一个`)
+          continue
+        }
         const zipBuf = await downloadZipBuffer(downloadUrl, candSignal, tag)
         const zip = zipEntries(zipBuf)
         const result = await translateFromZip({
@@ -1075,6 +1151,8 @@ async function processShaderCf(entry, signal, localGlossary) {
           signal: candSignal,
           localGlossary,
           cfMode: true,
+          // NEEDS_TRANSLATION 时复用探测结论；UNKNOWN 时走原路径自己判。
+          probed: probed.verdict === PROBE_VERDICT.NEEDS_TRANSLATION ? probed : null,
         })
         if (result.status === STATUS.DONE) return result
         lastError = result.error || '候选文件处理失败'
