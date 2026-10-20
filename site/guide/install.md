@@ -23,7 +23,7 @@ description: 三步把 zh_CN.lang 汉化文件装进 Minecraft 光影包，让�
 
 ## 第一步：下载汉化文件 {#step-download}
 
-在[光影列表](/#光影列表)找到你正在使用的光影包，进入详情页，下载**与光影版本一致**的 `zh_CN.lang`。
+在[光影列表](/#shader-list)找到你正在使用的光影包，进入详情页，下载**与光影版本一致**的 `zh_CN.lang`。
 
 ::: tip 版本要对应
 lang 键随光影版本变动。详情页默认展示最新版汉化，旧版本折叠在「查看全部历史版本」里。
@@ -98,9 +98,10 @@ BSL_v8.4.zip
 .install-toc {
   margin: 24px 0 8px;
   padding: 14px 16px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
+  border: 2px solid var(--mc-border);
+  border-radius: 0;
+  background: var(--mc-stone);
+  box-shadow: var(--mc-bevel-out);
 }
 .install-toc ol {
   display: flex;
@@ -125,7 +126,7 @@ BSL_v8.4.zip
 .install-toc a:focus-visible {
   outline: 2px solid var(--vp-c-brand-1);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 /* 步骤列表 */
@@ -160,7 +161,7 @@ BSL_v8.4.zip
 .install-faq dd {
   margin: 6px 0 0;
   padding-left: 14px;
-  border-left: 2px solid var(--vp-c-divider);
+  border-left: 3px solid var(--mc-torch-deep);
   color: var(--vp-c-text-2);
   line-height: 1.8;
 }

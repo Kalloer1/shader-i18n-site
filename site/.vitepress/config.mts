@@ -6,9 +6,9 @@ export default defineConfig({
   title: '光影汉化资源站',
   description:
     'Minecraft Java 版光影包简体中文汉化文件下载站：查找你的光影包，下载对应版本的 zh_CN.lang，游戏内光影界面显示中文。',
-  appearance: 'dark', // 暗色画廊风为默认（仍可切换浅色）
+  appearance: false, // 只有一套洞穴石材质感主题，不提供明暗切换
   head: [
-    ['meta', { name: 'theme-color', content: '#e8a33d' }],
+    ['meta', { name: 'theme-color', content: '#0b0907' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
   ],
 
@@ -18,7 +18,7 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: '光影列表', link: '/#光影列表' },
+      { text: '光影列表', link: '/#shader-list' },
       { text: '安装教程', link: '/guide/install' },
       { text: '请求翻译', link: '/request/' },
     ],
