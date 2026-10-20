@@ -54,12 +54,17 @@ export const INST_TRANS_TERMS = [
 /**
  * 免费层（bilibili Index-Translate 公开 API）的固定请求体。
  *
- * 与网关的两处关键差异：
+ * 与网关的三处关键差异：
  * 1. **不继承 `LLM_EXTRA_BODY`** —— 那是给自建中转站透传参数的，公开服务没有这个概念；
- * 2. **不需要 Authorization 头**（实测：不带 auth 头返回 200）。
+ * 2. **不需要 Authorization 头**（实测：不带 auth 头返回 200）；
+ * 3. **必须显式关掉 thinking**（`chat_template_kwargs.enable_thinking=false`）。
+ *    官方 `call_api.py` 的注释写明：模型被训练成直接吐译文，开启 thinking 时
+ *    CoT 文本会顶掉译文；官方默认 `max_tokens=1024` 也是按这个前提给的预算。
+ *    漏掉它不会报错，只会静默产出思维链或空正文——比报错更难查。
  */
-export const FREE_TIER_TEMPERATURE = 0.2
-export const FREE_TIER_MAX_TOKENS = 8192
+export const FREE_TIER_TEMPERATURE = 0.0
+export const FREE_TIER_MAX_TOKENS = 1024
+export const FREE_TIER_CHAT_TEMPLATE_KWARGS = { enable_thinking: false }
 
 /**
  * 免费层的提示词：官方 instTrans 形态 —— **单条 user 消息**（无 system），
@@ -118,6 +123,8 @@ export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 6
       messages,
       temperature: FREE_TIER_TEMPERATURE,
       max_tokens: FREE_TIER_MAX_TOKENS,
+      // 官方 call_api.py 的默认值：不关 thinking，CoT 会顶掉译文。
+      chat_template_kwargs: { ...FREE_TIER_CHAT_TEMPLATE_KWARGS },
     }),
     buildPrompt: buildInstTransPrompt,
     extract: (j) => j.choices?.[0]?.message?.content,

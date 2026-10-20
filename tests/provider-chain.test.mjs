@@ -347,14 +347,29 @@ test('免费层请求体：固定字段，**不含** LLM_EXTRA_BODY', () => {
     messages: [{ role: 'user', content: 'hi' }],
     temperature: FREE_TIER_TEMPERATURE,
     max_tokens: FREE_TIER_MAX_TOKENS,
+    // 官方 call_api.py 的默认：不关 thinking，CoT 会顶掉译文。
+    chat_template_kwargs: { enable_thinking: false },
   })
-  // 关键隔离：网关的 enable_thinking 之类不能泄漏到免费层
-  assert.ok(!('enable_thinking' in body))
-  assert.deepEqual(Object.keys(body).sort(), ['max_tokens', 'messages', 'model', 'temperature'])
+  // 关键隔离：网关的 LLM_EXTRA_BODY 之类不能泄漏到免费层
+  assert.ok(!('extra_body' in body))
+  assert.deepEqual(
+    Object.keys(body).sort(),
+    ['chat_template_kwargs', 'max_tokens', 'messages', 'model', 'temperature'],
+  )
 })
 
-test('免费层请求体与网关请求体的 max_tokens 口径一致（都是 8192）', () => {
-  assert.equal(FREE_TIER_MAX_TOKENS, GATEWAY_MAX_TOKENS)
+test('免费层必须显式关闭 thinking（官方 call_api.py 的硬性前提）', () => {
+  // 漏掉它不会报错，只会静默产出思维链或空正文 —— 必须有测试锁住。
+  const free = createFreeTierProvider({ model: 'm', url: () => 'u', label: 'x' })
+  const body = free.body([{ role: 'user', content: 'hi' }])
+  assert.equal(body.chat_template_kwargs.enable_thinking, false)
+})
+
+test('免费层 max_tokens 对齐官方默认 1024，不再沿用网关的 8192', () => {
+  // 官方 call_api.py 默认 max_tokens=1024，是配合 enable_thinking=false 给的预算；
+  // 沿用 8192 会让推理型模型在超时前一直生成。两者刻意不同口径。
+  assert.equal(FREE_TIER_MAX_TOKENS, 1024)
+  assert.notEqual(FREE_TIER_MAX_TOKENS, GATEWAY_MAX_TOKENS)
 })
 
 test('免费层 provider 自带快速降级策略（无退避、60 秒超时、无需 key）', () => {

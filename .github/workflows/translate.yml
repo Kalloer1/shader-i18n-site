@@ -110,14 +110,21 @@ jobs:
           # deepseek-v4.1-flash / deepseek-v4-flash / u2-flash（2026-10-17 网关账号池空，全部 503
           # No available channel）、opencode-zen-free/nemotron-3.5-lightning-free（90s 超时）。
           #
-          # 当前三个（2026-10-17 实测，网关 opencode-zen-free 免费层）：
-          #   space-bunny-free  2.1~3.2s  37/37 键、§ 与占位符零漂移
-          #   beam-free         2.6~3.9s  同上；30 并发三轮 90/90 成功
-          #   big-pickle        5.3~7.9s  同上
+          # ⚠️ 2026-10-20 实测：上一版三个 opencode-zen-free/* 模型**已从网关下架**，
+          # GET /models 只剩 16 个（全部 kilo/* 与 tencent/Hunyuan-MT-7B）。旧池已全部失效。
+          #
+          # 当前两个（2026-10-20 实测，5 行真实 lang 条目含 § 与 %s）：
+          #   kilo/kilo-auto/free            3.8~15.6s  5/5 键、§ 与占位符零漂移
+          #   kilo/poolside/laguna-s-2.1:free 3.2~4.5s  5/5 键、同上
+          # 其余 13 个 kilo/* 实测全部 429（每日额度耗尽），Hunyuan-MT-7B 会用 ``` 包住
+          # 整段输出（历史上已因改写键名/丢键淘汰过），故均不入选。
+          #
+          # ⚠️ 速度注意：kilo-auto 首次调用可能 15s+，整条光影 4 块实测约 9 分钟，
+          # 接近 PER_SHADER_TIMEOUT_MS(15min) 上限。若后续加块数，需先评估超时。
           # 实测口径：真实形态 37~74 行分块（含 .comment 长句、%s / %1$s 占位符、§e[+]§r 颜色码）。
           # 该输入来自 /request 页管理员口令门禁后的模型多选（Worker 已对网关实时列表做白名单校验，
           # 绝不允许任意字符串透传进 workflow）。留空时回退到仓库默认列表。
-          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'opencode-zen-free/space-bunny-free,opencode-zen-free/beam-free,opencode-zen-free/big-pickle' }}
+          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'kilo/kilo-auto/free,kilo/poolside/laguna-s-2.1:free' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
           # ---------- 免费层（默认主路，独立于 LLM_MODELS） ----------

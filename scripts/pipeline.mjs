@@ -73,7 +73,9 @@ const LANG_DIR = join(ROOT, 'site/public/lang')
 const SOURCES_DIR = join(ROOT, 'sources')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
 const CHUNK_LINES = 60
-const DEFAULT_MODEL = 'opencode-zen-free/space-bunny-free'
+// 2026-10-20：旧的 opencode-zen-free/* 三个模型已从网关下架，换成实测可用的两个。
+// 与 .github/workflows/translate.yml 的 LLM_MODELS 默认值保持一致（本地运行走这里）。
+const DEFAULT_MODEL = 'kilo/kilo-auto/free'
 const DEFAULT_CONCURRENCY = 10
 const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 // 免费层（bilibili Index-Translate 公开 API）：**无需 API key**，无 SLA。

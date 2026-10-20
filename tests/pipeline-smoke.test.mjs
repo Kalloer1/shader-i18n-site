@@ -60,7 +60,7 @@ test('有 key：不打印「免费层单跑」警告，回退池正常列出', (
   const { code, out } = runPipeline({ LLM_API_KEY: 'dummy-key-for-smoke-test' })
   assert.equal(code, 0, `应正常结束；实际输出：\n${out}`)
   assert.ok(!out.includes('免费层单跑'), '有 key 时不该出现该警告')
-  assert.match(out, /LLM 提供方：opencode-zen-free\/space-bunny-free/, '应列出默认模型池')
+  assert.match(out, /LLM 提供方：kilo\/kilo-auto\/free/, '应列出默认模型池')
 })
 
 test('免费层默认开启（不设 FREE_TIER_ENABLED 时也是开的）', () => {
