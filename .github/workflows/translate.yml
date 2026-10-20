@@ -225,11 +225,17 @@ jobs:
             exit 0
           fi
           git commit -m "翻译: ${{ inputs.ids }}"
-          # 并发保护：别的 workflow/提交可能刚推到 main，先 rebase 再推，失败重试一次。
+          # 并发保护：别的 workflow/提交可能刚推到当前分支，先 rebase 再推，失败重试一次。
           # 只 rebase，绝不 force push；rebase 输出原样打印，失败原因可见。
+          #
+          # 目标分支必须是 **本 workflow 被派发的那个分支**，不能写死 main：
+          # 在特性分支上 dispatch 时，`pull --rebase origin main` 会把 main 的提交
+          # 拉进当前分支，而本分支已有的提交在 main 上不存在 → 每个文件 add/add 冲突，
+          # 整个 run 在最后一步变红（2026-10-20 实测，翻译本身已全部成功）。
+          # 在 main 上运行时 $GITHUB_REF_NAME 就是 main，行为与旧写法逐字一致。
           pushed=false
           for attempt in 1 2; do
-            if ! git pull --rebase --autostash origin main; then
+            if ! git pull --rebase --autostash origin "$GITHUB_REF_NAME"; then
               echo "rebase 失败（第 ${attempt} 次），原因见上方输出"
               git rebase --abort 2>/dev/null || true
               exit 1
