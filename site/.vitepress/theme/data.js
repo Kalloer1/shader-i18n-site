@@ -4,6 +4,9 @@ import catalog from '../../data/modrinth-catalog.json'
 import hiresRaw from '../../data/gallery-hires.json'
 import db from '../../data/shaders.json'
 import cfCatalog from '../../data/curseforge-catalog.json'
+// 展示集合判据与 scripts/gen-shader-pages.mjs 共用同一份实现（shared/display-set.mjs），
+// 两边分叉就会出现「列表里有、详情页没有」的死链。
+import { isDisplayableEntry, resolveManual } from '../../../shared/display-set.mjs'
 
 // Top80 高清原图（raw_url），根治 _350 缩略图拉大必糊；缺失回退缩略图
 const hiresMap = new Map(Object.entries(hiresRaw ?? {}))
@@ -142,11 +145,12 @@ export function shaderVersionRange(shader) {
   return range.min === range.max ? range.min : `${range.min} ~ ${range.max}`
 }
 
-// 全量目录（含自带中文的光影，UI 打"自带中文"标签）
-const mergeSource = (e) => manualByProjectId.get(e.projectId) ?? manualBySlug.get(e.id)
-// 与详情页生成一致：列表只取展示集合（已有本站汉化 或 自带中文）
-const isDisplayable = (e) =>
-  e.hasNativeZhCN === true || (mergeSource(e)?.langVersions?.length ?? 0) > 0
+// 全量目录（含自带中文 / 无英文源的光影，UI 各自打标签）
+const mergeSource = (e) => resolveManual(e, { byId: manualBySlug, byProjectId: manualByProjectId })
+// 展示集合 = 已有本站汉化 或 自带中文 或 **无英文源**。
+// 「无英文源」必须进列表：否则用户搜不到，也看不到「为什么没有汉化」；
+// 同时 gen-shader-pages.mjs 用同一个函数决定是否生成详情页，保证两边成员完全一致。
+const isDisplayable = (e) => isDisplayableEntry(e, mergeSource(e))
 
 // 列表只来自 catalog（与 gen-shader-pages.mjs 的遍历源一致）：
 // shaders.json 仅用于补充字段（nameCN/langVersions/quark/_meta 等），不允许它新增 id，
