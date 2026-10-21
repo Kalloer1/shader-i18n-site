@@ -19216,6 +19216,48 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/183d15315e26"
+    },
+    {
+      "id": "luxw0und-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "luxw0und-shaders",
+        "cfId": 1743461
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-LUXW0UND_Iris_v1.5.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/luxw0und-shaders/cf-LUXW0UND_Iris_v1.5.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/5db81442a049",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/5db81442a049"
+    },
+    {
+      "id": "truevision",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "truevision",
+        "cfId": 1521880
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-TrueVision_b1.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/truevision/cf-TrueVision_b1.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/3296d22fc5a0",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/3296d22fc5a0"
     }
   ]
 }
