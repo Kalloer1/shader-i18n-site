@@ -1,0 +1,37 @@
+#shaders/lang/zh_CN.lang
+# Ethereal Reborn vcf-Ethereal-Reborn-1.0.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Ethereal-Reborn-1.0.0.zip 的 shaders/lang/en_us.lang
+profile.BALANCED=平衡
+profile.CINEMATIC=§b电影感（默认）
+profile.EXTREME=极限幻想
+screen.LIGHTING=光照与阴影
+screen.WATER=水面与反射
+screen.ATMOSPHERE=奇幻氛围
+screen.POST=泛光与色彩
+option.SHADOWS=实时阴影
+option.SHADOW_STRENGTH=阴影强度
+option.SSAO=环境光遮蔽
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.WAVING_FOLIAGE=摇摆植被
+option.WAVE_AMOUNT=树叶的运动
+option.WATER_REFLECTIONS=屏幕空间反射
+option.SSR_STEPS=反射质量
+option.REFLECTION_STRENGTH=反射强度
+option.WATER_WAVES=动画水面
+option.WATER_HEIGHT_AMOUNT=水波深度
+option.WATER_WAVE_AMOUNT=反射波纹强度
+option.FANTASY_SKY=奇幻的天空
+option.AURORA=极光
+option.AURORA_STRENGTH=极光强度
+option.NEBULA_STRENGTH=星云强度
+option.BLOOM=多尺度绽放
+option.BLOOM_STRENGTH=泛光强度
+option.COLOR_GRADE=电影级调色
+option.EXPOSURE=曝光
+option.SATURATION=饱和度
+option.VIGNETTE=暗角
+comment.WATER_REFLECTIONS=反射可见地形，并用奇幻天空填充缺失区域。
+comment.SSR_STEPS=数值越高，反射越准确，但消耗的GPU时间也越多。
+comment.FANTASY_SKY=替换空背景像素；它不会重用末地传送门着色器。
+comment.WATER_WAVES=将表面从Minecraft原始水位向下动画化，并添加程序化反射波纹。
+comment.WATER_HEIGHT_AMOUNT=控制垂直移动。波峰不会超过原始水位。

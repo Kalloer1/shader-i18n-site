@@ -17935,6 +17935,69 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/847ae399982c"
+    },
+    {
+      "id": "ethereal-reborn",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "ethereal-reborn",
+        "cfId": 1720222
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Ethereal-Reborn-1.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/ethereal-reborn/cf-Ethereal-Reborn-1.0.0/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/990614458f3c",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/990614458f3c"
+    },
+    {
+      "id": "night-vision-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "night-vision-shader",
+        "cfId": 1331233
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Night-Vision-Shader",
+          "langVersion": "1.0.0",
+          "file": "/lang/night-vision-shader/cf-Night-Vision-Shader/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/180fcc9a80aa",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/180fcc9a80aa"
+    },
+    {
+      "id": "lumen-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "lumen-shaders",
+        "cfId": 1708532
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Lumen-4.16-fixed",
+          "langVersion": "1.0.0",
+          "file": "/lang/lumen-shaders/cf-Lumen-4.16-fixed/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/bc131d10d6f0",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/bc131d10d6f0"
     }
   ]
 }
