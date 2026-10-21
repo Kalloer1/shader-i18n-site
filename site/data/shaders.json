@@ -18019,6 +18019,111 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/83550cd7afa5"
+    },
+    {
+      "id": "eventhorizon",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "eventhorizon",
+        "cfId": 1684181
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-EventHorizon-Salut_1.6.2.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/eventhorizon/cf-EventHorizon-Salut_1.6.2.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/e960be269019",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / index-mt-2b / index-mt-2b-syllable / index-mt-9b / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/e960be269019"
+    },
+    {
+      "id": "minopz",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "minopz",
+        "cfId": 1522919
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-MOZ-2.5",
+          "langVersion": "1.0.0",
+          "file": "/lang/minopz/cf-MOZ-2.5/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/f8ca61bfe725",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/f8ca61bfe725"
+    },
+    {
+      "id": "derivative-main",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "derivative-main",
+        "cfId": 1604307
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Derivative-v26.0.0b1",
+          "langVersion": "1.0.0",
+          "file": "/lang/derivative-main/cf-Derivative-v26.0.0b1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/f694a4164273",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/f694a4164273"
+    },
+    {
+      "id": "cartux-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "cartux-shader",
+        "cfId": 1553213
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-1-lC-f-lARTUX-4-lS-f-lHADER-6-lv6.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/cartux-shader/cf-1-lC-f-lARTUX-4-lS-f-lHADER-6-lv6.2/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/2bd74ee002bd",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/2bd74ee002bd"
+    },
+    {
+      "id": "zaza-shaders-impairment-visual-effects",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "zaza-shaders-impairment-visual-effects",
+        "cfId": 1680970
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Zaza-Shaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/zaza-shaders-impairment-visual-effects/cf-Zaza-Shaders/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/12f24104c97a",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/12f24104c97a"
     }
   ]
 }
