@@ -19132,6 +19132,90 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/ee5a70a9ad7e"
+    },
+    {
+      "id": "starshaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "starshaders",
+        "cfId": 1515550
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-StarShaders_v1",
+          "langVersion": "1.0.0",
+          "file": "/lang/starshaders/cf-StarShaders_v1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/9556dcfa3f5d",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/9556dcfa3f5d"
+    },
+    {
+      "id": "smoothlite-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "smoothlite-shader",
+        "cfId": 1745122
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-smoothlite-1",
+          "langVersion": "1.0.0",
+          "file": "/lang/smoothlite-shader/cf-smoothlite-1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/20723ce53bd8",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/20723ce53bd8"
+    },
+    {
+      "id": "skygleam-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "skygleam-shaders",
+        "cfId": 978510
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Skygleam-Shaders-V3.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/skygleam-shaders/cf-Skygleam-Shaders-V3.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/a4356e58f92a",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/a4356e58f92a"
+    },
+    {
+      "id": "urbanos",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "urbanos",
+        "cfId": 1706045
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-URBANOS-1.8-FIXED",
+          "langVersion": "1.0.0",
+          "file": "/lang/urbanos/cf-URBANOS-1.8-FIXED/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/183d15315e26",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/183d15315e26"
     }
   ]
 }
