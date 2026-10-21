@@ -18124,6 +18124,48 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/12f24104c97a"
+    },
+    {
+      "id": "complementary-unbound-shaders-sovereign-202",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "complementary-unbound-shaders-sovereign-202",
+        "cfId": 1549738
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Complementary-Shaders-Unbound-Sovereign-202-Edition-1.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/complementary-unbound-shaders-sovereign-202/cf-Complementary-Shaders-Unbound-Sovereign-202-Edition-1.2/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/25c624ccf403",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / index-mt-2b / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/25c624ccf403"
+    },
+    {
+      "id": "toonlamentry",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "toonlamentry",
+        "cfId": 1737721
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-a-lToonlamentry",
+          "langVersion": "1.0.0",
+          "file": "/lang/toonlamentry/cf-a-lToonlamentry/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/25c3e1678f31",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/25c3e1678f31"
     }
   ]
 }
