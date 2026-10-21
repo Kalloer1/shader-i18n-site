@@ -1,0 +1,269 @@
+#shaders/lang/zh_CN.lang
+# Spectrum Shaders vcf-spectrum-master 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：spectrum-master.zip 的 shaders/lang/en_US.lang
+##--## Option screens ##------------------------------------------------------##
+
+screen.ao=环境光遮蔽
+screen.camera=相机
+screen.clouds2d=Bayer 矩阵
+screen.clouds3d=3D 云
+screen.fogAir=空气雾
+screen.fogWater=水雾
+screen.parallax=视差
+screen.shadowMap=阴影贴图
+screen.ssr=屏幕空间反射
+screen.taa=时间抗锯齿
+screen.tonemap=色调映射
+screen.waterWaves=水波
+screen.waterCaustics=水焦散
+screen.misc=杂项
+screen.misc.comment=各种无法放入其他选项的选项。
+
+##--## Ambient Occlusion ##---------------------------------------------------##
+
+option.BLOCK_LIGHT_USE_AO=在块光上使用环境光遮蔽
+option.GLOBAL_LIGHT_USE_AO=在日光上使用环境光遮蔽
+
+option.HBAO=基于地平线的环境光遮蔽
+option.HBAO_RADIUS=§4§lh§f§lba§f§lo 半径
+option.HBAO_DIRECTIONS=HBAO 方向
+option.HBAO_ANGLE_SAMPLES=HBAO 角度样本
+
+##--## Camera ##--------------------------------------------------------------##
+
+option.CAMERA_AUTOEXPOSURE=自动曝光模式
+value.CAMERA_AUTOEXPOSURE.CAMERA_AUTOEXPOSURE_OFF=关
+value.CAMERA_AUTOEXPOSURE.CAMERA_AUTOEXPOSURE_SIMPLE=简单
+value.CAMERA_AUTOEXPOSURE.CAMERA_AUTOEXPOSURE_HISTOGRAM=直方图
+option.CAMERA_AUTOEXPOSURE_BIAS=自动曝光偏差
+option.CAMERA_FOCUS=焦点
+value.CAMERA_FOCUS.-1=自动
+screen.dof=景深
+
+option.CAMERA_FSTOP=F-光圈值
+prefix.CAMERA_FSTOP=ƒ/
+option.CAMERA_ISO=等距投影
+option.CAMERA_SHUTTER_SPEED=快门速度
+prefix.CAMERA_SHUTTER_SPEED=1/
+suffix.CAMERA_SHUTTER_SPEED= 秒
+screen.motionBlur=运动模糊
+
+option.CAMERA_IRIS_BLADE_COUNT=虹膜叶片数量
+option.CAMERA_IRIS_BLADE_ROTATION=叶片旋转
+option.CAMERA_IRIS_BLADE_ROUNDING=叶片圆角
+
+option.CAMERA_ANAMORPHIC_SCALE=变形比例
+option.CAMERA_ANAMORPHIC_SCALE.comment=典型的变形镜头为 2:1。正常镜头为 1:1。
+suffix.CAMERA_ANAMORPHIC_SCALE=:1
+
+option.CAMERA_LENS_DISTORTION=镜头畸变
+option.CAMERA_CHROMATIC_ABBERATION=色差
+
+##--## Depth of Field
+
+option.DOF=景深
+option.DOF_SIMPLE=简单景深
+option.DOF_SAMPLES=采样数
+option.DOF_SAMPLES.COMMENT=不影响“简单”景深。
+
+##--## Motion Blur
+
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR_SAMPLES=采样数
+
+##--## 2D Clouds ##-----------------------------------------------------------##
+
+option.CLOUDS2D=Bayer 矩阵
+option.CLOUDS2D_SELFSHADOW_QUALITY=自阴影质量
+option.CLOUDS2D_USE_WORLD_TIME=使用世界时间
+option.CLOUDS2D_COVERAGE=覆盖度
+
+##--## 3D Clouds ##-----------------------------------------------------------##
+
+option.CLOUDS3D=3D 云
+option.CLOUDS3D_DETAIL_NOISE_OCTAVES=细节噪声八分频
+option.CLOUDS3D_STEPS_VIEW=可见性步骤
+option.CLOUDS3D_STEPS_SUN=阳光步数
+option.CLOUDS3D_ALTERNATE_SKYLIGHT=替代天空光
+option.CLOUDS3D_ALTERNATE_SKYLIGHT.comment=更真实但噪声更大的天空光方式。在某些情况下可能非常嘈杂！
+option.CLOUDS3D_STEPS_SKY=天空光步骤
+
+option.CLOUDS3D_ALTITUDE=海拔
+option.CLOUDS3D_THICKNESS_MULT=厚度
+option.CLOUDS3D_COVERAGE=覆盖度
+option.CLOUDS3D_SCALE=缩放
+option.CLOUDS3D_USE_WORLD_TIME=使用世界时间
+option.CLOUDS3D_SPEED=速度
+
+##--## Air Fog ##-------------------------------------------------------------##
+
+option.VL_AIR=体积光照
+option.VL_AIR_STEPS=VL 步骤
+option.DISTANT_VL=远距 VL
+option.FOG_AIR_DENSITY=空气密度乘数
+option.FOG_RAIN_DENSITY=雨天雾密度
+
+##--## Water Fog ##-----------------------------------------------------------##
+
+option.VL_WATER=体积光照
+option.VL_WATER_STEPS=VL 步数
+option.VL_WATER_CAUSTICS=高品质体积焦散
+option.VL_WATER_CAUSTICS.comment=允许在 VL 中使用高品质焦散。较慢！
+option.UNDERWATER_ADAPTATION=水下适应性
+option.WATER_REALISTIC_PHASE_FUNCTION=真实相位函数
+option.WATER_REALISTIC_PHASE_FUNCTION.comment=为水使用更真实的相位函数。如果 VL 已禁用，则不推荐。目前会导致一些伪影！
+
+option.WATER_SCATTERING_R=散射颜色 R
+option.WATER_SCATTERING_G=散射颜色 G
+option.WATER_SCATTERING_B=散射颜色 B
+
+option.WATER_TRANSMISSION_R=透射颜色 R
+option.WATER_TRANSMISSION_G=透射颜色 G
+option.WATER_TRANSMISSION_B=透射颜色 B
+
+##--## Parallax ##------------------------------------------------------------##
+
+option.PARALLAX=视差
+option.PARALLAX_SHADOWS=视差自阴影
+option.SMOOTH_PARALLAX=§b平滑视差
+option.SMART_PARALLAX=智能视差
+
+option.PARALLAX_DEPTH=深度
+option.PARALLAX_QUALITY=质量
+
+##--## Shadow Map ##----------------------------------------------------------##
+
+option.shadowMapResolution=阴影贴图分辨率
+option.SHADOW_DISTANCE_EFFECTIVE=有效阴影距离
+option.SHADOW_INFINITE_RENDER_DISTANCE=无限阴影距离
+option.shadowDistance=阴影距离
+
+screen.shadowMapping=阴影贴图
+screen.rsm=反射阴影贴图
+
+option.SHADOW_BACKFACE_CULLING=背面剔除
+option.SHADOW_DISABLE_ALPHA_MIPMAP=禁用 Alpha 纹理集
+
+##--## Shadow Mapping
+
+option.SHADOW_FILTER=阴影滤镜
+value.SHADOW_FILTER.SHADOW_FILTER_NONE=无
+value.SHADOW_FILTER.SHADOW_FILTER_BILINEAR=双线性
+value.SHADOW_FILTER.SHADOW_FILTER_PCF=百分比接近过滤
+value.SHADOW_FILTER.SHADOW_FILTER_PCSS=接触硬化阴影
+value.SHADOW_FILTER.SHADOW_FILTER_DUAL_PCSS=双 PCSS
+option.SHADOW_COLORED=彩色阴影
+option.SHADOW_FILTER_SAMPLES=§e滤波样本数
+option.SHADOW_FILTER_SAMPLES.comment=适用于 PCF、PCSS 和双 PCSS 滤波器。
+option.SHADOW_SEARCH_SAMPLES= 遮挡搜索采样
+option.SHADOW_SEARCH_SAMPLES.comment=适用于 PCSS 和双 PCSS 滤波器。
+
+##--## Reflective Shadow Mapping
+
+option.RSM=反射阴影贴图
+option.RSM_SAMPLES=采样数
+option.RSM_BRIGHTNESS=亮度
+suffix.RSM_BRIGHTNESS=倍
+option.RSM_RADIUS=半径
+
+option.RSM_LEAK_PREVENTION=漏光防护
+
+##--## Reflections ##---------------------------------------------------------##
+
+option.SSR_RAY_COUNT=光线数量
+option.SSR_RAY_STRIDE=射线步长
+option.SSR_RAY_STRIDE.comment=大致对应于反射的像素精度。低值可能极其耗费性能！
+option.SSR_TAIL_CLAMP=尾部钳制
+option.SSR_MULTILAYER=多层 SSR
+
+option.SSR_ALLOW_VL_AIR=反射空气 VL
+option.SSR_ALLOW_VL_WATER=反射水 VL
+
+##--## Temporal Anti-Aliasing ##----------------------------------------------##
+
+option.TAA=时间抗锯齿
+option.TAA_SOFT=柔和 TAA
+option.TAA_SOFT.comment=抗锯齿效果更佳，但会略微模糊。
+option.TAA_CLIP=启用裁剪功能
+option.TAA_CLIP.comment=能有效防止残影。截图时才应禁用！
+option.TAA_MOTION_REJECTION=运动拒绝
+option.TAA_MOTION_REJECTION.comment=数值越低，运动模糊越严重。数值越高，运动伪影越明显。
+
+##--## Tonemapping ##---------------------------------------------------------##
+
+option.TONEMAP_TOE_STRENGTH=暗部区间强度
+option.TONEMAP_TOE_LENGTH=脚趾长度
+option.TONEMAP_LINEAR_LENGTH=线性长度
+option.TONEMAP_SHOULDER_CURVE=肩部曲线
+
+##--## Water Waves ##---------------------------------------------------------##
+
+option.WATER_WAVES_VERSION=Waves 版本
+screen.waves1 =Waves 1 设置
+screen.waves2 =Waves 2 设置
+
+option.WATER_WAVES_COUNT=波数计数器
+option.WATER_WAVES_G=重力
+suffix.WATER_WAVES_G=米/秒²
+option.WATER_WAVES_WAVELENGTH=波长
+suffix.WATER_WAVES_WAVELENGTH=米
+option.WATER_WAVES_WAVE_HEIGHT_RATIO=波高比
+option.WATER_WAVES_WAVELENGTH_GAIN=波长增益
+option.WATER_WAVES_WAVE_HEIGHT_GAIN=波高增益
+option.WATER_WAVES_SHARPENING=波状锐化
+option.WATER_WAVES_SHARPENING.comment=使浪花的峰变得更加锋利。
+
+option.WATER_PARALLAX=水面视差
+option.WATER_PARALLAX_DEPTH_MULTIPLIER=水面视差深度
+option.WATER_PARALLAX_STEPS=水视差步数
+
+##--## Water Caustics ##------------------------------------------------------##
+
+option.CAUSTICS=水焦散
+value.CAUSTICS.CAUSTICS_OFF=关
+value.CAUSTICS.CAUSTICS_LOW=§2低配
+value.CAUSTICS.CAUSTICS_MEDIUM=§e中配
+value.CAUSTICS.CAUSTICS_HIGH=§c高配
+option.CAUSTICS_POWER=对比度
+option.CAUSTICS_QUALITY=质量
+option.CAUSTICS_QUALITY.comment=数值越高，细节越精细，噪点也越少。
+option.CAUSTICS_DITHERED=使用抖动处理
+option.CAUSTICS_DITHERED.comment=通常应保持开启。对低、中设置无影响。
+option.CAUSTICS_HIGH_SUBSEARCH_ITERATIONS =高：子搜索迭代次数
+option.CAUSTICS_HIGH_SUBSEARCH_ITERATIONS.comment =子搜索迭代能以较小的性能开销，提供显著更精确的焦散效果。
+
+##--## Miscellaneous ##-------------------------------------------------------##
+
+option.BLOOM=泛光
+option.BLOOM_AMOUNT=泛光强度
+option.CONTRAST=对比度
+option.SATURATION=饱和度
+option.LOWLIGHT_DESATURATION=低光去饱和
+option.LOWLIGHT_NOISE=暗部噪点
+option.CONE_OVERLAP_SIMULATION=锥体重叠模拟
+option.CONE_OVERLAP_SIMULATION.comment=模拟锥细胞重叠响应对高光的影响，显著改善高光外观。
+value.CONE_OVERLAP_SIMULATION.0=关
+option.WHITE_BALANCE=白平衡
+suffix.WHITE_BALANCE=k
+option.HAND_FOV=手部视野
+option.LUT=色彩查找表
+option.REFRACTION_MODE=反射与折射
+value.REFRACTION_MODE.REFRACTION_OFF=关
+value.REFRACTION_MODE.REFRACTION_WATER_ONLY=在水之上
+value.REFRACTION_MODE.REFRACTION_ON=开
+option.RESOURCE_FORMAT=资源包格式
+value.RESOURCE_FORMAT.RESOURCE_FORMAT_GREYSCALE=灰度（グレースケール）
+value.RESOURCE_FORMAT.RESOURCE_FORMAT_OPBR=旧版“PBR”
+value.RESOURCE_FORMAT.RESOURCE_FORMAT_CONTINUUM2=Continuum 2.0
+value.RESOURCE_FORMAT.RESOURCE_FORMAT_LAB_1_1=实验室 v1.1
+value.RESOURCE_FORMAT.RESOURCE_FORMAT_LAB_1_2=实验室 v1.2
+value.RESOURCE_FORMAT.RESOURCE_FORMAT_LAB_1_3=实验室 v1.3
+option.SSCS=接触阴影
+option.sunPathRotation=太阳角度
+suffix.sunPathRotation=°
+option.TIME_SCALE=时间尺度
+suffix.TIME_SCALE=倍
+option.TOTAL_INTERNAL_REFLECTION=全内反射
+
+screen.unassigned=不支持的选项
+screen.unassigned.comment=这些选项不受支持，如果更改默认设置可能会导致问题。
