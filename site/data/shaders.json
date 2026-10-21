@@ -18502,6 +18502,111 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/ff30dcdf27af"
+    },
+    {
+      "id": "dercode-lite",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "dercode-lite",
+        "cfId": 1468879
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-DERCODE-Lite-0.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/dercode-lite/cf-DERCODE-Lite-0.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/9f970761c6b9",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/9f970761c6b9"
+    },
+    {
+      "id": "sisp",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "sisp",
+        "cfId": 1382372
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-SI-Spectre-1.1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/sisp/cf-SI-Spectre-1.1.0/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/3f409f885239",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/3f409f885239"
+    },
+    {
+      "id": "pixel-perfect",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "pixel-perfect",
+        "cfId": 883885
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Pixel-Perfect-1-5-2a",
+          "langVersion": "1.0.0",
+          "file": "/lang/pixel-perfect/cf-Pixel-Perfect-1-5-2a/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/10074cb8428e",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/10074cb8428e"
+    },
+    {
+      "id": "lumasky",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "lumasky",
+        "cfId": 1634635
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-LumaSky-v0.1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/lumasky/cf-LumaSky-v0.1.0/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/c0525f0f8355",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/c0525f0f8355"
+    },
+    {
+      "id": "lumasky-beyond",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "lumasky-beyond",
+        "cfId": 1635285
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-LumaSky-Beyond-v0.1.0-dev",
+          "langVersion": "1.0.0",
+          "file": "/lang/lumasky-beyond/cf-LumaSky-Beyond-v0.1.0-dev/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/bd050a7cabbb",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/bd050a7cabbb"
     }
   ]
 }
