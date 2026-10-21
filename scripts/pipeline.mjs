@@ -128,10 +128,18 @@ const PER_SHADER_TIMEOUT_MS = (() => {
 })()
 
 // CurseForge 分支的两层上限（外层仍有 PER_SHADER_TIMEOUT_MS 兜底）：
-// 单个候选文件最多 3 分钟，整条 CF 光影最多 6 分钟——
+// 单个候选文件最多 8 分钟，整条 CF 光影最多 14 分钟——
 // 避免「候选数 × 各自超时」叠加成长时间占用（曾经一个 CF 光影把 CI 卡住 8 小时）。
-const CF_CANDIDATE_TIMEOUT_MS = 3 * 60 * 1000
-const CF_SHADER_BUDGET_MS = 6 * 60 * 1000
+//
+// 为什么从 3 / 6 分钟放宽到 8 / 14 分钟（实测 CI run 39516193136）：
+// derivative-main 是 2210 键，光翻译阶段就用了 179.6 秒，撞上 180 秒的单候选上限。
+// 超时瞬间所有在跑的分块一起返回，未处理的行全被算成回退 —— 3.1% 的真实回退率
+// 被冲成 67%，整条光影被判失败。3 分钟对「下载 + 探测 + 逐句翻译上千行」本来就偏短。
+// 8 分钟是实测 179.6 秒的 2.7 倍余量；14 分钟让一条 CF 光影能从容试 1~2 个候选，
+// 同时仍严格小于外层 PER_SHADER_TIMEOUT_MS（15 分钟）—— 预算用尽时由内层先退出，
+// 「一个 CF 光影卡 8 小时」的老问题不会重现。
+const CF_CANDIDATE_TIMEOUT_MS = 8 * 60 * 1000
+const CF_SHADER_BUDGET_MS = 14 * 60 * 1000
 // 探测阶段的最小包体积：与 shared/zip-range.mjs 的 minRangeBytes 默认值一致。
 // 低于它的包 openZip 会直接整包，探测只会白花一倍流量，因此直接跳过探测走原路径。
 const PROBE_MIN_BYTES = 65536
@@ -1168,7 +1176,7 @@ async function processShaderCf(entry, signal, localGlossary) {
         console.log(`${tag} ${shaderVersion} 已有汉化，跳过`)
         return { status: STATUS.DONE, error: '', shaderVersion }
       }
-      // 单候选上限 = min(单候选 3 分钟, 本条剩余预算)，并与光影 signal 合并：
+      // 单候选上限 = min(单候选 8 分钟, 本条剩余预算)，并与光影 signal 合并：
       // 该候选的下载/翻译全部走这个 signal，任一中止即真正断开进行中的 fetch。
       const candSignal = AbortSignal.any([
         signal,
