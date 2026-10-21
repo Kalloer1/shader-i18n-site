@@ -17914,6 +17914,27 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/6937eb2f5a52"
+    },
+    {
+      "id": "psychedelic-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "psychedelic-shaders",
+        "cfId": 1656111
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Psychedelic-Shaders-Lite",
+          "langVersion": "1.0.0",
+          "file": "/lang/psychedelic-shaders/cf-Psychedelic-Shaders-Lite/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/847ae399982c",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/847ae399982c"
     }
   ]
 }
