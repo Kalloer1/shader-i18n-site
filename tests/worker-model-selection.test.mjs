@@ -292,13 +292,42 @@ test('免费层探测全挂时，免费层模型不可选（宁可 400 也不透
 test('声明一个 free-then-gateway 的 workflow input（Worker 与 translate.yml 的契约）', () => {
   const yml = readFileSync(join(ROOT, '.github', 'workflows', 'translate.yml'), 'utf8')
   assert.match(yml, /^\s{6}freeTierModel:/m, 'translate.yml 必须声明 freeTierModel input')
+  assert.match(yml, /^\s{6}freeTierModels:/m, 'translate.yml 必须声明 freeTierModels（多模型池）input')
+  assert.match(yml, /^\s{6}gateway:/m, 'translate.yml 必须声明 gateway（网关开关）input')
+
+  // ⚠️ 2026-10-21 契约变更：FREE_TIER_MODEL **不再兜硬编码默认值**。
+  // 旧写法 `|| 'index-mt-9b-syllable'` 会把默认多模型池收窄成单模型，
+  // 于是 pipeline 的 DEFAULT_FREE_TIER_MODELS（5 模型池）永远不生效。
+  // 优先级收紧为 inputs > secrets > pipeline 默认池。
   assert.match(
     yml,
-    /FREE_TIER_MODEL:\s*\$\{\{\s*inputs\.freeTierModel\s*\|\|\s*secrets\.FREE_TIER_MODEL\s*\|\|\s*'index-mt-9b-syllable'\s*\}\}/,
-    'FREE_TIER_MODEL 的优先级必须是 inputs > secrets > 默认',
+    /FREE_TIER_MODEL:\s*\$\{\{\s*inputs\.freeTierModel\s*\|\|\s*secrets\.FREE_TIER_MODEL\s*\}\}/,
+    'FREE_TIER_MODEL 优先级必须是 inputs > secrets > pipeline 默认（不得再硬编码单模型默认）',
   )
+  assert.match(
+    yml,
+    /FREE_TIER_MODELS:\s*\$\{\{\s*inputs\.freeTierModels\s*\|\|\s*secrets\.FREE_TIER_MODELS\s*\}\}/,
+    'FREE_TIER_MODELS 必须能覆盖整个池子',
+  )
+  // 网关开关：false → '0'；不传（默认 true）→ '1'，与既有行为一致。
+  assert.match(yml, /GATEWAY_ENABLED:\s*\$\{\{\s*inputs\.gateway\s*==\s*false\s*&&\s*'0'\s*\|\|\s*'1'\s*\}\}/,
+    'GATEWAY_ENABLED 必须由 inputs.gateway 派生，且缺省为开启')
   assert.match(yml, /FREE_TIER_ENABLED:\s*\$\{\{\s*secrets\.FREE_TIER_ENABLED\s*\|\|\s*'1'\s*\}\}/,
     'FREE_TIER_ENABLED=0 必须仍能关掉免费层（优先级最高）')
+
+  // 两处 env（Show selected models + Translate）必须一致，否则日志会骗人。
+  const nModel = (yml.match(/^\s+FREE_TIER_MODEL:\s*\$\{\{/gm) ?? []).length
+  const nModels = (yml.match(/^\s+FREE_TIER_MODELS:\s*\$\{\{/gm) ?? []).length
+  const nGateway = (yml.match(/^\s+GATEWAY_ENABLED:\s*\$\{\{/gm) ?? []).length
+  assert.equal(nModel, 2, 'FREE_TIER_MODEL 应在展示步与翻译步各出现一次')
+  assert.equal(nModels, 2, 'FREE_TIER_MODELS 应在展示步与翻译步各出现一次')
+  assert.equal(nGateway, 2, 'GATEWAY_ENABLED 应在展示步与翻译步各出现一次')
+
+  // 硬编码默认值若再回来，池子就被悄悄收窄了 —— 直接判红。
+  assert.ok(!/FREE_TIER_MODELS:[^\n]*index-mt-/.test(yml),
+    'FREE_TIER_MODELS 不得在 workflow 里写死默认池（交给 pipeline.mjs）')
+  assert.ok(!/FREE_TIER_MODEL:[^\n]*\|\|\s*'index-mt-/.test(yml),
+    'FREE_TIER_MODEL 不得再兜单模型硬编码默认值')
 })
 
 test('Worker 源码里 freeTierModel 只作为独立 input 传递', () => {
