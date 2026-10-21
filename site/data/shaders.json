@@ -17998,6 +17998,27 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/bc131d10d6f0"
+    },
+    {
+      "id": "alphalook",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "alphalook",
+        "cfId": 1707674
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-AlphaLook-Shader_9_46_6-TESTPREFINALVERSION-5",
+          "langVersion": "1.0.0",
+          "file": "/lang/alphalook/cf-AlphaLook-Shader_9_46_6-TESTPREFINALVERSION-5/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/83550cd7afa5",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/83550cd7afa5"
     }
   ]
 }
