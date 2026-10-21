@@ -19468,6 +19468,26 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/4e02ce93cba2"
+    },
+    {
+      "id": "sadeem-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "sadeem-shaders",
+        "cfId": 1679572
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-SADEEM-Shaders-v0.1.0-beta",
+          "langVersion": "1.0.0",
+          "file": "/lang/sadeem-shaders/cf-SADEEM-Shaders-v0.1.0-beta/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }
