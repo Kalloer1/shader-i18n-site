@@ -231,7 +231,7 @@ export function createGatewayProvider({
  * 一个提供方都没用上（如翻译记忆全覆盖）时不谎报来源。
  *
  * @param {string[]} providerIds 本次实际用上的提供方 id
- * @param {string} freeTierId 免费层的 provider id
+ * @param {string|string[]} freeTierId 免费层 provider id（或 id 列表——多模型池）
  */
 export function buildContributorLine(providerIds, freeTierId) {
   const ids = [...new Set(providerIds ?? [])]
@@ -239,8 +239,10 @@ export function buildContributorLine(providerIds, freeTierId) {
     // 一个提供方都没用上（如翻译记忆全覆盖）：不谎报来源。
     return 'AI 初翻（翻译记忆复用），未人工校对'
   }
-  const freeIds = ids.filter((id) => id === freeTierId)
-  const poolIds = ids.filter((id) => id !== freeTierId)
+  // 免费层可能是多模型池：把池内 id 都归到「免费层」，其余归「回退池」。
+  const freeSet = new Set(Array.isArray(freeTierId) ? freeTierId : [freeTierId])
+  const freeIds = ids.filter((id) => freeSet.has(id))
+  const poolIds = ids.filter((id) => !freeSet.has(id))
   const parts = []
   if (freeIds.length) parts.push(`免费层 ${freeIds.join(' / ')}`)
   if (poolIds.length) parts.push(`回退池 ${poolIds.join(' / ')}`)

@@ -37,12 +37,15 @@ function makeFakeChunkWorker() {
 const chunks = Array.from({ length: 8 }, (_, index) => ({ index, lines: 60 }))
 
 describe('runPool 分块并发池', () => {
-  it('并发度 3（分块默认值）真的生效：峰值同时在飞 = 3，且所有块都跑到', async () => {
+  it('默认分块并发度真的生效：峰值同时在飞 = 默认值，且所有块都跑到', async () => {
     const { worker, peak, started } = makeFakeChunkWorker()
     const results = new Array(chunks.length)
     await runPool(chunks, async (chunk) => { results[chunk.index] = await worker(chunk) }, DEFAULT_CHUNK_CONCURRENCY)
 
-    assert.equal(DEFAULT_CHUNK_CONCURRENCY, 3)
+    // 2026-10-21 从 3 提到 4（付费等级/吞吐实测）。不断言具体数字：
+    // 这里要验证的是 runPool 尊重传入并发度，数字由 DEFAULT_CHUNK_CONCURRENCY 自身决定。
+    assert.ok(Number.isInteger(DEFAULT_CHUNK_CONCURRENCY) && DEFAULT_CHUNK_CONCURRENCY >= 1,
+      `DEFAULT_CHUNK_CONCURRENCY 应是正整数，实际 ${DEFAULT_CHUNK_CONCURRENCY}`)
     assert.equal(peak(), DEFAULT_CHUNK_CONCURRENCY, '峰值并发应等于分块并发度')
     assert.equal(started.length, chunks.length, '每个分块都要被处理且只处理一次')
     assert.deepEqual([...started].sort((a, b) => a - b), chunks.map((c) => c.index))

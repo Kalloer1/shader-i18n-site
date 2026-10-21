@@ -18,6 +18,8 @@ import {
   fallbackThreshold,
   tryFreeTier,
   translateChunkTwoLayer,
+  nextProviderOrder,
+  resetProviderOrderCursor,
   createChunkTranslator,
 } from '../scripts/lib/provider-chain.mjs'
 import {
@@ -55,7 +57,12 @@ function makeCall(script) {
 const zh = (pairs) => pairs.map(([k, v]) => `${k}=${v}`).join('\n')
 const GOOD = zh([['option.SHADOWS', '阴影'], ['option.BLOOM', '泛光'], ['option.AO', '环境光遮蔽']])
 
-const freeProvider = () => createFreeTierProvider({ model: 'Index-Translate-35B-A3B', url: () => 'https://free.invalid/v1', label: 'free' })
+/**
+ * 造一个免费层 provider。`model` 可指定模型名（多模型池测试需要不同 id）；
+ * 不传则用默认的主模型。**id 由模型名决定，测试里靠它区分不同模型。**
+ */
+const freeProvider = (model = 'Index-Translate-35B-A3B') =>
+  createFreeTierProvider({ model, url: () => 'https://free.invalid/v1', label: model })
 const poolProvider = (id = 'opencode-zen-free/beam-free') =>
   createGatewayProvider({ model: id, url: () => 'https://gw.invalid/v1', key: () => 'k', label: id })
 
@@ -84,6 +91,114 @@ test('免费层成功时若回退率合格，网关一次也不试（多模型�
   await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: free, poolProviders: pools, call })
 
   assert.equal(calls.filter((id) => id !== free.id).length, 0, '网关调用次数应为 0')
+})
+
+// ---------- 2b. 多模型池（用户 2026-10-21：所有免费模型都要试，分担压力） ----------
+
+const LAZY = zh([['option.SHADOWS', 'Shadows'], ['option.BLOOM', 'Bloom'], ['option.AO', '环境光遮蔽']]) // 回退 2/3
+test('多模型池：第一个免费模型翻得差 → 试下一个免费模型，仍然不碰网关', async () => {
+  // 这是 2026-10-21 实测催出来的行为：同一块 index-mt-2b 只出 74/228 条译文，
+  // 而 index-mt-9b 出 220/228。「换模型」常常就是质量差异，不必动网关预算。
+  resetProviderOrderCursor() // 固定起手顺序为 [bad, good]，否则轮换会让 good 先上并提前返回
+  const bad = freeProvider()
+  const good = freeProvider('index-mt-9b')
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === bad.id ? LAZY : GOOD))
+  const misses = []
+
+  const r = await translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: [bad, good], poolProviders: [pool], call,
+    onFreeTierQualityMiss: (id) => misses.push(id),
+  })
+
+  assert.equal(r.fallback, 0, '应由第二个免费模型拿下全部三键')
+  // 差模型也记进署名：它确实产出了部分译文（这一块里 环境光遮蔽 是它翻的），
+  // 与单模型时的既有语义一致——不谎报来源，也不抹掉它的贡献。
+  assert.deepEqual([...r.providerIds].sort(), [bad.id, good.id].sort(), '两边都记账')
+  assert.ok(!calls.includes(pool.id), '网关一次都不该被调用')
+  assert.deepEqual(misses, [bad.id], '翻得差要上报质量失手（供降级）')
+})
+
+test('多模型池：单模型时行为不变（回退率偏高仍直接转交网关）', async () => {
+  // 向后兼容：只配一个免费模型时，池内没有「下一个」可试，行为必须和改造前逐字一致。
+  const free = freeProvider()
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === free.id ? LAZY : GOOD))
+
+  const r = await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: free, poolProviders: [pool], call })
+
+  assert.deepEqual(calls, [free.id, pool.id], '单模型：偏高就直接转交网关')
+  assert.equal(r.fallback, 0)
+})
+
+test('多模型池：所有免费模型都翻得差 → 才转交网关（保留最好的那份）', async () => {
+  // 两个都用**整块**模型：逐句模型（-syllable）在单测里会让假 call 的「一次回整块」
+  // 语义不成立（那条路径一行一个请求），测不出想测的东西。
+  resetProviderOrderCursor()
+  const m1 = freeProvider()
+  const m2 = freeProvider('index-mt-9b')
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === pool.id ? GOOD : LAZY))
+
+  const r = await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: [m1, m2], poolProviders: [pool], call })
+
+  assert.deepEqual(calls.slice().sort(), [m1.id, m2.id, pool.id].sort(), '两个免费模型都试过才动网关')
+  assert.equal(r.fallback, 0)
+  assert.deepEqual([...r.providerIds].sort(), [m1.id, m2.id, pool.id].sort(), '署名两边都记账')
+})
+
+test('多模型池：被熔断的模型不再进入轮换（isUsable 逐模型判定）', async () => {
+  resetProviderOrderCursor()
+  const broken = freeProvider()
+  const alive = freeProvider('index-mt-9b')
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === broken.id ? new Error('boom') : GOOD))
+
+  const r = await translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: [broken, alive], poolProviders: [pool], call,
+    isUsable: (p) => p.id !== broken.id,
+  })
+
+  assert.ok(!calls.includes(broken.id), '已熔断的模型不该再被调用')
+  assert.equal(r.fallback, 0)
+  assert.deepEqual(r.providerIds, [alive.id])
+})
+
+test('多模型池：质量失手上报带模型 id，成功则清零（好模型不会因历史被拖累）', async () => {
+  // 池内模型轮换会让「哪一个模型起手」逐块变化，所以降级必须按模型分别计连续次数；
+  // 成功一次就清零，否则好模型偶尔撞上一个难分块就被永久降级。
+  const calls0 = []
+  const misses = new Map()
+  const ok = (id) => { misses.set(id, 0) }
+  const miss = (id) => { misses.set(id, (misses.get(id) ?? 0) + 1) }
+
+  const bad = freeProvider()
+  const good = freeProvider('index-mt-9b')
+  // 第一块：bad 先起手且翻得差 → 记一次失手；good 拿下并清零自己
+  resetProviderOrderCursor()
+  await translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: [bad, good], poolProviders: [],
+    call: makeCall((p) => (p.id === bad.id ? LAZY : GOOD)).call,
+    onFreeTierSuccess: ok, onFreeTierQualityMiss: miss,
+  })
+  assert.equal(misses.get(bad.id), 1, '翻得差记一次失手')
+
+  // 第二块：good 直接成功 → 不动 bad 的计数，也不误伤 good 自己
+  miss(bad.id)
+  ok(good.id)
+  assert.equal(misses.get(bad.id), 2, '失手按模型累计')
+  assert.equal(misses.get(good.id), 0, '成功的模型计数被清零')
+})
+
+test('nextProviderOrder：轮换起点逐次后移，且不修改入参', () => {
+  // 模块级游标跨用例累加，先归零才能断言绝对顺序。
+  resetProviderOrderCursor()
+  const list = ['a', 'b', 'c']
+  const seen = []
+  for (let i = 0; i < 4; i++) seen.push(nextProviderOrder(list).join(','))
+  assert.deepEqual(seen, ['a,b,c', 'b,c,a', 'c,a,b', 'a,b,c'], '起点应逐次后移并循环')
+  assert.deepEqual(list, ['a', 'b', 'c'], '不得修改入参')
+  assert.deepEqual(nextProviderOrder([]), [], '空列表原样返回')
 })
 
 // ---------- 2. 免费层失败时确实落到网关 ----------

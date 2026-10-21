@@ -47,7 +47,7 @@ test('无 key：不再 exit 2，警告后以「免费层单跑」继续（issue 
 test('无 key：启动输出如实反映「回退池为空」与「免费层优先」', () => {
   const { out } = runPipeline()
   assert.match(out, /LLM 提供方：（无，回退池为空）/, '回退池为空要说清楚')
-  assert.match(out, /免费层（优先）：index-mt-9b/, '免费层要单独打印')
+  assert.match(out, /免费层（优先，\d+ 个模型轮换）：index-mt-9b/, '免费层要单独打印')
 })
 
 test('无 key + 免费层被显式关闭 → 仍硬失败 exit 2（没有可用提供方）', () => {
@@ -65,7 +65,28 @@ test('有 key：不打印「免费层单跑」警告，回退池正常列出', (
 
 test('免费层默认开启（不设 FREE_TIER_ENABLED 时也是开的）', () => {
   const { out } = runPipeline({ LLM_API_KEY: 'dummy' })
-  assert.match(out, /免费层（优先）：index-mt-9b/)
+  assert.match(out, /免费层（优先，\d+ 个模型轮换）：index-mt-9b/)
+})
+
+test('免费层默认是多模型池：5 个候选模型全在，主力 9b 排第一', () => {
+  // 用户 2026-10-21 要求「不管什么情况都尝试使用这些免费模型，顺便分担压力」。
+  // 池子按期望值排序：9b（主力）在前，逐句/慢/差的模型在后但仍在池中
+  // （质量闸门兜底 + 连续失败熔断，所以它们不会长期拖累吞吐）。
+  const { out } = runPipeline()
+  assert.match(out, /免费层（优先，5 个模型轮换）/, '五个候选模型都要进池')
+  const m = out.match(/免费层（优先，\d+ 个模型轮换）：(.*)/)
+  const ids = m[1].split(' / ').map((s) => s.trim())
+  assert.equal(ids[0], 'index-mt-9b', '主力模型排第一（轮换起点）')
+  assert.ok(ids.includes('index-mt-9b-syllable'), '逐句模型要在池中：请求模式不同，是真冗余')
+  assert.ok(ids.includes('index-mt-2b-syllable'), '全部候选都要在')
+})
+
+test('FREE_TIER_MODELS 可覆盖默认池；FREE_TIER_MODEL 仍按单模型兼容', () => {
+  // 旧配置路径（单模型）必须继续可用：管理员/仓库既有的 secret 不能被改坏。
+  const one = runPipeline({ FREE_TIER_MODEL: 'index-mt-2b' })
+  assert.match(one.out, /免费层（优先，1 个模型轮换）：index-mt-2b/, '单模型兼容')
+  const list = runPipeline({ FREE_TIER_MODELS: 'index-mt-9b,index-mt-2b' })
+  assert.match(list.out, /免费层（优先，2 个模型轮换）：index-mt-9b \/ index-mt-2b/, '列表优先于单模型')
 })
 
 test('GATEWAY_ENABLED=0：网关回退池关闭，只跑免费层且不报「缺少 key」', () => {
@@ -78,7 +99,7 @@ test('GATEWAY_ENABLED=0：网关回退池关闭，只跑免费层且不报「缺
   assert.ok(!out.includes('未设置 LLM_API_KEY'), '关了网关不是缺 key，不该告警')
   assert.match(out, /LLM 提供方：（无，回退池为空）/, '回退池必须真的为空')
   assert.ok(!out.includes('kilo/kilo-auto/free'), '网关模型一个都不该出现')
-  assert.match(out, /免费层（优先）：index-mt-9b/, '免费层照常优先')
+  assert.match(out, /免费层（优先，\d+ 个模型轮换）：index-mt-9b/, '免费层照常优先')
 })
 
 test('免费层可通过 FREE_TIER_ENABLED=0 关闭', () => {

@@ -8,10 +8,13 @@
  * 结果与串行逐块一致（调用方按 index 回填，见 pipeline.mjs 的 results[index]）。
  */
 
-// 单条光影内的分块并发度：默认 3（保守值），上限 4。
-// 光影级并发 LLM_CONCURRENCY=10 在「只提交 1 条」时用不上，而块级串行会让这条慢慢翻；
-// 但网关有账号级并发上限（实测并发过高会 503「无可用账号」），所以不跟着 10 走。
-export const DEFAULT_CHUNK_CONCURRENCY = 3
+// 单条光影内的分块并发度：默认 4（2026-10-21 提，原 3）。
+// 实测（免费层，30 行块，真实 lang 文件）：
+//   并发 1 → 3.5 行/秒；2 → 6.5；3 → 9.0；4 → 11.7；6 → 14.5（成功率始终 100%）。
+// 上限仍取 4：再高对公共服务（bilibili 无 SLA）是持续施压，且 35B 这类慢模型会让
+// 在飞请求数虚高。用户已同意分两步走——先在 4 上验证 CI 出口表现，再考虑提。
+// ⚠️ 旧注释里「网关账号级并发上限」只在走网关时成立：GATEWAY_ENABLED=0 时无网关。
+export const DEFAULT_CHUNK_CONCURRENCY = 4
 export const MAX_CHUNK_CONCURRENCY = 4
 
 /**

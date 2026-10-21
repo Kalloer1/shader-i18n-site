@@ -183,6 +183,34 @@ export async function tryFreeTierByLine({ chunk, provider, call, signal, log = (
   }
 }
 
+// 免费层轮换游标。模块级即可：单进程内顺序调用即均匀分布。
+let freeTierCursor = 0
+
+/**
+ * 把轮换游标归零。**仅测试用**：模块级游标在同一个进程里跨用例累加，
+ * 会让依赖「从第一个模型起手」的用例随执行顺序漂移。
+ */
+export function resetProviderOrderCursor() {
+  freeTierCursor = 0
+}
+
+/**
+ * 「按序轮换」：每次调用都把列表起点往后挪一格，让连续的多个分块分别由不同模型起手。
+ *
+ * 为什么要轮换：免费层是公共服务，把压力分摊到池内各模型上（用户 2026-10-21 需求），
+ * 也让「某个模型恰好不可用」的影响分散，而不是固定打在某一个块上。
+ * 与 pipeline.mjs 里网关回退池的轮换**各自独立计数**：两边语义不同，共用一个游标会
+ * 让「块 A 用了网关」实时改变下一块的免费层起点，难以推理。
+ *
+ * @param {Array} list 提供方列表
+ * @returns {Array} 轮换后的列表（不修改入参）
+ */
+export function nextProviderOrder(list = []) {
+  if (list.length === 0) return list
+  const start = freeTierCursor++ % list.length
+  return [...list.slice(start), ...list.slice(0, start)]
+}
+
 /**
  * 装配一个 `translateChunk(chunk, activeProviders, signal, opts)` 函数。
  *
@@ -192,10 +220,14 @@ export async function tryFreeTierByLine({ chunk, provider, call, signal, log = (
  * 把装配变成可注入依赖的工厂后，这个盲区就没了。
  *
  * @param {object} deps
- * @param {object|null} deps.freeTierProvider 免费层 provider
- * @param {() => boolean} deps.isFreeTierUsable 免费层本轮是否可用（熔断状态在调用方）
- * @param {() => void} deps.onFreeTierFailure
- * @param {() => void} deps.onFreeTierSuccess
+ * @param {object|null} deps.freeTierProvider 免费层 provider（或 provider **数组**：多模型按序轮换、
+ *   某个模型回退率过高就换下一个，见 translateChunkTwoLayer 第一层说明）
+ * @param {(id?: string) => boolean} deps.isFreeTierUsable 某个免费模型本轮是否可用（带模型 id）
+ * @param {(id?: string) => void} deps.onFreeTierFailure 某个免费模型这一块没拿到可用译文（带模型 id）
+ * @param {(id?: string) => void} deps.onFreeTierSuccess 某个免费模型这一块拿到了译文（带模型 id）
+ * @param {(id?: string) => void} deps.onFreeTierQualityMiss 某个免费模型有输出但回退率过高
+ *   （带模型 id）。与「完全没输出」分开统计：后者已有熔断，前者没有——而差模型
+ *   每次都返回 200，不抓它就会让轮换长期把好模型排在后面。
  * @param {(id: string) => boolean} deps.isUnusable
  * @param {(id: string) => void} deps.markUnusable
  * @param {(provider: object, messages: Array, signal: AbortSignal) => Promise<string>} deps.callProvider
@@ -212,6 +244,7 @@ export function createChunkTranslator(deps) {
     isFreeTierUsable,
     onFreeTierFailure,
     onFreeTierSuccess,
+    onFreeTierQualityMiss,
     isUnusable,
     markUnusable,
     callProvider,
@@ -228,7 +261,10 @@ export function createChunkTranslator(deps) {
     return translateChunkTwoLayer({
       chunk,
       input,
-      freeTier: isFreeTierUsable() ? freeTierProvider : null,
+      // 免费层模型池原样传入，逐模型可用性由 translateChunkTwoLayer 里的 isUsable 判断
+      // （那个回调现在带模型 id）。**不能在这里整体判一次**：池里可能有的模型已熔断、
+      // 有的还活着，一刀切成 null 会把还能用的也关掉。
+      freeTier: freeTierProvider ?? null,
       poolProviders: providerList,
       // 整块路径：提示词由 provider 自己给（免费层 instTrans、网关 SYSTEM_PROMPT）。
       // 逐句路径不走这里——它传的是单行文本，见 translateChunkTwoLayer 的 perLine 分支。
@@ -244,7 +280,9 @@ export function createChunkTranslator(deps) {
       log: emit,
       onFreeTierFailure,
       onFreeTierSuccess,
-      isUsable: () => isFreeTierUsable(),
+      onFreeTierQualityMiss,
+      // 逐模型可用性判定：传模型 id 进去（池内各模型熔断状态不同）。
+      isUsable: (p) => isFreeTierUsable(p.id),
       markUnusable,
       isNoOutput,
       // 熔断计数由调用方持有（跨分块、跨光影共享），这里只把每块的结局报上去。
@@ -269,7 +307,7 @@ export function createChunkTranslator(deps) {
  * @param {object} p
  * @param {Array<[string,string]>} p.chunk 待译分块
  * @param {string} p.input 已拼好的 `键=值` 文本（免费层与回退池共用）
- * @param {object|null} p.freeTier 免费层 provider；null 表示本轮不可用
+ * @param {object|array|null} p.freeTier 免费层 provider（或 provider 数组，多模型轮换）；null 表示本轮不可用
  * @param {Array<object>} p.poolProviders 回退池（**已过滤掉不可用者**）
  * @param {(provider: object, signal: AbortSignal) => Promise<string>} p.call 注入的网络调用
  * @param {AbortSignal} p.signal
@@ -297,6 +335,7 @@ export async function translateChunkTwoLayer({
   log = () => {},
   onFreeTierFailure = () => {},
   onFreeTierSuccess = () => {},
+  onFreeTierQualityMiss = () => {},
   isUsable = () => true,
   markUnusable = () => {},
   isNoOutput = () => false,
@@ -307,7 +346,12 @@ export async function translateChunkTwoLayer({
   const translatableLines = chunk.filter(([, v]) => hasTranslatableLetters(v)).length
   const threshold = fallbackThreshold(translatableLines)
 
-  // ---------- 第一层：免费层 ----------
+  // ---------- 第一层：免费层（**多个模型**，按序轮换尝试） ----------
+  // 用户 2026-10-21 要求「不管什么情况都尝试使用这些免费模型，顺便分担压力」。
+  // 三个设计点：
+  // 1. **按序轮换**：`nextProviderOrder` 让每块的起点模型不同，不把压力全压在一个模型上；
+  // 2. **质量闸门**：某个模型翻得差（回退 >10%）不污染产物，继续试下一个免费模型；
+  // 3. **逐句/整块自动分流**：模型名带 `-syllable` 的走一行一请求，其余整块发。
   let best = null
   let bestFallback = translatableLines
   // 本块里「从没发过请求」的行数（signal 中止所致）。它们保留英文原值、也计入 fallback，
@@ -315,33 +359,55 @@ export async function translateChunkTwoLayer({
   let bestAborted = 0
   const usedProviderIds = new Set()
 
-  if (freeTier && isUsable(freeTier)) {
+  // freeTier 可以是单个 provider 或数组（新）；数组时按轮换顺序逐个试。
+  const freeTierList = Array.isArray(freeTier) ? freeTier : (freeTier ? [freeTier] : [])
+  // 多于一个才轮换：只有一个时保持「总是它」的原有行为（日志与测试都不变）。
+  const freeOrder = freeTierList.length > 1 ? nextProviderOrder(freeTierList) : freeTierList
+
+  for (const activeFree of freeOrder) {
+    if (!isUsable(activeFree)) continue
     // 逐句模型（syllable）必须一行一个请求：实测给 N 行只回 1 行，且回哪行不可控。
     // 两条路径的 `call` 签名不同，**不能共用一个 (p, s) 包装**：
     // - 整块：`call(provider, signal)` —— 提示词已由调用方按 input 建好；
     // - 逐句：`call(provider, 单行文本, signal)` —— 每行现建提示词。
-    const free = freeTier.perLine
+    const free = activeFree.perLine
       ? await tryFreeTierByLine({
         chunk,
-        provider: freeTier,
+        provider: activeFree,
         call: (p, text, sig) => call(p, text, sig),
         signal,
         log,
       })
-      : await tryFreeTier({ chunk, provider: freeTier, call: (p, s) => call(p, s), signal, log })
+      : await tryFreeTier({ chunk, provider: activeFree, call: (p, s) => call(p, s), signal, log })
     if (free) {
-      onFreeTierSuccess()
-      best = free.map
-      bestFallback = free.fallback
-      bestAborted = free.aborted ?? 0
-      usedProviderIds.add(freeTier.id)
-      if (free.fallback <= threshold) {
-        return { map: free.map, fallback: free.fallback, aborted: bestAborted, providerIds: [freeTier.id] }
+      onFreeTierSuccess(activeFree.id)
+      if (free.fallback < bestFallback) {
+        best = free.map
+        bestFallback = free.fallback
+        bestAborted = free.aborted ?? 0
       }
-      // 回话完整但回退率偏高：仍交给回退池再试一次（不熔断，它确实在产出译文）。
-      log(`[免费层] 回退率 ${free.fallback}/${translatableLines} 偏高，转交回退池`)
+      usedProviderIds.add(activeFree.id)
+      if (free.fallback <= threshold) {
+        // 用 `[...usedProviderIds]` 而不是 `[activeFree.id]`：前面试过的免费模型可能也产出过
+        // 部分译文（它们的 map 被更好的这个替换掉了，但来源要如实记账）。
+        // 单模型时 usedProviderIds 里就一个元素，与改造前逐字一致。
+        return {
+          map: free.map,
+          fallback: free.fallback,
+          aborted: free.aborted ?? 0,
+          providerIds: [...usedProviderIds],
+        }
+      }
+      // 回话完整但回退率偏高：**继续试下一个免费模型**，不是直接甩给回退池。
+      // 2026-10-21 实测：同一块 index-mt-2b 只出 74/228 条译文，而 index-mt-9b 出 220/228，
+      // 「换一个免费模型」经常就是质量差异，不再动网关预算。
+      // 同时把这个「有输出但输出是垃圾」记一次质量失手：只看「完全没输出」的熔断
+      // 永远抓不到差模型（它每次都返回 200），于是轮换会让好模型被甩到队列尾部，
+      // 每 N 块白等一轮慢模型。累计够了就把该模型降级，池子自然收敛到能用的那些。
+      onFreeTierQualityMiss(activeFree.id)
+      log(`[免费层] ${activeFree.id} 回退率 ${free.fallback}/${translatableLines} 偏高，试下一个免费模型`)
     } else {
-      onFreeTierFailure()
+      onFreeTierFailure(activeFree.id)
     }
   }
 
