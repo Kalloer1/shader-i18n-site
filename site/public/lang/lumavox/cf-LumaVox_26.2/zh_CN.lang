@@ -1,0 +1,986 @@
+#shaders/lang/zh_CN.lang
+# LumaVox vcf-LumaVox_26.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：LumaVox_26.2.zip 的 shaders/lang/en_US.lang
+#shaders/lang/en_us.lang
+
+#Profiles
+profile.POTATO=§a低配
+profile.LOW=§2低配
+profile.MEDIUM=§e中配
+profile.HIGH=§e高（默认）
+profile.VERYHIGH=极高
+profile.ULTRA=超高
+profile.comment=着色器配置文件会更改性能设置，以优化视觉效果与性能的比例。§e[*]§r 除非你清楚自己在做什么，否则建议使用其中一个配置文件。§e[*]§r 所有相关设置均可在“主性能设置”菜单中找到。
+
+#CMPR
+option.CMPR=重新思考
+value.CMPR.0=§a体素
+value.CMPR.1=§2体素
+value.CMPR.2=§b体素
+value.CMPR.3=§3体素
+value.CMPR.4=§9体素
+value.CMPR.5=§d体素
+value.CMPR.6=§5体素
+value.CMPR.7=§4体素
+value.CMPR.8=§c体素
+value.CMPR.9=§6体素（Voxels）
+value.CMPR.10=§eVoxels
+
+option.CMPR.comment=LumaVox 是 Complementary Reimagined 的一个改版，它凝聚了爱与关怀，旨在以最佳方式丰富独特的 Minecraft 体验，并带来酷炫的享受。希望您能像我喜欢开发它一样，享受 LumaVox 带来的乐趣。欢迎加入 Complementary 社区：www.complementary.dev/discord
+
+#Style
+option.SHADER_STYLE=视觉样式
+option.SHADER_STYLE.comment=决定着色器包的默认视觉风格。§bReimagined§r：在保留独特视觉元素的同时，为Minecraft带来全新诠释。§dFantasy§r：以半写实奇幻风格重塑Minecraft的视觉效果。§e[*]§r 以下设置受影响：水面风格、云朵风格、日月风格、日月角度、极光风格。
+value.SHADER_STYLE.1=§b重新构想
+value.SHADER_STYLE.4=幻想
+
+#Screens
+screen.PERFORMANCE_SETTINGS=主要性能设置
+screen.PERFORMANCE_SETTINGS.comment=直接影响性能的设置，由不同着色器配置文件自动调整。
+
+screen.ATMOSPHERE_SETTINGS=§9大气
+screen.ATMOSPHERE_SETTINGS.comment=与大气相关的设置。
+
+screen.ATM_COLOR_SETTINGS=大气颜色乘数
+screen.ATM_COLOR_SETTINGS.comment=启用对主要出现在天空和雾中的大气颜色的自定义。
+
+screen.MORNING_ATM_MULTS=日出/日落时间
+screen.NOON_ATM_MULTS=中午时间
+screen.NIGHT_ATM_MULTS=夜晚时间
+screen.RAIN_ATM_MULTS=雨雪天气
+screen.NETHER_ATM_MULTS=下界维度
+screen.END_ATM_MULTS=末地维度
+
+screen.CLOUD_SETTINGS=云
+screen.CLOUD_SETTINGS.comment=与云层相关的设置
+
+screen.FOG_SETTINGS=雾效设置
+screen.FOG_SETTINGS.comment=与各类雾气效果相关的设置
+
+screen.CAMERA_SETTINGS=相机
+screen.CAMERA_SETTINGS.comment=与视野/镜头相关的设置
+
+screen.TONEMAP_SETTINGS=色彩平衡
+screen.TONEMAP_SETTINGS.comment=决定画面色彩平衡的设置
+
+screen.MATERIAL_SETTINGS=材质
+screen.MATERIAL_SETTINGS.comment=与Minecraft材质相关的设置
+
+screen.IPBR_SETTINGS=§b集成PBR
+screen.IPBR_SETTINGS.comment=与集成pbr特性相关的设置
+
+screen.CUSTOM_PBR_SETTINGS=SEUSPBR / labPBR
+screen.CUSTOM_PBR_SETTINGS.comment=与 SEUSPBR / labPBR 功能相关的设置。
+
+screen.LIGHTING_SETTINGS=光照
+screen.LIGHTING_SETTINGS.comment=与光照相关的设置
+
+screen.LIGHT_COLOR_SETTINGS=光照颜色乘数
+screen.LIGHT_COLOR_SETTINGS.comment=启用对所有表面上可见光照颜色的自定义。
+
+screen.MORNING_LIGHT_MULTS=日出/日落时间
+screen.NOON_LIGHT_MULTS=中午时间
+screen.NIGHT_LIGHT_MULTS=夜晚时间
+screen.RAIN_LIGHT_MULTS=雨雪天气
+screen.NETHER_LIGHT_MULTS=下界维度
+screen.END_LIGHT_MULTS=末地维度
+
+screen.WATER_SETTINGS=水
+screen.WATER_SETTINGS.comment=与水面相关的设置
+
+screen.WAVING_SETTINGS=飘动纹理
+screen.WAVING_SETTINGS.comment=关于飘动纹理的设置。
+
+screen.OTHER_SETTINGS=其他
+screen.OTHER_SETTINGS.comment=不属于其他任何类别的设置。
+
+screen.VX_STUFF=体素化设置
+screen.VX_STUFF.comment=与所有使用体素体积的内容相关的设置。这包括其大小、阴影设置等。
+screen.VX_PERF_STUFF=与体素相关的性能设置
+
+screen.ADV_LIGHTPROP_STUFF=高级光传播设置
+screen.ADV_LIGHTPROP_STUFF.comment=与高级光线传播模式相关的设置
+
+screen.BASIC_LIGHTPROP_STUFF=基础。光线传播设置
+screen.BASIC_LIGHTPROP_STUFF.comment=与基础光线传播模式相关的设置
+
+screen.LIGHTCOLS=光照颜色
+screen.LIGHTCOLS.comment=关于更改灯光颜色的设置。
+
+screen.BLOCKCOLS=方块光源
+screen.BLOCKCOLS.comment=与方块光源相关的设置。
+
+screen.ENTITYCOLS=实体光源
+screen.ENTITYCOLS.comment=与实体光源相关的设置。
+
+screen.ORECOLS=矿物自发光
+screen.ORECOLS.comment=与矿物自发光相关的设置。
+
+screen.OTHER_COL=其他（仅亮度）
+screen.OTHER_COL.comment=不属于其他任何类别的设置。
+
+screen.FIRECOLS=火焰与营火
+screen.FIRECOLS.comment=与火焰和营火相关的设置。
+
+screen.FROGCOLS=蛙明灯
+screen.FROGCOLS.comment=与蛙明灯相关的设置。
+
+screen.TORCHCOLS=火把
+screen.TORCHCOLS.comment=与火把相关的设置。
+
+screen.ALLAY_COL=悦灵
+screen.AMETHYST_COL=紫水晶簇
+screen.BEACON_COL=信标
+screen.BERRY_COL=发光浆果
+screen.BLAZE_COL=烈焰人
+screen.BREWINGSTAND_COL=酿造台
+screen.CANDLE_COL=蜡烛
+screen.CHORUS_COL=末地烛
+screen.CONDUIT_COL=海晶核心
+screen.COPPER_COL=铜矿
+screen.CRYING_COL=哭泣的黑曜石
+screen.DIAMOND_COL=钻石矿
+screen.DRAGON_COL=龙蛋
+screen.EMERALD_COL=绿宝石矿
+screen.END_COL=末地相关方块
+screen.ENDCRYSTAL_COL=末地水晶
+screen.ENDROD_COL=末地烛
+screen.FIRE_COL=火焰与营火
+screen.FURNACE_COL=熔炉
+screen.GLOWSTONE_COL=荧石
+screen.GOLD_COL=金矿
+screen.GREENFROG_COL=青翠蛙明灯
+screen.ICE_COL=蓝冰
+screen.IRON_COL=铁矿
+screen.ITEMFRAME_COL=发光物品展示框
+screen.LAPIS_COL=青金石矿
+screen.LAVA_COL=岩浆
+screen.LICHEN_COL=发光地衣
+screen.LIGHTNING_COL=闪电
+screen.MAGMA_COL=岩浆块 / 岩浆立方体
+screen.PICKLE_COL=海泡菜
+screen.PINKFROG_COL=珍珠色蛙明灯
+screen.PORTAL_COL=下界传送门
+screen.PUMPKIN_COL=南瓜灯
+screen.REDSTONE_COL=红石矿
+screen.REDSTONELAMP_COL=红石灯
+screen.SCULK_COL=幽匿感测体
+screen.SEALANTERN_COL=海晶灯
+screen.SHROOMLIGHT_COL=菌光体
+screen.SOULFIRE_COL=灵魂火焰与营火
+screen.SOULTORCH_COL=灵魂火把
+screen.SPAWNER_COL=刷怪笼
+screen.SQUID_COL=发光鱿鱼
+screen.TABLE_COL=附魔台
+screen.TNT_COL=炸药
+screen.TORCH_COL=火把
+screen.YELLOWFROG_COL=赭黄蛙明灯
+screen.SELECT_OUTLINE_SETTINGS=选中轮廓设置
+screen.SELECT_OUTLINE_SETTINGS.comment=更改方块选择轮廓的设置。
+
+screen.WORLD_OUTLINE_SETTINGS=世界轮廓设置
+screen.WORLD_OUTLINE_SETTINGS.comment=与可选的轮廓效果相关的设置。
+
+#Settings
+
+option.ACCURATE_RT=精确的光线追踪渲染
+option.ACCURATE_RT.comment=使用三角形数据代替体素数据进行光线追踪。 §a[+] §r 包含所有几何体，包括生物和自定义模型。 §c[-] §r 比体素RT慢很多倍。
+
+option.ADVANCED_LIGHT_TRACING=光传播模式
+option.ADVANCED_LIGHT_TRACING.comment=在两种不同的区块光值计算方法之间切换。每像素方式会产生区块光的锐利阴影，但存在更多问题。每区块方式产生的区块光阴影不那么锐利，但在高分辨率下速度稍快。
+value.ADVANCED_LIGHT_TRACING.0=每区块
+value.ADVANCED_LIGHT_TRACING.1=每像素
+
+option.BLOCKLIGHT_SOURCE_SIZE=区块光源大小
+option.BLOCKLIGHT_SOURCE_SIZE.comment=控制区块光源投射的阴影柔和度。需要像素完美的阴影。
+
+option.CORRECT_CUBOID_OFFSETS=立方体感知阴影柔和度
+option.CORRECT_CUBOID_OFFSETS.comment=如果启用，由立方体形状光源投射的阴影将具有正确的方向柔和度。
+
+option.BLOCKLIGHT_SHAFT_STRENGTH=体积光强度
+option.BLOCKLIGHT_SHAFT_STRENGTH.comment=区块光对体积雾的贡献亮度。
+
+option.VBL_NETHER_MULT=体积方块光照下界倍增器
+option.VBL_NETHER_MULT.comment=与原版值相比，在地下（nether）中的体积光强度。
+
+option.VBL_END_MULT=体积方块光照末地倍增器
+option.VBL_END_MULT.comment=与原版值相比，在地下（end）中的体积光强度。
+
+option.GI_STRENGTH=§7GI强度（未实现）
+option.GI_STRENGTH.comment=调整全局照明的强度。此效果允许落在表面的光照亮其周围区域。
+
+option.GLOWING_MINERAL_BLOCKS=发光矿物块
+option.GLOWING_MINERAL_BLOCKS.comment=启用绿宝石、红石和蓝金石块的发光效果。
+
+option.RP_MODE=资源包支持
+option.RP_MODE.comment=改变许多内部计算，以确定不同块体和材料如何渲染。§b集成PBR+§r：计算式PBR及额外效果，大多数使用场景强烈推荐。§a基础§r：无PBR或额外效果。§eSEUSPBR/labPBR§r：使用所需PBR资源包的材料。
+value.RP_MODE.0=基础
+value.RP_MODE.1=§b集成pbr+
+value.RP_MODE.2=§eSEUSPBR（需资源包）
+value.RP_MODE.3=§ePBR（需资源包）
+
+option.WATER_QUALITY=水体材质质量
+option.WATER_QUALITY.comment=调整水的视觉质量。§b高§r：启用水折射。§a中§r：默认。§e低§r：无边缘泡沫、无特殊alpha、无颜色强度变化，且无高于中档的表面阴影。
+value.WATER_QUALITY.1=§2低配
+value.WATER_QUALITY.2=§e中配
+value.WATER_QUALITY.3=§c高配
+
+option.WATER_REFLECT_QUALITY=水面反射质量
+option.WATER_REFLECT_QUALITY.comment=调整半透明材质上反射的视觉质量。中等：水§c面和§r半透明材质的屏幕空间光线追踪反射。低§e效§r：用更快的方法替代水面和半透明反射，某些场景可能显示异常。关§a闭§r：无反射。
+value.WATER_REFLECT_QUALITY.0=关
+value.WATER_REFLECT_QUALITY.1=§a低配
+value.WATER_REFLECT_QUALITY.2=§e中配
+
+option.BLOCK_REFLECT_QUALITY=方块反射质量 [*§e]§r
+option.BLOCK_REFLECT_QUALITY.comment=调整在实体材料上出现的反射的视觉质量。§b高§r：使用时间过滤器使反射更平滑。§a中§r：所有块体基于材料反射。§e[*]§r RP支持选项必须设置为除基础外的任何值，才能显示任何材料反射。
+value.BLOCK_REFLECT_QUALITY.0=关
+value.BLOCK_REFLECT_QUALITY.2=§e中配
+value.BLOCK_REFLECT_QUALITY.3=§c高配
+
+option.REALTIME_SHADOWS=实时阴影
+option.REALTIME_SHADOWS.comment=启用根据地形和太阳/月亮角度移动的传统阴影§e。§r[*] 禁用此选项将导致光轴失效，并使其他阴影选项停止工作
+value.REALTIME_SHADOWS.true=开
+value.REALTIME_SHADOWS.false=关
+
+option.SHADOW_QUALITY=阴影采样质量
+option.SHADOW_QUALITY.comment=调整阴影质量。每个层级进一步减少阴影噪点伪影，低于§b高§r的选项可启用树叶上的优化阴影。
+value.SHADOW_QUALITY.1=§2低配
+value.SHADOW_QUALITY.2=§e中配
+value.SHADOW_QUALITY.3=§c高配
+value.SHADOW_QUALITY.4=极高
+value.SHADOW_QUALITY.5=超高
+
+option.LIGHTSHAFT_QUALITY=光轴质量
+option.LIGHTSHAFT_QUALITY.comment=调节光束质量。每档提升可减少光束噪点瑕疵。
+value.LIGHTSHAFT_QUALITY.0=关
+value.LIGHTSHAFT_QUALITY.1=§2低配
+value.LIGHTSHAFT_QUALITY.2=§e中配
+value.LIGHTSHAFT_QUALITY.3=§c高配
+value.LIGHTSHAFT_QUALITY.4=极高
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=调整实时阴影渲染与玩家的距离。[*] 该值§e在§r内部受渲染距离限制。[-] §c较§r低的值可能导致过度的光轴泄漏。
+value.shadowDistance.64.0=§a区块 [§c-]
+value.shadowDistance.80.0=§a区块 [§c-]
+value.shadowDistance.96.0=§a区块 [§c-]
+value.shadowDistance.112.0=§a区块 [§c-]
+value.shadowDistance.128.0=8 区块
+value.shadowDistance.160.0=10 区块
+value.shadowDistance.192.0=12 区块
+value.shadowDistance.224.0=14 区块
+value.shadowDistance.256.0=16 区块
+value.shadowDistance.320.0=20 区块
+value.shadowDistance.384.0=24 区块
+value.shadowDistance.512.0=32 区块
+value.shadowDistance.768.0=48 区块
+value.shadowDistance.1024.0=64 区块
+
+option.ENTITY_SHADOWS=实体体素化
+option.ENTITY_SHADOWS.comment=启用实体和块体实体发光的能力。
+value.ENTITY_SHADOWS.true=开
+value.ENTITY_SHADOWS.false=关
+
+option.SSAO=屏幕空间环境光遮蔽
+option.SSAO.comment=启用屏幕空间环境光遮蔽（SSAO），为场景边缘添加额外的环境阴影。
+value.SSAO.0=关
+value.SSAO.1=轻微
+value.SSAO.2=普通
+
+option.BORDER_FOG=边界雾
+option.BORDER_FOG.comment=在已加载世界边缘产生浓雾以隐藏区块边§e界§r。[*] 建议在渲染距离低于8个区块时关闭边界雾。
+
+option.ATM_FOG_MULT=大气雾
+option.ATM_FOG_MULT.comment=调整基于海拔的雾气强度。
+value.ATM_FOG_MULT.0.50=非常微弱
+value.ATM_FOG_MULT.0.65=轻微
+value.ATM_FOG_MULT.0.80=普通
+value.ATM_FOG_MULT.0.95=强烈
+
+option.CAVE_FOG=洞穴雾
+option.CAVE_FOG.comment=在深地下区域启用额外雾气。
+
+option.LIGHTSHAFT_BEHAVIOUR=光轴模式
+option.LIGHTSHAFT_BEHAVIOUR.comment=决定光轴的行为。[+]§a §r场景感知光轴会在常规与极端模式间自动转换以提供最佳效果。[-§c]§r 极端模式不建议用于常规游戏，可能会严重影响性能。
+value.LIGHTSHAFT_BEHAVIOUR.1=场景感知 [§a+]
+value.LIGHTSHAFT_BEHAVIOUR.2=常规
+value.LIGHTSHAFT_BEHAVIOUR.3=极端 [§c-]
+
+option.LIGHTSHAFT_DAY_I=光轴日间倍率
+option.LIGHTSHAFT_NIGHT_I=光轴夜间倍率
+option.LIGHTSHAFT_RAIN_I=光轴雨天倍率
+
+option.CLOUD_STYLE_DEFINE=云层样式
+option.CLOUD_STYLE_DEFINE.comment=决定云的风格。
+value.CLOUD_STYLE_DEFINE.-1=默认风格
+value.CLOUD_STYLE_DEFINE.0=关
+value.CLOUD_STYLE_DEFINE.1=§b重新构想
+value.CLOUD_STYLE_DEFINE.2=双重重绘
+value.CLOUD_STYLE_DEFINE.3=幻想
+
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=启用由云投射的阴影。§e[*]§r 如果云风格设置为“奇幻”，云阴影将随机生成。
+
+option.CLOUD_HIGH_QUALITY=高质量云 §e[*]§r
+option.CLOUD_HIGH_QUALITY.comment=减少噪点并提高重绘云的完整性。§e[*]§r 此设置仅在云风格设置为“重绘”或“双重重绘”时有效。§c[-]§r 此选项可能会影响性能，尤其是在双层云中。
+value.CLOUD_HIGH_QUALITY.1=关
+value.CLOUD_HIGH_QUALITY.2=开启 §c[-]
+
+option.CLOUD_CLOSED_AREA_CHECK=防止室内云 §e[*]§r
+option.CLOUD_CLOSED_AREA_CHECK.comment=进行额外检查以移除室内云。§e[*]§r 此设置仅在云风格设置为“重绘”或“双重重绘”时有效。§e[*]§r 如果“实时阴影”也禁用，此设置将被视为已禁用。
+
+option.CLOUD_ALT1=云层1高度 §e[*]§r
+option.CLOUD_ALT1.comment=确定云层出现的世界高度。§e[*]§r 此设置仅在 Cloud Style 设置为 "Reimagined" 或 "Double Reimagined" 时有效。
+
+option.CLOUD_ALT2=云层第 2 层高度 §e[*]§r
+option.CLOUD_ALT2.comment=确定第二层云层出现的世界高度。§e[*]§r 此设置仅在 Cloud Style 设置为 "Double Reimagined" 时有效。
+
+option.T_EXPOSURE=色调映射曝光
+option.T_EXPOSURE.comment=调整图像的整体亮度。
+
+option.TM_WHITE_CURVE=色调映射白色曲线
+option.TM_WHITE_CURVE.comment=调节颜色达到全白的难易程度。
+
+option.T_LOWER_CURVE=色调映射下曲线
+option.T_LOWER_CURVE.comment=调整较暗颜色的对比度。
+
+option.T_UPPER_CURVE=色调映射上曲线
+option.T_UPPER_CURVE.comment=调整较亮颜色的对比度。
+
+option.T_SATURATION=饱和度
+option.T_SATURATION.comment=调整画面的整体色彩饱和度
+
+option.T_VIBRANCE=鲜艳度
+option.T_VIBRANCE.comment=调整图像色彩鲜艳度，但已较鲜艳的像素受影响较小。
+
+option.COLORGRADING=§b色彩§r分级
+option.COLORGRADING.comment=启用设置以自由混合最终颜色通道。
+option.GR_RR=CG - 红到红
+option.GR_RG=CG - 红到绿
+option.GR_RB=CG - 红到蓝
+option.GR_RC=CG - 红曲线
+option.GR_GR=CG - 绿到红
+option.GR_GG=CG - 绿到绿
+option.GR_GB=CG - 绿到蓝
+option.GR_GC=CG - 绿曲线
+option.GR_BR=CG - 蓝到红
+option.GR_BG=CG - 蓝到绿
+option.GR_BB=CG - 蓝到蓝
+option.GR_BC=CG - 蓝曲线
+
+option.WATER_STYLE_DEFINE=水样式
+option.WATER_STYLE_DEFINE.comment=决定水面样式。[-§c§r] 水波可能严重影响性能。
+value.WATER_STYLE_DEFINE.-1=默认风格
+value.WATER_STYLE_DEFINE.1=§b重新构想
+value.WATER_STYLE_DEFINE.2=再构+波动
+value.WATER_STYLE_DEFINE.3=幻想
+value.WATER_STYLE_DEFINE.4=Fantasy + 交互式波浪
+
+option.WATER_BUMPINESS=水波强度 §e[*]§r
+option.WATER_BUMPINESS.comment=调整水面可见的朝向波浪（法线）强度。§e[*]§r 此设置与 "Waving Water Texture" 选项无关。§e[*]§r 此设置仅在 Water Style 设置为 "Reimagined + Waves" 或 "Fantasy" 时有效。
+
+option.WATER_REFRACTION_INTENSITY=水体折射强度 [*§e]§r
+option.WATER_REFRACTION_INTENSITY.comment=调整水平折射和水下扭曲的强度。[*] §e此§r设置仅在水体质量设置为"高"或更高时才能完全生效，否则它只会轻微影响水下扭曲。
+
+option.WATERCOLOR_R=水色红乘数
+option.WATERCOLOR_G=水色绿乘数
+option.WATERCOLOR_B=水色蓝乘数
+
+option.SUN_ANGLE=太阳/月亮角度
+option.SUN_ANGLE.comment=调整正午时太阳/月亮相对于世界的角度。[§a§r+] 重塑光照模型专门设计，使"0"太阳角度与其他角度同样有效。
+value.SUN_ANGLE.-1=默认风格
+value.SUN_ANGLE.0=0 §a[+]
+value.SUN_ANGLE.-20=-20
+value.SUN_ANGLE.-30=-30
+value.SUN_ANGLE.-40=-40
+
+option.SUN_MOON_STYLE_DEFINE=太阳/月亮样式
+option.SUN_MOON_STYLE_DEFINE.comment=决定太阳/月亮的样式§e。§r[*] 由于太阳/月亮/天空盒区分的限制，此设置可能与某些资源包交互不正确。
+value.SUN_MOON_STYLE_DEFINE.-1=默认风格
+value.SUN_MOON_STYLE_DEFINE.1=§b重新构想
+value.SUN_MOON_STYLE_DEFINE.2=幻想
+
+option.SUN_MOON_HORIZON=太阳/月亮地平线
+option.SUN_MOON_HORIZON.comment=防止太阳/月亮出现在地平线以下
+
+option.NIGHT_STAR_AMOUNT=夜晚星星数量
+option.NIGHT_STAR_AMOUNT.comment=决定夜空中星星的数量
+value.NIGHT_STAR_AMOUNT.2=§e中配
+value.NIGHT_STAR_AMOUNT.3=§c高配
+
+option.AURORA_STYLE_DEFINE=北极光样式
+option.AURORA_STYLE_DEFINE.comment=决定在夜空中出现的北极光的样式。
+value.AURORA_STYLE_DEFINE.-1=默认风格
+value.AURORA_STYLE_DEFINE.0=关
+value.AURORA_STYLE_DEFINE.1=§b重新构想
+value.AURORA_STYLE_DEFINE.2=幻想
+
+option.AURORA_CONDITION=极光
+option.AURORA_CONDITION.comment=决定北极光出现的条件。
+value.AURORA_CONDITION.0=无条件
+value.AURORA_CONDITION.1=满月
+value.AURORA_CONDITION.2=雪地群系
+value.AURORA_CONDITION.3=雪地群系中的满月
+value.AURORA_CONDITION.4=满月或积雪群系
+
+option.PIXEL_SHADOW=像素化阴影
+option.PIXEL_SHADOW.comment=修改网格上的世界坐标以使阴影像素化。[§e§r*] 此设置不影响性能。
+value.PIXEL_SHADOW.0=关
+value.PIXEL_SHADOW.8=8x8 §e[*]
+value.PIXEL_SHADOW.16=16x16 §e[*]
+value.PIXEL_SHADOW.32=32x32 §e[*]
+value.PIXEL_SHADOW.64=64x64 §e[*]
+value.PIXEL_SHADOW.128=128x128 §e[*]
+
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=决定明亮物体上的泛光强度，以及雨水/洞穴湿度产生的泛光效果。 §c[-]§r 泛光过强会导致画面比预期更亮，尤其是在潮湿环境下。
+value.BLOOM_STRENGTH.0.027=15%
+value.BLOOM_STRENGTH.0.036=20%
+value.BLOOM_STRENGTH.0.045=25%
+value.BLOOM_STRENGTH.0.054=30%
+value.BLOOM_STRENGTH.0.063=35%
+value.BLOOM_STRENGTH.0.072=40%
+value.BLOOM_STRENGTH.0.081=45%
+value.BLOOM_STRENGTH.0.09=50%
+value.BLOOM_STRENGTH.0.10=55%
+value.BLOOM_STRENGTH.0.11=60%
+value.BLOOM_STRENGTH.0.12=65%
+value.BLOOM_STRENGTH.0.13=70%
+value.BLOOM_STRENGTH.0.14=75%
+value.BLOOM_STRENGTH.0.15=80% 泛光 §c[-]
+value.BLOOM_STRENGTH.0.16=85% §c[-]
+value.BLOOM_STRENGTH.0.17=90% §c[-]
+value.BLOOM_STRENGTH.0.18=95% §c[-]
+value.BLOOM_STRENGTH.0.19=100% §c[-]
+
+option.FXAA=抗锯齿
+option.FXAA.comment=启用快速近似抗锯齿（FXAA），该效果可生成更平滑的图像。[*] §e禁§r用此选项不会关闭轻量时域抗锯齿（TAA），因轻量TAA是许多特效正常运作的必要条件。
+
+option.IMAGE_SHARPENING=图像锐化
+option.IMAGE_SHARPENING.comment=使用滤镜使图像更清晰。§c[§r-] 过度锐化可能导致视觉伪影，如锯齿、闪烁、噪点和细微亮度变化。
+value.IMAGE_SHARPENING.6=6 §c[-]
+value.IMAGE_SHARPENING.7=7 §c[-]
+value.IMAGE_SHARPENING.8=8 §c[-]
+value.IMAGE_SHARPENING.9=9 §c[-]
+value.IMAGE_SHARPENING.10=10 §c[-]
+
+option.MOTION_BLURRING=运动模糊
+option.MOTION_BLURRING.comment=移动视角时对图像应用模糊效果。
+
+option.MOTION_BLURRING_STRENGTH=运动模糊强度
+option.MOTION_BLURRING_STRENGTH.comment=调整动态模糊强度
+
+option.VIGNETTE_R=暗角
+option.VIGNETTE_R.comment=在屏幕边缘周围应用变暗效果。
+
+option.FANCY_GLASS=改进玻璃效果
+option.FANCY_GLASS.comment=通过添加半透明层改善普通玻璃。[-] 可能因S§co§rdium漏洞在Iris中引发问题。[*§e]§r 资源包支持选项需设为集成PBR+。
+
+option.HAND_SWAYING=手部摇摆
+option.HAND_SWAYING.comment=为玩家手部添加缓慢移动以模拟呼吸动画
+value.HAND_SWAYING.0=关
+value.HAND_SWAYING.1=轻微
+value.HAND_SWAYING.2=普通
+value.HAND_SWAYING.3=强烈
+
+option.LESS_LAVA_FOG=提升岩浆内部可视度
+option.LESS_LAVA_FOG.comment=减弱岩浆雾效以提升内部可视度。
+
+option.SNOWY_WORLD=积雪世界
+option.SNOWY_WORLD.comment=使整个世界被雪覆盖。
+
+option.SHOW_LIGHT_LEVEL=显示光照等级
+option.SHOW_LIGHT_LEVEL.comment=在主世界：黄色表示怪物可以在夜晚生成，红色表示怪物可以在任何时间生成。在下界或末地：黄色表示某些怪物可以生成，红色表示所有怪物都可以生成。§e[§r*] 请禁用平滑光照以获得精确结果。
+value.SHOW_LIGHT_LEVEL.0=关
+value.SHOW_LIGHT_LEVEL.1=手持蜘蛛眼
+value.SHOW_LIGHT_LEVEL.2=手持光源
+value.SHOW_LIGHT_LEVEL.3=始终开启
+
+option.MINIMUM_LIGHT_MODE=洞穴光照
+option.MINIMUM_LIGHT_MODE.comment=为没有天光的区域添加额外光照。[§a+§r] "默认"选项根据视频设置中的"亮度"滑块来确定光照。
+value.MINIMUM_LIGHT_MODE.0=极暗
+value.MINIMUM_LIGHT_MODE.1=暗色
+value.MINIMUM_LIGHT_MODE.2=默认 [§a+]
+value.MINIMUM_LIGHT_MODE.3=亮色
+value.MINIMUM_LIGHT_MODE.4=极亮
+
+option.AMBIENT_MULT=阴影光乘数
+option.AMBIENT_MULT.comment=决定阴影中可见的环境光数量。§c[-]§r大幅更改此设置可能会破坏光照平衡。
+
+option.GENERATED_NORMALS=生成法线
+option.GENERATED_NORMALS.comment=为表面添加自动生成的凹凸细节。[*]§e 资§r源包支持选项必须设置为集成 PBR+。
+
+option.COATED_TEXTURES=涂层纹理
+option.COATED_TEXTURES.comment=为纹理添加自动生成的噪波。[§e*]§r 资源包支持选项需设为集成PBR+。
+
+option.ENTITY_GN_AND_CT=实体上的法线贴图和涂层纹理
+option.ENTITY_GN_AND_CT.comment=决定生成的法线贴图和涂层纹理是否可显示在实体上。 §e[*]§r 除非相关选项已启用，否则此设置不会在实体上启用法线贴图或涂层纹理。
+
+option.GENERATED_NORMAL_MULT=生成法线强度
+option.GENERATED_NORMAL_MULT.comment=调整表面自动生成的凹凸细节强度。
+
+option.COATED_TEXTURE_MULT=覆层纹理强度
+option.COATED_TEXTURE_MULT.comment=调整纹理上自动生成的噪点强度。
+
+option.GLOWING_ORES=发光矿石
+option.GLOWING_ORES.comment=为矿石添加自发光效果§e。§r[*] 资源包支持选项需设为集成PBR+。
+value.GLOWING_ORES.0=关
+value.GLOWING_ORES.1=§a主世界
+value.GLOWING_ORES.2=主世界 + 下界
+
+option.EMISSIVE_REDSTONE_BLOCK=发光红石块
+option.EMISSIVE_REDSTONE_BLOCK.comment=为红石方块添加自发光效果。[§e*§r] 资源包支持选项需设为集成PBR+。
+
+option.EMISSIVE_LAPIS_BLOCK=发光青金石块
+option.EMISSIVE_LAPIS_BLOCK.comment=为青金石块添加自发光效果。 §e[*]§r RP 支持选项必须设置为 Integrated PBR+。
+
+option.GLOWING_AMETHYST=发光紫水晶
+option.GLOWING_AMETHYST.comment=为紫水晶芽/簇/块添加自发光效果。 §e[*]§r RP 支持选项必须设置为 Integrated PBR+。
+value.GLOWING_AMETHYST.0=关
+value.GLOWING_AMETHYST.1=水晶
+value.GLOWING_AMETHYST.2=水晶与方块
+
+option.NORMAL_MAP_STRENGTH=法线贴图强度
+option.NORMAL_MAP_STRENGTH.comment=调整物体表面凹凸细节的强度。 §e[*]§r RP 支持选项必须设置为 SEUSPBR/labPBR，且需使用兼容的资源包。
+
+option.CUSTOM_EMISSION_INTENSITY=自定义自发光强度
+option.CUSTOM_EMISSION_INTENSITY.comment=调整发光表面的强度。 §e[*]§r RP 支持选项必须设置为 SEUSPBR/labPBR，且需使用兼容的资源包。
+
+option.POM=视差遮蔽映射
+option.POM.comment=在表面上启用 3D 效果。 §c[-]§r 此效果可能会严重影响性能。 §e[*]§r RP 支持选项必须设置为 SEUSPBR/labPBR，且必须使用兼容的资源包。
+value.POM.false=关
+value.POM.true=开启 §c[-]
+
+option.POM_DEPTH=POM深度
+option.POM_DEPTH.comment=调整视差遮蔽映射的深度。 §e[*]§r RP 支持选项必须设置为 SEUSPBR/labPBR，且必须使用兼容的资源包。
+
+option.POM_QUALITY=视差质量
+option.POM_QUALITY.comment=调整视差遮蔽映射的清晰度/准确性。 §c[-]§r 高于 200 的值可能会严重影响性能。 §e[*]§r 低于 100 的值会将“POM 光照模式”强制设为“平滑”。 §e[*]§r RP 支持选项必须设置为 SEUSPBR/labPBR，且必须使用兼容的资源包。
+value.POM_QUALITY.16=16 §e[*]
+value.POM_QUALITY.32=32 §e[*]
+value.POM_QUALITY.64=64 §e[*]
+value.POM_QUALITY.256=256 §c[-]
+value.POM_QUALITY.512=512 §c[-]
+
+option.POM_DISTANCE=视差距离
+option.POM_DISTANCE.comment=调整视差遮蔽映射的计算距离。 §e[*]§r 建议将此值保持在 50 以下以获得轻微的性能提升。 §e[*]§r RP 支持选项必须设置为 SEUSPBR/labPBR，且必须使用兼容的资源包。
+value.POM_DISTANCE.64=64 §e[*]
+value.POM_DISTANCE.128=128 §e[*]
+value.POM_DISTANCE.256=256 §e[*]
+value.POM_DISTANCE.512=512 §e[*]
+value.POM_DISTANCE.1024=1024 §e[*]
+
+option.POM_LIGHTING_MODE=POM光照模式
+option.POM_LIGHTING_MODE.comment=调整受视差遮蔽映射影响表面的光照风格。锐利：未朝向光源的POM墙壁不会接收光照。平滑：POM墙壁仍会如无墙一般接收光照。[*] §e若§rPOM质量设置低于100，此选项将强制为“平滑”。
+value.POM_LIGHTING_MODE.1=平滑
+value.POM_LIGHTING_MODE.2=锐利
+
+option.POM_ALLOW_CUTOUT=POM 在剪贴表面上启用
+option.POM_ALLOW_CUTOUT.comment=使视差遮蔽映射可在镂空方块区块（如树叶间隙）上生效§c。[§r-] 此效果可能显著影响性能。
+value.POM_ALLOW_CUTOUT.false=关
+value.POM_ALLOW_CUTOUT.true=开启 §c[-]
+
+option.DIRECTIONAL_BLOCKLIGHT=方向性方块光照
+option.DIRECTIONAL_BLOCKLIGHT.comment=根据表面法线为区块光添加深度。 §e[*]§r RP 支持选项必须设置为 SEUSPBR/labPBR，且必须使用兼容的资源包。 §c[-]§r 此效果可能会影响性能。
+value.DIRECTIONAL_BLOCKLIGHT.0=关
+value.DIRECTIONAL_BLOCKLIGHT.3=轻微
+value.DIRECTIONAL_BLOCKLIGHT.7=普通
+value.DIRECTIONAL_BLOCKLIGHT.11=强烈
+
+option.HELD_LIGHTING_MODE=动态手持光照
+option.HELD_LIGHTING_MODE.comment=允许手持光源向场景投光。
+value.HELD_LIGHTING_MODE.0=关
+value.HELD_LIGHTING_MODE.1=轻微
+value.HELD_LIGHTING_MODE.2=普通
+
+option.HELD_LIGHT_OCCLUSION_CHECK=被光照亮的阴影与黑暗
+option.HELD_LIGHT_OCCLUSION_CHECK.comment=允许手持物品投射的光线接收阴影。 §c[-]§r 对性能影响较大
+
+option.BLOCKLIGHT_COLOR_MODE=备用区块光颜色
+option.BLOCKLIGHT_COLOR_MODE.comment=确定光源距离玩家较远时投射光线的颜色。
+value.BLOCKLIGHT_COLOR_MODE.9=冷色
+value.BLOCKLIGHT_COLOR_MODE.10=自然
+value.BLOCKLIGHT_COLOR_MODE.11=暖色
+
+option.NO_WAVING_INDOORS=封闭区域不摇曳
+option.NO_WAVING_INDOORS.comment=阻止方块在封闭区域内因天空光而波动。[§c-§r] 启用此设置可能会导致部分资源包或模组出现问题。
+
+option.WAVING_FOLIAGE=摇摆植被
+option.WAVING_FOLIAGE.comment=为植被添加动态效果以模拟风力。
+
+option.WAVING_LEAVES=树叶摇曳
+option.WAVING_LEAVES.comment=为树叶添加运动效果以模拟风吹
+
+option.WAVING_WATER_VERTEX=水面动态纹理
+option.WAVING_WATER_VERTEX.comment=为水面位置增添动态以模拟风效§e。§r[*] 此选项与"水波强度"设置无关。
+
+option.WORLD_OUTLINE=世界轮廓
+option.WORLD_OUTLINE.comment=为方块添加描边轮廓。
+
+option.CAULDRON_BRIGHTNESS_LAVA=岩浆炼药锅亮度
+option.BRIGHTNESS_LAVA=岩浆亮度
+option.BRIGHTNESS_FIRE=火焰亮度
+option.CAMPFIRE_BRIGHTNESS_FIRE=营火亮度
+option.BRIGHTNESS_SOULFIRE=灵魂火亮度
+option.CAMPFIRE_BRIGHTNESS_SOULFIRE=灵魂营火亮度
+option.ORE_BRIGHTNESS_IRON=铁矿石亮度
+option.ORE_BRIGHTNESS_COPPER=铜矿石亮度
+option.ORE_BRIGHTNESS_GOLD=金矿石亮度
+option.ORE_BRIGHTNESS_DIAMOND=钻石矿亮度
+option.ORE_BRIGHTNESS_EMERALD=绿宝石矿亮度
+option.BLOCK_BRIGHTNESS_EMERALD=绿宝石块亮度
+option.ORE_BRIGHTNESS_LAPIS=青金石矿亮度
+option.BLOCK_BRIGHTNESS_LAPIS=青金石块亮度
+option.OREUNLIT_BRIGHTNESS_REDSTONE=矿石亮度（未点亮）
+option.ORELIT_BRIGHTNESS_REDSTONE=矿石亮度（已点亮）
+option.BLOCK_BRIGHTNESS_REDSTONE=方块亮度
+option.WIRE0_BRIGHTNESS_REDSTONE=粉尘亮度（信号强度 1-5）
+option.WIRE1_BRIGHTNESS_REDSTONE=粉尘亮度（信号强度 6-10）
+option.WIRE2_BRIGHTNESS_REDSTONE=粉尘亮度（信号强度 11-14）
+option.WIRE3_BRIGHTNESS_REDSTONE=粉尘亮度（信号强度 15）
+option.TORCH_BRIGHTNESS_REDSTONE=火把亮度
+option.BRIGHTNESS_AMETHYST=紫水晶簇亮度
+option.BRIGHTNESS_ICE=蓝冰亮度
+option.BRIGHTNESS_PUMPKIN=南瓜灯亮度
+option.LOW_BRIGHTNESS_PICKLE=海泡菜亮度（1-2 根）
+option.HIGH_BRIGHTNESS_PICKLE=海泡菜亮度（3-4 根）
+option.BRIGHTNESS_GLOWSTONE=荧石亮度
+option.BRIGHTNESS_SEALANTERN=海晶灯亮度
+option.BLOCK_BRIGHTNESS_MAGMA=岩浆块亮度
+option.CUBE_BRIGHTNESS_MAGMA=岩浆怪亮度
+option.BRIGHTNESS_CRYING=哭泣的黑曜石亮度
+option.BRIGHTNESS_TORCH=火把亮度
+option.LANTERN_BRIGHTNESS_TORCH=灯笼亮度
+option.BRIGHTNESS_ENDROD=末地烛亮度
+option.BRIGHTNESS_CHORUS=紫颂花亮度
+option.BRIGHTNESS_FURNACE=熔炉亮度
+option.BRIGHTNESS_SOULTORCH=灵魂火炬亮度
+option.LANTERN_BRIGHTNESS_SOULTORCH=灵魂灯笼亮度
+option.BRIGHTNESS_LICHEN=发光地衣亮度
+option.BRIGHTNESS_TABLE=附魔台亮度
+option.FRAME_BRIGHTNESS_END=末地传送门框架亮度（含末影之眼）
+option.PORTAL_BRIGHTNESS_END=末地传送门亮度
+option.CHEST_BRIGHTNESS_END=末影箱亮度
+option.BRIGHTNESS_DRAGON=龙蛋亮度
+option.BRIGHTNESS_CANDLE=蜡烛亮度
+option.CAKE_BRIGHTNESS_CANDLE=生日蛋糕亮度
+option.ANCHOR_BRIGHTNESS_PORTAL=复活锚亮度
+option.BRIGHTNESS_PORTAL=下界传送门亮度
+option.BRIGHTNESS_BERRY=发光浆果亮度
+option.BRIGHTNESS_REDSTONELAMP=红石灯亮度
+option.BRIGHTNESS_SHROOMLIGHT=菌光体亮度
+option.BRIGHTNESS_YELLOWFROG=赭黄蛙明灯亮度
+option.BRIGHTNESS_GREENFROG=翠绿蛙明灯亮度
+option.BRIGHTNESS_PINKFROG=珍珠色蛙明灯亮度
+option.SENSOR_BRIGHTNESS_SCULK=监守传感器亮度
+option.BRIGHTNESS_SPAWNER=刷怪笼亮度
+option.BRIGHTNESS_BREWINGSTAND=酿造台亮度
+option.BRIGHTNESS_BEACON=信标亮度
+option.BRIGHTNESS_CONDUIT=导管亮度
+option.BRIGHTNESS_ENDCRYSTAL=末地水晶亮度
+option.BRIGHTNESS_LIGHTNING=闪电亮度
+option.BRIGHTNESS_ITEMFRAME=发光物品展示框亮度
+option.BRIGHTNESS_BLAZE=烈焰人亮度
+option.BRIGHTNESS_SQUID=发光鱿鱼亮度
+option.BRIGHTNESS_ALLAY=悦灵亮度
+option.BRIGHTNESS_TNT=TNT亮度
+option.BRIGHTNESS_CRIMSON=绯红菌柄 / 菌丝亮度
+option.BRIGHTNESS_WARPED=诡异菌柄 / 菌丝亮度
+
+option.CAULDRON_HARDCODED_LAVA_COL=覆盖熔岩炼药锅颜色
+option.HARDCODED_LAVA_COL=覆盖熔岩颜色
+option.HARDCODED_FIRE_COL=覆盖火焰颜色
+option.CAMPFIRE_HARDCODED_FIRE_COL=覆盖营火颜色
+option.CAMPFIRE_HARDCODED_SOULFIRE_COL=覆盖灵魂营火颜色
+option.HARDCODED_SOULFIRE_COL=覆盖灵魂火焰颜色
+option.ORE_HARDCODED_IRON_COL=覆盖铁矿石颜色
+option.ORE_HARDCODED_COPPER_COL=覆盖铜矿石颜色
+option.ORE_HARDCODED_GOLD_COL=覆盖金矿石颜色
+option.ORE_HARDCODED_DIAMOND_COL=覆盖钻石矿石颜色
+option.ORE_HARDCODED_EMERALD_COL=覆盖绿宝石矿石颜色
+option.BLOCK_HARDCODED_EMERALD_COL=覆盖绿宝石块颜色
+option.ORE_HARDCODED_LAPIS_COL=覆盖青金石矿颜色
+option.BLOCK_HARDCODED_LAPIS_COL=覆盖青金石块颜色
+option.ORE_HARDCODED_REDSTONE_COL=覆盖矿石颜色
+option.BLOCK_HARDCODED_REDSTONE_COL=覆盖方块颜色
+option.WIRE_HARDCODED_REDSTONE_COL=覆盖线缆颜色
+option.TORCH_HARDCODED_REDSTONE_COL=覆盖火把颜色
+option.HARDCODED_AMETHYST_COL=覆盖紫水晶颜色
+option.HARDCODED_ICE_COL=覆盖蓝冰颜色
+option.HARDCODED_PUMPKIN_COL=覆盖南瓜灯颜色
+option.HARDCODED_PICKLE_COL=覆盖海泡菜颜色
+option.HARDCODED_GLOWSTONE_COL=覆盖萤石颜色
+option.HARDCODED_SEALANTERN_COL=覆盖海晶灯颜色
+option.HARDCODED_MAGMA_COL=覆盖岩浆颜色
+option.HARDCODED_CRYING_COL=覆盖哭泣的黑曜石颜色
+option.HARDCODED_TORCH_COL=覆盖火把颜色
+option.LANTERN_HARDCODED_TORCH_COL=覆盖灯笼颜色
+option.HARDCODED_ENDROD_COL=覆盖末地烛颜色
+option.HARDCODED_CHORUS_COL=覆盖紫颂花颜色
+option.HARDCODED_FURNACE_COL=覆盖熔炉颜色
+option.HARDCODED_SOULTORCH_COL=覆盖灵魂火把颜色
+option.LANTERN_HARDCODED_SOULTORCH_COL=覆盖灵魂灯笼颜色
+option.HARDCODED_LICHEN_COL=覆盖发光地衣颜色
+option.HARDCODED_TABLE_COL=覆盖附魔台颜色
+option.HARDCODED_END_COL=覆盖末地传送门框架颜色
+option.PORTAL_HARDCODED_END_COL=覆盖末地传送门颜色
+option.CHEST_HARDCODED_END_COL=覆盖末影箱颜色
+option.HARDCODED_DRAGON_COL=覆盖龙蛋颜色
+option.HARDCODED_CANDLE_COL=覆盖蜡烛颜色
+option.CAKE_HARDCODED_CANDLE_COL=覆盖生日蛋糕颜色
+option.ANCHOR_HARDCODED_PORTAL_COL=覆盖重生锚颜色
+option.HARDCODED_PORTAL_COL=覆盖下界传送门颜色
+option.HARDCODED_BERRY_COL=覆盖
+option.HARDCODED_REDSTONELAMP_COL=覆盖红石灯颜色
+option.HARDCODED_SHROOMLIGHT_COL=覆盖菌光体颜色
+option.HARDCODED_YELLOWFROG_COL=覆盖赭色蛙明块颜色
+option.HARDCODED_GREENFROG_COL=覆盖翠绿蛙明块颜色
+option.HARDCODED_PINKFROG_COL=覆盖珠光蛙明块颜色
+option.HARDCODED_SCULK_COL=覆盖幽匿感测体颜色
+option.HARDCODED_SPAWNER_COL=覆盖刷怪笼颜色
+option.HARDCODED_BREWINGSTAND_COL=覆盖酿造台颜色
+option.HARDCODED_BEACON_COL=覆盖信标颜色
+option.HARDCODED_CONDUIT_COL=覆盖潮涌核心颜色
+option.HARDCODED_ENDCRYSTAL_COL=覆盖末地水晶颜色
+option.HARDCODED_LIGHTNING_COL=覆盖闪电颜色
+option.HARDCODED_ITEMFRAME_COL=覆盖发光物品展示框颜色
+option.HARDCODED_BLAZE_COL=覆盖烈焰人颜色
+option.HARDCODED_SQUID_COL=覆盖发光鱿鱼颜色
+option.HARDCODED_ALLAY_COL=覆盖悦灵颜色
+option.HARDCODED_TNT_COL=覆盖TNT颜色
+
+
+option.LAVA_COL_R=红
+option.LAVA_COL_G=绿色
+option.LAVA_COL_B=蓝色
+option.FIRE_COL_R=红
+option.FIRE_COL_G=绿色
+option.FIRE_COL_B=蓝色
+option.SOULFIRE_COL_R=红
+option.SOULFIRE_COL_G=绿色
+option.SOULFIRE_COL_B=蓝色
+option.IRON_COL_R=红
+option.IRON_COL_G=绿色
+option.IRON_COL_B=蓝色
+option.COPPER_COL_R=红
+option.COPPER_COL_G=绿色
+option.COPPER_COL_B=蓝色
+option.GOLD_COL_R=红
+option.GOLD_COL_G=绿色
+option.GOLD_COL_B=蓝色
+option.DIAMOND_COL_R=红
+option.DIAMOND_COL_G=绿色
+option.DIAMOND_COL_B=蓝色
+option.EMERALD_COL_R=红
+option.EMERALD_COL_G=绿色
+option.EMERALD_COL_B=蓝色
+option.LAPIS_COL_R=红
+option.LAPIS_COL_G=绿色
+option.LAPIS_COL_B=蓝色
+option.REDSTONE_COL_R=红
+option.REDSTONE_COL_G=绿色
+option.REDSTONE_COL_B=蓝色
+option.AMETHYST_COL_R=红
+option.AMETHYST_COL_G=绿色
+option.AMETHYST_COL_B=蓝色
+option.ICE_COL_R=红
+option.ICE_COL_G=绿色
+option.ICE_COL_B=蓝色
+option.PUMPKIN_COL_R=红
+option.PUMPKIN_COL_G=绿色
+option.PUMPKIN_COL_B=蓝色
+option.PICKLE_COL_R=红
+option.PICKLE_COL_G=绿色
+option.PICKLE_COL_B=蓝色
+option.GLOWSTONE_COL_R=红
+option.GLOWSTONE_COL_G=绿色
+option.GLOWSTONE_COL_B=蓝色
+option.SEALANTERN_COL_R=红
+option.SEALANTERN_COL_G=绿色
+option.SEALANTERN_COL_B=蓝色
+option.MAGMA_COL_R=红
+option.MAGMA_COL_G=绿色
+option.MAGMA_COL_B=蓝色
+option.CRYING_COL_R=红
+option.CRYING_COL_G=绿色
+option.CRYING_COL_B=蓝色
+option.TORCH_COL_R=红
+option.TORCH_COL_G=绿色
+option.TORCH_COL_B=蓝色
+option.ENDROD_COL_R=红
+option.ENDROD_COL_G=绿色
+option.ENDROD_COL_B=蓝色
+option.CHORUS_COL_R=红
+option.CHORUS_COL_G=绿色
+option.CHORUS_COL_B=蓝色
+option.FURNACE_COL_R=红
+option.FURNACE_COL_G=绿色
+option.FURNACE_COL_B=蓝色
+option.SOULTORCH_COL_R=红
+option.SOULTORCH_COL_G=绿色
+option.SOULTORCH_COL_B=蓝色
+option.LICHEN_COL_R=红
+option.LICHEN_COL_G=绿色
+option.LICHEN_COL_B=蓝色
+option.TABLE_COL_R=红
+option.TABLE_COL_G=绿色
+option.TABLE_COL_B=蓝色
+option.END_COL_R=红
+option.END_COL_G=绿色
+option.END_COL_B=蓝色
+option.DRAGON_COL_R=红
+option.DRAGON_COL_G=绿色
+option.DRAGON_COL_B=蓝色
+option.CANDLE_COL_R=红
+option.CANDLE_COL_G=绿色
+option.CANDLE_COL_B=蓝色
+option.PORTAL_COL_R=红
+option.PORTAL_COL_G=绿色
+option.PORTAL_COL_B=蓝色
+option.BERRY_COL_R=红
+option.BERRY_COL_G=绿色
+option.BERRY_COL_B=蓝色
+option.REDSTONELAMP_COL_R=红
+option.REDSTONELAMP_COL_G=绿色
+option.REDSTONELAMP_COL_B=蓝色
+option.SHROOMLIGHT_COL_R=红
+option.SHROOMLIGHT_COL_G=绿色
+option.SHROOMLIGHT_COL_B=蓝色
+option.YELLOWFROG_COL_R=红
+option.YELLOWFROG_COL_G=绿色
+option.YELLOWFROG_COL_B=蓝色
+option.GREENFROG_COL_R=红
+option.GREENFROG_COL_G=绿色
+option.GREENFROG_COL_B=蓝色
+option.PINKFROG_COL_R=红
+option.PINKFROG_COL_G=绿色
+option.PINKFROG_COL_B=蓝色
+option.SCULK_COL_R=红
+option.SCULK_COL_G=绿色
+option.SCULK_COL_B=蓝色
+option.SPAWNER_COL_R=红
+option.SPAWNER_COL_G=绿色
+option.SPAWNER_COL_B=蓝色
+option.BREWINGSTAND_COL_R=红
+option.BREWINGSTAND_COL_G=绿色
+option.BREWINGSTAND_COL_B=蓝色
+option.BEACON_COL_R=红
+option.BEACON_COL_G=绿色
+option.BEACON_COL_B=蓝色
+option.CONDUIT_COL_R=红
+option.CONDUIT_COL_G=绿色
+option.CONDUIT_COL_B=蓝色
+option.ENDCRYSTAL_COL_R=红
+option.ENDCRYSTAL_COL_G=绿色
+option.ENDCRYSTAL_COL_B=蓝色
+option.LIGHTNING_COL_R=红
+option.LIGHTNING_COL_G=绿色
+option.LIGHTNING_COL_B=蓝色
+option.ITEMFRAME_COL_R=红
+option.ITEMFRAME_COL_G=绿色
+option.ITEMFRAME_COL_B=蓝色
+option.BLAZE_COL_R=红
+option.BLAZE_COL_G=绿色
+option.BLAZE_COL_B=蓝色
+option.SQUID_COL_R=红
+option.SQUID_COL_G=绿色
+option.SQUID_COL_B=蓝色
+option.ALLAY_COL_R=红
+option.ALLAY_COL_G=绿色
+option.ALLAY_COL_B=蓝色
+option.TNT_COL_R=红
+option.TNT_COL_G=绿色
+option.TNT_COL_B=蓝色
+
+option.WORLD_OUTLINE_THICKNESS=世界轮廓线粗细
+option.WORLD_OUTLINE_THICKNESS.comment=确定世界轮廓效果的厚度。
+
+option.RAIN_PUDDLES=雨水坑
+option.RAIN_PUDDLES.comment=在雨天为地形添加水坑。[*] §e资§r源包支持选项必须设置为除基础外的任何选项，且方块反射质量必须设置为中或更高。§c[§r-] 雨水坑可能严重影响性能。
+value.RAIN_PUDDLES.0=关
+value.RAIN_PUDDLES.1=§a开 - 水坑
+value.RAIN_PUDDLES.2=§a开 - 全覆盖
+value.RAIN_PUDDLES.3=§a开-§c始终§a有水坑
+value.RAIN_PUDDLES.4=§a开-§c始终§a全满
+
+option.UNDERWATER_DISTORTION=水下扭曲
+option.UNDERWATER_DISTORTION.comment=当镜头在水下时为屏幕添加细微折射效果
+
+option.CMPR=重新思考
+value.CMPR.0=§a体素
+value.CMPR.1=§2体素
+value.CMPR.2=§b体素
+value.CMPR.3=§3体素
+value.CMPR.4=§9体素
+value.CMPR.5=§d体素
+value.CMPR.6=§5体素
+value.CMPR.7=§4体素
+value.CMPR.8=§c体素
+value.CMPR.9=§6体素（Voxels）
+value.CMPR.10=§eVoxels
+
+option.SELECT_OUTLINE=选择轮廓
+option.SELECT_OUTLINE.comment=决定方块选择轮廓的颜色。
+value.SELECT_OUTLINE.0=关
+value.SELECT_OUTLINE.1=默认
+value.SELECT_OUTLINE.2=彩虹
+value.SELECT_OUTLINE.3=选择颜色
+
+option.SELECT_OUTLINE_I=这么亮
+option.SELECT_OUTLINE_R=这么红
+option.SELECT_OUTLINE_G=这么绿
+option.SELECT_OUTLINE_B=这么蓝
+
+option.LIGHT_COLOR_MULTS=光照颜色乘数
+option.LIGHT_COLOR_MULTS.comment=启用对所有表面上可见光照颜色的自定义。
+
+option.ATM_COLOR_MULTS=大气颜色乘数
+option.ATM_COLOR_MULTS.comment=启用对主要出现在天空和雾中的大气颜色的自定义。
+
+option.LIGHT_MORNING_R=光照红色倍增
+option.LIGHT_MORNING_G=光照绿色倍增
+option.LIGHT_MORNING_B=光照蓝色倍增
+option.LIGHT_MORNING_I=光照强度倍增
+option.ATM_MORNING_R=大气红色倍增
+option.ATM_MORNING_G=大气绿色倍增
+option.ATM_MORNING_B=大气蓝色倍增
+option.ATM_MORNING_I=大气强度倍增
+option.LIGHT_NOON_R=光照红色倍增
+option.LIGHT_NOON_G=光照绿色倍增
+option.LIGHT_NOON_B=光照蓝色倍增
+option.LIGHT_NOON_I=光照强度倍增
+option.ATM_NOON_R=大气红色倍增
+option.ATM_NOON_G=大气绿色倍增
+option.ATM_NOON_B=大气蓝色倍增
+option.ATM_NOON_I=大气强度倍增
+option.LIGHT_NIGHT_R=光照红色倍增
+option.LIGHT_NIGHT_G=光照绿色倍增
+option.LIGHT_NIGHT_B=光照蓝色倍增
+option.LIGHT_NIGHT_I=光照强度倍增
+option.ATM_NIGHT_R=大气红色倍增
+option.ATM_NIGHT_G=大气绿色倍增
+option.ATM_NIGHT_B=大气蓝色倍增
+option.ATM_NIGHT_I=大气强度倍增
+option.LIGHT_RAIN_R=光照红色倍增
+option.LIGHT_RAIN_G=光照绿色倍增
+option.LIGHT_RAIN_B=光照蓝色倍增
+option.LIGHT_RAIN_I=光照强度倍增
+option.ATM_RAIN_R=大气红色倍增
+option.ATM_RAIN_G=大气绿色倍增
+option.ATM_RAIN_B=大气蓝色倍增
+option.ATM_RAIN_I=大气强度倍增
+option.LIGHT_NETHER_R=光照红色倍增
+option.LIGHT_NETHER_G=光照绿色倍增
+option.LIGHT_NETHER_B=光照蓝色倍增
+option.LIGHT_NETHER_I=光照强度倍增
+option.ATM_NETHER_R=大气红色倍增
+option.ATM_NETHER_G=大气绿色倍增
+option.ATM_NETHER_B=大气蓝色倍增
+option.ATM_NETHER_I=大气强度倍增
+option.LIGHT_END_R=光照红色倍增
+option.LIGHT_END_G=光照绿色倍增
+option.LIGHT_END_B=光照蓝色倍增
+option.LIGHT_END_I=光照强度倍增
+option.ATM_END_R=大气红色倍增
+option.ATM_END_G=大气绿色倍增
+option.ATM_END_B=大气蓝色倍增
+option.ATM_END_I=大气强度倍增
