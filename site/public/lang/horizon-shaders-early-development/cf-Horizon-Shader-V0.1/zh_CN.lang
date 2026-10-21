@@ -1,0 +1,117 @@
+#shaders/lang/zh_CN.lang
+# Horizon Shaders - Early Development vcf-Horizon-Shader-V0.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Horizon Shader V0.1.zip 的 shaders/lang/en_US.lang
+# Main category buttons
+screen.RAY_TRACING= 光线追踪
+screen.SUN=太阳 / 泛光
+screen.LIGHTING=光照
+screen.SHADOWS=阴影样式
+screen.SKY=天空
+screen.CLOUDS_FOG=云层 / 雾
+screen.POST= 后期特效
+screen.PERFORMANCE=性能
+
+# Options
+option.RIVER_CORE_FEATURES_ENABLE=核心功能
+option.RIVER_SSGI_ENABLE=SSGI / 全局光照
+option.RIVER_SSGI_RAYS=SSGI 光线
+option.RIVER_SSGI_STEPS=SSGI 光线步数
+option.RIVER_SSGI_RADIUS=ssgi半径
+option.RIVER_SSGI_THICKNESS=SSGI 厚度
+option.RIVER_SSGI_STRENGTH=ssgi强度
+option.RIVER_SSGI_DENOISE=SSGI 降噪
+option.RIVER_REFLECTIONS_ENABLE=屏幕空间反射
+option.RIVER_REFLECTION_STEPS=反射步数
+option.RIVER_REFLECTION_STRENGTH=反射强度
+option.RIVER_REFLECTION_ROUGHNESS=反射粗糙度
+option.RIVER_SSAO_ENABLE=屏幕空间环境光遮蔽
+option.RIVER_SSAO_SAMPLES=环境光遮蔽采样数
+option.RIVER_SSAO_STRENGTH=环境光遮蔽强度
+option.RIVER_AO_STRENGTH=传统环境光遮蔽强度
+option.RIVER_GI_STRENGTH=间接光强度
+option.RIVER_GODRAYS_ENABLE=丁达尔光效
+option.RIVER_GODRAYS_PRESET=体积光质量预设置
+option.RIVER_GODRAYS_STRENGTH=丁达尔效应强度
+option.RIVER_LENS_FLARE_ENABLE=镜头光晕
+option.RIVER_LENS_FLARE_STRENGTH=镜头光晕强度
+option.RIVER_SUN_WARMTH=太阳暖色
+option.RIVER_SHADOW_DISTANCE_CHUNKS=阴影距离
+option.RIVER_SHADOW_MAP_RESOLUTION=阴影分辨率
+option.RIVER_SHADOW_FILTER_QUALITY=阴影滤镜质量
+option.RIVER_SHADOW_SOFTNESS=阴影柔和度
+option.RIVER_SHADOW_BIAS=阴影偏移
+option.RIVER_SHADOW_STRENGTH=阴影强度
+option.RIVER_SHADOW_FADE_START_CHUNKS=阴影渐隐起始区块
+option.RIVER_SHADOW_EDGE_FADE=阴影边缘渐隐
+option.RIVER_SHADOW_STABLE_MODE=稳定阴影
+option.RIVER_SAFE_SKY=安全天空模式
+option.RIVER_SKY_BLEND=天空混合
+option.RIVER_HORIZON_HAZE=地平线薄雾
+option.RIVER_SKY_NIGHT_DARKEN=夜间天空暗化
+option.RIVER_CLOUDS_ENABLE=云
+option.RIVER_CLOUD_STEPS=云层光线步进数
+option.RIVER_CLOUD_COVERAGE=云朵覆盖度
+option.RIVER_CLOUD_DENSITY=云层密度
+option.RIVER_CLOUD_SPEED=云层速度
+option.RIVER_FOG_ENABLE=雾
+option.RIVER_FOG_STRENGTH= 雾强度
+option.RIVER_BLOOM_STRENGTH=泛光强度
+option.RIVER_EXPOSURE=曝光
+option.RIVER_CONTRAST=对比度
+
+screen.BLOCK_LIGHTS=方块光源
+option.RIVER_BLOCKLIGHT_BRIGHTNESS=方块光亮度
+option.RIVER_BLOCKLIGHT_SHADOWS_ENABLE=方块光屏幕空间阴影
+option.RIVER_BLOCKLIGHT_SHADOW_STRENGTH=方块光阴影强度
+option.RIVER_BLOCKLIGHT_SHADOW_RADIUS=方块光阴影半径
+option.RIVER_BLOCKLIGHT_SHADOW_SAMPLES=方块光阴影采样数
+
+option.RIVER_SUN_DISK_ENABLE=解析太阳圆盘
+option.RIVER_SUN_BRIGHTNESS=太阳亮度
+option.RIVER_SUN_SIZE=太阳大小
+option.RIVER_SUN_BLOOM=太阳泛光 / 光晕
+
+option.RIVER_VOXEL_BLOCKLIGHT_ENABLE=体素方块光路径追踪
+option.RIVER_VOXEL_BLOCKLIGHT_RAYS=体素光线
+option.RIVER_VOXEL_BLOCKLIGHT_STEPS=体素光线步数
+option.RIVER_VOXEL_BLOCKLIGHT_RADIUS=体素光照半径
+option.RIVER_VOXEL_BLOCKLIGHT_GRID=体素网格大小
+option.RIVER_VOXEL_BLOCKLIGHT_SHADOW_STRENGTH=体素方块光阴影强度
+option.RIVER_VOXEL_BLOCKLIGHT_BOUNCE=体素方块光反弹
+
+screen.PATH_TRACING=完整路径追踪
+option.RIVER_FULL_PATH_TRACING_ENABLE=完整路径追踪
+option.RIVER_PT_RAYS=PT 光线
+option.RIVER_PT_STEPS=路径追踪射线步进次数
+option.RIVER_PT_BOUNCES=PT 反弹
+option.RIVER_PT_RADIUS=PT 半径
+option.RIVER_PT_THICKNESS=体素命中厚度
+option.RIVER_PT_VOXEL_GRID=体素网格大小
+option.RIVER_PT_GI_STRENGTH=路径追踪全局光照强度
+option.RIVER_PT_EMISSIVE_STRENGTH=自发光反弹强度
+option.RIVER_PT_BLOCKLIGHT_STRENGTH=区块-光路径强度
+option.RIVER_PT_BLOCKLIGHT_SAMPLES=区块灯光样本
+option.RIVER_PT_BLOCKLIGHT_RADIUS=方块光搜索半径
+option.RIVER_PT_RT_SUN_SHADOWS=光线追踪太阳阴影
+option.RIVER_PT_SUN_SHADOW_RAYS=太阳阴影光线
+option.RIVER_PT_SUN_SHADOW_DISTANCE=太阳阴影追踪距离
+option.RIVER_PT_SHADOW_STRENGTH=光线追踪阴影强度
+option.RIVER_PT_REFLECTIONS=体素反射
+option.RIVER_PT_REFLECTION_STRENGTH=体素反射强度
+option.RIVER_PT_REFLECTION_STEPS=反射步数
+option.RIVER_PT_DENOISE_ENABLE=路径追踪降噪器
+option.RIVER_PT_DENOISE_STRENGTH=降噪强度
+option.RIVER_PT_DENOISE_RADIUS=降噪半径
+option.RIVER_PT_DENOISE_DEPTH_WEIGHT=降噪深度权重
+option.RIVER_PT_DENOISE_NORMAL_WEIGHT=降噪法线权重
+option.RIVER_PT_DEBUG_MODE=路径追踪调试视图
+
+option.RIVER_PT_STABLE_RAYS=稳定的光波 / 无抖动
+option.RIVER_PT_LEAK_FIX=严格漏洞修复
+option.RIVER_PT_VISIBILITY_STRICTNESS=可见性严格性
+
+option.RIVER_PT_NO_SPARKLE=没有闪耀的光芒
+option.RIVER_PT_STABLE_FILTER=稳定性过滤器
+option.RIVER_PT_LIGHT_LEAK_GUARD=防漏光保护罩
+
+option.RIVER_DAY_SKY_BRIGHTNESS=日间天空亮度

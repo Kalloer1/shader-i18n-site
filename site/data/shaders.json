@@ -19384,6 +19384,48 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/ed8f23c02ad8"
+    },
+    {
+      "id": "horizon-shaders-early-development",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "horizon-shaders-early-development",
+        "cfId": 1591997
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Horizon-Shader-V0.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/horizon-shaders-early-development/cf-Horizon-Shader-V0.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/7e8a6249ec57",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/7e8a6249ec57"
+    },
+    {
+      "id": "stalkerentityshaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "stalkerentityshaders",
+        "cfId": 1722571
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-StalkerEntityShaders-1.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/stalkerentityshaders/cf-StalkerEntityShaders-1.0.0/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/a542f5244c15",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/a542f5244c15"
     }
   ]
 }
