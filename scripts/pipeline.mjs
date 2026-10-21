@@ -1030,21 +1030,26 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
   } finally {
     saveProgress(progress)
   }
-  const { map: zhMap, totalFallback, glossaryHit, progressHit, llmCalls, providersUsed } = translated
+  const { map: zhMap, totalFallback, translatableTotal, glossaryHit, progressHit, llmCalls, providersUsed } = translated
   // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
-  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}，来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
+  // 回退率的分母是**可翻译行数**（值含字母的行），不是 pairs.length：无字母行
+  // （`-95`、`5%`、`---`、空值）本来就不翻译，保留原值就是正确结果。
+  // 实测 alphalook 4697 键里 3152 行是这种行，按 pairs.length 算会把 3.1% 的回退率
+  // 放大成 67%，整条正常光影被判死。noLetters 单独列出，日志上一眼看得见。
+  const noLetters = pairs.length - translatableTotal
+  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${translatableTotal}（noLetters ${noLetters}），来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
   // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
-  if (totalFallback > pairs.length * 0.3) {
+  if (totalFallback > translatableTotal * 0.3) {
     const done = progressSummary(progress, pairs)
     if (cfMode) {
-      console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${totalFallback}/${pairs.length}），尝试下一个`)
+      console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${totalFallback}/${translatableTotal}），尝试下一个`)
       console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
-      return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）`, cfRetry: true }
+      return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${translatableTotal}）`, cfRetry: true }
     }
-    console.log(`${tag} 回退率过高（${totalFallback}/${pairs.length}），判定失败，跳过`)
+    console.log(`${tag} 回退率过高（${totalFallback}/${translatableTotal}），判定失败，跳过`)
     console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
     failed++
-    return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）` }
+    return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${translatableTotal}）` }
   }
   // 渲染在 lib 里（纯函数），保证「复用进度的译文」与「重新翻出的译文」
   // 渲染出的字节完全一致；tests/lang-render.test.mjs 用仓库真实文件做往返比对。

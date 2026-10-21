@@ -33,7 +33,7 @@ export class EmptyResponseError extends Error {
  * @param {object} p
  * @param {number} p.chunkLength 首块行数
  * @param {number} p.parsedLines 模型回话里能解析出的 `键=值` 行数
- * @param {number} p.fallback 回退（沿用英文原值）的行数
+ * @param {number} p.fallback 回退（沿用英文原值）的**可翻译**行数；无字母行不计入（见 evaluateOutput）
  * @param {number} p.translatableLines 首块里「值含 ASCII 字母」的行数（可能被翻译的行）
  * @returns {boolean}
  */
@@ -41,7 +41,9 @@ export function isProviderNoOutput({ chunkLength, parsedLines, fallback, transla
   if (chunkLength < EARLY_STOP_MIN_CHUNK_LINES) return false
   // 整块都是数值/符号（没有可翻译的英文），原样返回是正确行为，不能据此弃用模型。
   if (translatableLines === 0) return false
-  return parsedLines === 0 || fallback === chunkLength
+  // 与 translatableLines 比、而不是 chunkLength：无字母行不算回退（见 evaluateOutput），
+  // 拿总行数当分母会让含数值行的首块永远判不出「零译文」，早停失效。
+  return parsedLines === 0 || fallback >= translatableLines
 }
 
 /**

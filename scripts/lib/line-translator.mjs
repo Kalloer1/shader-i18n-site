@@ -73,10 +73,30 @@ export function judgeLine(sourceValue, reply) {
 }
 
 /**
+ * 值里是否含「可翻译的字母」。
+ *
+ * 纯数字（`-95`）、百分比（`5%`）、符号（`---`）、单位（`°`）、空值本来就不该翻译，
+ * 保留原值就是正确结果。它们既不是回退，也不该参与回退率计算 —— 否则一个
+ * `value.BRIGHTNESS.-95=-95` 满天飞的光影会被判成「翻译失败」（实测 alphalalk 4697 键
+ * 里 3152 行是这种行，回退率被顶到 67%）。
+ *
+ * 逐句路径（本文件）与整块路径（provider-chain.mjs 的 evaluateOutput）共用这一判据，
+ * 两条路径口径必须一致，否则免费层换成整块模型时同一个 bug 会复现。
+ *
+ * @param {string} value
+ */
+export function hasTranslatableLetters(value) {
+  return /[A-Za-z]/.test(value)
+}
+
+/**
  * 逐句翻译一个分块。
  *
  * 与整块翻译的差异：没有「回退率阈值」这一步——每一行独立成败，
  * 失败的行直接留英文（与 `evaluateOutput` 的按行回退同语义）。
+ *
+ * `fallback` **只统计本该翻译却没翻成的行**；无字母行单独计入 `untranslatable`，
+ * 它们是「不需要翻」，不是「没翻成」，两者混在一起会把正常光影判死（见 hasTranslatableLetters）。
  *
  * @param {object} p
  * @param {Array<[string,string]>} p.chunk 待译分块
@@ -84,7 +104,7 @@ export function judgeLine(sourceValue, reply) {
  * @param {AbortSignal} [p.signal]
  * @param {number} [p.concurrency] 并发度
  * @param {(msg: string) => void} [p.log]
- * @returns {Promise<{map: Map<string,string>, fallback: number, reasons: Record<string, number>}>}
+ * @returns {Promise<{map: Map<string,string>, fallback: number, untranslatable: number, reasons: Record<string, number>}>}
  */
 export async function translateChunkByLine({
   chunk,
@@ -96,13 +116,15 @@ export async function translateChunkByLine({
   const map = new Map()
   const reasons = {}
   let fallback = 0
+  let untranslatable = 0
 
   // 没有字母的行（纯数字、纯符号）本来就不需要翻译，直接保留原值，不浪费请求。
+  // 注意：**不计入 fallback**，只记 untranslatable —— 保留原值就是正确行为。
   const work = []
   for (const [k, v] of chunk) {
-    if (!/[A-Za-z]/.test(v)) {
+    if (!hasTranslatableLetters(v)) {
       map.set(k, v)
-      fallback++
+      untranslatable++
       reasons.noLetters = (reasons.noLetters || 0) + 1
     } else {
       work.push([k, v])
@@ -139,10 +161,14 @@ export async function translateChunkByLine({
     }
   }))
 
-  if (fallback > 0) {
+  // 分母用「可翻译行数」：无字母行不进分子也不进分母，否则它们会把回退率撑大。
+  // noLetters 仍单独列出（并附总行数），日志上一眼能看出「这 52 行本来就不需要翻」。
+  const translatable = chunk.length - untranslatable
+  if (fallback > 0 || untranslatable > 0) {
     const detail = Object.entries(reasons).map(([r, n]) => `${r} ${n}`).join('，')
-    log(`[逐句] 回退 ${fallback}/${chunk.length}（${detail}）`)
+    const scope = untranslatable > 0 ? `${detail}，共 ${chunk.length} 行` : detail
+    log(`[逐句] 回退 ${fallback}/${translatable}（${scope}）`)
   }
 
-  return { map, fallback, reasons }
+  return { map, fallback, untranslatable, reasons }
 }

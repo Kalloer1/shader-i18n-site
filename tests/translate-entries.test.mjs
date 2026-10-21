@@ -10,6 +10,7 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
 import { createTranslateEntries } from '../scripts/lib/translate-entries.mjs'
+import { hasTranslatableLetters } from '../scripts/lib/line-translator.mjs'
 import { createProgress, parseProgress, serializeProgress, pruneProgress } from '../scripts/lib/resume-progress.mjs'
 import { stripSkeleton } from '../scripts/lib/glossary.mjs'
 
@@ -18,6 +19,10 @@ const META = { id: 'demo', version: '1.0.0' }
 /**
  * 假的分块翻译器：按 `answers` 查表；查不到（或列在 `failKeys` 里）就回显英文，
  * 与真实实现判回退后的行为一致（`evaluateOutput` 也把回退行放回 map）。
+ *
+ * 无字母行（`-95`、`5%`、`---`）按真实语义处理：保留原值、**不计回退**
+ * —— `translateChunkTwoLayer` 的 `evaluateOutput` 就是这么做的，假实现必须同口径，
+ * 否则这里的测试会替真实实现掩盖 bug。
  */
 function fakeTranslator({ answers, failKeys = new Set(), chunks = [] }) {
   return async (chunk) => {
@@ -25,7 +30,9 @@ function fakeTranslator({ answers, failKeys = new Set(), chunks = [] }) {
     const map = new Map()
     let fallback = 0
     for (const [k, v] of chunk) {
-      if (failKeys.has(k) || !answers.has(k)) {
+      if (!hasTranslatableLetters(v)) {
+        map.set(k, v)
+      } else if (failKeys.has(k) || !answers.has(k)) {
         map.set(k, v)
         fallback++
       } else {
@@ -126,6 +133,25 @@ describe('第一轮失败 → 第二轮只补没翻成的行', () => {
     )
     assert.equal(r.totalFallback, 0)
     assert.deepEqual([...progress.lines.keys()].sort(), PAIRS.map(([k]) => k).sort())
+  })
+
+  // Bug 修复：无字母行（`-95`、`5%`、`---`）保留原值是正确行为，既不算回退也不进分母。
+  // 旧口径把 alphalook 的 3152 行纯数字算成回退，3.1% 被放大成 67%，整条光影被判死。
+  it('无字母行不计回退，分母是可翻译行数（translatableTotal）', async () => {
+    const progress = createProgress(META)
+    const pairs = [
+      ...PAIRS,
+      ['value.BRIGHTNESS.-95', '-95'],
+      ['value.WATER_DETAIL.0.05', '5%'],
+      ['value.SEP', '---'],
+    ]
+    // 假 translateChunk 按真实语义：无字母行保留原值且不计回退
+    const r = await makeRunner({ translateChunk: fakeTranslator({ answers: ANSWERS }) })(
+      pairs, [{ id: 'p1' }], undefined, new Map(), { lookup: lookupFrom(), progress, ...META },
+    )
+    assert.equal(r.translatableTotal, PAIRS.length, '分母只数含字母的行')
+    assert.equal(r.totalFallback, 0, '数值行保留原值不是回退')
+    assert.equal(r.map.size, pairs.length, '数值行仍要在产物里（原值）')
   })
 })
 

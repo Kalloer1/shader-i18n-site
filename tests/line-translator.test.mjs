@@ -61,9 +61,12 @@ test('判据：正常译文通过，§ 码与占位符数量一致即可（位�
   assert.equal(judgeLine('%1$s of %2$s', '%2$s 中的 %1$s').ok, true)
 })
 
-test('无字母的行不发请求，直接保留原值并计入回退', async () => {
+// 语义变更（Bug 修复）：无字母行曾经被计成 fallback，把数值密集的正常光影判死
+// （实测 alphalook 4697 键里 3152 行是纯数字/百分比，回退率被顶到 67%）。
+// 正确语义：保留原值就是**正确行为**，不算回退，单独记 untranslatable。
+test('无字母的行不发请求、保留原值，且**不计入回退**（单独记 untranslatable）', async () => {
   const sent = []
-  const { map, fallback, reasons } = await translateChunkByLine({
+  const { map, fallback, untranslatable, reasons } = await translateChunkByLine({
     chunk: [['value.NUM', '128'], ['value.SYM', '---']],
     call: async (t) => {
       sent.push(t)
@@ -74,8 +77,9 @@ test('无字母的行不发请求，直接保留原值并计入回退', async ()
   assert.equal(sent.length, 0, '不该为纯数字/符号行发请求')
   assert.equal(map.get('value.NUM'), '128')
   assert.equal(map.get('value.SYM'), '---')
-  assert.equal(fallback, 2)
-  assert.equal(reasons.noLetters, 2)
+  assert.equal(fallback, 0, '保留原值不是回退')
+  assert.equal(untranslatable, 2)
+  assert.equal(reasons.noLetters, 2, 'noLetters 仍如实统计，日志要能看出这些行本来就不用翻')
 })
 
 test('并发真的生效：串行与并发结果一致，且并发更快', async () => {

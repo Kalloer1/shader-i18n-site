@@ -16,12 +16,14 @@
  * 本模块不碰网络、不读环境变量、不写文件；`onChunkDone` 用于让调用方即时落盘。
  */
 import { runPool } from './pool.mjs'
+import { hasTranslatableLetters } from './line-translator.mjs'
 import { stripSkeleton, shouldRememberMemory } from './glossary.mjs'
 import { planLines, recordProgress } from './resume-progress.mjs'
 
 /**
  * @param {object} deps
  * @param {(chunk: Array<[string,string]>, providers: Array<object>, signal: AbortSignal, opts: object) => Promise<{map: Map<string,string>, fallback: number, providerIds?: string[]}>} deps.translateChunk
+ *   `fallback` 只统计**可翻译行**（值含字母）的回退；无字母行由 translateChunkTwoLayer 排除。
  * @param {(list: Array<object>) => Array<object>} deps.nextProviderOrder 分块间轮转起始模型
  * @param {() => boolean} deps.everythingUnusable 所有提供方（含免费层）是否都不可用
  * @param {(ids: string[]) => string} deps.providerUnusableMessage
@@ -65,6 +67,9 @@ export function createTranslateEntries(deps) {
     const out = new Map()
     let totalFallback = 0
     let llmCalls = 0
+    // 回退率的分母：值含字母、真正需要翻译的行。无字母行（`-95`、`5%`、`---`、空值）
+    // 保留原值就是正确结果，既不算回退也不进分母（见 provider-chain.mjs 的 evaluateOutput）。
+    const translatableTotal = pairs.filter(([, v]) => hasTranslatableLetters(v)).length
 
     // 第一步：决定哪些行直接复用、哪些要发 LLM（记忆优先，其次进度）。
     const plan = planLines(pairs, { lookup, progress, id, version })
@@ -83,7 +88,7 @@ export function createTranslateEntries(deps) {
     if (pending.length === 0) {
       log(`    翻译记忆覆盖 ${glossaryHit}/${pairs.length}${progressHit ? `，进度复用 ${progressHit}` : ''}，跳过 LLM`)
       onChunkDone()
-      return { map: out, totalFallback: 0, glossaryHit, progressHit, llmCalls: 0, providersUsed: [] }
+      return { map: out, totalFallback: 0, translatableTotal, glossaryHit, progressHit, llmCalls: 0, providersUsed: [] }
     }
 
     log(`    翻译记忆命中 ${glossaryHit}/${pairs.length}${progressHit ? `，进度复用 ${progressHit}` : ''}，剩余 ${pending.length} 个需 LLM 翻译`)
@@ -115,7 +120,10 @@ export function createTranslateEntries(deps) {
         const sources = new Map(chunk)
         for (const [k, v] of results[index].map) recordProgress(progress, k, sources.get(k) ?? '', v)
         onChunkDone()
-        log(`    ${label}完成：回退 ${results[index].fallback}/${chunk.length}，耗时 ${now() - started}ms`)
+        // 分母用可翻译行数，与 translateChunkTwoLayer 的阈值口径一致。
+        const chunkTranslatable = chunk.filter(([, v]) => hasTranslatableLetters(v)).length
+        const skipped = chunk.length - chunkTranslatable
+        log(`    ${label}完成：回退 ${results[index].fallback}/${chunkTranslatable}${skipped ? `（noLetters ${skipped}）` : ''}，耗时 ${now() - started}ms`)
         // 本轮所有模型都已不可用**且免费层也不可用** → 立即整体失败，不再空跑剩余分块。
         if (everythingUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
       },
@@ -141,6 +149,15 @@ export function createTranslateEntries(deps) {
       llmCalls++
     }
 
-    return { map: out, totalFallback, glossaryHit, progressHit, llmCalls, providersUsed: [...providersUsed] }
+    return {
+      map: out,
+      totalFallback,
+      // 供 pipeline 判「回退率过高」用：分母是可翻译行数，不是 pairs.length。
+      translatableTotal,
+      glossaryHit,
+      progressHit,
+      llmCalls,
+      providersUsed: [...providersUsed],
+    }
   }
 }

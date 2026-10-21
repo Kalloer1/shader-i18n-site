@@ -294,6 +294,55 @@ test('回退池：完全无提供方（免费层关掉、池为空）→ 全回�
   assert.equal(r.fallback, CHUNK.length)
 })
 
+// Bug 修复的端到端证据：数值密集的分块不该被「回退率过高」判死。
+// 实测 alphalook 4697 键里 3152 行是纯数字/百分比（`-95`、`5%`），旧判据把它们
+// 全算成回退（67%），整条正常光影被判失败。这里用 60 行里 52 行无字母的分块复现。
+test('回退池：无字母行不计回退、也不进阈值分母（数值密集分块不再被误判）', async () => {
+  const chunk = [
+    ...Array.from({ length: 8 }, (_, i) => [`option.K${i}`, `Setting number ${i}`]),
+    ...Array.from({ length: 52 }, (_, i) => [`value.NUM.${i}`, i % 2 ? `${i}%` : `-${i}`]),
+  ]
+  assert.equal(chunk.length, 60)
+  const free = freeProvider()
+  const pool = poolProvider()
+  // 免费层把 8 行可翻行全翻好，数值行原样返回（模型的正常行为）
+  const reply = [
+    ...chunk.slice(0, 8).map(([k]) => `${k}=译${k.replace('option.', '')}`),
+    ...chunk.slice(8).map(([k, v]) => `${k}=${v}`),
+  ].join('\n')
+  const { call, calls } = makeCall((p) => (p.id === free.id ? reply : new Error('不该走到回退池')))
+
+  const r = await translateChunkTwoLayer({
+    chunk, input: chunk.map(([k, v]) => `${k}=${v}`).join('\n'),
+    freeTier: free, poolProviders: [pool], call,
+  })
+
+  assert.equal(r.fallback, 0, '数值行保留原值不是回退')
+  assert.deepEqual(calls, [free.id], '回退率 0/8 合格，不该转交回退池')
+  assert.deepEqual(r.providerIds, [free.id])
+  assert.equal(r.map.get('option.K0'), '译K0')
+  assert.equal(r.map.get('value.NUM.1'), '1%', '数值行原值保留')
+})
+
+test('回退池：阈值分母是可翻译行数（52 行无字母时 2 行回退仍合格）', async () => {
+  const chunk = [
+    ...Array.from({ length: 8 }, (_, i) => [`option.K${i}`, `Setting number ${i}`]),
+    ...Array.from({ length: 52 }, (_, i) => [`value.NUM.${i}`, `-${i}`]),
+  ]
+  const free = freeProvider()
+  const pool = poolProvider()
+  // 8 行里漏 2 行 = 25% > 10% → 应转交回退池（说明阈值确实按 8 行算，而不是按 60 行）
+  const reply = chunk.slice(0, 6).map(([k]) => `${k}=译${k.replace('option.', '')}`).join('\n')
+  const { call, calls } = makeCall((p) => (p.id === free.id ? reply : GOOD))
+
+  await translateChunkTwoLayer({
+    chunk, input: chunk.map(([k, v]) => `${k}=${v}`).join('\n'),
+    freeTier: free, poolProviders: [pool], call,
+  })
+
+  assert.equal(calls[1], pool.id, '2/8=25% 超阈值，应转交回退池（若按 60 行算只有 3.3% 就不会转交）')
+})
+
 test('回退池：首块零译文时弃用该模型（早停判据仍生效）', async () => {
   const free = freeProvider()
   const a = poolProvider('a')
@@ -457,11 +506,42 @@ test('evaluateOutput：译文等于原文算回退（模型回显英文不是译
   const r = evaluateOutput(CHUNK, got)
   assert.equal(r.fallback, 2, 'SHADOWS 回显 + AO 缺失 = 2')
   assert.deepEqual(r.missingKeys, ['option.AO'])
+  assert.equal(r.untranslatable, 0, 'CHUNK 全是可翻译行')
 })
 
-test('fallbackThreshold：60 行分块阈值为 6', () => {
+// Bug 修复的整块路径证据：模型对 `-95` / `5%` 这类行通常原样返回，
+// 旧判据（zh !== v）会把它们计成回退，数值密集的光影因此被判死。
+test('evaluateOutput：无字母行原样返回**不算回退**（单独记 untranslatable）', () => {
+  const chunk = [
+    ['option.SHADOWS', 'Shadows'],
+    ['value.BRIGHTNESS.-95', '-95'],
+    ['value.WATER_DETAIL.0.05', '5%'],
+    ['value.SEP', '---'],
+    ['value.EMPTY', ''],
+  ]
+  // 模型把数值行原样返回，只翻了 Shadows
+  const got = parseLangLines([
+    'option.SHADOWS=阴影',
+    'value.BRIGHTNESS.-95=-95',
+    'value.WATER_DETAIL.0.05=5%',
+    'value.SEP=---',
+    'value.EMPTY=',
+  ].join('\n'))
+  const r = evaluateOutput(chunk, got)
+  assert.equal(r.fallback, 0, '无字母行保留原值是正确行为，不是回退')
+  assert.equal(r.untranslatable, 4)
+  assert.deepEqual(r.missingKeys, [], '无字母行也不该进 missingKeys（它们本来就不发去翻）')
+  assert.equal(r.map.get('option.SHADOWS'), '阴影')
+  assert.equal(r.map.get('value.BRIGHTNESS.-95'), '-95')
+})
+
+test('fallbackThreshold：60 行分块阈值为 6（基准是可翻译行数）', () => {
   assert.equal(fallbackThreshold(60), 6)
   assert.equal(fallbackThreshold(3), 1)
+  // 数值密集的块：100 行里只有 10 行可翻 → 阈值按 10 算（1），不是按 100 算（10）。
+  // 旧口径会把这种块的回退率放大 10 倍，实测 alphalook 4697 键里 3152 行是纯数字。
+  assert.equal(fallbackThreshold(10), 1)
+  assert.equal(fallbackThreshold(0), 0)
 })
 
 test('tryFreeTier：provider 为 null 时不调用、返回 null', async () => {

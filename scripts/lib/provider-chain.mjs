@@ -13,7 +13,7 @@
  * 3. `translateChunkTwoLayer` —— 编排：先免费层，再回退池
  */
 
-import { translateChunkByLine, DEFAULT_LINE_CONCURRENCY } from './line-translator.mjs'
+import { translateChunkByLine, hasTranslatableLetters, DEFAULT_LINE_CONCURRENCY } from './line-translator.mjs'
 
 /**
  * 解析模型回话里的 `键=值` 行，**同时**报告重复键。
@@ -63,18 +63,32 @@ export function parseLangLines(text) {
  * 只把那几行回退成英文，其余译文照用。全有或全无的判据会把整块好译文扔掉 ——
  * 在「免费层单跑」模式下（网关不可用）那等于整个光影失败。
  *
+ * **无字母行不算回退**：`value.BRIGHTNESS.-95=-95`、`value.WATER_DETAIL.0.05=5%` 这类
+ * 纯数字/符号/单位/空值本来就不该翻译，保留原值就是正确结果。模型对它们通常原样返回，
+ * 按 `zh !== v` 会被计成回退 —— 实测 alphalook 4697 键里 3152 行是这种行，回退率被顶到
+ * 67%，整条光影被判死。它们单独计入 `untranslatable`（与逐句路径 `translateChunkByLine`
+ * 同口径，见 line-translator.mjs 的 `hasTranslatableLetters`）。
+ *
  * 重复键视为**该键不可信**，同样按行回退（防静默污染，见 parseLangResponse）。
  *
  * @param {Array<[string,string]>} chunk
  * @param {Map<string,string>} got
  * @param {Set<string>} [duplicated] 回话里重复出现的键
+ * @returns {{map: Map<string,string>, fallback: number, untranslatable: number, missingKeys: string[], duplicatedKeys: string[]}}
  */
 export function evaluateOutput(chunk, got, duplicated = new Set()) {
   const map = new Map()
   let fallback = 0
+  let untranslatable = 0
   const missingKeys = []
   const duplicatedKeys = []
   for (const [k, v] of chunk) {
+    // 无字母行不需要翻译：保留原值，既不进 fallback 也不进 missingKeys。
+    if (!hasTranslatableLetters(v)) {
+      map.set(k, v)
+      untranslatable++
+      continue
+    }
     // 重复键不可信：哪一行对应哪一行分不清，宁可回退也不要写错。
     if (duplicated.has(k)) {
       map.set(k, v)
@@ -90,12 +104,17 @@ export function evaluateOutput(chunk, got, duplicated = new Set()) {
       if (!got.has(k)) missingKeys.push(k)
     }
   }
-  return { map, fallback, missingKeys, duplicatedKeys }
+  return { map, fallback, untranslatable, missingKeys, duplicatedKeys }
 }
 
-/** 回退率阈值：超过则视为该提供方这次翻得不够好。 */
-export function fallbackThreshold(chunkLength, ratio = 0.1) {
-  return Math.ceil(chunkLength * ratio)
+/**
+ * 回退率阈值：超过则视为该提供方这次翻得不够好。
+ *
+ * 基准是**可翻译行数**（`translatableLines`），不是分块总行数：无字母行不参与回退率，
+ * 否则数值密集的光影（实测 alphalook 67% 的行是纯数字）无论翻得多好都会超阈值。
+ */
+export function fallbackThreshold(translatableLines, ratio = 0.1) {
+  return Math.ceil(translatableLines * ratio)
 }
 
 /**
@@ -128,7 +147,9 @@ export async function tryFreeTier({ chunk, provider, call, signal, log = () => {
     log(`[免费层] 回话里有重复键 ${evaluated.duplicatedKeys.length} 个（疑似键名重命名撞车），这些行按回退处理`)
   }
   if (evaluated.missingKeys.length > 0) {
-    log(`[免费层] 漏掉 ${evaluated.missingKeys.length}/${chunk.length} 个键，这些行回退成英文（其余译文照用）`)
+    // 分母用可翻译行数：missingKeys 已排除无字母行，用 chunk.length 会让比例看起来偏小。
+    const translatable = chunk.length - evaluated.untranslatable
+    log(`[免费层] 漏掉 ${evaluated.missingKeys.length}/${translatable} 个键，这些行回退成英文（其余译文照用）`)
   }
   return evaluated
 }
@@ -140,19 +161,21 @@ export async function tryFreeTier({ chunk, provider, call, signal, log = () => {
  * 失败语义相同——抛错返回 null 让调用方落回退池；**部分回退不算失败**，
  * 漏掉的行留英文，整体质量仍由回退率阈值把关。
  *
- * @returns {Promise<{map: Map<string,string>, fallback: number}|null>}
+ * `untranslatable` 原样透传：无字母行不算回退，调用方据此把阈值基准算成可翻译行数。
+ *
+ * @returns {Promise<{map: Map<string,string>, fallback: number, untranslatable: number}|null>}
  */
 export async function tryFreeTierByLine({ chunk, provider, call, signal, log = () => {} }) {
   if (!provider) return null
   try {
-    const { map, fallback } = await translateChunkByLine({
+    const { map, fallback, untranslatable } = await translateChunkByLine({
       chunk,
       call: (text, sig) => call(provider, text, sig),
       signal,
       concurrency: provider.lineConcurrency ?? DEFAULT_LINE_CONCURRENCY,
       log,
     })
-    return { map, fallback }
+    return { map, fallback, untranslatable }
   } catch (err) {
     log(`[免费层] 逐句失败（${err?.message?.slice(0, 120) ?? err}），降级到回退池`)
     return null
@@ -231,6 +254,11 @@ export function createChunkTranslator(deps) {
  * 首块零译文则弃用该模型。免费层的结果作为回退池的起始最优值，
  * 因此回退池若反而更差不会把已拿到的较好结果覆盖掉。
  *
+ * **回退率的分母是可翻译行数**（值含字母的行），不是分块总行数：无字母行
+ * （`-95`、`5%`、`---`、空值）不需要翻译，保留原值就是正确结果。它们若进分母，
+ * 数值密集的光影会被判成「回退率过高」——实测 alphalook 4697 键里 3152 行是这种行。
+ * 免费层（逐句/整块）与回退池的 fallback 都已在各自入口排除这些行。
+ *
  * @param {object} p
  * @param {Array<[string,string]>} p.chunk 待译分块
  * @param {string} p.input 已拼好的 `键=值` 文本（免费层与回退池共用）
@@ -262,11 +290,13 @@ export async function translateChunkTwoLayer({
   markUnusable = () => {},
   isNoOutput = () => false,
 }) {
-  const threshold = fallbackThreshold(chunk.length)
+  // 可翻译行数：阈值与所有「回退 N/M」日志都用它当分母（见函数头说明）。
+  const translatableLines = chunk.filter(([, v]) => hasTranslatableLetters(v)).length
+  const threshold = fallbackThreshold(translatableLines)
 
   // ---------- 第一层：免费层 ----------
   let best = null
-  let bestFallback = chunk.length
+  let bestFallback = translatableLines
   const usedProviderIds = new Set()
 
   if (freeTier && isUsable(freeTier)) {
@@ -292,14 +322,13 @@ export async function translateChunkTwoLayer({
         return { map: free.map, fallback: free.fallback, providerIds: [freeTier.id] }
       }
       // 回话完整但回退率偏高：仍交给回退池再试一次（不熔断，它确实在产出译文）。
-      log(`[免费层] 回退率 ${free.fallback}/${chunk.length} 偏高，转交回退池`)
+      log(`[免费层] 回退率 ${free.fallback}/${translatableLines} 偏高，转交回退池`)
     } else {
       onFreeTierFailure()
     }
   }
 
   // ---------- 第二层：回退池（行为与改造前完全一致） ----------
-  const translatableLines = chunk.filter(([, v]) => /[A-Za-z]/.test(v)).length
   for (const activeProvider of poolProviders) {
     for (let attempt = 1; attempt <= 3 && bestFallback > threshold; attempt++) {
       let text
