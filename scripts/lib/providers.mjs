@@ -99,7 +99,8 @@ export function buildInstTransPrompt(input) {
  *
  * 两个「免费层专属」的策略字段由 pipeline 读取，它们不是提示词/请求体，但同样是
  * provider 的属性（见 issue #3）：
- * - `maxAttempts: 1` —— 单次尝试，**无退避重试**；
+ * - `maxAttempts` —— 单块尝试次数，**默认 1（无退避重试）**。pipeline 默认改成 2：
+ *   实测该服务约半数 60 行分块会 504（服务端推理超时），重试一次能救回一部分；
  * - `requestTimeoutMs: 60000` —— 单请求 60 秒超时。
  *
  * **刻意没有「键集合必须完整」这个硬开关**。实测免费层会以约 60% 的概率丢掉孤立的
@@ -113,8 +114,9 @@ export function buildInstTransPrompt(input) {
  * @param {() => string} p.url 接口地址
  * @param {string} p.label 日志里显示的提供方名称
  * @param {number} [p.requestTimeoutMs] 单请求超时
+ * @param {number} [p.maxAttempts] 单块尝试次数；默认 1（无退避）
  */
-export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000, lineConcurrency = DEFAULT_LINE_CONCURRENCY }) {
+export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000, lineConcurrency = DEFAULT_LINE_CONCURRENCY, maxAttempts = 1 }) {
   // 逐句模型（syllable 系列）必须一行一个请求：实测给 N 行只回 1 行，且回哪行不可控。
   // 标记由模型名判定，不靠外部配置——配错模型名时行为可预期（按整块走，回退率会暴露）。
   const perLine = /-syllable$/i.test(model)
@@ -134,7 +136,10 @@ export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 6
     }),
     buildPrompt: buildInstTransPrompt,
     extract: (j) => j.choices?.[0]?.message?.content,
-    maxAttempts: 1,
+    // 单次尝试、无退避：免费层是无 SLA 的公开服务，对它重试只会把预算烧在
+    // 同一个坏端点上。pipeline 可按需调大（实测半数 60 行分块会 504，重试一次
+    // 能救回一部分），默认仍保持 1 次以维持原有行为。
+    maxAttempts,
     requestTimeoutMs,
     // 下面两个字段只有逐句路径读：provider-chain 据此分流到 line-translator。
     // 并发度由调用方注入（pipeline 读 FREE_TIER_CONCURRENCY），provider 不读环境变量。

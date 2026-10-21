@@ -126,11 +126,13 @@ test('默认并发度是 16（本机实测 32 是拐点，CI 出口未验证取�
 // 队列里剩下的行**从没进过 map**。旧实现因此让中止后的分块报「回退 0/31」——
 // 31 行既没译文也不算回退，日志看起来完美，实际整块丢行。
 // 正确语义：没翻成的行保留英文原值、计入回退、并且进 map（产物不能缺行）。
+// 2026-10-21 起**中止行单独计数**（aborted）：它们从没发过请求，不是翻译失败，
+// 不能再把「预算还剩多少」混进回退率里（实测同一条光影两次跑出 3.6% 与 54.8%）。
 test('signal 已中断时不再发起新请求，但未处理的行保留原值并计入回退', async () => {
   const ctrl = new AbortController()
   ctrl.abort()
   let calls = 0
-  const { map, fallback, reasons } = await translateChunkByLine({
+  const { map, fallback, aborted, reasons } = await translateChunkByLine({
     chunk: [['a', 'Alpha'], ['b', 'Beta']],
     call: async () => {
       calls++
@@ -144,5 +146,6 @@ test('signal 已中断时不再发起新请求，但未处理的行保留原值�
   assert.equal(map.get('b'), 'Beta')
   assert.equal(map.size, 2, '产物不能缺行')
   assert.equal(fallback, 2, '没翻成就是回退，不能报成 0')
-  assert.equal(reasons.aborted, 2)
+  assert.equal(aborted, 2, '这些行从没发过请求，要单独计数')
+  assert.equal(reasons.aborted, undefined, 'aborted 不再混进 reasons')
 })

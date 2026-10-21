@@ -162,20 +162,21 @@ export async function tryFreeTier({ chunk, provider, call, signal, log = () => {
  * 漏掉的行留英文，整体质量仍由回退率阈值把关。
  *
  * `untranslatable` 原样透传：无字母行不算回退，调用方据此把阈值基准算成可翻译行数。
+ * `aborted` 原样透传：signal 中止时从没发请求的行，见 line-translator 的说明。
  *
- * @returns {Promise<{map: Map<string,string>, fallback: number, untranslatable: number}|null>}
+ * @returns {Promise<{map: Map<string,string>, fallback: number, aborted: number, untranslatable: number}|null>}
  */
 export async function tryFreeTierByLine({ chunk, provider, call, signal, log = () => {} }) {
   if (!provider) return null
   try {
-    const { map, fallback, untranslatable } = await translateChunkByLine({
+    const { map, fallback, aborted, untranslatable } = await translateChunkByLine({
       chunk,
       call: (text, sig) => call(provider, text, sig),
       signal,
       concurrency: provider.lineConcurrency ?? DEFAULT_LINE_CONCURRENCY,
       log,
     })
-    return { map, fallback, untranslatable }
+    return { map, fallback, aborted, untranslatable }
   } catch (err) {
     log(`[免费层] 逐句失败（${err?.message?.slice(0, 120) ?? err}），降级到回退池`)
     return null
@@ -309,6 +310,9 @@ export async function translateChunkTwoLayer({
   // ---------- 第一层：免费层 ----------
   let best = null
   let bestFallback = translatableLines
+  // 本块里「从没发过请求」的行数（signal 中止所致）。它们保留英文原值、也计入 fallback，
+  // 但不是翻译失败——见 line-translator 的说明。随返回值透传到 shader 级闸门。
+  let bestAborted = 0
   const usedProviderIds = new Set()
 
   if (freeTier && isUsable(freeTier)) {
@@ -329,9 +333,10 @@ export async function translateChunkTwoLayer({
       onFreeTierSuccess()
       best = free.map
       bestFallback = free.fallback
+      bestAborted = free.aborted ?? 0
       usedProviderIds.add(freeTier.id)
       if (free.fallback <= threshold) {
-        return { map: free.map, fallback: free.fallback, providerIds: [freeTier.id] }
+        return { map: free.map, fallback: free.fallback, aborted: bestAborted, providerIds: [freeTier.id] }
       }
       // 回话完整但回退率偏高：仍交给回退池再试一次（不熔断，它确实在产出译文）。
       log(`[免费层] 回退率 ${free.fallback}/${translatableLines} 偏高，转交回退池`)
@@ -406,6 +411,7 @@ export async function translateChunkTwoLayer({
   return {
     map: best ?? new Map(chunk.map(([k, v]) => [k, v])),
     fallback: bestFallback,
+    aborted: bestAborted,
     providerIds: [...usedProviderIds],
   }
 }

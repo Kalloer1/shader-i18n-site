@@ -101,9 +101,25 @@ const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 // 免费层（bilibili Index-Translate 公开 API）：**无需 API key**，无 SLA。
 // 它是流水线的默认主路，失败才落到上面的网关回退池。
 const DEFAULT_FREE_TIER_URL = 'https://index-translate.bilibili.com/v1/chat/completions'
-const DEFAULT_FREE_TIER_MODEL = 'Index-Translate-35B-A3B'
+// 2026-10-21 实测（本机，真实 lang 文件 60 行分块）：
+//   模型                      回话形态                    可否用
+//   Index-Translate-35B-A3B   30 行内 OK，60 行 504        大块不稳，小块可用
+//   index-mt-9b               60→60 行、键名零改写         ✅ 默认（整块模式）
+//   index-mt-2b               把 option.SHADOWS 改写成
+//                             「选项.阴影」（键名翻译）    ❌ 会毁坏 lang 文件
+//   index-mt-*-syllable       逐句模型，一次只回 1 行       逐句模式专用
+// 取 `index-mt-9b` 而不是老的 `index-mt-9b-syllable`：它走**整块**路径（一次请求 N 行、
+// 键名原样带回），实测 § 格式码与占位符零漂移；syllable 是逐句模型，必须一行一个请求，
+// 4297 键的光影会把预算耗在请求数上。模型名不带 `-syllable` 时 pipeline 自动走整块路径。
+const DEFAULT_FREE_TIER_MODEL = 'index-mt-9b'
+// 免费层单块最大尝试次数。默认 2：实测该服务约半数 60 行分块会 504（服务端推理超时），
+// 重试一次能救回其中一部分。设 1 则一条分块 504 就等于这一块全回退英文。
+const DEFAULT_FREE_TIER_ATTEMPTS = 2
 // 免费层连续失败多少次才标记「本轮不可用」。单次抖动只降级当前分块，不熔断。
 const FREE_TIER_FAILURE_THRESHOLD = 2
+// 整条光影的回退率闸门：超过这个比例判失败、不落盘，留待下次重试。
+// 原来是 pipeline.mjs 里硬编码的 0.3，提成常量便于调参与检索。
+const FALLBACK_GATE_RATIO = 0.3
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -208,6 +224,29 @@ function freeTierUrl() {
 }
 const FREE_TIER_MODEL = () => envStr('FREE_TIER_MODEL') ?? DEFAULT_FREE_TIER_MODEL
 const FREE_TIER_ON = freeTierEnabled()
+
+// ---------- 网关回退池开关（用户需求：免费层单跑时彻底不看网关） ----------
+// `GATEWAY_ENABLED=0` 时回退池直接留空，等于只跑免费层：免费层翻译失败就停在那里，
+// 不再把每个分块都交给会挂死 8 分钟的网关模型。
+// 默认开启（与改造前一致）；只在显式设为 0/false/no/off 时关闭。
+function gatewayEnabled() {
+  const raw = envStr('GATEWAY_ENABLED')
+  if (raw === undefined) return true // 缺省开启，保持原行为
+  return !/^(0|false|no|off)$/i.test(raw.trim())
+}
+const GATEWAY_ON = gatewayEnabled()
+
+/** 免费层单块重试次数（见 DEFAULT_FREE_TIER_ATTEMPTS 的实测说明）。 */
+function readFreeTierAttempts() {
+  const raw = envStr('FREE_TIER_MAX_ATTEMPTS')
+  if (raw === undefined) return DEFAULT_FREE_TIER_ATTEMPTS
+  const n = Number(raw)
+  if (!Number.isInteger(n) || n < 1) {
+    console.error(`FREE_TIER_MAX_ATTEMPTS 无效（${raw}），使用默认值 ${DEFAULT_FREE_TIER_ATTEMPTS}`)
+    return DEFAULT_FREE_TIER_ATTEMPTS
+  }
+  return Math.min(n, 5) // 上限 5：再高等于把无 SLA 的公开服务当主力使
+}
 
 // 仅当「提供方本身」被改写（换模型/换地址）时按自定义提供方呈现；
 // 只设 LLM_CONCURRENCY / LLM_API_KEY 时不改打印，保持与改造前一致的字面输出。
@@ -324,7 +363,8 @@ function createProvider(model) {
 
 // 无 key 时回退池**真的为空**：不能留一个必 401 的 provider 列表，否则每个分块都要先撞一次
 // 401 才落回免费层（浪费预算且日志噪声）。有 key 时行为与改造前一致。
-const providers = LLM_KEY() ? LLM_MODELS.map(createProvider) : []
+// `GATEWAY_ENABLED=0`（用户要的「免费层单跑」）也留空：宁可不翻，也不把分块交给挂死的网关。
+const providers = GATEWAY_ON && LLM_KEY() ? LLM_MODELS.map(createProvider) : []
 const provider = providers[0]
 let providerCursor = 0
 
@@ -352,6 +392,9 @@ const freeTierProvider = createFreeTierProvider({
   url: freeTierUrl,
   label: `${FREE_TIER_MODEL()}（${providerHostLabel(freeTierUrl())}）`,
   lineConcurrency: readFreeTierConcurrency(),
+  // 免费层默认 1 次（不重试）：无 SLA 的公开服务，重试只会把预算烧在同一个坏端点上。
+  // 但该服务实测约半数 60 行分块会 504，故默认改成 2 次（见 DEFAULT_FREE_TIER_ATTEMPTS）。
+  maxAttempts: readFreeTierAttempts(),
 })
 
 // 免费层连续失败计数。达 FREE_TIER_FAILURE_THRESHOLD 才熔断（单次抖动只降级当前分块）。
@@ -385,9 +428,11 @@ const contributorLine = (providerIds) => buildContributorLine(providerIds, freeT
 // 没有网关 key 时不再硬失败：免费层不需要 key，回退池留空，以「免费层单跑」模式运行（issue #4）。
 // ⚠️ 这**有意打破**了一条原不变量（「不设任何 LLM_* 环境变量时行为与改造前逐字一致」）——
 // 用户已于 2026-10-17 明确点头，此处记录在案。
-// 但免费层也被显式关掉时（FREE_TIER_ENABLED=0）确实没有任何可用提供方，仍保持原有的硬失败。
+// 但「网关被 GATEWAY_ENABLED=0 关掉」与「没配 key」是同一回事（回退池都为空），
+// 不是错误，不该再打出「缺少 API key」的告警——用户 2026-10-21 明确要这个开关。
+// 只有「网关开着却没 key」才是配置错误，且仅当免费层也关了才硬失败。
 const LLM_KEY_MISSING = !LLM_KEY()
-if (LLM_KEY_MISSING) {
+if (LLM_KEY_MISSING && GATEWAY_ON) {
   if (!FREE_TIER_ON) {
     if (LLM_ENV_SET) {
       console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），默认站点 ' + providerHostLabel(DEFAULT_BASE_URL))
@@ -398,6 +443,8 @@ if (LLM_KEY_MISSING) {
     process.exit(2)
   }
   console.warn('警告：未设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），回退池为空，将以「免费层单跑」模式运行\n')
+} else if (!GATEWAY_ON) {
+  console.log('网关回退池已通过 GATEWAY_ENABLED=0 关闭：只跑免费层，失败即停（不再转交网关）\n')
 }
 const providerLabel = providers.length === 0
   ? '（无，回退池为空）'
@@ -1078,26 +1125,35 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
   } finally {
     saveProgress(progress)
   }
-  const { map: zhMap, totalFallback, translatableTotal, glossaryHit, progressHit, llmCalls, providersUsed } = translated
+  const { map: zhMap, totalFallback, totalAborted, translatableTotal, glossaryHit, progressHit, llmCalls, providersUsed } = translated
   // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
   // 回退率的分母是**可翻译行数**（值含字母的行），不是 pairs.length：无字母行
   // （`-95`、`5%`、`---`、空值）本来就不翻译，保留原值就是正确结果。
   // 实测 alphalook 4697 键里 3152 行是这种行，按 pairs.length 算会把 3.1% 的回退率
   // 放大成 67%，整条正常光影被判死。noLetters 单独列出，日志上一眼看得见。
   const noLetters = pairs.length - translatableTotal
-  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${translatableTotal}（noLetters ${noLetters}），来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
-  // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
-  if (totalFallback > translatableTotal * 0.3) {
+
+  // **中止行不算翻译失败**。signal 中止时队列里剩下的行从没发过请求，模型从没看过它们；
+  // 把它们算进回退率，同一条光影会跑出 3.6% 和 54.8% 两种结果（实测差异里 793/847 条
+  // 全是中止，真实失败只有 54 条），回退率于是变成「预算还剩多少」的副产品，不再能判断质量。
+  // aborted 单独报，闸门只认「发了请求仍拿不到译文」的部分。
+  const realFallback = Math.max(0, totalFallback - totalAborted)
+  const abortedNote = totalAborted > 0 ? `，其中 ${totalAborted} 行未及发请求` : ''
+  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${realFallback}/${translatableTotal}（noLetters ${noLetters}${abortedNote}），来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
+
+  // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试。
+  // 阈值提成命名常量（原来是硬编码的 0.3）：调参不该靠 grep 找字面量。
+  if (realFallback > translatableTotal * FALLBACK_GATE_RATIO) {
     const done = progressSummary(progress, pairs)
     if (cfMode) {
-      console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${totalFallback}/${translatableTotal}），尝试下一个`)
+      console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${realFallback}/${translatableTotal}），尝试下一个`)
       console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
-      return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${translatableTotal}）`, cfRetry: true }
+      return { status: STATUS.FAILED, error: `翻译回退率过高（${realFallback}/${translatableTotal}）`, cfRetry: true }
     }
-    console.log(`${tag} 回退率过高（${totalFallback}/${translatableTotal}），判定失败，跳过`)
+    console.log(`${tag} 回退率过高（${realFallback}/${translatableTotal}${abortedNote}），判定失败，跳过`)
     console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
     failed++
-    return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${translatableTotal}）` }
+    return { status: STATUS.FAILED, error: `翻译回退率过高（${realFallback}/${translatableTotal}）` }
   }
   // 渲染在 lib 里（纯函数），保证「复用进度的译文」与「重新翻出的译文」
   // 渲染出的字节完全一致；tests/lang-render.test.mjs 用仓库真实文件做往返比对。

@@ -66,6 +66,9 @@ export function createTranslateEntries(deps) {
     const providerList = Array.isArray(activeProviders) ? activeProviders : [activeProviders]
     const out = new Map()
     let totalFallback = 0
+    // 「从没发过请求」的行（signal 中止）。它们也保留英文原值，但**不是翻译失败**
+    // —— 不能让它把回退率撑高、把一条本来能翻好的光影判死。见 line-translator 说明。
+    let totalAborted = 0
     let llmCalls = 0
     // 回退率的分母：值含字母、真正需要翻译的行。无字母行（`-95`、`5%`、`---`、空值）
     // 保留原值就是正确结果，既不算回退也不进分母（见 provider-chain.mjs 的 evaluateOutput）。
@@ -88,7 +91,7 @@ export function createTranslateEntries(deps) {
     if (pending.length === 0) {
       log(`    翻译记忆覆盖 ${glossaryHit}/${pairs.length}${progressHit ? `，进度复用 ${progressHit}` : ''}，跳过 LLM`)
       onChunkDone()
-      return { map: out, totalFallback: 0, translatableTotal, glossaryHit, progressHit, llmCalls: 0, providersUsed: [] }
+      return { map: out, totalFallback: 0, totalAborted: 0, translatableTotal, glossaryHit, progressHit, llmCalls: 0, providersUsed: [] }
     }
 
     log(`    翻译记忆命中 ${glossaryHit}/${pairs.length}${progressHit ? `，进度复用 ${progressHit}` : ''}，剩余 ${pending.length} 个需 LLM 翻译`)
@@ -146,12 +149,14 @@ export function createTranslateEntries(deps) {
         }
       }
       totalFallback += fallback
+      totalAborted += results[index].aborted ?? 0
       llmCalls++
     }
 
     return {
       map: out,
       totalFallback,
+      totalAborted,
       // 供 pipeline 判「回退率过高」用：分母是可翻译行数，不是 pairs.length。
       translatableTotal,
       glossaryHit,

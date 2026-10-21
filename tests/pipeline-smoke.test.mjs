@@ -47,7 +47,7 @@ test('无 key：不再 exit 2，警告后以「免费层单跑」继续（issue 
 test('无 key：启动输出如实反映「回退池为空」与「免费层优先」', () => {
   const { out } = runPipeline()
   assert.match(out, /LLM 提供方：（无，回退池为空）/, '回退池为空要说清楚')
-  assert.match(out, /免费层（优先）：Index-Translate-35B-A3B/, '免费层要单独打印')
+  assert.match(out, /免费层（优先）：index-mt-9b/, '免费层要单独打印')
 })
 
 test('无 key + 免费层被显式关闭 → 仍硬失败 exit 2（没有可用提供方）', () => {
@@ -65,7 +65,20 @@ test('有 key：不打印「免费层单跑」警告，回退池正常列出', (
 
 test('免费层默认开启（不设 FREE_TIER_ENABLED 时也是开的）', () => {
   const { out } = runPipeline({ LLM_API_KEY: 'dummy' })
-  assert.match(out, /免费层（优先）：Index-Translate-35B-A3B/)
+  assert.match(out, /免费层（优先）：index-mt-9b/)
+})
+
+test('GATEWAY_ENABLED=0：网关回退池关闭，只跑免费层且不报「缺少 key」', () => {
+  // 用户 2026-10-21 明确需求：网关模型会挂死 8 分钟，要把它们彻底摘掉，
+  // 免费层翻译失败就停在那里，不再转交网关。
+  const { code, out } = runPipeline({ LLM_API_KEY: 'dummy', GATEWAY_ENABLED: '0' })
+  assert.notEqual(code, 2, `不该硬失败；实际输出：\n${out}`)
+  assert.equal(code, 0, `应正常结束；实际输出：\n${out}`)
+  assert.match(out, /GATEWAY_ENABLED=0 关闭/, '要说明网关已关')
+  assert.ok(!out.includes('未设置 LLM_API_KEY'), '关了网关不是缺 key，不该告警')
+  assert.match(out, /LLM 提供方：（无，回退池为空）/, '回退池必须真的为空')
+  assert.ok(!out.includes('kilo/kilo-auto/free'), '网关模型一个都不该出现')
+  assert.match(out, /免费层（优先）：index-mt-9b/, '免费层照常优先')
 })
 
 test('免费层可通过 FREE_TIER_ENABLED=0 关闭', () => {

@@ -104,7 +104,7 @@ export function hasTranslatableLetters(value) {
  * @param {AbortSignal} [p.signal]
  * @param {number} [p.concurrency] 并发度
  * @param {(msg: string) => void} [p.log]
- * @returns {Promise<{map: Map<string,string>, fallback: number, untranslatable: number, reasons: Record<string, number>}>}
+ * @returns {Promise<{map: Map<string,string>, fallback: number, aborted: number, untranslatable: number, reasons: Record<string, number>}>}
  */
 export async function translateChunkByLine({
   chunk,
@@ -116,6 +116,9 @@ export async function translateChunkByLine({
   const map = new Map()
   const reasons = {}
   let fallback = 0
+  // 「从没发过请求」的行（signal 中止时 worker 直接 return）。它们也保留英文原值、也算进
+  // fallback，但**不是翻译失败**——模型从没看过这些输入。单独计数，调用方据此区分。
+  let aborted = 0
   let untranslatable = 0
 
   // 没有字母的行（纯数字、纯符号）本来就不需要翻译，直接保留原值，不浪费请求。
@@ -164,21 +167,29 @@ export async function translateChunkByLine({
   // 中止（超时/预算耗尽）时 worker 直接 return，队列里剩下的行**从没进过 map**。
   // 必须在这里补齐：这些行没翻成，保留英文原值就是回退，而且要进 map ——
   // 否则它们既不产出译文也不算回退，日志会谎报「回退 0/31」，产物还会缺行。
+  //
+  // ⚠️ 但**中止不算翻译失败**：这些行从没发过请求，模型从没看过它们。把它们计入回退率
+  // 会让同一个光影的回退率随「预算还剩多少」剧烈漂移 —— 实测同一条光影两次跑出
+  // 3.6% 和 54.8%，差异里 793 条全是中止，真实失败只有 54 条。因此 aborted 单独计数，
+  // 由调用方决定它是否算进闸门（见 translateEntries 的 aborted 透传）。
   for (const [k, v] of work) {
     if (map.has(k)) continue
     map.set(k, v)
     fallback++
-    reasons.aborted = (reasons.aborted || 0) + 1
+    aborted++
   }
 
   // 分母用「可翻译行数」：无字母行不进分子也不进分母，否则它们会把回退率撑大。
   // noLetters 仍单独列出（并附总行数），日志上一眼能看出「这 52 行本来就不需要翻」。
+  // aborted 是「根本没发请求」的行，与 echo/error 分开报，避免把中止伪装成翻译失败。
   const translatable = chunk.length - untranslatable
-  if (fallback > 0 || untranslatable > 0) {
+  if (fallback > 0 || untranslatable > 0 || aborted > 0) {
     const detail = Object.entries(reasons).map(([r, n]) => `${r} ${n}`).join('，')
-    const scope = untranslatable > 0 ? `${detail}，共 ${chunk.length} 行` : detail
+    const scope = untranslatable > 0 || aborted > 0
+      ? `${detail}，共 ${chunk.length} 行（其中 ${aborted} 行未发请求）`
+      : detail
     log(`[逐句] 回退 ${fallback}/${translatable}（${scope}）`)
   }
 
-  return { map, fallback, untranslatable, reasons }
+  return { map, fallback, aborted, untranslatable, reasons }
 }
