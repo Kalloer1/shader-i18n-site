@@ -162,6 +162,20 @@ export function buildGatewayPrompt(input) {
 }
 
 /**
+ * 网关单请求超时默认值（90 秒）。
+ *
+ * 为什么必须有：`createGatewayProvider` 以前**没有** `requestTimeoutMs`，`chatOnce` 只
+ * 在 provider 带这个字段时才加单请求超时 —— 于是网关请求没有任何单请求超时，
+ * 一次挂起只能等外层候选 signal 中止。实测 CI run 39520489773：derivative-main 免费层
+ * 12 秒就翻完，只剩 3 个分块因 echo 率高转交回退池，三个网关模型全部挂住不动，
+ * 硬拖满 8 分钟候选预算，整条光影 4.7% 的回退率却没能落盘。
+ *
+ * 90 秒的取法：整块 60 行、8192 max_tokens 的推理模型实测通常在 20~60 秒内返回，
+ * 90 秒留出余量；同时远小于 CF 单候选 8 分钟预算，挂住的请求能快速失败并落到下一个模型。
+ */
+export const GATEWAY_REQUEST_TIMEOUT_MS = 90000
+
+/**
  * 构造一个网关提供方（自建中转站，OpenAI 兼容）。
  *
  * `url` / `key` 保持**函数**形式：既有实现在每次调用时才读环境变量，
@@ -173,8 +187,16 @@ export function buildGatewayPrompt(input) {
  * @param {() => string|undefined} p.key API key
  * @param {object} [p.extraBody] 额外请求体，浅合并进 body（来自 LLM_EXTRA_BODY）
  * @param {string} p.label 日志里显示的提供方名称
+ * @param {number} [p.requestTimeoutMs] 单请求超时；不传则用 GATEWAY_REQUEST_TIMEOUT_MS
  */
-export function createGatewayProvider({ model, url, key, extraBody = {}, label }) {
+export function createGatewayProvider({
+  model,
+  url,
+  key,
+  extraBody = {},
+  label,
+  requestTimeoutMs = GATEWAY_REQUEST_TIMEOUT_MS,
+}) {
   return {
     id: model,
     name: label,
@@ -189,6 +211,8 @@ export function createGatewayProvider({ model, url, key, extraBody = {}, label }
     }),
     buildPrompt: buildGatewayPrompt,
     extract: (j) => j.choices?.[0]?.message?.content,
+    // 单请求超时：由 chatOnce 读，与调用方 signal 合并（任一触发即中止）。
+    requestTimeoutMs,
   }
 }
 

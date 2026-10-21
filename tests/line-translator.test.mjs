@@ -122,11 +122,15 @@ test('默认并发度是 16（本机实测 32 是拐点，CI 出口未验证取�
   assert.equal(DEFAULT_LINE_CONCURRENCY, 16)
 })
 
-test('signal 已中断时不再发起新请求', async () => {
+// 中止语义（实测 CI run 39520489773 暴露）：worker 看到 aborted 就 return，
+// 队列里剩下的行**从没进过 map**。旧实现因此让中止后的分块报「回退 0/31」——
+// 31 行既没译文也不算回退，日志看起来完美，实际整块丢行。
+// 正确语义：没翻成的行保留英文原值、计入回退、并且进 map（产物不能缺行）。
+test('signal 已中断时不再发起新请求，但未处理的行保留原值并计入回退', async () => {
   const ctrl = new AbortController()
   ctrl.abort()
   let calls = 0
-  const { map } = await translateChunkByLine({
+  const { map, fallback, reasons } = await translateChunkByLine({
     chunk: [['a', 'Alpha'], ['b', 'Beta']],
     call: async () => {
       calls++
@@ -135,6 +139,10 @@ test('signal 已中断时不再发起新请求', async () => {
     signal: ctrl.signal,
     concurrency: 1,
   })
-  assert.equal(calls, 0)
-  assert.equal(map.size, 0)
+  assert.equal(calls, 0, '中断后不该再发请求')
+  assert.equal(map.get('a'), 'Alpha', '没翻成的行保留英文原值')
+  assert.equal(map.get('b'), 'Beta')
+  assert.equal(map.size, 2, '产物不能缺行')
+  assert.equal(fallback, 2, '没翻成就是回退，不能报成 0')
+  assert.equal(reasons.aborted, 2)
 })

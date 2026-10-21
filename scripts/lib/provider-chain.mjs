@@ -199,6 +199,9 @@ export async function tryFreeTierByLine({ chunk, provider, call, signal, log = (
  * @param {(id: string) => void} deps.markUnusable
  * @param {(provider: object, messages: Array, signal: AbortSignal) => Promise<string>} deps.callProvider
  * @param {(p: object) => boolean} deps.isNoOutput
+ * @param {(id: string, zeroOutput: boolean) => number} [deps.onProviderOutcome]
+ *   回退池里某提供方这一块的结局；返回其「连续零产出」累计次数（熔断计数在调用方）
+ * @param {number} [deps.unusableAfterZeroOutput] 连续零产出多少次判为不可用
  * @param {(msg: string) => void} [deps.log]
  * @param {(msg: string) => void} [deps.logError] 失败/降级类日志
  */
@@ -243,6 +246,9 @@ export function createChunkTranslator(deps) {
       isUsable: () => isFreeTierUsable(),
       markUnusable,
       isNoOutput,
+      // 熔断计数由调用方持有（跨分块、跨光影共享），这里只把每块的结局报上去。
+      onProviderOutcome: deps.onProviderOutcome,
+      unusableAfterZeroOutput: deps.unusableAfterZeroOutput,
     })
   }
 }
@@ -273,6 +279,10 @@ export function createChunkTranslator(deps) {
  * @param {(p: object) => boolean} [p.isUsable] 提供方是否仍可用（熔断状态在调用方）
  * @param {(id: string) => void} [p.markUnusable] 标记某提供方本轮不可用
  * @param {(p: object) => boolean} [p.isNoOutput] 首块零译文判据（注入以便单测）
+ * @param {(id: string, zeroOutput: boolean) => number} [p.onProviderOutcome]
+ *   回退池里每个提供方**这一块**的结局回调。`zeroOutput` 表示这一块它整块没产出任何译文
+ *   （超时/空正文/全是回显）。返回该提供方「连续零产出」的累计次数，供本函数判熔断。
+ * @param {number} [p.unusableAfterZeroOutput] 连续零产出多少次判为不可用（默认 2）
  * @returns {Promise<{map: Map<string,string>, fallback: number, providerIds: string[]}>}
  */
 export async function translateChunkTwoLayer({
@@ -289,6 +299,8 @@ export async function translateChunkTwoLayer({
   isUsable = () => true,
   markUnusable = () => {},
   isNoOutput = () => false,
+  onProviderOutcome = () => 0,
+  unusableAfterZeroOutput = 2,
 }) {
   // 可翻译行数：阈值与所有「回退 N/M」日志都用它当分母（见函数头说明）。
   const translatableLines = chunk.filter(([, v]) => hasTranslatableLetters(v)).length
@@ -330,6 +342,9 @@ export async function translateChunkTwoLayer({
 
   // ---------- 第二层：回退池（行为与改造前完全一致） ----------
   for (const activeProvider of poolProviders) {
+    // 这个提供方在本块里是否产出过任何译文。只有「整块零产出」才计入熔断，
+    // 翻得差（有产出但回退率高）不算 —— 那属于质量问题，交给阈值/换模型处理。
+    let producedAnything = false
     for (let attempt = 1; attempt <= 3 && bestFallback > threshold; attempt++) {
       let text
       try {
@@ -351,6 +366,8 @@ export async function translateChunkTwoLayer({
         bestFallback = evaluated.fallback
         usedProviderIds.add(activeProvider.id)
       }
+      // 「有产出」= 至少一行拿到了译文（fallback < 可翻译行数）。
+      if (evaluated.fallback < translatableLines) producedAnything = true
       if (isFirstChunk && isNoOutput({
         chunkLength: chunk.length,
         parsedLines: got.size,
@@ -362,9 +379,27 @@ export async function translateChunkTwoLayer({
         break
       }
       if (bestFallback > threshold) {
-        log(`第 ${attempt} 次分块回退率 ${evaluated.fallback}/${chunk.length}，重试`)
+        log(`第 ${attempt} 次分块回退率 ${evaluated.fallback}/${translatableLines}，重试`)
       }
     }
+
+    // 熔断：连续多块整块零产出（超时/空正文/全是回显）就本轮弃用它。
+    // 为什么必须做：以前只有「首块 + 空正文」才 markUnusable，于是**超时的模型永远
+    // 不会被标记**——实测 CI run 39520489773 里三个网关模型每个都挂满 90 秒 × 3 次尝试，
+    // 每个走回退池的分块都要重挂一遍，一条光影的候选预算就这么烧光。
+    // 只在「确实没有任何产出」时累计：偶发一次失败不该熔断一个能用的模型。
+    // 调用方 signal 已中止（候选超时/预算耗尽）时不计：那是我们取消的，不是模型坏了，
+    // 否则会把「这次超时」的锅算到所有模型头上，连累后续光影。
+    if (!producedAnything && !signal?.aborted) {
+      const consecutive = onProviderOutcome(activeProvider.id, true)
+      if (consecutive >= unusableAfterZeroOutput) {
+        markUnusable(activeProvider.id)
+        log(`[${activeProvider.id}] 连续 ${consecutive} 块零产出（超时/空正文/全回显），本轮弃用该模型`)
+      }
+    } else if (producedAnything) {
+      onProviderOutcome(activeProvider.id, false)
+    }
+
     if (bestFallback <= threshold) break
   }
 

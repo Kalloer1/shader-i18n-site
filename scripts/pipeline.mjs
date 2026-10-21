@@ -263,6 +263,23 @@ const LLM_CHUNK_CONCURRENCY = readChunkConcurrency()
 // 本轮已被判定「产不出译文」的模型 id。跨光影共享：坏模型不重复烧预算。
 const unusableProviders = new Set()
 
+// 回退池各提供方的「连续零产出」计数（熔断用，见 provider-chain.mjs 的熔断段落）。
+// 只有整块没产出任何译文（超时/空正文/全回显）才累加，产出了任何一行就清零。
+// 跨分块、跨光影共享：一个挂住的模型不该让每个分块都重新挂一遍。
+const providerZeroOutputStreak = new Map()
+function noteProviderOutcome(id, zeroOutput) {
+  if (!zeroOutput) {
+    providerZeroOutputStreak.delete(id)
+    return 0
+  }
+  const n = (providerZeroOutputStreak.get(id) ?? 0) + 1
+  providerZeroOutputStreak.set(id, n)
+  return n
+}
+// 连续 2 块零产出即熔断。取 2 而不是 1：单块失败可能只是这一块撞上了端点抖动，
+// 连续两块都拿不到一行译文才说明这个模型本轮不可用。
+const PROVIDER_ZERO_OUTPUT_THRESHOLD = 2
+
 /**
  * 给定模型列表是否全部已被判定不可用。
  *
@@ -278,6 +295,21 @@ function providerHostLabel(url) {
   try { return new URL(url).host } catch { return url }
 }
 
+// 网关单请求超时：不配则用 provider 的默认值（90 秒，见 providers.mjs）。
+// 实测 CI run 39520489773：网关请求没有单请求超时时会一直挂到候选预算耗尽，
+// 一个挂住的模型就能吃掉整条光影的 8 分钟。90 秒内快速失败才能落到下一个模型。
+function readGatewayRequestTimeout() {
+  const raw = envStr('LLM_REQUEST_TIMEOUT_MS')
+  if (raw === undefined) return undefined
+  const n = Number(raw)
+  if (!Number.isFinite(n) || n <= 0) {
+    console.error(`LLM_REQUEST_TIMEOUT_MS 无效（${raw}），使用默认值`)
+    return undefined
+  }
+  return n
+}
+const GATEWAY_REQUEST_TIMEOUT = readGatewayRequestTimeout()
+
 function createProvider(model) {
   const isDefault = !LLM_ENV_SET && model === DEFAULT_MODEL
   return createGatewayProvider({
@@ -286,6 +318,7 @@ function createProvider(model) {
     key: LLM_KEY,
     extraBody: LLM_EXTRA_BODY,
     label: isDefault ? `space-bunny-free（${providerHostLabel(DEFAULT_BASE_URL)}）` : `${model}（${providerHostLabel(LLM_URL())}）`,
+    requestTimeoutMs: GATEWAY_REQUEST_TIMEOUT,
   })
 }
 
@@ -420,6 +453,11 @@ async function chatWithRetry(activeProvider, messages, signal) {
       // 正文为空：重试同一个模型只会拿到同样的空正文（推理模型把内容写在 reasoning_content），
       // 原实现的退避重试会把预算烧在必然失败的重试上，这里直接抛出交给 translateChunk 判定。
       if (err instanceof EmptyResponseError) throw err
+      // 单请求超时（provider 的 requestTimeoutMs 触发，err.name === 'TimeoutError'）不重试：
+      // 挂住的端点不会因为再等一轮就恢复。重试它等于把「一个模型 90 秒」放大成 10 倍，
+      // 实测 CI run 39520489773 就是这么把整条光影的候选预算烧光的。
+      // 注意先排除外层 signal 已中止的情况（那是调用方取消，不是端点挂住）。
+      if (err?.name === 'TimeoutError' && !signal?.aborted) throw err
       // 本条已超时中断：立即结束，不再退避重试（否则会留下挂到超时之后的孤儿重试）
       if (signal?.aborted) throw err
       const delay = 2000 * 2 ** (attempt - 1)
@@ -608,6 +646,8 @@ const translateChunk = createChunkTranslator({
   markUnusable: (id) => unusableProviders.add(id),
   callProvider: (activeProvider, messages, sig) => callProvider(activeProvider, messages, sig),
   isNoOutput: isProviderNoOutput,
+  onProviderOutcome: noteProviderOutcome,
+  unusableAfterZeroOutput: PROVIDER_ZERO_OUTPUT_THRESHOLD,
 })
 
 // 一条光影的初翻编排在 lib 里（createTranslateEntries）：记忆 → 进度 → LLM。

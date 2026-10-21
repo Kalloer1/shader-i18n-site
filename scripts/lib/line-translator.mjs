@@ -161,6 +161,16 @@ export async function translateChunkByLine({
     }
   }))
 
+  // 中止（超时/预算耗尽）时 worker 直接 return，队列里剩下的行**从没进过 map**。
+  // 必须在这里补齐：这些行没翻成，保留英文原值就是回退，而且要进 map ——
+  // 否则它们既不产出译文也不算回退，日志会谎报「回退 0/31」，产物还会缺行。
+  for (const [k, v] of work) {
+    if (map.has(k)) continue
+    map.set(k, v)
+    fallback++
+    reasons.aborted = (reasons.aborted || 0) + 1
+  }
+
   // 分母用「可翻译行数」：无字母行不进分子也不进分母，否则它们会把回退率撑大。
   // noLetters 仍单独列出（并附总行数），日志上一眼能看出「这 52 行本来就不需要翻」。
   const translatable = chunk.length - untranslatable

@@ -343,6 +343,68 @@ test('回退池：阈值分母是可翻译行数（52 行无字母时 2 行回�
   assert.equal(calls[1], pool.id, '2/8=25% 超阈值，应转交回退池（若按 60 行算只有 3.3% 就不会转交）')
 })
 
+// ---------- 熔断：连续零产出才弃用（实测 CI run 39520489773） ----------
+// 当时只有「首块 + 空正文」才 markUnusable，超时的模型永远不会被标记：
+// 三个网关模型各自挂满超时 × 3 次尝试，每个走回退池的分块都要重挂一遍，
+// 一条光影的候选预算（8 分钟）就这么烧光。下面锁住新语义。
+
+test('熔断：连续 2 块零产出 → markUnusable，且不再被调用', async () => {
+  const free = freeProvider()
+  const pool = poolProvider('a')
+  const unusable = new Set()
+  const streaks = new Map()
+  const onProviderOutcome = (id, zeroOutput) => {
+    const n = zeroOutput ? (streaks.get(id) ?? 0) + 1 : 0
+    if (zeroOutput) streaks.set(id, n); else streaks.delete(id)
+    return n
+  }
+  // 免费层失败 → 走回退池；回退池每次都超时
+  const { call, calls } = makeCall((p) => (p.id === free.id ? new Error('HTTP 500') : Object.assign(new Error('timeout'), { name: 'TimeoutError' })))
+
+  const run = () => translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: free, poolProviders: unusable.has('a') ? [] : [pool], call,
+    markUnusable: (id) => unusable.add(id),
+    onProviderOutcome,
+    isNoOutput: () => false,
+  })
+
+  await run()
+  assert.ok(!unusable.has('a'), '第 1 块零产出不该立刻熔断（可能是抖动）')
+  await run()
+  assert.ok(unusable.has('a'), '连续 2 块零产出应熔断')
+
+  const before = calls.filter((id) => id === 'a').length
+  await run()
+  assert.equal(calls.filter((id) => id === 'a').length, before, '熔断后不该再调用它')
+})
+
+test('熔断：只要产出过一行译文就不计零产出（偶发失败不该熔断能用的模型）', async () => {
+  const free = freeProvider()
+  const pool = poolProvider('a')
+  const streaks = new Map()
+  const onProviderOutcome = (id, zeroOutput) => {
+    const n = zeroOutput ? (streaks.get(id) ?? 0) + 1 : 0
+    if (zeroOutput) streaks.set(id, n); else streaks.delete(id)
+    return n
+  }
+  const marked = []
+  // 免费层失败；回退池「翻得差但确实产出了」：3 行里 2 行有译文
+  const partial = zh([['option.SHADOWS', '阴影'], ['option.BLOOM', 'Bloom'], ['option.AO', 'Ambient Occlusion']])
+  const { call } = makeCall((p) => (p.id === free.id ? new Error('HTTP 500') : partial))
+
+  for (let i = 0; i < 4; i++) {
+    await translateChunkTwoLayer({
+      chunk: CHUNK, input, freeTier: free, poolProviders: [pool], call,
+      markUnusable: (id) => marked.push(id),
+      onProviderOutcome,
+      isNoOutput: () => false,
+    })
+  }
+
+  assert.deepEqual(marked, [], '有产出就不是「产不出译文」，不该熔断')
+  assert.equal(streaks.get('a') ?? 0, 0, '有产出应清零连续零产出计数')
+})
+
 test('回退池：首块零译文时弃用该模型（早停判据仍生效）', async () => {
   const free = freeProvider()
   const a = poolProvider('a')
@@ -430,10 +492,16 @@ test('免费层 provider 自带快速降级策略（无退避、60 秒超时、�
   assert.equal(free.requiresCompleteKeys, undefined)
 })
 
-test('网关 provider 没有免费层专属字段（行为不许变）', () => {
+// 语义变更（Bug 修复，实测 CI run 39520489773）：网关以前**没有** requestTimeoutMs，
+// 于是挂住的请求只能等外层候选 signal 中止（8 分钟）——免费层 12 秒翻完的光影，
+// 被 3 个卡在网关上的分块拖到整条超时。现在网关自带 90 秒单请求超时。
+test('网关 provider 没有免费层专属字段，但有单请求超时', () => {
   const gw = createGatewayProvider({ model: 'm', url: () => 'u', key: () => 'k', label: 'x' })
   assert.equal(gw.maxAttempts, undefined, '网关仍走 MAX_RETRIES')
-  assert.equal(gw.requestTimeoutMs, undefined, '网关不加单请求超时')
+  assert.equal(gw.requestTimeoutMs, 90000, '网关必须有单请求超时，否则挂住的请求会拖满候选预算')
+  // 免费层专属字段仍然不该出现在网关上
+  assert.equal(gw.perLine, undefined)
+  assert.equal(gw.lineConcurrency, undefined)
 })
 
 test('术语表两边不漂移：SYSTEM_PROMPT 的术语都在 INST_TRANS_TERMS 里', () => {
