@@ -19426,6 +19426,48 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/a542f5244c15"
+    },
+    {
+      "id": "lenscraft",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "lenscraft",
+        "cfId": 1671869
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Lenscraft-0.4.0-dev.18",
+          "langVersion": "1.0.0",
+          "file": "/lang/lenscraft/cf-Lenscraft-0.4.0-dev.18/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/e90083198611",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/e90083198611"
+    },
+    {
+      "id": "primecinematic",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "primecinematic",
+        "cfId": 1646910
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-PrimeCinematic-2.0.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/primecinematic/cf-PrimeCinematic-2.0.0/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/4e02ce93cba2",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/4e02ce93cba2"
     }
   ]
 }
