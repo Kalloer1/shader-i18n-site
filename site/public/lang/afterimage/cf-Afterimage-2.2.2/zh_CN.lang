@@ -1,0 +1,567 @@
+#shaders/lang/zh_CN.lang
+# Afterimage vcf-Afterimage-2.2.2 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Afterimage-2.2.2.zip 的 shaders/lang/en_us.lang
+# ECLIPSE — settings-screen labels and hover text.
+#
+# Iris reads option.<NAME> for the label, value.<NAME>.<VALUE> for a value's display text,
+# and suffix.<NAME> for a unit. Anything without an entry falls back to the raw constant
+# name, which is how a settings screen ends up reading "SHADOW_BLOCKER_SAMPLES".
+#
+# The comment lines (option.<NAME>.comment) are the hover tooltips. They are written for a
+# player, not for a shader author: what it does, and what it costs.
+
+screen.SHADOWS=阴影样式
+screen.LIGHT=光照
+screen.AO=环境光遮蔽
+screen.CLOUDS=云
+
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=阴影贴图包含的细节程度。会消耗内存，\
+a little fill rate, not geometry time. Raise this before raising Shadow Distance.
+
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影投射的距离（以区块为单位）。这是最耗费性能的选项之一。\
+setting in the pack - the cost grows with the AREA covered, so 96 to 128 is about 78%% \
+more work, not 33%%. Turn this down first if the frame rate is bad.
+suffix.shadowDistance=方块
+
+option.entityShadowDistanceMul=实体阴影距离
+option.entityShadowDistanceMul.comment=生物投射阴影的距离，占 \
+Shadow Distance. Worth keeping up: a shadow arriving on the ground before the thing that \
+casts it comes around the corner is not eye candy.
+
+option.SHADOW_DISTORTION=阴影聚焦
+option.SHADOW_DISTORTION.comment=将阴影贴图的细节集中在你附近，但会牺牲其他区域的细节。\
+the distance. Free - it changes where the detail goes, not how much there is. Higher is \
+sharper up close and coarser far away. THIS IS THE DIAL FOR "shadow edges are giant \
+blocky steps near me". The default is 0.90; 0.85 is the previous balance, if what you \
+care about is the far edge of a long shadow rather than the one at your feet.
+
+option.SHADOW_BLOCKER_SAMPLES=接触搜索
+option.SHADOW_BLOCKER_SAMPLES.comment=该资源包测量距离上方多高时会阻挡阴影，其细致程度。\
+ground each shadow's caster is. That measurement is what makes a shadow sharp where it \
+touches and soft further away. Lower values make soft shadows blotchy.
+
+option.SHADOW_FILTER_SAMPLES=阴影平滑
+option.SHADOW_FILTER_SAMPLES.comment=用于柔化每条阴影边缘的采样次数。\
+The second most expensive shadow setting after Shadow Distance, and the dial for "soft \
+shadows look like stable noise up close" - there is no temporal smoothing in this pack, \
+so the taps are all the smoothing there is. The default is 24; drop to 16 first on a \
+weaker GPU.
+
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=阴影随距离增加而扩散的宽度。\
+whatever casts them. Free. 1.0 would be physically exact and looks razor sharp; the \
+default exaggerates it because that is what the eye reads as sunlight through leaves.
+
+option.sunPathRotation=太阳路径倾斜
+option.sunPathRotation.comment=将太阳的每日运行轨迹从正头顶位置倾斜。在 \
+0 the noon sun is directly above and shadows vanish underneath everything, which reads as \
+flat. Free.
+suffix.sunPathRotation=°
+
+option.BLOCK_ILLUMINANCE=火把亮度
+option.BLOCK_ILLUMINANCE.comment=火把、灯笼和营火的亮度。免费。\
+Lower it for a darker, more hostile night; the colour does not change, only the reach.
+
+# THE FIVE DIALS BEHIND THE FIVE REPORTS.
+#
+# Every one of these was a number in a file. The only person who can see this pack was
+# waiting on a rebuild for each guess, which is the actual reason four builds were rejected
+# slowly instead of one being fixed quickly. They are named for what he SAID, not for what
+# the constant does.
+
+option.NIGHT_LEVEL=夜间亮度
+option.NIGHT_LEVEL.comment=月亮和夜空提供的照明程度。免费。这是 \
+the dial for "the night is too bright" or "I cannot see anything at all". It moves the moon \
+and the night sky together, so it changes how dark the night IS without flattening the \
+difference between what the moon reaches and what it does not - which is the part that \
+makes shapes readable. A plain brightness slider would destroy exactly that. The default \
+is death darkness, by request: under a full moon the ground barely registers and a \
+moonless night is black - the night is navigable by torchlight or not at all. Raise it \
+if that is more than you signed up for: 0.65 is the previous night, 1.00 the original \
+brighter one.
+value.NIGHT_LEVEL.0.05=死亡般的黑暗
+value.NIGHT_LEVEL.0.65=之前的夜晚
+value.NIGHT_LEVEL.1.00=旧版夜晚
+
+option.FOREST_LIGHT=遗忘森林之光
+option.FOREST_LIGHT.comment=遗忘森林中的光照程度，这里没有 \
+sun and never will. Free, and it affects that dimension only. Raise it if you cannot make \
+out the ground; lower it if the place has stopped being frightening.
+
+option.EYES_GLOW=生物眼部发光
+option.EYES_GLOW.comment=生物眼睛和其他发光叠加效果的绘制亮度。免费。\
+Vanilla draws them at full strength with no distance falloff at all, which in a dark cave \
+makes a drowned twenty blocks away the brightest thing on your screen. Set it to 0 to turn \
+mob eyes off completely.
+
+option.SKY_WRAP=阴影衰减
+option.SKY_WRAP.comment=地表因无法看到天空而变暗的速度。免费，\
+and it is the reason a mob in the open can look lit while the ground beside it is black - \
+the mob is not bright, the shaded ground has fallen off a cliff. Higher values let light \
+wrap into doorways, under canopies and around corners the way it really does. Lower is \
+harsher and more contrasty.
+
+option.SKY_REACH_LEVELS=阳光需要天空
+option.SKY_REACH_LEVELS.comment=一个地方需要多封闭，日光才会停止 \
+reaching into it, counted in light levels. Free. THIS IS THE DIAL FOR "the animal is glowing \
+and the cave around it is not". It used to be 1, which meant a single light level was the \
+difference between no sunlight at all and full noon sun - and a mob's light is measured at \
+its EYES, one block higher than the floor it stands on, so in a cave the mob landed on the \
+bright side of that line and its own floor landed on the dark side. Higher is safer and \
+darker underground; 1 gives back exactly what the pack shipped with, including the bug.
+suffix.SKY_REACH_LEVELS=级
+
+option.VOL_AIR_SEALED=洞穴空气辉光
+option.VOL_AIR_SEALED.comment=当你身处封闭空间时，空气仍会向你散射多少日光。\
+sealed underground. Free. This is the dial for "the tunnels and the dark are really lit": it \
+was 0.55, the same as outdoors, so a cave at noon was filled with in-scattered daytime sky \
+and an unlit wall twenty blocks off came out at 90 of 255 with only a third of one per cent \
+of that being the wall. Low is right - a cave should be dark because there is no light in \
+it. Set it to 0 for a literal black beyond the torchlight; raise it to 1.00 - the top of the \
+slider - to put the caves back exactly the way they were before this fix.
+
+option.FOG_MIST_SEALED=洞穴薄雾
+option.FOG_MIST_SEALED.comment=封闭房间内地面薄雾的浓度，作为 \
+fraction of the mist outdoors. Free. Underground the mist term was pinned at its ceiling, so \
+cave air was about twenty-three times thicker than Overworld air at noon - in a room with no \
+sky for anything to have condensed out of. Raise it for soupy, dust-filled tunnels and a \
+much more visible flashlight beam; lower it for clear air and a longer view. 1.00 is what \
+the pack shipped with.
+
+option.SCOTOPIC_DESAT=黑暗中的色彩
+option.SCOTOPIC_DESAT.comment=随着天色变暗，画面中的色彩会褪去多少。\
+Free. Your eye has two sets of receptors and they do not fail together: the ones that see \
+colour give up long before the ones that see shape, which is why a dark room goes GREY \
+rather than just dim. Without this a creeper at 17 of 255 was still bright green and read as \
+glowing even though it was lit correctly. It never changes how bright anything is - only how \
+colourful - so it cannot hide anything. 0 turns it off.
+
+option.SCOTOPIC_LEVEL=色彩开始褪去前的黑暗程度
+option.SCOTOPIC_LEVEL.comment=亮度值，此时颜色完全恢复。免费。任何 \
+brighter than this is left exactly alone, so daylight is untouched no matter where you put \
+it. Higher means more of the picture goes monochrome; lower means colour survives further \
+into the dark.
+
+option.SCOTOPIC_CONTRAST=暗部对比度
+option.SCOTOPIC_CONTRAST.comment=这是“动物白色部分”的调节旋钮 \
+glowing". Free. A cow's hide is white on black - eighteen to one before any light touches \
+it - and one dim light multiplies both by the same small number, so at midnight the white \
+patches stayed eighteen times the black ones and read as lit while the black ones read as \
+correct. That is what your eye stops doing in the dark: as the light goes, light things \
+look darker, dark things look lighter and the range closes. Lower values close it further. \
+It only ever takes light away, never adds it, and the darkest thing in the picture does not \
+move at all - so it makes the night darker without touching the black. 1.00 is exactly the \
+picture the pack shipped with.
+
+option.SCOTOPIC_CONTRAST_TOP=暗部曲线停止的亮度值
+option.SCOTOPIC_CONTRAST_TOP.comment=高于此亮度值，上方旋钮停止调整 \
+touching anything at all. Free. A torchlit wall, a flame, lava and the moon all sit above \
+it and cannot move. Raise it to pull more of a torch's pool in and get a tighter, harsher \
+circle of light; lower it if torchlight has stopped looking like torchlight.
+
+option.SCOTOPIC_ADAPT_KEY=眼睛恢复亮度前需要多少光
+option.SCOTOPIC_ADAPT_KEY.comment=周围需要多少光，黑暗区域才能恢复 \
+contrast curve switches off entirely. Free, and this is the setting that keeps your torches \
+safe. It looks at the whole scene rather than at one pixel, because that is what your eye \
+does - a dim corner of a lit room is not the same thing as a dim room. Daylight and the \
+inside of any room with a torch in it are already fully off and cannot be affected. Raise \
+it to keep the night's flattening going even in torchlight; lower it if you want it to give \
+up as soon as you strike a light.
+
+option.SKY_PROBE_FIX=移动天空光修复
+option.SKY_PROBE_FIX.comment=这是“在隧道中看起来光像是”的调节旋钮 \
+hitting them". Free. The game measures a creature's light at its EYES, one block above the \
+floor it is standing on, and sky light drops a level for every block down - so a cow in a \
+tunnel mouth was reading the daylight from a block it was not standing in and came out \
+half again as bright as the floor under its feet. This puts the reading back on its own \
+floor. Under open sky it does exactly nothing, because there the two blocks agree. 0 gives \
+back the pixel the pack shipped with.
+
+option.BLOCK_PROBE_FIX=移动火把光修复
+option.BLOCK_PROBE_FIX.comment=与移动天空光修复相同的错位测量修复，用于 \
+torchlight and lava light. Free. The game reads a creature's light one block above the floor \
+it stands on, so a mob under ceiling lichen or a hanging lantern was collecting up to \
+three-quarters more light than the floor under its feet. This subtracts at most one light \
+level, fades to nothing next to a full-strength source, and never touches the torch's own \
+pool on the ground. The honest cost: when the torch is on the FLOOR, a mob at the very edge \
+of its pool now fades into the dark about one block early - which is the direction a horror \
+pack wants to be wrong in. 0 gives back the pixel the pack shipped with.
+
+option.MOB_LIGHTING=移动生物照明
+option.MOB_LIGHTING.comment=所有“移动生物在黑暗中发光”报告的调节旋钮，以及 \
+last one there will be. Grounded lights every creature exactly like the patch of ground \
+it is standing on - same sun, same moon, same shadow, same torchlight, same darkness - \
+with only a gentle vanilla-style shading across the body for shape. A mob can never be \
+brighter than its ground, at any hour, in any dimension; what you see of it is its own \
+texture and nothing else, which is how vanilla has always done it and how the big packs \
+do it too. Directional (legacy) is the old per-face lighting, exactly as version 1.0.12 \
+shipped it, kept so the two can be compared side by side - it is the model that produced \
+glowing flanks at dusk, flashing legs and flickering shadows through ten rounds of fixes, \
+and it is not recommended.
+value.MOB_LIGHTING.1=接地
+value.MOB_LIGHTING.0=定向（旧版）
+
+option.FLASH_INTENSITY=手电筒强度
+option.FLASH_INTENSITY.comment=手电筒额外增加的光量，超过实际光量 \
+it already places in the world. Free. Most of the flashlight is the mod's own light block, \
+which lights the room properly and turns corners; this is the extra reach and the visible \
+edge of the beam.
+
+option.FLASH_AIR_SCATTER=手电筒光束在空气中的散射
+option.FLASH_AIR_SCATTER.comment=你能看到光束在空气中悬停的多少部分，作为 \
+opposed to landing on a wall. Free. Turn it up for thick, dusty, horror-film shafts; turn \
+it DOWN if the beam is washing out what you are trying to look at. 0 leaves you a \
+flashlight that lights things without a visible cone.
+
+option.SSAO=环境光遮蔽
+option.SSAO.comment=使阴影和太阳未照射到的内部角落变暗 \
+drawing. It is applied to ambient light only, never to sunlight.
+value.SSAO.0=关
+value.SSAO.1=开
+
+option.SSAO_SAMPLES=环境光遮蔽质量
+option.SSAO_SAMPLES.comment=环境光遮蔽估计需要多少采样。数值越低，噪声越多 \
+rather than weaker.
+
+option.SSAO_RADIUS=AO 半径
+option.SSAO_RADIUS.comment=环境光遮蔽的覆盖范围，以区块为单位。超过1.5后停止 \
+reading as contact and starts reading as dirt in the corners.
+suffix.SSAO_RADIUS=方块
+
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=漂浮在空中的云影。成本约为十分之一 \
+a millisecond and it is most of what makes a sky feel like it is above you.
+value.CLOUD_SHADOWS.0=关
+value.CLOUD_SHADOWS.1=开
+
+option.CLOUD_SHADOW_MIN=云影深度
+option.CLOUD_SHADOW_MIN.comment=云下方地面的暗度。免费。默认值 \
+puts the contrast under a cloud at about 3x, which is what an overcast moment looks like; \
+much lower and a passing cloud reads as an eclipse.
+
+# --- stage 3: the air, the sky and the wind ---------------------------------
+
+screen.FOG=雾与空气
+screen.SKY=天空与云朵
+screen.WIND=风
+
+option.VOLUMETRIC_FOG=体积雾
+option.VOLUMETRIC_FOG.comment=实际被照亮、与阴影贴图对抗的雾。 \
+This is what produces god rays through the trees and moonlight through the canopy. Turning \
+it off leaves the distance haze, which still hides the edge of the world, but the air stops \
+having light in it. Second most expensive setting in the pack.
+value.VOLUMETRIC_FOG.0=关
+value.VOLUMETRIC_FOG.1=开
+
+option.VOL_STEPS=雾质量
+option.VOL_STEPS.comment=雾沿每条射线采样的数量。数值越低，画面越粗糙， \
+not thinner. Turn this down before turning the fog off - half the steps is half the cost \
+and the difference is a little more dither, not less atmosphere.
+
+option.FOG_BASE=薄雾
+option.FOG_BASE.comment=随处可见、全天存在的薄雾。保持它 \
+small: this is the term that decides whether a distant hill has air in front of it, and it \
+is also the one that turns a clear noon into soup if it is raised.
+
+option.FOG_HEIGHT=地面薄雾
+option.FOG_HEIGHT.comment=山谷中积聚并随太阳升高而消散的雾气。 \
+This is the morning-fog dial. It is thickest at dawn and at night, gone by mid-morning, and \
+it thins with altitude - stand on a ridge at dawn and you are looking down at it.
+
+option.FOG_NIGHT_MIST=夜雾
+option.FOG_NIGHT_MIST.comment=黎明雾气在午夜时分仍残留的多少。 \
+Ground Mist above is a dawn effect, and until now it ran at full strength from sunset to \
+sunrise - so a clear night was thicker than the Forgotten Forest, and past about fifty \
+blocks every block in the world came out the same shade of grey. Lower this to get the \
+distance back: layers of trees instead of a wall. The top of the slider is exactly how it \
+used to behave. Dawn and rain are not affected at any setting.
+
+option.FOG_SHADOW_DEPTH=雾会遮挡阴影
+option.FOG_SHADOW_DEPTH.comment=雾是否知道哪些物体处于光照中。0 时 \
+the air under a closed canopy glows exactly as much as the air in an open clearing, which \
+is what makes distant fog look like a flat sheet laid over the world. Turn it up and the \
+far field carries the shape of the forest - bright between the trunks, dark behind them. \
+Costs nothing; it re-uses the shadow sample the sunbeams already take. 0 is how it used to \
+behave.
+
+option.FOG_BEAM_CAP=光束眩光
+option.FOG_BEAM_CAP.comment=直视光源时空气允许达到的亮度。 \
+the sun or the moon. Real mist does glare toward a light - that is why headlights are \
+blinding in fog - but with nothing to hold it down the same terrain measured 43 of 255 with \
+the sun behind you and 232 with it in front, which reads as fog that only exists in one \
+direction. This clips the glare and leaves every other angle untouched, so a moonbeam \
+through a gap in the canopy is still a beam. The top of the slider removes the limit \
+entirely and is exactly how it used to behave.
+
+option.FOG_RD_START=远景雾霭
+option.FOG_RD_START.comment=世界开始融入天空的位置，以 \
+your render distance. Something has to hide the edge of the loaded world; lower values hide \
+it sooner and more gently, higher values keep the distance clear and make the boundary \
+sharper.
+
+option.CLOUDS=云
+option.CLOUDS.comment=带有明亮一侧和厚重底部的受光云，从同一 \
+field that casts the shadows on the ground - so the shadow you are standing in belongs to \
+the cloud you can see. Off falls back to a clear sky; vanilla's flat sheet does not come \
+back.
+value.CLOUDS.0=关
+value.CLOUDS.1=开
+
+option.CIRRUS=高云
+option.CIRRUS.comment=位于 1400 区块高度的一层薄冰云。基本免费。
+value.CIRRUS.0=关
+value.CIRRUS.1=开
+
+option.STARS=星星
+option.STARS.comment=直接绘制到天球上，而非从纹理中生成，因此 \
+the sun sets through them rather than across them.
+value.STARS.0=关
+value.STARS.1=开
+
+option.ATMO_BETA_M=天空中的薄雾
+option.ATMO_BETA_M.comment=空气中携带的尘埃和水分量。数值越高，天空越白。 \
+horizon and widens the glare around the sun; lower gives a deeper blue and a harder sun. \
+The default was solved against measured reference images, so moving it moves the pack away \
+from the look it was built to.
+
+option.WIND=风
+option.WIND.comment=树叶、草和藤蔓会移动，它们的阴影也会移动。位移 \
+is a function of world position alone, which is what stops neighbouring leaf blocks from \
+pulling apart at the corner they share.
+value.WIND.0=关
+value.WIND.1=开
+
+option.WIND_SPEED=风速
+option.WIND_SPEED.comment=阵风移动的速度。免费。
+
+option.WIND_AMP_LEAVES=树叶摇摆
+option.WIND_AMP_LEAVES.comment=树叶方块移动的距离（以区块为单位）。特意设置得较小 - \
+this is atmosphere, not a storm, and a canopy that moves too far shows gaps between blocks \
+that are supposed to be touching.
+suffix.WIND_AMP_LEAVES=方块
+
+option.WIND_AMP_PLANT=草地摆动
+option.WIND_AMP_PLANT.comment=草叶尖端移动的距离（以区块为单位）。根部 \
+stays where it is, so the blade bends rather than slides.
+suffix.WIND_AMP_PLANT=方块
+
+# ---------------------------------------------------------------------------
+#  THE END SKY  (stage 5)
+# ---------------------------------------------------------------------------
+#
+# The names here are the ones a player would use looking at the sky, not the ones the
+# constants use. "Einstein Ring" is kept because that is what it is called and because a
+# player who does not know the term will still be looking straight at the thing it names.
+
+screen.END=末地
+
+option.END_HEMI_MIN=岛屿起伏
+option.END_HEMI_MIN.comment=墙壁或悬挑部分比地面暗多少。在末地中 \
+there is no sun and no sky light, so this is the only thing telling you which way a surface is \
+facing - it is what gives an island an edge you can see instead of one you guess at. It never \
+makes anything brighter: floors are identical at every setting and it only takes light off the \
+faces that are not pointing up. 0.35 is what the End shipped with.
+value.END_HEMI_MIN.0.35=平坦（原版默认）
+value.END_HEMI_MIN.0.25= 轻微
+value.END_HEMI_MIN.0.18=中等
+value.END_HEMI_MIN.0.12=深度
+value.END_HEMI_MIN.0.08=更深
+value.END_HEMI_MIN.0.04=硬阴影
+
+option.END_AIR=末地空气
+option.END_AIR.comment=你与远处岛屿之间的薄雾程度。末地过去是 \
+inherit the Overworld's valley mist, which thickens as you go down toward sea level - so the \
+void was full of fog and distant islands went grey. This is a flat number instead, because the \
+End has no weather to make mist out of. Higher hides distance; 0 makes everything equally sharp \
+however far away it is.
+value.END_AIR.0.0000=无
+value.END_AIR.0.0060=旧版（大致）
+value.END_AIR.0.0260=§c厚
+
+option.END_VOID_DEPTH=坠落空间
+option.END_VOID_DEPTH.comment=天空在脚下延伸的深度。末地的星星和 \
+galaxy used to be drawn under the islands exactly as they are drawn overhead, so the hole you \
+fall into looked more interesting than the ground you were standing on. This darkens everything \
+below about twelve degrees under the horizon and nothing at or above it, so the sky you look at \
+is untouched. 0.00 puts the old void back exactly.
+value.END_VOID_DEPTH.0.00=关闭（天空一直延伸到地面）
+value.END_VOID_DEPTH.0.50= 浅
+value.END_VOID_DEPTH.0.75=深度
+value.END_VOID_DEPTH.0.88=更深
+value.END_VOID_DEPTH.0.95=近乎全黑
+value.END_VOID_DEPTH.1.00=黑
+
+option.END_SKY=末地天空
+option.END_SKY.comment=将末地平坦的紫色虚空替换为星场、星系和 \
+black hole. Off gives back exactly what the End looked like before - it is the one switch \
+that undoes all of this at once.
+value.END_SKY.0=关闭（原版虚空）
+value.END_SKY.1=开
+
+option.END_VOID_LEVEL=末地天空亮度
+option.END_VOID_LEVEL.comment=星星之间空无一物的天空有多暗，以分数表示 \
+the colour vanilla uses. A galaxy is a faint object and it is only beautiful against black, \
+so this is low on purpose. 1.00 is vanilla's own brightness, which washes the band out. \
+Distant islands fade toward the same colour, so this also sets how far you can see.
+value.END_VOID_LEVEL.0.00=黑
+value.END_VOID_LEVEL.1.00=原版
+
+option.END_STARS=星星
+option.END_STARS.comment=三类恒星——数百颗明亮的恒星、几颗 \
+thousand middling, twenty thousand faint - coloured from blue-white to amber by temperature. \
+Nearly free.
+value.END_STARS.0=关
+value.END_STARS.1=开
+
+option.END_STAR_GAZE=视线偏离
+option.END_STAR_GAZE.comment=在你实际注视的位置提升最暗的恒星，这样它们 \
+resolve as you turn toward them and sink back as they cross to the edge of the screen. Only \
+the faintest class moves and only by a few shades. Set it to Off if it reads as the sky \
+breathing rather than as your eyes adjusting.
+value.END_STAR_GAZE.0.00=关
+
+option.END_STAR_WARMTH=恒星颜色
+option.END_STAR_WARMTH.comment=恒星在温度梯度上允许达到的范围。 \
+At Off every star is blue-white. At full, roughly one in eight is amber - a warm star, not a \
+warm sky: nothing here tints anything else.
+value.END_STAR_WARMTH.0.00=仅蓝白色
+value.END_STAR_WARMTH.1.00=全范围
+
+option.END_GALAXY=§4§l§f§l星系
+option.END_GALAXY.comment=横跨天空的一条带，带有明亮的核心、斑驳的星云和 \
+dark dust rift splitting it lengthwise. The rift is the part that makes it read as a galaxy \
+seen edge-on rather than as a smear of light.
+value.END_GALAXY.0=关
+value.END_GALAXY.1=开
+
+option.END_GALAXY_LEVEL=星系亮度
+option.END_GALAXY_LEVEL.comment=这条带有多亮。核心绘制在其上方，并且 \
+scales with it. Raising it far is the quickest way to lose the dark sky the band needs.
+
+option.END_GALAXY_OCTAVES=星系细节
+option.END_GALAXY_OCTAVES.comment=构成该带结构的噪声层数。两层是 \
+cheaper and slightly smoother; it does not change how bright the galaxy is.
+
+option.END_RIFT_DEPTH=尘埃带
+option.END_RIFT_DEPTH.comment=星系带中央的裂谷有多暗。它会隐藏 \
+faint stars behind it as well as the nebulosity, so at full strength it cuts a genuinely \
+emptier channel through the sky rather than painting a dark stripe over one.
+value.END_RIFT_DEPTH.0.00=无
+
+option.END_BLACKHOLE=黑洞
+option.END_BLACKHOLE.comment=一个黑色圆盘，周围环绕着明亮的环（吸积盘）和 \
+real bending of the starlight passing near it. Costs a few instructions on sky pixels.
+value.END_BLACKHOLE.0=关
+value.END_BLACKHOLE.1=开
+
+option.END_BH_SIZE=黑洞尺寸
+option.END_BH_SIZE.comment=黑色圆盘的角半径，单位为度。在6时，大约为 \
+a sixth of the screen's height and three times the size of this pack's moon. Everything else \
+about it - the ring, the disc, how strongly it bends light - is derived from this one number, \
+so it stays a black hole at every setting instead of becoming a decal.
+suffix.END_BH_SIZE=度
+
+option.END_BH_LENS=光线弯曲
+option.END_BH_LENS.comment=其后方恒星和星系的引力透镜效应：它们 \
+smear, stretch and double into a mirrored ring as they pass near the edge. This is the whole \
+reason it is a shader and not a texture. Off in the Low preset.
+value.END_BH_LENS.0=关
+value.END_BH_LENS.1=开
+
+option.END_BH_RING_LEVEL=爱因斯坦环
+option.END_BH_RING_LEVEL.comment=紧贴黑色圆盘的细亮环。这就是 \
+detail that separates a black hole from a black circle. Its default is the brightest thing in \
+the End and is still deliberately below the point where the pack's bloom would touch it.
+value.END_BH_RING_LEVEL.0.00=关
+
+option.END_BH_DISC=吸积盘
+option.END_BH_DISC.comment=The ring of falling matter. The near half crosses in front of the \
+black disc and the far half arcs over the top, which is the silhouette everybody recognises.
+value.END_BH_DISC.0=关
+value.END_BH_DISC.1=开
+
+option.END_BH_DISC_LEVEL=吸积盘亮度
+option.END_BH_DISC_LEVEL.comment=吸积盘在最热点处有多亮。 \
+side rotating toward you is brighter because the side rotating away is darkened, so this \
+number really is the brightest pixel the disc can produce.
+
+option.END_BH_DISC_TILT=盘倾斜度
+option.END_BH_DISC_TILT.comment=你从偏离正视图的角度看到盘的程度。数值越高，越接近 \
+to edge-on: a narrower ellipse, a more dramatic arc over the top.
+suffix.END_BH_DISC_TILT=度
+
+# ---------------------------------------------------------------------------
+#  THE NETHER  (stage 2 of the dimension work)
+# ---------------------------------------------------------------------------
+#
+# Named after what the owner would SEE, not after what the constants do. Every one of these
+# four moved a measurement in tools/check_shaderpack_surface.py's NETHER-1..6 block, and the
+# comments say what the measurement was, because the only feedback loop this pack has is a
+# screenshot and a sentence.
+
+screen.NETHER=下界
+
+option.ECLIPSE_AMBIENT_FLOOR_NETHER=下界地面光
+option.ECLIPSE_AMBIENT_FLOOR_NETHER.comment=红色薄雾对岩石的照明程度 \
+no torch or lava anywhere near it. The Nether has no sky, so before this the pack gave those \
+surfaces almost nothing - a netherrack wall came out at 1 of 255, which is not darkness, it \
+is a hole. It now lands at 15, below vanilla's own 37 and below the Forgotten Forest's \
+darkest ground, because this is a horror pack. 0.0000 gives back exactly the old pixel.
+value.ECLIPSE_AMBIENT_FLOOR_NETHER.0.0000=黑色（与之前相同）
+value.ECLIPSE_AMBIENT_FLOOR_NETHER.0.0130=亮色
+
+option.ECLIPSE_WASH_CHROMA_NETHER=下界地面颜色
+option.ECLIPSE_WASH_CHROMA_NETHER.comment=这种光包含多少该群系自身的颜色 \
+carries - vanilla's, unchanged: red in the wastes, purple in a warped forest, teal in a soul \
+sand valley, grey in the basalt deltas. 0.00 is neutral grey everywhere. 1.00 is the fog \
+colour undiluted and is deliberately on the list so you can see why it is wrong: a saturated \
+light times a saturated rock leaves netherrack with no green and no blue in it at all.
+value.ECLIPSE_WASH_CHROMA_NETHER.0.00=§8灰色
+value.ECLIPSE_WASH_CHROMA_NETHER.1.00=完全（过多）
+
+option.ECLIPSE_EMISSION_SCALE_NETHER=下界光照强度
+option.ECLIPSE_EMISSION_SCALE_NETHER.comment=一个光源自身表面的亮度是多少 -
+lava, fire, glowstone, shroomlight, soul fire. It does not change the light they throw on \
+anything else by one part. At 1.00 all five clip to the same white and you cannot tell \
+glowstone from lava; at 0.40 lava is orange and soul fire is properly cold. Lower is more \
+colour, but below about 0.35 a light source stops glowing at all.
+value.ECLIPSE_EMISSION_SCALE_NETHER.0.25=最深的色彩
+value.ECLIPSE_EMISSION_SCALE_NETHER.1.00=和之前一样（白色）
+
+option.ECLIPSE_EXPOSURE_CEIL_NETHER=下界暴露上限
+option.ECLIPSE_EXPOSURE_CEIL_NETHER.comment=眼睛在黑暗中能适应的程度有多深
+here, as a fraction of the Exposure Ceiling. The Nether has no sky, so the pack's exposure \
+has nothing to go on but how close you are standing to a torch - which made the whole \
+dimension get brighter as you walked away from a lava lake, by a full stop. Lower values \
+hold it still. The default keeps the Nether exactly as bright as it was before the night \
+got darker: the fraction moved when the ceiling under it did, so the dimension itself did \
+not move at all.
+value.ECLIPSE_EXPOSURE_CEIL_NETHER.0.45=平坦而黑暗
+value.ECLIPSE_EXPOSURE_CEIL_NETHER.1.28=和以前一样
+
+option.EMISSION_EMBER=岩浆发光
+option.EMISSION_EMBER.comment=岩浆块和哭泣的黑曜石在游戏中会发出光，并且这个
+pack drew them as ordinary rock until now. They glow rather than shine: bright enough to see \
+in a dark room, never bright enough to bloom. 0.00 puts them back to plain stone.
+value.EMISSION_EMBER.0.00=关
+
+screen.DEBUG=调试
+option.DEBUG_VIEW=调试视图
+option.DEBUG_VIEW.comment=诊断，而非外观。关闭才是正途。程序色彩绘制 \
+every draw path a flat colour - a mob's body should be RED; if the pixels that glow are any \
+other colour, that colour is the answer we have been hunting for. Lit Flag shows green where \
+the lighting pass owned a pixel and red where it let one through unlit. Light Levels shows \
+torch light as red and sky light as blue. Late Draws renders the game normally but paints \
+MAGENTA over any pixel drawn after the lighting pass - the timing bug the other three modes \
+cannot see. Flag Forensics reads the flag at the very END of the frame and colours each \
+pixel's fate: dark green =正常点亮，蓝色=未点亮通过，亮绿色=绘制
+after everything, red =被水/雨/粒子遮挡。截取屏幕截图，然后设置它 \
+back to Off.
+value.DEBUG_VIEW.0=关
+value.DEBUG_VIEW.1=程序颜色
+value.DEBUG_VIEW.2=点燃旗帜
+value.DEBUG_VIEW.3=光照等级
+value.DEBUG_VIEW.4=延迟开奖
+value.DEBUG_VIEW.5=旗帜取证分析

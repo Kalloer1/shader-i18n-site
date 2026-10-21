@@ -18796,6 +18796,206 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/876a5b524e0d"
+    },
+    {
+      "id": "sunset-requiem",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "sunset-requiem",
+        "cfId": 1582245
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Sunset-Requiem-Fabric-1.20.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/sunset-requiem/cf-Sunset-Requiem-Fabric-1.20.1/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "afterimage",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "afterimage",
+        "cfId": 1645614
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Afterimage-2.2.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/afterimage/cf-Afterimage-2.2.2/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "silisyum-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "silisyum-shader",
+        "cfId": 1671957
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-1.19.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/silisyum-shader/cf-1.19.2/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vespera",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "vespera",
+        "cfId": 1627669
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Vespera-Shaders-1.2.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/vespera/cf-Vespera-Shaders-1.2.1/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eiqfep",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "eiqfep",
+        "cfId": 1747974
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-EIQFEP_v0.0.3.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/eiqfep/cf-EIQFEP_v0.0.3.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "koto",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "koto",
+        "cfId": 1489297
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Koto_by_Kotoritos_v1.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/koto/cf-Koto_by_Kotoritos_v1.3/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prizm-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "prizm-shaders",
+        "cfId": 1704955
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Prizm-Shaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/prizm-shaders/cf-Prizm-Shaders/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enhanced-vibrance-edition",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "enhanced-vibrance-edition",
+        "cfId": 1559400
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Enhanced-Vibrance-Edition-Alpha-1-MC1.20.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/enhanced-vibrance-edition/cf-Enhanced-Vibrance-Edition-Alpha-1-MC1.20.1/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "celestial",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "celestial",
+        "cfId": 1709626
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Celestial_v3.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/celestial/cf-Celestial_v3.1/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boovlermentary",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "boovlermentary",
+        "cfId": 907507
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Boovlermentary-1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/boovlermentary/cf-Boovlermentary-1.0/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }
