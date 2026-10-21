@@ -47,7 +47,7 @@ flowchart TD
 
     CLI --> CAND["筛候选<br/>排除自带中文 / 缺 en_US.lang / 已是最新汉化"]
     CAND --> GL["glossary.json 精确命中<br/>按剥离 § 格式码后的英文骨架"]
-    GL -->|"未命中"| LLM["LLM 分块翻译<br/>免费模型池轮转，60 行/块"]
+    GL -->|"未命中"| LLM["LLM 分块翻译<br/>免费层 5 模型池轮转，30 行/块，分块并发 4"]
     LLM --> GATE{"回退率 ≤ 30%？"}
     GATE -->|"否，失败"| FAIL["不写出、不登记<br/>记 failed 并回写 KV"]
     GATE -->|"是"| W["写出 site/public/lang/&lt;id&gt;/&lt;version&gt;/zh_CN.lang<br/>头部标注 AI 初翻未人工校对"]
