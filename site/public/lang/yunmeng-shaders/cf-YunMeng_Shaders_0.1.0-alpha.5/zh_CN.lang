@@ -1,0 +1,136 @@
+#shaders/lang/zh_CN.lang
+# YunMeng (云梦) Shaders vcf-YunMeng_Shaders_0.1.0-alpha.5 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：YunMeng_Shaders_0.1.0-alpha.5.zip 的 shaders/lang/en_US.lang
+# YunMeng Shaders (云梦) — Guofeng Ink & Xianxia Mist Shader Pack — Performance Presets, Style Toggle & Open-Source License
+profile.LOW=§2低配
+profile.MEDIUM=§e中配
+profile.HIGH=§c高配
+profile.ULTRA=超高
+
+screen.SKY_ATMOSPHERE=天空与大气
+screen.LIGHTING_SHADOWS=光照与阴影
+screen.WATER_SETTINGS=水
+screen.WIND_FOLIAGE=风与植被
+screen.CAMERA_SETTINGS=相机与后期处理
+
+option.STYLE_SELECTION=§l风格
+value.STYLE_SELECTION.0=§2国风水墨
+value.STYLE_SELECTION.1=§b仙侠云雾
+option.STYLE_SELECTION.comment=在 §2国风水墨§r（暖色宣纸上以青绿山水矿物颜料渲染）和 §b仙侠云雾§r（电影级蔚蓝天空、翡翠植被与发光云海）之间切换。
+
+option.CLOUD_TYPE=云
+value.CLOUD_TYPE.0=自动（按风格）
+value.CLOUD_TYPE.1=山水3D
+value.CLOUD_TYPE.2=积云3D
+value.CLOUD_TYPE.3=关
+option.CLOUD_TYPE.comment=控制从头顶无缝延伸至地平线的3D体积云引擎。
+
+option.NIGHT_AURORA=夜间极光
+value.NIGHT_AURORA.0=自动（按风格）
+value.NIGHT_AURORA.1=仙侠天象
+value.NIGHT_AURORA.2=国风玉丝
+value.NIGHT_AURORA.3=关
+option.NIGHT_AURORA.comment=在夜空中渲染倾斜的3D天象极光幕与闪烁的星尘流。
+
+option.INK_OUTLINES=描边
+value.INK_OUTLINES.0=自动（按风格）
+value.INK_OUTLINES.1=轻微
+value.INK_OUTLINES.2=山水
+value.INK_OUTLINES.3=关
+option.INK_OUTLINES.comment=前景实体几何体上不受相机视角影响的内轮廓笔触。
+
+option.LICENSE_INFO=关于 / 许可证
+value.LICENSE_INFO.0=§aGPL-3.0 光影与艺术
+option.LICENSE_INFO.comment=§a仅限GPL-3.0：原始光影代码与纹理。§r §7在GPLv3许可下可重用、修改与再分发。保留YunMeng贡献者署名及第三方声明。参见LICENSE.txt。§r
+
+option.FOG_DENSITY=薄雾密度
+option.FOG_DENSITY.comment=调整远处大气雾与山谷云海的厚度。
+
+option.LIGHT_SHAFTS=体积光
+value.LIGHT_SHAFTS.0=关
+value.LIGHT_SHAFTS.1=柔和
+value.LIGHT_SHAFTS.2=完整
+option.LIGHT_SHAFTS.comment=雾中及水下阳光与月光形成的体积光。柔和模式使用较少采样且强度较低；完整模式使用更多采样且体积光更强烈。
+option.ATMOSPHERIC_SHAFT_STRENGTH=大气体积光强度
+option.ATMOSPHERIC_SHAFT_STRENGTH.comment=调整空气中的阳光与月光光束。不会改变水下体积光或整体雾密度。直射光必须能到达开口处。
+
+option.WATER_REFLECTIONS=反射
+value.WATER_REFLECTIONS.0=§a仅天空
+value.WATER_REFLECTIONS.1=快速屏幕空间反射
+value.WATER_REFLECTIONS.2=完整屏幕空间反射
+option.WATER_REFLECTIONS.comment=仅天空模式仅反射大气，不反射云或物体。快速与完整模式会添加反射的体积云与屏幕空间物体；完整模式使用更多采样。屏幕外的物体无法被反射。
+
+option.BIOME_TINT_STRENGTH=群系大气色调
+option.SUN_SIZE=日月大小
+option.SUN_LENS_FLARE=太阳镜头光晕
+value.SUN_LENS_FLARE.0=关
+value.SUN_LENS_FLARE.1=柔和
+value.SUN_LENS_FLARE.2=完整
+option.SUN_LENS_FLARE.comment=在可见太阳周围出现两条薄而依赖视角的彩虹弧与两个匹配的镜头光晕。靠近屏幕边缘、地形后方及下雨时逐渐消失。
+option.SEA_OF_CLOUDS_ALTITUDE=薄雾海拔
+option.SEA_OF_CLOUDS_THICKNESS=雾高度
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.WATER_FOAM_INTENSITY=岸边泡沫
+option.WATER_WAVE_HEIGHT=波浪高度
+option.CAUSTICS_STRENGTH=焦散
+option.WIND_SPEED=风速
+option.WAVING_BAMBOO=波动竹
+option.WAVING_SUGARCANE=波动芦苇
+option.WAVING_LEAVES=波浪叶子
+option.WAVING_GRASS=波动草
+
+option.CLOUD_QUALITY=云层质量
+value.CLOUD_QUALITY.0=§2低配
+value.CLOUD_QUALITY.1=§e中配
+value.CLOUD_QUALITY.2=§c高配
+value.CLOUD_QUALITY.3=超高
+option.CLOUD_QUALITY.comment=平衡云的细节与渲染成本。
+option.SHADOW_FILTER_QUALITY= 阴影过滤
+value.SHADOW_FILTER_QUALITY.0=§2低配
+value.SHADOW_FILTER_QUALITY.1=§e中配
+value.SHADOW_FILTER_QUALITY.2=§c高配
+option.FOAM_QUALITY=海岸泡沫质量
+value.FOAM_QUALITY.0=§2低配
+value.FOAM_QUALITY.1=§e中配
+value.FOAM_QUALITY.2=§c高配
+option.FOAM_QUALITY.comment=控制海岸线采样详细信息。
+
+option.SUN_SIZE.comment=将太阳和月亮及其艺术品与光环一同缩放。
+option.BIOME_TINT_STRENGTH.comment=控制生物群系依赖的大气颜色。不直接更改方块纹理的色调。
+option.shadowMapResolution.comment=更高分辨率会锐化阴影细节，并占用更多GPU内存。
+option.shadowDistance.comment=以区块为单位的阴影渲染距离。距离越远，消耗越高，阴影贴图覆盖的范围也越广。
+option.SHADOW_FILTER_QUALITY.comment=控制阴影过滤的采样。更高的设置会软化边缘，但渲染成本也更高。
+option.WIND_SPEED.comment=植被、水波和岸边泡沫共享动画速度。
+option.WAVING_SUGARCANE.comment=为芦苇及相关植物及其阴影添加动画。
+option.VIGNETTE_STRENGTH=暗角强度
+option.VIGNETTE_STRENGTH.comment=屏幕边缘阴影：国风丝绸色调、仙侠电影级暗化、水下暗化。0为禁用；1为保留原样。
+option.EXPOSURE=曝光调整
+option.EXPOSURE.comment=在现有色调曲线前调整亮度。0 为原始外观。这是手动艺术曝光，而非自动适应。
+option.SATURATION=饱和度
+option.SATURATION.comment=根据所选样式调整颜色强度。1 表示保留原始颜色。
+option.PAINTERLY_WASH_STRENGTH=富有绘画感的洗笔效果
+option.PAINTERLY_WASH_STRENGTH.comment=Guofeng only：混合邻近表面颜色以获得绘画效果。0 禁用；1 保留原始涂层。
+option.PAPER_GRAIN_STRENGTH=纸张颗粒
+option.PAPER_GRAIN_STRENGTH.comment=Guofeng only: 控制精细纸张纹理。0 禁用；1 保留原始纹理。
+option.UNDERWATER_DISTORTION_STRENGTH=水下扭曲
+option.UNDERWATER_DISTORTION_STRENGTH.comment=控制水下屏幕的波纹效果。0为禁用；1为保留原始波纹。不影响水雾或光线效果。
+value.VIGNETTE_STRENGTH.0.00=关
+value.PAINTERLY_WASH_STRENGTH.0.00=关
+value.PAPER_GRAIN_STRENGTH.0.00=关
+value.UNDERWATER_DISTORTION_STRENGTH.0.00=关
+
+option.ANTI_ALIASING=抗锯齿
+value.ANTI_ALIASING.0=关
+value.ANTI_ALIASING.1=轻微
+value.ANTI_ALIASING.2=平滑
+value.ANTI_ALIASING.3=时空的
+option.ANTI_ALIASING.comment=Subtle and Smooth可柔化每帧的边缘。Temporal结合多帧以减少闪烁，但会占用更多内存，并可能使精细细节显得模糊。
+option.MOTION_BLUR=运动模糊
+value.MOTION_BLUR.0=关
+value.MOTION_BLUR.1=快速
+value.MOTION_BLUR.2=平滑
+option.MOTION_BLUR.comment=模糊相机和风力动画的植被运动，同时保护手持物品和深度边缘。平滑还以更高的渲染成本估算可见实体的运动。
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_STRENGTH.comment=控制快门效果。0 会禁用可见的模糊；将运动模糊设为关闭，可完全跳过模糊处理。
+value.MOTION_BLUR_STRENGTH.0.00=关

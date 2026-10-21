@@ -19300,6 +19300,48 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/eae9cd533af5"
+    },
+    {
+      "id": "aerixiumsfa-ptgi",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "aerixiumsfa-ptgi",
+        "cfId": 1618199
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-AerixiumSFA-PTGI",
+          "langVersion": "1.0.0",
+          "file": "/lang/aerixiumsfa-ptgi/cf-AerixiumSFA-PTGI/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/0570f39c48a8",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/0570f39c48a8"
+    },
+    {
+      "id": "yunmeng-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "yunmeng-shaders",
+        "cfId": 1747615
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-YunMeng_Shaders_0.1.0-alpha.5",
+          "langVersion": "1.0.0",
+          "file": "/lang/yunmeng-shaders/cf-YunMeng_Shaders_0.1.0-alpha.5/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/d3277639891b",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/d3277639891b"
     }
   ]
 }
