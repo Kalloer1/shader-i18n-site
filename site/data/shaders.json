@@ -19481,13 +19481,14 @@
           "shaderVersion": "cf-SADEEM-Shaders-v0.1.0-beta",
           "langVersion": "1.0.0",
           "file": "/lang/sadeem-shaders/cf-SADEEM-Shaders-v0.1.0-beta/zh_CN.lang",
-          "quark": "",
+          "quark": "https://pan.quark.cn/s/6e353eee1a06",
           "updatedAt": "2026-10-21",
           "contributors": [
             "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
           ]
         }
-      ]
+      ],
+      "quark": "https://pan.quark.cn/s/6e353eee1a06"
     }
   ]
 }
