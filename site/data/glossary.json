@@ -43985,5 +43985,22 @@
   "controls how strongly creases and contact points are darkened.": "控制褶皱和接触点变深的强度。",
   "adds atmospheric distance fog that reacts to weather and time.": "增加反应天气和时间变化的大气距离雾气。",
   "controls how softly distant terrain blends into the atmosphere.": "Controll how softly distant terrain blends into the atmosphere.",
-  "default aims for bright realistic nights and richer lighting, cinematic pushes the full photon-inspired feel, performance keeps the image lighter and cheaper.": "DEFAULT aims for bright realistic nights and richer lighting, CINEMATIC pushes the full Photon-inspired feel, and PERFORMANCE keeps the image lighter and cheaper."
+  "default aims for bright realistic nights and richer lighting, cinematic pushes the full photon-inspired feel, performance keeps the image lighter and cheaper.": "DEFAULT aims for bright realistic nights and richer lighting, CINEMATIC pushes the full Photon-inspired feel, and PERFORMANCE keeps the image lighter and cheaper.",
+  "try out the available options and use the one that works best.": "尝试可用的选项，并使用效果最佳的选项。",
+  "thanks for using this shader!": "感谢您使用这款光影包！",
+  "ao strenght": "环境光遮蔽强度",
+  "sharp taa": "锐利 TAA",
+  "vol. static": "静态体积云",
+  "vol. dynamic.": "动态体积云",
+  "the fog won't go away": "雾不会消失",
+  "simpler exposure": "简化曝光",
+  "shadows options": "阴影贴图选项",
+  "depth of field options": "景深选项",
+  "ambient occlusion options": "环境光遮蔽选项",
+  "post effects options": "后期效果选项",
+  "sun options": "太阳选项",
+  "set sun options.": "设置太阳选项。",
+  "motion blur options": "运动模糊选项",
+  "accesibility options": "无障碍选项",
+  "potato shaders by rre36": "RRe36 制作的土豆着色器"
 }

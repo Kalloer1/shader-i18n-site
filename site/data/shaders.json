@@ -19258,6 +19258,48 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/3296d22fc5a0"
+    },
+    {
+      "id": "makeup-ultra-fast-ringed",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "makeup-ultra-fast-ringed",
+        "cfId": 1670004
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-MakeUp-UltraFast-Ringed-v.8.6g-v2",
+          "langVersion": "1.0.0",
+          "file": "/lang/makeup-ultra-fast-ringed/cf-MakeUp-UltraFast-Ringed-v.8.6g-v2/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/029d4dcab9c3",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/029d4dcab9c3"
+    },
+    {
+      "id": "beyond-dusk-igs",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "beyond-dusk-igs",
+        "cfId": 1583336
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Beyond-Dusk",
+          "langVersion": "1.0.0",
+          "file": "/lang/beyond-dusk-igs/cf-Beyond-Dusk/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/eae9cd533af5",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/eae9cd533af5"
     }
   ]
 }
