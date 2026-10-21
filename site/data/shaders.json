@@ -19342,6 +19342,48 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/d3277639891b"
+    },
+    {
+      "id": "n-lite-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "n-lite-shaders",
+        "cfId": 1755563
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-N-Lite-Shaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/n-lite-shaders/cf-N-Lite-Shaders/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/582d9a0ca19b",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（翻译记忆复用），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/582d9a0ca19b"
+    },
+    {
+      "id": "aurora-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "aurora-shader",
+        "cfId": 1753745
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-AuroraShaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/aurora-shader/cf-AuroraShaders/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/ed8f23c02ad8",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/ed8f23c02ad8"
     }
   ]
 }
