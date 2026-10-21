@@ -18712,6 +18712,90 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/de97c0c480a3"
+    },
+    {
+      "id": "exposa-unique-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "exposa-unique-shaders",
+        "cfId": 338898
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-exposa-5-release-new",
+          "langVersion": "1.0.0",
+          "file": "/lang/exposa-unique-shaders/cf-exposa-5-release-new/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/f8e7491c87a3",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（翻译记忆复用），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/f8e7491c87a3"
+    },
+    {
+      "id": "redhat-shader-v1-chocapic13-edit",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "redhat-shader-v1-chocapic13-edit",
+        "cfId": 449652
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-RedHat_v34.3.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/redhat-shader-v1-chocapic13-edit/cf-RedHat_v34.3.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/9727583c3552",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/9727583c3552"
+    },
+    {
+      "id": "chromavision-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "chromavision-shaders",
+        "cfId": 1662557
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-ChromaVision_Shader_Identity_Fixed",
+          "langVersion": "1.0.0",
+          "file": "/lang/chromavision-shaders/cf-ChromaVision_Shader_Identity_Fixed/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/40f2087a71f5",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/40f2087a71f5"
+    },
+    {
+      "id": "optimized-prime",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "optimized-prime",
+        "cfId": 1601388
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Optimized-Prime",
+          "langVersion": "1.0.0",
+          "file": "/lang/optimized-prime/cf-Optimized-Prime/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/876a5b524e0d",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/876a5b524e0d"
     }
   ]
 }
