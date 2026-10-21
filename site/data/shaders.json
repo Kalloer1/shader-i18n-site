@@ -18607,6 +18607,111 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/bd050a7cabbb"
+    },
+    {
+      "id": "bloop-shaders-official",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "bloop-shaders-official",
+        "cfId": 1257984
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Bloop-1.7.0-cloud-fix-2",
+          "langVersion": "1.0.0",
+          "file": "/lang/bloop-shaders-official/cf-Bloop-1.7.0-cloud-fix-2/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/41fe60fbd257",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/41fe60fbd257"
+    },
+    {
+      "id": "gaint-villagers-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "gaint-villagers-shader",
+        "cfId": 1349725
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-MollyVX-Extension-Shaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/gaint-villagers-shader/cf-MollyVX-Extension-Shaders/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/c2df85405231",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/c2df85405231"
+    },
+    {
+      "id": "pedra-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "pedra-shader",
+        "cfId": 1732670
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-PedraShaders-1.1.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/pedra-shader/cf-PedraShaders-1.1.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/c8c285db8d85",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/c8c285db8d85"
+    },
+    {
+      "id": "trace",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "trace",
+        "cfId": 1680937
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Trace-2.0.1",
+          "langVersion": "1.0.0",
+          "file": "/lang/trace/cf-Trace-2.0.1/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/9242a61292b5",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/9242a61292b5"
+    },
+    {
+      "id": "sunflawer-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "sunflawer-shaders",
+        "cfId": 341332
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Sunflawer-0.4.1-Lightshaft-Update",
+          "langVersion": "1.0.0",
+          "file": "/lang/sunflawer-shaders/cf-Sunflawer-0.4.1-Lightshaft-Update/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/de97c0c480a3",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/de97c0c480a3"
     }
   ]
 }
