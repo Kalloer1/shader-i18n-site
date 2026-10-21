@@ -40207,5 +40207,17 @@
   "1920 x 1080 (recommended)": "1920 x 1080（推荐）",
   "forces a specific render resolution, same letterbox/stretch behavior as aspect ratio above. takes priority over aspect ratio if both are enabled.": "强制使用特定的渲染分辨率，与上述宽高比的Letterbox/拉伸行为相同。若两者均启用，则以分辨率优先。",
   "native (render scale 100%)": "原生（渲染比例 100%）",
-  "reference only — render scale must still be set manually in minecraft/iris video settings.": "参考信息：仍需手动在Minecraft/Iris的视频设置中调整渲染比例。"
+  "reference only — render scale must still be set manually in minecraft/iris video settings.": "参考信息：仍需手动在Minecraft/Iris的视频设置中调整渲染比例。",
+  "glow around light sources": "光源周围的发光效果",
+  "alpha decor": "阿尔法装饰",
+  "version caption and herobrine eyes. works with 'alpha-style lighting' on.": "版本标题和Herobrine眼睛。在开启“Alpha风格光照”时有效。",
+  "how bright the glow will be, as a percentage. higher makes the glow richer and whiter.": "亮度百分比。数值越高，光晕越浓郁、越偏白。",
+  "twelve name slots. they're just labels — clicking one does nothing, they only hold text for now.": "十二个名称栏位。它们只是标签——点击一个什么也不会发生，目前只能显示文本。",
+  "a glow around real light sources (torch, lava, glowstone, sea lantern, fire). visible from every side of the block. off removes the glow.": "在真实光源（火把、岩浆、发光石、海灯、火焰）周围产生光晕。可从方块所有方向看到。关闭后移除光晕。",
+  "light threshold": "光阈值",
+  "glow debug view": "Glow 调试视图",
+  "on (debug)": "§c开启 (调试模式)",
+  "how many pixels the glow spreads past the block's edges (for a 1080p screen). higher means wider and softer.": "发光效果超出方块边缘的像素数（适用于1080p屏幕）。数值越高，范围越广，效果越柔和。",
+  "from what block-light level (in %) a block can glow. lower makes glowing easier to trigger (including side faces), but may catch walls next to a torch. higher restricts it to only the brightest spots. if the glow isn't visible on every side of the block, lower this.": "方块在多少亮度（%）下会发光。数值越低，越容易触发发光（包括侧面），但可能会误触火把旁的墙壁。数值越高，则限制在亮度最高的位置。如果发光在方块各面都不可见，请调低此值。",
+  "on shows the glow (bloom) buffer directly across the whole screen, with nothing else: grey/black means there's no signal at all there. helps find where the glow is getting lost (e.g. in the nether or the end) — if it's empty, the light source isn't triggering the glow or the blur pass isn't running; if it glows, the problem is in how it's blended into the final image. turn off after checking.": "ON 会直接在整个屏幕上显示发光（bloom）缓冲区，没有其他内容：灰色/黑色表示完全没有信号。有助于查找发光效果丢失的位置（例如在 Nether 或 The End 中）——如果为空，说明光源未触发发光或模糊处理未运行；如果发光，则问题出在将其混合到最终图像的方式上。检查完毕后请关闭。"
 }
