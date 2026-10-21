@@ -18166,6 +18166,126 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/25c3e1678f31"
+    },
+    {
+      "id": "aetheria-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "aetheria-shaders",
+        "cfId": 1552209
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Aetheria-Shaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/aetheria-shaders/cf-Aetheria-Shaders/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "veyluma-torchlite",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "veyluma-torchlite",
+        "cfId": 1539232
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Veyluma_AeroLite_HyperFPS_26.2_v1.0.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/veyluma-torchlite/cf-Veyluma_AeroLite_HyperFPS_26.2_v1.0.2/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "veyluma-balanced-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "veyluma-balanced-shader",
+        "cfId": 1551089
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Veyluma_Balanced_Shader_26.2_v1.0.5",
+          "langVersion": "1.0.0",
+          "file": "/lang/veyluma-balanced-shader/cf-Veyluma_Balanced_Shader_26.2_v1.0.5/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lumina-shaders-event-horizon",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "lumina-shaders-event-horizon",
+        "cfId": 1481177
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Lumina_Event_Horizon_v1.3.9",
+          "langVersion": "1.0.0",
+          "file": "/lang/lumina-shaders-event-horizon/cf-Lumina_Event_Horizon_v1.3.9/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "veyluma-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "veyluma-shader",
+        "cfId": 1539201
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Veyluma_Shader_26.2_v1.0.3",
+          "langVersion": "1.0.0",
+          "file": "/lang/veyluma-shader/cf-Veyluma_Shader_26.2_v1.0.3/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable / index-mt-9b），未人工校对"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "optilite-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "optilite-shaders",
+        "cfId": 1669590
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-OptiLite_1.21.4",
+          "langVersion": "1.0.0",
+          "file": "/lang/optilite-shaders/cf-OptiLite_1.21.4/zh_CN.lang",
+          "quark": "",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ]
     }
   ]
 }
