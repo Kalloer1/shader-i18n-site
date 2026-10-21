@@ -1,0 +1,227 @@
+#shaders/lang/zh_CN.lang
+# Skygleam Shaders vcf-Skygleam-Shaders-V3.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Skygleam Shaders V3.1.zip 的 shaders/lang/en_US.lang
+# Main Menu Structure
+screen.INFORMATION=§b§l✧ 信息 ✧
+screen.Core_Settings=§6§l✦ 核心设置 ✦
+option.SHADER_STYLE=§b§l着色器风格
+screen.Version=§e§l✦ 版本 3.1 ✦
+profile.Skygleam_V3=§d§lSkygleam V3
+screen.Links=§e§l⚡ 链接 ⚡
+
+# Information Items
+screen.Made_by_Team_Addoners=§e§l✦ 由 Team Addoners 制作 ✦
+screen.Owner_Mcbugs_Addon=§b§l⭐ 创作者：Mcbugs Addon ⭐
+
+# Core Settings Categories
+screen.Lighting=§e§l» 光照
+screen.Shadows=§8§l» 阴影
+screen.Atmospherics=§b§l» 大気現象 «
+
+# Information Section
+option.Made_by_Team_Addoners=§e§l✦ 由 Team Addoners 制作 ✦
+option.Owner_Mcbugs_Addon=§b§l⭐ 创作者：Mcbugs Addon
+
+# Links Section
+screen.Links=§e§l⚡ 链接 ⚡
+option.Official_Website=§b§l🌐 访问官方网站 (addoners.net)
+option.CurseForge_Download=§6§l⬇ 在 CurseForge 上下载
+option.Support_Project=§d§l♥ 支持开发
+
+# Link Comments
+sliders.comment.Official_Website=§7§o点击访问：https://addoners.net
+sliders.comment.CurseForge_Download=§7§o点击下载：https://www.curseforge.com/minecraft/shaders/skygleam-shaders
+sliders.comment.Support_Project=§7§o支持我们：https://buymeacoffee.com/harmanpree0
+link.Support_Project=§d§l支持开发工作
+
+# Core Settings
+option.SHADER_STYLE=§b§l着色器风格
+option.EXPOSURE_MULTIPLIER=§f§l⚡ 曝光乘数 ⚡
+option.MIN_LIGHT_AMOUNT=§e§l💡 最低光照 💡
+option.TORCH_AMOUNT=§6§l🔥 火把亮度 🔥
+option.shadowMapResolution=§8§l📏 阴影贴图分辨率 📏
+option.sunPathRotation=§e§l☀ 太阳角度 ☀
+option.SKY_BRIGHTNESS_DAY=§b§l🌞 白天亮度 🌞
+option.SKY_BRIGHTNESS_NIGHT=§9§l🌙 夜晚亮度 🌙
+option.shadowDistance=§8§l📍 阴影距离 📍
+option.ambientOcclusionLevel=§7§l🎯 环境光遮蔽强度 🎯
+option.TONEMAP_ACES=§6§l🎨 ACES 色调映射 🎨
+option.SEPARATE_AO=§7§l✧ 独立环境光遮蔽 ✧
+option.CLOUDS=§f§l☁ 云朵 ☁
+option.STARS=§b§l⭐ 星星 ⭐
+option.DRAW_SUN=§e§l绘制太阳
+
+# Color Settings
+option.TORCH_R=§c§l🔴 火把红色 🔴
+option.TORCH_G=§a§l🟢 火把绿色 🟢
+option.TORCH_B=§9§l🔵 火把蓝色 🔵
+
+# Profile
+profile.Skygleam_V3=§d§lSkygleam V3
+
+# Details Sections
+screen.Creator_Info=§6§l» 创作者信息 «
+screen.Features=§b§l» 功能 «
+screen.Changelog=§e§l» 更新日志 «
+option.Shader_Features=§b§l✧ 惊艳的视觉效果
+option.Unique_Effects=§d§l✧ 独特的光影包功能
+option.Special_Features=§e§l✧ 特别添加内容
+option.Version_History=§7§l» 版本历史
+option.Recent_Updates=§a§l» 最新变更
+
+# Color Settings Categories
+screen.Color_Settings=§e§l» 颜色设置 «
+screen.Light_Colors=§e§l» 灯光颜色
+screen.Time_Colors=§b§l» 一天中的时间
+screen.Water_Colors=§3§l» 水体颜色
+
+# Environment Categories
+screen.Environment=§a§l» 环境 «
+screen.Sky_Settings=§b§l» 天空设置
+screen.Weather_Effects=§7§l» 天气
+screen.World_Settings=§a§l» 世界设置
+
+# Social Categories
+screen.Social=§d§l» 社交 «
+screen.Credits=§6§l» 鸣谢
+screen.Support=§d§l» 支持
+option.SHADER_STYLE=§b§l着色器风格
+option.QUICK_SETUP_GUIDE=§f§l快速设置指南
+option.PERFORMANCE_TIPS=§a§l性能优化技巧
+option.AUTO_QUALITY=§e§l自动质量设置
+option.AUTO_EXPOSURE=§f§l自动曝光设置
+
+# Core Settings
+option.SHADER_STYLE=§b§l着色器风格
+option.EXPOSURE_MULTIPLIER=§f§l⚡ 曝光乘数 ⚡
+option.MIN_LIGHT_AMOUNT=§e§l💡 最低光照 💡
+option.TORCH_AMOUNT=§6§l🔥 火把亮度 🔥
+option.shadowMapResolution=§8§l📏 阴影贴图分辨率 📏
+option.sunPathRotation=§e§l☀ 太阳角度 ☀
+option.SKY_BRIGHTNESS_DAY=§b§l🌞 白天亮度 🌞
+option.SKY_BRIGHTNESS_NIGHT=§9§l🌙 夜晚亮度 🌙
+option.shadowDistance=§8§l📍 阴影距离 📍
+option.ambientOcclusionLevel=§7§l🎯 环境光遮蔽强度 🎯
+option.TONEMAP_ACES=§6§l🎨 ACES 色调映射 🎨
+option.SEPARATE_AO=§7§l✧ 独立环境光遮蔽 ✧
+option.CLOUDS=§f§l☁ 云朵 ☁
+option.STARS=§b§l⭐ 星星 ⭐
+option.DRAW_SUN=§e§l绘制太阳
+
+# Color Settings
+option.TORCH_R=§c§l🔴 火把红色 🔴
+option.TORCH_G=§a§l🟢 火把绿色 🟢
+option.TORCH_B=§9§l🔵 火把蓝色 🔵
+
+# Ambient Light Colors (added to match shaders.properties keys)
+option.AMBIENT_LIGHT_R=环境光红
+option.AMBIENT_LIGHT_G=环境光绿
+option.AMBIENT_LIGHT_B=环境光蓝
+
+# Social Links & Buttons
+option.Made_by_Team_Addoners=§e§l✦ 由 Team Addoners 制作 ✦
+option.Owner_Mcbugs_Addon=§b§l⭐ 创作者：Mcbugs Addon
+option.Download_AIOU_Vibrant=§e§l下载 AIOU Vibrant
+option.For_Best_Experience=§a§l获得最佳体验
+option.Subscibe_Baby!=§c§l立即订阅！
+option.YT_Mcbugs_Addon=§c§l▶ YouTube: Mcbugs 插件
+option.Insta_mcbugsaddon=§d§l📷 Instagram: @mcbugsaddon
+
+# Links
+link.YT_Mcbugs_Addon=§c§l访问 YouTube 频道
+link.Insta_mcbugsaddon=§d§l在 Instagram 上关注
+link.Download_AIOU_Vibrant=§a§l下载 AIOU Vibrant
+link.For_Best_Experience=§e§l获得最佳体验
+link.Subscibe_Baby!=§c§l立即订阅！
+
+# Visual Effects
+screen.Lighting=§e§l» 光照
+screen.Shadows=§8§l» 阴影
+screen.Post_Processing=§d§l» 后期处理
+option.BLOOM_STRENGTH=泛光强度
+option.SHADOW_TYPE=阴影类型
+option.SOFT_SHADOWS=软阴影
+option.DOF_QUALITY=景深质量
+option.MOTION_BLUR=运动模糊
+option.COLOR_GRADING=§b色彩§r分级
+
+# Color Settings
+screen.Light_Colors=§e§l» 灯光颜色
+screen.Time_Colors=§b§l» 一天中的时间
+screen.Water_Colors=§3§l» 水体颜色
+
+# Time of Day colors (added)
+option.SUNRISE_R=日出红
+option.SUNRISE_G=日出绿
+option.SUNRISE_B=日出蓝
+option.NOON_R=正午红色
+option.NOON_G=正午绿色
+option.NOON_B=正午蓝色
+option.SUNSET_R=日落红色值
+option.SUNSET_G=日落绿
+option.SUNSET_B=日落蓝
+option.NIGHT_R=夜晚红色
+option.NIGHT_G=夜晚绿色
+option.NIGHT_B=夜晚蓝色
+
+# Environment
+screen.Sky_Settings=§b§l» 天空设置
+screen.Weather_Effects=§7§l» 天气
+screen.World_Settings=§a§l» 世界设置
+option.RAIN_QUALITY=雨的质量
+option.THUNDER_LIGHTING=§e§l雷电特效
+option.WEATHER_OPACITY=天气不透明度
+option.TERRAIN_QUALITY=§a§l地形质量
+option.FOLIAGE_QUALITY=§2§l植被质量
+option.WAVE_INTENSITY=波浪强度
+
+# Water settings (added)
+option.WATER_R=§c§l§f§l水红§c§l§f§l色
+option.WATER_G=§a§l§f§l水绿§a§l§f§l色
+option.WATER_B=水蓝色
+option.WATER_OPACITY=水不透明度
+option.WATER_PARALLAX=水面视差
+
+# Rain settings (added)
+option.RAIN_OPACITY=雨水不透明度
+
+# Profile
+profile.Skygleam_V3=§d§lSkygleam V3
+
+# Social Links
+screen.Credits=§6§l» 鸣谢
+screen.Support=§d§l» 支持
+option.Made_by_Team_Addoners=§e§l✦ 由 Team Addoners 制作 ✦
+option.Owner_Mcbugs_Addon=§b§l⭐ 创作者：Mcbugs Addon
+option.Download_AIOU_Vibrant=§e§l下载 AIOU Vibrant
+option.For_Best_Experience=§a§l获得最佳体验
+option.Subscibe_Baby!=§c§l立即订阅！
+option.YT_Mcbugs_Addon=§c§l▶ YouTube: Mcbugs 插件
+option.Insta_mcbugsaddon=§d§l📷 Instagram: @mcbugsaddon
+
+# Buttons
+option.Download_AIOU_Vibrant=§e§l下载 AIOU Vibrant
+option.For_Best_Experience=§a§l获得最佳体验
+option.Subscibe_Baby!=§c§l立即订阅！
+
+# Settings
+option.SHADER_STYLE=§b§l着色器风格
+option.EXPOSURE_MULTIPLIER=§f§l⚡ 曝光乘数 ⚡
+option.MIN_LIGHT_AMOUNT=§e§l💡 最低光照 💡
+option.TORCH_AMOUNT=§6§l🔥 火把亮度 🔥
+option.shadowMapResolution=§8§l📏 阴影贴图分辨率 📏
+option.sunPathRotation=§e§l☀ 太阳角度 ☀
+option.SKY_BRIGHTNESS_DAY=§b§l🌞 白天亮度 🌞
+option.SKY_BRIGHTNESS_NIGHT=§9§l🌙 夜晚亮度 🌙
+option.shadowDistance=§8§l📍 阴影距离 📍
+option.ambientOcclusionLevel=§7§l🎯 环境光遮蔽强度 🎯
+option.TONEMAP_ACES=§6§l🎨 ACES 色调映射 🎨
+option.SEPARATE_AO=§7§l✧ 独立环境光遮蔽 ✧
+option.CLOUDS=§f§l☁ 云朵 ☁
+option.STARS=§b§l⭐ 星星 ⭐
+option.DRAW_SUN=§e§l绘制太阳
+
+# Color Settings
+option.TORCH_R=§c§l🔴 火把红色 🔴
+option.TORCH_G=§a§l🟢 火把绿色 🟢
+option.TORCH_B=§9§l🔵 火把蓝色 🔵

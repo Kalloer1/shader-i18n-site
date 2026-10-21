@@ -1,0 +1,223 @@
+#shaders/lang/zh_CN.lang
+# Prizm shaders vcf-Prizm-Shaders 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Prizm Shaders.zip 的 shaders/lang/en_us.lang
+profile.POTATO=§2极低
+profile.POTATO.comment=适用于集成显卡和笔记本电脑：1024 分辨率的硬阴影覆盖 64 个区块，无实体、接触或云阴影，无体积光或泛光，且 Nether 和 End 的体积效果以四分之一分辨率运行。
+profile.LOW=§2低配
+profile.LOW.comment=适用于中等硬件：1024 分辨率的阴影贴图覆盖 80 个区块，带柔化滤镜，无接触阴影，体积效果以四分之一分辨率运行，且光线、云和水反射的采样数更少。
+profile.MEDIUM=§e中配
+profile.MEDIUM.comment=1536 分辨率的阴影贴图覆盖 96 个区块，带物理半影；体积效果以一半分辨率运行；光线、云和水反射为中等质量。
+profile.HIGH=§c高配
+profile.HIGH.comment=校准后的质量（默认设置）：2048 分辨率的阴影覆盖 120 个区块，体积效果以一半分辨率运行。
+profile.ULTRA=超高
+profile.ULTRA.comment=4096 分辨率的阴影贴图覆盖 160 个区块，并启用最高质量的光线、云、End 云和水反射（体积效果以一半分辨率运行）。需要强大的显卡。
+profile.EXTREME=§d极限
+profile.EXTREME.comment=适用于截图和视频：与 Ultra 相同，但体积效果以全分辨率运行（在 Nether 和 End 中成本高出数倍），且 6144 分辨率的阴影覆盖 256 个区块。需要大量显存和非常强大的显卡。
+
+screen.SHADOWS=阴影样式
+screen.SHADOWS.comment=阴影的分辨率、范围、柔和度以及投射阴影的物体。
+screen.LIGHTING=光照
+screen.LIGHTING.comment=环境光、夜晚、火把和发光方块亮度。
+screen.MATERIALS=材质
+screen.MATERIALS.comment=金属、宝石和抛光石材：其光泽和反射。
+option.MATERIAL_SHINE=金属和宝石光泽
+option.MATERIAL_SHINE.comment=金、铁、铜、下界合金、钻石、绿宝石、青金石、紫水晶、石英、红石和抛光石材：阳光在金属颜色上的反射、周围环境的倒影以及宝石的内部发光。0 = 与之前相同（哑光方块）。
+option.ORE_GLOW=矿石发光
+option.ORE_GLOW.comment=矿石（铁、铜、金、红石、钻石、绿宝石、青金石、下界金和石英、远古残骸）在黑暗中会发出微弱的自身颜色光芒，使其更容易被发现。在日光和光照下会逐渐变暗。0 = 无发光。
+screen.RAYS=光束
+screen.RAYS.comment=空气中的阳光和月光束。
+screen.SKY=天空与薄雾
+screen.SKY.comment=云、星星、远景雾和雨雾。
+screen.WATER=水
+screen.WATER.comment=波浪、颜色、泡沫、反射和水下视角。默认设置使水面效果经过优化。
+screen.IMAGE=图像
+screen.IMAGE.comment=最终图像的曝光、饱和度和泛光。
+
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=阴影贴图的大小。数值越高，远离玩家的阴影越清晰；这是成本最高的设置。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影可覆盖的距离（区块）。数值越大，相同的分辨率会覆盖更广阔的空间。超出该距离后，阴影将根据天空光进行估算。
+option.SHADOW_FILTER=阴影滤镜
+option.SHADOW_FILTER.comment=硬：边缘锐利。软：固定模糊边缘。物理：在投射物附近边缘锐利，越远越柔和，模拟真实阳光。
+value.SHADOW_FILTER.0=硬阴影
+value.SHADOW_FILTER.1=柔和
+value.SHADOW_FILTER.2=物理
+option.SHADOW_PENUMBRA=半影大小
+option.SHADOW_PENUMBRA.comment=物理滤镜中太阳的视大小：数值越高，阴影越柔和。1 = 可见的太阳圆盘。
+option.CONTACT_SHADOWS=接触阴影
+option.CONTACT_SHADOWS.comment=阴影贴图无法呈现的精细细节：草和花的底部、台阶的角落。
+value.CONTACT_SHADOWS.0=关
+value.CONTACT_SHADOWS.1=开
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=云会遮挡太阳和月亮：它们的阴影会在地面、水面和光线束上移动。
+value.CLOUD_SHADOWS.0=关
+value.CLOUD_SHADOWS.1=开
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=彩色玻璃、染色玻璃、冰、史莱姆和蜂蜜会透射其颜色的光。关闭时，它们会投射不透明的阴影。
+value.COLORED_SHADOWS.0=关
+value.COLORED_SHADOWS.1=开
+option.ENTITY_SHADOWS=实体阴影
+option.ENTITY_SHADOWS.comment=哪些实体（玩家、动物、怪物、箱子……）会投射阴影。每个实体都会为自身阴影重新绘制：当实体数量多时（如 End 岛屿、农场、村庄），会消耗 CPU 性能。附近：约 40 个区块内的实体（End 中为 25 个）。
+value.ENTITY_SHADOWS.0=仅玩家
+value.ENTITY_SHADOWS.1=附近
+value.ENTITY_SHADOWS.2=全部
+
+option.AMBIENT_LIGHT=环境光
+option.AMBIENT_LIGHT.comment=白天和夜晚，阳光无法到达的区域所接收到的天空光。数值越高，阴影越浅。
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.NIGHT_BRIGHTNESS.comment=月光和夜空的光亮。
+option.BLOCK_LIGHT=火把光
+option.BLOCK_LIGHT.comment=来自火把、灯笼、发光石、熔岩和其他发光方块的光。
+option.MINIMUM_LIGHT=洞穴最低光照度
+option.MINIMUM_LIGHT.comment=在没有天空光或火把的区域中仍可见的亮度。0 = 完全黑暗。
+option.EMISSIVE_STRENGTH=发光方块
+option.EMISSIVE_STRENGTH.comment=自发光方块本身会发出多少光。在户外白天，眼睛适应了太阳光，因此这些方块看起来像明亮的方块。
+option.FOLIAGE_TRANSLUCENCY=透叶光照
+option.FOLIAGE_TRANSLUCENCY.comment=阳光从树叶、草地和花朵背面穿过时的效果。
+option.WET_SURFACES=湿润表面
+option.WET_SURFACES.comment=下雨时，地面会变暗并反射天空和阳光。
+value.WET_SURFACES.0=关
+value.WET_SURFACES.1=开
+
+option.VOLUMETRIC_LIGHT=光束
+option.VOLUMETRIC_LIGHT.comment=空气中的阳光和月光束（在树木之间、穿过窗户、在洞穴入口处）。水下光线始终保留。
+value.VOLUMETRIC_LIGHT.0=关
+value.VOLUMETRIC_LIGHT.1=开
+option.VL_QUALITY=光线质量
+option.VL_QUALITY.comment=体积光的每像素采样数，以及在 Nether 和 End 中的空气和云层的采样数。使用时间累积时，低值在静止时已显得干净；高值在移动时能更清晰地呈现体积光。
+value.VL_QUALITY.0=§2低配
+value.VL_QUALITY.1=§e中配
+value.VL_QUALITY.2=§c高配
+value.VL_QUALITY.3=超高
+option.VL_STRENGTH=光线强度
+option.VL_STRENGTH.comment=体积光的可见程度。1 = 校准后的薄雾。
+option.VL_DUST=遮蔽下的尘埃
+option.VL_DUST.comment=树木下、洞穴中和房屋内的阳光束：当你在遮蔽下时，阳光使空气中的尘埃变得可见。0 = 无。
+option.CLOUD_RAYS=云层间的射线
+option.CLOUD_RAYS.comment=当太阳位置较低时，云层在空气中的阴影：天空中从太阳方向延伸出的较暗楔形区域。0 = 无。
+option.VL_TEMPORAL=时间累积
+option.VL_TEMPORAL.comment=结合多个帧，使体积光在采样数较少的情况下仍显得干净。
+value.VL_TEMPORAL.0=关
+value.VL_TEMPORAL.1=开
+option.VL_RES=体积光分辨率
+option.VL_RES.comment=体积光、Nether 空气、End 薄雾、云层和闪电的分辨率。全分辨率最清晰，成本是半分辨率的四倍；四分之一分辨率成本为半分辨率的四分之一，看起来稍柔和。这是影响 Nether 和 End 性能最大的选项。
+value.VL_RES.1=完整
+value.VL_RES.2=一半
+value.VL_RES.4=四分之一
+
+option.CLOUDS=云
+option.CLOUDS.comment=Prizm 的体积云。没有它们，也不会有云影。
+value.CLOUDS.0=关
+value.CLOUDS.1=开
+option.CLOUD_QUALITY=云层质量
+option.CLOUD_QUALITY.comment=每像素的步数：数值越高，远处的云层越清晰，颗粒感越少。
+value.CLOUD_QUALITY.0=§2低配
+value.CLOUD_QUALITY.1=§e中配
+value.CLOUD_QUALITY.2=§c高配
+value.CLOUD_QUALITY.3=超高
+option.CLOUD_AMOUNT=云量
+option.CLOUD_AMOUNT.comment=云层覆盖天空的面积。
+value.CLOUD_AMOUNT.0=稀少
+value.CLOUD_AMOUNT.1=部分
+value.CLOUD_AMOUNT.2=普通
+value.CLOUD_AMOUNT.3=大量
+value.CLOUD_AMOUNT.4=阴云
+option.STARS=星星
+option.STARS.comment=夜空的星星。
+value.STARS.0=关
+value.STARS.1=开
+option.FOG_DENSITY=雾
+option.FOG_DENSITY.comment=远处空气中的薄雾（夜间比白天更浓，山谷比山脉更浓）。1 = 干净空气，白天几乎不可见；8 = 薄雾；32 = 雾；64 = 浓雾。0 = 无。
+option.BORDER_FOG=边界雾
+option.BORDER_FOG.comment=隐藏已加载区块的边界。
+value.BORDER_FOG.0=关
+value.BORDER_FOG.1=开
+option.RAIN_FOG=雨雾
+option.RAIN_FOG.comment=下雨时笼罩而来的灰色薄雾。
+
+option.WAVE_HEIGHT=波浪强度
+option.WAVE_HEIGHT.comment=浪高（水面起伏的高度）及其坡度。0 = 平静的水面。
+option.WAVE_SPEED=波浪速度
+option.WAVE_SPEED.comment=浪、涟漪及其风力波动的速度。0 = 冻结状态。
+option.WAVE_SCALE=波浪大小
+option.WAVE_SCALE.comment=波浪和涟漪的波长：数值越高，波浪越长、越宽。
+option.WATER_RIPPLE_STRENGTH=涟漪
+option.WATER_RIPPLE_STRENGTH.comment=水面上的细微涟漪：阳光闪烁、反射扭曲和焦散。0 = 光滑水面。
+
+option.WATER_COLOR=水体类型
+option.WATER_COLOR.comment=水的颜色和吸收特性：水底可见的程度以及随深度变化的颜色。
+value.WATER_COLOR.0=自然
+value.WATER_COLOR.1=§b热带
+value.WATER_COLOR.2=湖泊
+value.WATER_COLOR.3=海洋
+option.WATER_CLARITY=透明度
+option.WATER_CLARITY.comment=需要多少水才能隐藏水底。数值越高，水越清澈。
+option.WATER_SCATTER=散射
+option.WATER_SCATTER.comment=水向眼睛散射的光线：数值越高，水越明亮、越浑浊；数值越低，水越暗。
+option.WATER_REFRACTION=折射
+option.WATER_REFRACTION.comment=水底随波浪波动的程度。1 = 物理效果；0 = 静止的水底。
+
+option.FOAM_AMOUNT=海浪
+option.FOAM_AMOUNT.comment=瀑布底部、流动的水和急流处的白色水花。0 = 无泡沫。
+option.WATER_CAUSTICS=焦散
+option.WATER_CAUSTICS.comment=波浪在水下所有物体上聚焦的光网。0 = 无焦散。
+
+option.WATER_REFLECTION_QUALITY=反射质量
+option.WATER_REFLECTION_QUALITY.comment=水面倒映着风景，清晰无比。"天空模式"是最快的。
+value.WATER_REFLECTION_QUALITY.0=§a仅天空
+value.WATER_REFLECTION_QUALITY.1=§2低配
+value.WATER_REFLECTION_QUALITY.2=§e中配
+value.WATER_REFLECTION_QUALITY.3=§c高配
+option.WATER_TEMPORAL=时间稳定性
+option.WATER_TEMPORAL.comment=通过合并多帧画面，减少远处水面及其倒影的闪烁。近处水面保持不变。
+value.WATER_TEMPORAL.0=关
+value.WATER_TEMPORAL.1=开
+option.UNDERWATER_EXPOSURE=水下适应性
+option.UNDERWATER_EXPOSURE.comment=潜水时眼睛的适应程度：数值越高，水下视野越清晰，尤其在夜间。1 = 无适应。
+
+option.EXPOSURE=曝光
+option.EXPOSURE.comment=色调曲线前的整张图片亮度。1 = 校准后的。
+option.SATURATION=饱和度
+option.SATURATION.comment=色彩强度。1 = 场景本身的色彩强度。
+option.BLOOM=泛光
+option.BLOOM.comment=比白色更亮的东西发出的光：太阳、波光粼粼的水、灯光和最亮的星星。
+value.BLOOM.0=关
+value.BLOOM.1=开
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_STRENGTH.comment=看那光芒是多么显眼。
+
+screen.NETHER=§c下界
+screen.NETHER.comment=下界的亮度，烟雾，空中熔岩和火焰的光芒，热浪扭曲和熔岩。
+option.NETHER_BRIGHTNESS=下界亮度
+option.NETHER_BRIGHTNESS.comment=下界空气的光（熔岩辉光和薄雾），在表面和雾气中。1 = 校准。独立于Minecraft的亮度设置。
+option.NETHER_FOG=下界雾效
+option.NETHER_FOG.comment=下界空气中的烟雾和薄雾越多，视野消失得越快；越少，看得就越远。
+option.NETHER_GLOW=下界体积光效
+option.NETHER_GLOW.comment=烟雾中熔岩与火焰的光芒：熔岩湖上空发光的空气和明亮物体的光晕。0 = 无。
+option.HEAT_DISTORTION=热扰动
+option.HEAT_DISTORTION.comment=熔岩和火焰上空的热空气波纹。0 = 无（可节省部分性能）。
+option.LAVA_BRIGHTNESS=岩浆亮度
+option.LAVA_BRIGHTNESS.comment=岩浆在每个维度都闪耀着光芒，在末地投射出周围的光影。
+option.NETHER_EMITTER_LIGHT=熔岩与火焰之光
+option.NETHER_EMITTER_LIGHT.comment=岩浆、火焰和发光方块在末地投射出的光。它们自身发出的光就是“发光方块”。
+
+screen.END=末地
+screen.END.comment=黑洞与漩涡，云层与风暴，闪电，迷雾与终末的光束。
+option.END_BH_DISK=黑洞亮度
+option.END_BH_DISK.comment=环绕黑洞的气体盘及其光环的亮度。它给岛屿带来的光不会改变。
+option.END_VORTEX=§4§l§f§l漩§f§l涡
+option.END_VORTEX.comment=尘埃螺旋着坠入黑洞，扭曲着周围的天空。0 = 无漩涡。
+option.END_CLOUDS=终结云层与风暴
+option.END_CLOUDS.comment=主岛周围的紫色云层和风暴。没有它们，就不会有闪电，末地所需的成本也会更低。
+value.END_CLOUDS.0=关
+value.END_CLOUDS.1=开
+option.END_LIGHTNING=末地闪电
+option.END_LIGHTNING.comment=末地风暴中有多少紫色闪电会劈下。
+value.END_LIGHTNING.0=无
+value.END_LIGHTNING.1=稀有
+value.END_LIGHTNING.2=普通
+value.END_LIGHTNING.3=频繁
+option.END_FOG=末地雾效
+option.END_FOG.comment=岛屿周围空气的密度：远处岛屿和风暴的消散程度。
+option.END_VOLUMETRICS=结束体积渲染效果
+option.END_VOLUMETRICS.comment=终末空气散射的光：黑洞的光束、雾中岛屿的剪影与地平线的微光。

@@ -25,6 +25,19 @@ export const STATUS = {
   DONE_UNMIRRORED: '镜像缺失',
 }
 
+/**
+ * 队列条目里与「失败自动重试」相关的字段（仅 worker/index.js 读写）：
+ *
+ * - `retryCount`  number  已因「失败 → 再次派发」而重试的次数，由 Worker 在派发成功后 +1；
+ *                         达 `AUTO_RETRY_LIMIT` 后不再自动选中，页面显示「需人工介入」。
+ * - `lastRetryAt` string 最近一次自动重试的派发时间（ISO 8601），仅用于排查。
+ *
+ * ⚠️ 刻意**不**与 pipeline 回写的 `attempts` 混用：pipeline 的
+ * `attempts: (entry.attempts ?? 0) + 1` 里的 entry 来自目录条目，而目录里没有该字段，
+ * 所以那个值实际恒为 1，拿它做上限判断会永远「只重试过一次」。
+ */
+export const RETRY_FIELDS = Object.freeze(['retryCount', 'lastRetryAt'])
+
 /** 来源枚举 */
 export const SOURCE = {
   PLAYER: '玩家请求',

@@ -1,0 +1,499 @@
+#shaders/lang/zh_CN.lang
+# Sunflawer Shaders vcf-Sunflawer-0.4.1-Lightshaft-Update 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Sunflawer 0.4.1 Lightshaft Update.zip 的 shaders/lang/en_us.lang
+﻿#shaders/lang/en_us.lang
+
+#Profiles
+profile.Low=§2低配
+profile.Medium=§e中配
+profile.High=§c高配
+profile.Ultra=超高
+
+#Screens
+screen.Visual=视觉
+screen.Specular=反射与镜面配置
+screen.Normals=法线贴图与POM配置
+
+screen.PostProcess=后期处理
+screen.ColorGrading=色彩分级与色调映射配置
+screen.Col1=红色通道
+screen.Col2=绿色通道
+screen.Col3=蓝色通道
+screen.Col4=色调
+
+screen.Shadows=阴影样式
+
+screen.Sky=天空
+screen.Clouds=云层配置
+
+screen.Color=§b颜§r色
+screen.LightColor=光照颜色
+screen.LightM=光照 (早晨)
+screen.LightD=光照 (白天)
+screen.LightA=光线（午后）
+screen.LightN=光照 (夜间)
+screen.SkyM=环境光 (早晨)
+screen.SkyD=环境光 (白天)
+screen.SkyE=环境音（午后）
+screen.SkyN=环境光 (夜间)
+screen.TorchColor=方块光颜色
+screen.SkyColor=天空颜色
+screen.WaterColor=水体颜色
+screen.WeatherColor=天气颜色
+screen.WeatherR=雨 (普通)
+screen.WeatherC=降雪
+screen.WeatherD=沙漠沙暴
+screen.WeatherB=悬崖沙暴
+screen.WeatherS=沼泽雨
+screen.WeatherM=蘑菇岛雨
+screen.DimensionColor=维度颜色
+screen.NetherColor=§c下界
+screen.EndColor=末地
+
+screen.Water=水
+
+screen.Terrain=摆动方块
+
+screen.World=世界
+
+#Settings
+option.About=BSL v7.1.03.2
+value.About.0=由 Capt Tatsu 制作
+
+#Visual
+#	Specular
+option.ReflectTranslucent=半透明反射
+option.ReflectRain=雨水反射
+option.ReflectSpecular=镜面反射
+option.SpecularFormat=高光格式
+option.ReflectPrevious=上一帧反射
+option.ReflectRough=粗糙反射
+option.ReflectRainType=雨景倒影覆盖
+
+value.SpecularFormat.0=实验室PBR
+value.SpecularFormat.1=旧版物理渲染
+value.SpecularFormat.2=灰度
+
+value.ReflectRainType.0=水坑
+value.ReflectRainType.1=完整
+#   Normals
+option.RPSPOM=视差遮蔽映射
+option.RPSShadow=视差自阴影效果
+option.RPSLightmap=定向光照贴图
+option.LightmapDirStrength=定向LM强度
+option.POMQuality=视差质量
+option.POMDepth=POM深度
+option.POMDistance=视差距离
+option.POMShadowAngle=POM 阴影角度
+
+value.LightmapDirStrength.2.0=§2极低
+value.LightmapDirStrength.1.4=§2低配
+value.LightmapDirStrength.1.0=§e中配
+value.LightmapDirStrength.0.7=§c高配
+value.LightmapDirStrength.0.5=极高
+#	Generic
+option.AO=环境光遮蔽
+option.AOStrength=环境光遮蔽强度
+option.LightShaft=体积光
+option.LightShaftStrength=体积光强度
+option.Desaturation=去饱和
+option.DesaturationFactor=最大去饱和因子
+option.Reflection=反射
+option.RPSupport=资源包支持
+option.BlackOutline=§f黑色描边
+option.PromoOutline=宣传海报设计大纲
+option.LightmapBanding=光照贴图分带
+option.DisableTexture=纯白世界
+
+#PostProcess
+#	ColorGrading
+option.ColorGrading=§b色彩§r分级
+option.TonemapExposure=基础曝光
+option.TonemapWhiteCurve=白色曲线
+option.TonemapLowerCurve=暗部曲线
+option.TonemapUpperCurve=亮部曲线
+option.Saturation=饱和度
+option.Vibrance=鲜艳度
+option.ModifiedTonemap=修改后的色调映射
+#		Col1
+option.ColR1=红色 - 红色值
+option.ColG1=红色 - 绿色值
+option.ColB1=红色 - 蓝色值
+option.ColS1=红色强度值
+option.ColM1=最小红色值
+option.ColC1=红色曲线值
+#		Col2
+option.ColR2=绿色 - 红色值
+option.ColG2=绿色 - 绿色值
+option.ColB2=绿色 - 蓝色值
+option.ColS2=绿色强度值
+option.ColM2=最小绿色值
+option.ColC2=绿色曲线值
+#		Col3
+option.ColR3=蓝色 - 红色值
+option.ColG3=蓝色 - 绿色值
+option.ColB3=蓝色 - 蓝色值
+option.ColS3=蓝色强度值
+option.ColM3=最小蓝色值
+option.ColC3=蓝色曲线值
+#		Col4
+option.ColR4=色调 - 红色值
+option.ColG4=色调 - 绿色值
+option.ColB4=色调 - 蓝色值
+option.ColS4=色调强度值
+option.ColM4=色调混合值
+#	Generic
+option.DOF=景深
+option.DOFStrength=景深强度
+option.MotionBlur=运动模糊
+option.MotionBlurStrength=运动模糊强度
+option.Bloom=泛光
+option.BloomStrength=泛光强度
+option.LensFlare=镜头光晕
+option.LensFlareStrength=镜头光晕强度
+option.AA=抗锯齿
+option.Sharpen=图像锐化
+option.AutoExposure=自动曝光
+option.Vignette=暗角
+option.DirtyLens=脏镜头
+
+value.AA.0=关
+value.AA.1=快速近似抗锯齿
+value.AA.2=自适应时间抗锯齿
+
+value.Sharpen.0=0.00
+value.Sharpen.1=0.10
+value.Sharpen.2=0.20
+value.Sharpen.3=0.30
+value.Sharpen.4=0.40
+value.Sharpen.5=0.50
+
+#Shadows
+option.shadowMapResolution=阴影贴图分辨率
+option.shadowDistance=阴影距离
+option.ShadowColor=彩色阴影
+option.ShadowFilter= 阴影过滤
+option.sunPathRotation=太阳路径旋转
+option.SubsurfaceScattering=次表面散射
+
+value.shadowMapResolution.1024=§2低配
+value.shadowMapResolution.2048=§e中配
+value.shadowMapResolution.3072=§c高配
+value.shadowMapResolution.4096=极高
+value.shadowMapResolution.8192=超高
+
+#Color
+option.LightMR=红
+option.LightMG=绿色
+option.LightMB=蓝色
+option.LightMS=强度
+
+option.LightDR=红
+option.LightDG=绿色
+option.LightDB=蓝色
+option.LightDS=强度
+
+option.LightAR=红
+option.LightAG=绿色
+option.LightAB=蓝色
+option.LightAS=强度
+
+option.LightNR=红
+option.LightNG=绿色
+option.LightNB=蓝色
+option.LightNS=强度
+
+option.SkyMR=红
+option.SkyMG=绿色
+option.SkyMB=蓝色
+option.SkyMS=强度
+
+option.SkyDR=红
+option.SkyDG=绿色
+option.SkyDB=蓝色
+option.SkyDS=强度
+
+option.SkyER=红
+option.SkyEG=绿色
+option.SkyEB=蓝色
+option.SkyES=强度
+
+option.SkyNR=红
+option.SkyNG=绿色
+option.SkyNB=蓝色
+option.SkyNS=强度
+
+option.TorchR=红
+option.TorchG=绿色
+option.TorchB=蓝色
+option.TorchS=强度
+
+option.SkyCR=红
+option.SkyCG=绿色
+option.SkyCB=蓝色
+option.SkyCS=强度
+
+option.WaterR=红
+option.WaterG=绿色
+option.WaterB=蓝色
+option.WaterS=强度
+option.WaterA=透明度
+option.WaterF=雾距离
+
+option.WeatherRR=红
+option.WeatherRG=绿色
+option.WeatherRB=蓝色
+option.WeatherRS=强度
+
+option.WeatherCR=红
+option.WeatherCG=绿色
+option.WeatherCB=蓝色
+option.WeatherCS=强度
+
+option.WeatherDR=红
+option.WeatherDG=绿色
+option.WeatherDB=蓝色
+option.WeatherDS=强度
+
+option.WeatherBR=红
+option.WeatherBG=绿色
+option.WeatherBB=蓝色
+option.WeatherBS=强度
+
+option.WeatherSR=红
+option.WeatherSG=绿色
+option.WeatherSB=蓝色
+option.WeatherSS=强度
+
+option.WeatherMR=红
+option.WeatherMG=绿色
+option.WeatherMB=蓝色
+option.WeatherMS=强度
+
+option.NetherR=红
+option.NetherG=绿色
+option.NetherB=蓝色
+option.NetherS=强度
+
+option.EndR=红
+option.EndG=绿色
+option.EndB=蓝色
+option.EndS=强度
+
+option.SkyVanilla=原版天空
+option.WaterVanilla=原版水
+option.WeatherVaried=按群系的天气
+
+#Sky
+#   Clouds
+option.CloudQuality=云层质量
+option.CloudThickness=云厚度
+option.CloudAmount=云量
+option.CloudHeight=云层高度
+option.CloudOpacity=云层不透明度
+option.CloudSpeed=云层速度
+option.CloudBrightness=云亮度
+option.CloudColorProfile=云色彩配置文件
+option.CloudsType=云层类型
+
+value.CloudQuality.5=§2低配
+value.CloudQuality.8=§e中配
+value.CloudQuality.12=§c高配
+value.CloudQuality.20=超高
+value.CloudQuality.30=§d极限
+
+value.CloudsType.1=英国手语
+value.CloudsType.2=Negoros 改装版
+
+value.CloudColorProfile.0=英国手语
+value.CloudColorProfile.1=鲜艳
+value.CloudColorProfile.2=戏剧性
+value.CloudColorProfile.3=简单
+
+value.CloudThickness.1=§2极低
+value.CloudThickness.2=§2低配
+value.CloudThickness.4=§e中配
+value.CloudThickness.8=§c高配
+value.CloudThickness.16=极高
+
+value.CloudAmount.13.0=§2极低
+value.CloudAmount.12.0=§2低配
+value.CloudAmount.11.0=§e中配
+value.CloudAmount.10.0=§c高配
+value.CloudAmount.9.0=极高
+
+value.CloudHeight.5.0=§2极低
+value.CloudHeight.10.0=§2低配
+value.CloudHeight.15.0=§e中配
+value.CloudHeight.20.0=§c高配
+value.CloudHeight.25.0=极高
+
+value.HorizonDistance.1.0=非常近
+value.HorizonDistance.1.5=近
+value.HorizonDistance.2.0=§e中配
+value.HorizonDistance.2.5=远
+value.HorizonDistance.3.0=非常远
+#   Generic
+option.Clouds=云
+option.Stars=星星
+option.RoundSunMoon=圆月与太阳
+option.SunSize=太阳大小
+option.SkyDesaturation=天空去饱和度
+option.HorizonDistance=地平线距离
+option.SkyboxBrightness=天空盒亮度
+
+value.SunSize.1400.0=最大的
+value.SunSize.1600.0=非常大
+value.SunSize.1800.0=大
+value.SunSize.2000.0=中号 大号
+value.SunSize.3000.0=§e中配
+value.SunSize.4500.0=中偏小
+value.SunSize.5000.0=最小
+
+#Water
+option.WaterNormals=法线
+option.WaterParallax=视差
+option.WaterOctave=倍频
+option.WaterBump=凹凸程度
+option.WaterLacunarity=间隙度
+option.WaterPersistance=持续性
+option.WaterSize=尺寸
+option.WaterSharpness=锐利度
+option.WaterSpeed=速度
+
+value.WaterNormals.0=关
+value.WaterNormals.1=默认
+value.WaterNormals.2=自定义
+
+#Terrain 
+option.WavingGrass=草
+option.WavingCrops=作物
+option.WavingPlant=植物
+option.WavingTallPlant=高大植物
+option.WavingLeaves=树叶
+option.WavingVines=藤蔓
+option.WavingLilypad=睡莲
+option.WavingFire=火焰
+option.WavingWater=水
+option.WavingLava=岩浆
+
+#World
+option.EmissiveRecolor=自发光重色
+option.EmissiveBrightness=自发光亮度
+option.Weather=天气
+option.WeatherOpacity=天气不透明度
+option.Fog=雾
+option.FogRange=雾范围
+option.WorldCurvature=世界曲率
+option.WorldCurvatureSize=世界曲率大小
+option.WorldTimeAnimation=世界时间动画
+option.AnimationSpeed=动画速度
+
+value.DesaturationFactor.2.0=§2极低
+value.DesaturationFactor.1.5=§2低配
+value.DesaturationFactor.1.0=§e中配
+value.DesaturationFactor.0.5=§c高配
+value.DesaturationFactor.0.0=极高
+
+#Comments
+profile.comment=低：低阴影，无额外效果。中：中等阴影，无额外效果。高：中等阴影，环境光遮蔽和体积光。超高：高阴影，环境光遮蔽、体积光和运动模糊。
+option.About.comment=作者：Capt Tatsu。英文语言文件作者：Capt Tatsu。bitslablab.com
+
+option.AO.comment=使表面之间的交叠区域变暗。§a[+]§r此效果可从 TAA 中受益。
+option.AOStrength.comment=调整环境光遮蔽强度。
+option.LightShaft.comment=添加来自太阳/月亮的体积光线. §a[+]§r此效果可受益于 TAA. §e[*]§r性能取决于阴影贴图分辨率.
+option.LightShaftStrength.comment=调整体积光的强度。
+option.Desaturation.comment=降低较暗区域的饱和度。
+option.DesaturationFactor.comment=决定可能的最大去饱和度系数。
+option.Reflection.comment=启用屏幕空间反射. §e[*]§r此开关仅影响水和半透明反射，雨和镜面反射不受影响。
+option.RPSupport.comment=启用高光贴图、高光反射、法线贴图和自阴影 POM。§c[-]§r对性能影响较大
+option.BlackOutline.comment=启用黑色轮廓。
+option.PromoOutline.comment=启用宣传艺术风格轮廓。
+option.LightmapBanding.comment=启用光照贴图带边效果。
+option.DisableTexture.comment=用纯白色反照率替换纹理。
+
+option.ReflectTranslucent.comment=在半透明区块（如彩色玻璃、冰等）上启用反射。
+option.ReflectRain.comment=下雨时启用反射。§a[+]§r此效果可从 TAA 中受益。§e[*]§r此效果还使用粗糙反射。§e[*]§r启用“按群系天气”时，此效果会在某些群系中消失。
+option.ReflectSpecular.comment=在光滑和/或金属表面上启用反射。§e[*]§r必须启用资源包支持。
+option.SpecularFormat.comment=切换高光贴图格式。labPBR：红色-光滑度，绿色-f0，蓝色-孔隙率，阿尔法-自发光。PBR：红色-光滑度，绿色-金属度。旧版：红色-光滑度。
+option.ReflectRough.comment=允许较粗糙的表面产生模糊/噪点反射。§a[+]§r此效果可从 TAA 中受益。
+option.ReflectPrevious.comment=使用上一帧来反射半透明物体。§c[-]§r可能导致截图中反射缺失（由截图尺寸设置引起）。§c[-]§r与某些 GPU 不兼容。
+option.ReflectRainType.comment=决定应用多少雨水反射。
+
+option.RPSPOM.comment=启用视差遮蔽贴图。
+option.POMDepth.comment=调整 POM 深度。
+option.RPSShadow.comment=在具有深度/视差贴图的表面上启用额外阴影。§e[*]§r无需启用 POM。
+option.POMShadowAngle.comment=调整视差阴影的角度。
+option.RPSLightmap.comment=在天空光照贴图和区块光照贴图上启用法线贴图。§c[-]§r启用此效果后，光照贴图可能出现故障。
+option.LightmapDirStrength.comment=调整方向光照贴图的强度。
+option.POMQuality.comment=调整 POM 采样数。
+option.POMDistance.comment=调整 POM 和视差阴影的渲染距离。
+
+option.DOF.comment=启用相机对焦效果。
+option.DOFStrength.comment=调整景深强度。
+option.MotionBlur.comment=启用基于相机移动和旋转的运动模糊。
+option.MotionBlurStrength.comment=调整运动模糊强度。
+option.Bloom.comment=启用泛光效果。
+option.BloomStrength.comment=调整泛光强度。
+option.AA.comment=启用抗锯齿。FXAA：快速，与截图尺寸兼容。TAA：较慢，能捕捉子像素细节并改善某些效果。§e[*]§r在启用此选项时，请在光影菜单中禁用抗锯齿。
+option.Sharpen.comment=调整图像锐化。§a[+]§r适合不喜欢因抗锯齿而图像变模糊的用户。§c[-]§r更锐利的图像会导致色带伪影和某些重锯齿现象重新出现。
+option.LensFlare.comment=启用镜头光晕。
+option.LensFlareStrength.comment=调整镜头光晕强度。
+option.AutoExposure.comment=启用自动亮度调整。
+option.Vignette.comment=减少屏幕边缘的亮度。§e[*]§r360成像时禁用。
+option.DirtyLens.comment=为泛光添加尘埃粒子效果。 §e[*]§r需要泛光。
+
+option.ColorGrading.comment=启用调色。
+option.TonemapExposure.comment=调整基于色调映射的亮度。
+option.TonemapWhiteCurve.comment=调整达到完全白色所需的亮度。
+option.TonemapLowerCurve.comment=调整较暗颜色的对比度。
+option.TonemapUpperCurve.comment=调整较亮颜色的对比度。
+option.Saturation.comment=调整所有颜色的饱和度
+option.Vibrance.comment=调整饱和度较低的颜色的饱和度，饱和度较高的颜色受影响较小。
+
+option.shadowMapResolution.comment=调整阴影贴图尺寸. §e[*]§r更高分辨率产生更清晰的阴影，但会降低性能.
+option.shadowDistance.comment=调整阴影距离。
+option.ShadowColor.comment=启用半透明物体的彩色阴影. §a[+]§r用于彩色体积光线. §c[-]§r使用阴影滤镜时性能开销略高.
+option.ShadowFilter.comment=启用阴影过滤。§a[+]§r此效果可受益于 TAA。
+option.sunPathRotation.comment=调整太阳角度。
+option.SubsurfaceScattering.comment=允许光线穿透植被并散射。
+
+option.Clouds.comment=启用云层。§a[+]§r此效果受益于TAA。
+option.Stars.comment=启用星星。
+option.RoundSunMoon.comment=启用基于着色器的太阳与月亮。§e[*]§r在视频设置 > 细节 > 太阳与月亮中禁用原版太阳与月亮
+option.HorizonDistance.comment=调整天空渐变。更近的 horizon 使天空略亮，更远的 horizon 使天空略暗。
+option.SkyboxBrightness.comment=调整天空盒亮度。§e[*]§r当存在减法天空盒时，设为 1.00。
+option.SkyDesaturation.comment=启用基于夜间颜色的天空色调。
+
+option.CloudQuality.comment=调整云质量。
+option.CloudThickness.comment=调整云厚度。§e[*]§r厚度越高，伪影越明显。
+option.CloudAmount.comment=调整云量。
+option.CloudsHeight.comment=调整云层高度。
+option.CloudOpacity.comment=调整云层的不透明度。
+option.CloudSpeed.comment=调整云层速度。
+option.CloudBrightness.comment=调整云层亮度。
+
+option.WaterVanilla.comment=使用原版水贴图。
+option.SkyVanilla.comment=使用原版天空颜色。
+option.WeatherVaried.comment=为不同群系使用不同天气颜色。§c[-]§r仅适用于单人游戏。
+
+option.WaterNormals.comment=启用水体实时生成的法线贴图。
+option.WaterParallax.comment=启用水面视差效果.
+option.WaterOctave.comment=调整水法线的八度。
+option.WaterBump.comment=调整水法线的高强。
+option.WaterLacunarity.comment=调整每八度的大小缩减。
+option.WaterPersistance.comment=调整每八度的重量缩减。
+option.WaterSize.comment=调整水法线的基础噪点大小。
+option.WaterSharpness.comment=调整水法线采样偏移。
+option.WaterSpeed.comment=调整水流速度。
+
+option.EmissiveRecolor.comment=用方块光颜色为某些自发光方块着色。
+option.EmissiveBrightness.comment=决定自发光区块的亮度。
+option.Weather.comment=启用降雨与降雪。
+option.WeatherOpacity.comment=调整天气不透明度。
+option.Fog.comment=启用雾效。
+option.FogRange.comment=调整雾的距离。
+option.WorldCurvature.comment=启用世界曲率。§e[*]§r仅在主世界生效。§e[*]§r缺失的区块由 Minecraft 自身处理，我无法修复。
+option.WorldCurvatureSize.comment=调整世界曲率大小。
+option.WorldTimeAnimation.comment=使用游戏时间控制移动物体。§e[*]§r此选项主要用于制作电影。
+option.AnimationSpeed.comment=调整动画速度。

@@ -1,0 +1,178 @@
+#shaders/lang/zh_CN.lang
+# TrueVision vcf-TrueVision_b1.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：TrueVision_b1.1.zip 的 shaders/lang/en_us.lang
+screen.LOOK =视觉效果
+screen.LIGHTING =光照
+screen.SHADOWS =阴影样式
+screen.WORLD =世界运动
+screen.POST =§d电影效果
+
+option.TV_SATURATION =饱和度
+option.TV_SATURATION.comment =微调色彩强度，不刻意追求风格化效果。
+prefix.TV_SATURATION =
+suffix.TV_SATURATION =亮度
+value.TV_SATURATION.95 = 95
+value.TV_SATURATION.100 = 100
+value.TV_SATURATION.104 = 104
+value.TV_SATURATION.108 = 108
+value.TV_SATURATION.110 = 110
+value.TV_SATURATION.112 = 112
+value.TV_SATURATION.116 = 116
+value.TV_SATURATION.120 = 120
+
+option.TV_CONTRAST =对比度
+option.TV_CONTRAST.comment =调整图像冲击力，同时保持画面干净。
+suffix.TV_CONTRAST =亮度
+value.TV_CONTRAST.96 = 96
+value.TV_CONTRAST.100 = 100
+value.TV_CONTRAST.102 = 102
+value.TV_CONTRAST.103 = 103
+value.TV_CONTRAST.104 = 104
+value.TV_CONTRAST.108 = 108
+
+option.TV_COLOR_BOOST =色彩增强
+option.TV_COLOR_BOOST.comment =为场景增添少许额外的生动感。
+suffix.TV_COLOR_BOOST =亮度
+value.TV_COLOR_BOOST.100 = 100
+value.TV_COLOR_BOOST.104 = 104
+value.TV_COLOR_BOOST.108 = 108
+value.TV_COLOR_BOOST.110 = 110
+value.TV_COLOR_BOOST.112 = 112
+value.TV_COLOR_BOOST.116 = 116
+value.TV_COLOR_BOOST.120 = 120
+
+option.TV_NIGHT_EXPOSURE =夜晚曝光
+option.TV_NIGHT_EXPOSURE.comment =控制着写实月光下的夜晚亮度。
+suffix.TV_NIGHT_EXPOSURE =亮度
+value.TV_NIGHT_EXPOSURE.90 = 90
+value.TV_NIGHT_EXPOSURE.100 = 100
+value.TV_NIGHT_EXPOSURE.110 = 110
+value.TV_NIGHT_EXPOSURE.120 = 120
+value.TV_NIGHT_EXPOSURE.130 = 130
+value.TV_NIGHT_EXPOSURE.140 = 140
+
+option.TV_MOONLIGHT_I =月光
+option.TV_MOONLIGHT_I.comment =控制月光方向性照明的强度。
+suffix.TV_MOONLIGHT_I =亮度
+value.TV_MOONLIGHT_I.70 = 70
+value.TV_MOONLIGHT_I.85 = 85
+value.TV_MOONLIGHT_I.90 = 90
+value.TV_MOONLIGHT_I.100 = 100
+value.TV_MOONLIGHT_I.120 = 120
+value.TV_MOONLIGHT_I.140 = 140
+value.TV_MOONLIGHT_I.160 = 160
+
+option.TV_SKYLIGHT_I =天光
+option.TV_SKYLIGHT_I.comment =控制天空光照，让夜晚不再显得平淡或压抑。
+suffix.TV_SKYLIGHT_I =亮度
+value.TV_SKYLIGHT_I.80 = 80
+value.TV_SKYLIGHT_I.100 = 100
+value.TV_SKYLIGHT_I.112 = 112
+value.TV_SKYLIGHT_I.118 = 118
+value.TV_SKYLIGHT_I.130 = 130
+value.TV_SKYLIGHT_I.145 = 145
+value.TV_SKYLIGHT_I.160 = 160
+
+option.TV_BOUNCED_LIGHT_I =反射光
+option.TV_BOUNCED_LIGHT_I.comment =受更高级着色器包启发，控制次级光填充。
+suffix.TV_BOUNCED_LIGHT_I =亮度
+value.TV_BOUNCED_LIGHT_I.80 = 80
+value.TV_BOUNCED_LIGHT_I.100 = 100
+value.TV_BOUNCED_LIGHT_I.108 = 108
+value.TV_BOUNCED_LIGHT_I.120 = 120
+value.TV_BOUNCED_LIGHT_I.140 = 140
+
+option.TV_SHADOW_RESOLUTION =阴影分辨率
+option.TV_SHADOW_RESOLUTION.comment =数值越高，阴影细节越好，尤其是对草地和树叶。
+suffix.TV_SHADOW_RESOLUTION = 像素
+value.TV_SHADOW_RESOLUTION.2048 = 2048
+value.TV_SHADOW_RESOLUTION.3072 = 3072
+value.TV_SHADOW_RESOLUTION.4096 = 4096
+value.TV_SHADOW_RESOLUTION.6144 = 6144
+value.TV_SHADOW_RESOLUTION.8192 = 8192
+
+option.TV_SHADOW_DISTANCE =阴影距离
+option.TV_SHADOW_DISTANCE.comment =Lower values sharpen nearby shadows, higher values keep shadows visible farther away.
+suffix.TV_SHADOW_DISTANCE =方块
+value.TV_SHADOW_DISTANCE.80 = 80
+value.TV_SHADOW_DISTANCE.96 = 96
+value.TV_SHADOW_DISTANCE.112 = 112
+value.TV_SHADOW_DISTANCE.128 = 128
+value.TV_SHADOW_DISTANCE.160 = 160
+
+option.TV_WAVING =摆动方块
+option.TV_WAVING.comment =使いますと、植物がわずかに揺れ、流動的に動きます。
+
+option.TV_WAVE_INTENSITY =波浪强度
+option.TV_WAVE_INTENSITY.comment =Sets how strongly foliage and fluids move.
+suffix.TV_WAVE_INTENSITY =亮度
+value.TV_WAVE_INTENSITY.0 = 0
+value.TV_WAVE_INTENSITY.20 = 20
+value.TV_WAVE_INTENSITY.35 = 35
+value.TV_WAVE_INTENSITY.50 = 50
+value.TV_WAVE_INTENSITY.65 = 65
+
+option.TV_WATER_CAUSTICS =水下焦散
+option.TV_WATER_CAUSTICS.comment =Projects animated caustics below the water surface onto the ground and blocks.
+
+option.TV_CAUSTICS_I =焦散强度
+option.TV_CAUSTICS_I.comment =Controls how strong the underwater caustic light pattern becomes.
+suffix.TV_CAUSTICS_I =亮度
+value.TV_CAUSTICS_I.0 = 0
+value.TV_CAUSTICS_I.25 = 25
+value.TV_CAUSTICS_I.50 = 50
+value.TV_CAUSTICS_I.75 = 75
+value.TV_CAUSTICS_I.100 = 100
+value.TV_CAUSTICS_I.125 = 125
+value.TV_CAUSTICS_I.150 = 150
+
+option.TV_BLOOM =泛光
+option.TV_BLOOM.comment =Adds a soft glow around very bright pixels.
+
+option.TV_BLOOM_STRENGTH =泛光强度
+option.TV_BLOOM_STRENGTH.comment =Controls how strong the subtle glow becomes.
+suffix.TV_BLOOM_STRENGTH = /12
+value.TV_BLOOM_STRENGTH.0 = 0
+value.TV_BLOOM_STRENGTH.2 = 2
+value.TV_BLOOM_STRENGTH.4 = 4
+value.TV_BLOOM_STRENGTH.6 = 6
+value.TV_BLOOM_STRENGTH.8 = 8
+value.TV_BLOOM_STRENGTH.10 = 10
+value.TV_BLOOM_STRENGTH.12 = 12
+
+option.TV_LENS_BLUR_I =렌즈 블러 (Lens Blur)
+option.TV_LENS_BLUR_I.comment =Control the soft, lens-shaped spread around bright highlights.
+suffix.TV_LENS_BLUR_I = /10
+value.TV_LENS_BLUR_I.0 = 0
+value.TV_LENS_BLUR_I.2 = 2
+value.TV_LENS_BLUR_I.4 = 4
+value.TV_LENS_BLUR_I.6 = 6
+value.TV_LENS_BLUR_I.8 = 8
+value.TV_LENS_BLUR_I.10 = 10
+
+option.TV_SSAO =接触环境光遮蔽
+option.TV_SSAO.comment =Adds Photon-inspired contact ambient occlusion using scene depth.
+
+option.TV_SSAO_I =Contact AO Strength
+option.TV_SSAO_I.comment =控制褶皱和接触点变深的强度。
+suffix.TV_SSAO_I =亮度
+value.TV_SSAO_I.0 = 0
+value.TV_SSAO_I.25 = 25
+value.TV_SSAO_I.45 = 45
+value.TV_SSAO_I.65 = 65
+value.TV_SSAO_I.85 = 85
+
+option.TV_FOG =水 depth 雾
+option.TV_FOG.comment =增加反应天气和时间变化的大气距离雾气。
+
+option.TV_FOG_STRENGTH = 雾强度
+option.TV_FOG_STRENGTH.comment =Controll how softly distant terrain blends into the atmosphere.
+suffix.TV_FOG_STRENGTH =亮度
+value.TV_FOG_STRENGTH.0 = 0
+value.TV_FOG_STRENGTH.20 = 20
+value.TV_FOG_STRENGTH.35 = 35
+value.TV_FOG_STRENGTH.42 = 42
+value.TV_FOG_STRENGTH.55 = 55
+value.TV_FOG_STRENGTH.70 = 70
+
+profile.comment =DEFAULT aims for bright realistic nights and richer lighting, CINEMATIC pushes the full Photon-inspired feel, and PERFORMANCE keeps the image lighter and cheaper.

@@ -1,0 +1,107 @@
+#shaders/lang/zh_CN.lang
+# Lenscraft vcf-Lenscraft-0.4.0-dev.18 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Lenscraft-0.4.0-dev.18.zip 的 shaders/lang/en_us.lang
+profile.LOW=§2低配
+profile.MEDIUM=§e中配
+profile.HIGH=电影感
+profile.EXTREME=§d极限
+profile.ULTRA_EXTREME=Ultra Extreme
+
+screen.LIGHTING=光照与阴影
+screen.CAMERA=电影级相机
+screen.ATMOSPHERE=§9大气
+screen.WATER=水
+screen.POST=§6镜头与色彩
+
+profile.POTATO=干净画布
+profile.BALANCED=纪录片
+profile.HIGH=电影感
+profile.ULTRA= 变形
+
+option.LC_DOF_QUALITY=景深质量
+option.LC_APERTURE=镜头光圈
+option.LC_MAX_BLUR=最大虚化半径
+option.LC_ANAMORPHIC_RATIO=水平畸变虚化
+option.LC_ANAMORPHIC_FLARE=变形镜头光晕
+option.LC_FLARE_THRESHOLD=光晕阈值
+option.LC_FLARE_STRENGTH=光晕强度
+option.LC_GRADE_STRENGTH=电影级分色调
+option.LC_FILM_GRAIN=胶片颗粒
+
+comment.LC_DOF_QUALITY=使用受限中心对焦和稳定的黄金角度虚化光圈；更高品质会加倍采样数量。
+comment.LC_APERTURE=控制当前中心对焦距离周围的混淆圆大小。
+comment.LC_MAX_BLUR=限制虚化半径以保护可播放性和性能。
+comment.LC_ANAMORPHIC_RATIO=水平拉伸虚化光圈。
+comment.LC_ANAMORPHIC_FLARE=仅沿镜头水平轴扩散 HDR 高光。
+comment.LC_GRADE_STRENGTH=在色调映射前添加冷色调阴影分离和暖色调高光过渡。
+comment.LC_FILM_GRAIN=添加适度的最终输出颗粒感；设为零可保持图像数字纯净。
+
+option.LL_SHADOWS=实时阴影
+option.LL_SHADOW_RESOLUTION=阴影分辨率
+option.LL_SHADOW_SOFTNESS=阴影柔和度
+option.shadowDistance=阴影距离
+option.LL_SUNLIGHT_STRENGTH=定向阳光
+option.LL_FOLIAGE_QUALITY=植被体积质量
+option.LL_DH_DETAIL=远景地形细节
+option.LL_PBR_SUPPORT=LabPBR 材质
+option.LL_AO_QUALITY=环境光遮蔽质量
+option.LL_AO_STRENGTH= 环境光遮蔽强度
+option.LL_SSR_QUALITY=屏幕空间反射质量
+option.LL_SSR_STRENGTH=屏幕空间反射强度
+option.LL_WET_REFLECTIONS=湿表面高光
+option.LL_CLOUD_QUALITY=程序化云质量
+option.LL_CLOUD_COVERAGE=云朵覆盖度
+option.LL_CLOUD_SHADOWS=云层阴影
+option.LL_GODRAYS=太阳光柱
+option.LL_VOLUMETRIC_QUALITY=体积光质量
+option.LL_GODRAY_STRENGTH=太阳光束强度
+option.LL_WIND_STRENGTH=树叶风
+option.LL_WATER_WAVES=水波强度
+option.LL_WATER_REFLECTIONS=水面反射强度
+option.LL_WATER_CLARITY=水体清晰度
+option.LL_BLOOM=泛光
+option.LL_BLOOM_STRENGTH=泛光强度
+option.LL_BLOOM_THRESHOLD=泛光阈值
+option.LL_VIGNETTE=暗角
+option.LL_AUTO_EXPOSURE=自适应曝光
+option.LL_TEMPORAL_AA=时间抗锯齿
+option.LL_TEMPORAL_FEEDBACK=时间稳定性
+option.LL_FXAA=边缘抗锯齿
+option.LL_DITHER=色彩带减少
+
+option.LL_EXPOSURE=曝光
+option.LL_CONTRAST=对比度
+option.LL_VIBRANCE=鲜艳度
+option.LL_SHARPEN=锐化
+option.LL_FOG_STRENGTH=距离雾
+
+comment.LL_EXPOSURE=高光过渡前的整体图像亮度。
+comment.LL_CONTRAST=暗部与亮部之间的差异。
+comment.LL_VIBRANCE=自适应色彩强度，可保护已饱和的颜色。
+comment.LL_SHARPEN=低成本的后期纹理清晰度。高值可能导致闪烁。
+comment.LL_FOG_STRENGTH=与 Minecraft 当前雾色混合的额外距离雾。
+comment.LL_SHADOWS=启用方向性太阳和月亮阴影贴图。
+comment.LL_FOLIAGE_QUALITY=0 保留原创裁切，1 稳定远处树冠，2 增加连贯的深色内冠层，无随机斑点。
+comment.LL_DH_DETAIL=为Distant Horizons LOD表面添加了世界固定、抗闪烁的材质和树冠细节。
+comment.LL_PBR_SUPPORT=使用兼容资源包中声明的 LabPBR 法线、AO、光滑度和 F0 数据。
+comment.LL_SHADOW_RESOLUTION=数值越高，阴影边缘越干净，但会消耗更多GPU和内存。
+comment.LL_SHADOW_SOFTNESS=PCF 过滤半径。超柔阴影使用更多的阴影采样。
+comment.shadowDistance=阴影贴图所能覆盖的最大距离。
+comment.LL_AO_QUALITY=基于深度和法线的接触着色。设为“关闭”可获得最佳性能。
+comment.LL_SSR_QUALITY=水面上反射的景物在屏幕空间中呈现。更高品质会消耗更多射线步数。
+comment.LL_SSR_STRENGTH=控制有效屏幕空间反射对程序化天空反射的覆盖强度。
+comment.LL_CLOUD_QUALITY=控制自阴影体积云的光线预算。
+comment.LL_CLOUD_COVERAGE=控制程序生成的云层覆盖量，而不会改变Minecraft的天气。
+comment.LL_CLOUD_SHADOWS=将程序化天气场投射到地形上，使云层影响阳光。
+comment.LL_WET_REFLECTIONS=为朝上的方块添加了响应雨水的镜面高光。
+comment.LL_GODRAYS=添加了阴影感知的体积阳光和大气光柱。
+comment.LL_VOLUMETRIC_QUALITY=控制通过阴影贴图追踪的雾样本数量。
+comment.LL_WIND_STRENGTH=控制植被、作物和叶子的移动。
+comment.LL_WATER_REFLECTIONS=控制水面上的天空反射和菲涅尔强度。
+comment.LL_WATER_CLARITY=平衡了水传输、色调和不透明度之间的关系。
+comment.LL_BLOOM=柔和的高光溢出，适用于明亮天空、灯具和反射。
+comment.LL_AUTO_EXPOSURE=利用平滑化的局部天光水平，柔和地提亮洞穴，而不过度曝光日光。
+comment.LL_TEMPORAL_AA=重投影深度验证的历史，同时应用八帧亚像素采样模式。
+comment.LL_TEMPORAL_FEEDBACK=数值越高，闪烁减少越明显，但运动细节的拖影可能越严重。
+comment.LL_FXAA=在锐化和色调映射前减少阶梯状边缘。
+comment.LL_DITHER=在色调映射后添加亚像素噪声，以减少可见的颜色带。

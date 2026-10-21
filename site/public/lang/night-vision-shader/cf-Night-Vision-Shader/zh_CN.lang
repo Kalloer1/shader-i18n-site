@@ -1,0 +1,58 @@
+#shaders/lang/zh_CN.lang
+# Night Vision Shader vcf-Night-Vision-Shader 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Night-Vision Shader.zip 的 shaders/lang/en_US.lang
+#shaders/lang/en_US.lang
+
+# Info button
+option.INFO=§a夜视光影
+option.INFO.comment=由 Bartosz Kansy
+value.INFO.0=§6v1.0.0
+###
+
+# Title labels
+option.SWITCHES=开关
+option.SWITCHES.comment=所有可以开启/关闭的选项
+value.SWITCHES.0=§a开启 §r/ §c关闭
+
+option.MORE_OPTIONS=选项
+option.MORE_OPTIONS.comment=更多选项
+value.MORE_OPTIONS.0=§6更多
+
+option.OTHER_OPTIONS=选项
+option.OTHER_OPTIONS.comment=其他选项
+value.OTHER_OPTIONS.0=其他
+###
+
+## Switches
+option.NOISE=噪声
+option.VIGNETTE=暗角
+option.FLICKERING=闪烁
+option.DISCOLOR=失真
+###
+
+# Subscreens
+screen.LUMINANCE_OPTIONS=亮度颜色
+screen.LUMINANCE_OPTIONS.comment=更改亮度颜色
+
+screen.BASE_COLOR_OPTIONS=§f基础颜色
+screen.BASE_COLOR_OPTIONS.comment=更改基础颜色
+
+screen.NOISE_OPTIONS=噪点选项
+screen.NOISE_OPTIONS.comment=更改噪点级别
+###
+
+# Sliders
+option.brightness=亮度
+option.flickering_level=闪烁级别
+option.saturation=饱和度
+option.luminance_r=红
+option.luminance_g=绿色
+option.luminance_b=蓝色
+option.base_color_r=红
+option.base_color_g=绿色
+option.base_color_b=蓝色
+option.noise_level=噪点级别
+option.vignette_level=暗角级别
+option.edge_x=暗角 §aX 轴§r
+option.edge_y=暗角 §9Y 轴§r
+###

@@ -13,6 +13,8 @@
  * 3. `translateChunkTwoLayer` —— 编排：先免费层，再回退池
  */
 
+import { translateChunkByLine, hasTranslatableLetters, DEFAULT_LINE_CONCURRENCY } from './line-translator.mjs'
+
 /**
  * 解析模型回话里的 `键=值` 行，**同时**报告重复键。
  *
@@ -61,18 +63,32 @@ export function parseLangLines(text) {
  * 只把那几行回退成英文，其余译文照用。全有或全无的判据会把整块好译文扔掉 ——
  * 在「免费层单跑」模式下（网关不可用）那等于整个光影失败。
  *
+ * **无字母行不算回退**：`value.BRIGHTNESS.-95=-95`、`value.WATER_DETAIL.0.05=5%` 这类
+ * 纯数字/符号/单位/空值本来就不该翻译，保留原值就是正确结果。模型对它们通常原样返回，
+ * 按 `zh !== v` 会被计成回退 —— 实测 alphalook 4697 键里 3152 行是这种行，回退率被顶到
+ * 67%，整条光影被判死。它们单独计入 `untranslatable`（与逐句路径 `translateChunkByLine`
+ * 同口径，见 line-translator.mjs 的 `hasTranslatableLetters`）。
+ *
  * 重复键视为**该键不可信**，同样按行回退（防静默污染，见 parseLangResponse）。
  *
  * @param {Array<[string,string]>} chunk
  * @param {Map<string,string>} got
  * @param {Set<string>} [duplicated] 回话里重复出现的键
+ * @returns {{map: Map<string,string>, fallback: number, untranslatable: number, missingKeys: string[], duplicatedKeys: string[]}}
  */
 export function evaluateOutput(chunk, got, duplicated = new Set()) {
   const map = new Map()
   let fallback = 0
+  let untranslatable = 0
   const missingKeys = []
   const duplicatedKeys = []
   for (const [k, v] of chunk) {
+    // 无字母行不需要翻译：保留原值，既不进 fallback 也不进 missingKeys。
+    if (!hasTranslatableLetters(v)) {
+      map.set(k, v)
+      untranslatable++
+      continue
+    }
     // 重复键不可信：哪一行对应哪一行分不清，宁可回退也不要写错。
     if (duplicated.has(k)) {
       map.set(k, v)
@@ -88,12 +104,17 @@ export function evaluateOutput(chunk, got, duplicated = new Set()) {
       if (!got.has(k)) missingKeys.push(k)
     }
   }
-  return { map, fallback, missingKeys, duplicatedKeys }
+  return { map, fallback, untranslatable, missingKeys, duplicatedKeys }
 }
 
-/** 回退率阈值：超过则视为该提供方这次翻得不够好。 */
-export function fallbackThreshold(chunkLength, ratio = 0.1) {
-  return Math.ceil(chunkLength * ratio)
+/**
+ * 回退率阈值：超过则视为该提供方这次翻得不够好。
+ *
+ * 基准是**可翻译行数**（`translatableLines`），不是分块总行数：无字母行不参与回退率，
+ * 否则数值密集的光影（实测 alphalook 67% 的行是纯数字）无论翻得多好都会超阈值。
+ */
+export function fallbackThreshold(translatableLines, ratio = 0.1) {
+  return Math.ceil(translatableLines * ratio)
 }
 
 /**
@@ -126,9 +147,68 @@ export async function tryFreeTier({ chunk, provider, call, signal, log = () => {
     log(`[免费层] 回话里有重复键 ${evaluated.duplicatedKeys.length} 个（疑似键名重命名撞车），这些行按回退处理`)
   }
   if (evaluated.missingKeys.length > 0) {
-    log(`[免费层] 漏掉 ${evaluated.missingKeys.length}/${chunk.length} 个键，这些行回退成英文（其余译文照用）`)
+    // 分母用可翻译行数：missingKeys 已排除无字母行，用 chunk.length 会让比例看起来偏小。
+    const translatable = chunk.length - evaluated.untranslatable
+    log(`[免费层] 漏掉 ${evaluated.missingKeys.length}/${translatable} 个键，这些行回退成英文（其余译文照用）`)
   }
   return evaluated
+}
+
+/**
+ * 试一次**逐句**免费层（`index-mt-*-syllable`）。
+ *
+ * 与 `tryFreeTier` 的差异：整块路径一次请求翻 N 行，这里一行一个请求。
+ * 失败语义相同——抛错返回 null 让调用方落回退池；**部分回退不算失败**，
+ * 漏掉的行留英文，整体质量仍由回退率阈值把关。
+ *
+ * `untranslatable` 原样透传：无字母行不算回退，调用方据此把阈值基准算成可翻译行数。
+ * `aborted` 原样透传：signal 中止时从没发请求的行，见 line-translator 的说明。
+ *
+ * @returns {Promise<{map: Map<string,string>, fallback: number, aborted: number, untranslatable: number}|null>}
+ */
+export async function tryFreeTierByLine({ chunk, provider, call, signal, log = () => {} }) {
+  if (!provider) return null
+  try {
+    const { map, fallback, aborted, untranslatable } = await translateChunkByLine({
+      chunk,
+      call: (text, sig) => call(provider, text, sig),
+      signal,
+      concurrency: provider.lineConcurrency ?? DEFAULT_LINE_CONCURRENCY,
+      log,
+    })
+    return { map, fallback, aborted, untranslatable }
+  } catch (err) {
+    log(`[免费层] 逐句失败（${err?.message?.slice(0, 120) ?? err}），降级到回退池`)
+    return null
+  }
+}
+
+// 免费层轮换游标。模块级即可：单进程内顺序调用即均匀分布。
+let freeTierCursor = 0
+
+/**
+ * 把轮换游标归零。**仅测试用**：模块级游标在同一个进程里跨用例累加，
+ * 会让依赖「从第一个模型起手」的用例随执行顺序漂移。
+ */
+export function resetProviderOrderCursor() {
+  freeTierCursor = 0
+}
+
+/**
+ * 「按序轮换」：每次调用都把列表起点往后挪一格，让连续的多个分块分别由不同模型起手。
+ *
+ * 为什么要轮换：免费层是公共服务，把压力分摊到池内各模型上（用户 2026-10-21 需求），
+ * 也让「某个模型恰好不可用」的影响分散，而不是固定打在某一个块上。
+ * 与 pipeline.mjs 里网关回退池的轮换**各自独立计数**：两边语义不同，共用一个游标会
+ * 让「块 A 用了网关」实时改变下一块的免费层起点，难以推理。
+ *
+ * @param {Array} list 提供方列表
+ * @returns {Array} 轮换后的列表（不修改入参）
+ */
+export function nextProviderOrder(list = []) {
+  if (list.length === 0) return list
+  const start = freeTierCursor++ % list.length
+  return [...list.slice(start), ...list.slice(0, start)]
 }
 
 /**
@@ -140,14 +220,21 @@ export async function tryFreeTier({ chunk, provider, call, signal, log = () => {
  * 把装配变成可注入依赖的工厂后，这个盲区就没了。
  *
  * @param {object} deps
- * @param {object|null} deps.freeTierProvider 免费层 provider
- * @param {() => boolean} deps.isFreeTierUsable 免费层本轮是否可用（熔断状态在调用方）
- * @param {() => void} deps.onFreeTierFailure
- * @param {() => void} deps.onFreeTierSuccess
+ * @param {object|null} deps.freeTierProvider 免费层 provider（或 provider **数组**：多模型按序轮换、
+ *   某个模型回退率过高就换下一个，见 translateChunkTwoLayer 第一层说明）
+ * @param {(id?: string) => boolean} deps.isFreeTierUsable 某个免费模型本轮是否可用（带模型 id）
+ * @param {(id?: string) => void} deps.onFreeTierFailure 某个免费模型这一块没拿到可用译文（带模型 id）
+ * @param {(id?: string) => void} deps.onFreeTierSuccess 某个免费模型这一块拿到了译文（带模型 id）
+ * @param {(id?: string) => void} deps.onFreeTierQualityMiss 某个免费模型有输出但回退率过高
+ *   （带模型 id）。与「完全没输出」分开统计：后者已有熔断，前者没有——而差模型
+ *   每次都返回 200，不抓它就会让轮换长期把好模型排在后面。
  * @param {(id: string) => boolean} deps.isUnusable
  * @param {(id: string) => void} deps.markUnusable
  * @param {(provider: object, messages: Array, signal: AbortSignal) => Promise<string>} deps.callProvider
  * @param {(p: object) => boolean} deps.isNoOutput
+ * @param {(id: string, zeroOutput: boolean) => number} [deps.onProviderOutcome]
+ *   回退池里某提供方这一块的结局；返回其「连续零产出」累计次数（熔断计数在调用方）
+ * @param {number} [deps.unusableAfterZeroOutput] 连续零产出多少次判为不可用
  * @param {(msg: string) => void} [deps.log]
  * @param {(msg: string) => void} [deps.logError] 失败/降级类日志
  */
@@ -157,6 +244,7 @@ export function createChunkTranslator(deps) {
     isFreeTierUsable,
     onFreeTierFailure,
     onFreeTierSuccess,
+    onFreeTierQualityMiss,
     isUnusable,
     markUnusable,
     callProvider,
@@ -173,18 +261,33 @@ export function createChunkTranslator(deps) {
     return translateChunkTwoLayer({
       chunk,
       input,
-      freeTier: isFreeTierUsable() ? freeTierProvider : null,
+      // 免费层模型池原样传入，逐模型可用性由 translateChunkTwoLayer 里的 isUsable 判断
+      // （那个回调现在带模型 id）。**不能在这里整体判一次**：池里可能有的模型已熔断、
+      // 有的还活着，一刀切成 null 会把还能用的也关掉。
+      freeTier: freeTierProvider ?? null,
       poolProviders: providerList,
-      // 提示词由 provider 自己给（免费层 instTrans、网关 SYSTEM_PROMPT）。
-      call: (activeProvider, sig) => callProvider(activeProvider, activeProvider.buildPrompt(input), sig ?? signal),
+      // 整块路径：提示词由 provider 自己给（免费层 instTrans、网关 SYSTEM_PROMPT）。
+      // 逐句路径不走这里——它传的是单行文本，见 translateChunkTwoLayer 的 perLine 分支。
+      call: (activeProvider, textOrSignal, maybeSignal) => {
+        // 三参形态 = 逐句路径（第 2 参是待译文本）；两参形态 = 整块路径。
+        if (typeof textOrSignal === 'string') {
+          return callProvider(activeProvider, textOrSignal, maybeSignal ?? signal)
+        }
+        return callProvider(activeProvider, activeProvider.buildPrompt(input), textOrSignal ?? signal)
+      },
       signal,
       isFirstChunk,
       log: emit,
       onFreeTierFailure,
       onFreeTierSuccess,
-      isUsable: () => isFreeTierUsable(),
+      onFreeTierQualityMiss,
+      // 逐模型可用性判定：传模型 id 进去（池内各模型熔断状态不同）。
+      isUsable: (p) => isFreeTierUsable(p.id),
       markUnusable,
       isNoOutput,
+      // 熔断计数由调用方持有（跨分块、跨光影共享），这里只把每块的结局报上去。
+      onProviderOutcome: deps.onProviderOutcome,
+      unusableAfterZeroOutput: deps.unusableAfterZeroOutput,
     })
   }
 }
@@ -196,10 +299,15 @@ export function createChunkTranslator(deps) {
  * 首块零译文则弃用该模型。免费层的结果作为回退池的起始最优值，
  * 因此回退池若反而更差不会把已拿到的较好结果覆盖掉。
  *
+ * **回退率的分母是可翻译行数**（值含字母的行），不是分块总行数：无字母行
+ * （`-95`、`5%`、`---`、空值）不需要翻译，保留原值就是正确结果。它们若进分母，
+ * 数值密集的光影会被判成「回退率过高」——实测 alphalook 4697 键里 3152 行是这种行。
+ * 免费层（逐句/整块）与回退池的 fallback 都已在各自入口排除这些行。
+ *
  * @param {object} p
  * @param {Array<[string,string]>} p.chunk 待译分块
  * @param {string} p.input 已拼好的 `键=值` 文本（免费层与回退池共用）
- * @param {object|null} p.freeTier 免费层 provider；null 表示本轮不可用
+ * @param {object|array|null} p.freeTier 免费层 provider（或 provider 数组，多模型轮换）；null 表示本轮不可用
  * @param {Array<object>} p.poolProviders 回退池（**已过滤掉不可用者**）
  * @param {(provider: object, signal: AbortSignal) => Promise<string>} p.call 注入的网络调用
  * @param {AbortSignal} p.signal
@@ -210,6 +318,10 @@ export function createChunkTranslator(deps) {
  * @param {(p: object) => boolean} [p.isUsable] 提供方是否仍可用（熔断状态在调用方）
  * @param {(id: string) => void} [p.markUnusable] 标记某提供方本轮不可用
  * @param {(p: object) => boolean} [p.isNoOutput] 首块零译文判据（注入以便单测）
+ * @param {(id: string, zeroOutput: boolean) => number} [p.onProviderOutcome]
+ *   回退池里每个提供方**这一块**的结局回调。`zeroOutput` 表示这一块它整块没产出任何译文
+ *   （超时/空正文/全是回显）。返回该提供方「连续零产出」的累计次数，供本函数判熔断。
+ * @param {number} [p.unusableAfterZeroOutput] 连续零产出多少次判为不可用（默认 2）
  * @returns {Promise<{map: Map<string,string>, fallback: number, providerIds: string[]}>}
  */
 export async function translateChunkTwoLayer({
@@ -223,37 +335,87 @@ export async function translateChunkTwoLayer({
   log = () => {},
   onFreeTierFailure = () => {},
   onFreeTierSuccess = () => {},
+  onFreeTierQualityMiss = () => {},
   isUsable = () => true,
   markUnusable = () => {},
   isNoOutput = () => false,
+  onProviderOutcome = () => 0,
+  unusableAfterZeroOutput = 2,
 }) {
-  const threshold = fallbackThreshold(chunk.length)
+  // 可翻译行数：阈值与所有「回退 N/M」日志都用它当分母（见函数头说明）。
+  const translatableLines = chunk.filter(([, v]) => hasTranslatableLetters(v)).length
+  const threshold = fallbackThreshold(translatableLines)
 
-  // ---------- 第一层：免费层 ----------
+  // ---------- 第一层：免费层（**多个模型**，按序轮换尝试） ----------
+  // 用户 2026-10-21 要求「不管什么情况都尝试使用这些免费模型，顺便分担压力」。
+  // 三个设计点：
+  // 1. **按序轮换**：`nextProviderOrder` 让每块的起点模型不同，不把压力全压在一个模型上；
+  // 2. **质量闸门**：某个模型翻得差（回退 >10%）不污染产物，继续试下一个免费模型；
+  // 3. **逐句/整块自动分流**：模型名带 `-syllable` 的走一行一请求，其余整块发。
   let best = null
-  let bestFallback = chunk.length
+  let bestFallback = translatableLines
+  // 本块里「从没发过请求」的行数（signal 中止所致）。它们保留英文原值、也计入 fallback，
+  // 但不是翻译失败——见 line-translator 的说明。随返回值透传到 shader 级闸门。
+  let bestAborted = 0
   const usedProviderIds = new Set()
 
-  if (freeTier && isUsable(freeTier)) {
-    const free = await tryFreeTier({ chunk, provider: freeTier, call: (p, s) => call(p, s), signal, log })
+  // freeTier 可以是单个 provider 或数组（新）；数组时按轮换顺序逐个试。
+  const freeTierList = Array.isArray(freeTier) ? freeTier : (freeTier ? [freeTier] : [])
+  // 多于一个才轮换：只有一个时保持「总是它」的原有行为（日志与测试都不变）。
+  const freeOrder = freeTierList.length > 1 ? nextProviderOrder(freeTierList) : freeTierList
+
+  for (const activeFree of freeOrder) {
+    if (!isUsable(activeFree)) continue
+    // 逐句模型（syllable）必须一行一个请求：实测给 N 行只回 1 行，且回哪行不可控。
+    // 两条路径的 `call` 签名不同，**不能共用一个 (p, s) 包装**：
+    // - 整块：`call(provider, signal)` —— 提示词已由调用方按 input 建好；
+    // - 逐句：`call(provider, 单行文本, signal)` —— 每行现建提示词。
+    const free = activeFree.perLine
+      ? await tryFreeTierByLine({
+        chunk,
+        provider: activeFree,
+        call: (p, text, sig) => call(p, text, sig),
+        signal,
+        log,
+      })
+      : await tryFreeTier({ chunk, provider: activeFree, call: (p, s) => call(p, s), signal, log })
     if (free) {
-      onFreeTierSuccess()
-      best = free.map
-      bestFallback = free.fallback
-      usedProviderIds.add(freeTier.id)
-      if (free.fallback <= threshold) {
-        return { map: free.map, fallback: free.fallback, providerIds: [freeTier.id] }
+      onFreeTierSuccess(activeFree.id)
+      if (free.fallback < bestFallback) {
+        best = free.map
+        bestFallback = free.fallback
+        bestAborted = free.aborted ?? 0
       }
-      // 回话完整但回退率偏高：仍交给回退池再试一次（不熔断，它确实在产出译文）。
-      log(`[免费层] 回退率 ${free.fallback}/${chunk.length} 偏高，转交回退池`)
+      usedProviderIds.add(activeFree.id)
+      if (free.fallback <= threshold) {
+        // 用 `[...usedProviderIds]` 而不是 `[activeFree.id]`：前面试过的免费模型可能也产出过
+        // 部分译文（它们的 map 被更好的这个替换掉了，但来源要如实记账）。
+        // 单模型时 usedProviderIds 里就一个元素，与改造前逐字一致。
+        return {
+          map: free.map,
+          fallback: free.fallback,
+          aborted: free.aborted ?? 0,
+          providerIds: [...usedProviderIds],
+        }
+      }
+      // 回话完整但回退率偏高：**继续试下一个免费模型**，不是直接甩给回退池。
+      // 2026-10-21 实测：同一块 index-mt-2b 只出 74/228 条译文，而 index-mt-9b 出 220/228，
+      // 「换一个免费模型」经常就是质量差异，不再动网关预算。
+      // 同时把这个「有输出但输出是垃圾」记一次质量失手：只看「完全没输出」的熔断
+      // 永远抓不到差模型（它每次都返回 200），于是轮换会让好模型被甩到队列尾部，
+      // 每 N 块白等一轮慢模型。累计够了就把该模型降级，池子自然收敛到能用的那些。
+      onFreeTierQualityMiss(activeFree.id)
+      log(`[免费层] ${activeFree.id} 回退率 ${free.fallback}/${translatableLines} 偏高，试下一个免费模型`)
     } else {
-      onFreeTierFailure()
+      onFreeTierFailure(activeFree.id)
     }
   }
 
   // ---------- 第二层：回退池（行为与改造前完全一致） ----------
-  const translatableLines = chunk.filter(([, v]) => /[A-Za-z]/.test(v)).length
   for (const activeProvider of poolProviders) {
+    // 这个提供方在本块里是否产出过任何译文。只有「整块零产出」才计入熔断，
+    // 翻得差（有产出但回退率高）不算 —— 那属于质量问题，交给阈值/换模型处理。
+    let producedAnything = false
     for (let attempt = 1; attempt <= 3 && bestFallback > threshold; attempt++) {
       let text
       try {
@@ -275,6 +437,8 @@ export async function translateChunkTwoLayer({
         bestFallback = evaluated.fallback
         usedProviderIds.add(activeProvider.id)
       }
+      // 「有产出」= 至少一行拿到了译文（fallback < 可翻译行数）。
+      if (evaluated.fallback < translatableLines) producedAnything = true
       if (isFirstChunk && isNoOutput({
         chunkLength: chunk.length,
         parsedLines: got.size,
@@ -286,15 +450,34 @@ export async function translateChunkTwoLayer({
         break
       }
       if (bestFallback > threshold) {
-        log(`第 ${attempt} 次分块回退率 ${evaluated.fallback}/${chunk.length}，重试`)
+        log(`第 ${attempt} 次分块回退率 ${evaluated.fallback}/${translatableLines}，重试`)
       }
     }
+
+    // 熔断：连续多块整块零产出（超时/空正文/全是回显）就本轮弃用它。
+    // 为什么必须做：以前只有「首块 + 空正文」才 markUnusable，于是**超时的模型永远
+    // 不会被标记**——实测 CI run 39520489773 里三个网关模型每个都挂满 90 秒 × 3 次尝试，
+    // 每个走回退池的分块都要重挂一遍，一条光影的候选预算就这么烧光。
+    // 只在「确实没有任何产出」时累计：偶发一次失败不该熔断一个能用的模型。
+    // 调用方 signal 已中止（候选超时/预算耗尽）时不计：那是我们取消的，不是模型坏了，
+    // 否则会把「这次超时」的锅算到所有模型头上，连累后续光影。
+    if (!producedAnything && !signal?.aborted) {
+      const consecutive = onProviderOutcome(activeProvider.id, true)
+      if (consecutive >= unusableAfterZeroOutput) {
+        markUnusable(activeProvider.id)
+        log(`[${activeProvider.id}] 连续 ${consecutive} 块零产出（超时/空正文/全回显），本轮弃用该模型`)
+      }
+    } else if (producedAnything) {
+      onProviderOutcome(activeProvider.id, false)
+    }
+
     if (bestFallback <= threshold) break
   }
 
   return {
     map: best ?? new Map(chunk.map(([k, v]) => [k, v])),
     fallback: bestFallback,
+    aborted: bestAborted,
     providerIds: [...usedProviderIds],
   }
 }

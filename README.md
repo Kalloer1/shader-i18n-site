@@ -31,10 +31,10 @@ Minecraft Java 版光影包简体中文 `zh_CN.lang` 下载站（仓库名：`sh
 | 已有 `langVersions` 的光影 | 542 个 | 含目录外的历史精选条目 |
 | GitHub 中的 `zh_CN.lang` 文件 | 601 个 | 位于 `site/public/lang/`，一个光影可有多个历史版本 |
 | 自带中文的目录项目 | 33 个 | 以 `modrinth-catalog.json` 条目的 `hasNativeZhCN` 标记为准 |
-| 明确缺少 `en_US.lang` | 439 个 | 以 `modrinth-catalog.json` 条目的 `noEnUsLang` 标记为准 |
+| 明确缺少 `en_US.lang` | 439 个 | 以 `modrinth-catalog.json` 条目的 `noEnUsLang` 标记为准；`noEnUsLangVersion` 记录判定版本，版本变了会重探 |
 | 尚未登记翻译的可处理项目 | 1 个 | 目录中既没有 `langVersions`，也不在缺源清单中，并排除自带中文项目 |
 | 翻译术语记忆 | 39,448 条 | `site/data/glossary.json` |
-| 生成的详情页 | 构建期生成 | `site/shaders/`（**未入库**，`.gitignore` 排除）；只展示已有本站汉化或自带中文的项目 |
+| 生成的详情页 | 构建期生成 | `site/shaders/`（**未入库**，`.gitignore` 排除）；展示已有本站汉化、自带中文、**无英文源**三类（「暂无汉化」不展示） |
 
 这些数字是当前快照，不是永久承诺；Modrinth 目录会在每日同步后变化。
 
@@ -70,6 +70,7 @@ npm run validate:lang    # 全量闸门：批量校验 site/public/lang 下所�
 npm run validate:lang -- <en_US.lang> <zh_CN.lang>   # 单文件模式
 npm run fix:lang         # 修复译文引入的畸形 § 序列（--dry-run 只报告）
 npm run pack:lang        # 重打包英文源到 data/lang-sources.json.gz（合并式）
+npm run probe:candidates -- --source all --order asc --limit 20   # 只读 Range 摸包结构，选可翻目标
 ```
 
 `npm run build` 通过 npm 的 `prebuild` 钩子执行一次 `scripts/gen-shader-pages.mjs`，然后执行 VitePress 构建；详情页不会重复生成。
@@ -135,8 +136,8 @@ CurseForge 目录采集是 `continue-on-error: true` 的可选步骤（`scripts/
 
 前置条件（**当前已实现的行为**）：翻译提供方是**两层**。
 
-1. **免费层（默认主路）**：bilibili 官方免费公网 API `https://index-translate.bilibili.com/v1`，模型 `Index-Translate-35B-A3B`，**无需 API key**。用独立环境变量配置（`FREE_TIER_ENABLED` / `FREE_TIER_BASE_URL` / `FREE_TIER_MODEL`），**不参与 `LLM_MODELS`，也不参与站点管理员的模型勾选**。
-2. **回退池（兜底）**：自建中转站 `https://api.888424.xyz/v1`（OpenAI 兼容），需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`），换站时用 `LLM_BASE_URL` 覆盖。默认模型池 `opencode-zen-free/space-bunny-free,opencode-zen-free/beam-free,opencode-zen-free/big-pickle`（来自 `.github/workflows/translate.yml`）。
+1. **免费层**：bilibili 官方免费公网 API `https://index-translate.bilibili.com/v1`，**无需 API key**。默认模型 `index-mt-9b-syllable`（2026-10-20 起；原 `Index-Translate-35B-A3B` 持续 504）。用独立环境变量配置（`FREE_TIER_ENABLED` / `FREE_TIER_BASE_URL` / `FREE_TIER_MODEL` / `FREE_TIER_CONCURRENCY`）。它不参与 `LLM_MODELS`，但**会出现在站点 `/request` 的模型勾选里**（单独一组，由 Worker 实测探测存活）。逐句模型自动走一行一请求的路径，详见《历史决策摘要》第 9 条。
+2. **回退池（兜底）**：自建中转站 `https://api.888424.xyz/v1`（OpenAI 兼容），需要 `LLM_API_KEY`（或别名 `SILICONFLOW_API_KEY`），换站时用 `LLM_BASE_URL` 覆盖。默认模型池 `kilo/kilo-auto/free,kilo/poolside/laguna-s-2.1:free`（来自 `.github/workflows/translate.yml`，2026-10-20 实测更新；旧的 `opencode-zen-free/*` 三个模型已从网关下架）。
 
 **没有 `LLM_API_KEY` 时不再报错退出**：回退池留空，以「免费层单跑」模式运行（缺 key 时打印警告）。但若同时用 `FREE_TIER_ENABLED=0` 关掉了免费层，则仍然报错退出——没有任何可用提供方时不该假装能干活。
 
@@ -151,10 +152,10 @@ CurseForge 目录采集是 `continue-on-error: true` 的可选步骤（`scripts/
 逐步流程：
 
 1. 读取 `site/data/modrinth-catalog.json`、`site/data/curseforge-catalog.json`、`site/data/shaders.json` 和 `site/data/glossary.json`。
-2. 筛选候选项目：排除已自带 `zh_CN.lang` 的项目、已有最新汉化映射的项目，以及 `noEnUsLang === true`（缺少 `en_US.lang`）的项目。
+2. 筛选候选项目：排除已自带 `zh_CN.lang` 的项目、已有最新汉化映射的项目。**「无英文源」黑名单按版本判定**（`scripts/lib/blacklist.mjs`）：只有 `noEnUsLangVersion` 与当前最新版本相同才跳过；上游发了新版本、或旧数据没有版本号，都会重新探测。`--top N` 时黑名单候选排到队尾，不挤占正常候选。
 3. 跨平台去重：若同一光影在 Modrinth 侧已有汉化，直接判完成，不消耗任何 LLM 预算。
 4. 对候选项目请求最新版本，下载主文件，并在 zip 内查找 `shaders/lang/en_US.lang` 与 `shaders/lang/zh_CN.lang`（CurseForge 分支按 release 优先 + fileDate 倒序逐个候选文件尝试）。
-5. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过；如果找不到英文源，置 `noEnUsLang` 标记并跳过。
+5. 如果检测到官方 `zh_CN.lang`，标记 `hasNativeZhCN` 并跳过（同时清掉过期的 `noEnUsLang`）；如果找不到英文源，置 `noEnUsLang: true` 并记录判定版本 `noEnUsLangVersion` 后跳过；重新探测发现英文源时清掉这两个字段。
 6. 读取术语记忆 `glossary.json`；按剥离 `§` 格式码后的英文骨架完全匹配的直接复用已有中文，未命中的值交给模型翻译，新的映射在处理后写回术语记忆。
 7. 解析英文语言文件，按 60 行（`CHUNK_LINES`）拆分为多个块。每个块**先走免费层**；失败（超时 / 非 2xx / 空正文 / 键集合不完整）或回退率 >10% 才落到回退池。回退池内按分块轮转调用，单个模型失败或回退率过高时自动尝试下一个模型。
 8. 要求模型只翻译等号右侧，保留 key、占位符（如 `%s`、`%value%`）、`§` 格式码、注释和文件结构。
@@ -271,8 +272,17 @@ worker/index.js                       # 请求表单 + KV 队列 + 翻译触发�
 4. **全量目录**：从 Modrinth 拉取已发布的 shader 项目，不再使用下载量门槛；自带中文项目仍展示在目录中。
 5. **自动翻译直接发布**：AI 初翻经自动校验闸门通过后直接提供下载，文件头醒目标注“未人工校对”；不再有人工确认环节，玩家反馈触发重译。
 6. **双仓方案已废弃**：早期曾计划将数据和公开站点分仓，2026-09-11 已合并为单仓；当前不再按双仓方案维护。
-7. **翻译提供方分层：免费层优先、自建网关回退**（**已实现**，2026-10-17）。主路为 bilibili 官方免费公网 API（`https://index-translate.bilibili.com/v1`，`Index-Translate-35B-A3B`，无需 key），自建网关降为回退池。它**不替代**回退池：免费层是无 SLA 的公开服务，可能随时变化或下线。免费层用独立环境变量，**不参与 `LLM_MODELS` 与站点管理员勾选**（否则管理员一勾模型就会静默关掉免费层）。免费层失败快速降级（单次尝试、无退避、60 秒超时），不占满每条光影的 15 分钟预算。**附带决定**：没有 `LLM_API_KEY` 时不再硬失败，改为以「免费层单跑」模式运行——这有意打破了「不设任何 `LLM_*` 环境变量时行为逐字一致」的原不变量，用户已明确同意。
+7. **翻译提供方分层：免费层优先、自建网关回退**（**已实现**，2026-10-17）。主路为 bilibili 官方免费公网 API（`https://index-translate.bilibili.com/v1`，`Index-Translate-35B-A3B`，无需 key），自建网关降为回退池。它**不替代**回退池：免费层是无 SLA 的公开服务，可能随时变化或下线。免费层用独立环境变量，**不参与 `LLM_MODELS`**（否则管理员一勾模型就会静默关掉免费层）；站点管理员勾选免费层模型走独立通道，见第 12 条。免费层失败快速降级（单次尝试、无退避、60 秒超时），不占满每条光影的 15 分钟预算。**附带决定**：没有 `LLM_API_KEY` 时不再硬失败，改为以「免费层单跑」模式运行——这有意打破了「不设任何 `LLM_*` 环境变量时行为逐字一致」的原不变量，用户已明确同意。
 8. **不再新增 ADR 目录**：`docs/adr/` 已于 2026-10-09 随文档合并删除（提交 `1540269`），本项目正式说明文档就是本 README；后续决策追加到本节，不重新拆目录。
+9. **免费层改用逐句模型 + 元数据端点不可信**（**已实现**，2026-10-20）。第 7 条的前提已部分失效：主模型 `Index-Translate-35B-A3B` **持续 504**（服务端推理卡死；`/health` 仍报 `true`，`/v1/models` 也照常列出它——**两个元数据端点都不反映推理是否可用**）。同服务上只剩 `index-mt-9b-syllable` / `index-mt-2b-syllable` 可用，它们是**逐句模型**：给 N 行只回 1 行，且回哪一行不可控（9 行输入回第 8 行）。因此：
+    - 流水线按**模型名**（`*-syllable`）自动切到逐句路径（`scripts/lib/line-translator.mjs`），一行一个请求；35B 恢复后改回模型名即可回到整块模式，无需改代码。
+    - 逐句请求**只发 value、key 在本地拼回**：实测整行发过去时 15.5% 的行会原样回显英文，只发 value 降到 6.5%，且 § 与占位符零漂移。剩余回显按行回退（与整块路径同语义）。
+    - 并发默认 16（`FREE_TIER_CONCURRENCY` 可调）。本机实测拐点：16 → 36 行/秒，32 → 58 行/秒，48/64 吞吐反而下降；CI 出口未验证，故取一半。
+    - **实测效果**：250 行光影由免费层一次跑完，回退 0/250，耗时 4.9 秒（网关同工作量约 9 分钟）。
+    - 同时补上官方 `call_api.py` 的硬性前提 `chat_template_kwargs.enable_thinking=false` 与 `max_tokens=1024`（原先漏了，CoT 会顶掉译文）。
+10. **模型列表必须实测探测，不能读元数据**（**已实现**，2026-10-20）。站点 `/request` 的模型选择区现在同时列出网关模型与免费层模型：免费层部分由 Worker **真发一次翻译请求**判定存活（有中文才算活），而不是读 `/health` 或 `/v1/models`——第 9 条已证明这两个端点既漏报（不列 syllable）又误报（35B 报 true 实际 504）。探测全挂时不报错，只显示网关模型。免费层模型不在网关 `/models` 里，Worker 的白名单校验改为「网关与免费层任一命中即放行」。
+11. **回退池默认模型整体更换**（**已实现**，2026-10-20）。旧默认 `opencode-zen-free/space-bunny-free` / `beam-free` / `big-pickle` **已全部从网关下架**（`GET /models` 只剩 16 个，全为 `kilo/*` 与 `tencent/Hunyuan-MT-7B`）。实测入选两个：`kilo/kilo-auto/free`（3.8~15.6s，5/5 键、§ 与占位符零漂移）、`kilo/poolside/laguna-s-2.1:free`（3.2~4.5s，同上）。其余 13 个 `kilo/*` 实测全部 429（每日额度耗尽），Hunyuan-MT-7B 会用 ``` 包裹输出，均不入选。**注意速度**：`kilo-auto` 首次调用可能 15s+，4 块实测约 9 分钟，接近每条光影 15 分钟上限。
+12. **免费层勾选走独立通道 + 失败条目自动重试**（**已实现**，2026-10-20）。第 10 条放行了免费层模型进入白名单，但它们和网关模型一起塞进 `inputs.models` → `LLM_MODELS`，于是被当成**网关**模型名去请求网关，必然失败。现在 Worker 用 `splitModelSelection()` 把勾选拆成两组：免费层 → `inputs.freeTierModel` → `FREE_TIER_MODEL`，网关 → `inputs.models` → `LLM_MODELS`。约束：**没勾免费层 ≠ 关掉免费层**（回退到仓库默认值，免费层始终优先）；勾了多个取第一个并在 Actions 日志里写明；`FREE_TIER_ENABLED=0` 仍可整体关闭（优先级最高）；不传任何 models 时两个 input 都不传，行为与改造前逐字一致。另一半：失败条目现在**默认自动重试**（`AUTO_RETRY_LIMIT = 3`），计数记在队列条目的 `retryCount` 上（**不读 pipeline 回写的 `attempts`**——那个字段来自目录条目、目录里根本没有，实际恒为 1）。达上限后页面标「需人工介入」，管理员手动勾「强制重试失败的光影」时无视上限。
 
 ## 待办事项
 

@@ -126,20 +126,28 @@ function statusMeta(status) {
 }
 
 const counts = computed(() => {
-  const c = { total: entries.value.length, pending: 0, running: 0, done: 0, failed: 0 }
+  const c = { total: entries.value.length, pending: 0, running: 0, done: 0, failed: 0, autoRetry: 0, manual: 0 }
   for (const e of entries.value) {
     if (e.status === '待翻译') c.pending++
     else if (e.status === '翻译中') c.running++
-    else if (e.status === '失败') c.failed++
-    else c.done++
+    else if (e.status === '失败') {
+      c.failed++
+      /* retry 由 Worker 算好（上限口径只有 Worker 一处）：autoRetry=下次触发会自动带上；
+         manual=已达自动重试上限，需人工介入（手动勾「重试失败」仍可强制重试）。 */
+      if (e.retry?.autoRetry) c.autoRetry++
+      else if (e.retry?.manual) c.manual++
+    } else c.done++
   }
   return c
 })
 
-const summary = computed(
-  () =>
-    `共 ${counts.value.total} 项 · 待翻译 ${counts.value.pending} · 翻译中 ${counts.value.running} · 已完成 ${counts.value.done} · 失败 ${counts.value.failed}`,
-)
+const summary = computed(() => {
+  const c = counts.value
+  const failedNote = c.failed
+    ? `（其中 ${c.autoRetry} 条会自动重试，${c.manual} 条需人工介入）`
+    : ''
+  return `共 ${c.total} 项 · 待翻译 ${c.pending} · 翻译中 ${c.running} · 已完成 ${c.done} · 失败 ${c.failed}${failedNote}`
+})
 
 /* ---------- 触发翻译（口令存 sessionStorage，不落 URL） ---------- */
 
@@ -148,8 +156,9 @@ const triggering = ref(false)
 const triggerMsg = ref('')
 const triggerErr = ref('')
 
-/* 失败条目重试：只有勾选时请求体才带 retryFailed=true（Worker 侧显式语义）。
-   默认不勾：失败项重跑会重新消耗翻译额度，不能每次点「开始翻译」都自动带上。
+/* 失败条目重试：
+   - 默认不勾也会自动重试失败项，但 Worker 会封顶（AUTO_RETRY_LIMIT 次），防无限烧预算；
+   - 勾选时请求体带 retryFailed=true，**无视次数上限**强制重试（含「需人工介入」的条目）。
    触发成功后自动取消勾选，避免手滑连点重复烧额度。 */
 const retryFailed = ref(false)
 
@@ -160,26 +169,37 @@ const modelList = ref([])
 const selectedModels = ref([])
 const modelsLoading = ref(false)
 const modelsError = ref('')
+/* 免费层模型（bilibili Index-Translate）单独一组：它们不在网关 /models 里。
+   勾选后由 Worker 分别校验；免费层失败会由流水线自动降级到网关模型，所以可以放心勾。 */
+const freeTierModels = ref([])
+const freeTierError = ref('')
+const lastRefreshedAt = ref('')
 
 const MODELS_STORAGE_KEY = 'translate-selected-models'
 
 async function loadModels() {
   modelsLoading.value = true
   modelsError.value = ''
+  freeTierError.value = ''
   try {
     const res = await fetch(`${WORKER_URL}/models`)
     const data = await res.json()
     if (!data.success) throw new Error(data.error || '拉取失败')
     modelList.value = Array.isArray(data.models) ? data.models : []
-    // 上次选择只保留仍在网关列表里的模型，网关已删的自动丢弃
+    freeTierModels.value = Array.isArray(data.freeTierModels) ? data.freeTierModels : []
+    // 免费层探测失败不影响网关模型：只提示一句，不阻断选择。
+    freeTierError.value = data.freeTierError || ''
+    const all = [...modelList.value, ...freeTierModels.value]
+    // 上次选择只保留仍在可用列表里的模型，已下线的自动丢弃
     let saved = []
     try {
       const parsed = JSON.parse(localStorage.getItem(MODELS_STORAGE_KEY) || '[]')
       if (Array.isArray(parsed)) saved = parsed
     } catch { /* 忽略损坏的本地存储 */ }
-    selectedModels.value = modelList.value.filter((m) => saved.includes(m))
-    // 无历史选择时默认全选：网关返回什么就默认用全部（轮班机制下每个模型都会分到约 1/N 段落）
-    if (!selectedModels.value.length) selectedModels.value = [...modelList.value]
+    selectedModels.value = all.filter((m) => saved.includes(m))
+    // 无历史选择时默认全选：返回什么就默认用全部（轮班机制下每个模型都会分到约 1/N 段落）
+    if (!selectedModels.value.length) selectedModels.value = [...all]
+    lastRefreshedAt.value = new Date().toLocaleTimeString('zh-CN', { hour12: false })
   } catch {
     modelsError.value = '拉取模型列表失败，请稍后重试'
   } finally {
@@ -263,13 +283,19 @@ async function handleTrigger() {
     }
 
     sessionStorage.setItem('translate-passphrase', value)
-    const modelNote = selectedModels.value.length
-      ? `，模型：${selectedModels.value.join(' / ')}`
-      : '（未选择，使用仓库默认模型）'
-    const retryNote = retryFailed.value ? '（含失败重试，已重新消耗翻译额度）' : ''
+    /* 免费层与网关是两条独立路径，提示里必须分开写：
+       否则「勾了免费层模型」看起来和网关模型一样，实际作用完全不同。 */
+    const gatewayNote = modelList.value.some((m) => selectedModels.value.includes(m))
+      ? `网关模型：${selectedModels.value.filter((m) => modelList.value.includes(m)).join(' / ')}`
+      : '网关模型：仓库默认'
+    const freeNote = data.freeTierModel
+      ? `免费层：${data.freeTierModel}${data.freeTierSelectedCount > 1 ? `（勾了 ${data.freeTierSelectedCount} 个，取第一个）` : ''}`
+      : '免费层：仓库默认'
+    const modelNote = selectedModels.value.length ? `（${gatewayNote}；${freeNote}）` : '（未选择，使用仓库默认模型）'
+    const retryNote = retryFailed.value ? '（含强制重试失败项，已重新消耗翻译额度）' : ''
     triggerMsg.value = data.triggered
       ? `已触发 ${data.count} 个光影的翻译${retryNote}${modelNote}，状态会自动刷新`
-      : data.message || '没有待翻译的条目'
+      : (data.message || '没有待翻译的条目')
     if (data.triggered) retryFailed.value = false
     await loadQueue()
   } catch {
@@ -348,6 +374,8 @@ async function handleTrigger() {
         <div class="wb-item-sub">
           <code class="wb-id">{{ e.id }}</code>
           <span v-if="e.shaderVersion" class="wb-chip">光影 v{{ e.shaderVersion }}</span>
+          <!-- 失败项的重试状态：自动重试次数 / 需人工介入（口径由 Worker 的 retryState 给） -->
+          <span v-if="e.retry?.label" class="wb-chip" :class="e.retry.manual ? 'wb-retry-manual' : 'wb-retry-count'">{{ e.retry.label }}</span>
           <span v-if="e.error" class="wb-err" :title="e.error">{{ e.error }}</span>
           <a v-if="e.quark" class="wb-mirror" :href="e.quark" target="_blank" rel="noopener noreferrer">国内镜像</a>
         </div>
@@ -368,7 +396,11 @@ async function handleTrigger() {
         <p class="hint">口令仅保存在本标签页的 sessionStorage，不会写入 URL 或发送给第三方。</p>
       </template>
       <template v-else>
-        <p class="wb-label">选择本轮翻译模型</p>
+        <p class="wb-label">
+          选择本轮翻译模型
+          <button type="button" class="btn-refresh-models" :disabled="modelsLoading" @click="loadModels">{{ modelsLoading ? '刷新中…' : '刷新模型列表' }}</button>
+        </p>
+        <p v-if="lastRefreshedAt" class="hint">模型列表更新于 {{ lastRefreshedAt }}。点「刷新」可重新探测当前可用模型。</p>
         <p v-if="modelsError" class="form-error" role="alert">{{ modelsError }}</p>
         <p v-else-if="modelsLoading && !modelList.length" class="hint">正在加载模型列表…</p>
         <div v-else-if="modelList.length" class="wb-models">
@@ -377,9 +409,23 @@ async function handleTrigger() {
             <code>{{ m }}</code>
           </label>
         </div>
+        <template v-if="freeTierModels.length">
+          <p class="wb-label">免费层模型（bilibili Index-Translate）</p>
+          <p class="hint">免费层失败会自动降级到上面勾选的模型，可放心勾选。一轮只会用一个免费层模型——勾多个时取第一个；一个都不勾则使用仓库默认值（免费层不会被关闭）。逐句模型按行翻译，质量稳定但请求数多。</p>
+          <div class="wb-models">
+            <label v-for="m in freeTierModels" :key="m" class="wb-model">
+              <input type="checkbox" v-model="selectedModels" :value="m" @change="persistModels" />
+              <code>{{ m }}</code>
+            </label>
+          </div>
+        </template>
+        <p v-else-if="freeTierError" class="hint">免费层暂不可用（{{ freeTierError }}），本轮只使用上面的网关模型。</p>
+        <p class="hint wb-auto-retry-hint">
+          失败项会自动重试（最多 3 次），无需手动勾选；达到上限后标为「需人工介入」，仍可手动强制重试。
+        </p>
         <label class="wb-model wb-retry">
           <input type="checkbox" v-model="retryFailed" :disabled="!counts.failed" />
-          <span>重试失败的光影（会重新消耗翻译额度）<em v-if="counts.failed">当前 {{ counts.failed }} 条</em><em v-else>当前没有失败项</em></span>
+          <span>强制重试失败的光影（无视次数上限，会重新消耗翻译额度）<em v-if="counts.failed">当前 {{ counts.failed }} 条，需人工介入 {{ counts.manual }} 条</em><em v-else>当前没有失败项</em></span>
         </label>
         <div class="wb-trigger-row wb-trigger-row--submit">
           <button type="submit" class="btn btn-primary" :disabled="triggering" :aria-busy="triggering ? 'true' : 'false'">{{ triggering ? '翻译中…' : '开始翻译' }}</button>
@@ -770,6 +816,16 @@ async function handleTrigger() {
   background: rgba(232, 163, 61, 0.1);
   color: var(--vp-c-brand-1);
 }
+/* 失败重试状态：自动重试（中性）vs 需人工介入（警示） */
+.wb-retry-count {
+  background: rgba(232, 163, 61, 0.1);
+  color: #f0b55e;
+}
+.wb-retry-manual {
+  background: rgba(255, 107, 107, 0.14);
+  color: #ff8f8f;
+  border: 1px solid rgba(255, 107, 107, 0.35);
+}
 .wb-err {
   color: #ff8f8f;
   overflow: hidden;
@@ -828,6 +884,20 @@ async function handleTrigger() {
   color: var(--vp-c-text-1);
   margin-bottom: 8px;
 }
+/* 模型列表是实时探测的（网关会增删模型、免费层会整组挂掉），必须能手动重探。 */
+.btn-refresh-models {
+  margin-left: 10px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  background: transparent;
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-refresh-models:hover:not(:disabled) { background: var(--vp-c-brand-soft); }
+.btn-refresh-models:disabled { opacity: 0.5; cursor: default; }
 .wb-trigger-row {
   display: flex;
   flex-direction: column;

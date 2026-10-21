@@ -391,3 +391,47 @@ describe('zip-range 离线单元测试', () => {
     assert.equal(data2.toString('utf8'), 'option.ao=Ambient Occlusion\n')
   })
 })
+describe('openZip 的 signal（CF 预算/超时链路）', () => {
+  afterEach(() => {
+    mock.restoreAll()
+  })
+
+  it('10. 已中止的 signal：立即抛错，不发任何请求、不回退整包', async () => {
+    const buf = buildZip(
+      [{ name: 'shaders/lang/en_US.lang', method: 8, data: 'option.ao=Ambient Occlusion\n' }],
+      { padTo: 200000 },
+    )
+    const server = makeServer(buf)
+    mock.method(globalThis, 'fetch', server.fetchImpl)
+    const controller = new AbortController()
+    controller.abort()
+
+    await assert.rejects(
+      () => openZip('https://example.test/shader.zip', { totalSize: buf.length, signal: controller.signal }),
+      (err) => err.name === 'AbortError' || err.aborted === true,
+    )
+    assert.equal(server.requests.length, 0, '中止后不该再发请求（更不能回退整包）')
+  })
+
+  it('11. Range 请求进行中被中止：抛错而非回退整包', async () => {
+    const buf = buildZip(
+      [{ name: 'shaders/lang/en_US.lang', method: 8, data: 'option.ao=Ambient Occlusion\n' }],
+      { padTo: 200000 },
+    )
+    const controller = new AbortController()
+    const requests = []
+    // 第一个请求到达即中止：模拟超时/预算耗尽发生在探测途中
+    mock.method(globalThis, 'fetch', async (url, init = {}) => {
+      requests.push(new Headers(init.headers).get('range'))
+      controller.abort()
+      throw Object.assign(new Error('aborted'), { name: 'AbortError' })
+    })
+
+    await assert.rejects(
+      () => openZip('https://example.test/shader.zip', { totalSize: buf.length, signal: controller.signal }),
+      (err) => err.name === 'AbortError' || err.aborted === true,
+    )
+    assert.equal(requests.length, 1, '中止后不该重试')
+    assert.equal(requests.every((r) => r !== null), true, '不该发出整包请求')
+  })
+})

@@ -1,0 +1,332 @@
+#shaders/lang/zh_CN.lang
+# ReVespera Shader VXPT v6 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：ReVespera VXPT Alpha v6 (Chocapic13 shader edit).zip 的 shaders/lang/en_us.lang
+screen.Clouds=体积云
+screen.Cloud_Layer_1=云层1（低层）
+screen.Cloud_Layer_1_Quality=第一层品质
+option.CLOUD1_ENABLED=第1层：已启用
+option.CLOUD1_CAST_SHADOWS=第一层：投射阴影
+option.CLOUD1_HEIGHT=第一层：高度
+option.CLOUD1_HEIGHT.comment=该层底部的高度（以区块为单位）
+option.CLOUD1_THICKNESS=第一层：厚度
+option.CLOUD1_THICKNESS.comment=层的垂直厚度（方块数）
+option.CLOUD1_DENSITY=第一层：密度
+option.CLOUD1_DENSITY.comment=云密度0.04-0.06接近真实值（仅限原画风：Godot画风请使用Godot云风格菜单）
+option.CLOUD1_COVERAGE=第一层：覆盖范围
+option.CLOUD1_COVERAGE.comment=云层覆盖（仅限原始风格：Godot 风格请使用 Godot 云风格菜单）
+option.CLOUD1_SCALE=第一层：云层大小
+option.CLOUD1_SCALE.comment=云形状的横向大小（越大 = 云越大）
+option.CLOUD1_SPEED=第一层：风速
+option.CLOUD1_SPEED.comment=风速乘数（0 = 冻结）
+option.CLOUD1_FBM_AMOUNT=第1层：噪点强度
+option.CLOUD1_FBM_AMOUNT.comment=添加到云形状中的噪声量
+option.CLOUD1_FBM_POWER1=第1层：噪点细节（高）
+option.CLOUD1_FBM_POWER1.comment=数值越高，云形状的细节就越丰富
+option.CLOUD1_FBM_POWER2=第1层：噪点细节（低）
+option.CLOUD1_FBM_POWER2.comment=较低的数值会增加云形的高频细节
+option.CLOUD1_MIE_G=第1层：太阳散射（米氏G）
+option.CLOUD1_MIE_G.comment=数值接近1 = 太阳周围亮度峰值显著
+option.CLOUD1_MIE_G2=第1层：多散射（米氏G2）
+option.CLOUD1_MIE_G2.comment=多重散射近似相位
+option.CLOUD1_LOD=第一层：细节程度
+option.CLOUD1_LOD.comment=屏幕云朵的FBM噪波迭代次数（-1表示无FBM）
+option.CLOUD1_SHADOW_LOD=第1层：自身阴影细节级别
+option.CLOUD1_SHADOW_LOD.comment=屏幕云朵阴影的FBM噪点迭代次数（-1表示无FBM）
+option.CLOUD1_LOD_LQ=第1层：反射细节级别
+option.CLOUD1_LOD_LQ.comment=反射云块的FBM噪波迭代次数（-1表示无FBM）
+option.CLOUD1_SHADOW_LOD_LQ=第1层：反射自阴影细节级别
+option.CLOUD1_SHADOW_LOD_LQ.comment=反射云阴影的FBM噪波迭代次数（-1表示无FBM）
+option.CLOUD1_MIN_STEPS=第1层：步骤（天顶）
+option.CLOUD1_MIN_STEPS.comment=瑞利散射使云层在屏幕上呈现立体感
+option.CLOUD1_MAX_STEPS=第1层：步骤（地平线）
+option.CLOUD1_MAX_STEPS.comment=瑞利散射步向地平线，生成屏幕云朵
+option.CLOUD1_MIN_STEPS_LQ=第一层：反思步骤（天顶）
+option.CLOUD1_MIN_STEPS_LQ.comment=日晷的阴影投射在反射云层的正上方
+option.CLOUD1_MAX_STEPS_LQ=第1层：反射步骤（地平线）
+option.CLOUD1_MAX_STEPS_LQ.comment=雷·马奇向地平线走去，倒影着云彩
+screen.Cloud_Layer_2=云层2（高）
+screen.Cloud_Layer_2_Quality=第2层质量
+option.CLOUD2_ENABLED=第2层：已启用
+option.CLOUD2_CAST_SHADOWS=第二层：投射阴影
+option.CLOUD2_HEIGHT=第2层：高度
+option.CLOUD2_HEIGHT.comment=该层底部的高度（以区块为单位）
+option.CLOUD2_THICKNESS=第2层：厚度
+option.CLOUD2_THICKNESS.comment=层的垂直厚度（方块数）
+option.CLOUD2_DENSITY=第二层：密度
+option.CLOUD2_DENSITY.comment=云密度0.04-0.06接近真实值（仅限原画风：Godot画风请使用Godot云风格菜单）
+option.CLOUD2_COVERAGE=第2层：覆盖范围
+option.CLOUD2_COVERAGE.comment=云层覆盖（仅限原始风格：Godot 风格请使用 Godot 云风格菜单）
+option.CLOUD2_SCALE=第2层：云的大小
+option.CLOUD2_SCALE.comment=云形状的横向大小（越大 = 云越大）
+option.CLOUD2_SPEED=第2层：风速
+option.CLOUD2_SPEED.comment=风速乘数（0 = 冻结）
+option.CLOUD2_FBM_AMOUNT=第2层：噪点强度
+option.CLOUD2_FBM_AMOUNT.comment=添加到云形状中的噪声量
+option.CLOUD2_FBM_POWER1=第2层：噪点细节（高）
+option.CLOUD2_FBM_POWER1.comment=数值越高，云形状的细节就越丰富
+option.CLOUD2_FBM_POWER2=第2层：噪点细节（低）
+option.CLOUD2_FBM_POWER2.comment=较低的数值会增加云形的高频细节
+option.CLOUD2_MIE_G=第2层：太阳散射（米氏G）
+option.CLOUD2_MIE_G.comment=数值接近1 = 太阳周围亮度峰值显著
+option.CLOUD2_MIE_G2=第2层：多散射（米氏G2）
+option.CLOUD2_MIE_G2.comment=多重散射近似相位
+option.CLOUD2_LOD=第2层：细节程度
+option.CLOUD2_LOD.comment=屏幕云朵的FBM噪波迭代次数（-1表示无FBM）
+option.CLOUD2_SHADOW_LOD=第2层：自身阴影细节级别
+option.CLOUD2_SHADOW_LOD.comment=屏幕云朵阴影的FBM噪点迭代次数（-1表示无FBM）
+option.CLOUD2_LOD_LQ=第2层：反射细节级别
+option.CLOUD2_LOD_LQ.comment=反射云块的FBM噪波迭代次数（-1表示无FBM）
+option.CLOUD2_SHADOW_LOD_LQ=第2层：反射自阴影细节级别
+option.CLOUD2_SHADOW_LOD_LQ.comment=反射云阴影的FBM噪波迭代次数（-1表示无FBM）
+option.CLOUD2_MIN_STEPS=第2层：步骤（天顶）
+option.CLOUD2_MIN_STEPS.comment=瑞利散射使云层向天顶方向移动
+option.CLOUD2_MAX_STEPS=第2层：步骤（地平线）
+option.CLOUD2_MAX_STEPS.comment=瑞利散射步向地平线，生成屏幕云朵
+option.CLOUD2_MIN_STEPS_LQ=第2层：反思步骤（天顶）
+option.CLOUD2_MIN_STEPS_LQ.comment=日晷的阴影向天顶移动，映出云朵
+option.CLOUD2_MAX_STEPS_LQ=第2层：反射步骤（地平线）
+option.CLOUD2_MAX_STEPS_LQ.comment=雷氏步法迈向地平线，映照出云的倒影
+screen.Player_Ripples=玩家涟漪 (3D)
+option.PLAYER_RIPPLE_2D_SIM=玩家涟漪
+option.PLAYER_RIPPLE_2D_SIM.comment=真实的2D波浪模拟：波纹在生成点扩散并逐渐消失。
+option.PLAYER_RIPPLE_STRENGTH=涟漪强度
+option.PLAYER_RIPPLE_STRENGTH.comment=波纹使水面倾斜的强度。1.0 = 默认值。
+option.PLAYER_RIPPLE_SPEED=§4§l§f§l波纹§f§l速度
+option.PLAYER_RIPPLE_SPEED.comment=涟漪在水面上扩散的速度。1.0 = 默认。
+option.PLAYER_WAKE_SPEED=唤醒速度
+option.PLAYER_WAKE_SPEED.comment=移动时脉冲的发射频率。
+option.PLAYER_RIPPLE_DENSITY=波纹密度
+option.PLAYER_RIPPLE_DENSITY.comment=每秒生成多少涟漪（脉冲间隔更短）。3.0 = 默认值。
+option.PLAYER_RIPPLE_MAX_DISTANCE=瑞波最大距离
+option.PLAYER_RIPPLE_MAX_DISTANCE.comment=波纹在离玩家一定方块距离后会完全消失。默认网格覆盖你周围约16个方块。
+option.PLAYER_RIPPLE_RESOLUTION=波纹分辨率
+option.PLAYER_RIPPLE_RESOLUTION.comment=每块模拟的像素数：0 = 8（快速，默认），1 = 16，2 = 32（更清晰，更耗资源）。
+option.PLAYER_RIPPLE_DISTANCE=瑞波网格大小
+option.PLAYER_RIPPLE_DISTANCE.comment=模拟区域大小：1 = 256，2 = 384，3 = 512 纹理像素。越大，波纹离玩家越远，但成本越高。
+option.PLAYER_RIPPLE_FRAMERATE=Ripple模拟帧率
+option.PLAYER_RIPPLE_FRAMERATE.comment=每秒模拟帧数。30更轻，60更流畅。
+option.PLAYER_RIPPLE_DAMPING=波纹阻尼
+option.PLAYER_RIPPLE_DAMPING.comment=涟漪消退的速度。数值越高，平息得越快。1.0 = 默认。
+option.PLAYER_RIPPLE_PIXELATED=像素化的涟漪
+option.PLAYER_RIPPLE_PIXELATED.comment=使用原始模拟像素而非平滑插值（呈现块状、类似Minecraft的波纹效果）。
+option.PLAYER_RIPPLE_3D=3D波纹
+option.PLAYER_RIPPLE_3D.comment=波纹变为真实的3D水面高度：波峰高于表面，波谷低于表面（沿视线方向的逐像素位移），法线由真实的3D坡度生成。
+option.PLAYER_RIPPLE_HEIGHT=涟漪高度
+option.PLAYER_RIPPLE_HEIGHT.comment=3D波纹波峰的高度。1.0为默认值。
+option.PLAYER_RIPPLE_3D_QUALITY=3D波纹质感
+option.PLAYER_RIPPLE_3D_QUALITY.comment=3D波纹的Ray-march步数：0 = 6（快），1 = 10（默认），2 = 16（波峰边缘最平滑）。
+option.PLAYER_RIPPLE_REFRACTION=涟漪折射
+option.PLAYER_RIPPLE_REFRACTION.comment=水波使你的视野产生多少扭曲。0 = 关闭。
+option.PLAYER_RIPPLE_CONTACT_MARGIN=Ripple 保证金联系方式
+option.PLAYER_RIPPLE_CONTACT_MARGIN.comment=只有脚真正碰到水时才会起涟漪。脚可以高出水面多远仍能算数：0 = 严格。平坦的岸边高出水面约0.1，所以0.15+能让岸边走路产生涟漪。
+screen.Sun_Streak=阳光穿透云层
+option.SUN_STREAK=阳光穿透云层
+option.SUN_STREAK.comment=一道横向光带穿过太阳
+option.SUN_STREAK_STRENGTH=痕迹亮度
+option.SUN_STREAK_LENGTH=条纹长度
+option.SUN_STREAK_THICKNESS=条纹粗细
+screen.VXPT=体素路径追踪 (VXPT)
+option.VXPT=体素路径追踪
+option.VXPT.comment=通过存储在阴影图中的体素块进行全局光照追踪（源自 Vespera）。支持离屏渲染，可反射彩色光并看到自发光块。占用 1/4 的阴影图集，导致阴影分辨率减半：请提高阴影图分辨率以补偿。
+option.VXPT_RAYS=每像素光线数
+option.VXPT_BOUNCES=光线反弹次数
+option.VXPT_STEPS=射线长度（方块）
+option.VXPT_VOXEL_RANGE=体素范围（方块）
+option.VXPT_VOXEL_RANGE.comment=以方块为单位的半径，表示体素体积离玩家的距离。数值越低，体积越小，体素渲染越轻；数值越高，光线看得越远。该值不能超过阴影贴图分辨率所能承载的范围（2048分辨率下约50，4096下约80，8192下约128），因此要提高分辨率才能看得更远。
+option.VXPT_VOXEL_SHAPES=详细方块形状
+option.VXPT_VOXEL_SHAPES.comment=门、活板门、地毯、石板、压力板、按钮、栅栏和楼梯在体素中保持真实形状（薄门、薄地毯、栅栏柱和扶手、带内外角的楼梯），光线可从下方、上方和中间穿过。关闭 = 旧行为（仅完整立方体）。
+option.VXPT_GLASS_PANES=玻璃窗格与光线折射
+option.VXPT_GLASS_PANES.comment=玻璃板（普通和彩色）也存在于体素中，路径追踪的光线穿过玻璃板制成的窗户时会吸收其颜色。关闭 = 只有完整的玻璃块会改变光线颜色。
+screen.VXPT_RT=光线追踪反射 (RTX)
+option.VXPT_REFLECT=光线追踪反射
+option.VXPT_REFLECT.comment=Bedrock RTX风格反射。光泽方块（抛光石英/石、上釉陶土、黑曜石、金属块、混凝土等）会反射体素路径追踪器所见之物，包括屏幕外内容：真实发光色的发光方块、染色玻璃、受光方块和天空。每个光泽像素会多消耗一条光线。
+option.VXPT_REFLECT_STRENGTH=反射强度
+option.VXPT_REFLECT_F0=反射率（抛光）
+option.VXPT_REFLECT_F0.comment=抛光方块正面反射的强度。Fresnel使方块在掠射角反射更强。金属使用其纹理的颜色。
+option.VXPT_REFLECT_ROUGH_METAL=粗糙度：金属
+option.VXPT_REFLECT_ROUGH_POLISHED=粗糙度：抛光
+option.VXPT_REFLECT_ROUGH_SEMI=粗糙度：半光泽
+option.VXPT_REFLECT_ROUGH_SEMI.comment=混凝土、石砖、下界砖... 0 = 镜面，数值越高 = 反射越模糊。
+option.VXPT_REFLECT_EMISSIVE=反射中的自发光亮度
+option.VXPT_REFLECT_RAYS=每像素反射光线数
+option.VXPT_REFLECT_BOUNCES=反射弹射次数
+option.VXPT_REFLECT_BOUNCES.comment=漫反射反弹发生在反射光线击中非屏幕物体时（照亮被反射物体）。屏幕上的物体则使用屏幕的去噪全局光照。
+option.VXPT_REFLECT_STEPS=反射光线长度（方块）
+option.VXPT_REFLECT_DISTANCE=反射距离（方块）
+option.VXPT_REFLECT_DENOISE=模糊粗糙的反射效果
+option.VXPT_WATER_REFLECT=光线追踪水面反射效果
+option.VXPT_WATER_REFLECT.comment=Bedrock RTX风格。湖泊和海洋会反射体素路径追踪器所见的一切，包括画面之外的内容：自发光方块会呈现其自身颜色，染色玻璃、受光照的地形。当光线找不到反射物时，会保留屏幕空间反射和天空。每个水像素在掠射角下对应一条体素光线：如果运行缓慢，可关闭或缩短该光线。
+option.VXPT_WATER_REFLECT_GLASS=玻璃与冰，亦复如是
+option.VXPT_WATER_REFLECT_GLASS.comment=玻璃和冰也使用体素反射射线（关闭 = 仅水）。
+option.VXPT_WATER_REFLECT_STEPS=水面反射光线长度（方块）
+option.VXPT_WATER_REFLECT_BOUNCES=水面反射与反弹效果
+option.VXPT_WATER_REFLECT_BOUNCES.comment=漫反射反弹后，若水面反射的光线落在屏幕外物体上，则照亮该物体。屏幕内的物体则使用屏幕的去噪全局光照。
+option.VXPT_SUN_BOUNCE=太阳反弹球
+option.VXPT_HIT_AMBIENT=热门氛围音乐
+option.VXPT_ALBEDO_SATURATION=色溢出
+option.VXPT_EMISSIVE_STRENGTH=自发光方块灯
+option.VXPT_EMISSIVE_FALLOFF=自发光体软核心（阻挡）
+option.VXPT_EMISSIVE_FALLOFF.comment=光线亮度减半的距离；超过该距离，光线会像真实光源一样逐渐变暗。数值越高，光线传播越远。
+option.VXPT_EMISSIVE_RANGE=发光范围（方块）
+option.VXPT_EMISSIVE_RANGE.comment=发光方块的光线完全消失的距离。
+option.VXPT_LIGHTMAP_TORCH=香草味火炬光照贴图
+option.VXPT_LIGHTMAP_TORCH.comment=香草块灯光图总是橙色的，用作光线下的地板，这样亮的区域永远不会变黑。较低的值能让彩色灯保持自身颜色。
+option.VXPT_EMISSIVE_HALO=自发光射线目标
+option.VXPT_EMISSIVE_HALO.comment=使发光方块成为射线更大的目标（远距离下颗粒感减少）。经能量校正，且被墙壁/玻璃阻挡，不会泄漏。
+option.VXPT_DENOISE=GI 降噪器
+option.VXPT_DENOISE.comment=净化路径追踪GI的颗粒感，灵感源自SEUS PTGI E12：沿相机运动累积帧，再用不跨越块边缘的自适应模糊滤镜处理。新暴露的表面会自动获得更宽的模糊，确保从未见过的区域也没有原始噪点。
+option.VXPT_DENOISE_FRAMES=降噪器历史记录
+option.VXPT_DENOISE_FRAMES.comment=Max frames the temporal denoiser accumulates. 数值越高，全局光照越平滑，但对光线变化的响应越慢。
+option.VXPT_DENOISE_RADIUS=降噪器模糊大小
+option.VXPT_DENOISE_RADIUS.comment=空间降噪滤镜的大小。数值越高，颗粒感越少，但全局光照越柔和。
+option.VXPT_VOXEL_CHUNK=体素区块（方块）
+option.VXPT_VOXEL_CHUNK.comment=锚定体素体积的区块大小。1 = 体积逐块跟随相机（旧行为）。16 = Minecraft 区块：仅在进入新区块时移动，行走时保持稳定。权衡：体积可能在一侧少显示半个区块。
+option.VXPT_WATER_SCATTER=水的光散射
+option.VXPT_WATER_SCATTER.comment=穿过水的光线会随机散射（每格有一定概率），因此光线会在水中扩散和发光，而不是直接穿透。0 = 水对路径追踪不可见。
+option.VXPT_WATER_ABSORB=水对光的吸收
+option.VXPT_WATER_ABSORB.comment=水对路径追踪光线的吸收强度随深度变化（红色为近，蓝色为远）。1.0 = 写实。
+option.VXPT_DENOISE_LUMA=降噪器细节容差
+option.VXPT_DENOISE_LUMA.comment=相邻像素间明暗差异超过多少会被视为噪点（以剩余噪点的标准差为单位）。数值越低，保留的明暗细节越多，但颗粒感越强；数值越高，画面越平滑。
+option.VXPT_DENOISE_WIDE=宽域降噪处理通道
+option.VXPT_DENOISE_WIDE.comment=增加第四个更宽的过滤通道，可去除最后的斑驳低频噪声（如暗洞、远处的灯）。会略微影响性能。
+screen.Cirrus_Clouds=卷云（高云）
+option.CIRRUS_ENABLED=卷云
+option.CIRRUS_ENABLED.comment=高、薄、絮状的冰云（非常便宜，无需光线步进）
+option.CIRRUS_HEIGHT=卷云高度
+option.CIRRUS_HEIGHT.comment=卷云层的海拔高度（格数）
+option.CIRRUS_COVERAGE=卷云覆盖度
+option.CIRRUS_COVERAGE.comment=卷云所覆盖的天空面积
+option.CIRRUS_OPACITY=卷云不透明度
+option.CIRRUS_OPACITY.comment=卷云有多密集和明显
+option.FSR2=FSR 2 超分辨率缩放器
+option.FSR2.comment=使用AMD FidelityFX Super Resolution 2（时序超采样）代替内置的TAA。选择下方的质量模式以较低分辨率渲染，或使用原生抗锯齿/自定义。仅限主世界。
+option.FSR2_SHARPNESS=FSR 2 基础清晰度
+option.FSR2_SHARPNESS.comment=在超采样后应用RCAS锐化（0为关闭）。高级模式会自动增强，参见“FSR 2自动锐度”。
+option.FSR2_QUALITY=FSR 2 质量模式
+option.FSR2_QUALITY.comment=超采样预设（渲染分辨率）。高级模式渲染的像素更少，锐化更强。自定义 = 使用“TAA 超采样”和“时序抗锯齿”菜单中的渲染比例滑块。
+value.FSR2_QUALITY.0=自定义
+value.FSR2_QUALITY.1=原生AA（1.0倍）
+value.FSR2_QUALITY.2=超高品质 (1.7倍)
+value.FSR2_QUALITY.3=品质 (2.0倍速)
+value.FSR2_QUALITY.4=平衡 (2.4倍)
+value.FSR2_QUALITY.5=性能 (3.0倍)
+value.FSR2_QUALITY.6=超高性能 (3.6倍)
+value.FSR2_QUALITY.7=极致性能 (5.0倍)
+option.FSR2_OUTPUT_SCALE=FSR 2 后处理分辨率 (%)
+option.FSR2_OUTPUT_SCALE.comment=FSR2后所有效果的分辨率（超采样、光晕、景深、色调映射）占屏幕的百分比。低于100%可节省性能，最终画面由FidelityFX CAS超采样（开启“CAS Upscale”；约75-90%与原生难辨，50%仍良好）。最低20%（5.0倍超采样；超过2倍CAS会变模糊）。0为自动（全模式全屏）。
+value.FSR2_OUTPUT_SCALE.0=自动
+screen.FSR=FSR 2 超分辨率缩放器
+option.FSR2_RENDER_PCT=FSR 2 渲染分辨率 (%)
+option.FSR2_RENDER_PCT.comment=额外控制渲染分辨率：所选质量模式渲染比例的百分比（100%为列表值，60%为每轴像素比该模式少40%）。渲染分辨率不低于屏幕每轴的20%（5.0倍超采样）。FSR 2和自动锐化可弥补细节损失。自定义和原生抗锯齿忽略此设置。
+option.FSR2_SHARP_AUTO=FSR 2 自动锐化
+option.FSR2_SHARP_AUTO.comment=图像缩放越大，RCAS锐化和纹理细节（LOD偏移）越高，使高FSR 2模式保持清晰。0 = 固定锐度，1 = 默认，2 = 极强。
+option.FSR2_DETAIL=FSR 2 细节恢复
+option.FSR2_DETAIL.comment=宽泛的、基于光晕的锐化，可恢复低渲染分辨率下丢失的细节。随超采样比例增强（原生抗锯齿时为0）。0 = 关闭，1 = 默认，2 = 极强。
+option.FSR2_CAS=FidelityFX CAS（FSR 2 之后）
+option.FSR2_CAS.comment=AMD FidelityFX Contrast Adaptive Sharpening 是 FSR 2 的最后一步（RCAS + 细节恢复 + 色调映射）。在对比度低处锐化最终图像，保留强边缘，避免光晕。启用 FSR 2 时使用此功能替换旧锐化。若画面过锐，可降低 'FSR 2 Base Sharpness'。
+option.FSR2_CAS_UPSCALE=CAS 超分辨率（后处理 < 100%）
+option.FSR2_CAS_UPSCALE.comment=当'FSR 2 后处理分辨率'低于100%时，使用AMD FidelityFX CAS的SCALING路径（12个样本）进行超采样，而非Catmull-Rom+锐化（最多81个样本）。每个源像素根据其自身对比度进行锐化，然后进行双线性混合；平坦像素比边缘像素权重更高，因此细线和斜线不会被涂抹。成本更低。当后处理分辨率=100%时无效。
+option.FSR2_CAS_SHARPNESS=CAS 锐化
+option.FSR2_CAS_SHARPNESS.comment=FidelityFX CAS 强度。0 = 默认（振铃最小），1 = 最大锐化。
+option.FSR2_CAS_HQ=CAS 高品质
+option.FSR2_CAS_HQ.comment=CAS sharpen only：完整的3x3邻域（9个样本）和每个颜色通道的独立滤波器权重。CAS upscale：每个颜色通道的独立权重，与12点Catmull-Rom混合50/50（无额外纹理采样），最接近原始图像。Off = AMD默认的快捷路径。
+screen.Block_Debris=清除障碍物
+option.BLOCK_DEBRIS=清除障碍物
+option.BLOCK_DEBRIS.comment=方块破碎的粒子增多，变成更大的、旋转下落并逐渐消失的碎块
+option.BLOCK_DEBRIS_SIZE=分块大小
+option.BLOCK_DEBRIS_SIZE.comment=与原版粒子相比的碎片大小。1.0 = 原版
+option.BLOCK_DEBRIS_TUMBLE=旋转碎块
+option.BLOCK_DEBRIS_TUMBLE.comment=下落时碎片的旋转程度。0 = 不旋转
+option.BLOCK_DEBRIS_LANDED_ALPHA=着陆不透明度
+option.BLOCK_DEBRIS_LANDED_ALPHA.comment=物体触地时的不透明度。0 = 完全消失，1.0 = 不褪色
+option.BLOCK_DEBRIS_COUNT=分块数量
+option.BLOCK_DEBRIS_COUNT.comment=每个原版破坏粒子绘制多少个区块。1 = 原版数量
+option.BLOCK_DEBRIS_FADE_HEIGHT=淡出距离
+option.BLOCK_DEBRIS_FADE_HEIGHT.comment=该区块在地面上方这么多格处开始消失，数值越高，消失得越早越慢。0表示下落时不消失。需要VXPT来定位地面。
+screen.Cloud_Godot=Godot 云风格
+option.CLOUD_STYLE=云层样式
+option.CLOUD_STYLE.comment=0 = 原始 Chocapic13 云，1 = Godot 体积云移植（Schneider / Horizon Zero Dawn：天气图，Perlin-Worley + Worley 噪声，6 样本光锥）。需要纹理/cloudAtlas.png（自定义纹理）。
+option.CLOUD_GODOT_AMBIENT=Godot：环境音
+option.CLOUD_GODOT_AMBIENT.comment=云层内部天空光线的强度（仅限Godot风格）
+option.CLOUD_GODOT_SUN=Godot：太阳光
+option.CLOUD_GODOT_SUN.comment=阳光/月光在云层上的强度（仅限Godot风格）
+option.CLOUD_GODOT_WIND_ANGLE=Godot：风向指示器
+option.CLOUD_GODOT_WIND_ANGLE.comment=云层漂移的方向（以度为单位，仅限Godot风格）
+screen.Cloud_Godot_Layer_1=Godot：第1层（低）
+screen.Cloud_Godot_Layer_2=Godot：第2层（高）
+option.CLOUD_GODOT1_DENSITY=第1层：密度（Godot）
+option.CLOUD_GODOT1_DENSITY.comment=Godot 风格的云层密度（%）。100 为参考外观。这与云层厚度无关：更厚的云层会更高，但透明度保持不变。
+option.CLOUD_GODOT1_COVERAGE=第1层：覆盖（Godot）
+option.CLOUD_GODOT1_COVERAGE.comment=以Godot风格表示的天空覆盖率（%）。0 = 晴朗天空，50 = 分散的卷积云，100 = 完全阴天。
+option.CLOUD_GODOT2_DENSITY=第2层：密度（Godot）
+option.CLOUD_GODOT2_DENSITY.comment=Godot 风格的云层密度（%）。100 为参考外观。这与云层厚度无关：更厚的云层会更高，但透明度保持不变。
+option.CLOUD_GODOT2_COVERAGE=第2层：覆盖（Godot）
+option.CLOUD_GODOT2_COVERAGE.comment=Godot风格的天空覆盖率（%）。0 = 晴朗天空，50 = 分散的卷积云，100 = 完全阴天。
+screen.Rain_Drops=雨滴
+option.RAIN_DROPS=雨滴
+option.RAIN_DROPS.comment=雨滴顺着屏幕滑落，消失在屋檐下、洞穴里、水下，或者雨停的时候。
+option.RAIN_DROP_STRENGTH=折射强度
+option.RAIN_DROP_STRENGTH.comment=每滴液滴对后方图像的弯曲程度。1.0 = 默认值。
+option.RAIN_DROP_SIZE= §e雨滴大小
+option.RAIN_DROP_SIZE.comment=液滴的大小。
+option.RAIN_DROP_DENSITY=下注金额
+option.RAIN_DROP_DENSITY.comment=屏幕上显示的下落物数量。
+option.RAIN_DROP_SPEED=掉落速度
+option.RAIN_DROP_SPEED.comment=雨滴出现和消失的速度真快。
+option.RAIN_DROP_BLUR=湿式柔焦
+option.RAIN_DROP_BLUR.comment=液滴间的图像模糊（湿玻璃效果）。0 = 关闭。
+option.RAIN_DROP_FADE_TIME=淡出时间
+option.RAIN_DROP_FADE_TIME.comment=雨淋到你时效果显现的速度，以及在屋檐下或雨停时效果消失的速度。
+screen.Rain_Puddles=雨水坑
+option.RAIN_PUDDLES=雨水坑
+option.RAIN_PUDDLES.comment=雨后积水在平地上形成水洼，随后慢慢干涸：潮湿的地面、浅滩、幽暗的深水与倒影。仅在天空开阔之处。
+option.PUDDLE_COVERAGE=覆盖度
+option.PUDDLE_COVERAGE.comment=下雨一段时间后，有多少地面会被淹没。1.0为默认值。
+option.PUDDLE_SIZE=水洼大小
+option.PUDDLE_SIZE.comment=水坑的大小。
+option.PUDDLE_DARKEN=湿润变暗
+option.PUDDLE_DARKEN.comment=水下的地面要暗得多得多。
+option.PUDDLE_REFLECTION=反射率
+option.PUDDLE_REFLECTION.comment=水面垂直向下看时的反射率。在掠射角下，水面总是反射更多。
+option.PUDDLE_ON_GRASS=草地上的水洼
+option.PUDDLE_ON_GRASS.comment=绿色地面（草地）上水坑的比例。0 = 无，1 = 与其他地面相同。
+option.PUDDLE_RIPPLES=雨滴涟漪
+option.PUDDLE_RIPPLES.comment=雨滴落入水洼激起的水波（基于Zavie的Rain splash代码/Ctrl-Alt-Test）。
+option.PUDDLE_RIPPLE_STRENGTH=涟漪强度
+option.PUDDLE_RIPPLE_STRENGTH.comment=波纹将倒影弯曲得多么厉害。
+option.PUDDLE_RIPPLE_SCALE=每区块的波纹数
+option.PUDDLE_RIPPLE_SCALE.comment=越高，波纹越小越密。波纹随距离衰减（圆环比像素薄）。
+option.PUDDLE_RIPPLE_SPEED=§4§l§f§l波纹§f§l速度
+option.PUDDLE_RIPPLE_SPEED.comment=涟漪扩散又消失得多么快。
+option.PUDDLE_RIPPLE_QUALITY=瑞波品质
+option.PUDDLE_RIPPLE_QUALITY.comment=1 = 更快（每像素9个单元格），2 = 原始外观（每像素25个单元格）。
+option.PUDDLE_WET_GROUND=潮湿的地面
+option.PUDDLE_WET_GROUND.comment=地面湿润时（除了水洼）整体变暗多少。0 = 只有水洼变色。
+option.PUDDLE_SSR=周围的倒影与思考
+option.PUDDLE_SSR.comment=水洼会反射周围物体（树木、方块、山丘）的上一帧画面。若反射光线射向空中，则反射天空。
+option.PUDDLE_SSR_STEPS=反射步数
+option.PUDDLE_SSR_STEPS.comment=反射光线的步骤。更多 = 范围更远、发现的物体更薄，但速度更慢。
+option.COLORED_SHADOWS=彩色玻璃灯
+option.COLORED_SHADOWS.comment=阳光/月光、体积光柱和全局光照反弹会呈现彩玻璃的颜色。关闭 = 光线穿过玻璃呈白色。
+option.COLORED_SHADOWS_STRENGTH=玻璃灯光强度
+option.COLORED_SHADOWS_STRENGTH.comment=玻璃对后方光线的着色强度。1.0 = 玻璃片的真实颜色，数值越高 = 颜色越深。
+option.GLASS_TINT_DEPTH=玻璃色彩深度
+option.GLASS_TINT_DEPTH.comment=加深了着色玻璃赋予光线和路径追踪射线的色彩。浅/柔和的玻璃纹理会产生浅色的射线。1.0 = 纹理本身的色彩，数值越高 = 射线越深、越饱和。
+option.COLORED_SHADOWS_VOLUMETRIC=彩色光束
+option.COLORED_SHADOWS_VOLUMETRIC.comment=透过玻璃折射出的彩色光柱。
+option.VXPT_SKY_DIRECTIONAL=定向天空色彩
+option.VXPT_SKY_DIRECTIONAL.comment=路径追踪的光线会呈现天空不同区域的色彩和亮度（如温暖的边缘、蓝色的天顶、开阔处的日落余晖），而非单一的漫反射色。开阔天空下的物体能保持其原有外观。
+option.VXPT_SKY_DIR_STRENGTH=天空色彩变化
+option.VXPT_SKY_DIR_STRENGTH.comment=天空颜色随光线方向变化的程度。0 = 如前所述的平坦环境光，1 = 完整的天空渐变。
+option.VXPT_HELD_LIGHT=手持光源
+option.VXPT_HELD_LIGHT.comment=火把、灯笼、萤石、蜡烛……手持光源可照亮世界，如同放置的光源一般，穿透体素体积：墙壁会阻挡，彩色玻璃会染色，每种物品都有自己的颜色（灵魂沙=青色，红石=红色……）。仅限主世界。
+option.VXPT_HELD_STRENGTH=手持光源亮度
+option.VXPT_HELD_STRENGTH.comment=1.0 = 与放置的光源具有相同亮度等级的外观。
+option.VXPT_HELD_RANGE=手持照明范围（每级格数）
+option.VXPT_HELD_RANGE.comment=火把是亮度14，所以1.5代表它能照亮约21格。数值越低，光照范围越小，成本也越低。
+option.VXPT_HELD_SHADOWS=被光照亮的阴影与黑暗
+option.VXPT_HELD_SHADOWS.comment=墙壁、门、板块和方块会阻挡光线（每个亮像素对应一个体素射线）。关闭 = 光线也能穿过墙壁，但成本更低。
+option.VXPT_HELD_SOFT=阴影柔和度（柔和阴影）
+option.VXPT_HELD_SOFT.comment=更大的光 = 更柔和的阴影边缘。TAA/FSR 2 将抖动平均到几帧中。
+option.VXPT_HELD_FLICKER=手持火焰闪烁
+option.VXPT_HELD_FLICKER.comment=火把、篝火和蜡烛的火焰在闪烁。0 = 稳定。

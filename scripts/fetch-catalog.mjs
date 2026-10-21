@@ -49,9 +49,13 @@ const oldCatalog = existsSync(CATALOG_FILE)
 const knownNative = new Map(
   (oldCatalog.shaders ?? []).filter((s) => s.hasNativeZhCN !== undefined).map((s) => [s.id, s.hasNativeZhCN]),
 )
-// `noEnUsLang` 同样由 pipeline.mjs 回写（缺英文源标记），同步时保留旧值，避免每天被抹掉
-const knownNoEn = new Set(
-  (oldCatalog.shaders ?? []).filter((s) => s.noEnUsLang === true).map((s) => s.id),
+// `noEnUsLang` 同样由 pipeline.mjs 回写（缺英文源标记），同步时保留旧值，避免每天被抹掉。
+// 黑名单是「id + 判定版本」两个字段（scripts/lib/blacklist.mjs）：**版本号必须一起保留**，
+// 只留 `noEnUsLang: true` 会把版本判据退化成永久跳过 —— 上游补了 en_US.lang 也再也不会重探。
+const knownNoEn = new Map(
+  (oldCatalog.shaders ?? [])
+    .filter((s) => s.noEnUsLang === true)
+    .map((s) => [s.id, s.noEnUsLangVersion]),
 )
 
 const hits = await fetchAllShaders()
@@ -71,8 +75,16 @@ const shaders = hits
     categories: h.categories ?? [],
     // 已检测过的保留检测结果，未检测的为 null（pipeline 检测 zip 后回写）
     hasNativeZhCN: knownNative.get(h.slug) ?? null,
-    // 旧值优先：该条目曾被标 noEnUsLang 即保留（新抓取本身不带此字段）
-    ...(knownNoEn.has(h.slug) ? { noEnUsLang: true } : {}),
+    // 旧值优先：该条目曾被标 noEnUsLang 即保留标记**与判定版本**（新抓取本身不带这两个字段）。
+    // 旧数据可能只有标记、没有版本号（历史遗留）：保持原样，pipeline 会按「版本未知」重探一次。
+    ...(knownNoEn.has(h.slug)
+      ? {
+          noEnUsLang: true,
+          ...(knownNoEn.get(h.slug) != null && knownNoEn.get(h.slug) !== ''
+            ? { noEnUsLangVersion: knownNoEn.get(h.slug) }
+            : {}),
+        }
+      : {}),
     lastSync: new Date().toISOString().slice(0, 10),
   }))
   .sort((a, b) => b.downloads - a.downloads)

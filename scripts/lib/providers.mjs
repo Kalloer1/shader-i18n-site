@@ -54,12 +54,20 @@ export const INST_TRANS_TERMS = [
 /**
  * 免费层（bilibili Index-Translate 公开 API）的固定请求体。
  *
- * 与网关的两处关键差异：
+ * 与网关的三处关键差异：
  * 1. **不继承 `LLM_EXTRA_BODY`** —— 那是给自建中转站透传参数的，公开服务没有这个概念；
- * 2. **不需要 Authorization 头**（实测：不带 auth 头返回 200）。
+ * 2. **不需要 Authorization 头**（实测：不带 auth 头返回 200）；
+ * 3. **必须显式关掉 thinking**（`chat_template_kwargs.enable_thinking=false`）。
+ *    官方 `call_api.py` 的注释写明：模型被训练成直接吐译文，开启 thinking 时
+ *    CoT 文本会顶掉译文；官方默认 `max_tokens=1024` 也是按这个前提给的预算。
+ *    漏掉它不会报错，只会静默产出思维链或空正文——比报错更难查。
  */
-export const FREE_TIER_TEMPERATURE = 0.2
-export const FREE_TIER_MAX_TOKENS = 8192
+export const FREE_TIER_TEMPERATURE = 0.0
+export const FREE_TIER_MAX_TOKENS = 1024
+export const FREE_TIER_CHAT_TEMPLATE_KWARGS = { enable_thinking: false }
+
+/** 逐句模型的默认并发度（本机实测 32 是拐点，CI 出口未验证故取一半）。 */
+export const DEFAULT_LINE_CONCURRENCY = 16
 
 /**
  * 免费层的提示词：官方 instTrans 形态 —— **单条 user 消息**（无 system），
@@ -91,7 +99,8 @@ export function buildInstTransPrompt(input) {
  *
  * 两个「免费层专属」的策略字段由 pipeline 读取，它们不是提示词/请求体，但同样是
  * provider 的属性（见 issue #3）：
- * - `maxAttempts: 1` —— 单次尝试，**无退避重试**；
+ * - `maxAttempts` —— 单块尝试次数，**默认 1（无退避重试）**。pipeline 默认改成 2：
+ *   实测该服务约半数 60 行分块会 504（服务端推理超时），重试一次能救回一部分；
  * - `requestTimeoutMs: 60000` —— 单请求 60 秒超时。
  *
  * **刻意没有「键集合必须完整」这个硬开关**。实测免费层会以约 60% 的概率丢掉孤立的
@@ -105,8 +114,12 @@ export function buildInstTransPrompt(input) {
  * @param {() => string} p.url 接口地址
  * @param {string} p.label 日志里显示的提供方名称
  * @param {number} [p.requestTimeoutMs] 单请求超时
+ * @param {number} [p.maxAttempts] 单块尝试次数；默认 1（无退避）
  */
-export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000 }) {
+export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 60000, lineConcurrency = DEFAULT_LINE_CONCURRENCY, maxAttempts = 1 }) {
+  // 逐句模型（syllable 系列）必须一行一个请求：实测给 N 行只回 1 行，且回哪行不可控。
+  // 标记由模型名判定，不靠外部配置——配错模型名时行为可预期（按整块走，回退率会暴露）。
+  const perLine = /-syllable$/i.test(model)
   return {
     id: model,
     name: label,
@@ -118,11 +131,20 @@ export function createFreeTierProvider({ model, url, label, requestTimeoutMs = 6
       messages,
       temperature: FREE_TIER_TEMPERATURE,
       max_tokens: FREE_TIER_MAX_TOKENS,
+      // 官方 call_api.py 的默认值：不关 thinking，CoT 会顶掉译文。
+      chat_template_kwargs: { ...FREE_TIER_CHAT_TEMPLATE_KWARGS },
     }),
     buildPrompt: buildInstTransPrompt,
     extract: (j) => j.choices?.[0]?.message?.content,
-    maxAttempts: 1,
+    // 单次尝试、无退避：免费层是无 SLA 的公开服务，对它重试只会把预算烧在
+    // 同一个坏端点上。pipeline 可按需调大（实测半数 60 行分块会 504，重试一次
+    // 能救回一部分），默认仍保持 1 次以维持原有行为。
+    maxAttempts,
     requestTimeoutMs,
+    // 下面两个字段只有逐句路径读：provider-chain 据此分流到 line-translator。
+    // 并发度由调用方注入（pipeline 读 FREE_TIER_CONCURRENCY），provider 不读环境变量。
+    perLine,
+    lineConcurrency: perLine ? lineConcurrency : undefined,
   }
 }
 
@@ -145,6 +167,20 @@ export function buildGatewayPrompt(input) {
 }
 
 /**
+ * 网关单请求超时默认值（90 秒）。
+ *
+ * 为什么必须有：`createGatewayProvider` 以前**没有** `requestTimeoutMs`，`chatOnce` 只
+ * 在 provider 带这个字段时才加单请求超时 —— 于是网关请求没有任何单请求超时，
+ * 一次挂起只能等外层候选 signal 中止。实测 CI run 39520489773：derivative-main 免费层
+ * 12 秒就翻完，只剩 3 个分块因 echo 率高转交回退池，三个网关模型全部挂住不动，
+ * 硬拖满 8 分钟候选预算，整条光影 4.7% 的回退率却没能落盘。
+ *
+ * 90 秒的取法：整块 60 行、8192 max_tokens 的推理模型实测通常在 20~60 秒内返回，
+ * 90 秒留出余量；同时远小于 CF 单候选 8 分钟预算，挂住的请求能快速失败并落到下一个模型。
+ */
+export const GATEWAY_REQUEST_TIMEOUT_MS = 90000
+
+/**
  * 构造一个网关提供方（自建中转站，OpenAI 兼容）。
  *
  * `url` / `key` 保持**函数**形式：既有实现在每次调用时才读环境变量，
@@ -156,8 +192,16 @@ export function buildGatewayPrompt(input) {
  * @param {() => string|undefined} p.key API key
  * @param {object} [p.extraBody] 额外请求体，浅合并进 body（来自 LLM_EXTRA_BODY）
  * @param {string} p.label 日志里显示的提供方名称
+ * @param {number} [p.requestTimeoutMs] 单请求超时；不传则用 GATEWAY_REQUEST_TIMEOUT_MS
  */
-export function createGatewayProvider({ model, url, key, extraBody = {}, label }) {
+export function createGatewayProvider({
+  model,
+  url,
+  key,
+  extraBody = {},
+  label,
+  requestTimeoutMs = GATEWAY_REQUEST_TIMEOUT_MS,
+}) {
   return {
     id: model,
     name: label,
@@ -172,6 +216,8 @@ export function createGatewayProvider({ model, url, key, extraBody = {}, label }
     }),
     buildPrompt: buildGatewayPrompt,
     extract: (j) => j.choices?.[0]?.message?.content,
+    // 单请求超时：由 chatOnce 读，与调用方 signal 合并（任一触发即中止）。
+    requestTimeoutMs,
   }
 }
 
@@ -185,7 +231,7 @@ export function createGatewayProvider({ model, url, key, extraBody = {}, label }
  * 一个提供方都没用上（如翻译记忆全覆盖）时不谎报来源。
  *
  * @param {string[]} providerIds 本次实际用上的提供方 id
- * @param {string} freeTierId 免费层的 provider id
+ * @param {string|string[]} freeTierId 免费层 provider id（或 id 列表——多模型池）
  */
 export function buildContributorLine(providerIds, freeTierId) {
   const ids = [...new Set(providerIds ?? [])]
@@ -193,8 +239,10 @@ export function buildContributorLine(providerIds, freeTierId) {
     // 一个提供方都没用上（如翻译记忆全覆盖）：不谎报来源。
     return 'AI 初翻（翻译记忆复用），未人工校对'
   }
-  const freeIds = ids.filter((id) => id === freeTierId)
-  const poolIds = ids.filter((id) => id !== freeTierId)
+  // 免费层可能是多模型池：把池内 id 都归到「免费层」，其余归「回退池」。
+  const freeSet = new Set(Array.isArray(freeTierId) ? freeTierId : [freeTierId])
+  const freeIds = ids.filter((id) => freeSet.has(id))
+  const poolIds = ids.filter((id) => !freeSet.has(id))
   const parts = []
   if (freeIds.length) parts.push(`免费层 ${freeIds.join(' / ')}`)
   if (poolIds.length) parts.push(`回退池 ${poolIds.join(' / ')}`)

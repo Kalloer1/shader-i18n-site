@@ -3,6 +3,7 @@
 //   不设 PROBE_SLUGS：取 CF shader 下载量前 20
 //   设 PROBE_SLUGS="a,b,c"：按 slug 逐个查（用于测某批特定项目，例如 CF 独占集合）
 import { openZip } from '../shared/zip-range.mjs'
+import { resolveCfDownloadUrl } from './lib/cf-api.mjs'
 
 const KEY = process.env.CURSEFORGE_API_KEY
 const UA = 'shader-i18n-site/0.1.0'
@@ -83,8 +84,9 @@ for (const m of mods) {
       rows.push(row); console.log(JSON.stringify(row)); await sleep(400); continue
     }
     row.downloadUrlStatus = 'HTTP 200'
-    row.downloadUrl = du.json.data
-    const zip = await openZip(du.json.data, { totalSize: f.fileLength, headers: { 'User-Agent': UA } })
+    // 解析成支持 Range 的最终地址（edge.forgecdn.net 带 Range 头会 404，见 cf-api.mjs）。
+    row.downloadUrl = await resolveCfDownloadUrl(du.json.data)
+    const zip = await openZip(row.downloadUrl, { totalSize: f.fileLength, headers: { 'User-Agent': UA } })
     row.packFetchStatus = 'HTTP 200'
     const enName = zip.names.find((n) => /shaders\/lang\/en_us\.lang$/i.test(n))
     row.fetchMode = zip.fetchMode

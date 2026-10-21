@@ -117,28 +117,113 @@ const pickArray = (obj, ...keys) => {
   return Array.isArray(v) ? v : undefined
 }
 
-const rows = mods.map((m) => ({
-  cfId: m.id,
-  slug: m.slug,
-  name: m.name,
-  downloads: m.downloadCount,
-  author: m.authors?.[0]?.name ?? '',
-  pageUrl: m.links?.websiteUrl ?? `https://www.curseforge.com/minecraft/shaders/${m.slug}`,
-  updated: m.dateModified ?? '',
-  latestFileId: m.latestFiles?.[0]?.id ?? null,
-  // 以下为详情页/列表渲染所需字段（CF v1 search：logo.thumbnailUrl / screenshots[].thumbnailUrl /
-  // gameVersions / categories[].name / summary）
-  iconUrl: pick(m, 'logo.thumbnailUrl', 'logo.url', 'thumbnailUrl') ?? '',
-  gallery: (pickArray(m, 'screenshots') ?? [])
-    .map((s) => pick(s, 'thumbnailUrl', 'url'))
-    .filter(Boolean),
-  gameVersions: pickArray(m, 'gameVersions') ?? [],
-  categories: (pickArray(m, 'categories') ?? []).map((c) => pick(c, 'name')).filter(Boolean),
-  description: pick(m, 'summary', 'description') ?? '',
-  // 项目级分发许可：false = 作者禁止 API 分发（pipeline 直接跳过，不浪费下载预算）。
-  // 原样存回；字段缺失时为 undefined，JSON 序列化会省略该键（消费侧按“未采集”处理，不排除）。
-  allowModDistribution: m.allowModDistribution,
-}))
+// ---------- 文件大小（fileLength） ----------
+// 为什么必须采：探测阶段（scripts/lib/zip-probe.mjs → shared/zip-range.mjs）用 totalSize 决定
+// 走 Range 还是整包。没有大小 → 每个包都只能整包下载，探测收益为 0。
+// 来源：CF 文件列表接口（GET /v1/mods/{id}/files）的 `fileLength`。search 响应的 latestFiles
+// 通常也带，但字段可能被裁剪 —— 以文件列表接口为准。
+const FILE_CONCURRENCY = 4
+const FILE_PAGE_SIZE = 50
+// 每次文件列表请求后的间隔：CF 有速率限制。测试里置 0（端到端测试要跑 700 个假项目）。
+const FILE_REQUEST_DELAY_MS = Math.max(0, Number(process.env.CF_FILE_REQUEST_DELAY_MS ?? 120) || 0)
+
+/** 与 pipeline.mjs 的 processShaderCf 同一套候选顺序：release 优先，同类型内 fileDate 倒序。 */
+function pickLatestFile(files) {
+  if (!Array.isArray(files) || !files.length) return null
+  return files
+    .slice()
+    .sort((a, b) => {
+      const aRelease = a.releaseType === 1 ? 0 : 1
+      const bRelease = b.releaseType === 1 ? 0 : 1
+      if (aRelease !== bRelease) return aRelease - bRelease
+      return String(b.fileDate).localeCompare(String(a.fileDate))
+    })[0]
+}
+
+/**
+ * 给每个项目补 fileLength（失败不阻断：单条拿不到就留空，探测侧按「无大小」走整包）。
+ * 返回 Map<cfId, {fileId, fileLength, fileName}>。
+ */
+async function fetchFileSizes(mods) {
+  const out = new Map()
+  let done = 0
+  let failed = 0
+  let next = 0
+  const workers = Array.from({ length: Math.min(FILE_CONCURRENCY, mods.length) }, async () => {
+    for (;;) {
+      const i = next++
+      if (i >= mods.length) return
+      const m = mods[i]
+      const url = api(`/mods/${m.id}/files?pageSize=${FILE_PAGE_SIZE}`)
+      let attempt = 0
+      for (;;) {
+        const r = await cfGet(url)
+        if (r.status === 200 && r.json) {
+          const f = pickLatestFile(r.json.data)
+          if (f) out.set(m.id, { fileId: f.id, fileLength: f.fileLength, fileName: f.fileName })
+          break
+        }
+        if ((r.status === 429 || r.status >= 500) && attempt < 2) {
+          attempt += 1
+          await sleep(attempt === 1 ? 1000 : 2000)
+          continue
+        }
+        failed += 1
+        break
+      }
+      done += 1
+      if (done % 25 === 0) process.stdout.write(`\r已取文件大小 ${done}/${mods.length}`)
+      if (FILE_REQUEST_DELAY_MS) await sleep(FILE_REQUEST_DELAY_MS)
+    }
+  })
+  await Promise.all(workers)
+  console.log()
+  if (failed) console.log(`⚠ 有 ${failed} 个项目取文件大小失败，对应条目 fileLength 留空（探测时走整包）`)
+  return out
+}
+
+// 已有的旧目录：取大小失败的条目沿用上次采到的值，避免一次网络抖动把整列清空。
+const oldCatalogFile = existsSync(CATALOG_FILE) ? JSON.parse(readFileSync(CATALOG_FILE, 'utf8')) : { mods: [] }
+const oldSizes = new Map(
+  (oldCatalogFile.mods ?? [])
+    .filter((m) => Number.isFinite(m?.fileLength))
+    .map((m) => [m.cfId, { fileId: m.latestFileId, fileLength: m.fileLength }]),
+)
+
+// 作者禁止 API 分发的项目（allowModDistribution === false）下载接口一律 403，
+// 连探测都做不了 —— 不为它们花文件列表请求（当前 275 个，约占三分之一）。
+const probeable = mods.filter((m) => m.allowModDistribution !== false)
+console.log(`取文件大小：${probeable.length} 个可探测项目（已跳过禁止分发的 ${mods.length - probeable.length} 个）`)
+const sizes = await fetchFileSizes(probeable)
+
+const rows = mods.map((m) => {
+  const size = sizes.get(m.id) ?? oldSizes.get(m.id)
+  return {
+    cfId: m.id,
+    slug: m.slug,
+    name: m.name,
+    downloads: m.downloadCount,
+    author: m.authors?.[0]?.name ?? '',
+    pageUrl: m.links?.websiteUrl ?? `https://www.curseforge.com/minecraft/shaders/${m.slug}`,
+    updated: m.dateModified ?? '',
+    latestFileId: size?.fileId ?? m.latestFiles?.[0]?.id ?? null,
+    // 最新候选文件的字节数：探测阶段用它判断能否走 HTTP Range（缺失时只能整包下载）。
+    // 禁止分发的条目没有意义，留空即可（探测侧会提前排除它们）。
+    ...(Number.isFinite(size?.fileLength) ? { fileLength: size.fileLength } : {}),
+    // 以下为详情页/列表渲染所需字段（CF v1 search：logo.thumbnailUrl / screenshots[].thumbnailUrl /
+    // gameVersions / categories[].name / summary）
+    iconUrl: pick(m, 'logo.thumbnailUrl', 'logo.url', 'thumbnailUrl') ?? '',
+    gallery: (pickArray(m, 'screenshots') ?? [])
+      .map((s) => pick(s, 'thumbnailUrl', 'url'))
+      .filter(Boolean),
+    gameVersions: pickArray(m, 'gameVersions') ?? [],
+    categories: (pickArray(m, 'categories') ?? []).map((c) => pick(c, 'name')).filter(Boolean),
+    description: pick(m, 'summary', 'description') ?? '',
+    // 项目级分发许可：false = 作者禁止 API 分发（pipeline 直接跳过，不浪费下载预算）。
+    // 原样存回；字段缺失时为 undefined，JSON 序列化会省略该键（消费侧按“未采集”处理，不排除）。
+    allowModDistribution: m.allowModDistribution,
+  }
+})
 
 const catalog = {
   $comment: '本文件由 scripts/fetch-curseforge-catalog.mjs 自动生成，请勿手改；每日由 sync.yml 刷新。',
@@ -152,4 +237,5 @@ mkdirSync(dirname(CATALOG_FILE), { recursive: true })
 writeFileSync(CATALOG_FILE, JSON.stringify(catalog, null, 2) + '\n')
 
 printExclusiveStats(mods)
-console.log(`目录写入 ${CATALOG_FILE}：CF 全量 ${rows.length} 个。`)
+const withSize = rows.filter((r) => Number.isFinite(r.fileLength)).length
+console.log(`目录写入 ${CATALOG_FILE}：CF 全量 ${rows.length} 个，其中带文件大小 ${withSize} 个。`)

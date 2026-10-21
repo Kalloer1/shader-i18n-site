@@ -1,0 +1,227 @@
+#shaders/lang/zh_CN.lang
+# Gravemist vcf-Gravemist-1.1.0 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Gravemist-1.1.0.zip 的 shaders/lang/en_us.lang
+#  GRAVEMIST 1.0.0 - English
+#  "The fog keeps what it takes."
+
+screen.GM_HORROR=恐惧与事件
+screen.GM_ATMOSPHERE=雾、天空与云朵
+screen.GM_LIGHT=光照与遮挡信息
+screen.GM_SHADOWS=阴影样式
+screen.GM_IMAGE=色彩与曝光
+screen.GM_LENS=镜头与胶片
+screen.GM_WATER=水
+screen.GM_PERF=几何与PBR渲染
+
+profile.POTATO=§a低配
+profile.LOW=§2低配
+profile.MEDIUM=§e中配
+profile.HIGH=§c高配
+profile.ULTRA=超高
+profile.EXTREME=§d极限
+
+# ---------------------------------------------------------------- dread
+option.GM_DREAD_SYSTEM=恐惧系统
+option.GM_DREAD_SYSTEM.comment=Gravemist的核心。地下时恐惧感上升（Iris玩家情绪），在Warden's Darkness下尖刺感增强，安全后逐渐衰减。影响颗粒、畸变、剪影、扭曲、雾气密度和饱和度。关闭可获得纯粹的氛围包。
+option.GM_DREAD_INTENSITY=恐惧的强度
+option.GM_DREAD_INTENSITY.comment=恐惧能攀登多高的终极乘数。
+option.GM_DREAD_SURGES=恐惧的浪潮汹涌而至
+option.GM_DREAD_SURGES.comment=持续数十秒的随机恐惧感，加上偶尔出现的短暂“尖峰”扭曲画面。这正是让群体感觉不可预测的原因。
+option.GM_DREAD_WARP=屏幕扭曲
+option.GM_DREAD_WARP.comment=画面在高恐惧度下会晃动和扭曲。若对动态敏感，设为0。
+option.GM_DREAD_HEARTBEAT=心跳
+option.GM_DREAD_HEARTBEAT.comment=曝光和暗角中，伴随着恐惧感而加速的双拍子脉搏。
+option.GM_DREAD_TENDRILS=外围触须
+option.GM_DREAD_TENDRILS.comment=动画的黑暗形状从角落逼近，令人极度恐惧。
+option.GM_DREAD_FOG=恐怖迷雾
+option.GM_DREAD_FOG.comment=恐惧让迷雾愈发浓重。能见度降低是恐怖氛围最有效的催化剂。
+option.GM_DARKNESS_REACTION=黑暗反应
+option.GM_DARKNESS_REACTION.comment=响应“狱卒的黑暗”效果：视野距离坍缩、近乎完全的去饱和、渐变的暗角和扩张的声呐环。
+option.GM_BLOOD_MOON_MODE=血月
+option.GM_BLOOD_MOON_MODE.comment=红色的夜晚：生锈的天空、红色的月亮光晕、血棕色的雾气、黯淡的星辰，以及笼罩在恐惧之下的永恒阴影。
+option.GM_BLOOD_MOON_CHANCE=血月概率
+option.GM_BLOOD_MOON_CHANCE.comment=仅限稀有模式使用。源自世界日期，因此服务器上所有玩家的日期都相同。
+option.GM_BLOOD_MOON_INTERVAL=血月间隔期
+option.GM_BLOOD_MOON_INTERVAL.comment=仅适用于“每隔 N 天”模式。
+option.GM_ECLIPSE_MODE=日食（にっしょく）
+option.GM_ECLIPSE_MODE.comment=罕见的正午奇观：阳光被吞噬，仅剩薄薄的光环，天空转为古铜色，直射光消失。
+option.GM_HALLOWEEN_MODE=万圣节模式
+option.GM_HALLOWEEN_MODE.comment=橙色的月亮，紫橙色的夜空，更暖的薄雾，还有燃烧得更亮的南瓜灯。
+option.GM_TORCH_FLICKER=光闪烁
+option.GM_TORCH_FLICKER.comment=不稳定光源真烦。每个光源都根据位置有独立相位，所以火把绝不会同时闪烁。高恐惧值还会造成真正的停电。
+option.GM_BUILDER_MODE=构建模式
+option.GM_BUILDER_MODE.comment=直接消除恐惧、扭曲、颗粒、色散和镜头畸变，并禁用夜间事件。氛围保持不变，干扰效果被移除。用于构建时使用此选项。
+
+# ---------------------------------------------------------------- atmosphere
+option.GM_FOG_DENSITY=雾密度
+option.GM_FOG_DENSITY.comment=户外雾气。重力迷雾围绕雾气构建，雾气会隐藏生物直到最后一刻。
+option.GM_FOG_HEIGHT_FALLOFF=雾高度衰减
+option.GM_FOG_HEIGHT_FALLOFF.comment=雾气随海拔升高而变薄的速度。数值越高，意味着山谷更厚、山峰更清晰。
+option.GM_CAVE_FOG_DENSITY=洞穴雾密度
+option.GM_CAVE_FOG_DENSITY.comment=地下雾气，由相机测量的光线驱动而非每个像素，因此在地狱和终末中能正确表现。
+option.GM_FOG_MAX=雾气上限
+option.GM_FOG_MAX.comment=雾气最大不透明度上限。这是可玩性保障：低于 1.0 时，你总能看清脚下的地面。
+option.GM_VOLUMETRIC_FOG=体积光
+option.GM_VOLUMETRIC_FOG.comment=通过阴影贴图进行射线追踪的光柱，带有亨尼-格林斯坦散射。这是该资源包的主要成本。
+option.GM_VL_SAMPLES=体积光采样数
+option.GM_VL_SAMPLES.comment=更多样本意味着更平滑的光柱和更少的带纹，但成本呈线性增长。
+option.GM_VL_STRENGTH=体积光强度
+option.GM_VL_STRENGTH.comment=光柱在雾气中的亮度。
+option.GM_CLOUD_STYLE=云
+option.GM_CLOUD_STYLE.comment=程序化云层在天空通道中绘制，使用拉伸噪声分布，因此形成带孔的形状，而非均匀的薄雾。
+option.GM_CLOUD_COVERAGE=云朵覆盖度
+option.GM_CLOUD_COVERAGE.comment=天空被覆盖的比例。
+option.GM_CLOUD_HEIGHT=云层高度
+option.GM_CLOUD_HEIGHT.comment=程序化云层层的海拔高度，单位为方块。
+option.GM_CLOUD_SPEED=云层速度
+option.GM_STAR_DENSITY=星体密度
+option.GM_STAR_BRIGHTNESS=星星亮度
+option.GM_NETHER_DENSITY=下界氛围
+option.GM_NETHER_DENSITY.comment=地狱自身余烬雾的密度。地狱不会重复使用普通世界的天空或雾气。
+option.GM_END_DENSITY=末地大气
+option.GM_END_DENSITY.comment=终末的紫色虚空密度。终末有自己程序化的天空，带有缓慢的星云。
+
+# ---------------------------------------------------------------- lighting
+option.GM_AMBIENT_FLOOR=环境底光
+option.GM_AMBIENT_FLOOR.comment=每个像素接收的最低光线。这是令人恐惧的黑暗与黑色屏幕之间的区别。降低它以增加恐惧，提高它以增加舒适感。
+option.GM_LIGHT_FALLOFF=方块光衰减
+option.GM_LIGHT_FALLOFF.comment=方块光线随距离增加而衰减的强度。高数值使离开火把成为一个真正的决定。
+option.GM_BLOCKLIGHT_STRENGTH=方块光照强度
+option.GM_HAND_LIGHT=手持光源
+option.GM_HAND_LIGHT.comment=手持的火炬或灯笼会照亮你周围的世界，并让附近的雾气变淡。恐惧增加时，它会闪烁得更频繁。
+option.GM_SUN_STRENGTH=太阳强度
+option.GM_MOON_STRENGTH=月光强度
+option.GM_SKY_STRENGTH=天空环境光强度
+option.GM_SSAO=环境光遮蔽
+option.GM_SSAO.comment=屏幕空间暗化，乘以原版顶点环境光遮蔽。永远不会完全封闭角落：完全漆黑的角落正是恐怖资源包变得无法玩用的原因。
+option.GM_SSAO_SAMPLES=环境光遮蔽采样数
+option.GM_SSAO_STRENGTH=环境光遮蔽强度
+option.GM_SSAO_RADIUS=AO 半径
+option.GM_REFLECTION_MODE=反射
+option.GM_REFLECTION_MODE.comment=仅天空效果廉价且稳定。屏幕空间添加真实的水面反射，带有硬萤火虫限制和随距离增大的粗糙度。
+option.GM_SSR_STEPS=反射步数
+option.ambientOcclusionLevel=原版环境光遮蔽级别
+option.ambientOcclusionLevel.comment=原版 Minecraft 烘焙的顶点环境光遮蔽强度，在我们之前。
+
+# ---------------------------------------------------------------- shadows
+option.GM_SHADOWS=阴影样式
+option.GM_SHADOWS.comment=关闭此选项也会跳过整个阴影渲染通道。
+option.GM_SHADOW_QUALITY= 阴影过滤
+option.GM_SHADOW_QUALITY.comment=Vogel 圆盘上的 PCF 采样数。硬模式为单个采样。
+option.shadowMapResolution=阴影分辨率
+option.shadowDistance=阴影距离
+option.GM_SHADOW_PENUMBRA=阴影柔和度
+option.GM_SHADOW_BIAS=阴影偏移
+option.GM_SHADOW_BIAS.comment=如果你在受光表面上看到条纹状伪影，请提高此值；如果阴影与物体分离，请降低此值。
+option.GM_COLORED_SHADOWS=彩色阴影
+option.GM_COLORED_SHADOWS.comment=穿过彩色玻璃、冰或水的光线会保留其色调。
+option.sunPathRotation=太阳路径倾斜
+option.sunPathRotation.comment=倾斜太阳的弧。倾斜的太阳全天产生更长、更具方向性的阴影。
+
+# ---------------------------------------------------------------- image
+option.GM_TONEMAP_OPERATOR=色调映射
+option.GM_TONEMAP_OPERATOR.comment=重力迷雾是一种自定义电影式曲线，其起点被刻意抬高，因此轮廓在黑暗中仍清晰可见。
+option.GM_PALETTE_VARIANT=调色板
+option.GM_PALETTE_VARIANT.comment=重力迷雾采用骨骼、墓地绿色和肮脏琥珀色。中性模式几乎移除所有色调调整，适用于截图和构建。
+option.GM_AUTO_EXPOSURE=自动曝光
+option.GM_AUTO_EXPOSURE.comment=中心加权测光：屏幕顶部的亮天空不应使地面变黑。
+option.GM_EXPOSURE_SPEED=曝光速度
+option.GM_EXPOSURE_MIN=最低曝光
+option.GM_EXPOSURE_MAX=最高曝光
+option.GM_EXPOSURE_MAX.comment=在黑暗中，眼睛能睁开多大。放低适应更暗的夜晚，抬高以获得更多舒适。
+option.GM_MANUAL_EXPOSURE=手动曝光
+option.GM_MANUAL_EXPOSURE.comment=仅在自动曝光关闭时使用。
+option.GM_CONTRAST=对比度
+option.GM_SATURATION=饱和度
+option.GM_SATURATION.comment=Gravemist 默认是灰度模式，Dread 会将其调得更暗。
+option.GM_BLACK_FLOOR=黑色地板
+option.GM_BLACK_FLOOR.comment=将最暗的色调提升为深蓝绿色，而非一片漆黑。深邃的黑色，绝不会失真。如果你的显示器吞没阴影细节，就调高它。
+option.GM_WHITE_BALANCE=白平衡
+option.GM_TINT_GREEN=绿色色调
+option.GM_SPLIT_TONE=分离色调
+option.GM_SPLIT_TONE.comment=将阴影推向病态的绿色，将高光推向肮脏的琥珀色。
+option.GM_PURKINJE=浦肯野偏移
+option.GM_PURKINJE.comment=在近乎全黑的情况下，罗德维森视角发生偏移。阈值被刻意设得很窄：若设得宽，整个场景都会被涂成蓝色。
+
+# ---------------------------------------------------------------- lens
+option.GM_FILM_GRAIN=胶片颗粒
+option.GM_FILM_GRAIN.comment=偏重于阴影，就像真实的胶片。恐惧感倍增。
+option.GM_GRAIN_SIZE=颗粒大小
+option.GM_CHROMATIC_ABERRATION=§6色差
+option.GM_CHROMATIC_ABERRATION.comment=径向色散，边缘和暗角处最为严重。
+option.GM_LENS_DISTORTION=镜头畸变
+option.GM_LENS_DISTORTION.comment=轻微的枪管弯曲。意在可感，而非可见。
+option.GM_VIGNETTE_STRENGTH=暗角
+option.GM_VIGNETTE_BREATHING=小景呼吸法
+option.GM_VIGNETTE_BREATHING.comment=小景随着心跳的律动而伸缩，在恐惧高涨时尤为明显。
+option.GM_BLOOM=泛光
+option.GM_BLOOM_STRENGTH=泛光强度
+option.GM_BLOOM_THRESHOLD=泛光阈值
+option.GM_FXAA=快速近似抗锯齿
+option.GM_FXAA.comment=边缘抗锯齿，在颗粒感之前应用，以免两者冲突。
+option.GM_DITHERING=抖动
+option.GM_DITHERING.comment=消除8位显示器上任何深色渐变所呈现的色带现象。
+
+# ---------------------------------------------------------------- water
+option.GM_WATER_ALPHA=水不透明度
+option.GM_WATER_FOG_DENSITY=水密度
+option.GM_WATER_ABSORB_R=红色吸收
+option.GM_WATER_ABSORB_R.comment=红色最先被吸收：这正是让深度被感知为深度的原因。
+option.GM_WATER_ABSORB_G=绿色吸收
+option.GM_WATER_ABSORB_B=蓝色吸收
+option.GM_WATER_SCATTER=水内散射强度
+option.GM_WATER_SCATTER.comment=光会散射回眼睛。它必须先到达那个深度，所以深水会变暗，而不是像游泳池一样发光。
+option.GM_WATER_WAVES=水波
+option.GM_WAVE_DETAIL=波浪细节
+option.GM_WAVE_DETAIL.comment=波动的八度数。每个八度都会随距离衰减，防止水产生彩色斑点。
+option.GM_WAVE_HEIGHT=波浪高度
+option.GM_WAVE_SPEED=波浪速度
+option.GM_WATER_REFRACTION=折射
+option.GM_UNDERWATER_DISTORTION=水下扭曲
+
+# ---------------------------------------------------------------- geometry
+option.GM_FOLIAGE_WAVE=摇摆植被
+option.GM_FOLIAGE_WAVE.comment=草、叶、藤蔓和庄稼在摇曳。风雨交加，令人恐惧。
+option.GM_WAVE_STRENGTH=波动强度
+option.GM_PBR_RESOURCE_PACK=LabPBR 资源包
+option.GM_PBR_RESOURCE_PACK.comment=读取 LabPBR 1.3 资源包中的漫反射和镜面贴图。除非你确实使用，否则请关闭此选项：没有这些贴图，所有材质都会变得扁平。
+option.GM_NORMAL_MAP_STRENGTH=法线贴图强度
+
+# ---------------------------------------------------------------- values
+value.GM_SHADOW_QUALITY.0=硬阴影
+value.GM_SHADOW_QUALITY.1=§2低配
+value.GM_SHADOW_QUALITY.2=§e中配
+value.GM_SHADOW_QUALITY.3=§c高配
+
+value.GM_REFLECTION_MODE.0=关
+value.GM_REFLECTION_MODE.1=§a仅天空
+value.GM_REFLECTION_MODE.2=屏幕空间反射
+
+value.GM_TONEMAP_OPERATOR.0=死亡迷雾
+value.GM_TONEMAP_OPERATOR.1=色彩编码的电影级色调映射
+value.GM_TONEMAP_OPERATOR.2=未知暗区 2
+value.GM_TONEMAP_OPERATOR.3=莱因哈德-乔迪映射
+
+value.GM_PALETTE_VARIANT.0=死亡迷雾
+value.GM_PALETTE_VARIANT.1=灰蒙蒙的
+value.GM_PALETTE_VARIANT.2=铜绿（一种铜锈）
+value.GM_PALETTE_VARIANT.3=《锈》（Rust）是一款由Rust Interactive开发的开放世界生存游戏。
+value.GM_PALETTE_VARIANT.4=中性
+
+value.GM_BLOOD_MOON_MODE.0=从不
+value.GM_BLOOD_MOON_MODE.1=稀有
+value.GM_BLOOD_MOON_MODE.2=满月
+value.GM_BLOOD_MOON_MODE.3=每隔N天
+value.GM_BLOOD_MOON_MODE.4=每夜
+
+value.GM_ECLIPSE_MODE.0=从不
+value.GM_ECLIPSE_MODE.1=稀有
+value.GM_ECLIPSE_MODE.2=§e每天
+
+value.GM_CLOUD_STYLE.0=关
+value.GM_CLOUD_STYLE.1=原版
+value.GM_CLOUD_STYLE.2=程序化
+
+suffix.GM_CLOUD_HEIGHT=方块
+suffix.shadowDistance=方块
+suffix.sunPathRotation=°

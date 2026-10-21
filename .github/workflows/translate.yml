@@ -15,10 +15,25 @@ on:
         type: string
         default: ''
       models:
-        description: '逗号分隔的模型名；留空则用仓库默认（来自 /request 页管理员勾选，Worker 已对网关列表做白名单校验）'
+        description: '逗号分隔的**网关**模型名（→ LLM_MODELS）；留空则用仓库默认。来自 /request 页管理员勾选，Worker 已对网关实时列表做白名单校验'
         required: false
         type: string
         default: ''
+      freeTierModel:
+        description: '**单个**免费层模型名（→ FREE_TIER_MODEL）；留空=用 secrets.FREE_TIER_MODEL。仅用于把池子收窄成一个模型时用；日常留空走默认多模型池'
+        required: false
+        type: string
+        default: ''
+      freeTierModels:
+        description: '逗号分隔的**免费层模型池**（→ FREE_TIER_MODELS），优先于 freeTierModel；留空=用仓库默认池（index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable）'
+        required: false
+        type: string
+        default: ''
+      gateway:
+        description: '是否启用网关回退池（false=只跑免费层，免费层失败即停，不再转交网关）。默认 true，与既有行为一致'
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -87,11 +102,36 @@ jobs:
         continue-on-error: true
         run: bash scripts/install-quark-cli.sh
 
+      # 把「本轮实际用了哪两条路径」打出来。免费层与网关是独立环境变量，只打印 pipeline 的输出
+      # 不够——出问题时第一个要确认的就是「UI 勾的东西到底有没有到这一步」。
+      - name: Show selected translation models
+        run: |
+          echo "网关模型 LLM_MODELS：${LLM_MODELS}"
+          echo "网关开关 GATEWAY_ENABLED（inputs.gateway=${GATEWAY_INPUT:+已传}）：${GATEWAY_ENABLED}"
+          echo "免费层模型池 FREE_TIER_MODELS：${FREE_TIER_MODELS:-（未设，用仓库默认池）}"
+          echo "单个免费层模型 FREE_TIER_MODEL（inputs.freeTierModel=${FREE_TIER_INPUT:+已传}）：${FREE_TIER_MODEL:-（未设）}"
+          echo "免费层开关 FREE_TIER_ENABLED：${FREE_TIER_ENABLED}"
+        env:
+          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'kilo/kilo-auto/free,kilo/poolside/laguna-s-2.1:free' }}
+          # 注意：这里**不再**给 FREE_TIER_MODEL 兜底硬编码默认值。
+          # 兜底会把默认多模型池收窄成单模型（旧默认 index-mt-9b-syllable），
+          # 2026-10-21 已改为 5 模型池，必须让 pipeline 的默认值生效。
+          FREE_TIER_MODEL: ${{ inputs.freeTierModel || secrets.FREE_TIER_MODEL }}
+          FREE_TIER_MODELS: ${{ inputs.freeTierModels || secrets.FREE_TIER_MODELS }}
+          FREE_TIER_ENABLED: ${{ secrets.FREE_TIER_ENABLED || '1' }}
+          FREE_TIER_INPUT: ${{ inputs.freeTierModel }}
+          GATEWAY_ENABLED: ${{ inputs.gateway == false && '0' || '1' }}
+          GATEWAY_INPUT: ${{ inputs.gateway }}
+
       - name: Translate
         run: node scripts/pipeline.mjs --ids "${{ inputs.ids }}"
         env:
           CF_SOURCE: ${{ inputs.source }}
           CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+          # 网关回退池总开关（用户 2026-10-21 需求：网关模型实测挂死，一个分块吃满 8 分钟）。
+          # false → GATEWAY_ENABLED=0：只跑免费层，免费层失败即停，不再转交网关。
+          # 不传时 inputs.gateway 默认 true → '1'，与既有行为逐字一致。
+          GATEWAY_ENABLED: ${{ inputs.gateway == false && '0' || '1' }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           # 这些名字必须是网关 https://api.888424.xyz/v1 上真实存在的；改动前请先实测
@@ -110,25 +150,49 @@ jobs:
           # deepseek-v4.1-flash / deepseek-v4-flash / u2-flash（2026-10-17 网关账号池空，全部 503
           # No available channel）、opencode-zen-free/nemotron-3.5-lightning-free（90s 超时）。
           #
-          # 当前三个（2026-10-17 实测，网关 opencode-zen-free 免费层）：
-          #   space-bunny-free  2.1~3.2s  37/37 键、§ 与占位符零漂移
-          #   beam-free         2.6~3.9s  同上；30 并发三轮 90/90 成功
-          #   big-pickle        5.3~7.9s  同上
+          # ⚠️ 2026-10-20 实测：上一版三个 opencode-zen-free/* 模型**已从网关下架**，
+          # GET /models 只剩 16 个（全部 kilo/* 与 tencent/Hunyuan-MT-7B）。旧池已全部失效。
+          #
+          # 当前两个（2026-10-20 实测，5 行真实 lang 条目含 § 与 %s）：
+          #   kilo/kilo-auto/free            3.8~15.6s  5/5 键、§ 与占位符零漂移
+          #   kilo/poolside/laguna-s-2.1:free 3.2~4.5s  5/5 键、同上
+          # 其余 13 个 kilo/* 实测全部 429（每日额度耗尽），Hunyuan-MT-7B 会用 ``` 包住
+          # 整段输出（历史上已因改写键名/丢键淘汰过），故均不入选。
+          #
+          # ⚠️ 速度注意：kilo-auto 首次调用可能 15s+，整条光影 4 块实测约 9 分钟，
+          # 接近 PER_SHADER_TIMEOUT_MS(15min) 上限。若后续加块数，需先评估超时。
           # 实测口径：真实形态 37~74 行分块（含 .comment 长句、%s / %1$s 占位符、§e[+]§r 颜色码）。
           # 该输入来自 /request 页管理员口令门禁后的模型多选（Worker 已对网关实时列表做白名单校验，
           # 绝不允许任意字符串透传进 workflow）。留空时回退到仓库默认列表。
-          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'opencode-zen-free/space-bunny-free,opencode-zen-free/beam-free,opencode-zen-free/big-pickle' }}
+          LLM_MODELS: ${{ inputs.models || secrets.LLM_MODELS || 'kilo/kilo-auto/free,kilo/poolside/laguna-s-2.1:free' }}
           LLM_CONCURRENCY: ${{ secrets.LLM_CONCURRENCY || '10' }}
           LLM_EXTRA_BODY: ${{ secrets.LLM_EXTRA_BODY }}
-          # ---------- 免费层（默认主路，独立于 LLM_MODELS） ----------
+          # ---------- 免费层（独立于 LLM_MODELS） ----------
           # bilibili Index-Translate 公开 API：无需 key、无 SLA。失败快速降级到上面的回退池
           # （单次尝试、无退避、60 秒超时；连续 2 次失败才熔断）。
-          # 用独立环境变量是**有意为之**：它不参与 inputs.models，
-          # 否则管理员在 /request 页一勾模型就会静默关掉免费层，而界面上完全看不出来。
-          # 临时关闭只需把 FREE_TIER_ENABLED 设为 0。
+          #
+          # ⚠️ 2026-10-20 实测：主模型 `Index-Translate-35B-A3B` **持续 504**（服务端推理卡死，
+          # /health 仍报 true，属元数据不可信）。同服务上只剩两个 syllable 模型可用：
+          #   index-mt-9b-syllable  200 / 约 300ms / § 与占位符零漂移
+          #   index-mt-2b-syllable  200 / 约 250ms（会出繁体，优先 9b）
+          # syllable 是**逐句模型**：给它 N 行只回 1 行且回哪行不可控，因此流水线按模型名
+          # 自动切到「一行一个请求」的逐句路径（scripts/lib/line-translator.mjs）。
+          # 本机实测并发 32 是拐点（58 行/秒），CI 出口未验证，故取 16 留余量。
+          #
+          # 若 35B 恢复，把 FREE_TIER_MODEL 改回 Index-Translate-35B-A3B 即可回到整块模式
+          # （逐句标记由模型名判定，无需改代码）。
+          # FREE_TIER_ENABLED 优先级最高：设成 0 时无论管理员勾了什么，免费层都整体关闭
+          # （pipeline 侧 freeTierEnabled() 直接不构造免费层 provider）。
           FREE_TIER_ENABLED: ${{ secrets.FREE_TIER_ENABLED || '1' }}
           FREE_TIER_BASE_URL: ${{ secrets.FREE_TIER_BASE_URL }}
-          FREE_TIER_MODEL: ${{ secrets.FREE_TIER_MODEL }}
+          # 免费层模型来源优先级：本页勾选（inputs.freeTierModel）> 仓库 secret > 默认值。
+          # **没勾选 ≠ 关闭免费层**：inputs 为空时照旧走 secret/默认值，免费层始终优先。
+          # 勾选由 Worker 单独走 inputs.freeTierModel 传入，不会混进上面的 LLM_MODELS。
+          # FREE_TIER_MODEL **不兜硬编码默认值**：兜底会把默认多模型池收窄成单模型。
+          # 两个都不设时由 pipeline.mjs 的 DEFAULT_FREE_TIER_MODELS（5 模型池）生效。
+          FREE_TIER_MODEL: ${{ inputs.freeTierModel || secrets.FREE_TIER_MODEL }}
+          FREE_TIER_MODELS: ${{ inputs.freeTierModels || secrets.FREE_TIER_MODELS }}
+          FREE_TIER_CONCURRENCY: ${{ secrets.FREE_TIER_CONCURRENCY || '16' }}
           SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }} # 保留，作为 LLM_API_KEY 的别名
           WORKER_URL: ${{ secrets.WORKER_URL }}
           INTERNAL_STATUS_TOKEN: ${{ secrets.INTERNAL_STATUS_TOKEN }}
@@ -209,11 +273,17 @@ jobs:
             exit 0
           fi
           git commit -m "翻译: ${{ inputs.ids }}"
-          # 并发保护：别的 workflow/提交可能刚推到 main，先 rebase 再推，失败重试一次。
+          # 并发保护：别的 workflow/提交可能刚推到当前分支，先 rebase 再推，失败重试一次。
           # 只 rebase，绝不 force push；rebase 输出原样打印，失败原因可见。
+          #
+          # 目标分支必须是 **本 workflow 被派发的那个分支**，不能写死 main：
+          # 在特性分支上 dispatch 时，`pull --rebase origin main` 会把 main 的提交
+          # 拉进当前分支，而本分支已有的提交在 main 上不存在 → 每个文件 add/add 冲突，
+          # 整个 run 在最后一步变红（2026-10-20 实测，翻译本身已全部成功）。
+          # 在 main 上运行时 $GITHUB_REF_NAME 就是 main，行为与旧写法逐字一致。
           pushed=false
           for attempt in 1 2; do
-            if ! git pull --rebase --autostash origin main; then
+            if ! git pull --rebase --autostash origin "$GITHUB_REF_NAME"; then
               echo "rebase 失败（第 ${attempt} 次），原因见上方输出"
               git rebase --abort 2>/dev/null || true
               exit 1

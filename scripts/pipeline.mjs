@@ -3,6 +3,8 @@
  * 自动汉化流水线（ADR-0005）：下载 → 检测自带中文 → LLM 初翻 → 校验 → 登记。
  *
  * 候选：目录中按下载量排序、未被流水线覆盖且不在缺少英文源清单中的光影（无汉化映射、未检出自带中文）。
+ * 缺英文源清单按**版本**判定（见 scripts/lib/blacklist.mjs）：只有「记录的版本 === 当前最新版本」才跳过，
+ * 上游发新版本后会重新探测（旧数据没有版本号，因此会各重探一次）。
  * 翻译默认走两层：免费层（无 SLA 的公开服务）优先，失败或产出不合格才落到模型池回退。
  * 回退池按分块轮转调用；失败或回退过高时自动尝试下一个模型。
  * LLM_CONCURRENCY 控制光影级并发（每条光影仍各自独立超时、独立中断）。
@@ -22,7 +24,9 @@
  * 免费层（默认开启的**主路**，独立于 LLM_MODELS）：
  *   FREE_TIER_ENABLED   0/false/no/off 时关闭；缺省开启
  *   FREE_TIER_BASE_URL  默认 bilibili Index-Translate 公开 API；给到 /v1 会自动补 /chat/completions
- *   FREE_TIER_MODEL     默认 Index-Translate-35B-A3B
+ *   FREE_TIER_MODEL     单个免费层模型名（兼容旧配置）
+ *   FREE_TIER_MODELS    逗号分隔的免费层模型列表；优先于 FREE_TIER_MODEL
+ *   FREE_TIER_MAX_ATTEMPTS 免费层单块尝试次数（默认 2）
  * 它是无 SLA 的公开服务，失败快速降级到回退池（单次尝试、无退避、60 秒超时；
  * 连续 2 次失败才熔断）。**刻意不参与 LLM_MODELS**：否则站点管理员一勾模型
  * 就会静默关掉免费层，而界面上完全看不出来。
@@ -50,11 +54,29 @@ import { inflateRawSync } from 'node:zlib'
 import { STATUS } from '../shared/tencent-docs.mjs'
 import { validatePair, repairMalformedSections } from './validate-lang.mjs'
 import { isEnUsLangPath, isLangFilePath, isZhCNLangPath } from './lib/lang-source.mjs'
-import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod } from './lib/cf-api.mjs'
+import { PROBE_VERDICT, probeZipTerminalState } from './lib/zip-probe.mjs'
+import { openZip } from '../shared/zip-range.mjs'
+import { cfGetFiles, cfGetDownloadUrl, cfFindBySlug, cfGetMod, resolveCfDownloadUrl } from './lib/cf-api.mjs'
 import { cfVersionFromFileName, buildShaderEntry, isCurseforgeEntry } from './lib/cf.mjs'
+import {
+  clearNoEnUsLang,
+  isBlacklistedForVersion,
+  markNoEnUsLang,
+} from './lib/blacklist.mjs'
 import { buildTitleIndex, findTranslatedTwin } from './lib/cross-platform.mjs'
 import { EmptyResponseError, isProviderNoOutput, providerUnusableMessage } from './lib/llm-guard.mjs'
-import { stripSkeleton, isUsableMemory, shouldRememberMemory } from './lib/glossary.mjs'
+// 骨架提取与记忆读写守卫见 scripts/lib/glossary.mjs（与 scripts/rebuild-glossary.mjs 共用同一实现）。
+// 本文件不再直接使用它们：记忆/进度/LLM 的编排在 lib/translate-entries.mjs，进度判据在 lib/resume-progress.mjs。
+import {
+  progressRelativePath,
+  parseProgress,
+  serializeProgress,
+  pruneProgress,
+  progressSummary,
+} from './lib/resume-progress.mjs'
+import { readFileQuietly, writeFileAtomic, removeFileQuietly } from './lib/atomic-file.mjs'
+import { renderZhLang } from './lib/lang-render.mjs'
+import { createTranslateEntries } from './lib/translate-entries.mjs'
 import { runPool, DEFAULT_CHUNK_CONCURRENCY, MAX_CHUNK_CONCURRENCY } from './lib/pool.mjs'
 // 提示词与请求体形状是 **provider 的属性**，不是模块级常量：免费层要走官方 instTrans 形态、
 // 且不继承 LLM_EXTRA_BODY。抽象在 lib 里，超时/重试/熔断仍留在本文件（那是流水线策略）。
@@ -72,16 +94,53 @@ const GLOSSARY_FILE = join(ROOT, 'site/data/glossary.json')
 const LANG_DIR = join(ROOT, 'site/public/lang')
 const SOURCES_DIR = join(ROOT, 'sources')
 const MODRINTH_API = 'https://api.modrinth.com/v2'
-const CHUNK_LINES = 60
-const DEFAULT_MODEL = 'opencode-zen-free/space-bunny-free'
+const CHUNK_LINES = 30
+// 2026-10-21 实测：**60 行是这个免费服务的推理超时点**，不是客户端问题。
+// 真实 lang 文件、生产提示词、串行：60 行块只有 2/3 成功、成功那次 29.8s 贴边超时，
+// 折算 2.0 行/秒；30 行块 11/11 全部成功，折算 3.5 行/秒（并发上去后 9~14 行/秒）。
+// 质量完全一样（同为 161/180 条译文），所以小块没有代价，纯粹是吞吐差别。
+// 这也是「并发才敢往上加」的前提：60 行块时提到并发 3 反而只剩 3/15 合格块。
+// 2026-10-20：旧的 opencode-zen-free/* 三个模型已从网关下架，换成实测可用的两个。
+// 与 .github/workflows/translate.yml 的 LLM_MODELS 默认值保持一致（本地运行走这里）。
+const DEFAULT_MODEL = 'kilo/kilo-auto/free'
 const DEFAULT_CONCURRENCY = 10
 const DEFAULT_BASE_URL = 'https://api.888424.xyz/v1/chat/completions'
 // 免费层（bilibili Index-Translate 公开 API）：**无需 API key**，无 SLA。
 // 它是流水线的默认主路，失败才落到上面的网关回退池。
 const DEFAULT_FREE_TIER_URL = 'https://index-translate.bilibili.com/v1/chat/completions'
-const DEFAULT_FREE_TIER_MODEL = 'Index-Translate-35B-A3B'
+const DEFAULT_FREE_TIER_MODEL = 'index-mt-9b'
+
+// 免费层模型池（按期望值排序，块间轮换分担压力）。
+// 2026-10-21 实测口径：真实 lang 文件、**生产提示词**（buildInstTransPrompt，含「键名
+// 一字不改」约束）、**30 行分块**、串行。键名改写一律为 0（除非注明）：
+//   模型                       结果
+//   index-mt-9b                8/8 成功，220/228 条译文，7.5s  ← 主力，整块模式
+//   index-mt-9b-syllable       逐句模式，回退 0~9/30，8~13s（并发 8）
+//                               请求模式与整块完全不同（30 个小请求 vs 1 个大请求），
+//                               整块端点超时时它是真冗余，不是换个名字
+//   Index-Translate-35B-A3B    质量最好（28/30）但只 1/8 成功、26.7s —— 慢且抖
+//   index-mt-2b               8/8 成功但只出 74/228 条译文，133 个键缺失
+//   index-mt-2b-syllable      逐句模式，回退 10~17/30，质量差
+// 全进池子：某个模型这一块不行就换下一个（质量闸门兜底），连续失败会熔断该模型，
+// 所以慢/差的模型不会长期拖累吞吐。用户 2026-10-21 明确要求「不管什么情况都试用」。
+const DEFAULT_FREE_TIER_MODELS = [
+  'index-mt-9b',
+  'index-mt-9b-syllable',
+  'Index-Translate-35B-A3B',
+  'index-mt-2b',
+  'index-mt-2b-syllable',
+]
+// 免费层单块最大尝试次数。默认 2：实测该服务约半数 60 行分块会 504（服务端推理超时），
+// 重试一次能救回其中一部分。设 1 则一条分块 504 就等于这一块全回退英文。
+const DEFAULT_FREE_TIER_ATTEMPTS = 2
 // 免费层连续失败多少次才标记「本轮不可用」。单次抖动只降级当前分块，不熔断。
 const FREE_TIER_FAILURE_THRESHOLD = 2
+// 免费层连续多少块「有输出但回退率过高」才降级该模型。
+// 比无输出的阈值宽松：质量差是相对概念，撞上一两个难分块不该判死。
+const FREE_TIER_QUALITY_MISS_THRESHOLD = 3
+// 整条光影的回退率闸门：超过这个比例判失败、不落盘，留待下次重试。
+// 原来是 pipeline.mjs 里硬编码的 0.3，提成常量便于调参与检索。
+const FALLBACK_GATE_RATIO = 0.3
 const MAX_RETRIES = 10
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -106,10 +165,21 @@ const PER_SHADER_TIMEOUT_MS = (() => {
 })()
 
 // CurseForge 分支的两层上限（外层仍有 PER_SHADER_TIMEOUT_MS 兜底）：
-// 单个候选文件最多 3 分钟，整条 CF 光影最多 6 分钟——
+// 单个候选文件最多 8 分钟，整条 CF 光影最多 14 分钟——
 // 避免「候选数 × 各自超时」叠加成长时间占用（曾经一个 CF 光影把 CI 卡住 8 小时）。
-const CF_CANDIDATE_TIMEOUT_MS = 3 * 60 * 1000
-const CF_SHADER_BUDGET_MS = 6 * 60 * 1000
+//
+// 为什么从 3 / 6 分钟放宽到 8 / 14 分钟（实测 CI run 39516193136）：
+// derivative-main 是 2210 键，光翻译阶段就用了 179.6 秒，撞上 180 秒的单候选上限。
+// 超时瞬间所有在跑的分块一起返回，未处理的行全被算成回退 —— 3.1% 的真实回退率
+// 被冲成 67%，整条光影被判失败。3 分钟对「下载 + 探测 + 逐句翻译上千行」本来就偏短。
+// 8 分钟是实测 179.6 秒的 2.7 倍余量；14 分钟让一条 CF 光影能从容试 1~2 个候选，
+// 同时仍严格小于外层 PER_SHADER_TIMEOUT_MS（15 分钟）—— 预算用尽时由内层先退出，
+// 「一个 CF 光影卡 8 小时」的老问题不会重现。
+const CF_CANDIDATE_TIMEOUT_MS = 8 * 60 * 1000
+const CF_SHADER_BUDGET_MS = 14 * 60 * 1000
+// 探测阶段的最小包体积：与 shared/zip-range.mjs 的 minRangeBytes 默认值一致。
+// 低于它的包 openZip 会直接整包，探测只会白花一倍流量，因此直接跳过探测走原路径。
+const PROBE_MIN_BYTES = 65536
 // 状态回写目标（Worker 的 /status）。两者缺一即静默跳过，不影响本地手动运行。
 const WORKER_URL = process.env.WORKER_URL
 const INTERNAL_STATUS_TOKEN = process.env.INTERNAL_STATUS_TOKEN
@@ -174,7 +244,42 @@ function freeTierUrl() {
   return /\/chat\/completions$/.test(raw) ? raw : `${raw.replace(/\/+$/, '')}/chat/completions`
 }
 const FREE_TIER_MODEL = () => envStr('FREE_TIER_MODEL') ?? DEFAULT_FREE_TIER_MODEL
+
+/** 免费层模型列表：`FREE_TIER_MODELS`（逗号分隔）优先，缺省回落到 `FREE_TIER_MODEL` 单模型。 */
+function parseFreeTierModels() {
+  const raw = envStr('FREE_TIER_MODELS')
+  if (raw !== undefined) {
+    const list = raw.split(',').map((s) => s.trim()).filter(Boolean)
+    if (list.length) return list
+  }
+  const one = envStr('FREE_TIER_MODEL')
+  return one ? [one] : [...DEFAULT_FREE_TIER_MODELS]
+}
+const FREE_TIER_MODELS = parseFreeTierModels()
 const FREE_TIER_ON = freeTierEnabled()
+
+// ---------- 网关回退池开关（用户需求：免费层单跑时彻底不看网关） ----------
+// `GATEWAY_ENABLED=0` 时回退池直接留空，等于只跑免费层：免费层翻译失败就停在那里，
+// 不再把每个分块都交给会挂死 8 分钟的网关模型。
+// 默认开启（与改造前一致）；只在显式设为 0/false/no/off 时关闭。
+function gatewayEnabled() {
+  const raw = envStr('GATEWAY_ENABLED')
+  if (raw === undefined) return true // 缺省开启，保持原行为
+  return !/^(0|false|no|off)$/i.test(raw.trim())
+}
+const GATEWAY_ON = gatewayEnabled()
+
+/** 免费层单块重试次数（见 DEFAULT_FREE_TIER_ATTEMPTS 的实测说明）。 */
+function readFreeTierAttempts() {
+  const raw = envStr('FREE_TIER_MAX_ATTEMPTS')
+  if (raw === undefined) return DEFAULT_FREE_TIER_ATTEMPTS
+  const n = Number(raw)
+  if (!Number.isInteger(n) || n < 1) {
+    console.error(`FREE_TIER_MAX_ATTEMPTS 无效（${raw}），使用默认值 ${DEFAULT_FREE_TIER_ATTEMPTS}`)
+    return DEFAULT_FREE_TIER_ATTEMPTS
+  }
+  return Math.min(n, 5) // 上限 5：再高等于把无 SLA 的公开服务当主力使
+}
 
 // 仅当「提供方本身」被改写（换模型/换地址）时按自定义提供方呈现；
 // 只设 LLM_CONCURRENCY / LLM_API_KEY 时不改打印，保持与改造前一致的字面输出。
@@ -230,6 +335,23 @@ const LLM_CHUNK_CONCURRENCY = readChunkConcurrency()
 // 本轮已被判定「产不出译文」的模型 id。跨光影共享：坏模型不重复烧预算。
 const unusableProviders = new Set()
 
+// 回退池各提供方的「连续零产出」计数（熔断用，见 provider-chain.mjs 的熔断段落）。
+// 只有整块没产出任何译文（超时/空正文/全回显）才累加，产出了任何一行就清零。
+// 跨分块、跨光影共享：一个挂住的模型不该让每个分块都重新挂一遍。
+const providerZeroOutputStreak = new Map()
+function noteProviderOutcome(id, zeroOutput) {
+  if (!zeroOutput) {
+    providerZeroOutputStreak.delete(id)
+    return 0
+  }
+  const n = (providerZeroOutputStreak.get(id) ?? 0) + 1
+  providerZeroOutputStreak.set(id, n)
+  return n
+}
+// 连续 2 块零产出即熔断。取 2 而不是 1：单块失败可能只是这一块撞上了端点抖动，
+// 连续两块都拿不到一行译文才说明这个模型本轮不可用。
+const PROVIDER_ZERO_OUTPUT_THRESHOLD = 2
+
 /**
  * 给定模型列表是否全部已被判定不可用。
  *
@@ -245,6 +367,21 @@ function providerHostLabel(url) {
   try { return new URL(url).host } catch { return url }
 }
 
+// 网关单请求超时：不配则用 provider 的默认值（90 秒，见 providers.mjs）。
+// 实测 CI run 39520489773：网关请求没有单请求超时时会一直挂到候选预算耗尽，
+// 一个挂住的模型就能吃掉整条光影的 8 分钟。90 秒内快速失败才能落到下一个模型。
+function readGatewayRequestTimeout() {
+  const raw = envStr('LLM_REQUEST_TIMEOUT_MS')
+  if (raw === undefined) return undefined
+  const n = Number(raw)
+  if (!Number.isFinite(n) || n <= 0) {
+    console.error(`LLM_REQUEST_TIMEOUT_MS 无效（${raw}），使用默认值`)
+    return undefined
+  }
+  return n
+}
+const GATEWAY_REQUEST_TIMEOUT = readGatewayRequestTimeout()
+
 function createProvider(model) {
   const isDefault = !LLM_ENV_SET && model === DEFAULT_MODEL
   return createGatewayProvider({
@@ -253,12 +390,14 @@ function createProvider(model) {
     key: LLM_KEY,
     extraBody: LLM_EXTRA_BODY,
     label: isDefault ? `space-bunny-free（${providerHostLabel(DEFAULT_BASE_URL)}）` : `${model}（${providerHostLabel(LLM_URL())}）`,
+    requestTimeoutMs: GATEWAY_REQUEST_TIMEOUT,
   })
 }
 
 // 无 key 时回退池**真的为空**：不能留一个必 401 的 provider 列表，否则每个分块都要先撞一次
 // 401 才落回免费层（浪费预算且日志噪声）。有 key 时行为与改造前一致。
-const providers = LLM_KEY() ? LLM_MODELS.map(createProvider) : []
+// `GATEWAY_ENABLED=0`（用户要的「免费层单跑」）也留空：宁可不翻，也不把分块交给挂死的网关。
+const providers = GATEWAY_ON && LLM_KEY() ? LLM_MODELS.map(createProvider) : []
 const provider = providers[0]
 let providerCursor = 0
 
@@ -269,46 +408,105 @@ function nextProviderOrder(list = providers) {
 }
 
 // ---------- 免费层实例与熔断状态 ----------
-const freeTierProvider = createFreeTierProvider({
-  model: FREE_TIER_MODEL(),
-  url: freeTierUrl,
-  label: `${FREE_TIER_MODEL()}（${providerHostLabel(freeTierUrl())}）`,
-})
+// 逐句模型（syllable）的并发度：本机实测 32 是拐点，CI 出口未验证故默认 16。
+function readFreeTierConcurrency() {
+  const raw = envStr('FREE_TIER_CONCURRENCY')
+  if (raw === undefined) return undefined // 交给 provider 的默认值
+  const n = Number(raw)
+  if (!Number.isFinite(n) || n < 1) {
+    console.error(`FREE_TIER_CONCURRENCY 无效（${raw}），使用默认值`)
+    return undefined
+  }
+  return Math.min(Math.floor(n), 64) // 64 是实测吞吐已开始下降的上限，再高只是排队
+}
 
-// 免费层连续失败计数。达 FREE_TIER_FAILURE_THRESHOLD 才熔断（单次抖动只降级当前分块）。
-let freeTierConsecutiveFailures = 0
+// 免费层模型池：按序轮到哪条从哪条开始（见 provider-chain 的 nextProviderOrder），
+// 单模型时该轮换不生效，行为与改造前逐字一致。
+const freeTierProviders = FREE_TIER_MODELS.map((model) => createFreeTierProvider({
+  model,
+  url: freeTierUrl,
+  label: `${model}（${providerHostLabel(freeTierUrl())}）`,
+  lineConcurrency: readFreeTierConcurrency(),
+  // 免费层默认 1 次（不重试）：无 SLA 的公开服务，重试只会把预算烧在同一个坏端点上。
+  // 但实测约半数 60 行分块会 504，故默认改成 2 次（见 DEFAULT_FREE_TIER_ATTEMPTS）。
+  maxAttempts: readFreeTierAttempts(),
+}))
+// 兼容旧引用点：单模型时它就是主力；多模型时取第一个（排序后的最高优先级）。
+const freeTierProvider = freeTierProviders[0]
+
+// 每个免费模型独立的连续失败计数。达 FREE_TIER_FAILURE_THRESHOLD 才熔断该模型
+// （单次抖动只降级当前分块），别的免费模型照常工作——多模型池的意义正在于此。
+const freeTierConsecutiveFailures = new Map()
+// 每个免费模型独立的「有输出但输出是垃圾」计数（回退率过高）。
+// **必须和失败分开统计**：差模型每次都返回 200，只按「完全没输出」熔断永远抓不到它，
+// 于是轮换会让好模型被甩到队列尾部、每 N 块白等一轮慢模型。实测（30 行块）
+// index-mt-2b 只出 74/228 条译文且 133 个键缺失，正是这种模型。
+const freeTierQualityMisses = new Map()
 let freeTierDisabledReason = ''
 
+/** 本轮至少还有一个免费模型可用。 */
 function freeTierUsable() {
-  return FREE_TIER_ON && !unusableProviders.has(freeTierProvider.id)
+  return FREE_TIER_ON && freeTierProviders.some((p) => !unusableProviders.has(p.id))
+}
+
+/** 某个免费模型是否已被熔断。 */
+function freeModelUsable(id) {
+  return FREE_TIER_ON && !unusableProviders.has(id)
+}
+
+/** 把某个免费模型标记为本轮不可用，并如实说明剩余的还能用。 */
+function breakFreeModel(id, reason) {
+  if (unusableProviders.has(id)) return
+  unusableProviders.add(id)
+  const left = freeTierProviders.filter((p) => !unusableProviders.has(p.id))
+  freeTierDisabledReason = left.length
+    ? `${id} ${reason} 已熔断，剩余免费模型 ${left.map((p) => p.id).join('、')}`
+    : `全部免费模型不可用（${id} ${reason} 是最后一个），本轮改走回退池`
+  console.log(`  [免费层] ${freeTierDisabledReason}`)
 }
 
 /**
- * 记一次免费层失败。**连续**两次才熔断：单次超时/5xx 是公开服务的正常抖动，
- * 把它当成「服务挂了」会让免费层抖一下就整轮不用它。
+ * 记一次某个免费模型的失败。**连续**两次才熔断那一个模型：单次超时/5xx 是公开服务的
+ * 正常抖动，把它当成「服务挂了」会让免费层抖一下就整轮不用它。
+ * 只熔断出错的那一个模型，不影响池子里其他模型。
  */
-function noteFreeTierFailure() {
-  freeTierConsecutiveFailures++
-  if (freeTierConsecutiveFailures >= FREE_TIER_FAILURE_THRESHOLD && !unusableProviders.has(freeTierProvider.id)) {
-    unusableProviders.add(freeTierProvider.id)
-    freeTierDisabledReason = `连续 ${freeTierConsecutiveFailures} 次失败`
-    console.log(`  [免费层] ${freeTierDisabledReason}，本轮不再尝试免费层，全部走回退池`)
+function noteFreeTierFailure(id) {
+  const n = (freeTierConsecutiveFailures.get(id) ?? 0) + 1
+  freeTierConsecutiveFailures.set(id, n)
+  if (n >= FREE_TIER_FAILURE_THRESHOLD) breakFreeModel(id, `连续 ${n} 次无输出`)
+}
+
+/**
+ * 记一次某个免费模型的质量失手：回了话，但回退率超过阈值。
+ * 同样只连续计数，达到阈值才降级——单个分块翻得差可能只是这一段难翻，
+ * 但**持续**翻得差就说明这个模型不该再排在好模型前面。
+ * 阈值取得比「无输出」宽松（3 次）：质量差是相对概念，2 次可能撞上难块。
+ */
+function noteFreeTierQualityMiss(id) {
+  const n = (freeTierQualityMisses.get(id) ?? 0) + 1
+  freeTierQualityMisses.set(id, n)
+  if (n >= FREE_TIER_QUALITY_MISS_THRESHOLD) {
+    breakFreeModel(id, `连续 ${n} 块回退率过高`)
   }
 }
 
-function noteFreeTierSuccess() {
-  freeTierConsecutiveFailures = 0
+function noteFreeTierSuccess(id) {
+  freeTierConsecutiveFailures.set(id, 0)
+  // 质量计数一起清零：这个模型这一块是好的，不能把历史失手算成连续。
+  freeTierQualityMisses.set(id, 0)
 }
 
 // 署名行是纯函数，放在 lib 里（pipeline.mjs 无法被单测 import：它顶层就会跑整个流水线）。
-const contributorLine = (providerIds) => buildContributorLine(providerIds, freeTierProvider.id)
+const contributorLine = (providerIds) => buildContributorLine(providerIds, freeTierProviders.map((p) => p.id))
 
 // 没有网关 key 时不再硬失败：免费层不需要 key，回退池留空，以「免费层单跑」模式运行（issue #4）。
 // ⚠️ 这**有意打破**了一条原不变量（「不设任何 LLM_* 环境变量时行为与改造前逐字一致」）——
 // 用户已于 2026-10-17 明确点头，此处记录在案。
-// 但免费层也被显式关掉时（FREE_TIER_ENABLED=0）确实没有任何可用提供方，仍保持原有的硬失败。
+// 但「网关被 GATEWAY_ENABLED=0 关掉」与「没配 key」是同一回事（回退池都为空），
+// 不是错误，不该再打出「缺少 API key」的告警——用户 2026-10-21 明确要这个开关。
+// 只有「网关开着却没 key」才是配置错误，且仅当免费层也关了才硬失败。
 const LLM_KEY_MISSING = !LLM_KEY()
-if (LLM_KEY_MISSING) {
+if (LLM_KEY_MISSING && GATEWAY_ON) {
   if (!FREE_TIER_ON) {
     if (LLM_ENV_SET) {
       console.error('缺少 API key：请设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），默认站点 ' + providerHostLabel(DEFAULT_BASE_URL))
@@ -319,6 +517,8 @@ if (LLM_KEY_MISSING) {
     process.exit(2)
   }
   console.warn('警告：未设置 LLM_API_KEY（或别名 SILICONFLOW_API_KEY），回退池为空，将以「免费层单跑」模式运行\n')
+} else if (!GATEWAY_ON) {
+  console.log('网关回退池已通过 GATEWAY_ENABLED=0 关闭：只跑免费层，失败即停（不再转交网关）\n')
 }
 const providerLabel = providers.length === 0
   ? '（无，回退池为空）'
@@ -328,7 +528,7 @@ const providerLabel = providers.length === 0
 console.log(`LLM 提供方：${providerLabel}\n`)
 // 免费层是**独立于 LLM_MODELS** 的一层，因此单独打印。
 if (FREE_TIER_ON) {
-  console.log(`免费层（优先）：${freeTierProvider.name}\n`)
+  console.log(`免费层（优先，${freeTierProviders.length} 个模型轮换）：${freeTierProviders.map((p) => p.id).join(' / ')}\n`)
 } else {
   console.log('免费层（优先）：已通过 FREE_TIER_ENABLED 关闭\n')
 }
@@ -374,6 +574,11 @@ async function chatWithRetry(activeProvider, messages, signal) {
       // 正文为空：重试同一个模型只会拿到同样的空正文（推理模型把内容写在 reasoning_content），
       // 原实现的退避重试会把预算烧在必然失败的重试上，这里直接抛出交给 translateChunk 判定。
       if (err instanceof EmptyResponseError) throw err
+      // 单请求超时（provider 的 requestTimeoutMs 触发，err.name === 'TimeoutError'）不重试：
+      // 挂住的端点不会因为再等一轮就恢复。重试它等于把「一个模型 90 秒」放大成 10 倍，
+      // 实测 CI run 39520489773 就是这么把整条光影的候选预算烧光的。
+      // 注意先排除外层 signal 已中止的情况（那是调用方取消，不是端点挂住）。
+      if (err?.name === 'TimeoutError' && !signal?.aborted) throw err
       // 本条已超时中断：立即结束，不再退避重试（否则会留下挂到超时之后的孤儿重试）
       if (signal?.aborted) throw err
       const delay = 2000 * 2 ** (attempt - 1)
@@ -392,6 +597,50 @@ try {
 }
 
 // 骨架提取与记忆读写守卫见 scripts/lib/glossary.mjs（与 scripts/rebuild-glossary.mjs 共用同一实现）。
+
+// ---------- 断点续翻进度文件 ----------
+// 放 sources/<id>/<version>/.progress.json，理由：
+// 1. 它按「光影 + 版本」严格隔离，与 sources/ 里 en_US.lang 的目录结构天然对应；
+// 2. sources/ 已被 .gitignore 排除，进度是**中间态**，不该进仓库（进度全成功后会删掉，
+//    但进程被杀时留下的那份也不该污染 git status）；
+// 3. 不放进 site/public/lang/<id>/<version>/：那是**站点静态产物目录**，构建会原样发布，
+//    放一个 .progress.json 进去等于把内部中间态暴露到公网。
+// 删掉进度文件最多导致重跑；进度里的译文**必须**逐行重新过 judgeLine 才复用（见 resume-progress.mjs）。
+function progressPathFor(id, version) {
+  return join(ROOT, progressRelativePath(id, version))
+}
+
+/** 读本条进度；文件不存在 / 损坏 / 不属于本条的一律返回 null（当作没翻过）。 */
+function loadProgress(id, version) {
+  const text = readFileQuietly(progressPathFor(id, version))
+  return text === null ? null : parseProgress(text)
+}
+
+/**
+ * 写本条进度（原子写，内容没变不碰文件）。
+ *
+ * 一行都没翻成时**不写空文件**：否则每次失败的运行都会在 sources/ 里留下
+ * 一堆 `{"lines":{}}`，下次还会被当成「有进度」读一遍。
+ * 失败只记日志：进度是**加速手段**，写不进去最多让下次重跑，不应让本条失败。
+ */
+function saveProgress(progress) {
+  if (!progress || progress.lines.size === 0) return
+  try {
+    writeFileAtomic(progressPathFor(progress.id, progress.version), serializeProgress(progress))
+  } catch (err) {
+    console.log(`  [progress] ${progress.id}/${progress.version} 进度写入失败（不影响本次产出）: ${err.message.slice(0, 120)}`)
+  }
+}
+
+/**
+ * 翻译全部成功后删除进度文件。
+ *
+ * 为什么必须删：产物已经落盘并登记，这一版不再需要断点；留着只会在 sources/ 里堆垃圾。
+ * 什么时候**不**删：本条以 cfMode 失败（还要试候选文件）、或整条超时——那些情况下进度仍是有效信息。
+ */
+function clearProgress(id, version) {
+  removeFileQuietly(progressPathFor(id, version))
+}
 
 // ---------- 落盘队列（并发安全） ----------
 // 并发 worker 会同时改 catalog / db / glossary。所有写盘任务排进同一条队列串行执行，
@@ -490,9 +739,15 @@ function timestamp() {
 /**
  * 注入用的网络调用：把 provider 的提示词/请求体/超时/重试都套上，返回正文。
  * 免费层的 `maxAttempts: 1`（单次、无退避）与 `requestTimeoutMs` 在 chatOnce/chatWithRetry 里生效。
+ *
+ * `messages` 有两种形态：
+ * - 数组（整块路径）：直接发给模型；
+ * - 字符串（逐句路径）：**已经是一行待译文本**，由 line-translator 传入，
+ *   这里包成单条 user 消息。逐句模型的提示词在 line-translator 里，不在 provider 上。
  */
 function callProvider(activeProvider, messages, signal) {
-  return chatWithRetry(activeProvider, messages, signal)
+  const payload = typeof messages === 'string' ? [{ role: 'user', content: messages }] : messages
+  return chatWithRetry(activeProvider, payload, signal)
 }
 
 /** 本轮所有模型都已不可用**且**免费层也不可用 —— 才算整体失败。 */
@@ -504,106 +759,33 @@ function everythingUnusable(list = providers) {
 // 把装配搬出 pipeline.mjs 是为了堵住一个真实覆盖盲区 —— 这段胶水层曾经从没被跑过，
 // 重构时接连踩到 `timestamp is not defined` 与 `log is not defined`。
 const translateChunk = createChunkTranslator({
-  freeTierProvider,
-  isFreeTierUsable: freeTierUsable,
+  // 免费层模型池（多模型，按序轮换 + 质量闸门换下一个）；熔断按模型独立计数。
+  // 单模型时 provider-chain 内部不轮换，行为与改造前逐字一致。
+  freeTierProvider: FREE_TIER_ON ? freeTierProviders : null,
+  isFreeTierUsable: (id) => freeModelUsable(id),
   onFreeTierFailure: noteFreeTierFailure,
   onFreeTierSuccess: noteFreeTierSuccess,
+  onFreeTierQualityMiss: noteFreeTierQualityMiss,
   isUnusable: (id) => unusableProviders.has(id),
   markUnusable: (id) => unusableProviders.add(id),
   callProvider: (activeProvider, messages, sig) => callProvider(activeProvider, messages, sig),
   isNoOutput: isProviderNoOutput,
+  onProviderOutcome: noteProviderOutcome,
+  unusableAfterZeroOutput: PROVIDER_ZERO_OUTPUT_THRESHOLD,
 })
 
-async function translateEntries(pairs, activeProviders, signal, localGlossary) {
-  const providerList = Array.isArray(activeProviders) ? activeProviders : [activeProviders]
-  const out = new Map()
-  let totalFallback = 0
-  let glossaryHit = 0
-  let llmCalls = 0
-
-  // 翻译记忆读取：全局（已合并的历史）优先，其次本条已累积的局部记忆。
-  const lookup = (skel) => glossary[skel] ?? localGlossary.get(skel)
-
-  // 第一步：查翻译记忆，命中的直接复用
-  const unmatched = []
-  for (const [k, v] of pairs) {
-    const skel = stripSkeleton(v)
-    const hit = skel ? lookup(skel) : undefined
-    // 读取端守卫：值等于英文原文的条目（历史「回退被当译文缓存」污染）视为未命中，
-    // 既有的污染不会再被当译文用（也不去删它们）。
-    if (isUsableMemory(hit, v)) {
-      out.set(k, hit)
-      glossaryHit++
-    } else {
-      unmatched.push([k, v])
-    }
-  }
-
-  if (unmatched.length === 0) {
-    console.log(`    翻译记忆全覆盖（${glossaryHit}/${pairs.length}），跳过 LLM`)
-    return { map: out, totalFallback: 0, glossaryHit, llmCalls: 0, providersUsed: [] }
-  }
-
-  console.log(`    翻译记忆命中 ${glossaryHit}/${pairs.length}，剩余 ${unmatched.length} 个需 LLM 翻译`)
-
-  // 全部模型都已判定「产不出译文」：直接失败，不再逐个分块空跑（文案会经 reportStatus 回传到队列）。
-  // 免费层可用时不算整体失败 —— 它是独立的一层，回退池全挂也能单跑。
-  const modelIds = providerList.map((p) => p.id)
-  if (everythingUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
-
-  // 第二步：未命中的发给 LLM。同一光影内的分块小并发（LLM_CHUNK_CONCURRENCY），
-  // 结果按块序合并，保证与串行时一致：out 的插入顺序、totalFallback、llmCalls 口径都相同，
-  // localGlossary 也按块序、带上与串行相同的「已有则不覆盖」守卫写入。
-  const chunks = []
-  for (let i = 0; i < unmatched.length; i += CHUNK_LINES) chunks.push(unmatched.slice(i, i + CHUNK_LINES))
-  if (chunks.length > 1) {
-    console.log(`    分块并发 ${Math.min(LLM_CHUNK_CONCURRENCY, chunks.length)}（共 ${chunks.length} 块）`)
-  }
-  const results = new Array(chunks.length)
-  await runPool(
-    chunks.map((chunk, index) => ({ chunk, index })),
-    async ({ chunk, index }) => {
-      const label = `分块 ${index + 1}/${chunks.length} `
-      console.log(`    ${label}开始（${chunk.length} 行，${timestamp()}）`)
-      const started = Date.now()
-      // 轮班计数器是共享的：并发下各分块按「取到分块的先后」轮转，模型不会重复选或跳过，
-      // 但与串行相比，同一分块拿到的起始模型可能不同（只是起始位置不同，池子不变）。
-      const orderedProviders = providerList.length > 1 ? nextProviderOrder(providerList) : providerList
-      results[index] = await translateChunk(chunk, orderedProviders, signal, {
-        label,
-        isFirstChunk: index === 0,
-      })
-      console.log(`    ${label}完成：回退 ${results[index].fallback}/${chunk.length}，耗时 ${Date.now() - started}ms（${timestamp()}）`)
-      // 本轮所有模型都已不可用**且免费层也不可用** → 立即整体失败，不再空跑剩余分块。
-      if (everythingUnusable(providerList)) throw new Error(providerUnusableMessage(modelIds))
-    },
-    LLM_CHUNK_CONCURRENCY,
-  )
-
-  // 提供方署名：免费层产出与回退池产出要分得清（issue #5）。
-  const providersUsed = new Set()
-  for (let index = 0; index < chunks.length; index++) {
-    const chunk = chunks[index]
-    const { map, fallback, providerIds } = results[index]
-    for (const pid of providerIds ?? []) providersUsed.add(pid)
-    for (const [k, v] of map) {
-      out.set(k, v)
-      // 新翻译结果按英文原文记入本条的局部翻译记忆，不直接改共享的 glossary；
-      // 本条处理结束后由调用方一次性合并，避免并发 worker 同时写同一对象。
-      const source = chunk.find(([key]) => key === k)?.[1] ?? ''
-      const sourceSkeleton = stripSkeleton(source)
-      // 写入端守卫：值不是英文原文回显时才记入记忆（模型回显原文会被 translateChunk 原样放进 map，
-      // 那不是译文；判据与 translateChunk 判回退的 `zh !== v` 同口径，大小写/空格差异不误判）。
-      if (shouldRememberMemory(sourceSkeleton, v, source, lookup(sourceSkeleton))) {
-        localGlossary.set(sourceSkeleton, v)
-      }
-    }
-    totalFallback += fallback
-    llmCalls++
-  }
-
-  return { map: out, totalFallback, glossaryHit, llmCalls, providersUsed: [...providersUsed] }
-}
+// 一条光影的初翻编排在 lib 里（createTranslateEntries）：记忆 → 进度 → LLM。
+// 抽出去的理由同上：pipeline.mjs 无法被单测 import，而「三者优先级」「逐块记进度」
+// 恰恰是决定产物的逻辑，必须能被离线复现（tests/translate-entries.test.mjs）。
+// 全局记忆的读取在这里注入，本条局部增量由调用方按每条光影现建。
+const translateEntries = createTranslateEntries({
+  translateChunk,
+  nextProviderOrder,
+  everythingUnusable,
+  providerUnusableMessage,
+  chunkLines: CHUNK_LINES,
+  chunkConcurrency: LLM_CHUNK_CONCURRENCY,
+})
 
 // ---------- 主流程 ----------
 const catalog = JSON.parse(readFileSync(CATALOG_FILE, 'utf8'))
@@ -644,12 +826,21 @@ function findTranslatedTwinForEntry(entry) {
   )
 }
 
-const candidates = catalog.shaders.filter((c) => {
+// 「无英文源」黑名单不再在筛选阶段一刀切排除：判据是**版本**（scripts/lib/blacklist.mjs），
+// 而这里没有网络、拿不到当前最新版本，无法证明旧结论仍成立。
+// 真正的跳过发生在 processShader 取到最新版本之后（isBlacklistedForVersion）。
+// 为了不让 --top N 被黑名单条目挤占，这里做一次**稳定分区**：普通候选在前，黑名单候选在后
+// （--ids 路径不受影响：用户点名的条目会照常逐个重探）。
+const candidatesAll = catalog.shaders.filter((c) => {
   if (c.hasNativeZhCN === true) return false
-  if (c.noEnUsLang === true) return false
   if (latestLangVersion.get(c.id)) return false // 最新版本已有汉化
   return true
 })
+const candidates = [
+  ...candidatesAll.filter((c) => c.noEnUsLang !== true),
+  ...candidatesAll.filter((c) => c.noEnUsLang === true),
+]
+const blacklistCandidateCount = candidatesAll.filter((c) => c.noEnUsLang === true).length
 
 const args = process.argv.slice(2)
 const topArg = args.indexOf('--top')
@@ -732,7 +923,7 @@ if (IDS.length) {
   console.log(`本次处理 ${worklist.length} 个指定光影\n`)
 } else {
   worklist = candidates.slice(0, TOP)
-  console.log(`候选 ${candidates.length} 个，本次处理前 ${TOP} 个\n`)
+  console.log(`候选 ${candidates.length} 个（其中缺英文源待重探 ${blacklistCandidateCount} 个），本次处理前 ${TOP} 个\n`)
 }
 
 // 写回 catalog + shaders。同一 tick 内的重复请求合并为一次写（persistPending），
@@ -794,9 +985,46 @@ async function processShader(entry, signal, localGlossary) {
       return { status: STATUS.DONE, error: '', shaderVersion }
     }
 
+    // 「无英文源」黑名单：只有**判定版本 === 当前最新版本**才跳过。
+    // 上游发了新版本 → 重新探测（旧数据没有版本号，也会走到这里重探一次）。
+    if (isBlacklistedForVersion(entry, shaderVersion)) {
+      console.log(`${tag} v${shaderVersion} 已判定无 en_US.lang（记录版本一致），跳过；上游发新版本后自动重探`)
+      return { status: STATUS.FAILED, error: `无 en_US.lang（v${shaderVersion} 已判定，版本未变）` }
+    }
+    if (entry.noEnUsLang === true) {
+      console.log(`${tag} 黑名单版本为 ${entry.noEnUsLangVersion ?? '未记录'}，当前 v${shaderVersion}，重新探测`)
+    }
+
+    // 探测阶段：先只读中央目录判终态（自带中文 / 无 en_US.lang），命中就不下载整包。
+    // 探测失败（UNKNOWN）→ 原样走下面的整包路径，结论与改造前完全一致。
+    const probed = await probeZip(file.url, { totalSize: file.size, signal, tag })
+    if (probed.verdict === PROBE_VERDICT.NATIVE_ZH) return markNativeZh(entry, shaderVersion, tag)
+    if (probed.verdict === PROBE_VERDICT.NO_EN_US) {
+      return skipNoEnUsLang({ entry, shaderVersion, tag, langNames: probed.langNames, cfMode: false })
+    }
+    // 有 en_US.lang：旧黑名单结论在当前版本上不成立，必须立刻清掉。
+    // 不能等翻译成功再清 —— 翻译失败（LLM 故障等）时标记会留着，下一轮又按「版本一致」跳过。
+    // 注意：探测失败（UNKNOWN）时 `probed.verdict` 不是 NEEDS_TRANSLATION，这里不能下结论；
+    // 那种情况由 translateFromZip 在读到英文源时清（同一条规则只写一处结论、两处触发）。
+    if (probed.verdict === PROBE_VERDICT.NEEDS_TRANSLATION && entry.noEnUsLang === true) {
+      clearNoEnUsLang(entry)
+      persist()
+    }
+
     const zipBuf = await downloadZipBuffer(file.url, signal, tag)
     const zip = zipEntries(zipBuf)
-    return await translateFromZip({ entry, zip, shaderVersion, sourceFileName: file.filename, tag, signal, localGlossary })
+    return await translateFromZip({
+      entry,
+      zip,
+      shaderVersion,
+      sourceFileName: file.filename,
+      tag,
+      signal,
+      localGlossary,
+      // NEEDS_TRANSLATION 时传 probed：判据同源，省掉一次 filter；
+      // UNKNOWN 时不传，translateFromZip 完全按原路径自己判。
+      probed: probed.verdict === PROBE_VERDICT.NEEDS_TRANSLATION ? probed : null,
+    })
   } catch (err) {
     if (signal.aborted) {
       return { status: STATUS.FAILED, error: '处理超时' }
@@ -823,6 +1051,64 @@ async function downloadZipBuffer(url, signal, tag) {
 }
 
 /**
+ * 「自带中文」终态的全部副作用。**整包路径与探测路径共用这一个函数**，
+ * 保证两条路径的标记、计数、写盘、返回结构逐字一致（探测只是省掉下载，不改变语义）。
+ */
+function markNativeZh(entry, shaderVersion, tag) {
+  // 自带中文是终态：CF 候选文件循环里也直接标记完成，不再当候选失败去试下一个。
+  // CF 的 entry 是 buildShaderEntry 造的临时对象（不在 catalog/db 里），
+  // 标记必须落到 shaders.json 的对应条目，否则展示侧读不到 hasNativeZhCN。
+  entry.hasNativeZhCN = true
+  if (isCurseforgeEntry(entry)) ensureShaderEntry(entry).hasNativeZhCN = true
+  // 上游新版本自带了中文：旧的「无英文源」结论已不成立，顺手清掉，免得站点显示自相矛盾的状态。
+  if (!isCurseforgeEntry(entry) && entry.noEnUsLang === true) clearNoEnUsLang(entry)
+  console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
+  skippedNative++
+  persist()
+  return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
+}
+
+/** 「无 en_US.lang」终态的全部副作用（整包路径与探测路径共用，cfMode 语义不变）。 */
+function skipNoEnUsLang({ entry, shaderVersion, tag, langNames, cfMode }) {
+  if (cfMode) {
+    console.log(`${tag} 候选文件 v${shaderVersion} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），尝试下一个`)
+    return { status: STATUS.FAILED, error: `候选文件无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）`, cfRetry: true }
+  }
+  // 只记 id（条目本身）+ 判定时的版本号：下次当前版本变了就重新探测（scripts/lib/blacklist.mjs）。
+  markNoEnUsLang(entry, shaderVersion)
+  console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），已记录 v${shaderVersion}，跳过`)
+  failed++
+  persist()
+  return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
+}
+
+/**
+ * 探测阶段：下载整包之前用 HTTP Range 读中央目录，判断这个包是否已是终态。
+ *
+ * 返回 { verdict, zip, langNames, enName }：
+ * - NATIVE_ZH / NO_EN_US：调用方直接走上面的终态函数，**不下载整包**；
+ * - NEEDS_TRANSLATION：需要翻译，调用方下载整包（探测没命中时不得复用 Range 对象）；
+ * - UNKNOWN：探测失败，调用方走原整包路径（宁可多下载，不能少判断）。
+ *
+ * 探测失败只记日志、不计数、不改变任何判定：它只是加速手段。
+ */
+async function probeZip(url, { totalSize, signal, tag }) {
+  // 没有文件大小、或包本身小于 Range 阈值时**不探测**：openZip 在这种情况下会直接整包下载，
+  // 探测等于先下了一遍整包、随后原路径再下一遍 —— 白花一倍流量且没有任何判定收益。
+  if (!Number.isFinite(totalSize) || totalSize < PROBE_MIN_BYTES) {
+    return { verdict: PROBE_VERDICT.UNKNOWN }
+  }
+  return probeZipTerminalState({
+    openZip,
+    url,
+    totalSize,
+    headers: { 'User-Agent': UA() },
+    signal,
+    log: (msg) => console.log(`${tag} ${msg}`),
+  })
+}
+
+/**
  * 取 shaders.json 里对应条目；缺失时按来源补建（CF 用 curseforge 映射，Modrinth 用 modrinth 映射）。
  * CF 条目的 entry 是 buildShaderEntry 造的临时对象，只有写进 db.shaders 才能被站点读到。
  */
@@ -844,30 +1130,19 @@ function ensureShaderEntry(entry) {
  * cfMode=true 时（CF 候选文件循环）：某文件失败/无英文源不落盘、不改标记，
  * 返回 { cfRetry: true } 让调用方尝试下一个文件；检出自带中文与成功路径与 Modrinth 完全一致（都是终态，标记完成）。
  */
-async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag, signal, localGlossary, cfMode = false }) {
-  const langNames = zip.names.filter(isLangFilePath)
-  if (langNames.some(isZhCNLangPath)) {
-    // 自带中文是终态：CF 候选文件循环里也直接标记完成，不再当候选失败去试下一个。
-    // CF 的 entry 是 buildShaderEntry 造的临时对象（不在 catalog/db 里），
-    // 标记必须落到 shaders.json 的对应条目，否则展示侧读不到 hasNativeZhCN。
-    entry.hasNativeZhCN = true
-    if (isCurseforgeEntry(entry)) ensureShaderEntry(entry).hasNativeZhCN = true
-    console.log(`${tag} 自带中文（v${shaderVersion}），已标记并排除`)
-    skippedNative++
+async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag, signal, localGlossary, cfMode = false, probed = null }) {
+  // probed：探测阶段（lib/zip-probe.mjs）已经按同一组判据算过条目名分类时传进来，
+  // 直接复用，不再对 Range 对象 filter 一遍。判据同源，结论必然一致。
+  const langNames = probed ? probed.langNames : zip.names.filter(isLangFilePath)
+  const hasNativeZh = probed ? probed.verdict === PROBE_VERDICT.NATIVE_ZH : langNames.some(isZhCNLangPath)
+  if (hasNativeZh) return markNativeZh(entry, shaderVersion, tag)
+  const enName = probed ? probed.enName : langNames.find(isEnUsLangPath)
+  if (!enName) return skipNoEnUsLang({ entry, shaderVersion, tag, langNames, cfMode })
+  // 英文源存在 → 旧黑名单在当前版本上不成立。整包路径（探测失败回退）也必须清，
+  // 否则「探测不可用 + 翻译失败」会让过期标记一直留着，下一轮按版本一致直接跳过。
+  if (!cfMode && entry.noEnUsLang === true) {
+    clearNoEnUsLang(entry)
     persist()
-    return { status: STATUS.DONE, error: '', shaderVersion, note: '该光影已自带简体中文，无需汉化' }
-  }
-  const enName = langNames.find(isEnUsLangPath)
-  if (!enName) {
-    if (cfMode) {
-      console.log(`${tag} 候选文件 v${shaderVersion} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），尝试下一个`)
-      return { status: STATUS.FAILED, error: `候选文件无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）`, cfRetry: true }
-    }
-    entry.noEnUsLang = true
-    console.log(`${tag} 无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}），跳过`)
-    failed++
-    persist()
-    return { status: STATUS.FAILED, error: `无 en_US.lang（lang 文件: ${langNames.join(', ') || '无'}）` }
   }
 
   const enText = (await zip.read(enName)).toString('utf8')
@@ -885,47 +1160,89 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
       console.log(`${tag} 候选文件 v${shaderVersion} en_US.lang 无可翻译条目，尝试下一个`)
       return { status: STATUS.FAILED, error: '候选文件 en_US.lang 无可翻译条目', cfRetry: true }
     }
-    entry.noEnUsLang = true
-    console.log(`${tag} en_US.lang 无可翻译条目，跳过`)
+    markNoEnUsLang(entry, shaderVersion)
+    console.log(`${tag} en_US.lang 无可翻译条目，已记录 v${shaderVersion}，跳过`)
     failed++
     persist()
     return { status: STATUS.FAILED, error: 'en_US.lang 无可翻译条目' }
   }
 
+  // 断点续翻：读本条这一版的进度（不存在 / 损坏 / 版本不符 → 当作没翻过）。
+  // 进度里的译文会在 planLines 里**逐行重新过 judgeLine** 才复用，所以文件被外部改坏
+  // 最多让那几行重翻，不会产出错译。
+  const heldProgress = loadProgress(entry.id, shaderVersion)
+  // 收敛：丢掉「英文源已改 / 键已删 / 译文不合格」的旧记录，并保证 id/version 是**本条**的
+  // （否则后续保存会按旧 id 写回错误路径）。
+  const progress = pruneProgress(heldProgress, { id: entry.id, version: shaderVersion, pairs })
+  const resumeSummary = progressSummary(progress, pairs)
+  if (resumeSummary.done > 0) {
+    console.log(`${tag} 发现断点进度：${resumeSummary.done}/${resumeSummary.total} 行已翻（剩余 ${resumeSummary.remaining} 行）`)
+  }
+
   // 日志要如实反映「谁在干活」：免费层是默认主路，只列 LLM_MODELS 会误导排查。
   const poolLabel = providers.length ? `回退池 [${LLM_MODELS.join(', ')}]` : '回退池（空）'
-  const freeLabel = FREE_TIER_ON ? `免费层 [${freeTierProvider.id}] 优先，` : ''
+  const freeLabel = FREE_TIER_ON ? `免费层 ${freeTierProviders.length} 个模型轮换 [${freeTierProviders.map((p) => p.id).join(' / ')}]，` : ''
   console.log(`${tag} v${shaderVersion}：${pairs.length} 个键，${freeLabel}${poolLabel} 开始初翻…`)
-  const { map: zhMap, totalFallback, glossaryHit, llmCalls, providersUsed } = await translateEntries(pairs, providers, signal, localGlossary)
-  // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
-  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${totalFallback}/${pairs.length}，来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
-  // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试
-  if (totalFallback > pairs.length * 0.3) {
-    if (cfMode) {
-      console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${totalFallback}/${pairs.length}），尝试下一个`)
-      return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）`, cfRetry: true }
-    }
-    console.log(`${tag} 回退率过高（${totalFallback}/${pairs.length}），判定失败，跳过`)
-    failed++
-    return { status: STATUS.FAILED, error: `翻译回退率过高（${totalFallback}/${pairs.length}）` }
+  // 翻译记忆读取：全局（已合并的历史）优先，其次本条已累积的局部记忆。
+  // 放在这里（而不是模块顶层）是因为它依赖本条的 localGlossary。
+  const lookup = (skel) => glossary[skel] ?? localGlossary.get(skel)
+  // 进度落盘放在 finally：translateEntries 抛错（模型全挂 / 整体失败）时，
+  // 已完成分块的译文仍要留下痕迹，下次只补没翻成的。
+  // 内部按分块完成即时 recordProgress，所以这里拿到的是「抛错前已翻好的部分」。
+  let translated
+  try {
+    translated = await translateEntries(pairs, providers, signal, localGlossary, {
+      lookup,
+      progress,
+      id: entry.id,
+      version: shaderVersion,
+      // 每块完成即落盘：整条被超时打断时，最多丢掉正跑到一半的那一块。
+      onChunkDone: () => saveProgress(progress),
+    })
+  } finally {
+    saveProgress(progress)
   }
-  const outLines = lines.map((line) => {
-    const t = line.trim()
-    if (!t || t.startsWith('#')) return line
-    const eq = t.indexOf('=')
-    if (eq <= 0) return line
-    const key = t.slice(0, eq)
-    const value = zhMap.get(key) ?? t.slice(eq + 1)
-    // 初翻常见的格式码切断（`§e§ ` 这类）在落盘前就修掉，
-    // 避免产出会被闸门拦下的文件。
-    return `${key}=${repairMalformedSections(value).text}`
+  const { map: zhMap, totalFallback, totalAborted, translatableTotal, glossaryHit, progressHit, llmCalls, providersUsed } = translated
+  // 本条的局部记忆由 processShaderWithTimeout 的 finally 统一合并（超时也能合并）。
+  // 回退率的分母是**可翻译行数**（值含字母的行），不是 pairs.length：无字母行
+  // （`-95`、`5%`、`---`、空值）本来就不翻译，保留原值就是正确结果。
+  // 实测 alphalook 4697 键里 3152 行是这种行，按 pairs.length 算会把 3.1% 的回退率
+  // 放大成 67%，整条正常光影被判死。noLetters 单独列出，日志上一眼看得见。
+  const noLetters = pairs.length - translatableTotal
+
+  // **中止行不算翻译失败**。signal 中止时队列里剩下的行从没发过请求，模型从没看过它们；
+  // 把它们算进回退率，同一条光影会跑出 3.6% 和 54.8% 两种结果（实测差异里 793/847 条
+  // 全是中止，真实失败只有 54 条），回退率于是变成「预算还剩多少」的副产品，不再能判断质量。
+  // aborted 单独报，闸门只认「发了请求仍拿不到译文」的部分。
+  const realFallback = Math.max(0, totalFallback - totalAborted)
+  const abortedNote = totalAborted > 0 ? `，其中 ${totalAborted} 行未及发请求` : ''
+  console.log(`${tag} 翻译完成：记忆命中 ${glossaryHit}，LLM 调用 ${llmCalls} 次，回退 ${realFallback}/${translatableTotal}（noLetters ${noLetters}${abortedNote}），来源 ${providersUsed.length ? providersUsed.join(' + ') : '翻译记忆'}`)
+
+  // 整体回退率过高视为翻译失败：不上线、不登记，留待下次重试。
+  // 阈值提成命名常量（原来是硬编码的 0.3）：调参不该靠 grep 找字面量。
+  if (realFallback > translatableTotal * FALLBACK_GATE_RATIO) {
+    const done = progressSummary(progress, pairs)
+    if (cfMode) {
+      console.log(`${tag} 候选文件 v${shaderVersion} 回退率过高（${realFallback}/${translatableTotal}），尝试下一个`)
+      console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
+      return { status: STATUS.FAILED, error: `翻译回退率过高（${realFallback}/${translatableTotal}）`, cfRetry: true }
+    }
+    console.log(`${tag} 回退率过高（${realFallback}/${translatableTotal}${abortedNote}），判定失败，跳过`)
+    console.log(`${tag} 断点进度已保存：${done.done}/${pairs.length} 行，下次只补 ${done.remaining} 行`)
+    failed++
+    return { status: STATUS.FAILED, error: `翻译回退率过高（${realFallback}/${translatableTotal}）` }
+  }
+  // 渲染在 lib 里（纯函数），保证「复用进度的译文」与「重新翻出的译文」
+  // 渲染出的字节完全一致；tests/lang-render.test.mjs 用仓库真实文件做往返比对。
+  const content = renderZhLang({
+    title: entry.title, id: entry.id, shaderVersion, sourceFileName, enName, lines, zhMap,
+    repair: repairMalformedSections,
   })
-  const header = `#shaders/lang/zh_CN.lang\n# ${entry.title ?? entry.id} v${shaderVersion} 简体中文翻译（AI 初翻，未人工校对）\n# 源文件：${sourceFileName} 的 ${enName}\n`
   const outPath = join(LANG_DIR, entry.id, shaderVersion, 'zh_CN.lang')
 
   // 先校验内存里的内容，通过后才落盘。
   // 历史实现是「先写文件再校验」，校验失败时已把坏文件留在磁盘上。
-  const verdict = validatePair(enText, header + outLines.join('\n'), `${entry.id}/${shaderVersion}`)
+  const verdict = validatePair(enText, content, `${entry.id}/${shaderVersion}`)
   if (verdict.problems.length) {
     const msg = verdict.problems.join('; ').slice(0, 300)
     console.log(`${tag} 校验未通过，不落盘: ${msg}`)
@@ -939,7 +1256,11 @@ async function translateFromZip({ entry, zip, shaderVersion, sourceFileName, tag
     throw new Error('处理超时')
   }
   mkdirSync(dirname(outPath), { recursive: true })
-  writeFileSync(outPath, header + outLines.join('\n'))
+  writeFileSync(outPath, content)
+
+  // 全部成功：删除进度文件（这一版不再需要断点）。
+  // 只有产物真正落盘后才删——否则「校验未通过」分支会连断点一起丢掉。
+  clearProgress(entry.id, shaderVersion)
 
   // 同时缓存英文原文到 sources/，供 pack-lang-sources.mjs 重新打包。
   // 否则新翻译的光影在 CI 里找不到英文源，下一次 validate:lang 会判失败。
@@ -1006,6 +1327,8 @@ async function processShaderCf(entry, signal, localGlossary) {
       failed++
       return { status: STATUS.FAILED, error: 'CurseForge 无任何可下载文件' }
     }
+    // 注：「无英文源」黑名单只作用于 Modrinth 目录条目。CF 侧从不写 noEnUsLang
+    // （cfMode 下无英文源只让候选循环继续下一个文件，不算终态），因此这里不需要版本判据。
     let lastError = ''
     for (const f of candidates) {
       if (signal.aborted) return { status: STATUS.FAILED, error: '处理超时' }
@@ -1026,14 +1349,30 @@ async function processShaderCf(entry, signal, localGlossary) {
         console.log(`${tag} ${shaderVersion} 已有汉化，跳过`)
         return { status: STATUS.DONE, error: '', shaderVersion }
       }
-      // 单候选上限 = min(单候选 3 分钟, 本条剩余预算)，并与光影 signal 合并：
+      // 单候选上限 = min(单候选 8 分钟, 本条剩余预算)，并与光影 signal 合并：
       // 该候选的下载/翻译全部走这个 signal，任一中止即真正断开进行中的 fetch。
       const candSignal = AbortSignal.any([
         signal,
         AbortSignal.timeout(Math.min(CF_CANDIDATE_TIMEOUT_MS, budgetLeft)),
       ])
       try {
-        const downloadUrl = await cfGetDownloadUrl(cfId, f.id, candSignal)
+        // 必须解析成最终 URL：API 给的 edge.forgecdn.net 带 Range 头直接 404，
+        // 解析后的 mediafilez.forgecdn.net 才支持 206（详见 cf-api.mjs 的说明）。
+        const downloadUrl = await resolveCfDownloadUrl(await cfGetDownloadUrl(cfId, f.id, candSignal), candSignal)
+        // 探测阶段：每个候选文件都先只读中央目录判终态，命中就不下载这个候选的整包。
+        // 探测请求挂在 candSignal 上，与下载/翻译共用同一条预算与中断链路；
+        // totalSize 用 CF 文件列表里的 fileLength（缺失时 openZip 内部直接走整包）。
+        // 探测失败（UNKNOWN）→ 原样走下面的整包路径。
+        const probed = await probeZip(downloadUrl, { totalSize: f.fileLength, signal: candSignal, tag })
+        if (probed.verdict === PROBE_VERDICT.NATIVE_ZH) {
+          return markNativeZh(entry, shaderVersion, tag)
+        }
+        if (probed.verdict === PROBE_VERDICT.NO_EN_US) {
+          const skipped = skipNoEnUsLang({ entry, shaderVersion, tag, langNames: probed.langNames, cfMode: true })
+          lastError = skipped.error
+          console.log(`${tag} 候选文件 ${f.id}（${shaderVersion}）失败: ${lastError}，尝试下一个`)
+          continue
+        }
         const zipBuf = await downloadZipBuffer(downloadUrl, candSignal, tag)
         const zip = zipEntries(zipBuf)
         const result = await translateFromZip({
@@ -1045,6 +1384,8 @@ async function processShaderCf(entry, signal, localGlossary) {
           signal: candSignal,
           localGlossary,
           cfMode: true,
+          // NEEDS_TRANSLATION 时复用探测结论；UNKNOWN 时走原路径自己判。
+          probed: probed.verdict === PROBE_VERDICT.NEEDS_TRANSLATION ? probed : null,
         })
         if (result.status === STATUS.DONE) return result
         lastError = result.error || '候选文件处理失败'

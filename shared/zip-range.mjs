@@ -21,6 +21,30 @@ const TAIL_GROW = 4 // 窗口放大幅度
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
+/** 可被 signal 打断的退避等待：中止后立刻结束，不把退避时间睡满。 */
+function sleepAbortable(ms, signal) {
+  if (signal?.aborted) return Promise.resolve()
+  return new Promise((resolve) => {
+    let timer
+    const done = () => {
+      if (timer !== undefined) clearTimeout(timer)
+      signal?.removeEventListener('abort', done)
+      resolve()
+    }
+    timer = setTimeout(done, ms)
+    signal?.addEventListener('abort', done, { once: true })
+  })
+}
+
+/** 统一的「已中止」错误（调用方据此区分中止与真正的 Range 失败）。 */
+function abortError(signal) {
+  const err = new Error('已中止')
+  err.name = 'AbortError'
+  err.aborted = true
+  err.signal = signal
+  return err
+}
+
 // ---------- CRC32（IEEE 802.3，查表版，与 zlib 同款；Node 内置无 crc32） ----------
 const CRC_TABLE = (() => {
   const table = new Uint32Array(256)
@@ -103,9 +127,9 @@ function parseCentralDir(buf, baseAbs) {
 
 // ---------- 网络请求 ----------
 
-/** 整包下载。 */
-async function fetchFull(url, headers) {
-  const res = await fetch(url, { headers })
+/** 整包下载。signal 被中止时立刻抛出（不再重试、不再回退）。 */
+async function fetchFull(url, headers, signal) {
+  const res = await fetch(url, { headers, signal })
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   return Buffer.from(await res.arrayBuffer())
 }
@@ -117,12 +141,14 @@ async function fetchFull(url, headers) {
  * 任一不符（服务器返回错位/陈旧内容）按瞬时错误重试，防止 Range 路径静默产出与整包不同的字节。
  * @returns {Buffer} 校验通过的区间字节
  */
-async function fetchRange(url, start, end, retries, headers) {
+async function fetchRange(url, start, end, retries, headers, signal) {
   let lastErr
   for (let attempt = 0; attempt <= retries; attempt++) {
-    if (attempt > 0) await sleep(1000 * 2 ** (attempt - 1))
+    // 中止不是瞬时错误：立即抛出，绝不重试（否则超时后还会继续发请求）。
+    if (signal?.aborted) throw abortError(signal)
+    if (attempt > 0) await sleepAbortable(1000 * 2 ** (attempt - 1), signal)
     try {
-      const res = await fetch(url, { headers: { ...headers, Range: `bytes=${start}-${end}` } })
+      const res = await fetch(url, { headers: { ...headers, Range: `bytes=${start}-${end}` }, signal })
       if (res.status === 206) {
         // 校验 Content-Range：服务器必须声明返回的正是请求区间
         const cr = res.headers.get('content-range')
@@ -144,6 +170,7 @@ async function fetchRange(url, start, end, retries, headers) {
       if (res.body) await res.body.cancel().catch(() => {})
       lastErr = new Error(`HTTP ${res.status}`)
     } catch (err) {
+      if (signal?.aborted) throw err // 中止立即向上抛，不进入重试
       lastErr = err
     }
   }
@@ -186,8 +213,8 @@ function extractFromBuffer(buf, entry) {
  * Range 模式下按需取目标条目：先取 local header 固定 30 字节，再精确取压缩数据区间。
  * @returns {{ data: Buffer, downloaded: number }} 校验通过的解压数据与本次实际下载字节数
  */
-async function readEntryByRange(url, entry, headers, retries) {
-  const head = await fetchRange(url, entry.localOffset, entry.localOffset + 29, retries, headers)
+async function readEntryByRange(url, entry, headers, retries, signal) {
+  const head = await fetchRange(url, entry.localOffset, entry.localOffset + 29, retries, headers, signal)
   if (head.length < 30 || head.readUInt32LE(0) !== LOCAL_SIG) throw new Error('local header magic 不符')
   const nameLen = head.readUInt16LE(26)
   const extraLen = head.readUInt16LE(28)
@@ -200,7 +227,7 @@ async function readEntryByRange(url, entry, headers, retries) {
   } else {
     // zip64 占位大小（0xFFFFFFFF）不实现：直接回退整包，避免发出 4GB 巨型 Range
     if (entry.compSize === 0xffffffff) throw new Error('zip64 占位大小，回退整包')
-    raw = await fetchRange(url, dataStart, dataStart + entry.compSize - 1, retries, headers)
+    raw = await fetchRange(url, dataStart, dataStart + entry.compSize - 1, retries, headers, signal)
     downloaded += raw.length
   }
   return { data: inflateEntry(entry, raw), downloaded }
@@ -234,6 +261,8 @@ function zipFromBuffer(buf) {
  * @param {number} [opts.maxTailBytes=8<<20] 尾部窗口上限
  * @param {number} [opts.retries=2] 非 206 重试次数（指数退避 1s/2s）
  * @param {boolean} [opts.forceFull=false] 强制整包（用于 A/B 对比与排障）
+ * @param {AbortSignal} [opts.signal] 中止信号：中止后所有在途请求立刻断开，
+ *   且**不再重试、不再回退整包**（中止不是「Range 不可用」，回退只会白花流量）
  * @returns {Promise<{ names: string[], read: (name: string) => Promise<Buffer|null>, fetchMode: 'range'|'full', bytesDownloaded: number }>}
  */
 export async function openZip(url, opts = {}) {
@@ -244,12 +273,13 @@ export async function openZip(url, opts = {}) {
     maxTailBytes = 8 << 20,
     retries = 2,
     forceFull = false,
+    signal,
   } = opts
 
   // 阈值判断：小于 minRangeBytes 或未提供 totalSize → 整包（1 次请求）
   const canRange = !forceFull && Number.isFinite(totalSize) && totalSize >= minRangeBytes
   if (!canRange) {
-    return zipFromBuffer(await fetchFull(url, headers))
+    return zipFromBuffer(await fetchFull(url, headers, signal))
   }
 
   // Range 模式状态：read() 内任何失败都会升级为整包并更新计数
@@ -266,7 +296,7 @@ export async function openZip(url, opts = {}) {
       if (win > maxTailBytes) throw new Error('尾部窗口超过上限，回退整包')
       const start = Math.max(0, totalSize - win) // 显式区间，禁止 bytes=-N 后缀形式
       const end = totalSize - 1
-      const buf = await fetchRange(url, start, end, retries, headers)
+      const buf = await fetchRange(url, start, end, retries, headers, signal)
       zip.bytesDownloaded += buf.length
       try {
         const parsed = parseCentralDir(buf, start)
@@ -291,26 +321,28 @@ export async function openZip(url, opts = {}) {
       if (!entry) return null // 目标条目不存在不是错误
       try {
         if (wholeFile) return extractFromBuffer(tail, entry)
-        const { data, downloaded } = await readEntryByRange(url, entry, headers, retries)
+        const { data, downloaded } = await readEntryByRange(url, entry, headers, retries, signal)
         zip.bytesDownloaded += downloaded
         return data
-      } catch {
+      } catch (err) {
+        if (signal?.aborted) throw err // 中止不视为「Range 失败」，不回退整包
         // 任何异常（CRC 不符 / 长度不符 / 网络错误 / 方法不支持等）→ 静默回退整包
-        return upgradeToFull(zip, url, headers, name)
+        return upgradeToFull(zip, url, headers, name, signal)
       }
     }
 
     return zip
-  } catch {
+  } catch (err) {
+    if (signal?.aborted) throw err // 中止不触发整包回退
     // 尾部窗口阶段失败 → 整包
-    return upgradeToFull(zip, url, headers)
+    return upgradeToFull(zip, url, headers, undefined, signal)
   }
 }
 
 /** 把已返回的 range 模式对象升级为整包模式，保证内容正确。 */
-async function upgradeToFull(zip, url, headers, name) {
+async function upgradeToFull(zip, url, headers, name, signal) {
   if (!zip._full) {
-    const buf = await fetchFull(url, headers)
+    const buf = await fetchFull(url, headers, signal)
     zip._full = zipFromBuffer(buf)
     zip.fetchMode = 'full'
     zip.bytesDownloaded += buf.length

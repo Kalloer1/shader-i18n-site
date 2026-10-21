@@ -18,6 +18,8 @@ import {
   fallbackThreshold,
   tryFreeTier,
   translateChunkTwoLayer,
+  nextProviderOrder,
+  resetProviderOrderCursor,
   createChunkTranslator,
 } from '../scripts/lib/provider-chain.mjs'
 import {
@@ -55,7 +57,12 @@ function makeCall(script) {
 const zh = (pairs) => pairs.map(([k, v]) => `${k}=${v}`).join('\n')
 const GOOD = zh([['option.SHADOWS', '阴影'], ['option.BLOOM', '泛光'], ['option.AO', '环境光遮蔽']])
 
-const freeProvider = () => createFreeTierProvider({ model: 'Index-Translate-35B-A3B', url: () => 'https://free.invalid/v1', label: 'free' })
+/**
+ * 造一个免费层 provider。`model` 可指定模型名（多模型池测试需要不同 id）；
+ * 不传则用默认的主模型。**id 由模型名决定，测试里靠它区分不同模型。**
+ */
+const freeProvider = (model = 'Index-Translate-35B-A3B') =>
+  createFreeTierProvider({ model, url: () => 'https://free.invalid/v1', label: model })
 const poolProvider = (id = 'opencode-zen-free/beam-free') =>
   createGatewayProvider({ model: id, url: () => 'https://gw.invalid/v1', key: () => 'k', label: id })
 
@@ -84,6 +91,114 @@ test('免费层成功时若回退率合格，网关一次也不试（多模型�
   await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: free, poolProviders: pools, call })
 
   assert.equal(calls.filter((id) => id !== free.id).length, 0, '网关调用次数应为 0')
+})
+
+// ---------- 2b. 多模型池（用户 2026-10-21：所有免费模型都要试，分担压力） ----------
+
+const LAZY = zh([['option.SHADOWS', 'Shadows'], ['option.BLOOM', 'Bloom'], ['option.AO', '环境光遮蔽']]) // 回退 2/3
+test('多模型池：第一个免费模型翻得差 → 试下一个免费模型，仍然不碰网关', async () => {
+  // 这是 2026-10-21 实测催出来的行为：同一块 index-mt-2b 只出 74/228 条译文，
+  // 而 index-mt-9b 出 220/228。「换模型」常常就是质量差异，不必动网关预算。
+  resetProviderOrderCursor() // 固定起手顺序为 [bad, good]，否则轮换会让 good 先上并提前返回
+  const bad = freeProvider()
+  const good = freeProvider('index-mt-9b')
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === bad.id ? LAZY : GOOD))
+  const misses = []
+
+  const r = await translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: [bad, good], poolProviders: [pool], call,
+    onFreeTierQualityMiss: (id) => misses.push(id),
+  })
+
+  assert.equal(r.fallback, 0, '应由第二个免费模型拿下全部三键')
+  // 差模型也记进署名：它确实产出了部分译文（这一块里 环境光遮蔽 是它翻的），
+  // 与单模型时的既有语义一致——不谎报来源，也不抹掉它的贡献。
+  assert.deepEqual([...r.providerIds].sort(), [bad.id, good.id].sort(), '两边都记账')
+  assert.ok(!calls.includes(pool.id), '网关一次都不该被调用')
+  assert.deepEqual(misses, [bad.id], '翻得差要上报质量失手（供降级）')
+})
+
+test('多模型池：单模型时行为不变（回退率偏高仍直接转交网关）', async () => {
+  // 向后兼容：只配一个免费模型时，池内没有「下一个」可试，行为必须和改造前逐字一致。
+  const free = freeProvider()
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === free.id ? LAZY : GOOD))
+
+  const r = await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: free, poolProviders: [pool], call })
+
+  assert.deepEqual(calls, [free.id, pool.id], '单模型：偏高就直接转交网关')
+  assert.equal(r.fallback, 0)
+})
+
+test('多模型池：所有免费模型都翻得差 → 才转交网关（保留最好的那份）', async () => {
+  // 两个都用**整块**模型：逐句模型（-syllable）在单测里会让假 call 的「一次回整块」
+  // 语义不成立（那条路径一行一个请求），测不出想测的东西。
+  resetProviderOrderCursor()
+  const m1 = freeProvider()
+  const m2 = freeProvider('index-mt-9b')
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === pool.id ? GOOD : LAZY))
+
+  const r = await translateChunkTwoLayer({ chunk: CHUNK, input, freeTier: [m1, m2], poolProviders: [pool], call })
+
+  assert.deepEqual(calls.slice().sort(), [m1.id, m2.id, pool.id].sort(), '两个免费模型都试过才动网关')
+  assert.equal(r.fallback, 0)
+  assert.deepEqual([...r.providerIds].sort(), [m1.id, m2.id, pool.id].sort(), '署名两边都记账')
+})
+
+test('多模型池：被熔断的模型不再进入轮换（isUsable 逐模型判定）', async () => {
+  resetProviderOrderCursor()
+  const broken = freeProvider()
+  const alive = freeProvider('index-mt-9b')
+  const pool = poolProvider()
+  const { call, calls } = makeCall((p) => (p.id === broken.id ? new Error('boom') : GOOD))
+
+  const r = await translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: [broken, alive], poolProviders: [pool], call,
+    isUsable: (p) => p.id !== broken.id,
+  })
+
+  assert.ok(!calls.includes(broken.id), '已熔断的模型不该再被调用')
+  assert.equal(r.fallback, 0)
+  assert.deepEqual(r.providerIds, [alive.id])
+})
+
+test('多模型池：质量失手上报带模型 id，成功则清零（好模型不会因历史被拖累）', async () => {
+  // 池内模型轮换会让「哪一个模型起手」逐块变化，所以降级必须按模型分别计连续次数；
+  // 成功一次就清零，否则好模型偶尔撞上一个难分块就被永久降级。
+  const calls0 = []
+  const misses = new Map()
+  const ok = (id) => { misses.set(id, 0) }
+  const miss = (id) => { misses.set(id, (misses.get(id) ?? 0) + 1) }
+
+  const bad = freeProvider()
+  const good = freeProvider('index-mt-9b')
+  // 第一块：bad 先起手且翻得差 → 记一次失手；good 拿下并清零自己
+  resetProviderOrderCursor()
+  await translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: [bad, good], poolProviders: [],
+    call: makeCall((p) => (p.id === bad.id ? LAZY : GOOD)).call,
+    onFreeTierSuccess: ok, onFreeTierQualityMiss: miss,
+  })
+  assert.equal(misses.get(bad.id), 1, '翻得差记一次失手')
+
+  // 第二块：good 直接成功 → 不动 bad 的计数，也不误伤 good 自己
+  miss(bad.id)
+  ok(good.id)
+  assert.equal(misses.get(bad.id), 2, '失手按模型累计')
+  assert.equal(misses.get(good.id), 0, '成功的模型计数被清零')
+})
+
+test('nextProviderOrder：轮换起点逐次后移，且不修改入参', () => {
+  // 模块级游标跨用例累加，先归零才能断言绝对顺序。
+  resetProviderOrderCursor()
+  const list = ['a', 'b', 'c']
+  const seen = []
+  for (let i = 0; i < 4; i++) seen.push(nextProviderOrder(list).join(','))
+  assert.deepEqual(seen, ['a,b,c', 'b,c,a', 'c,a,b', 'a,b,c'], '起点应逐次后移并循环')
+  assert.deepEqual(list, ['a', 'b', 'c'], '不得修改入参')
+  assert.deepEqual(nextProviderOrder([]), [], '空列表原样返回')
 })
 
 // ---------- 2. 免费层失败时确实落到网关 ----------
@@ -294,6 +409,117 @@ test('回退池：完全无提供方（免费层关掉、池为空）→ 全回�
   assert.equal(r.fallback, CHUNK.length)
 })
 
+// Bug 修复的端到端证据：数值密集的分块不该被「回退率过高」判死。
+// 实测 alphalook 4697 键里 3152 行是纯数字/百分比（`-95`、`5%`），旧判据把它们
+// 全算成回退（67%），整条正常光影被判失败。这里用 60 行里 52 行无字母的分块复现。
+test('回退池：无字母行不计回退、也不进阈值分母（数值密集分块不再被误判）', async () => {
+  const chunk = [
+    ...Array.from({ length: 8 }, (_, i) => [`option.K${i}`, `Setting number ${i}`]),
+    ...Array.from({ length: 52 }, (_, i) => [`value.NUM.${i}`, i % 2 ? `${i}%` : `-${i}`]),
+  ]
+  assert.equal(chunk.length, 60)
+  const free = freeProvider()
+  const pool = poolProvider()
+  // 免费层把 8 行可翻行全翻好，数值行原样返回（模型的正常行为）
+  const reply = [
+    ...chunk.slice(0, 8).map(([k]) => `${k}=译${k.replace('option.', '')}`),
+    ...chunk.slice(8).map(([k, v]) => `${k}=${v}`),
+  ].join('\n')
+  const { call, calls } = makeCall((p) => (p.id === free.id ? reply : new Error('不该走到回退池')))
+
+  const r = await translateChunkTwoLayer({
+    chunk, input: chunk.map(([k, v]) => `${k}=${v}`).join('\n'),
+    freeTier: free, poolProviders: [pool], call,
+  })
+
+  assert.equal(r.fallback, 0, '数值行保留原值不是回退')
+  assert.deepEqual(calls, [free.id], '回退率 0/8 合格，不该转交回退池')
+  assert.deepEqual(r.providerIds, [free.id])
+  assert.equal(r.map.get('option.K0'), '译K0')
+  assert.equal(r.map.get('value.NUM.1'), '1%', '数值行原值保留')
+})
+
+test('回退池：阈值分母是可翻译行数（52 行无字母时 2 行回退仍合格）', async () => {
+  const chunk = [
+    ...Array.from({ length: 8 }, (_, i) => [`option.K${i}`, `Setting number ${i}`]),
+    ...Array.from({ length: 52 }, (_, i) => [`value.NUM.${i}`, `-${i}`]),
+  ]
+  const free = freeProvider()
+  const pool = poolProvider()
+  // 8 行里漏 2 行 = 25% > 10% → 应转交回退池（说明阈值确实按 8 行算，而不是按 60 行）
+  const reply = chunk.slice(0, 6).map(([k]) => `${k}=译${k.replace('option.', '')}`).join('\n')
+  const { call, calls } = makeCall((p) => (p.id === free.id ? reply : GOOD))
+
+  await translateChunkTwoLayer({
+    chunk, input: chunk.map(([k, v]) => `${k}=${v}`).join('\n'),
+    freeTier: free, poolProviders: [pool], call,
+  })
+
+  assert.equal(calls[1], pool.id, '2/8=25% 超阈值，应转交回退池（若按 60 行算只有 3.3% 就不会转交）')
+})
+
+// ---------- 熔断：连续零产出才弃用（实测 CI run 39520489773） ----------
+// 当时只有「首块 + 空正文」才 markUnusable，超时的模型永远不会被标记：
+// 三个网关模型各自挂满超时 × 3 次尝试，每个走回退池的分块都要重挂一遍，
+// 一条光影的候选预算（8 分钟）就这么烧光。下面锁住新语义。
+
+test('熔断：连续 2 块零产出 → markUnusable，且不再被调用', async () => {
+  const free = freeProvider()
+  const pool = poolProvider('a')
+  const unusable = new Set()
+  const streaks = new Map()
+  const onProviderOutcome = (id, zeroOutput) => {
+    const n = zeroOutput ? (streaks.get(id) ?? 0) + 1 : 0
+    if (zeroOutput) streaks.set(id, n); else streaks.delete(id)
+    return n
+  }
+  // 免费层失败 → 走回退池；回退池每次都超时
+  const { call, calls } = makeCall((p) => (p.id === free.id ? new Error('HTTP 500') : Object.assign(new Error('timeout'), { name: 'TimeoutError' })))
+
+  const run = () => translateChunkTwoLayer({
+    chunk: CHUNK, input, freeTier: free, poolProviders: unusable.has('a') ? [] : [pool], call,
+    markUnusable: (id) => unusable.add(id),
+    onProviderOutcome,
+    isNoOutput: () => false,
+  })
+
+  await run()
+  assert.ok(!unusable.has('a'), '第 1 块零产出不该立刻熔断（可能是抖动）')
+  await run()
+  assert.ok(unusable.has('a'), '连续 2 块零产出应熔断')
+
+  const before = calls.filter((id) => id === 'a').length
+  await run()
+  assert.equal(calls.filter((id) => id === 'a').length, before, '熔断后不该再调用它')
+})
+
+test('熔断：只要产出过一行译文就不计零产出（偶发失败不该熔断能用的模型）', async () => {
+  const free = freeProvider()
+  const pool = poolProvider('a')
+  const streaks = new Map()
+  const onProviderOutcome = (id, zeroOutput) => {
+    const n = zeroOutput ? (streaks.get(id) ?? 0) + 1 : 0
+    if (zeroOutput) streaks.set(id, n); else streaks.delete(id)
+    return n
+  }
+  const marked = []
+  // 免费层失败；回退池「翻得差但确实产出了」：3 行里 2 行有译文
+  const partial = zh([['option.SHADOWS', '阴影'], ['option.BLOOM', 'Bloom'], ['option.AO', 'Ambient Occlusion']])
+  const { call } = makeCall((p) => (p.id === free.id ? new Error('HTTP 500') : partial))
+
+  for (let i = 0; i < 4; i++) {
+    await translateChunkTwoLayer({
+      chunk: CHUNK, input, freeTier: free, poolProviders: [pool], call,
+      markUnusable: (id) => marked.push(id),
+      onProviderOutcome,
+      isNoOutput: () => false,
+    })
+  }
+
+  assert.deepEqual(marked, [], '有产出就不是「产不出译文」，不该熔断')
+  assert.equal(streaks.get('a') ?? 0, 0, '有产出应清零连续零产出计数')
+})
+
 test('回退池：首块零译文时弃用该模型（早停判据仍生效）', async () => {
   const free = freeProvider()
   const a = poolProvider('a')
@@ -347,14 +573,29 @@ test('免费层请求体：固定字段，**不含** LLM_EXTRA_BODY', () => {
     messages: [{ role: 'user', content: 'hi' }],
     temperature: FREE_TIER_TEMPERATURE,
     max_tokens: FREE_TIER_MAX_TOKENS,
+    // 官方 call_api.py 的默认：不关 thinking，CoT 会顶掉译文。
+    chat_template_kwargs: { enable_thinking: false },
   })
-  // 关键隔离：网关的 enable_thinking 之类不能泄漏到免费层
-  assert.ok(!('enable_thinking' in body))
-  assert.deepEqual(Object.keys(body).sort(), ['max_tokens', 'messages', 'model', 'temperature'])
+  // 关键隔离：网关的 LLM_EXTRA_BODY 之类不能泄漏到免费层
+  assert.ok(!('extra_body' in body))
+  assert.deepEqual(
+    Object.keys(body).sort(),
+    ['chat_template_kwargs', 'max_tokens', 'messages', 'model', 'temperature'],
+  )
 })
 
-test('免费层请求体与网关请求体的 max_tokens 口径一致（都是 8192）', () => {
-  assert.equal(FREE_TIER_MAX_TOKENS, GATEWAY_MAX_TOKENS)
+test('免费层必须显式关闭 thinking（官方 call_api.py 的硬性前提）', () => {
+  // 漏掉它不会报错，只会静默产出思维链或空正文 —— 必须有测试锁住。
+  const free = createFreeTierProvider({ model: 'm', url: () => 'u', label: 'x' })
+  const body = free.body([{ role: 'user', content: 'hi' }])
+  assert.equal(body.chat_template_kwargs.enable_thinking, false)
+})
+
+test('免费层 max_tokens 对齐官方默认 1024，不再沿用网关的 8192', () => {
+  // 官方 call_api.py 默认 max_tokens=1024，是配合 enable_thinking=false 给的预算；
+  // 沿用 8192 会让推理型模型在超时前一直生成。两者刻意不同口径。
+  assert.equal(FREE_TIER_MAX_TOKENS, 1024)
+  assert.notEqual(FREE_TIER_MAX_TOKENS, GATEWAY_MAX_TOKENS)
 })
 
 test('免费层 provider 自带快速降级策略（无退避、60 秒超时、无需 key）', () => {
@@ -366,10 +607,16 @@ test('免费层 provider 自带快速降级策略（无退避、60 秒超时、�
   assert.equal(free.requiresCompleteKeys, undefined)
 })
 
-test('网关 provider 没有免费层专属字段（行为不许变）', () => {
+// 语义变更（Bug 修复，实测 CI run 39520489773）：网关以前**没有** requestTimeoutMs，
+// 于是挂住的请求只能等外层候选 signal 中止（8 分钟）——免费层 12 秒翻完的光影，
+// 被 3 个卡在网关上的分块拖到整条超时。现在网关自带 90 秒单请求超时。
+test('网关 provider 没有免费层专属字段，但有单请求超时', () => {
   const gw = createGatewayProvider({ model: 'm', url: () => 'u', key: () => 'k', label: 'x' })
   assert.equal(gw.maxAttempts, undefined, '网关仍走 MAX_RETRIES')
-  assert.equal(gw.requestTimeoutMs, undefined, '网关不加单请求超时')
+  assert.equal(gw.requestTimeoutMs, 90000, '网关必须有单请求超时，否则挂住的请求会拖满候选预算')
+  // 免费层专属字段仍然不该出现在网关上
+  assert.equal(gw.perLine, undefined)
+  assert.equal(gw.lineConcurrency, undefined)
 })
 
 test('术语表两边不漂移：SYSTEM_PROMPT 的术语都在 INST_TRANS_TERMS 里', () => {
@@ -442,11 +689,42 @@ test('evaluateOutput：译文等于原文算回退（模型回显英文不是译
   const r = evaluateOutput(CHUNK, got)
   assert.equal(r.fallback, 2, 'SHADOWS 回显 + AO 缺失 = 2')
   assert.deepEqual(r.missingKeys, ['option.AO'])
+  assert.equal(r.untranslatable, 0, 'CHUNK 全是可翻译行')
 })
 
-test('fallbackThreshold：60 行分块阈值为 6', () => {
+// Bug 修复的整块路径证据：模型对 `-95` / `5%` 这类行通常原样返回，
+// 旧判据（zh !== v）会把它们计成回退，数值密集的光影因此被判死。
+test('evaluateOutput：无字母行原样返回**不算回退**（单独记 untranslatable）', () => {
+  const chunk = [
+    ['option.SHADOWS', 'Shadows'],
+    ['value.BRIGHTNESS.-95', '-95'],
+    ['value.WATER_DETAIL.0.05', '5%'],
+    ['value.SEP', '---'],
+    ['value.EMPTY', ''],
+  ]
+  // 模型把数值行原样返回，只翻了 Shadows
+  const got = parseLangLines([
+    'option.SHADOWS=阴影',
+    'value.BRIGHTNESS.-95=-95',
+    'value.WATER_DETAIL.0.05=5%',
+    'value.SEP=---',
+    'value.EMPTY=',
+  ].join('\n'))
+  const r = evaluateOutput(chunk, got)
+  assert.equal(r.fallback, 0, '无字母行保留原值是正确行为，不是回退')
+  assert.equal(r.untranslatable, 4)
+  assert.deepEqual(r.missingKeys, [], '无字母行也不该进 missingKeys（它们本来就不发去翻）')
+  assert.equal(r.map.get('option.SHADOWS'), '阴影')
+  assert.equal(r.map.get('value.BRIGHTNESS.-95'), '-95')
+})
+
+test('fallbackThreshold：60 行分块阈值为 6（基准是可翻译行数）', () => {
   assert.equal(fallbackThreshold(60), 6)
   assert.equal(fallbackThreshold(3), 1)
+  // 数值密集的块：100 行里只有 10 行可翻 → 阈值按 10 算（1），不是按 100 算（10）。
+  // 旧口径会把这种块的回退率放大 10 倍，实测 alphalook 4697 键里 3152 行是纯数字。
+  assert.equal(fallbackThreshold(10), 1)
+  assert.equal(fallbackThreshold(0), 0)
 })
 
 test('tryFreeTier：provider 为 null 时不调用、返回 null', async () => {
@@ -618,4 +896,92 @@ test('装配层：信号透传给 callProvider（超时/中止能真正断开）
   await translate(CHUNK, [], ac.signal, {})
 
   assert.equal(seenSignal, ac.signal, '应把调用方的 signal 传下去')
+})
+
+// ---------- 逐句模型（syllable）分流 ----------
+
+test('逐句模型：走 line-translator，一行一个请求，且不把 key 发给模型', async () => {
+  const perLine = createFreeTierProvider({
+    model: 'index-mt-9b-syllable',
+    url: () => 'https://free.invalid/v1',
+    label: 'free',
+  })
+  assert.equal(perLine.perLine, true, 'syllable 模型必须被识别为逐句')
+
+  const sent = []
+  const translate = createChunkTranslator({
+    freeTierProvider: perLine,
+    isFreeTierUsable: () => true,
+    onFreeTierFailure: () => {},
+    onFreeTierSuccess: () => {},
+    isUnusable: () => false,
+    markUnusable: () => {},
+    // 逐句路径会传三参（provider, 单行文本, signal）
+    callProvider: (p, text) => {
+      sent.push(text)
+      return '译文' + sent.length
+    },
+    isNoOutput: () => false,
+    log: () => {},
+  })
+
+  const r = await translate(CHUNK, [], undefined, {})
+
+  assert.equal(sent.length, CHUNK.length, `应一行一个请求；实际 ${sent.length} 次`)
+  // 每行请求都只含 value，不含 key（实测把回显率从 15.5% 压到 6.5%）
+  for (const [k, v] of CHUNK) {
+    assert.ok(sent.some((s) => s.endsWith(v)), `应发过 value "${v}"`)
+    assert.ok(!sent.some((s) => s.includes(k)), `不该把 key "${k}" 发给模型`)
+  }
+  assert.equal(r.providerIds[0], perLine.id)
+  assert.equal(r.fallback, 0)
+})
+
+test('整块模型仍走整块路径（一行请求都不该拆）', async () => {
+  const whole = createFreeTierProvider({ model: 'Index-Translate-35B-A3B', url: () => 'u', label: 'x' })
+  assert.equal(whole.perLine, false)
+
+  const sent = []
+  const translate = createChunkTranslator({
+    freeTierProvider: whole,
+    isFreeTierUsable: () => true,
+    onFreeTierFailure: () => {},
+    onFreeTierSuccess: () => {},
+    isUnusable: () => false,
+    markUnusable: () => {},
+    callProvider: (p, messages) => {
+      sent.push(messages)
+      return GOOD
+    },
+    isNoOutput: () => false,
+    log: () => {},
+  })
+
+  await translate(CHUNK, [], undefined, {})
+  assert.equal(sent.length, 1, '整块模型只该发一次')
+  assert.ok(Array.isArray(sent[0]), '整块路径传的是 messages 数组')
+})
+
+test('逐句模型部分回退不判失败（漏掉的行留英文，其余照用）', async () => {
+  const perLine = createFreeTierProvider({ model: 'index-mt-2b-syllable', url: () => 'u', label: 'x' })
+  let n = 0
+  const translate = createChunkTranslator({
+    freeTierProvider: perLine,
+    isFreeTierUsable: () => true,
+    onFreeTierFailure: () => {},
+    onFreeTierSuccess: () => {},
+    isUnusable: () => false,
+    markUnusable: () => {},
+    callProvider: (p, text) => {
+      n++
+      // 第一行原样回显（模拟实测的 6.5% echo），其余正常
+      return n === 1 ? text.replace(/^.*?\n\n/s, '') : '译文'
+    },
+    isNoOutput: () => false,
+    log: () => {},
+  })
+
+  const r = await translate(CHUNK, [], undefined, {})
+  assert.equal(r.fallback, 1, '只有回显那一行算回退')
+  assert.equal(r.providerIds[0], perLine.id, '免费层仍然算产出方')
 })

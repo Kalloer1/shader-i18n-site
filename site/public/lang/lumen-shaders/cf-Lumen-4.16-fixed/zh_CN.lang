@@ -1,0 +1,41 @@
+#shaders/lang/zh_CN.lang
+# Lumen Shaders vcf-Lumen-4.16-fixed 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Lumen-4.16-fixed.zip 的 shaders/lang/en_us.lang
+# lang/en_us.lang — Lumen
+option.SUN_BRIGHTNESS=太阳亮度
+option.MOON_BRIGHTNESS=月球亮度
+option.BLOCK_LIGHT=方块 / 火把光
+option.BLOCKLIGHT_TEMP=火把温度（更暖..白色）
+option.AMBIENT_LIGHT=环境光
+
+option.ENABLE_SHADOWS=启用阴影
+option.SHADOW_DISTANCE=阴影距离
+option.SHADOW_OPACITY=阴影暗度
+
+option.WATER_OPACITY=水不透明度
+option.WATER_REFLECTIVITY=§4§l§f§l水§f§l折射率
+option.ENABLE_WATER_REFL=水面反射
+
+option.FOG_DENSITY=雾密度
+option.BLOOM_INTENSITY=泛光
+option.EXPOSURE=曝光
+option.CONTRAST=对比度
+option.SATURATION=饱和度
+option.VIBRANCE=鲜艳度
+option.VIGNETTE=暗角
+
+option.TEMPERATURE=色温
+option.TINT=色调
+option.GODRAY_INTENSITY=神圣光芒
+option.ENABLE_GODRAYS=体积光光束
+option.ENABLE_VL=体积光束
+option.VL_INTENSITY=体积光强度
+option.ENABLE_FXAA=FXAA抗锯齿
+option.ENABLE_HANDLIGHT=手持火把光
+option.ENABLE_WAVING=摇摆植被
+option.ENABLE_CLOUDSHADOWS=云层阴影
+option.ENABLE_PURKINJE=夜视适应
+option.ENABLE_AURORA=极光
+option.AURORA_SPEED=极光流动
+option.ENABLE_CLOUDS=程序化云层
+option.CLOUD_COVERAGE=云朵覆盖度

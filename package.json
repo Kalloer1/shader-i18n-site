@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Minecraft Java 版光影包简体中文本地化资源站",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "vitepress dev site",
     "build": "vitepress build site",
@@ -13,6 +16,7 @@
     "cf-catalog": "node scripts/fetch-curseforge-catalog.mjs",
     "sync": "node scripts/sync-metadata.mjs",
     "translate": "node scripts/pipeline.mjs",
+    "probe:candidates": "node scripts/probe-candidates.mjs",
     "validate:lang": "node scripts/validate-lang.mjs",
     "fix:lang": "node scripts/fix-lang-sections.mjs",
     "pack:lang": "node scripts/pack-lang-sources.mjs",

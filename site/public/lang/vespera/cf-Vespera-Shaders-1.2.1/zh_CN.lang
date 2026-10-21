@@ -1,0 +1,291 @@
+#shaders/lang/zh_CN.lang
+# Vespera vcf-Vespera-Shaders-1.2.1 简体中文翻译（AI 初翻，未人工校对）
+# 源文件：Vespera-Shaders-1.2.1.zip 的 shaders/lang/en_us.lang
+#  Vespera Shaders  --  English
+
+screen.PRESETS=画质预设
+screen.LIGHTING=光照
+screen.SHADOWS=阴影样式
+screen.ATMOSPHERE=天空与大气
+screen.FOG=雾与体积光
+screen.CLOUDS=云
+screen.WATER=水
+screen.REFLECTIONS=反射
+screen.MATERIALS=材质与基于物理的渲染
+screen.ANIMATION=世界动画
+screen.POST=后期处理
+screen.COLOR=曝光与色彩
+screen.DIMENSIONS=§c下界 §7与 §5末地
+
+profile.POTATO=§a低配
+profile.LOW=§2低配
+profile.MEDIUM=§e中配
+profile.HIGH=§c高配
+profile.ULTRA=超高
+profile.EXTREME=§d极限
+
+# ----------------------------------------------------------------- shadows
+option.SHADOWS=阴影样式
+option.SHADOWS.comment=太阳与月亮的阴影贴图。这是让整个世界看起来更真实的最主要因素，同时也是性能消耗最大的部分。
+option.shadowMapResolution=阴影分辨率
+option.shadowMapResolution.comment=阴影贴图每边的像素数。数值越高，阴影边缘越清晰，但也会显著增加内存和渲染开销。
+option.shadowDistance=阴影距离
+option.shadowDistance.comment=阴影投射距离（以区块为单位）。超过此距离后，将由天空光贴图接管。
+option.SHADOW_FILTER=阴影滤镜
+option.SHADOW_FILTER.comment=软阴影核的采样点数。
+value.SHADOW_FILTER.0=硬阴影
+value.SHADOW_FILTER.1=快速
+value.SHADOW_FILTER.2=柔和
+value.SHADOW_FILTER.3=更柔和
+value.SHADOW_FILTER.4=电影级
+option.SHADOW_SOFTNESS=阴影柔和度
+option.SHADOW_SOFTNESS.comment=半影区域的宽度。数值越高，阴影越柔和梦幻；数值越低，阴影越清晰锐利。
+option.SHADOW_DISTORTION=阴影扭曲
+option.SHADOW_DISTORTION.comment=阴影贴图分辨率在靠近相机时的集中程度。
+option.SHADOW_BIAS=阴影偏移
+option.SHADOW_BIAS.comment=若出现“阴影痤疮”（阴影紧贴物体），可调高此值；若阴影脱离物体，则调低此值。
+option.COLORED_SHADOWS=彩色阴影
+option.COLORED_SHADOWS.comment=光线穿过彩色玻璃、冰和水时，会保留其颜色。
+option.CONTACT_SHADOWS=接触阴影
+option.CONTACT_SHADOWS.comment=用于处理阴影贴图无法呈现的小细节的屏幕空间阴影。
+option.CONTACT_SHADOW_STEPS=接触阴影步数
+option.CLOUD_SHADOWS=云层阴影
+option.CLOUD_SHADOWS.comment=云层对下方的地面产生阴影。
+option.CLOUD_SHADOW_STRENGTH=云层阴影强度
+
+# ---------------------------------------------------------------- lighting
+option.SUN_INTENSITY=太阳强度
+option.MOON_INTENSITY=月亮强度
+option.NIGHT_BRIGHTNESS=夜间亮度
+option.NIGHT_BRIGHTNESS.comment=调节夜空、月光及伴随而来的环境光亮度。若夜晚过暗，可调高；若希望获得真正漆黑的夜空，则调低。
+option.SKY_LIGHT_INTENSITY=天空光
+option.SKY_LIGHT_INTENSITY.comment=来自天空穹顶的环境光亮度。
+option.BLOCK_LIGHT_INTENSITY=方块光照
+option.BLOCK_LIGHT_TEMPERATURE=方块光照温度
+option.BLOCK_LIGHT_TEMPERATURE.comment=火把和灯笼的颜色温度（单位：开尔文）。数值越低，颜色越暖。
+suffix.BLOCK_LIGHT_TEMPERATURE=K
+option.MINIMUM_LIGHT=最低光照
+option.MINIMUM_LIGHT.comment=环境光的最低亮度，确保洞穴不会完全陷入黑暗。
+option.SSAO=环境光遮蔽
+option.SSAO.comment=加深褶皱和接触点处的阴影。仅作用于每个像素的环境光部分，因此不会影响阳光。
+option.SSAO_SAMPLES=环境光遮蔽采样数
+option.SSAO_RADIUS=AO 半径
+option.SSAO_STRENGTH=环境光遮蔽强度
+option.SUBSURFACE_SCATTERING=次表面散射
+option.SUBSURFACE_SCATTERING.comment=当面向太阳时，光线穿过树叶、草地和雪层产生的透光效果。
+option.SSS_STRENGTH=散射强度
+option.DIRECTIONAL_LIGHTMAP=方向性方块光照
+option.DIRECTIONAL_LIGHTMAP.comment=利用表面法线为火把光赋予方向，而非均匀地照亮所有面。
+option.DIRECTIONAL_LIGHTMAP_STRENGTH=方向强度
+option.HANDHELD_LIGHT=手持光源
+option.HANDHELD_LIGHT.comment=手中的火把会真实地照亮周围的世界。
+option.HANDHELD_LIGHT_RANGE=手持光源范围
+option.LIGHT_LEAK_FIX= 光泄漏修复
+option.LIGHT_LEAK_FIX.comment=防止阳光照射到超出阴影距离的洞穴中。
+option.PURKINJE=夜视偏移
+option.PURKINJE.comment=在接近黑暗的环境中，人眼会失去色彩感知并偏向蓝色。效果细腻，夜间尤为明显。
+option.PURKINJE_STRENGTH=夜间模式强度
+option.EMISSIVE_STRENGTH=自发光强度
+
+# -------------------------------------------------------------- atmosphere
+option.sunPathRotation=太阳路径旋转
+option.sunPathRotation.comment=调整太阳运行轨迹的倾斜角度。0 值表示太阳在正午时正好位于头顶。
+suffix.sunPathRotation=°
+option.SKY_BRIGHTNESS=天空亮度
+option.SKY_SATURATION=天空饱和度
+option.BIOME_SKY_TINT=群系天空染色
+option.BIOME_SKY_TINT.comment=群系自身的天空颜色对大气的影响程度。
+option.SUN_GLOW=太阳光晕
+option.SUN_GLOW.comment=太阳周围米氏光晕的强度。
+option.SKY_SPRITE_INTENSITY=太阳与月亮亮度
+option.PROCEDURAL_SUN_DISC=圆形太阳
+option.PROCEDURAL_SUN_DISC.comment=Minecraft 的太阳纹理是一个 33 度宽的实心方块，因此直接绘制会在天空中呈现一个方形。此选项会用一个真实的圆盘取而代之。关闭后可恢复为原版精灵图，其纹理由您的资源包提供。
+option.SUN_DISC_SIZE=太阳大小
+option.STARS=星星
+option.STAR_DENSITY=星体密度
+option.STAR_BRIGHTNESS=星星亮度
+option.GALAXY=银河
+option.GALAXY_BRIGHTNESS=银河亮度
+option.AURORA=极光
+option.AURORA.comment=晴朗夜晚的北极光效果。
+option.AURORA_BRIGHTNESS=极光亮度
+option.AURORA_COVERAGE=极光覆盖
+
+# --------------------------------------------------------------------- fog
+option.ATMOSPHERIC_FOG=大气雾
+option.ATMOSPHERIC_FOG.comment=距离产生的雾效，其颜色取自天空，使山脉能正确呈现纵深感。
+option.FOG_DENSITY=雾密度
+option.FOG_HEIGHT_FALLOFF=雾高度衰减
+option.FOG_HEIGHT_FALLOFF.comment=一爬上去，雾气就迅速消散了。
+option.FOG_START=雾起点
+option.MORNING_MIST=晨雾
+option.MORNING_MIST.comment=黎明和雨后出现的低洼地带的地面雾。
+option.MORNING_MIST_STRENGTH=雾气强度
+option.BORDER_FOG=边界雾
+option.BORDER_FOG.comment=隐藏已加载区块的硬边缘。
+option.CAVE_FOG=洞穴雾
+option.VOLUMETRIC_LIGHT=体积光
+option.VOLUMETRIC_LIGHT.comment=神之光。射线步进读取阴影贴图，因此光柱被几何体正确遮挡，并受彩色玻璃着色。
+option.VL_SAMPLES=体积光采样数
+option.VL_STRENGTH=体积光强度
+option.VL_UNDERWATER_STRENGTH=水下竖井
+
+# ------------------------------------------------------------------ clouds
+option.CLOUDS=体积云
+option.CLOUDS.comment=带有真实自阴影的体渲染卷积云。替换了默认的平面云层。
+option.CLOUD_STEPS=云层质量
+option.CLOUD_STEPS.comment=主射线步进。本包中最昂贵的设置。
+option.CLOUD_LIGHT_STEPS=云光步数
+option.CLOUD_COVERAGE=云朵覆盖度
+option.CLOUD_DENSITY=云层密度
+option.CLOUD_ALTITUDE=云层高度
+option.CLOUD_THICKNESS=云厚度
+option.CLOUD_SPEED=云层速度
+option.CLOUD_BRIGHTNESS=云亮度
+option.CIRRUS_CLOUDS=卷云层
+option.CIRRUS_CLOUDS.comment=卷积云上方的一层薄高云。
+option.CIRRUS_COVERAGE=卷云覆盖度
+
+# ------------------------------------------------------------------- water
+option.WATER_WAVES=波浪
+option.WATER_WAVE_HEIGHT=波浪高度
+option.WATER_WAVE_SPEED=波浪速度
+option.WATER_WAVE_DETAIL=波浪细节
+option.WATER_WAVE_DETAIL.comment=波场中的噪声八度数量。
+option.WATER_OPACITY=水不透明度
+option.WATER_FOG_DENSITY=水密度
+option.WATER_FOG_DENSITY.comment=吸收和散射同时进行。数值越高，深水越浑浊。
+option.WATER_REFRACTION=折射
+option.WATER_REFRACTION_STRENGTH=折射强度
+option.WATER_CAUSTICS=焦散
+option.WATER_CAUSTICS.comment=聚焦在海底的光线图案。
+option.CAUSTICS_STRENGTH=焦散强度
+option.UNDERWATER_DISTORTION=水下扭曲
+option.WATER_ABSORPTION_R=吸收红色光波
+option.WATER_ABSORPTION_G=吸收绿
+option.WATER_ABSORPTION_B=吸收蓝
+option.WATER_ABSORPTION_R.comment=红色在真水中最先被吸收，所以深处呈蓝色。热带浅水区则相反。
+option.WATER_SCATTER_R=红色散射
+option.WATER_SCATTER_G=散播绿色
+option.WATER_SCATTER_B=蓝色散粉
+
+# ------------------------------------------------------------- reflections
+option.REFLECTIONS=反射
+option.REFLECTIONS.comment=屏幕空间反射，带天空和云层，用于处理画面外的内容。
+option.SSR_STEPS=反射步数
+option.SSR_REFINE=反射精炼
+option.SSR_REFINE.comment=二分搜索在命中后继续运行，从而精确接触点。
+option.ROUGH_REFLECTIONS=粗糙反射
+option.ROUGH_REFLECTION_SAMPLES=粗糙的样品
+option.REFLECTION_STRENGTH=反射强度
+option.SKY_REFLECTION_FALLBACK=天空回退
+option.RAIN_PUDDLES=雨水坑
+option.RAIN_PUDDLES.comment=雨水浸透多孔砖块，在平地上汇聚成倒影的积水。
+option.PUDDLE_AMOUNT=水坑数量
+
+# --------------------------------------------------------------- materials
+option.RESOURCE_PACK_NORMALS=使用 _n 地图
+option.RESOURCE_PACK_NORMALS.comment=读取 LabPBR 资源包的常规、AO 和高度通道。
+option.RESOURCE_PACK_SPECULAR=使用_s 地图
+option.RESOURCE_PACK_SPECULAR.comment=从 LabPBR 资源包中读取光滑度、金属度、多孔性、次表面散射和自发光。
+option.NORMAL_MAP_STRENGTH=法线贴图强度
+option.SPECULAR_STRENGTH=镜面反射强度
+option.GENERATED_NORMALS=生成法线
+option.GENERATED_NORMALS.comment=当资源包未附带法线贴图时，会从纹理本身生成。适用于任何原版风格资源包。
+option.GENERATED_NORMALS_STRENGTH=生成的力量
+option.AUTO_EMISSIVE=自动发光材质
+option.AUTO_EMISSIVE.comment=通过名称识别发光的方块，因此火把和灯笼无需 PBR 资源包即可呈现泛光效果。
+option.PARALLAX=视差遮蔽
+option.PARALLAX.comment=利用 _n 贴图的高度通道为方块增加深度。需要 LabPBR 资源包。
+option.PARALLAX_DEPTH=视差深度
+option.PARALLAX_STEPS=视差质量
+option.PARALLAX_DISTANCE=视差距离
+option.PARALLAX_SHADOWS=视差自阴影效果
+
+# --------------------------------------------------------------- animation
+option.WAVING_STRENGTH=风力强度
+option.WAVING_SPEED=风速
+option.WAVING_PLANTS=植物摇曳
+option.WAVING_LEAVES=树叶摇曳
+option.WAVING_WATER=水面摇曳
+option.WAVING_LAVA=摇摆的熔岩
+option.WAVING_LANTERNS=灯笼摆动
+
+# --------------------------------------------------------------------- post
+option.TAA=时间抗锯齿
+option.TAA.comment=消除锯齿，并让资源包中的所有随机效果随时间推移清晰呈现。
+option.TAA_STRENGTH=TAA 强度
+option.TAA_SHARPEN=TAA 锐化
+option.TAA_JITTER=§a§l时§f§l域抗§f§l锯齿抖动
+option.SHARPEN=锐化
+option.SHARPEN_STRENGTH=锐化强度
+option.BLOOM=泛光
+option.BLOOM_STRENGTH=泛光强度
+option.BLOOM_RADIUS=泛光半径
+option.BLOOMY_FOG=朦胧雾
+option.LENS_FLARE=镜头光晕
+option.LENS_FLARE_STRENGTH=镜头光晕强度
+option.DEPTH_OF_FIELD=景深
+option.DOF_STRENGTH=对焦模糊强度
+option.DOF_SAMPLES=景深模糊采样数
+option.DOF_MANUAL_FOCUS=手动对焦
+option.DOF_MANUAL_FOCUS.comment=锁定焦点的距离（以方块为单位）。设为 -1 可跟随屏幕中心位置的物体。
+value.DOF_MANUAL_FOCUS.-1.0=自动
+option.MOTION_BLUR=运动模糊
+option.MOTION_BLUR_STRENGTH=运动模糊强度
+option.MOTION_BLUR_SAMPLES=运动模糊采样
+option.VIGNETTE=暗角
+option.VIGNETTE_STRENGTH=暗角强度
+option.CHROMATIC_ABERRATION=§6色差
+option.CHROMATIC_ABERRATION_STRENGTH=色差强度
+option.FILM_GRAIN=胶片颗粒
+option.FILM_GRAIN_STRENGTH=颗粒强度
+option.COLOR_DITHERING=抖动
+option.COLOR_DITHERING.comment=减少深色渐变中的色带现象。无性能消耗，建议保持开启。
+
+# -------------------------------------------------------------------- colour
+option.AUTO_EXPOSURE=自动曝光
+option.AUTO_EXPOSURE.comment=当你走出洞穴时，画面会如同人眼一般自动适应。
+option.AUTO_EXPOSURE_SPEED=适应速度
+option.AUTO_EXPOSURE_MIN=最小曝光
+option.AUTO_EXPOSURE_MAX=最大曝光
+option.EXPOSURE=曝光
+option.TONEMAP=§4§l§f§l贴图§f§l映射
+option.TONEMAP.comment=高动态范围如何映射到你的屏幕上。Vespera Filmic 能保留阴影细节，并柔和地压高光。
+value.TONEMAP.0=线性
+value.TONEMAP.1=莱茵哈德
+value.TONEMAP.2=Vespera Filmic
+value.TONEMAP.3=色彩编码的电影级色调映射
+value.TONEMAP.4=Uncharted
+option.TONEMAP_WHITE_POINT=白点
+option.SATURATION=饱和度
+option.VIBRANCE=鲜艳度
+option.VIBRANCE.comment=提升灰暗色彩的效果远强于对已饱和色彩。
+option.CONTRAST=对比度
+option.GAMMA_ADJUST=伽马
+option.WHITE_BALANCE=白平衡
+suffix.WHITE_BALANCE=K
+option.TINT_BALANCE=色调
+option.LIFT_R=提升红色
+option.LIFT_G=提升绿色
+option.LIFT_B=提升蓝色
+option.GAIN_R=增益红色
+option.GAIN_G=增益绿色
+option.GAIN_B=增益蓝色
+
+# ------------------------------------------------------------- dimensions
+option.NETHER_BRIGHTNESS=下界亮度
+option.NETHER_SATURATION=下界饱和度
+option.END_BRIGHTNESS=末地亮度
+option.END_SATURATION=最终饱和度
+
+# ------------------------------------------------------------------ debug
+option.DEBUG_VIEW=调试视图
+option.DEBUG_VIEW.comment=检查单个 gbuffer 通道。正常游戏时请保持为“关”。
+value.DEBUG_VIEW.0=关
+value.DEBUG_VIEW.1=反照率
+value.DEBUG_VIEW.2=法线
+value.DEBUG_VIEW.3=光照图
+value.DEBUG_VIEW.4=平滑度
+value.DEBUG_VIEW.5=材质 ID
+value.DEBUG_VIEW.6=环境光遮蔽

@@ -17,6 +17,7 @@ import {
   createGatewayProvider,
   GATEWAY_TEMPERATURE,
   GATEWAY_MAX_TOKENS,
+  GATEWAY_REQUEST_TIMEOUT_MS,
 } from '../scripts/lib/providers.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -109,4 +110,19 @@ test('网关 provider：buildPrompt 挂在 provider 上（提示词是 provider 
   const p = createGatewayProvider({ model: 'm', url: () => 'u', key: () => 'k', label: 'x' })
   assert.equal(typeof p.buildPrompt, 'function')
   assert.deepEqual(p.buildPrompt('A=B'), buildGatewayPrompt('A=B'))
+})
+
+// Bug 修复（实测 CI run 39520489773）：网关 provider 以前没有 requestTimeoutMs，
+// chatOnce 只在该字段存在时才加单请求超时，于是网关请求**没有任何单请求超时** ——
+// 一次挂起只能等外层候选 signal 中止（8 分钟）。免费层 12 秒就翻完的光影，
+// 因 3 个分块转交回退池而整条超时，4.7% 的回退率却没能落盘。
+test('网关 provider：默认带 90 秒单请求超时（挂住的请求快速失败，不拖满候选预算）', () => {
+  const p = createGatewayProvider({ model: 'm', url: () => 'u', key: () => 'k', label: 'x' })
+  assert.equal(p.requestTimeoutMs, GATEWAY_REQUEST_TIMEOUT_MS)
+  assert.equal(p.requestTimeoutMs, 90000)
+})
+
+test('网关 provider：requestTimeoutMs 可覆盖（LLM_REQUEST_TIMEOUT_MS 由此注入）', () => {
+  const p = createGatewayProvider({ model: 'm', url: () => 'u', key: () => 'k', label: 'x', requestTimeoutMs: 30000 })
+  assert.equal(p.requestTimeoutMs, 30000)
 })
