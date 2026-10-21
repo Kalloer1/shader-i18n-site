@@ -18397,6 +18397,111 @@
         }
       ],
       "quark": "https://pan.quark.cn/s/9792c292542a"
+    },
+    {
+      "id": "noobie-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "noobie-shaders",
+        "cfId": 1744484
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-Noobie-Shaders-v1.2",
+          "langVersion": "1.0.0",
+          "file": "/lang/noobie-shaders/cf-Noobie-Shaders-v1.2/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/3b696bbd7d99",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/3b696bbd7d99"
+    },
+    {
+      "id": "bms-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "bms-shader",
+        "cfId": 1269129
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-BMS-Shaders",
+          "langVersion": "1.0.0",
+          "file": "/lang/bms-shader/cf-BMS-Shaders/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/e889f3382a57",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b / index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/e889f3382a57"
+    },
+    {
+      "id": "sunset-shader",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "sunset-shader",
+        "cfId": 1600180
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-SunSet_Shader_PUBLIC_1.0",
+          "langVersion": "1.0.0",
+          "file": "/lang/sunset-shader/cf-SunSet_Shader_PUBLIC_1.0/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/0406751fdcb6",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-2b-syllable / index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/0406751fdcb6"
+    },
+    {
+      "id": "bad-shaders",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "bad-shaders",
+        "cfId": 1600420
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-BadShader",
+          "langVersion": "1.0.0",
+          "file": "/lang/bad-shaders/cf-BadShader/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/026688c7ec94",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/026688c7ec94"
+    },
+    {
+      "id": "shaders-for-advanced-rocketry",
+      "source": "curseforge",
+      "curseforge": {
+        "slug": "shaders-for-advanced-rocketry",
+        "cfId": 1040084
+      },
+      "langVersions": [
+        {
+          "shaderVersion": "cf-ARshadermod",
+          "langVersion": "1.0.0",
+          "file": "/lang/shaders-for-advanced-rocketry/cf-ARshadermod/zh_CN.lang",
+          "quark": "https://pan.quark.cn/s/ff30dcdf27af",
+          "updatedAt": "2026-10-21",
+          "contributors": [
+            "AI 初翻（来源：免费层 index-mt-9b / index-mt-9b-syllable / Index-Translate-35B-A3B / index-mt-2b / index-mt-2b-syllable），未人工校对"
+          ]
+        }
+      ],
+      "quark": "https://pan.quark.cn/s/ff30dcdf27af"
     }
   ]
 }
