@@ -3,7 +3,6 @@ import { computed, ref, watch } from 'vue'
 import {
   allShaders,
   shaderCover,
-  shaderCoverSource,
   shaderStatus,
   shaderVersionRange,
 } from '../data.js'
@@ -13,7 +12,6 @@ const numberFormat = new Intl.NumberFormat('zh-CN')
 
 const total = allShaders.length
 const translated = allShaders.filter((s) => s.langVersions?.length).length
-const maxDownloads = allShaders.reduce((max, s) => Math.max(max, Number(s.downloads) || 0), 0)
 const latestUpdate = allShaders.reduce((latest, s) => {
   for (const version of s.langVersions ?? []) {
     const date = String(version.updatedAt ?? '').slice(0, 10)
@@ -51,10 +49,6 @@ function cover(shader) {
   return shaderCover(shader)
 }
 
-function coverSource(shader) {
-  return shaderCoverSource(shader)
-}
-
 function initial(shader) {
   return (shader?.title ?? shader?.id ?? '?').trim().charAt(0).toUpperCase()
 }
@@ -71,23 +65,17 @@ function formatDate(value) {
 
 <template>
   <div class="home-shell">
-    <header class="home-topbar">
-      <div class="home-wrap home-topbar__inner">
-        <a class="home-brand" href="/" aria-label="光影汉化下载器首页">
-          <span class="home-brand__mark" aria-hidden="true">影</span>
-          <span>光影汉化下载器</span>
-        </a>
+    <main class="home-wrap home-main">
+      <section class="hero" aria-labelledby="home-hero-title">
+        <h1 id="home-hero-title">找到光影，拿走汉化，三步丢进游戏</h1>
+        <p class="hero-sub">
+          下载 <code>zh_CN.lang</code>，放进光影包的 <code>shaders/lang/</code> 就行。
+          不用注册，也不用看视频。
+        </p>
 
-        <span class="home-chip">
-          <b>{{ formatNumber(total) }}</b> 收录 · <b>{{ formatNumber(translated) }}</b> 已有汉化
-        </span>
-        <span v-if="latestUpdate" class="home-chip home-chip--date">
-          数据更新于 <time :datetime="latestUpdate">{{ latestUpdate }}</time>
-        </span>
-
-        <div class="home-topsearch">
-          <span class="home-search__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="hero-search">
+          <span class="hero-search__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-3.5-3.5" />
             </svg>
@@ -97,79 +85,20 @@ function formatDate(value) {
             id="home-search"
             v-model="query"
             type="search"
-            placeholder="搜光影名或作者，比如 BSL、EminGT"
+            placeholder="搜光影名或作者，比如 BSL、Complementary"
             autocomplete="off"
           />
-          <label class="sr-only" for="home-sort">排序方式</label>
-          <select id="home-sort" v-model="sortBy">
-            <option value="downloads">按下载量</option>
-            <option value="name">按名称</option>
-            <option value="newest">按汉化更新</option>
-          </select>
-        </div>
-      </div>
-    </header>
-
-    <main class="home-wrap home-main">
-      <section class="hero-section" aria-labelledby="home-hero-title">
-        <div class="hero-copy">
-          <p class="hero-kicker">
-            <span class="hero-kicker__dot" aria-hidden="true"></span>
-            只做一件事：帮你把汉化文件拿走
-          </p>
-          <h1 id="home-hero-title">
-            找到光影，<span>拿走汉化</span>，<br />
-            三步丢进游戏。
-          </h1>
-          <p class="hero-lede">
-            下载 <code>zh_CN.lang</code> 放进光影包里的 <code>shaders/lang/</code> 就行。
-            不用注册，不用看视频教程，下面这块面板就是全部流程。
-          </p>
-          <div class="hero-meter" aria-label="站点数据统计">
-            <div>
-              <b>{{ formatNumber(total) }}</b>
-              <span>收录光影</span>
-            </div>
-            <div>
-              <b>{{ formatNumber(translated) }}</b>
-              <span>已有汉化版本文件</span>
-            </div>
-            <div>
-              <b>{{ formatNumber(maxDownloads) }}</b>
-              <span>最高下载</span>
-            </div>
-          </div>
-          <div class="hero-actions">
-            <a class="home-btn home-btn--solid" href="#dl-panel">直接去下载面板</a>
-            <a class="home-btn home-btn--ghost" href="#shader-list">先浏览全部光影</a>
-          </div>
-          <p class="hero-note">点下方列表任意行，下载面板会切换到该光影。</p>
         </div>
 
-        <figure v-if="selected" class="hero-shot">
-          <img
-            v-if="cover(selected)"
-            :key="selected.id"
-            :src="cover(selected)"
-            :alt="`${selected.title} 游戏内截图`"
-            width="960"
-            height="540"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            referrerpolicy="no-referrer"
-          />
-          <span v-else class="hero-shot__fallback" aria-hidden="true">{{ initial(selected) }}</span>
-          <figcaption>
-            <span>{{ selected.title }} · {{ selected.author }}</span>
-            <code>{{ coverSource(selected) }}</code>
-          </figcaption>
-        </figure>
+        <p class="hero-meta">
+          <span><b>{{ formatNumber(total) }}</b> 个光影里，<b>{{ formatNumber(translated) }}</b> 个已有汉化</span>
+          <span v-if="latestUpdate">数据更新于 <time :datetime="latestUpdate">{{ latestUpdate }}</time></span>
+        </p>
       </section>
 
-      <section v-if="selected" id="dl-panel" class="download-panel" aria-labelledby="download-panel-title">
-        <header class="download-panel__head">
-          <span class="download-panel__cover">
+      <section v-if="selected" id="dl-panel" class="dl-bar" aria-labelledby="dl-bar-title">
+        <div class="dl-bar__row">
+          <span class="dl-bar__cover">
             <img
               v-if="cover(selected)"
               :src="cover(selected)"
@@ -182,120 +111,92 @@ function formatDate(value) {
             />
             <span v-else aria-hidden="true">{{ initial(selected) }}</span>
           </span>
-          <div class="download-panel__title">
-            <h2 id="download-panel-title">{{ selected.title }}</h2>
-            <p>作者 {{ selected.author }} · 适配 Iris / OptiFine</p>
-          </div>
-          <div class="download-panel__count">
-            <b>{{ formatNumber(selected.downloads) }}</b>
-            <span>Modrinth 累计下载</span>
-          </div>
-        </header>
 
-        <div class="download-panel__body">
-          <div class="download-panel__files">
-            <div class="panel-status" :class="`panel-status--${selectedStatus.key}`">
-              <span class="status-badge" :class="`status-badge--${selectedStatus.key}`">
-                {{ selectedStatus.label }}
-              </span>
-              <span>{{ selectedStatus.description }}</span>
-            </div>
-
-            <template v-if="versions.length">
-              <p class="panel-label">选你的光影版本，必须和汉化版本对应：</p>
-              <div class="version-tabs" role="group" aria-label="选择汉化版本">
-                <button
-                  v-for="(version, index) in versions"
-                  :key="version.shaderVersion"
-                  type="button"
-                  class="version-tab"
-                  :class="{ 'version-tab--active': versionIndex === index }"
-                  :aria-pressed="versionIndex === index"
-                  :aria-label="`选择汉化版本 ${version.shaderVersion}`"
-                  @click="versionIndex = index"
-                >
-                  {{ version.shaderVersion }}
-                </button>
-              </div>
-
-              <div class="file-card">
-                <code>{{ directUrl }}</code>
-                <div class="file-card__meta">
-                  <span>汉化更新 <b>{{ formatDate(currentVersion?.updatedAt) }}</b></span>
-                  <span>MC <b>{{ gameRange || '—' }}</b></span>
-                  <span>语言版本 <b>{{ currentVersion?.langVersion || '—' }}</b></span>
-                </div>
-              </div>
-            </template>
-
-            <p v-else class="no-lang-file">该光影暂无对应的 zh_CN.lang 文件。</p>
-
-            <div class="download-actions">
-              <a
-                v-if="currentVersion && quarkUrl"
-                class="download-main"
-                :href="quarkUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>国内镜像</span>
-                <small>对应光影 {{ currentVersion.shaderVersion }} · 国内镜像</small>
-              </a>
-              <button
-                v-else
-                type="button"
-                class="download-main"
-                :aria-describedby="currentVersion && directUrl ? 'quark-unavailable' : undefined"
-                disabled
-              >
-                <span>{{ currentVersion ? '国内镜像不可用' : '暂无汉化文件' }}</span>
-                <small>{{ currentVersion && directUrl ? '可使用 GitHub 直链' : '没有可下载的语言文件' }}</small>
-              </button>
-
-              <a
-                v-if="directUrl"
-                class="download-alt"
-                :href="directUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub 直链
-              </a>
-              <button v-else type="button" class="download-alt" disabled>GitHub 直链</button>
-            </div>
-
-            <p v-if="currentVersion && !quarkUrl" id="quark-unavailable" class="download-tip">
-              当前版本暂无国内镜像，主按钮已禁用；请使用 GitHub 直链下载。
-            </p>
-            <p v-else-if="currentVersion" class="download-tip">
-              版本对不上时请切换上方版本标签，避免设置项错位。
+          <div class="dl-bar__id">
+            <h2 id="dl-bar-title">{{ selected.title }}</h2>
+            <p>
+              作者 {{ selected.author }}
+              <span v-if="gameRange"> · MC {{ gameRange }}</span>
             </p>
           </div>
 
-          <aside class="install-panel">
-            <template v-if="versions.length">
-              <h3>装进游戏 <span>三步，不用看视频教程</span></h3>
-              <ol class="install-steps">
-                <li>
-                  <span class="step-num" aria-hidden="true">1</span>
-                  <p>解压光影包，找到包里面的 <code>shaders</code> 文件夹。</p>
-                </li>
-                <li>
-                  <span class="step-num" aria-hidden="true">2</span>
-                  <p>把刚下载的 <code>zh_CN.lang</code> 放进 <code>shaders/lang/</code>。</p>
-                </li>
-                <li>
-                  <span class="step-num" aria-hidden="true">3</span>
-                  <p>进游戏后打开视频设置 → 光影设置 → 语言选简体中文，重进即生效。</p>
-                </li>
-              </ol>
-            </template>
-            <div v-else class="install-empty">
-              <h3>无需下载语言文件</h3>
-              <p>{{ selectedStatus.description }}</p>
-            </div>
-          </aside>
+          <span class="status-badge" :class="`status-badge--${selectedStatus.key}`">
+            {{ selectedStatus.label }}
+          </span>
+
+          <div v-if="versions.length" class="dl-bar__versions" role="group" aria-label="选择汉化版本">
+            <button
+              v-for="(version, index) in versions"
+              :key="version.shaderVersion"
+              type="button"
+              class="version-tab"
+              :class="{ 'version-tab--active': versionIndex === index }"
+              :aria-pressed="versionIndex === index"
+              :aria-label="`选择汉化版本 ${version.shaderVersion}`"
+              @click="versionIndex = index"
+            >
+              {{ version.shaderVersion }}
+            </button>
+          </div>
+
+          <div class="dl-bar__actions">
+            <a
+              v-if="currentVersion && quarkUrl"
+              class="dl-main"
+              :href="quarkUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              国内镜像
+            </a>
+            <button
+              v-else
+              type="button"
+              class="dl-main"
+              :aria-describedby="currentVersion && directUrl ? 'quark-unavailable' : undefined"
+              disabled
+            >
+              {{ currentVersion ? '国内镜像不可用' : '暂无汉化文件' }}
+            </button>
+
+            <a
+              v-if="directUrl"
+              class="dl-alt"
+              :href="directUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+            <button v-else type="button" class="dl-alt" disabled>GitHub</button>
+          </div>
         </div>
+
+        <p v-if="currentVersion && !quarkUrl" id="quark-unavailable" class="dl-bar__note">
+          当前版本暂无国内镜像，请用 GitHub 直链下载。
+        </p>
+
+        <details v-if="versions.length" class="dl-bar__steps">
+          <summary>装进游戏 · 三步</summary>
+          <div class="dl-bar__steps-body">
+            <ol>
+              <li>解压光影包，找到包里的 <code>shaders</code> 文件夹。</li>
+              <li>把下载的 <code>zh_CN.lang</code> 放进 <code>shaders/lang/</code>。</li>
+              <li>进游戏 → 视频设置 → 光影设置 → 语言选简体中文，重进即生效。</li>
+            </ol>
+            <p class="dl-bar__file">
+              <span>当前文件</span>
+              <code>{{ directUrl || '—' }}</code>
+            </p>
+            <p class="dl-bar__meta">
+              汉化更新 <b>{{ formatDate(currentVersion?.updatedAt) }}</b>
+              · 语言版本 <b>{{ currentVersion?.langVersion || '—' }}</b>
+              · Modrinth 累计下载 <b>{{ formatNumber(selected.downloads) }}</b>
+            </p>
+          </div>
+        </details>
+
+        <p v-else class="dl-bar__note">{{ selectedStatus.description }}</p>
       </section>
 
       <ShaderList
@@ -310,26 +211,10 @@ function formatDate(value) {
 
 <style scoped>
 .home-shell {
-  --home-bg: #0b0e12;
-  --home-bg-soft: #0e1319;
-  --home-panel: #131a22;
-  --home-panel-strong: #161e28;
-  --home-input: #0a0e13;
-  --home-line: #242f3b;
-  --home-line-soft: #1c2530;
-  --home-text: #e9f0f4;
-  --home-muted: #93a1ad;
-  --home-faint: #64707b;
-  --home-go: #3ddc84;
-  --home-go-text: #062415;
-  --home-font-ui: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  --home-font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   min-height: 100vh;
-  background: var(--home-bg);
-  color: var(--home-text);
-  font-family: var(--home-font-ui);
   font-size: 15px;
   line-height: 1.65;
+  color: var(--mc-text);
 }
 
 .home-shell *,
@@ -340,809 +225,448 @@ function formatDate(value) {
 
 .home-wrap {
   width: 100%;
-  max-width: 1280px;
+  max-width: calc(var(--sh-content-max) + 2 * var(--sh-gutter));
   margin-inline: auto;
-  padding-inline: 32px;
-}
-
-.home-topbar {
-  position: sticky;
-  top: var(--vp-nav-height, 64px);
-  z-index: 18;
-  border-bottom: 1px solid var(--home-line-soft);
-  background: var(--home-bg);
-}
-
-.home-topbar__inner {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-height: 60px;
-}
-
-.home-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  flex: none;
-  color: var(--home-text);
-  font-size: 16px;
-  font-weight: 800;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.home-brand:hover {
-  color: var(--home-text);
-}
-
-.home-brand__mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--home-line);
-  border-radius: 7px;
-  background: #1b232e;
-  color: var(--home-text);
-  font-size: 14px;
-  line-height: 1;
-}
-
-.home-chip {
-  flex: none;
-  padding: 4px 12px;
-  border: 1px solid var(--home-line);
-  border-radius: 999px;
-  color: var(--home-muted);
-  font-size: 12.5px;
-  white-space: nowrap;
-}
-
-.home-chip b,
-.home-chip time {
-  color: var(--home-text);
-  font-family: var(--home-font-mono);
-  font-variant-numeric: tabular-nums;
-}
-
-.home-topsearch {
-  position: relative;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-left: auto;
-}
-
-.home-search__icon {
-  position: absolute;
-  left: 12px;
-  /* 窄屏 topsearch 换行成多行时，绝对定位的静态位置会被垂直居中到整个容器，
-     图标看起来落到输入框下方；固定 top 让它始终贴在输入框（高 38px）内 */
-  top: 11px;
-  z-index: 1;
-  display: inline-flex;
-  color: var(--home-faint);
-  pointer-events: none;
-}
-
-.home-topsearch input,
-.home-topsearch select {
-  height: 38px;
-  border: 1px solid var(--home-line);
-  border-radius: 8px;
-  background: var(--home-input);
-  color: var(--home-text);
-  font-family: var(--home-font-ui);
-  font-size: 13.5px;
-}
-
-.home-topsearch input {
-  width: 300px;
-  padding: 0 12px 0 36px;
-  outline: none;
-}
-
-.home-topsearch input::placeholder {
-  color: var(--home-faint);
-}
-
-.home-topsearch select {
-  /* 去掉原生下拉外观后自绘箭头，避免看起来像纯文本框 */
-  appearance: none;
-  padding: 0 30px 0 10px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%2393a1ad' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5l5-5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  color: var(--home-muted);
-}
-
-.home-topsearch input:focus,
-.home-topsearch select:focus {
-  border-color: #526273;
+  padding-inline: var(--sh-gutter);
 }
 
 .home-main {
-  padding-bottom: 40px;
+  padding-bottom: 56px;
 }
 
-.hero-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 48px;
-  align-items: center;
-  padding: 44px 0 30px;
+/* ---------- 首屏：标题 + 搜索 ---------- */
+.hero {
+  padding: 44px 0 26px;
+  max-width: 760px;
 }
 
-.hero-copy {
-  min-width: 0;
-}
-
-.hero-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 16px;
-  padding: 5px 13px;
-  border: 1px solid var(--home-line);
-  border-radius: 999px;
-  background: #10161d;
-  color: var(--home-muted);
-  font-size: 12.5px;
-}
-
-.hero-kicker__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #8b96a1;
-}
-
-.hero-copy h1 {
-  margin: 0 0 14px !important;
-  padding: 0 !important;
-  border: 0 !important;
-  color: var(--home-text);
-  font-size: 42px;
-  font-weight: 900;
-  line-height: 1.25;
+.hero h1 {
+  font-family: var(--shader-display-font);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  color: var(--mc-text);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
   text-wrap: balance;
+  border: none;
+  padding: 0;
 }
 
-.hero-copy h1 span {
-  color: inherit;
+.hero-sub {
+  margin: 0 0 22px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--mc-text-dim);
+  max-width: 34em;
 }
 
-.hero-lede {
-  max-width: 52ch;
-  margin: 0 0 20px;
-  color: var(--home-muted);
-  font-size: 15.5px;
+.hero-sub code {
+  font-family: var(--shader-num-font);
+  font-size: 0.86em;
+  background: var(--mc-slot);
+  border: 1px solid var(--mc-border);
+  padding: 1px 5px;
+  color: var(--mc-torch);
 }
 
-.hero-lede code,
-.install-panel code,
-.file-card code {
-  border: 1px solid var(--home-line);
-  border-radius: 6px;
-  background: var(--home-input);
-  color: var(--home-text);
-  font-family: var(--home-font-mono);
-}
-
-.hero-lede code {
-  padding: 1px 7px;
-  font-size: 13px;
-}
-
-.hero-meter {
+/* 搜索框：石槽 + 火把色聚焦 */
+.hero-search {
+  position: relative;
   display: flex;
-  gap: 28px;
-  margin: 6px 0 22px;
+  align-items: center;
+  max-width: 620px;
 }
 
-.hero-meter div {
-  min-width: 0;
+.hero-search__icon {
+  position: absolute;
+  left: 16px;
+  display: inline-flex;
+  color: var(--mc-text-faint);
+  pointer-events: none;
 }
 
-.hero-meter b {
-  display: block;
-  color: var(--home-text);
-  font-family: var(--home-font-mono);
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 1.3;
+.hero-search input {
+  width: 100%;
+  height: 56px;
+  padding: 0 18px 0 46px;
+  font-family: var(--vp-font-family-base);
+  font-size: 16px;
+  color: var(--mc-text);
+  background: var(--mc-slot);
+  border: 3px solid var(--mc-border);
+  border-radius: 0;
+  box-shadow: var(--mc-bevel-in);
+  outline: none;
+}
+
+.hero-search input::placeholder {
+  color: var(--mc-text-faint);
+}
+
+.hero-search input:focus-visible {
+  border-color: var(--mc-torch);
+  box-shadow: var(--mc-bevel-in), 0 0 0 3px rgba(240, 164, 55, 0.25);
+  outline: none;
+}
+
+.hero-search input::-webkit-search-cancel-button {
+  filter: invert(0.7);
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 16px 0 0;
+  font-size: 12.5px;
+  color: var(--mc-text-faint);
+}
+
+.hero-meta b {
+  font-family: var(--shader-num-font);
+  font-weight: 700;
+  color: var(--mc-text-dim);
   font-variant-numeric: tabular-nums;
 }
 
-.hero-meter span {
-  color: var(--home-faint);
-  font-size: 12.5px;
+/* ---------- 下载栏：粘在导航下方 ---------- */
+.dl-bar {
+  position: sticky;
+  top: var(--vp-nav-height, 64px);
+  z-index: 12;
+  margin-bottom: 28px;
+  background: var(--mc-stone);
+  border: 2px solid var(--mc-border);
+  box-shadow: var(--mc-bevel-out), 0 6px 0 var(--mc-void);
+  scroll-margin-top: calc(var(--vp-nav-height, 64px) + 8px);
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.home-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 45px;
-  padding: 10px 22px;
-  border: 1px solid transparent;
-  border-radius: 9px;
-  font-size: 14.5px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-decoration: none;
-  transition: border-color 0.18s, background-color 0.18s, color 0.18s;
-}
-
-.home-btn--solid {
-  background: var(--home-text);
-  color: var(--home-bg);
-}
-
-.home-btn--solid:hover {
-  background: #fff;
-  color: var(--home-bg);
-}
-
-.home-btn--ghost {
-  border-color: var(--home-line);
-  color: var(--home-text);
-}
-
-.home-btn--ghost:hover {
-  border-color: #526273;
-  color: var(--home-text);
-}
-
-.hero-note {
-  margin: 12px 0 0;
-  color: var(--home-faint);
-  font-size: 12.5px;
-}
-
-.hero-shot {
-  min-width: 0;
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid var(--home-line);
-  border-radius: 14px;
-  background: var(--home-bg-soft);
-}
-
-.hero-shot img {
-  display: block;
-  width: 100%;
-  height: 340px;
-  object-fit: cover;
-}
-
-.hero-shot__fallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 340px;
-  background: var(--home-panel);
-  color: var(--home-faint);
-  font-family: var(--home-font-mono);
-  font-size: 56px;
-}
-
-.hero-shot figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 10px 14px;
-  border-top: 1px solid var(--home-line-soft);
-  color: var(--home-muted);
-  font-size: 12.5px;
-}
-
-.hero-shot figcaption span {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.hero-shot figcaption code {
-  flex: none;
-  color: var(--home-faint);
-  font-family: var(--home-font-mono);
-  font-size: 12px;
-}
-
-.download-panel {
-  margin: 14px 0 26px;
-  overflow: hidden;
-  border: 1px solid var(--home-line);
-  border-radius: 12px;
-  background: var(--home-panel);
-}
-
-.download-panel__head {
+.dl-bar__row {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 18px 22px;
-  border-bottom: 1px solid var(--home-line-soft);
+  padding: 12px 14px;
+  flex-wrap: wrap;
 }
 
-.download-panel__cover {
+.dl-bar__cover {
+  flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: none;
   width: 44px;
   height: 44px;
   overflow: hidden;
-  border: 1px solid var(--home-line);
-  border-radius: 10px;
-  background: var(--home-input);
-  color: var(--home-faint);
-  font-family: var(--home-font-mono);
+  background: var(--mc-slot);
+  border: 2px solid var(--mc-border);
+  box-shadow: var(--mc-bevel-in);
+  font-family: var(--shader-display-font);
   font-size: 18px;
+  color: var(--mc-text-faint);
 }
 
-.download-panel__cover img {
-  display: block;
+.dl-bar__cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.download-panel__title {
+.dl-bar__id {
   min-width: 0;
+  flex: 1 1 200px;
 }
 
-.download-panel__title h2 {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  color: var(--home-text);
+.dl-bar__id h2 {
+  font-family: var(--shader-display-font);
   font-size: 17px;
   font-weight: 700;
-  line-height: 1.35;
-}
-
-.download-panel__title p {
-  margin: 2px 0 0;
-  color: var(--home-muted);
-  font-size: 12.5px;
-}
-
-.download-panel__count {
-  flex: none;
-  margin-left: auto;
-  text-align: right;
-  color: var(--home-faint);
-  font-size: 12px;
-}
-
-.download-panel__count b {
-  display: block;
-  color: var(--home-text);
-  font-family: var(--home-font-mono);
-  font-size: 16px;
-  font-variant-numeric: tabular-nums;
-}
-
-.download-panel__body {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-}
-
-.download-panel__files {
-  min-width: 0;
-  padding: 22px;
-  border-right: 1px solid var(--home-line-soft);
-}
-
-.panel-status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-  color: var(--home-muted);
-  font-size: 12.5px;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  flex: none;
-  padding: 3px 10px;
-  border: 1px solid var(--home-line);
-  border-radius: 999px;
-  background: var(--home-input);
-  font-size: 12px;
-  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--mc-text);
+  text-shadow: var(--mc-text-shadow-sm);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.status-badge--translated {
-  border-color: rgba(216, 166, 87, 0.55);
-  color: #d8a657;
+.dl-bar__id p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--mc-text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.status-badge--native {
-  border-color: rgba(111, 168, 220, 0.5);
-  color: #8fc4ee;
-}
-
-.status-badge--missing {
-  border-color: rgba(224, 122, 95, 0.52);
-  color: #ef9b82;
-}
-
-.status-badge--none {
-  color: var(--home-muted);
-}
-
-.panel-label {
-  margin: 0 0 10px;
-  color: var(--home-muted);
-  font-size: 12.5px;
-}
-
-.version-tabs {
+/* 版本标签：横向可滚，不换行挤压 */
+.dl-bar__versions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--mc-border) transparent;
 }
 
 .version-tab {
-  padding: 9px 16px;
-  border: 1px solid var(--home-line);
-  border-radius: 8px;
-  background: #0b1016;
-  color: var(--home-muted);
-  font-family: var(--home-font-mono);
-  font-size: 13px;
+  flex: none;
+  font-family: var(--vp-font-family-base);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 7px 11px;
+  color: var(--mc-text-dim);
+  background: var(--mc-stone-hi);
+  border: 2px solid var(--mc-border);
+  border-radius: 0;
+  box-shadow: var(--mc-bevel-out);
   cursor: pointer;
+  white-space: nowrap;
+  text-shadow: var(--mc-text-shadow-sm);
+}
+
+.version-tab:hover {
+  background: var(--mc-stone-raised);
+  color: var(--mc-text);
 }
 
 .version-tab--active {
-  border-color: #c8d2db;
-  color: var(--home-text);
-  font-weight: 700;
+  background: var(--mc-torch);
+  color: #2a1600;
+  box-shadow: var(--mc-bevel-in);
+  text-shadow: none;
 }
 
-.file-card {
-  margin-bottom: 14px;
-  padding: 14px 16px;
-  border: 1px solid var(--home-line);
-  border-radius: 10px;
-  background: var(--home-input);
-}
-
-.file-card > code {
-  display: block;
-  border: 0;
-  background: transparent;
-  color: var(--home-text);
-  font-size: 13px;
-  overflow-wrap: anywhere;
-}
-
-.file-card__meta {
+.dl-bar__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  margin-top: 8px;
-  color: var(--home-faint);
-  font-size: 12px;
+  gap: 8px;
+  flex: none;
+  margin-left: auto;
 }
 
-.file-card__meta b {
-  color: var(--home-muted);
-  font-family: var(--home-font-mono);
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
-}
-
-.no-lang-file {
-  margin: 0 0 14px;
-  padding: 14px 16px;
-  border: 1px solid var(--home-line);
-  border-radius: 10px;
-  background: var(--home-input);
-  color: var(--home-muted);
-  font-size: 13px;
-}
-
-.download-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.download-main,
-.download-alt {
-  min-height: 54px;
-  border-radius: 10px;
-  font-family: var(--home-font-ui);
-  cursor: pointer;
-}
-
-.download-main {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 9px 16px;
-  border: 1px solid transparent;
-  background: var(--home-go);
-  color: var(--home-go-text);
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 1.2;
-  text-align: left;
-  text-decoration: none;
-}
-
-.download-main small {
-  margin-top: 2px;
-  font-size: 12px;
-  font-weight: 400;
-  opacity: 0.76;
-}
-
-.download-main:disabled {
-  border-color: var(--home-line);
-  background: var(--home-input);
-  color: var(--home-faint);
-  cursor: not-allowed;
-}
-
-.download-main:disabled small {
-  opacity: 1;
-}
-
-.download-alt {
+.dl-main,
+.dl-alt {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: none;
-  padding: 0 16px;
-  border: 1px solid var(--home-line);
-  background: transparent;
-  color: var(--home-muted);
-  font-size: 13px;
+  font-family: var(--shader-display-font);
   font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.download-alt:hover {
-  border-color: #526273;
-  color: var(--home-text);
-}
-
-.download-alt:disabled {
-  color: var(--home-faint);
-  cursor: not-allowed;
-  opacity: 0.65;
-}
-
-.download-tip {
-  margin: 9px 0 0;
-  color: var(--home-faint);
-  font-size: 12px;
-}
-
-.install-panel {
-  min-width: 0;
-  padding: 22px;
-  background: #0f141a;
-}
-
-.install-panel h3 {
-  margin: 0 0 14px !important;
-  padding: 0 !important;
-  border: 0 !important;
-  color: var(--home-text);
-  font-size: 14px;
-}
-
-.install-panel h3 span {
-  color: var(--home-faint);
-  font-size: 12.5px;
-  font-weight: 400;
-}
-
-.install-steps {
-  display: grid;
-  gap: 14px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.install-steps li {
-  display: flex;
-  gap: 12px;
-}
-
-.step-num {
-  flex: none;
-  width: 22px;
-  color: var(--home-muted);
-  font-family: var(--home-font-mono);
   font-size: 13px;
+  padding: 0 18px;
+  height: 44px;
+  border: 2px solid var(--mc-border);
+  border-radius: 0;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dl-main {
+  background: var(--mc-torch);
+  color: #2a1600 !important;
+  box-shadow: var(--mc-bevel-out);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.dl-main:hover:not(:disabled) {
+  background: #ffb44f;
+}
+
+.dl-main:active:not(:disabled) {
+  box-shadow: var(--mc-bevel-in);
+}
+
+.dl-main:disabled {
+  background: var(--mc-stone-hi);
+  color: var(--mc-text-faint) !important;
+  box-shadow: var(--mc-bevel-in);
+  cursor: not-allowed;
+  text-shadow: none;
+}
+
+.dl-alt {
+  background: var(--mc-stone-raised);
+  color: var(--mc-text) !important;
+  box-shadow: var(--mc-bevel-out);
+  text-shadow: var(--mc-text-shadow-sm);
+}
+
+.dl-alt:hover:not(:disabled) {
+  background: #3e342a;
+}
+
+.dl-alt:disabled {
+  background: var(--mc-stone);
+  color: var(--mc-text-faint) !important;
+  box-shadow: var(--mc-bevel-in);
+  cursor: not-allowed;
+  text-shadow: none;
+}
+
+.dl-bar__note {
+  margin: 0;
+  padding: 0 14px 12px;
+  font-size: 12.5px;
+  color: var(--mc-text-faint);
+}
+
+/* 安装步骤折叠：整条栏的动作 */
+.dl-bar__steps {
+  border-top: 2px solid var(--mc-border);
+  background: var(--mc-slot);
+}
+
+.dl-bar__steps summary {
+  padding: 9px 14px;
+  font-family: var(--shader-display-font);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mc-text-dim);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  text-shadow: var(--mc-text-shadow-sm);
+}
+
+.dl-bar__steps summary::-webkit-details-marker {
+  display: none;
+}
+
+.dl-bar__steps summary::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--mc-torch);
+  border: 2px solid var(--mc-border);
+  margin-right: 10px;
+}
+
+.dl-bar__steps summary:hover {
+  color: var(--mc-text);
+}
+
+.dl-bar__steps summary:focus-visible {
+  outline: 3px solid var(--mc-torch);
+  outline-offset: -3px;
+}
+
+.dl-bar__steps-body {
+  padding: 4px 16px 16px 36px;
+  font-size: 13.5px;
+  color: var(--mc-text-dim);
+}
+
+.dl-bar__steps-body ol {
+  margin: 0 0 12px;
+  padding-left: 18px;
   line-height: 1.8;
 }
 
-.install-steps p {
+.dl-bar__steps-body li {
+  margin-bottom: 4px;
+}
+
+.dl-bar__steps-body code {
+  font-family: var(--shader-num-font);
+  font-size: 0.86em;
+  background: var(--mc-stone);
+  border: 1px solid var(--mc-border);
+  padding: 1px 5px;
+  color: var(--mc-torch);
+}
+
+.dl-bar__file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--mc-text-faint);
+}
+
+.dl-bar__file code {
+  flex: 1 1 260px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--mc-text-dim);
+}
+
+.dl-bar__meta {
   margin: 0;
-  color: var(--home-muted);
-  font-size: 13.5px;
+  font-size: 12px;
+  color: var(--mc-text-faint);
 }
 
-.install-steps code {
-  padding: 2px 8px;
-  font-size: 12.5px;
-  white-space: nowrap;
+.dl-bar__meta b {
+  font-family: var(--shader-num-font);
+  color: var(--mc-text-dim);
+  font-variant-numeric: tabular-nums;
 }
 
-.install-empty h3 {
-  margin-bottom: 8px !important;
-}
-
-.install-empty p {
-  margin: 0;
-  color: var(--home-muted);
-  font-size: 13.5px;
-}
-
-.home-shell :where(a, button, input, select, summary, [tabindex]):focus-visible {
-  outline: 2px solid #c8d2db;
-  outline-offset: 2px;
-}
-
-@media (max-width: 1040px) {
-  .home-chip--date {
-    display: none;
+/* ---------- 响应式 ---------- */
+@media (max-width: 900px) {
+  /* 版本标签回到标题下方（order 保持在 id 之后），按钮单独占一行 */
+  .dl-bar__versions {
+    order: 2;
+    flex-basis: 100%;
   }
 
-  .home-topsearch input {
-    width: 240px;
-  }
-}
-
-@media (max-width: 860px) {
-  .home-topbar__inner {
-    flex-wrap: wrap;
-    padding-block: 10px;
-  }
-
-  .home-topsearch {
-    flex: 1 1 100%;
+  .dl-bar__actions {
+    order: 3;
+    flex-basis: 100%;
     margin-left: 0;
   }
 
-  .home-topsearch input {
+  .dl-main,
+  .dl-alt {
     flex: 1;
-    width: auto;
-  }
-
-  .hero-section {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-    padding-top: 32px;
-  }
-
-  .download-panel__body {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .download-panel__files {
-    border-right: 0;
-    border-bottom: 1px solid var(--home-line-soft);
+    height: 46px;
   }
 }
 
 @media (max-width: 640px) {
-  .home-wrap {
-    padding-inline: 20px;
+  .hero {
+    padding: 28px 0 20px;
   }
 
-  .home-topbar__inner {
-    align-items: stretch;
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero-search input {
+    height: 50px;
+    font-size: 16px; /* 16px 起 iOS 聚焦不缩放 */
+  }
+
+  .dl-bar {
+    position: static;
+    box-shadow: var(--mc-bevel-out);
+  }
+
+  .dl-bar__row {
     gap: 10px;
+    padding: 10px;
   }
 
-  .home-brand {
+  .dl-bar__id {
+    flex: 1 1 0;
+  }
+
+  /* 窄屏允许光影名折行，截断成 "Complementary Sh…" 反而认不出是哪个 */
+  .dl-bar__id h2 {
+    white-space: normal;
+    overflow: visible;
     font-size: 15px;
   }
 
-  .home-brand,
-  .version-tab {
-    min-height: var(--tap-min);
-  }
-
-  .home-chip {
-    flex: 1 1 100%;
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .home-topsearch {
-    flex-wrap: wrap;
-  }
-
-  .home-topsearch input,
-  .home-topsearch select {
-    flex: 1 1 100%;
-    width: 100%;
-  }
-
-  .hero-copy h1 {
-    font-size: 34px;
-  }
-
-  .hero-meter {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .hero-shot img,
-  .hero-shot__fallback {
-    height: 230px;
-  }
-
-  .hero-shot figcaption {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .download-panel__head {
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 16px;
-  }
-
-  .download-panel__count {
-    width: 100%;
-    margin-left: 0;
-    text-align: left;
-  }
-
-  .download-panel__files,
-  .install-panel {
-    padding: 16px;
-  }
-
-  .panel-status {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .download-actions {
-    flex-direction: column;
-  }
-
-  .download-alt {
-    min-height: 46px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-btn,
-  .version-tab,
-  .download-main,
-  .download-alt {
-    transition: none !important;
+  .dl-bar__id p {
+    white-space: normal;
+    overflow: visible;
   }
 }
 </style>
